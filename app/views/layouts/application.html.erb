@@ -19,15 +19,32 @@
   </head>
 
   <body class="bg-gray-100">
-    <nav class="bg-blue-600 text-white p-4">
-      <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-2xl font-bold"><a href="/">Cluster Headache Tracker</a></h1>
-        <% if user_signed_in? %>
-          <%= link_to "Charts", charts_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-medium py-3 px-5 rounded" %>
-          <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "bg-blue-500 hover:bg-blue-700 text-white font-medium py-3 px-5 rounded" %>
-        <% else %>
-          <%= link_to "Sign In", new_user_session_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
-        <% end %>
+    <nav class="bg-blue-600 p-4">
+      <div class="container mx-auto flex items-center justify-between">
+        <div class="text-white font-bold text-xl">
+          <%= link_to "Headache Tracker", root_path %>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="flex items-center space-x-4">
+          <% if user_signed_in? %>
+            <%= link_to "Dashboard", root_path, class: "text-white hover:text-blue-200" %>
+            <%= link_to "Log Headache", new_headache_log_path, class: "text-white hover:text-blue-200" %>
+            <%= link_to "Charts", charts_path, class: "text-white hover:text-blue-200" %>
+          <% end %>
+        </div>
+
+        <!-- User Actions -->
+        <div>
+          <% if user_signed_in? %>
+            <div class="flex items-center space-x-4">
+              <span class="text-white"><%= current_user.email %></span>
+              <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded" %>
+            </div>
+          <% else %>
+            <%= link_to "Sign In", new_user_session_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded" %>
+          <% end %>
+        </div>
       </div>
     </nav>
     <main class="container mx-auto mt-8 px-4">
