@@ -1,15 +1,16 @@
-region: frankfurt
 databases:
   - name: cluster_headache_tracker
     databaseName: cluster_headache_tracker_production
     user: cluster_headache_tracker
     plan: free
+    region: fra1
 
 services:
   - type: web
     name: cluster_headache_tracker
     runtime: ruby
     plan: free
+    region: fra1
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
