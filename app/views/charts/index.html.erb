@@ -1,6 +1,8 @@
 <div class="container mx-auto px-4 py-8">
   <h1 class="text-2xl font-bold mb-4">Headache Data Visualization</h1>
 
+  <%= render 'shared/filter_form', url: charts_path %>
+
   <% if @headache_logs.any? %>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div class="bg-white p-4 rounded-lg shadow">
@@ -16,14 +18,23 @@
           <p>No trigger data available.</p>
         <% end %>
       </div>
+
+      <div class="bg-white p-4 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-2">Top 5 Medications</h2>
+        <% if @medication_data.any? %>
+          <canvas id="medicationChart"></canvas>
+        <% else %>
+          <p>No medication data available.</p>
+        <% end %>
+      </div>
     </div>
 
     <%= javascript_tag nonce: true do %>
       document.addEventListener('turbo:load', function() {
-        window.initializeCharts(<%= raw @intensity_data.to_json %>, <%= raw @trigger_data.to_json %>);
+        window.initializeCharts(<%= raw @intensity_data.to_json %>, <%= raw @trigger_data.to_json %>, <%= raw @medication_data.to_json %>);
       });
     <% end %>
   <% else %>
-    <p>No headache data available. Start logging your headaches to see visualizations.</p>
+    <p>No headache data available for the selected filters. Try adjusting your filter criteria or add more headache logs.</p>
   <% end %>
 </div>

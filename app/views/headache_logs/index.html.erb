@@ -24,6 +24,8 @@
     <%= button_to "Generate New Share Link", generate_share_link_path, method: :post, class: "w-full rounded-lg py-3 px-5 bg-green-600 text-white font-medium hover:bg-green-700 transition duration-300" %>
   </div>
 
+  <%= render 'shared/filter_form', url: headache_logs_path %>
+
   <%= turbo_stream_from current_user, "headache_logs" %>
   <div id="headache_logs" class="space-y-4 mb-8">
     <%= render @headache_logs %>

@@ -6,6 +6,7 @@ class HeadacheLogsController < ApplicationController
   # GET /headache_logs or /headache_logs.json
   def index
     @headache_logs = current_user.headache_logs.order(start_time: :desc)
+    apply_filters
   end
 
   # GET /headache_logs/1 or /headache_logs/1.json
@@ -66,17 +67,32 @@ class HeadacheLogsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_headache_log
-      @headache_log = current_user.headache_logs.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_headache_log
+    @headache_log = current_user.headache_logs.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def headache_log_params
-      params.require(:headache_log).permit(:start_time, :end_time, :intensity, :notes, :medication, :triggers)
-    end
+  # Only allow a list of trusted parameters through.
+  def headache_log_params
+    params.require(:headache_log).permit(:start_time, :end_time, :intensity, :notes, :medication, :triggers)
+  end
 
-    def set_share_link
-      @share_link = shared_logs_url(token: current_user.share_tokens.last.token)
+  def set_share_link
+    @share_link = shared_logs_url(token: current_user.share_tokens.last.token)
+  end
+
+  def apply_filters
+    if params[:start_date].present?
+      @headache_logs = @headache_logs.where("start_time >= ?", params[:start_date])
     end
+    if params[:end_date].present?
+      @headache_logs = @headache_logs.where("start_time <= ?", params[:end_date])
+    end
+    if params[:triggers].present?
+      @headache_logs = @headache_logs.where("triggers ILIKE ?", "%#{params[:triggers]}%")
+    end
+    if params[:medication].present?
+      @headache_logs = @headache_logs.where("medication ILIKE ?", "%#{params[:medication]}%")
+    end
+  end
 end

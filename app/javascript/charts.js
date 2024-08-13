@@ -90,4 +90,37 @@ export function initializeCharts(intensityData, triggerData) {
       });
     }
   }
+  if (medicationData && Object.keys(medicationData).length > 0) {
+    const medicationCtx = document.getElementById('medicationChart');
+    if (medicationCtx) {
+      new Chart(medicationCtx, {
+        type: 'pie',
+        data: {
+          labels: Object.keys(medicationData),
+          datasets: [{
+            data: Object.values(medicationData),
+            backgroundColor: [
+              'rgb(255, 99, 132)',
+              'rgb(54, 162, 235)',
+              'rgb(255, 205, 86)',
+              'rgb(75, 192, 192)',
+              'rgb(153, 102, 255)'
+            ]
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Top 5 Medications'
+            }
+          }
+        }
+      });
+    }
+  }
 }
