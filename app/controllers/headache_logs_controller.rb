@@ -78,7 +78,9 @@ class HeadacheLogsController < ApplicationController
   end
 
   def set_share_link
-    @share_link = shared_logs_url(token: current_user.share_tokens.last.token)
+    if last_token = current_user.share_tokens.last
+      @share_link = shared_logs_url(token: last_token.token)
+    end
   end
 
   def apply_filters
