@@ -1,0 +1,2 @@
+module SharedLogsHelper
+end

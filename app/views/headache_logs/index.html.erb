@@ -10,12 +10,19 @@
     <%= link_to "New headache log", new_headache_log_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div id="headache_logs" class="min-w-full">
-    <% @headache_logs.each do |headache_log| %>
-      <%= render headache_log %>
-      <p>
-        <%= link_to "Show this headache log", headache_log, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
-    <% end %>
+  <%= turbo_stream_from current_user, "headache_logs" %>
+
+  <div id="headache_logs" class="space-y-4">
+    <%= render @headache_logs %>
   </div>
+
+  <%= button_to "Generate Share Link", generate_share_link_path, method: :post, class: "rounded-lg py-3 px-5 bg-green-600 text-white block font-medium" %>
+  <% if @share_link %>
+    <div class="mt-4 p-4 bg-yellow-100 border border-yellow-400 rounded">
+      <p class="font-semibold">Share this link with your doctor:</p>
+      <input type="text" value="<%= @share_link %>" class="w-full p-2 mt-2 border rounded" readonly onclick="this.select();">
+    </div>
+  <% end %>
+
 </div>
+

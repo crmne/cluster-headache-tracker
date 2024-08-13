@@ -13,4 +13,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "headache_logs#index"
+
+  get "shared_logs/:token", to: "shared_logs#show", as: :shared_logs
+  post "generate_share_link", to: "headache_logs#generate_share_link"
 end

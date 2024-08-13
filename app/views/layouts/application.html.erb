@@ -23,13 +23,13 @@
       <div class="container mx-auto flex justify-between items-center">
         <h1 class="text-2xl font-bold"><a href="/">Cluster Headache Tracker</a></h1>
         <% if user_signed_in? %>
-          <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+          <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "bg-blue-500 hover:bg-blue-700 text-white font-medium py-3 px-5 rounded" %>
         <% else %>
           <%= link_to "Sign In", new_user_session_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
         <% end %>
       </div>
     </nav>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto mt-8 px-4">
       <%= yield %>
     </main>
   </body>

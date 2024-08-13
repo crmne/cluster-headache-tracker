@@ -1,6 +1,7 @@
 class HeadacheLogsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_headache_log, only: %i[ show edit update destroy ]
+  before_action :set_share_link, only: %i[ index ]
 
   # GET /headache_logs or /headache_logs.json
   def index
@@ -58,6 +59,12 @@ class HeadacheLogsController < ApplicationController
     end
   end
 
+  def generate_share_link
+    share_token = current_user.generate_share_token
+    @share_link = shared_logs_url(token: share_token.token)
+    redirect_to headache_logs_path, notice: "Share link generated successfully."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_headache_log
@@ -67,5 +74,9 @@ class HeadacheLogsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def headache_log_params
       params.require(:headache_log).permit(:start_time, :end_time, :intensity, :notes)
+    end
+
+    def set_share_link
+      @share_link = shared_logs_url(token: current_user.share_tokens.last.token)
     end
 end
