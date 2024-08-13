@@ -35,3 +35,16 @@
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
+
+<script>
+  document.addEventListener('turbo:load', function() {
+    var startTimeField = document.getElementById('headache_log_start_time');
+
+    if (startTimeField && !startTimeField.value) {
+      var now = new Date();
+      now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+      startTimeField.value = now.toISOString().slice(0,16);
+    }
+
+  });
+</script>
