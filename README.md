@@ -1,24 +1,17 @@
-# README
+# Cluster Headache Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Development setup
+### MacOS
 
-* Ruby version
+  mise use -g ruby
+  brew install postgresql 1password-cli
+  brew services start postgresql@14
+  op vault create cluster_headache_tracker
+  op item create --vault=cluster_headache_tracker --category=login --title="local pg" --generate-password username=cluster_headache_tracker
+  echo "export CLUSTER_HEADACHE_TRACKER_DATABASE_PASSWORD=\"$(op item get "local pg" --vault "cluster_headache_tracker" --fields label=password)\"" >> .envrc
+  direnv allow
+  createuser -P -d cluster_headache_tracker
+  rails db:create
+  rails db:migrate
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

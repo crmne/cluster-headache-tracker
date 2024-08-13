@@ -18,6 +18,8 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: cluster_headache_tracker
+  password: <%= ENV["CLUSTER_HEADACHE_TRACKER_DATABASE_PASSWORD"] %>
 
 
 development:
@@ -81,5 +83,3 @@ test:
 production:
   <<: *default
   database: cluster_headache_tracker_production
-  username: cluster_headache_tracker
-  password: <%= ENV["CLUSTER_HEADACHE_TRACKER_DATABASE_PASSWORD"] %>

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: 2024-08-13 09:17:08
+  end_time: 2024-08-13 09:17:08
+  intensity: 1
+  notes: MyText
+  user: one
+
+two:
+  start_time: 2024-08-13 09:17:08
+  end_time: 2024-08-13 09:17:08
+  intensity: 1
+  notes: MyText
+  user: two
