@@ -19,18 +19,18 @@
   </head>
 
   <body class="bg-gray-100">
-    <nav class="bg-blue-600 p-4">
+    <nav class="bg-indigo-600 p-4">
       <div class="container mx-auto flex items-center justify-between">
         <div class="text-white font-bold text-xl">
-          <%= link_to "Headache Tracker", root_path %>
+          <%= link_to "Cluster Headache Tracker", root_path %>
         </div>
 
         <!-- Navigation Links -->
         <div class="flex items-center space-x-4">
           <% if user_signed_in? %>
-            <%= link_to "Dashboard", root_path, class: "text-white hover:text-blue-200" %>
-            <%= link_to "Log Headache", new_headache_log_path, class: "text-white hover:text-blue-200" %>
-            <%= link_to "Charts", charts_path, class: "text-white hover:text-blue-200" %>
+            <%= link_to "Dashboard", root_path, class: "text-white hover:text-indigo-200 px-4" %>
+            <%= link_to "Log Headache", new_headache_log_path, class: "text-white hover:text-indigo-200 px-4" %>
+            <%= link_to "Charts", charts_path, class: "text-white hover:text-indigo-200 px-4" %>
           <% end %>
         </div>
 
@@ -39,10 +39,10 @@
           <% if user_signed_in? %>
             <div class="flex items-center space-x-4">
               <span class="text-white"><%= current_user.email %></span>
-              <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded" %>
+              <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded" %>
             </div>
           <% else %>
-            <%= link_to "Sign In", new_user_session_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded" %>
+            <%= link_to "Sign In", new_user_session_path, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded" %>
           <% end %>
         </div>
       </div>

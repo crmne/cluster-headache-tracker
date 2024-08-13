@@ -1,60 +1,41 @@
-<div class="w-full max-w-xs">
-    <h1 class="font-hairline mb-6 text-center">Log In</h1>
-
-    <%= form_for(resource,
-                 as: resource_name,
-                 url: session_path(resource_name),
-                 html: {
-                         class: "bg-white mb-4 px-8 pt-6 pb-8 rounded shadow-md"
-                 }
-        ) do |f| %>
-
-        <%= devise_simple_error_messages! %>
-
-        <% if flash.present? %>
-            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
-                <p class="font-bold">Oops!</p>
-                <%- flash.each do |name, msg| -%>
-                    <%= content_tag :p,
-                                    msg.humanize,
-                                    id: "flash_#{name}" if msg.is_a?(String) %>
-                <%- end -%>
-            </div>
-        <% end %>
-
-        <div class="mb-4">
-            <%= f.label :email, class: "block text-gray-700 text-sm font-bold mb-2" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email",
-                              class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight foucs:outline-none focus:shadow-outline"
-            %>
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8">
+    <div>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Sign in to your account
+      </h2>
+    </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "mt-8 space-y-6" }) do |f| %>
+      <input type="hidden" name="remember" value="true">
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <%= f.label :email, class: "sr-only" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: "Email address" %>
         </div>
-
-        <div class="mb-4">
-            <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
-            <%= f.password_field :password,
-                                 autocomplete: "current-password",
-                                 class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            %>
+        <div>
+          <%= f.label :password, class: "sr-only" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: "Password" %>
         </div>
+      </div>
 
+      <div class="flex items-center justify-between">
         <% if devise_mapping.rememberable? %>
-            <div class="mb-4">
-                <%= f.check_box :remember_me, class: "mr-2 leading-tight" %>
-                <%= f.label :remember_me,
-                            class: "align-baseline inline-block text-gray-700 text-sm"
-                %>
-            </div>
+          <div class="flex items-center">
+            <%= f.check_box :remember_me, class: "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" %>
+            <%= f.label :remember_me, class: "ml-2 block text-sm text-gray-900" %>
+          </div>
         <% end %>
 
-        <div class="mb-4">
-            <%= f.submit "Log in",
-                         class: "button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-            %>
-        </div>
+        <%= link_to "Forgot your password?", new_password_path(resource_name), class: "text-sm text-indigo-600 hover:text-indigo-500" %>
+      </div>
 
-        <%= render "devise/shared/links" %>
-
+      <div>
+        <%= f.submit "Sign in", class: "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      </div>
     <% end %>
 
-    <%= render "devise/shared/form_footer" %>
+    <div class="text-center">
+      <%= link_to "Sign up", new_registration_path(resource_name), class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+    </div>
+  </div>
 </div>

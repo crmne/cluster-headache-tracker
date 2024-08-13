@@ -1,31 +1,27 @@
-<div class="w-full max-w-xs">
-    <h1 class="font-hairline mb-6 text-center">Forgot your password?</h1>
-
-    <%= form_for(resource,
-                 as: resource_name,
-                 url: password_path(resource_name),
-                 html: {
-                         method: :post,
-                         class: "bg-white mb-4 px-8 pt-6 pb-8 rounded shadow-md"
-                 }) do |f| %>
-
-        <%#= render "devise/shared/error_messages", resource: resource %>
-        <%= devise_error_messages! %>
-
-        <div class="mb-4">
-            <%= f.label :email, class: "block font-bold mb-2 text-gray-700 text-sm" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email",
-                              class: "appearance-none border leading-tight focus:outline-none px-3 py-2 rounded shadow focus:shadow-outline text-gray-700 w-full"
-            %>
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8">
+    <div>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Forgot your password?
+      </h2>
+    </div>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "mt-8 space-y-6" }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <%= f.label :email, class: "sr-only" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: "Email address" %>
         </div>
+      </div>
 
-        <div class="mb-4">
-            <%= f.submit "Send Password Reset Info",
-                         class: "button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full" %>
-        </div>
-
-        <%= render "devise/shared/links" %>
+      <div>
+        <%= f.submit "Send me reset password instructions", class: "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      </div>
     <% end %>
 
-    <%= render "devise/shared/form_footer" %>
+    <div class="text-center space-x-4">
+      <%= link_to "Log in", new_session_path(resource_name), class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+      <%= link_to "Sign up", new_registration_path(resource_name), class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+    </div>
+  </div>
 </div>

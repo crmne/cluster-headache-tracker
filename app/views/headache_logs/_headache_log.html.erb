@@ -13,7 +13,7 @@
       <p>Notes: <%= headache_log.notes %></p>
     <% end %>
     <div class="mt-2">
-      <%= link_to "Edit", edit_headache_log_path(headache_log), class: "text-blue-500 hover:text-blue-700 mr-2" %>
+      <%= link_to "Edit", edit_headache_log_path(headache_log), class: "text-indigo-500 hover:text-indigo-700 mr-2" %>
       <%= button_to "Delete", headache_log_path(headache_log), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-red-500 hover:text-red-700" %>
     </div>
   </div>
