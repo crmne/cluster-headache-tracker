@@ -1,0 +1,29 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold mb-4">Headache Data Visualization</h1>
+
+  <% if @headache_logs.any? %>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-white p-4 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-2">Headache Intensity Over Time</h2>
+        <canvas id="intensityChart"></canvas>
+      </div>
+
+      <div class="bg-white p-4 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-2">Top 5 Triggers</h2>
+        <% if @trigger_data.any? %>
+          <canvas id="triggerChart"></canvas>
+        <% else %>
+          <p>No trigger data available.</p>
+        <% end %>
+      </div>
+    </div>
+
+    <%= javascript_tag nonce: true do %>
+      document.addEventListener('turbo:load', function() {
+        window.initializeCharts(<%= raw @intensity_data.to_json %>, <%= raw @trigger_data.to_json %>);
+      });
+    <% end %>
+  <% else %>
+    <p>No headache data available. Start logging your headaches to see visualizations.</p>
+  <% end %>
+</div>
