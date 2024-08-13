@@ -1,3 +1,4 @@
+region: frankfurt
 databases:
   - name: cluster_headache_tracker
     databaseName: cluster_headache_tracker_production
