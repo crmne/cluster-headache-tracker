@@ -73,7 +73,7 @@ class HeadacheLogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def headache_log_params
-      params.require(:headache_log).permit(:start_time, :end_time, :intensity, :notes)
+      params.require(:headache_log).permit(:start_time, :end_time, :intensity, :notes, :medication, :triggers)
     end
 
     def set_share_link

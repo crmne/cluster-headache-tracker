@@ -6,6 +6,12 @@
       <p><strong class="font-semibold">Start time:</strong> <%= @headache_log.start_time.strftime("%B %d, %Y at %I:%M %p") %></p>
       <p><strong class="font-semibold">End time:</strong> <%= @headache_log.end_time&.strftime("%B %d, %Y at %I:%M %p") || "Ongoing" %></p>
       <p><strong class="font-semibold">Intensity:</strong> <%= @headache_log.intensity %></p>
+      <% if @headache_log.medication.present? %>
+        <p><strong class="font-semibold">Medication:</strong> <%= @headache_log.medication %></p>
+      <% end %>
+      <% if @headache_log.triggers.present? %>
+        <p><strong class="font-semibold">Triggers:</strong> <%= @headache_log.triggers %></p>
+      <% end %>
       <p><strong class="font-semibold">Notes:</strong> <%= @headache_log.notes %></p>
     </div>
 

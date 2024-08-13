@@ -1,13 +1,21 @@
 <div class="container mx-auto px-4 py-8">
   <h1 class="text-2xl font-bold mb-4">Headache Logs for <%= @user.email %></h1>
-  
+
   <div class="space-y-4">
-    <% @headache_logs.each do |log| %>
-      <div class="bg-white shadow rounded-lg p-4">
-        <p class="font-semibold">Start Time: <%= log.start_time.strftime("%B %d, %Y at %I:%M %p") %></p>
-        <p>End Time: <%= log.end_time&.strftime("%B %d, %Y at %I:%M %p") || "Ongoing" %></p>
-        <p>Intensity: <span class="font-bold"><%= log.intensity %></span></p>
-        <p>Notes: <%= log.notes %></p>
+    <% @headache_logs.each do |headache_log| %>
+      <div class="bg-white p-4 rounded-lg shadow mb-4">
+        <p class="font-semibold">Start Time: <%= headache_log.start_time.strftime("%B %d, %Y at %I:%M %p") %></p>
+        <p>End Time: <%= headache_log.end_time&.strftime("%B %d, %Y at %I:%M %p") || "Ongoing" %></p>
+        <p>Intensity: <span class="font-bold"><%= headache_log.intensity %></span></p>
+        <% if headache_log.medication.present? %>
+          <p>Medication: <%= headache_log.medication %></p>
+        <% end %>
+        <% if headache_log.triggers.present? %>
+          <p>Triggers: <%= headache_log.triggers %></p>
+        <% end %>
+        <% if headache_log.notes.present? %>
+          <p>Notes: <%= headache_log.notes %></p>
+        <% end %>
       </div>
     <% end %>
   </div>

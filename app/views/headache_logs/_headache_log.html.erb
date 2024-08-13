@@ -3,10 +3,18 @@
     <p class="font-semibold">Start Time: <%= headache_log.start_time.strftime("%B %d, %Y at %I:%M %p") %></p>
     <p>End Time: <%= headache_log.end_time&.strftime("%B %d, %Y at %I:%M %p") || "Ongoing" %></p>
     <p>Intensity: <span class="font-bold"><%= headache_log.intensity %></span></p>
-    <p>Notes: <%= headache_log.notes %></p>
+    <% if headache_log.medication.present? %>
+      <p>Medication: <%= headache_log.medication %></p>
+    <% end %>
+    <% if headache_log.triggers.present? %>
+      <p>Triggers: <%= headache_log.triggers %></p>
+    <% end %>
+    <% if headache_log.notes.present? %>
+      <p>Notes: <%= headache_log.notes %></p>
+    <% end %>
     <div class="mt-2">
       <%= link_to "Edit", edit_headache_log_path(headache_log), class: "text-blue-500 hover:text-blue-700 mr-2" %>
-      <%= link_to "Delete", headache_log_path(headache_log), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-red-500 hover:text-red-700" %>
+      <%= button_to "Delete", headache_log_path(headache_log), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-red-500 hover:text-red-700" %>
     </div>
   </div>
 <% end %>

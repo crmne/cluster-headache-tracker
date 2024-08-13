@@ -27,6 +27,16 @@
   </div>
 
   <div>
+    <%= form.label :medication, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :medication, class: "mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+  </div>
+
+  <div>
+    <%= form.label :triggers, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_area :triggers, class: "mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+  </div>
+
+  <div>
     <%= form.label :notes, class: "block text-sm font-medium text-gray-700" %>
     <%= form.text_area :notes, class: "mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
   </div>
