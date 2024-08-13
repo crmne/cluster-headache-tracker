@@ -1,5 +1,6 @@
 # Cluster Headache Tracker
 
+![screenshot](screenshot.png) 
 
 ## Development setup
 ### MacOS
