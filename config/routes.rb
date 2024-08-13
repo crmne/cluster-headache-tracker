@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get "charts/index"
-  resources :headache_logs
+  # resources :headache_logs
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -18,4 +18,10 @@ Rails.application.routes.draw do
   get "shared_logs/:token", to: "shared_logs#show", as: :shared_logs
   post "generate_share_link", to: "headache_logs#generate_share_link"
   get "charts", to: "charts#index"
+  resources :headache_logs do
+    collection do
+      get :export
+      post :import
+    end
+  end
 end

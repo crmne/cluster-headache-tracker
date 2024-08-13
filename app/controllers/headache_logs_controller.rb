@@ -1,3 +1,5 @@
+require "csv"
+
 class HeadacheLogsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_headache_log, only: %i[ show edit update destroy ]
@@ -66,6 +68,48 @@ class HeadacheLogsController < ApplicationController
     redirect_to headache_logs_path, notice: "Share link generated successfully."
   end
 
+  def export
+    @headache_logs = current_user.headache_logs.order(start_time: :desc)
+
+    respond_to do |format|
+      format.csv do
+        csv_data = generate_csv(@headache_logs)
+        if csv_data.is_a?(String) && csv_data.start_with?("Error")
+          redirect_to headache_logs_path, alert: csv_data
+        else
+          send_data csv_data, filename: "headache_logs-#{Date.today}.csv"
+        end
+      end
+    end
+  end
+
+  def import
+    if params[:file].present?
+      begin
+        imported_logs = 0
+        CSV.foreach(params[:file].path, headers: true, header_converters: :symbol) do |row|
+          headache_log = current_user.headache_logs.new(
+            start_time: parse_time(row[:start_time]),
+            end_time: parse_time(row[:end_time]),
+            intensity: row[:intensity],
+            medication: row[:medication],
+            triggers: row[:triggers],
+            notes: row[:notes]
+          )
+          imported_logs += 1 if headache_log.save
+        end
+        redirect_to headache_logs_path, notice: "Successfully imported #{imported_logs} headache logs."
+      rescue CSV::MalformedCSVError
+        redirect_to headache_logs_path, alert: "Invalid CSV file format."
+      rescue => e
+        Rails.logger.error "Error importing CSV: #{e.message}"
+        redirect_to headache_logs_path, alert: "An error occurred while importing the CSV file."
+      end
+    else
+      redirect_to headache_logs_path, alert: "Please select a CSV file to import."
+    end
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_headache_log
@@ -96,5 +140,29 @@ class HeadacheLogsController < ApplicationController
     if params[:medication].present?
       @headache_logs = @headache_logs.where("medication ILIKE ?", "%#{params[:medication]}%")
     end
+  end
+
+  def generate_csv(logs)
+    CSV.generate(headers: true) do |csv|
+      csv << [ "start_time", "end_time", "intensity", "medication", "triggers", "notes" ]
+
+      logs.each do |log|
+        csv << [
+          log.start_time&.strftime("%Y-%m-%d %H:%M:%S"),
+          log.end_time&.strftime("%Y-%m-%d %H:%M:%S"),
+          log.intensity.to_s,
+          log.medication.to_s,
+          log.triggers.to_s,
+          log.notes.to_s
+        ]
+      end
+    end
+  rescue => e
+    Rails.logger.error "Error generating CSV: #{e.message}"
+    "Error generating CSV. Please try again or contact support."
+  end
+
+  def parse_time(time_string)
+    Time.zone.parse(time_string) if time_string.present?
   end
 end
