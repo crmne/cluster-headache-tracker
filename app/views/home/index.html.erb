@@ -1,0 +1,45 @@
+<!-- Hero Section -->
+<section class="bg-indigo-600 text-white">
+  <div class="container mx-auto px-4 py-20 flex flex-col items-center text-center">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">Track Your Cluster Headaches</h1>
+    <p class="text-xl md:text-2xl mb-8">Take control of your health with our easy-to-use tracking tool</p>
+    <%= link_to "Get Started", new_user_registration_path, class: "bg-white text-indigo-600 font-bold py-3 px-6 rounded-full text-lg hover:bg-indigo-100 transition duration-300" %>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-20">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Features</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold mb-4">Log Headaches</h3>
+        <p>Easily record the details of your cluster headaches, including intensity, duration, and triggers.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold mb-4">Visualize Data</h3>
+        <p>View your headache patterns with intuitive charts and graphs to identify trends over time.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold mb-4">Share with Doctors</h3>
+        <p>Generate reports to share with your healthcare providers for better treatment planning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Free Section -->
+<section id="about" class="bg-green-500 text-white py-16">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-4">100% Free</h2>
+    <p class="text-xl">Our Cluster Headache Tracker is completely free to use. No hidden fees, no premium features. Just sign up and start tracking!</p>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-20">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-8">Ready to Take Control?</h2>
+    <%= link_to "Create Your Free Account", new_user_registration_path, class: "bg-indigo-600 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-indigo-700 transition duration-300" %>
+  </div>
+</section>

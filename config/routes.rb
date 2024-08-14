@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "home/index"
   get "charts/index"
   # resources :headache_logs
   devise_for :users
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  root "headache_logs#index"
+  root "home#index"
 
   get "shared_logs/:token", to: "shared_logs#show", as: :shared_logs
   post "generate_share_link", to: "headache_logs#generate_share_link"
