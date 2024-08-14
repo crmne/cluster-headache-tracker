@@ -40,6 +40,9 @@ gem "bootsnap", require: false
 gem "devise"
 gem "devise-tailwindcssed"
 
+# CSV will not be in the standard library from ruby 3.4.0
+gem "csv"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
