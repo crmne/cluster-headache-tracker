@@ -7,10 +7,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <%#<link rel="manifest" href="/manifest.json">%>
+    <%#<link rel="icon" href="/icon.png" type="image/png">%>
+    <%#<link rel="icon" href="/icon.svg" type="image/svg+xml">%>
+    <%#<link rel="apple-touch-icon" href="/icon.png">%>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -24,12 +24,12 @@
         <!-- Navigation Links -->
         <div class="flex items-center space-x-4">
           <% if user_signed_in? %>
-            <%= link_to "Dashboard", headache_logs_path, class: "text-white hover:text-indigo-200 px-4" %>
+            <%= link_to "Headache Logs", headache_logs_path, class: "text-white hover:text-indigo-200 px-4" %>
             <%= link_to "Log Headache", new_headache_log_path, class: "text-white hover:text-indigo-200 px-4" %>
             <%= link_to "Charts", charts_path, class: "text-white hover:text-indigo-200 px-4" %>
           <% else %>
-            <%= link_to "Features", "#features", class: "text-white hover:text-indigo-200 px-4" %>
-            <%= link_to "About", "#about", class: "text-white hover:text-indigo-200 px-4" %>
+            <%= link_to "Features", root_path(anchor: "features"), class: "text-white hover:text-indigo-200 px-4" %>
+            <%= link_to "About", root_path(anchor: "about"), class: "text-white hover:text-indigo-200 px-4" %>
           <% end %>
         </div>
         <!-- User Actions -->
@@ -47,13 +47,17 @@
       </div>
     </nav>
 
-    <main>
+    <main class="w-full">
       <%= yield %>
     </main>
 
     <footer class="bg-gray-800 text-white py-8 mt-20">
       <div class="container mx-auto px-4 text-center">
-        <p>&copy; <%= Date.today.year %> <a href="https://paolino.me">Carmine Paolino</a>. All rights reserved.</p>
+        <p>&copy; <%= Date.today.year %> <%= link_to "Carmine Paolino", "https://paolino.me", class: "underline hover:text-indigo-300", target: "_blank", rel: "noopener noreferrer" %>. All rights reserved.</p>
+        <p class="mt-2">
+        Open Source: 
+        <%= link_to "View or contribute on GitHub", "https://github.com/crmne/cluster_headache_tracker", class: "underline hover:text-indigo-300", target: "_blank", rel: "noopener noreferrer" %>
+        </p>
       </div>
     </footer>
   </body>
