@@ -43,6 +43,9 @@ gem "devise-tailwindcssed"
 # CSV will not be in the standard library from ruby 3.4.0
 gem "csv"
 
+# Honeybadger error tracking
+gem "honeybadger"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -52,6 +55,16 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # Overcommit git hooks
+  gem "overcommit", require: false
+
+  # Check for optimizable images
+  gem "image_optim", require: false
+  gem "image_optim_pack", require: false
+
+  # Rails Code Analysis tool
+  gem "rails_best_practices", require: false
 end
 
 group :development do
