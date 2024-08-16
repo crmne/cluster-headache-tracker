@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="dark:bg-gray-900">
   <head>
     <title><%= content_for(:title) || "Cluster Headache Tracker" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -13,9 +13,10 @@
     <%#<link rel="apple-touch-icon" href="/icon.png">%>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <script defer data-domain="cluster-headache-tracker.onrender.com" src="https://plausible.io/js/script.js"></script>
     <%= javascript_importmap_tags %>
   </head>
-  <body class="bg-gray-100">
+  <body class="bg-gray-100 dark:bg-gray-900 dark:text-white">
     <nav class="bg-indigo-600 p-4">
       <div class="container mx-auto flex items-center justify-between">
         <div class="text-white font-bold text-xl">
