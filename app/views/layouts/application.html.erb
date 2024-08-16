@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark:bg-gray-900">
+<html>
   <head>
     <title><%= content_for(:title) || "Cluster Headache Tracker" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -16,7 +16,7 @@
     <script defer data-domain="cluster-headache-tracker.onrender.com" src="https://plausible.io/js/script.js"></script>
     <%= javascript_importmap_tags %>
   </head>
-  <body class="bg-gray-100 dark:bg-gray-900 dark:text-white">
+  <body class="bg-gray-100">
     <nav class="bg-indigo-600 p-4">
       <div class="container mx-auto flex items-center justify-between">
         <div class="text-white font-bold text-xl">
@@ -56,7 +56,7 @@
       <div class="container mx-auto px-4 text-center">
         <p>&copy; <%= Date.today.year %> <%= link_to "Carmine Paolino", "https://paolino.me", class: "underline hover:text-indigo-300", target: "_blank", rel: "noopener noreferrer" %>. All rights reserved.</p>
         <p class="mt-2">
-        Open Source: 
+        Open Source:
         <%= link_to "View or contribute on GitHub", "https://github.com/crmne/cluster_headache_tracker", class: "underline hover:text-indigo-300", target: "_blank", rel: "noopener noreferrer" %>
         </p>
       </div>
