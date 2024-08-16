@@ -39,7 +39,7 @@ class ChartsController < ApplicationController
   def process_medication_data(logs)
     medication_counts = Hash.new(0)
     logs.each do |log|
-      medications = log.medication.to_s.split(',').map(&:strip)
+      medications = log.medication.to_s.split('+').map(&:strip).map(&:downcase)
       medications.each { |med| medication_counts[med] += 1 unless med.blank? }
     end
 

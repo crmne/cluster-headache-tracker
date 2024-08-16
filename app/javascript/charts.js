@@ -26,7 +26,7 @@ Chart.register(
   Tooltip
 );
 
-export function initializeCharts(intensityData, triggerData) {
+export function initializeCharts(intensityData, triggerData, medicationData) {
   const intensityCtx = document.getElementById('intensityChart');
   if (intensityCtx) {
     new Chart(intensityCtx, {
