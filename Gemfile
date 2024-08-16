@@ -56,7 +56,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  # Overcommit git hooks
+  # START: Overcommit git hooks
   gem "overcommit", require: false
 
   # Check for optimizable images
@@ -65,6 +65,13 @@ group :development, :test do
 
   # Rails Code Analysis tool
   gem "rails_best_practices", require: false
+
+  # ERBLint
+  gem "erb_lint", require: false
+
+  # License Finder
+  gem "license_finder", require: false
+  # END: Overcommit git hooks
 end
 
 group :development do

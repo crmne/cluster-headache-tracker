@@ -16,6 +16,27 @@
 # Uncomment the following lines to make the configuration take effect.
 
 PreCommit:
+  BundleCheck:
+    enabled: true
+
+  BundleOutdated:
+    enabled: true
+
+  ChamberCompare:
+    enabled: true
+
+  ChamberSecurity:
+    enabled: true
+
+  ErbLint:
+    enabled: true
+
+  Flay:
+    enabled: true
+
+  FileSize:
+    enabled: true
+
   ImageOptim:
     enabled: true
     options:
@@ -24,28 +45,16 @@ PreCommit:
       pngquant: false
       svgo: false
 
+  JShint:
+    enabled: true
+
   LocalPathsInGemfile:
     enabled: true
 
-  TrailingWhitespace:
+  RailsBestPractices:
     enabled: true
-    auto_correct: true
-    exclude:
-      - '**/db/structure.sql' # Ignore trailing whitespace in generated files
 
   RailsSchemaUpToDate:
-    enabled: true
-
-  FileSize:
-    enabled: true
-
-  BundleCheck:
-    enabled: true
-
-  RubySyntax:
-    enabled: true
-
-  RailsBestPractices:
     enabled: true
 
   RuboCop:
@@ -58,14 +67,20 @@ PreCommit:
       - '**/Gemfile'
       - '**/Rakefile'
 
-  BundleOutdated:
+  RubySyntax:
     enabled: true
 
-  Flay:
+  TrailingWhitespace:
     enabled: true
+    auto_correct: true
+    exclude:
+      - '**/db/structure.sql' # Ignore trailing whitespace in generated files
 
 PrePush:
   Brakeman:
+    enabled: true
+
+  Minitest:
     enabled: true
 
 PostCheckout:
