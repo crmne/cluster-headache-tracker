@@ -71,6 +71,9 @@ group :development, :test do
 
   # License Finder
   gem "license_finder", require: false
+
+  # Flay
+  gem "flay", require: false
   # END: Overcommit git hooks
 end
 
