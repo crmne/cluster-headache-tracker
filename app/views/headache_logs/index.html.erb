@@ -1,53 +1,44 @@
-<div class="container mx-auto mt-8 px-4">
-  <div class="w-full">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-    <% content_for :title, "Headache logs" %>
-    <div class="flex justify-between items-center mb-6">
-      <h1 class="font-bold text-4xl">Headache logs</h1>
-      <%= link_to "New headache log", new_headache_log_path, class: "rounded-lg py-3 px-5 bg-indigo-600 text-white block font-medium hover:bg-indigo-700 transition duration-300" %>
-    </div>
+<% content_for :title, "Headache logs" %>
+<div class="flex justify-between items-center mb-6">
+  <h1 class="font-bold text-4xl">Headache logs</h1>
+  <%= link_to "New headache log", new_headache_log_path, class: "rounded-lg py-3 px-5 bg-indigo-600 text-white block font-medium hover:bg-indigo-700 transition duration-300" %>
+</div>
 
-    <div class="bg-white shadow-md rounded-lg p-6 mb-8">
-      <h2 class="text-2xl font-semibold mb-4">Share with Your Doctor</h2>
-      <% if @share_link %>
-        <div class="mb-4">
-          <label for="share-link" class="block text-sm font-medium text-gray-700 mb-2">Share Link:</label>
-          <div class="flex">
-            <input type="text" id="share-link" value="<%= @share_link %>" class="flex-grow p-2 border rounded-l-md focus:ring-indigo-500 focus:border-indigo-500" readonly>
-            <button onclick="copyShareLink()" class="bg-indigo-600 text-white px-4 py-2 rounded-r-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-              Copy
-            </button>
-          </div>
-        </div>
-      <% end %>
-      <%= button_to "Generate New Share Link", generate_share_link_path, method: :post, class: "w-full rounded-lg py-3 px-5 bg-green-600 text-white font-medium hover:bg-green-700 transition duration-300" %>
-    </div>
-
-    <%= render 'shared/filter_form', url: headache_logs_path %>
-
-    <%= turbo_stream_from current_user, "headache_logs" %>
-    <div id="headache_logs" class="space-y-4 mb-8">
-      <%= render @headache_logs %>
-    </div>
-
-
-    <div class="mt-8 bg-white shadow-md rounded-lg p-6">
-      <h2 class="text-2xl font-semibold mb-4">Import/Export Headache Logs</h2>
-
-      <div class="flex space-x-4">
-        <%= link_to "Export CSV", export_headache_logs_path(format: :csv), class: "bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" %>
-
-        <%= form_tag import_headache_logs_path, multipart: true do %>
-          <div class="flex items-center">
-            <%= file_field_tag :file, accept: '.csv', class: "border p-2 rounded" %>
-            <%= submit_tag "Import CSV", class: "ml-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded" %>
-          </div>
-        <% end %>
+<div class="bg-white shadow-md rounded-lg p-6 mb-8">
+  <h2 class="text-2xl font-semibold mb-4">Share with Your Doctor</h2>
+  <% if @share_link %>
+    <div class="mb-4">
+      <label for="share-link" class="block text-sm font-medium text-gray-700 mb-2">Share Link:</label>
+      <div class="flex">
+        <input type="text" autocomplete="off" id="share-link" value="<%= @share_link %>" class="flex-grow p-2 border rounded-l-md focus:ring-indigo-500 focus:border-indigo-500" readonly>
+        <button onclick="copyShareLink()" class="bg-indigo-600 text-white px-4 py-2 rounded-r-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+          Copy
+        </button>
       </div>
     </div>
+  <% end %>
+  <%= button_to "Generate New Share Link", generate_share_link_path, method: :post, class: "w-full rounded-lg py-3 px-5 bg-green-600 text-white font-medium hover:bg-green-700 transition duration-300" %>
+</div>
 
+<%= render 'shared/filter_form', url: headache_logs_path %>
+
+<%= turbo_stream_from current_user, "headache_logs" %>
+<div id="headache_logs" class="space-y-4 mb-8">
+  <%= render @headache_logs %>
+</div>
+
+<div class="mt-8 bg-white shadow-md rounded-lg p-6">
+  <h2 class="text-2xl font-semibold mb-4">Import/Export Headache Logs</h2>
+
+  <div class="flex space-x-4">
+    <%= link_to "Export CSV", export_headache_logs_path(format: :csv), class: "bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" %>
+
+    <%= form_tag import_headache_logs_path, multipart: true do %>
+      <div class="flex items-center">
+        <%= file_field_tag :file, accept: '.csv', class: "border p-2 rounded" %>
+        <%= submit_tag "Import CSV", class: "ml-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded" %>
+      </div>
+    <% end %>
   </div>
 </div>
 

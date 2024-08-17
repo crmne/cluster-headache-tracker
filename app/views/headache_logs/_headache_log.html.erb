@@ -1,4 +1,3 @@
-<%= turbo_frame_tag headache_log do %>
   <div class="bg-white p-4 rounded-lg shadow mb-4">
     <p class="font-semibold">Start Time: <%= headache_log.start_time.strftime("%B %d, %Y at %I:%M %p") %></p>
     <p>End Time: <%= headache_log.end_time&.strftime("%B %d, %Y at %I:%M %p") || "Ongoing" %></p>
@@ -17,4 +16,3 @@
       <%= button_to "Delete", headache_log_path(headache_log), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-red-500 hover:text-red-700" %>
     </div>
   </div>
-<% end %>

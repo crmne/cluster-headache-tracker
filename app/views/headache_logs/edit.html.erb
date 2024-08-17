@@ -1,12 +1,10 @@
-<%= turbo_frame_tag @headache_log do %>
-  <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
-    <h1 class="text-2xl font-bold mb-4">Editing Headache Log</h1>
+<div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
+  <h1 class="text-2xl font-bold mb-4">Editing Headache Log</h1>
 
-    <%= render 'form', headache_log: @headache_log %>
+  <%= render 'form', headache_log: @headache_log %>
 
-    <div class="mt-4">
-      <%= link_to 'Show', @headache_log, class: "text-indigo-500 hover:text-indigo-700 mr-2" %>
-      <%= link_to 'Back', headache_logs_path, class: "text-indigo-500 hover:text-indigo-700" %>
-    </div>
+  <div class="mt-4">
+    <%= link_to 'Show', @headache_log, class: "text-indigo-500 hover:text-indigo-700 mr-2" %>
+    <%= link_to 'Back', headache_logs_path, class: "text-indigo-500 hover:text-indigo-700" %>
   </div>
-<% end %>
+</div>

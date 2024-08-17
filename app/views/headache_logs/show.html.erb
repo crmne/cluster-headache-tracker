@@ -1,23 +1,22 @@
-<%= turbo_frame_tag @headache_log do %>
-  <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
-    <h1 class="text-2xl font-bold mb-4">Headache Log Details</h1>
+<div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
+  <h1 class="text-2xl font-bold mb-4">Headache Log Details</h1>
 
-    <div class="space-y-2">
-      <p><strong class="font-semibold">Start time:</strong> <%= @headache_log.start_time.strftime("%B %d, %Y at %I:%M %p") %></p>
-      <p><strong class="font-semibold">End time:</strong> <%= @headache_log.end_time&.strftime("%B %d, %Y at %I:%M %p") || "Ongoing" %></p>
-      <p><strong class="font-semibold">Intensity:</strong> <%= @headache_log.intensity %></p>
-      <% if @headache_log.medication.present? %>
-        <p><strong class="font-semibold">Medication:</strong> <%= @headache_log.medication %></p>
-      <% end %>
-      <% if @headache_log.triggers.present? %>
-        <p><strong class="font-semibold">Triggers:</strong> <%= @headache_log.triggers %></p>
-      <% end %>
-      <p><strong class="font-semibold">Notes:</strong> <%= @headache_log.notes %></p>
-    </div>
-
-    <div class="mt-4">
-      <%= link_to 'Edit', edit_headache_log_path(@headache_log), class: "text-indigo-500 hover:text-indigo-700 mr-2" %>
-      <%= link_to 'Back', headache_logs_path, class: "text-indigo-500 hover:text-indigo-700" %>
-    </div>
+  <div class="space-y-2">
+    <p><strong class="font-semibold">Start time:</strong> <%= @headache_log.start_time.strftime("%B %d, %Y at %I:%M %p") %></p>
+    <p><strong class="font-semibold">End time:</strong> <%= @headache_log.end_time&.strftime("%B %d, %Y at %I:%M %p") || "Ongoing" %></p>
+    <p><strong class="font-semibold">Intensity:</strong> <%= @headache_log.intensity %></p>
+    <% if @headache_log.medication.present? %>
+      <p><strong class="font-semibold">Medication:</strong> <%= @headache_log.medication %></p>
+    <% end %>
+    <% if @headache_log.triggers.present? %>
+      <p><strong class="font-semibold">Triggers:</strong> <%= @headache_log.triggers %></p>
+    <% end %>
+    <p><strong class="font-semibold">Notes:</strong> <%= @headache_log.notes %></p>
   </div>
-<% end %>
+
+  <div class="mt-4">
+    <%= link_to 'Edit', edit_headache_log_path(@headache_log), class: "text-indigo-500 hover:text-indigo-700 mr-2" %>
+    <%= button_to "Delete", headache_log_path(@headache_log), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-red-500 hover:text-red-700" %>
+    <%= link_to 'Back', headache_logs_path, class: "text-indigo-500 hover:text-indigo-700" %>
+  </div>
+</div>
