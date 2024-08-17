@@ -39,7 +39,7 @@ class HeadacheLogsTest < ApplicationSystemTestCase
   end
 
   test "should destroy Headache log" do
-    visit headache_logs_url
+    visit headache_log_url(@headache_log)
     accept_confirm do
       click_on "Delete", match: :first
     end
