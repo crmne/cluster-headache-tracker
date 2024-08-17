@@ -29,11 +29,11 @@
       </div>
     </div>
 
-    <%= javascript_tag nonce: true do %>
+    <script>
       document.addEventListener('turbo:load', function() {
         window.initializeCharts(<%= raw @intensity_data.to_json %>, <%= raw @trigger_data.to_json %>, <%= raw @medication_data.to_json %>);
       });
-    <% end %>
+    </script>
   <% else %>
     <p>No headache data available for the selected filters. Try adjusting your filter criteria or add more headache logs.</p>
   <% end %>
