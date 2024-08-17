@@ -6,10 +6,6 @@ import Honeybadger from '@honeybadger-io/js';
 
 window.initializeCharts = initializeCharts;
 
-document.addEventListener("turbo:load", () => {
-  window.initializeCharts();
-});
-
 Honeybadger.configure({
   apiKey: "<%= Honeybadger.config.yaml[:api_key] %>",
   environment: "<%= Rails.env %>",
