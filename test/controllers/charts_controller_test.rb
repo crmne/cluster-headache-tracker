@@ -4,8 +4,8 @@ class ChartsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @user = users(:user_one)
-    @headache_log = headache_logs(:headache_log_one)
+    @user = users(:one)
+    @headache_log = headache_logs(:one)
     sign_in @user
   end
 

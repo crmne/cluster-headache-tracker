@@ -4,7 +4,7 @@ class SharedLogsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @user = users(:user_one)
+    @user = users(:one)
     @user.generate_share_token
   end
 

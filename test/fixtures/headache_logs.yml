@@ -1,9 +1,9 @@
-headache_log_one:
+one:
   user_id: 1
   start_time: <%= Time.current %>
   intensity: 5
 
-headache_log_two:
+two:
   user_id: 2
   start_time: <%= Time.current %>
   intensity: 7
