@@ -4,6 +4,6 @@ import "controllers"
 
 Honeybadger.configure({ apiKey: 'hbp_SiBMnG0vntYk9v4jW9iYNPfYRzoOTF3vuBGD' });
 
-import { initializeCharts } from "./charts/main.js"
+import { initializeCharts } from "./charts.js"
 
 window.initializeCharts = initializeCharts;
