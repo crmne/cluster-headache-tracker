@@ -1,5 +1,5 @@
 class SharedLogsController < ApplicationController
-  def show
+  def index
     @share_token = ShareToken.find_by(token: params[:token])
 
     if @share_token && @share_token.expires_at > Time.current

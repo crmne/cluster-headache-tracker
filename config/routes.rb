@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get "home/index"
-  get "charts/index"
   # resources :headache_logs
   devise_for :users, controllers: { sessions: "users/sessions" }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -14,11 +12,19 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
+  get "home/index"
   root "home#index"
 
-  get "shared_logs/:token", to: "shared_logs#show", as: :shared_logs
+  # Shared Logs
+  get "shared_logs/:token", to: "shared_logs#index", as: :shared_logs
+
+  # Generate Share Link
   post "generate_share_link", to: "headache_logs#generate_share_link"
+
+  # Charts
+  get "charts/index"
   get "charts", to: "charts#index"
+
   resources :headache_logs do
     collection do
       get :export
