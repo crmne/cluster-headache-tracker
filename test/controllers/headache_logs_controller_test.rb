@@ -1,8 +1,12 @@
 require "test_helper"
 
 class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
-    @headache_log = headache_logs(:one)
+    @user = users(:user_one)
+    @headache_log = headache_logs(:headache_log_one)
+    sign_in @user
   end
 
   test "should get index" do

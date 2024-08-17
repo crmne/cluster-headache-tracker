@@ -11,5 +11,15 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    include Devise::Test::IntegrationHelpers
+    include Warden::Test::Helpers
+
+    def setup
+      Warden.test_mode!
+    end
+
+    def teardown
+      Warden.test_reset!
+    end
   end
 end

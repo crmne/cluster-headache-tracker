@@ -1,15 +1,9 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+headache_log_one:
+  user_id: 1
+  start_time: <%= Time.current %>
+  intensity: 5
 
-one:
-  start_time: 2024-08-13 09:17:08
-  end_time: 2024-08-13 09:17:08
-  intensity: 1
-  notes: MyText
-  user: one
-
-two:
-  start_time: 2024-08-13 09:17:08
-  end_time: 2024-08-13 09:17:08
-  intensity: 1
-  notes: MyText
-  user: two
+headache_log_two:
+  user_id: 2
+  start_time: <%= Time.current %>
+  intensity: 7
