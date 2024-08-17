@@ -1,0 +1,17 @@
+// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+import "@hotwired/turbo-rails"
+import "controllers"
+import { initializeCharts } from "headache_charts"
+import Honeybadger from '@honeybadger-io/js';
+
+window.initializeCharts = initializeCharts;
+
+document.addEventListener("turbo:load", () => {
+  window.initializeCharts();
+});
+
+Honeybadger.configure({
+  apiKey: "<%= Honeybadger.config.yaml[:api_key] %>",
+  environment: "<%= Rails.env %>",
+  revision: "<%= Honeybadger.config.ruby[:revision] %>",
+});

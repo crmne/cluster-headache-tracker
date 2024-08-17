@@ -1,0 +1,3 @@
+verbose: true
+pack: true
+skip_missing_workers: true

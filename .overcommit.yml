@@ -38,12 +38,8 @@ PreCommit:
     enabled: true
 
   ImageOptim:
-    enabled: true
-    options:
-      pngout: false
-      advpng: false
-      pngquant: false
-      svgo: false
+    enabled: false
+    flags: ['--config-paths', 'config/image_optim.yml']
 
   JShint:
     enabled: true

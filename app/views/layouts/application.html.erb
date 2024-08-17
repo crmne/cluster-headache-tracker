@@ -7,56 +7,102 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
-    <%#<link rel="manifest" href="/manifest.json">%>
-    <%#<link rel="icon" href="/icon.png" type="image/png">%>
-    <%#<link rel="icon" href="/icon.svg" type="image/svg+xml">%>
-    <%#<link rel="apple-touch-icon" href="/icon.png">%>
+    <%= render 'application/favicon' %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <script defer data-domain="cluster-headache-tracker.onrender.com" src="https://plausible.io/js/script.js"></script>
     <%= javascript_importmap_tags %>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <% if Rails.env.production? %>
+      <script defer data-domain="cluster-headache-tracker.onrender.com" src="https://plausible.io/js/script.js"></script>
+    <% end %>
   </head>
   <body class="bg-gray-100">
-    <nav class="bg-indigo-600 p-4">
-      <div class="container mx-auto flex items-center justify-between">
-        <div class="text-white font-bold text-xl">
-          <%= link_to "Cluster Headache Tracker", root_path %>
-        </div>
-        <!-- Navigation Links -->
-        <div class="flex items-center space-x-4">
-          <% if user_signed_in? %>
-            <%= link_to "Headache Logs", headache_logs_path, class: "text-white hover:text-indigo-200 px-4" %>
-            <%= link_to "Log Headache", new_headache_log_path, class: "text-white hover:text-indigo-200 px-4" %>
-            <%= link_to "Charts", charts_path, class: "text-white hover:text-indigo-200 px-4" %>
-          <% else %>
-            <%= link_to "Features", root_path(anchor: "features"), class: "text-white hover:text-indigo-200 px-4" %>
-            <%= link_to "About", root_path(anchor: "about"), class: "text-white hover:text-indigo-200 px-4" %>
-          <% end %>
-        </div>
-        <!-- User Actions -->
-        <div>
-          <% if user_signed_in? %>
-            <div class="flex items-center space-x-4">
-              <span class="text-white"><%= current_user.email %></span>
-              <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded" %>
+    <nav class="bg-indigo-600 p-4" x-data="{ isOpen: false }">
+      <div class="container mx-auto">
+        <div class="flex items-center justify-between">
+          <!-- Logo, Title, and Hamburger Menu -->
+          <div class="flex items-center">
+            <!-- Hamburger menu button, hidden on medium and larger screens -->
+            <button x-on:click="isOpen = !isOpen" class="md:hidden text-white hover:text-indigo-200 mr-2 focus:outline-none">
+              <template x-if="!isOpen">
+                <svg class="h-6 w-6" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="white" fill-rule="evenodd" clip-rule="evenodd" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" />
+                </svg>
+              </template>
+              <template x-if="isOpen">
+                <svg class="h-6 w-6 fill-current text-white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <path d="M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </template>
+            </button>
+            <%= image_tag "favicon/favicon-32x32.png", class: "mr-2" %>
+            <div class="text-white font-bold text-xl">
+              <%= link_to "Cluster Headache Tracker", root_path %>
             </div>
-          <% else %>
-            <%= link_to "Sign In", new_user_session_path, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded mr-2" %>
-            <%= link_to "Sign Up", new_user_registration_path, class: "bg-white text-indigo-600 font-medium py-2 px-4 rounded hover:bg-indigo-100" %>
-          <% end %>
+          </div>
+
+          <!-- Navigation Links and User Actions for larger screens -->
+          <div class="hidden md:flex md:items-center md:justify-between md:flex-1 md:ml-4">
+            <div class="flex space-x-4">
+              <% if user_signed_in? %>
+                <%= link_to "Headache Logs", headache_logs_path, class: "text-white hover:text-indigo-200" %>
+                <%= link_to "Log Headache", new_headache_log_path, class: "text-white hover:text-indigo-200" %>
+                <%= link_to "Charts", charts_path, class: "text-white hover:text-indigo-200" %>
+              <% else %>
+                <%= link_to "Features", root_path(anchor: "features"), class: "text-white hover:text-indigo-200" %>
+                <%= link_to "About", root_path(anchor: "about"), class: "text-white hover:text-indigo-200" %>
+              <% end %>
+            </div>
+
+            <!-- User Actions -->
+            <div class="flex items-center space-x-4">
+              <% if user_signed_in? %>
+                <span class="text-white"><%= current_user.email %></span>
+                <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded" %>
+              <% else %>
+                <%= link_to "Sign In", new_user_session_path, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded" %>
+                <%= link_to "Sign Up", new_user_registration_path, class: "bg-white text-indigo-600 font-medium py-2 px-4 rounded hover:bg-indigo-100" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile menu, visible only when the hamburger button is clicked -->
+        <div x-show="isOpen" class="md:hidden mt-4">
+          <div class="flex flex-col space-y-2">
+            <% if user_signed_in? %>
+              <%= link_to "Headache Logs", headache_logs_path, class: "text-white hover:text-indigo-200 block py-2" %>
+              <%= link_to "Log Headache", new_headache_log_path, class: "text-white hover:text-indigo-200 block py-2" %>
+              <%= link_to "Charts", charts_path, class: "text-white hover:text-indigo-200 block py-2" %>
+              <div class="border-t border-indigo-500 my-4"></div>
+              <span class="text-white py-2"><%= current_user.email %></span>
+              <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded w-full text-left mt-2" %>
+            <% else %>
+              <%= link_to "Features", root_path(anchor: "features"), class: "text-white hover:text-indigo-200 block py-2" %>
+              <%= link_to "About", root_path(anchor: "about"), class: "text-white hover:text-indigo-200 block py-2" %>
+              <div class="border-t border-indigo-500 my-4"></div>
+              <%= link_to "Sign In", new_user_session_path, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded block text-center" %>
+              <%= link_to "Sign Up", new_user_registration_path, class: "bg-white text-indigo-600 font-medium py-2 px-4 rounded hover:bg-indigo-100 block text-center mt-2" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </nav>
 
     <main class="w-full">
-      <div class="container mx-auto mt-8 px-4">
-        <div class="w-full">
-          <% if notice.present? %>
-            <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-          <% end %>
-          <%= yield %>
+      <% if current_page? root_path %>
+        <%= yield %>
+      <% else %>
+        <div class="container mx-auto mt-8 px-4">
+          <div class="w-full">
+            <% if notice.present? %>
+              <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+            <% end %>
+            <%= yield %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </main>
 
     <footer class="bg-gray-800 text-white py-8 mt-20">
