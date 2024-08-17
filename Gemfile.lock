@@ -157,6 +157,10 @@ GEM
     image_optim_pack (0.11.1.20240713-x86_64-linux)
       fspath (>= 2.1, < 4)
       image_optim (~> 0.19)
+    image_optim_rails (0.5.0)
+      image_optim (~> 0.24)
+      railties
+      sprockets
     image_size (3.4.0)
     importmap-rails (2.0.1)
       actionpack (>= 6.0.0)
@@ -272,6 +276,10 @@ GEM
       json
       require_all (~> 3.0)
       ruby-progressbar
+    rails_real_favicon (0.1.1)
+      json (>= 1.7, < 3)
+      rails
+      rubyzip (~> 2)
     railties (7.2.0)
       actionpack (= 7.2.0)
       activesupport (= 7.2.0)
@@ -308,7 +316,7 @@ GEM
       rubocop-ast (>= 1.31.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.32.0)
+    rubocop-ast (1.32.1)
       parser (>= 3.3.1.0)
     rubocop-minitest (0.35.1)
       rubocop (>= 1.61, < 2.0)
@@ -412,8 +420,8 @@ DEPENDENCIES
   erb_lint
   flay
   honeybadger
-  image_optim
   image_optim_pack
+  image_optim_rails
   importmap-rails
   jbuilder
   license_finder
@@ -422,6 +430,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 7.2.0)
   rails_best_practices
+  rails_real_favicon
   redis (>= 4.0.1)
   rubocop-rails-omakase
   selenium-webdriver

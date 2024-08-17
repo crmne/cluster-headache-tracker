@@ -23,3 +23,7 @@ pin "@babel/runtime/helpers/esm/createSuper", to: "https://ga.jspm.io/npm:@babel
 pin "@babel/runtime/helpers/esm/classCallCheck", to: "https://ga.jspm.io/npm:@babel/runtime@7.22.5/helpers/esm/classCallCheck.js"
 pin "@babel/runtime/helpers/esm/createClass", to: "https://ga.jspm.io/npm:@babel/runtime@7.22.5/helpers/esm/createClass.js"
 pin "@babel/runtime/helpers/esm/defineProperty", to: "https://ga.jspm.io/npm:@babel/runtime@7.22.5/helpers/esm/defineProperty.js"
+
+# Honeybadger
+pin "@honeybadger-io/js", to: "@honeybadger-io--js.js" # @6.9.3
+pin "headache_charts", to: "headache_charts.js"
