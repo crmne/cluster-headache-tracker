@@ -3,7 +3,7 @@
   <div class="container mx-auto px-4 py-20 flex flex-col items-center text-center">
     <h1 class="text-4xl md:text-6xl font-bold mb-4">Track Your Cluster Headaches</h1>
     <p class="text-xl md:text-2xl mb-8">Take control of your health with our easy-to-use tracking tool</p>
-    <%= link_to "Get Started", new_user_registration_path, class: "bg-white text-indigo-600 font-bold py-3 px-6 rounded-full text-lg hover:bg-indigo-100 transition duration-300" %>
+    <%= link_to "Get Started", user_signed_in? ? headache_logs_path : new_user_registration_path, class: "bg-white text-indigo-600 font-bold py-3 px-6 rounded-full text-lg hover:bg-indigo-100 transition duration-300" %>
   </div>
 </section>
 
@@ -40,6 +40,10 @@
 <section class="py-20">
   <div class="container mx-auto px-4 text-center">
     <h2 class="text-3xl font-bold mb-8">Ready to Take Control?</h2>
-    <%= link_to "Create Your Free Account", new_user_registration_path, class: "bg-indigo-600 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-indigo-700 transition duration-300" %>
+    <% if user_signed_in? %>
+      <%= link_to "Start Logging Your Headaches", headache_logs_path, class: "bg-indigo-600 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-indigo-700 transition duration-300" %>
+    <% else %>
+      <%= link_to "Create Your Free Account", new_user_registration_path, class: "bg-indigo-600 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-indigo-700 transition duration-300" %>
+    <% end %>
   </div>
 </section>
