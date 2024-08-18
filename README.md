@@ -19,7 +19,7 @@ Cluster Headache Tracker is a free, open-source web application designed to help
 
 ## 🚀 Getting Started
 
-Visit [https://cluster-headache-tracker.onrender.com](https://cluster-headache-tracker.onrender.com) to create a free account and start tracking your cluster headaches.
+Visit [https://clusterheadachetracker.com](https://clusterheadachetracker.com) to create a free account and start tracking your cluster headaches.
 
 ## 💻 Development Setup
 
