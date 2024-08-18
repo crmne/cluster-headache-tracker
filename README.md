@@ -81,7 +81,7 @@ We take your privacy seriously. Cluster Headache Tracker does not collect or sto
 
 While Cluster Headache Tracker is free to use, your support helps keep it running and improving. If you find this tool valuable, please consider making a donation:
 
-<a href="https://buymeacoffee.com/crmne" target="_blank" rel="noopener noreferrer" style="background-color: #F59E0B; color: white; font-weight: bold; padding: 12px 24px; border-radius: 9999px; font-size: 18px; text-decoration: none; display: inline-block; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#D97706'" onmouseout="this.style.backgroundColor='#F59E0B'">🍕 Buy Me a Pizza</a>
+[![Buy me a pizza](buymeapizza.png)](https://buymeacoffee.com/crmne)
 
 Your support is greatly appreciated and helps ensure the continued development and maintenance of this project.
 
