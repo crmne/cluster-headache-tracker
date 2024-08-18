@@ -29,9 +29,6 @@
           <% if user_signed_in? %>
             <%= link_to "Headache Logs", headache_logs_path, class: "text-white hover:text-indigo-200 whitespace-nowrap" %>
             <%= link_to "Charts", charts_path, class: "text-white hover:text-indigo-200" %>
-          <% else %>
-            <%= link_to "Features", root_path(anchor: "features"), class: "text-white hover:text-indigo-200" %>
-            <%= link_to "About", root_path(anchor: "about"), class: "text-white hover:text-indigo-200" %>
           <% end %>
         </div>
 
@@ -58,8 +55,6 @@
           <span class="text-white py-2 truncate"><%= current_user.username %></span>
           <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded w-full text-left mt-2" %>
         <% else %>
-          <%= link_to "Features", root_path(anchor: "features"), class: "text-white hover:text-indigo-200 block py-2" %>
-          <%= link_to "About", root_path(anchor: "about"), class: "text-white hover:text-indigo-200 block py-2" %>
           <div class="border-t border-indigo-500 my-4"></div>
           <%= link_to "Sign In", new_user_session_path, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded block text-center" %>
           <%= link_to "Sign Up", new_user_registration_path, class: "bg-white text-indigo-600 font-medium py-2 px-4 rounded hover:bg-indigo-100 block text-center mt-2" %>
