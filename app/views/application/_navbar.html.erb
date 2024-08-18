@@ -38,7 +38,7 @@
         <!-- User Actions -->
         <div class="flex items-center space-x-4">
           <% if user_signed_in? %>
-            <span class="text-white truncate max-w-[200px]"><%= current_user.email %></span>
+            <span class="text-white truncate max-w-[200px]"><%= current_user.username %></span>
             <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded whitespace-nowrap" %>
           <% else %>
             <%= link_to "Sign In", new_user_session_path, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded whitespace-nowrap" %>
@@ -55,7 +55,7 @@
           <%= link_to "Headache Logs", headache_logs_path, class: "text-white hover:text-indigo-200 block py-2" %>
           <%= link_to "Charts", charts_path, class: "text-white hover:text-indigo-200 block py-2" %>
           <div class="border-t border-indigo-500 my-4"></div>
-          <span class="text-white py-2 truncate"><%= current_user.email %></span>
+          <span class="text-white py-2 truncate"><%= current_user.username %></span>
           <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded w-full text-left mt-2" %>
         <% else %>
           <%= link_to "Features", root_path(anchor: "features"), class: "text-white hover:text-indigo-200 block py-2" %>
