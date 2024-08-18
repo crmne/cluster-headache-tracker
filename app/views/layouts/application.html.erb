@@ -47,7 +47,6 @@
             <div class="flex space-x-4">
               <% if user_signed_in? %>
                 <%= link_to "Headache Logs", headache_logs_path, class: "text-white hover:text-indigo-200" %>
-                <%= link_to "Log Headache", new_headache_log_path, class: "text-white hover:text-indigo-200" %>
                 <%= link_to "Charts", charts_path, class: "text-white hover:text-indigo-200" %>
               <% else %>
                 <%= link_to "Features", root_path(anchor: "features"), class: "text-white hover:text-indigo-200" %>
@@ -73,7 +72,6 @@
           <div class="flex flex-col space-y-2">
             <% if user_signed_in? %>
               <%= link_to "Headache Logs", headache_logs_path, class: "text-white hover:text-indigo-200 block py-2" %>
-              <%= link_to "Log Headache", new_headache_log_path, class: "text-white hover:text-indigo-200 block py-2" %>
               <%= link_to "Charts", charts_path, class: "text-white hover:text-indigo-200 block py-2" %>
               <div class="border-t border-indigo-500 my-4"></div>
               <span class="text-white py-2"><%= current_user.email %></span>
