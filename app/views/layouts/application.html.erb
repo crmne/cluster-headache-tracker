@@ -17,77 +17,7 @@
     <% end %>
   </head>
   <body class="bg-gray-100">
-    <nav class="bg-indigo-600 p-4" x-data="{ isOpen: false }">
-      <div class="container mx-auto">
-        <div class="flex items-center justify-between">
-          <!-- Logo, Title, and Hamburger Menu -->
-          <div class="flex items-center">
-            <!-- Hamburger menu button, hidden on medium and larger screens -->
-            <button x-on:click="isOpen = !isOpen" class="md:hidden text-white hover:text-indigo-200 mr-2 focus:outline-none">
-              <template x-if="!isOpen">
-                <svg class="h-6 w-6" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path fill="white" fill-rule="evenodd" clip-rule="evenodd" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" />
-                </svg>
-              </template>
-              <template x-if="isOpen">
-                <svg class="h-6 w-6 fill-current text-white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                  <path d="M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-              </template>
-            </button>
-            <%= image_tag "favicon/apple-touch-icon.png", size: 32, class: "mr-2" %>
-            <div class="text-white font-bold text-xl">
-              <%= link_to "Cluster Headache Tracker", root_path %>
-            </div>
-          </div>
-
-          <!-- Navigation Links and User Actions for larger screens -->
-          <div class="hidden md:flex md:items-center md:justify-between md:flex-1 md:ml-4">
-            <div class="flex space-x-4">
-              <% if user_signed_in? %>
-                <%= link_to "Headache Logs", headache_logs_path, class: "text-white hover:text-indigo-200" %>
-                <%= link_to "Charts", charts_path, class: "text-white hover:text-indigo-200" %>
-              <% else %>
-                <%= link_to "Features", root_path(anchor: "features"), class: "text-white hover:text-indigo-200" %>
-                <%= link_to "About", root_path(anchor: "about"), class: "text-white hover:text-indigo-200" %>
-              <% end %>
-            </div>
-
-            <!-- User Actions -->
-            <div class="flex items-center space-x-4">
-              <% if user_signed_in? %>
-                <span class="text-white"><%= current_user.email %></span>
-                <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded" %>
-              <% else %>
-                <%= link_to "Sign In", new_user_session_path, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded" %>
-                <%= link_to "Sign Up", new_user_registration_path, class: "bg-white text-indigo-600 font-medium py-2 px-4 rounded hover:bg-indigo-100" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobile menu, visible only when the hamburger button is clicked -->
-        <div x-show="isOpen" class="md:hidden mt-4">
-          <div class="flex flex-col space-y-2">
-            <% if user_signed_in? %>
-              <%= link_to "Headache Logs", headache_logs_path, class: "text-white hover:text-indigo-200 block py-2" %>
-              <%= link_to "Charts", charts_path, class: "text-white hover:text-indigo-200 block py-2" %>
-              <div class="border-t border-indigo-500 my-4"></div>
-              <span class="text-white py-2"><%= current_user.email %></span>
-              <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded w-full text-left mt-2" %>
-            <% else %>
-              <%= link_to "Features", root_path(anchor: "features"), class: "text-white hover:text-indigo-200 block py-2" %>
-              <%= link_to "About", root_path(anchor: "about"), class: "text-white hover:text-indigo-200 block py-2" %>
-              <div class="border-t border-indigo-500 my-4"></div>
-              <%= link_to "Sign In", new_user_session_path, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded block text-center" %>
-              <%= link_to "Sign Up", new_user_registration_path, class: "bg-white text-indigo-600 font-medium py-2 px-4 rounded hover:bg-indigo-100 block text-center mt-2" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </nav>
-
+    <%= render 'navbar' %>
     <main class="w-full">
       <% if current_page? root_path %>
         <%= yield %>
@@ -102,15 +32,6 @@
         </div>
       <% end %>
     </main>
-
-    <footer class="bg-gray-800 text-white py-8 mt-20">
-      <div class="container mx-auto px-4 text-center">
-        <p>&copy; <%= Date.today.year %> <%= link_to "Carmine Paolino", "https://paolino.me", class: "underline hover:text-indigo-300", target: "_blank", rel: "noopener noreferrer" %>. All rights reserved.</p>
-        <p class="mt-2">
-        Open Source:
-        <%= link_to "View or contribute on GitHub", "https://github.com/crmne/cluster_headache_tracker", class: "underline hover:text-indigo-300", target: "_blank", rel: "noopener noreferrer" %>
-        </p>
-      </div>
-    </footer>
+    <%= render 'footer' %>
   </body>
 </html>
