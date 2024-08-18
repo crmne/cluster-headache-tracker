@@ -83,6 +83,9 @@ group :development do
 
   # Create favicons
   gem "rails_real_favicon"
+
+  # Deploy with Kamal
+  gem "kamal"
 end
 
 group :test do
