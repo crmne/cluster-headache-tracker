@@ -77,11 +77,11 @@ Cluster Headache Tracker is released under the [GNU General Public License v3.0 
 
 We take your privacy seriously. Cluster Headache Tracker does not collect or store any personally identifiable information. Users are identified by a username only, not an email address. All data is stored on servers located in Germany, ensuring compliance with strict EU data protection regulations.
 
-## ☕ Support the Project
+## 🍕 Support the Project
 
 While Cluster Headache Tracker is free to use, your support helps keep it running and improving. If you find this tool valuable, please consider making a donation:
 
-[Buy Me a Coffee](https://buymeacoffee.com/crmne)
+<a href="https://buymeacoffee.com/crmne" target="_blank" rel="noopener noreferrer" style="background-color: #F59E0B; color: white; font-weight: bold; padding: 12px 24px; border-radius: 9999px; font-size: 18px; text-decoration: none; display: inline-block; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#D97706'" onmouseout="this.style.backgroundColor='#F59E0B'">🍕 Buy Me a Pizza</a>
 
 Your support is greatly appreciated and helps ensure the continued development and maintenance of this project.
 
