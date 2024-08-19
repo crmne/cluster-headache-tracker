@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  constraints(host: "cluster-headache-tracker.onrender.com") do
-    match "/(*path)" => redirect { |params, req|
-      "https://clusterheadachetracker.com#{req.fullpath}"
-    }, via: [ :get, :head ]
-  end
   # resources :headache_logs
   devise_for :users, controllers: { sessions: "users/sessions" }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
