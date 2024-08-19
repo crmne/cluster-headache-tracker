@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get "/(*path)", to: redirect { |path_params, request| "https://clusterheadachetracker.com/#{path_params[:path]}" }, status: 301, constraints: { domain: "cluster-headache-tracker.onrender.com" }
-
+  constraints(host: "cluster-headache-tracker.onrender.com", format: "html") do
+    get ":any", to: redirect(host: "clusterheadachetracker.com", path: "/%{any}"), any: /.*/
+  end
   # resources :headache_logs
   devise_for :users, controllers: { sessions: "users/sessions" }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
