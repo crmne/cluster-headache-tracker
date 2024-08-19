@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   constraints(host: "cluster-headache-tracker.onrender.com") do
-    get "/" => redirect("https://clusterheadachetracker.com")
-    get "/:param" => redirect("https://clusterheadachetracker.com/%{param}")
+    match "/(*path)" => redirect { |params, req|
+      "https://clusterheadachetracker.com#{req.fullpath}"
+    }, via: [ :get, :head ]
   end
   # resources :headache_logs
   devise_for :users, controllers: { sessions: "users/sessions" }
