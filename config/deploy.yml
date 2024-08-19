@@ -22,6 +22,7 @@ env:
     DATABASE_URL: postgres://cluster_headache_tracker:cluster_headache_tracker@host.docker.internal/cluster_headache_tracker_production
   secret:
     - RAILS_MASTER_KEY
+    - HONEYBADGER_API_KEY
 
 builder:
   multiarch: false
