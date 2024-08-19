@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   constraints(host: "cluster-headache-tracker.onrender.com") do
+    get "/" => redirect("https://clusterheadachetracker.com")
     get "/:param" => redirect("https://clusterheadachetracker.com/%{param}")
   end
   # resources :headache_logs
