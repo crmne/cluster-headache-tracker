@@ -7,8 +7,8 @@
     <%= devise_error_messages! %>
 
     <div class="mb-4">
-      <%= f.label :email, class: "block font-bold mb-2 text-gray-700 text-sm" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none shadow focus:shadow-outline" %>
+      <%= f.label :username, class: "block font-bold mb-2 text-gray-700 text-sm" %>
+      <%= f.email_field :username, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none shadow focus:shadow-outline" %>
     </div>
 
     <div class="mb-4">
