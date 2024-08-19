@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  constraints(host: "cluster-headache-tracker.onrender.com", format: "html") do
-    get ":any", to: redirect(host: "clusterheadachetracker.com", path: "/%{any}"), any: /.*/
+  constraints(host: "cluster-headache-tracker.onrender.com") do
+    get "/:param" => redirect("https://clusterheadachetracker.com/:param")
   end
   # resources :headache_logs
   devise_for :users, controllers: { sessions: "users/sessions" }
