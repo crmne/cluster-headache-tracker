@@ -124,6 +124,9 @@ GEM
       rails (>= 5.2.3.4, <= 7.3)
       railties (> 4.0, <= 7.3)
     dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     drb (2.2.1)
     ed25519 (1.3.0)
     erb_lint (0.6.0)
@@ -443,6 +446,7 @@ DEPENDENCIES
   debug
   devise
   devise-tailwindcssed
+  dotenv-rails
   erb_lint
   flay
   honeybadger

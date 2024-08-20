@@ -75,6 +75,9 @@ group :development, :test do
   # Flay
   gem "flay", require: false
   # END: Overcommit git hooks
+
+  # Load dotenv
+  gem "dotenv-rails"
 end
 
 group :development do
