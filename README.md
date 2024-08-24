@@ -2,9 +2,6 @@
 
 Cluster Headache Tracker is a free, open-source web application designed to help individuals suffering from cluster headaches track and manage their condition. By providing detailed logging, visual insights, and easy sharing with healthcare providers, this tool aims to improve the understanding and treatment of cluster headaches.
 
-![screenshot](screenshot.png)
-![charts](charts.png)
-
 ## ✨ Features
 
 - 📝 **Detailed Logging**: Record intensity, duration, triggers, and medications for each headache episode.
@@ -13,7 +10,7 @@ Cluster Headache Tracker is a free, open-source web application designed to help
 - 💾 **Data Import/Export**: Easily import and export your headache logs in CSV format for backup or analysis.
 - 🔒 **Secure & Private**: Your health data is encrypted and stored securely, with full control over sharing.
 - 🕵️ **Privacy-Focused**: We don't store any personally identifiable information. Users are identified by a username, not an email address.
-- 🇩🇪 **EU-Based**: Our servers are hosted in Germany, ensuring compliance with strict EU data protection regulations.
+- 🇪🇺 **EU-Based**: Our servers are hosted in Germany, ensuring compliance with strict EU data protection regulations.
 - 📱 **Mobile Friendly**: Access your tracker on any device with our responsive, mobile-friendly design.
 - 🌟 **Open Source**: Contribute to the development and customize the tracker to fit your needs.
 
@@ -28,42 +25,58 @@ Visit [https://clusterheadachetracker.com](https://clusterheadachetracker.com) t
 - Ruby 3.3.4
 - PostgreSQL
 
-### MacOS Setup
+### Setup Instructions
 
-1. Install required tools:
-
+1. Clone the repository:
    ```
-   mise use -g ruby
-   brew install postgresql 1password-cli
-   brew services start postgresql@14
+   git clone https://github.com/crmne/cluster-headache-tracker.git
+   cd cluster-headache-tracker
    ```
 
-2. Clone the repository:
-
+2. Install dependencies:
    ```
-   git clone https://github.com/crmne/cluster_headache_tracker.git
-   cd cluster_headache_tracker
+   bundle install
    ```
 
 3. Set up the database:
-
    ```
-   op vault create cluster_headache_tracker
-   op item create --vault=cluster_headache_tracker --category=login --title="local pg" --generate-password username=cluster_headache_tracker
-   echo "export CLUSTER_HEADACHE_TRACKER_DATABASE_PASSWORD=\"$(op item get "local pg" --vault "cluster_headache_tracker" --fields label=password)\"" >> .envrc
-   direnv allow
-   echo $CLUSTER_HEADACHE_TRACKER_DATABASE_PASSWORD | bin/pg_add_user.sh cluster_headache_tracker
    rails db:create
    rails db:migrate
    ```
 
-4. Start the development server:
+4. Set up environment variables:
+   Create a `.env` file in the root directory and add the following variables:
+   ```
+   RAILS_MASTER_KEY=your_master_key
+   POSTGRES_PASSWORD=your_database_password
+   HONEYBADGER_API_KEY=your_honeybadger_api_key
+   ```
 
+5. Start the development server:
    ```
    bin/dev
    ```
 
-Visit `http://localhost:3000` to see the application running locally.
+6. Visit `http://localhost:3000` in your browser to see the application running locally.
+
+## 🧪 Running Tests
+
+To run the test suite:
+
+```
+rails test
+rails test:system
+```
+
+## 🚢 Deployment
+
+This project uses Kamal for deployment. To deploy:
+
+1. Set up your deployment configuration in `config/deploy.yml`.
+2. Run:
+   ```
+   kamal deploy
+   ```
 
 ## 🤝 Contributing
 
@@ -71,7 +84,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ## 📄 License
 
-Cluster Headache Tracker is released under the [GNU General Public License v3.0 (GPL-3.0)](LICENSE). This license ensures that the software remains open source and that any modifications or derived works are also released under the same license. See the LICENSE file for more details.
+Cluster Headache Tracker is released under the [GNU General Public License v3.0 (GPL-3.0)](LICENSE).
 
 ## 🔒 Privacy
 
@@ -79,11 +92,9 @@ We take your privacy seriously. Cluster Headache Tracker does not collect or sto
 
 ## 🍕 Support the Project
 
-While Cluster Headache Tracker is free to use, your support helps keep it running and improving. If you find this tool valuable, please consider making a donation:
+If you find this tool valuable, please consider making a donation:
 
 [![Buy me a pizza](buymeapizza.png)](https://buymeacoffee.com/crmne)
-
-Your support is greatly appreciated and helps ensure the continued development and maintenance of this project.
 
 ## 🆘 Support
 
