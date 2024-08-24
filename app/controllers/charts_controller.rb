@@ -1,4 +1,6 @@
 class ChartsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @headache_logs = current_user.headache_logs.order(:start_time)
     apply_filters
