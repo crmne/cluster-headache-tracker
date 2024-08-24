@@ -2,8 +2,7 @@ class ChartsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @headache_logs = current_user.headache_logs.order(:start_time)
-    apply_filters
+    @headache_logs = current_user.headache_logs.filter_by_params(params).order(:start_time)
 
     @intensity_data = @headache_logs.map { |log| { x: log.start_time, y: log.intensity } }
 
@@ -12,21 +11,6 @@ class ChartsController < ApplicationController
   end
 
   private
-
-  def apply_filters
-    if params[:start_date].present?
-      @headache_logs = @headache_logs.where("start_time >= ?", params[:start_date])
-    end
-    if params[:end_date].present?
-      @headache_logs = @headache_logs.where("start_time <= ?", params[:end_date])
-    end
-    if params[:triggers].present?
-      @headache_logs = @headache_logs.where("triggers ILIKE ?", "%#{params[:triggers]}%")
-    end
-    if params[:medication].present?
-      @headache_logs = @headache_logs.where("medication ILIKE ?", "%#{params[:medication]}%")
-    end
-  end
 
   def process_trigger_data(logs)
     trigger_counts = Hash.new(0)

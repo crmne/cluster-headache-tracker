@@ -7,8 +7,7 @@ class HeadacheLogsController < ApplicationController
 
   # GET /headache_logs or /headache_logs.json
   def index
-    @headache_logs = current_user.headache_logs.order(start_time: :desc)
-    apply_filters
+    @headache_logs = current_user.headache_logs.filter_by_params(params).order(start_time: :desc)
   end
 
   # GET /headache_logs/1 or /headache_logs/1.json
@@ -124,21 +123,6 @@ class HeadacheLogsController < ApplicationController
   def set_share_link
     if last_token = current_user.share_tokens.last
       @share_link = shared_logs_url(token: last_token.token)
-    end
-  end
-
-  def apply_filters
-    if params[:start_date].present?
-      @headache_logs = @headache_logs.where("start_time >= ?", params[:start_date])
-    end
-    if params[:end_date].present?
-      @headache_logs = @headache_logs.where("start_time <= ?", params[:end_date])
-    end
-    if params[:triggers].present?
-      @headache_logs = @headache_logs.where("triggers ILIKE ?", "%#{params[:triggers]}%")
-    end
-    if params[:medication].present?
-      @headache_logs = @headache_logs.where("medication ILIKE ?", "%#{params[:medication]}%")
     end
   end
 
