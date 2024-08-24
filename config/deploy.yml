@@ -6,9 +6,9 @@ servers:
     hosts:
       - clusterheadachetracker.com
     labels:
-      traefik.http.routers.blog.entrypoints: websecure
-      traefik.http.routers.blog.rule: Host(`clusterheadachetracker.com`)
-      traefik.http.routers.blog.tls.certresolver: letsencrypt
+      traefik.http.routers.clusterheadachetracker.entrypoints: websecure
+      traefik.http.routers.clusterheadachetracker.rule: Host(`clusterheadachetracker.com`)
+      traefik.http.routers.clusterheadachetracker.tls.certresolver: letsencrypt
     options:
       add-host: host.docker.internal:host-gateway
 
