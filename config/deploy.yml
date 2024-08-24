@@ -4,7 +4,7 @@ image: crmne/cluster-headache-tracker
 servers:
   web:
     hosts:
-      - 188.245.107.117
+      - clusterheadachetracker.com
     labels:
       traefik.http.routers.blog.entrypoints: websecure
       traefik.http.routers.blog.rule: Host(`clusterheadachetracker.com`)
@@ -19,10 +19,11 @@ registry:
 
 env:
   clear:
-    DATABASE_URL: postgres://cluster_headache_tracker:cluster_headache_tracker@host.docker.internal/cluster_headache_tracker_production
+    DB_HOST: host.docker.internal
   secret:
     - RAILS_MASTER_KEY
     - HONEYBADGER_API_KEY
+    - POSTGRES_PASSWORD
 
 builder:
   multiarch: false
@@ -30,17 +31,17 @@ builder:
 accessories:
   db:
     image: postgres:latest
-    host: 188.245.107.117
+    host: clusterheadachetracker.com
     port: 172.17.0.1:5432:5432
     env:
       clear:
         POSTGRES_USER: cluster_headache_tracker
-        POSTGRES_PASSWORD: cluster_headache_tracker
         POSTGRES_DB: cluster_headache_tracker_production
       secret:
-        - CLUSTER_HEADACHE_TRACKER_DATABASE_PASSWORD
+        - POSTGRES_PASSWORD
     directories:
       - data:/var/lib/postgresql/data
+
 traefik:
   options:
     publish:
