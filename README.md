@@ -94,7 +94,7 @@ We take your privacy seriously. Cluster Headache Tracker does not collect or sto
 
 If you find this tool valuable, please consider making a donation:
 
-[![Buy me a pizza](buymeapizza.png)](https://buymeacoffee.com/crmne)
+[![Buy me a pizza](app/assets/images/buymeapizza.png)](https://buymeacoffee.com/crmne)
 
 ## 🆘 Support
 

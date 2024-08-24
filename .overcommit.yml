@@ -35,7 +35,7 @@ PreCommit:
     enabled: true
 
   FileSize:
-    enabled: true
+    enabled: false
 
   ImageOptim:
     enabled: false
@@ -79,6 +79,11 @@ PrePush:
 
   Minitest:
     enabled: true
+
+  GitLfs:
+    enabled: true
+    required_executable: 'git-lfs'
+    flags: ['pre-push']
 
 PostCheckout:
   ALL: # Special hook name that customizes all hooks of this type
