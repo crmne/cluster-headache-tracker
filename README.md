@@ -6,6 +6,10 @@ Cluster Headache Tracker is a free, open-source web application designed to help
 
 https://github.com/user-attachments/assets/75b4bd2b-b539-4d44-90ad-c3c03148daed
 
+## 🚀 Getting Started
+
+Visit [https://clusterheadachetracker.com](https://clusterheadachetracker.com) to create a free account and start tracking your cluster headaches.
+
 ## ✨ Features
 
 - 📝 **Detailed Logging**: Record intensity, duration, triggers, and medications for each headache episode.
@@ -17,10 +21,6 @@ https://github.com/user-attachments/assets/75b4bd2b-b539-4d44-90ad-c3c03148daed
 - 🇪🇺 **EU-Based**: Our servers are hosted in Germany, ensuring compliance with strict EU data protection regulations.
 - 📱 **Mobile Friendly**: Access your tracker on any device with our responsive, mobile-friendly design.
 - 🌟 **Open Source**: Contribute to the development and customize the tracker to fit your needs.
-
-## 🚀 Getting Started
-
-Visit [https://clusterheadachetracker.com](https://clusterheadachetracker.com) to create a free account and start tracking your cluster headaches.
 
 ## 💻 Development Setup
 
