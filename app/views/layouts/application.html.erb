@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Cluster Headache Tracker" %></title>
+    <title><%= content_for(:title) || "Cluster Headache Tracker | Free Tool for Managing Cluster Headaches" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#4f46e5">
+    <meta name="description" content="Track and manage your cluster headaches with our free, privacy-focused tool. Log symptoms, analyze patterns, and share reports with your doctor.">
+    <meta name="keywords" content="cluster headache, headache tracker, headache log, migraine tracker, health app, headache diary">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Cluster Headache Tracker | Free Tool for Managing Cluster Headaches">
+    <meta property="og:description" content="Track and manage your cluster headaches with our free, privacy-focused tool. Log symptoms, analyze patterns, and share reports with your doctor.">
+    <meta property="og:image" content="<%= image_url('logo.png') %>">
+    <meta property="og:url" content="https://clusterheadachetracker.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://clusterheadachetracker.com">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
@@ -28,6 +37,9 @@
           <div class="w-full">
             <% if notice.present? %>
               <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+            <% end %>
+            <% flash.each do |key, value| %>
+              <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="<%= key %>"><%= value %></p>
             <% end %>
             <%= yield %>
           </div>
