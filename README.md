@@ -2,6 +2,10 @@
 
 Cluster Headache Tracker is a free, open-source web application designed to help individuals suffering from cluster headaches track and manage their condition. By providing detailed logging, visual insights, and easy sharing with healthcare providers, this tool aims to improve the understanding and treatment of cluster headaches.
 
+## 🎥 Demo
+
+https://github.com/user-attachments/assets/75b4bd2b-b539-4d44-90ad-c3c03148daed
+
 ## ✨ Features
 
 - 📝 **Detailed Logging**: Record intensity, duration, triggers, and medications for each headache episode.
