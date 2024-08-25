@@ -24,3 +24,22 @@
 //     })
 //   )
 // })
+
+self.addEventListener('fetch', (event) => {
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).then((response) => {
+        if (response.status === 200) {
+          return caches.match('/headache_logs').then((cachedResponse) => {
+            if (cachedResponse) {
+              return cachedResponse;
+            }
+            return response;
+          });
+        }
+        return response;
+      })
+    );
+  }
+});
+

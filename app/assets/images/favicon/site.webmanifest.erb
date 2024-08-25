@@ -1,19 +1,37 @@
 {
-    "name": "",
-    "short_name": "",
-    "icons": [
-        {
-            "src": "<%= asset_path 'favicon/android-chrome-192x192.png' %>",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "<%= asset_path 'favicon/android-chrome-512x512.png' %>",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
-    "display": "standalone"
+  "name": "Cluster Headache Tracker",
+  "short_name": "CH Tracker",
+  "description": "Track and manage your cluster headaches",
+  "start_url": "/headache_logs",
+  "display": "standalone",
+  "background_color": "#4f46e5",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "New Log",
+      "short_name": "Add Log",
+      "description": "Create a new headache log",
+      "url": "/headache_logs/new",
+      "icons": [{ "src": "/icon-add-log.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "View Charts",
+      "short_name": "Charts",
+      "description": "View headache charts and analytics",
+      "url": "/charts",
+      "icons": [{ "src": "/icon-charts.png", "sizes": "192x192" }]
+    }
+  ]
 }

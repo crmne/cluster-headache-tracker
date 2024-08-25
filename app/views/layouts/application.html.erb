@@ -4,6 +4,8 @@
     <title><%= content_for(:title) || "Cluster Headache Tracker" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#4f46e5">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
@@ -14,7 +16,6 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <% if Rails.env.production? %>
       <script defer data-domain="clusterheadachetracker.com" src="https://plausible.io/js/script.js"></script>
-      <script defer data-domain="cluster-headache-tracker.onrender.com" src="https://plausible.io/js/script.js"></script>
     <% end %>
   </head>
   <body class="bg-gray-100">
