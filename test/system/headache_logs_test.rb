@@ -7,7 +7,7 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     user = users(:one)
     sign_in user
     @headache_log = headache_logs(:one)
-    
+
     # Create a headache log with triggers
     HeadacheLog.create!(
       user: user,
