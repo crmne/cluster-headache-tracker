@@ -46,4 +46,13 @@ class HeadacheLogsTest < ApplicationSystemTestCase
 
     assert_text "Headache log was successfully destroyed"
   end
+
+  test "visiting the charts page" do
+    visit charts_index_url
+    assert_selector "h1", text: "Headache Charts"
+    assert_selector "canvas#intensityChart"
+    assert_selector "canvas#triggerChart"
+    assert_selector "canvas#medicationChart"
+    assert_selector "canvas#hourlyChart"
+  end
 end

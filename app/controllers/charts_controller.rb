@@ -8,6 +8,7 @@ class ChartsController < ApplicationController
 
     @trigger_data = process_trigger_data(@headache_logs)
     @medication_data = process_medication_data(@headache_logs)
+    @hourly_data = process_hourly_data(@headache_logs)
   end
 
   private
@@ -30,5 +31,25 @@ class ChartsController < ApplicationController
     end
 
     medication_counts.sort_by { |_, count| -count }.first(5).to_h
+  end
+
+  def process_hourly_data(logs)
+    hourly_data = Array.new(12) { { count: 0, total_intensity: 0 } }
+
+    logs.each do |log|
+      hour = log.start_time.hour
+      interval = hour / 2
+      hourly_data[interval][:count] += 1
+      hourly_data[interval][:total_intensity] += log.intensity
+    end
+
+    hourly_data.map.with_index do |data, index|
+      start_hour = index * 2
+      {
+        label: "#{start_hour}:00 - #{start_hour + 1}:59",
+        frequency: data[:count],
+        avg_intensity: data[:count] > 0 ? (data[:total_intensity].to_f / data[:count]).round(2) : 0
+      }
+    end
   end
 end

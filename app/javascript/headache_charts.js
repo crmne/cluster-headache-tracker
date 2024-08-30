@@ -6,10 +6,13 @@ import {
   LineElement,
   LineController,
   PieController,
+  BarController,
+  BarElement,
   ArcElement,
   Legend,
   Title,
-  Tooltip
+  Tooltip,
+  CategoryScale
 } from "chart.js";
 import "chartjs-adapter-date-fns";
 
@@ -20,10 +23,13 @@ Chart.register(
   LineElement,
   LineController,
   PieController,
+  BarController,
+  BarElement,
   ArcElement,
   Legend,
   Title,
-  Tooltip
+  Tooltip,
+  CategoryScale
 );
 
 let chartInstances = {};
@@ -143,8 +149,77 @@ function initializeMedicationChart(medicationData) {
   }
 }
 
-export function initializeCharts(intensityData, triggerData, medicationData) {
+function initializeHourlyChart(hourlyData) {
+  if (hourlyData && hourlyData.length > 0) {
+    const hourlyCtx = document.getElementById('hourlyChart');
+    if (hourlyCtx) {
+      if (chartInstances.hourlyChart) {
+        chartInstances.hourlyChart.destroy();
+      }
+      chartInstances.hourlyChart = new Chart(hourlyCtx, {
+        type: 'bar',
+        data: {
+          labels: hourlyData.map(d => d.label),
+          datasets: [
+            {
+              label: 'Frequency',
+              data: hourlyData.map(d => d.frequency),
+              backgroundColor: 'rgba(75, 192, 192, 0.6)',
+              yAxisID: 'y-frequency',
+            },
+            {
+              label: 'Avg Intensity',
+              data: hourlyData.map(d => d.avg_intensity),
+              backgroundColor: 'rgba(255, 99, 132, 0.6)',
+              yAxisID: 'y-intensity',
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: {
+              type: 'category',
+              title: {
+                display: true,
+                text: 'Time of Day'
+              }
+            },
+            'y-frequency': {
+              type: 'linear',
+              position: 'left',
+              title: {
+                display: true,
+                text: 'Frequency'
+              },
+              beginAtZero: true
+            },
+            'y-intensity': {
+              type: 'linear',
+              position: 'right',
+              title: {
+                display: true,
+                text: 'Average Intensity'
+              },
+              beginAtZero: true,
+              max: 10
+            }
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: 'Headache Frequency and Intensity by Time of Day'
+            }
+          }
+        }
+      });
+    }
+  }
+}
+
+export function initializeCharts(intensityData, triggerData, medicationData, hourlyData) {
   initializeIntensityChart(intensityData);
   initializeTriggerChart(triggerData);
   initializeMedicationChart(medicationData);
+  initializeHourlyChart(hourlyData);
 }
