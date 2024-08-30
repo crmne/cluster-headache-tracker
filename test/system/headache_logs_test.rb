@@ -49,7 +49,7 @@ class HeadacheLogsTest < ApplicationSystemTestCase
 
   test "visiting the charts page" do
     visit charts_index_url
-    assert_selector "h1", text: "Headache Charts"
+    assert_selector "h1", text: "Headache Data Visualization"
     assert_selector "canvas#intensityChart"
     assert_selector "canvas#triggerChart"
     assert_selector "canvas#medicationChart"
