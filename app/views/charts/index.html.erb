@@ -28,11 +28,21 @@
           <p>No medication data available.</p>
         <% end %>
       </div>
+
+      <div class="bg-white p-4 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-2">Headache Frequency and Intensity by Time of Day</h2>
+        <canvas id="hourlyChart"></canvas>
+      </div>
     </div>
 
     <script>
       document.addEventListener('turbo:load', function() {
-        window.initializeCharts(<%= raw @intensity_data.to_json %>, <%= raw @trigger_data.to_json %>, <%= raw @medication_data.to_json %>);
+        window.initializeCharts(
+          <%= raw @intensity_data.to_json %>,
+          <%= raw @trigger_data.to_json %>,
+          <%= raw @medication_data.to_json %>,
+          <%= raw @hourly_data.to_json %>
+        );
       });
     </script>
   <% else %>
