@@ -9,6 +9,7 @@ class ChartsController < ApplicationController
     @trigger_data = process_trigger_data(@headache_logs)
     @medication_data = process_medication_data(@headache_logs)
     @hourly_data = process_hourly_data(@headache_logs)
+    @attacks_per_day_data = HeadacheLog.process_attacks_per_day_data(@headache_logs)
   end
 
   private

@@ -217,9 +217,67 @@ function initializeHourlyChart(hourlyData) {
   }
 }
 
-export function initializeCharts(intensityData, triggerData, medicationData, hourlyData) {
+function initializeAttacksPerDayChart(attacksPerDayData) {
+  if (attacksPerDayData && Object.keys(attacksPerDayData).length > 0) {
+    const attacksPerDayCtx = document.getElementById('attacksPerDayChart');
+    if (attacksPerDayCtx) {
+      if (chartInstances.attacksPerDayChart) {
+        chartInstances.attacksPerDayChart.destroy();
+      }
+      chartInstances.attacksPerDayChart = new Chart(attacksPerDayCtx, {
+        type: 'bar',
+        data: {
+          datasets: [{
+            label: 'Number of Attacks',
+            data: attacksPerDayData,
+            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+            borderColor: 'rgb(54, 162, 235)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: {
+              type: 'time',
+              time: {
+                unit: 'day'
+              },
+              title: {
+                display: true,
+                text: 'Date'
+              }
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Number of Attacks'
+              },
+              ticks: {
+                stepSize: 1
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            },
+            title: {
+              display: true,
+              text: 'Number of Attacks per Day'
+            }
+          }
+        }
+      });
+    }
+  }
+}
+
+export function initializeCharts(intensityData, triggerData, medicationData, hourlyData, attacksPerDayData) {
   initializeIntensityChart(intensityData);
   initializeTriggerChart(triggerData);
   initializeMedicationChart(medicationData);
   initializeHourlyChart(hourlyData);
+  initializeAttacksPerDayChart(attacksPerDayData);
 }
