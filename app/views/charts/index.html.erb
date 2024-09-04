@@ -12,6 +12,11 @@
       </div>
 
       <div class="bg-white p-4 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-2">Number of Attacks per Day</h2>
+        <canvas id="attacksPerDayChart"></canvas>
+      </div>
+
+      <div class="bg-white p-4 rounded-lg shadow">
         <h2 class="text-xl font-semibold mb-2">Top 5 Triggers</h2>
         <% if @trigger_data.any? %>
           <canvas id="triggerChart"></canvas>
@@ -41,7 +46,8 @@
           <%= raw @intensity_data.to_json %>,
           <%= raw @trigger_data.to_json %>,
           <%= raw @medication_data.to_json %>,
-          <%= raw @hourly_data.to_json %>
+          <%= raw @hourly_data.to_json %>,
+          <%= raw @attacks_per_day_data.to_json %>
         );
       });
     </script>
