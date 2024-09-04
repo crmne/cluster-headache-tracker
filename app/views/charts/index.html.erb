@@ -6,37 +6,42 @@
 
   <% if @headache_logs.any? %>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="bg-white p-4 rounded-lg shadow">
+      <div id="intensityChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
         <h2 class="text-xl font-semibold mb-2">Headache Intensity Over Time</h2>
         <canvas id="intensityChart"></canvas>
+        <div class="loading-spinner hidden"></div>
       </div>
 
-      <div class="bg-white p-4 rounded-lg shadow">
+      <div id="attacksPerDayChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
         <h2 class="text-xl font-semibold mb-2">Number of Attacks per Day</h2>
         <canvas id="attacksPerDayChart"></canvas>
+        <div class="loading-spinner hidden"></div>
       </div>
 
-      <div class="bg-white p-4 rounded-lg shadow">
+      <div id="triggerChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
         <h2 class="text-xl font-semibold mb-2">Top 5 Triggers</h2>
         <% if @trigger_data.any? %>
           <canvas id="triggerChart"></canvas>
         <% else %>
           <p>No trigger data available.</p>
         <% end %>
+        <div class="loading-spinner hidden"></div>
       </div>
 
-      <div class="bg-white p-4 rounded-lg shadow">
+      <div id="medicationChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
         <h2 class="text-xl font-semibold mb-2">Top 5 Medications</h2>
         <% if @medication_data.any? %>
           <canvas id="medicationChart"></canvas>
         <% else %>
           <p>No medication data available.</p>
         <% end %>
+        <div class="loading-spinner hidden"></div>
       </div>
 
-      <div class="bg-white p-4 rounded-lg shadow">
+      <div id="hourlyChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
         <h2 class="text-xl font-semibold mb-2">Headache Frequency and Intensity by Time of Day</h2>
         <canvas id="hourlyChart"></canvas>
+        <div class="loading-spinner hidden"></div>
       </div>
     </div>
 

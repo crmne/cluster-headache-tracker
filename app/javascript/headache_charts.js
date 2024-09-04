@@ -34,6 +34,16 @@ Chart.register(
 
 let chartInstances = {};
 
+function createChart(ctx, config) {
+  return new Chart(ctx, {
+    ...config,
+    options: {
+      ...config.options,
+      responsive: true,
+    }
+  });
+}
+
 function initializeIntensityChart(intensityData) {
   if (intensityData && Object.keys(intensityData).length > 0) {
     const intensityCtx = document.getElementById('intensityChart');
@@ -41,7 +51,7 @@ function initializeIntensityChart(intensityData) {
       if (chartInstances.intensityChart) {
         chartInstances.intensityChart.destroy();
       }
-      chartInstances.intensityChart = new Chart(intensityCtx, {
+      chartInstances.intensityChart = createChart(intensityCtx, {
         type: 'line',
         data: {
           datasets: [{
@@ -52,7 +62,6 @@ function initializeIntensityChart(intensityData) {
           }]
         },
         options: {
-          responsive: true,
           scales: {
             x: {
               type: 'time',
@@ -78,7 +87,7 @@ function initializeTriggerChart(triggerData) {
       if (chartInstances.triggerChart) {
         chartInstances.triggerChart.destroy();
       }
-      chartInstances.triggerChart = new Chart(triggerCtx, {
+      chartInstances.triggerChart = createChart(triggerCtx, {
         type: 'pie',
         data: {
           labels: Object.keys(triggerData),
@@ -117,7 +126,7 @@ function initializeMedicationChart(medicationData) {
       if (chartInstances.medicationChart) {
         chartInstances.medicationChart.destroy();
       }
-      chartInstances.medicationChart = new Chart(medicationCtx, {
+      chartInstances.medicationChart = createChart(medicationCtx, {
         type: 'pie',
         data: {
           labels: Object.keys(medicationData),
@@ -156,7 +165,7 @@ function initializeHourlyChart(hourlyData) {
       if (chartInstances.hourlyChart) {
         chartInstances.hourlyChart.destroy();
       }
-      chartInstances.hourlyChart = new Chart(hourlyCtx, {
+      chartInstances.hourlyChart = createChart(hourlyCtx, {
         type: 'bar',
         data: {
           labels: hourlyData.map(d => d.label),
@@ -224,7 +233,7 @@ function initializeAttacksPerDayChart(attacksPerDayData) {
       if (chartInstances.attacksPerDayChart) {
         chartInstances.attacksPerDayChart.destroy();
       }
-      chartInstances.attacksPerDayChart = new Chart(attacksPerDayCtx, {
+      chartInstances.attacksPerDayChart = createChart(attacksPerDayCtx, {
         type: 'bar',
         data: {
           datasets: [{
@@ -274,10 +283,40 @@ function initializeAttacksPerDayChart(attacksPerDayData) {
   }
 }
 
-export function initializeCharts(intensityData, triggerData, medicationData, hourlyData, attacksPerDayData) {
-  initializeIntensityChart(intensityData);
-  initializeTriggerChart(triggerData);
-  initializeMedicationChart(medicationData);
-  initializeHourlyChart(hourlyData);
-  initializeAttacksPerDayChart(attacksPerDayData);
+function showLoading(chartId) {
+  const chartContainer = document.getElementById(chartId + 'Container');
+  if (chartContainer) {
+    chartContainer.classList.add('loading');
+  }
 }
+
+function hideLoading(chartId) {
+  const chartContainer = document.getElementById(chartId + 'Container');
+  if (chartContainer) {
+    chartContainer.classList.remove('loading');
+  }
+}
+
+export function initializeCharts(intensityData, triggerData, medicationData, hourlyData, attacksPerDayData) {
+  showLoading('intensity');
+  showLoading('trigger');
+  showLoading('medication');
+  showLoading('hourly');
+  showLoading('attacksPerDay');
+
+  // Use setTimeout to defer chart initialization to the next event loop
+  setTimeout(() => {
+    initializeIntensityChart(intensityData);
+    initializeTriggerChart(triggerData);
+    initializeMedicationChart(medicationData);
+    initializeHourlyChart(hourlyData);
+    initializeAttacksPerDayChart(attacksPerDayData);
+
+    hideLoading('intensity');
+    hideLoading('trigger');
+    hideLoading('medication');
+    hideLoading('hourly');
+    hideLoading('attacksPerDay');
+  }, 0);
+}
+
