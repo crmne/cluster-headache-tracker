@@ -1,9 +1,12 @@
 <% content_for :title, "Headache Logs for #{@user.username}" %>
-
 <div class="container mx-auto px-4 py-8">
   <h1 class="text-2xl font-bold mb-4">Headache Logs for <%= @user.username %></h1>
 
-  <div class="space-y-4">
+  <%= render partial: 'shared/charts', locals: { headache_logs: @headache_logs, chart_data: @chart_data } %>
+
+  <!-- Existing Headache Logs List -->
+  <div class="space-y-4 mt-8">
+    <h2 class="text-xl font-bold mb-4">Detailed Headache Logs</h2>
     <% @headache_logs.each do |headache_log| %>
       <div class="bg-white p-4 rounded-lg shadow mb-4">
         <p class="font-semibold">Start Time: <%= headache_log.start_time.strftime("%B %d, %Y at %I:%M %p") %></p>

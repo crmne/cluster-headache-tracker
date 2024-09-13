@@ -19,11 +19,4 @@ class HeadacheLog < ApplicationRecord
     headache_logs = headache_logs.with_medication(params[:medication]) if params[:medication].present?
     headache_logs
   end
-
-  def self.process_attacks_per_day_data(logs)
-    attacks_per_day = logs.group_by { |log| log.start_time.to_date }
-                          .transform_values(&:count)
-
-    attacks_per_day.map { |date, count| { x: date, y: count } }
-  end
 end

@@ -7,15 +7,6 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     user = users(:one)
     sign_in user
     @headache_log = headache_logs(:one)
-
-    # Create a headache log with triggers
-    HeadacheLog.create!(
-      user: user,
-      start_time: Time.current,
-      intensity: 5,
-      triggers: "Stress, Lack of Sleep",
-      medication: "Ibuprofen"
-    )
   end
 
   test "visiting the index" do
@@ -49,8 +40,10 @@ class HeadacheLogsTest < ApplicationSystemTestCase
 
   test "should destroy Headache log" do
     visit headache_log_url(@headache_log)
-    accept_confirm do
-      click_on "Delete", match: :first
+    assert_difference("HeadacheLog.count", -1) do
+      accept_confirm do
+        click_on "Delete", match: :first
+      end
     end
 
     assert_text "Headache log was successfully destroyed"
