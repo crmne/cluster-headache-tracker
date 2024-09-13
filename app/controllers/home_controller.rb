@@ -7,4 +7,7 @@ class HomeController < ApplicationController
 
   def faq
   end
+
+  def imprint
+  end
 end

@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   get "home/index"
   root "home#index"
 
+  get "faq", to: "home#faq", as: :faq
+  get "imprint", to: "home#imprint", as: :imprint
   get "privacy-policy", to: "home#privacy_policy", as: :privacy_policy
-  get "faq", to: "home#faq"
 
   # Shared Logs
   get "shared_logs/:token", to: "shared_logs#index", as: :shared_logs
