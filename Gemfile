@@ -88,7 +88,7 @@ group :development do
   gem "rails_real_favicon"
 
   # Deploy with Kamal
-  gem "kamal"
+  gem "kamal", "< 1.9"
 end
 
 group :test do
