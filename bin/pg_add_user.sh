@@ -8,16 +8,18 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
-# Get the username from the first argument
+# Get the parameters from the arguments
 USERNAME="$1"
 
 # Read password from stdin
-read -r PASSWORD
+read -s -p "Creating user $USERNAME. Enter password: " -r PASSWORD
 
 # Create the SQL command
 SQL="CREATE USER $USERNAME WITH PASSWORD '$PASSWORD' CREATEDB;"
 
 # Execute the command
-sudo -u postgres psql -d "$DBNAME" -c "$SQL"
+DBNAME="postgres"
+psql -d "$DBNAME" -c "$SQL" ||
+  sudo -u postgres psql -d "$DBNAME" -c "$SQL"
 
 echo "User $USERNAME has been created."
