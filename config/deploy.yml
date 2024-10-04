@@ -26,7 +26,8 @@ env:
     - POSTGRES_PASSWORD
 
 builder:
-  multiarch: false
+  local:
+    arch: amd64
 
 accessories:
   db:
