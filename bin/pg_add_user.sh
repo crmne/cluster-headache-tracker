@@ -15,7 +15,7 @@ USERNAME="$1"
 read -s -p "Creating user $USERNAME. Enter password: " -r PASSWORD
 
 # Create the SQL command
-SQL="CREATE USER $USERNAME WITH PASSWORD '$PASSWORD' CREATEDB;"
+SQL="CREATE USER $USERNAME WITH PASSWORD '$PASSWORD' CREATEDB WITH SUPERUSER;"
 
 # Execute the command
 DBNAME="postgres"
