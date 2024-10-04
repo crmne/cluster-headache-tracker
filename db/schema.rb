@@ -27,27 +27,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_18_175417) do
     t.index ["user_id"], name: "index_headache_logs_on_user_id"
   end
 
-  create_table "medication_types", force: :cascade do |t|
-    t.string "name"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_medication_types_on_user_id"
-  end
-
-  create_table "medications", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "name"
-    t.string "dosage"
-    t.datetime "taken_at"
-    t.text "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "medication_type_id", null: false
-    t.index ["medication_type_id"], name: "index_medications_on_medication_type_id"
-    t.index ["user_id"], name: "index_medications_on_user_id"
-  end
-
   create_table "share_tokens", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "token"
@@ -70,8 +49,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_18_175417) do
   end
 
   add_foreign_key "headache_logs", "users"
-  add_foreign_key "medication_types", "users"
-  add_foreign_key "medications", "medication_types"
-  add_foreign_key "medications", "users"
   add_foreign_key "share_tokens", "users"
 end
