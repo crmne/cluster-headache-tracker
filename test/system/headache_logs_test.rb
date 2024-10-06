@@ -27,7 +27,7 @@ class HeadacheLogsTest < ApplicationSystemTestCase
   end
 
   test "should update Headache log" do
-    visit headache_log_url(@headache_log)
+    visit headache_log_url @headache_log
     click_on "Edit", match: :first
 
     fill_in "Start time", with: @headache_log.start_time.to_s
@@ -39,14 +39,13 @@ class HeadacheLogsTest < ApplicationSystemTestCase
   end
 
   test "should destroy Headache log" do
-    visit headache_log_url(@headache_log)
+    visit headache_log_url @headache_log
     assert_difference("HeadacheLog.count", -1) do
       accept_confirm do
-        click_on "Delete", match: :first
+        click_on "Delete"
       end
+      assert_text "Headache log was successfully destroyed"
     end
-
-    assert_text "Headache log was successfully destroyed"
   end
 
   test "visiting the charts page" do

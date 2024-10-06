@@ -4,7 +4,9 @@ import "controllers"
 import { initializeCharts } from "headache_charts"
 import Honeybadger from '@honeybadger-io/js';
 
-window.initializeCharts = initializeCharts;
+if (typeof window.initializeCharts == "undefined") {
+  window.initializeCharts = initializeCharts;
+}
 
 Honeybadger.configure({
   apiKey: "<%= Honeybadger.config.yaml[:api_key] %>",

@@ -26,4 +26,6 @@ pin "@babel/runtime/helpers/esm/defineProperty", to: "https://ga.jspm.io/npm:@ba
 
 # Honeybadger
 pin "@honeybadger-io/js", to: "@honeybadger-io--js.js" # @6.9.3
+
+# Charts
 pin "headache_charts", to: "headache_charts.js"

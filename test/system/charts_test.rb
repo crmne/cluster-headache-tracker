@@ -6,18 +6,6 @@ class ChartsTest < ApplicationSystemTestCase
   setup do
     @user = users(:one)
     sign_in @user
-
-    # Create some headache logs with trigger data
-    3.times do |i|
-      HeadacheLog.create!(
-        user: @user,
-        start_time: Time.current - i.days,
-        end_time: Time.current - i.days + 2.hours,
-        intensity: rand(1..10),
-        triggers: "Stress, Lack of Sleep",
-        medication: "Sumatriptan"
-      )
-    end
   end
 
   test "visiting the charts page" do

@@ -1,55 +1,67 @@
-<% if headache_logs.any? %>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <div id="intensityChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <div id="intensityChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
+    <% unless headache_logs.any? %>
+      <p>No headache data available. Try adjusting your filter criteria or add more headache logs.</p>
+    <% else %>
       <h2 class="text-xl font-semibold mb-2">Headache Intensity Over Time</h2>
-      <canvas id="intensityChart"></canvas>
-      <div class="loading-spinner hidden"></div>
-    </div>
-
-    <div id="attacksPerDayChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
-      <h2 class="text-xl font-semibold mb-2">Number of Attacks per Day</h2>
-      <canvas id="attacksPerDayChart"></canvas>
-      <div class="loading-spinner hidden"></div>
-    </div>
-
-    <div id="triggerChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
-      <h2 class="text-xl font-semibold mb-2">Top 5 Triggers</h2>
-      <% if chart_data[:trigger_data].any? %>
-        <canvas id="triggerChart"></canvas>
+      <% if chart_data[:intensity_data].any? %>
+        <canvas id="intensityChart"></canvas>
       <% else %>
-        <p>No trigger data available.</p>
+        <p>No intensity data available.</p>
       <% end %>
       <div class="loading-spinner hidden"></div>
-    </div>
-
-    <div id="medicationChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
-      <h2 class="text-xl font-semibold mb-2">Top 5 Medications</h2>
-      <% if chart_data[:medication_data].any? %>
-        <canvas id="medicationChart"></canvas>
-      <% else %>
-        <p>No medication data available.</p>
-      <% end %>
-      <div class="loading-spinner hidden"></div>
-    </div>
-
-    <div id="hourlyChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
-      <h2 class="text-xl font-semibold mb-2">Headache Frequency and Intensity by Time of Day</h2>
-      <canvas id="hourlyChart"></canvas>
-      <div class="loading-spinner hidden"></div>
-    </div>
   </div>
 
-  <script>
-    document.addEventListener('turbo:load', function() {
-      window.initializeCharts(
-        <%= raw chart_data[:intensity_data].to_json %>,
-        <%= raw chart_data[:trigger_data].to_json %>,
-        <%= raw chart_data[:medication_data].to_json %>,
-        <%= raw chart_data[:hourly_data].to_json %>,
-        <%= raw chart_data[:attacks_per_day_data].to_json %>
-      );
-    });
-  </script>
-<% else %>
-  <p>No headache data available. Try adjusting your filter criteria or add more headache logs.</p>
+  <div id="attacksPerDayChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
+    <h2 class="text-xl font-semibold mb-2">Number of Attacks per Day</h2>
+    <% if chart_data[:attacks_per_day_data].any? %>
+      <canvas id="attacksPerDayChart"></canvas>
+    <% else %>
+      <p>No attack data available.</p>
+    <% end %>
+    <div class="loading-spinner hidden"></div>
+  </div>
+
+  <div id="triggerChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
+    <h2 class="text-xl font-semibold mb-2">Top 5 Triggers</h2>
+    <% if chart_data[:trigger_data].any? %>
+      <canvas id="triggerChart"></canvas>
+    <% else %>
+      <p>No trigger data available.</p>
+    <% end %>
+    <div class="loading-spinner hidden"></div>
+  </div>
+
+  <div id="medicationChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
+    <h2 class="text-xl font-semibold mb-2">Top 5 Medications</h2>
+    <% if chart_data[:medication_data].any? %>
+      <canvas id="medicationChart"></canvas>
+    <% else %>
+      <p>No medication data available.</p>
+    <% end %>
+    <div class="loading-spinner hidden"></div>
+  </div>
+
+  <div id="hourlyChartContainer" class="bg-white p-4 rounded-lg shadow h-120">
+    <h2 class="text-xl font-semibold mb-2">Headache Frequency and Intensity by Time of Day</h2>
+    <% if chart_data[:hourly_data].any? %>
+      <canvas id="hourlyChart"></canvas>
+    <% else %>
+      <p>No hourly data available.</p>
+    <% end %>
+    <div class="loading-spinner hidden"></div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('turbo:load', function() {
+    window.initializeCharts(
+      <%= raw chart_data[:intensity_data].to_json %>,
+      <%= raw chart_data[:trigger_data].to_json %>,
+      <%= raw chart_data[:medication_data].to_json %>,
+      <%= raw chart_data[:hourly_data].to_json %>,
+      <%= raw chart_data[:attacks_per_day_data].to_json %>
+    );
+  });
+</script>
 <% end %>
