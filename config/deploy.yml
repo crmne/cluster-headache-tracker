@@ -3,7 +3,10 @@ image: crmne/cluster-headache-tracker
 
 servers:
   web:
-    - clusterheadachetracker.com
+    hosts:
+      - clusterheadachetracker.com
+    options:
+      add-host: host.docker.internal:host-gateway
 
 proxy:
   ssl: true
@@ -16,7 +19,7 @@ registry:
 
 env:
   clear:
-    DB_HOST: cluster-headache-tracker-db
+    DB_HOST: host.docker.internal
   secret:
     - RAILS_MASTER_KEY
     - HONEYBADGER_API_KEY
@@ -40,6 +43,7 @@ accessories:
   db:
     image: postgres:latest
     host: clusterheadachetracker.com
+    port: 172.17.0.1:5432:5432
     env:
       clear:
         POSTGRES_USER: cluster_headache_tracker
