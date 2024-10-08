@@ -3,14 +3,11 @@ image: crmne/cluster-headache-tracker
 
 servers:
   web:
-    hosts:
-      - clusterheadachetracker.com
-    labels:
-      traefik.http.routers.clusterheadachetracker.entrypoints: websecure
-      traefik.http.routers.clusterheadachetracker.rule: Host(`clusterheadachetracker.com`)
-      traefik.http.routers.clusterheadachetracker.tls.certresolver: letsencrypt
-    options:
-      add-host: host.docker.internal:host-gateway
+    - clusterheadachetracker.com
+
+proxy:
+  ssl: true
+  host: clusterheadachetracker.com
 
 registry:
   username: crmne
@@ -19,21 +16,30 @@ registry:
 
 env:
   clear:
-    DB_HOST: host.docker.internal
+    DB_HOST: cluster-headache-tracker-db
   secret:
     - RAILS_MASTER_KEY
     - HONEYBADGER_API_KEY
     - POSTGRES_PASSWORD
 
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"
+
+volumes:
+  - "cluster-headache-tracker_storage:/rails/storage"
+
+asset_path: /rails/public/assets
+
 builder:
-  local:
-    arch: amd64
+  arch: amd64
 
 accessories:
   db:
     image: postgres:latest
     host: clusterheadachetracker.com
-    port: 172.17.0.1:5432:5432
     env:
       clear:
         POSTGRES_USER: cluster_headache_tracker
@@ -42,20 +48,3 @@ accessories:
         - POSTGRES_PASSWORD
     directories:
       - data:/var/lib/postgresql/data
-
-traefik:
-  options:
-    publish:
-      - "443:443"
-    volume:
-      - "/letsencrypt/acme.json:/letsencrypt/acme.json" # To save the configuration file.
-  args:
-    entryPoints.web.address: ":80"
-    entryPoints.websecure.address: ":443"
-    entryPoints.web.http.redirections.entryPoint.to: websecure # We want to force https
-    entryPoints.web.http.redirections.entryPoint.scheme: https
-    entryPoints.web.http.redirections.entrypoint.permanent: true
-    certificatesResolvers.letsencrypt.acme.email: "carmine@paolino.me"
-    certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json" # Must match the path in `volume`
-    certificatesResolvers.letsencrypt.acme.httpchallenge: true
-    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web # Must match the role in `servers`
