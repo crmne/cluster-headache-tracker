@@ -83,7 +83,7 @@ group :development, :test do
   # END: Overcommit git hooks
 
   # Load dotenv
-  gem "dotenv-rails"
+  gem "dotenv"
 end
 
 group :development do
