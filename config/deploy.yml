@@ -5,8 +5,6 @@ servers:
   web:
     hosts:
       - clusterheadachetracker.com
-    options:
-      add-host: host.docker.internal:host-gateway
 
 proxy:
   ssl: true
@@ -19,7 +17,7 @@ registry:
 
 env:
   clear:
-    DB_HOST: host.docker.internal
+    DB_HOST: cluster-headache-tracker-db
   secret:
     - RAILS_MASTER_KEY
     - HONEYBADGER_API_KEY
@@ -41,7 +39,7 @@ builder:
 
 accessories:
   db:
-    image: postgres:latest
+    image: postgres:16
     host: clusterheadachetracker.com
     port: 172.17.0.1:5432:5432
     env:
