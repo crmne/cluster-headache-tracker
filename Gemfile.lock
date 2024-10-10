@@ -168,7 +168,7 @@ GEM
       railties
       sprockets
     image_size (3.4.0)
-    importmap-rails (2.0.2)
+    importmap-rails (2.0.3)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
