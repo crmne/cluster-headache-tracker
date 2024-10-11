@@ -26,6 +26,7 @@
     <% if Rails.env.production? %>
       <script defer data-domain="clusterheadachetracker.com" src="https://plausible.io/js/script.js"></script>
     <% end %>
+    <script async src="https://tally.so/widgets/embed.js"></script>
   </head>
   <body class="bg-gray-100">
     <%= render 'navbar' %>
@@ -48,5 +49,14 @@
       <% end %>
     </main>
     <%= render 'footer' %>
+    <div class="fixed bottom-4 right-4 z-50">
+      <button
+         class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
+         data-tally-open="31JxWO"
+         data-tally-emoji-text="👋"
+         data-tally-emoji-animation="wave">
+         👋 Help us improve
+      </button>
+    </div>
   </body>
 </html>
