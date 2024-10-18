@@ -18,6 +18,14 @@
         "context": "modal",
         "pull_to_refresh_enabled": false
       }
-    }
+    },
+    {
+      "patterns": [
+        "/$"
+      ],
+      "properties": {
+        "title": "Cluster Headache Tracker"
+      }
+    },
   ]
 }
