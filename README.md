@@ -1,3 +1,5 @@
+[![Buy me a pizza](app/assets/images/buymeapizza.png)](https://buymeacoffee.com/crmne)
+
 # 🧠 Cluster Headache Tracker
 
 Cluster Headache Tracker is a free, open-source web application designed to help individuals suffering from cluster headaches track and manage their condition. By providing detailed logging, visual insights, and easy sharing with healthcare providers, this tool aims to improve the understanding and treatment of cluster headaches.
@@ -9,6 +11,15 @@ https://github.com/user-attachments/assets/75b4bd2b-b539-4d44-90ad-c3c03148daed
 ## 🚀 Getting Started
 
 Visit [https://clusterheadachetracker.com](https://clusterheadachetracker.com) to create a free account and start tracking your cluster headaches.
+
+## 📱 Mobile App
+
+We now have a beta version of our iOS app available through TestFlight! This app wraps the web application in a native iOS shell, making it easier for iOS users to access Cluster Headache Tracker.
+
+- [Download the iOS Beta App](https://testflight.apple.com/join/GJsAQqz2)
+- [View the iOS App Repository](https://github.com/crmne/cluster-headache-tracker-ios)
+
+The iOS app provides the same features as the web application but in a more accessible format for iOS users. It's built using Hotwire Native, ensuring a consistent experience across platforms.
 
 ## ✨ Features
 
