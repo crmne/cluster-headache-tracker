@@ -4,9 +4,17 @@
     <h1 class="text-4xl md:text-6xl font-bold mb-4">Cluster Headache Tracker</h1>
     <p class="text-xl md:text-2xl mb-8">Track your cluster headaches and share them with your doctor with our free, comprehensive, privacy-focused tracking tool.</p>
     <%= link_to "Get Started", user_signed_in? ? headache_logs_path : new_user_registration_path, class: "bg-white text-indigo-600 font-bold py-3 px-6 rounded-full text-lg hover:bg-indigo-100 transition duration-300" %>
+
+    <!-- Add TestFlight Link -->
+    <div class="mt-8">
+      <a href="https://testflight.apple.com/join/GJsAQqz2" target="_blank" rel="noopener noreferrer" class="bg-blue-500 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-blue-600 transition duration-300">
+        Download iOS Beta App
+      </a>
+    </div>
   </div>
 </section>
 
+<!-- Rest of the content remains the same -->
 <!-- Screen Recording Demo Section -->
 <section class="pb-20 bg-indigo-600 text-white">
   <div class="container mx-auto px-4">
