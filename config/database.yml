@@ -18,8 +18,6 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: cluster_headache_tracker
-  password: <%= ENV["POSTGRES_PASSWORD"] %>
 
 
 development:
@@ -81,6 +79,21 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: cluster_headache_tracker_production
-  host: <%= ENV["DB_HOST"] %>
+  primary: &primary_production
+    <<: *default
+    database: cluster_headache_tracker_production
+    username: cluster_headache_tracker
+    password: <%= ENV["POSTGRES_PASSWORD"] %>
+    host: <%= ENV["DB_HOST"] %>
+  cache:
+    <<: *primary_production
+    database: cluster_headache_tracker_production_cache
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary_production
+    database: cluster_headache_tracker_production_queue
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *primary_production
+    database: cluster_headache_tracker_production_cable
+    migrations_paths: db/cable_migrate
