@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_18_175417) do
+ActiveRecord::Schema[8.0].define(version: 2024_08_18_175417) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "headache_logs", force: :cascade do |t|
     t.datetime "start_time"
