@@ -474,7 +474,7 @@ DEPENDENCIES
   overcommit
   pg (~> 1.1)
   puma (>= 5.0)
-  rails (~> 8.0.0beta1)
+  rails (~> 8.0.0.rc1)
   rails_best_practices
   rails_real_favicon
   rubocop-rails-omakase
