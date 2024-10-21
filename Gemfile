@@ -52,8 +52,10 @@ gem "devise"
 # CSV will not be in the standard library from ruby 3.4.0
 gem "csv"
 
-# Honeybadger error tracking
-gem "honeybadger"
+group :production do
+  # Honeybadger error tracking
+  gem "honeybadger"
+end
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
