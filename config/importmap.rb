@@ -8,6 +8,7 @@ pin "@hotwired/hotwire-native-bridge", to: "@hotwired--hotwire-native-bridge.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
 
 # Chart.js and its dependencies
+pin "alpinejs" # @3.14.3
 pin "chart.js", to: "https://ga.jspm.io/npm:chart.js@4.3.0/dist/chart.js"
 pin "@kurkle/color", to: "https://ga.jspm.io/npm:@kurkle/color@0.3.2/dist/color.esm.js"
 pin "chartjs-adapter-date-fns", to: "https://ga.jspm.io/npm:chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.esm.js"
