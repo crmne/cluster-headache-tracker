@@ -1,27 +1,20 @@
 <% content_for :title, "Headache Logs for #{@user.username}" %>
-<div class="container mx-auto px-4 py-8">
-  <h1 class="text-2xl font-bold mb-4">Headache Logs for <%= @user.username %></h1>
+<% content_for :navbar, "Headache Logs for #{@user.username}" %>
 
-  <%= render partial: 'shared/charts', locals: { headache_logs: @headache_logs, chart_data: @chart_data } %>
-
-  <!-- Existing Headache Logs List -->
-  <div class="space-y-4 mt-8">
-    <h2 class="text-xl font-bold mb-4">Detailed Headache Logs</h2>
-    <% @headache_logs.each do |headache_log| %>
-      <div class="bg-white p-4 rounded-lg shadow mb-4">
-        <p class="font-semibold">Start Time: <%= headache_log.start_time.strftime("%B %d, %Y at %I:%M %p") %></p>
-        <p>End Time: <%= headache_log.end_time&.strftime("%B %d, %Y at %I:%M %p") || "Ongoing" %></p>
-        <p>Intensity: <span class="font-bold"><%= headache_log.intensity %></span></p>
-        <% if headache_log.medication.present? %>
-          <p>Medication: <%= headache_log.medication %></p>
-        <% end %>
-        <% if headache_log.triggers.present? %>
-          <p>Triggers: <%= headache_log.triggers %></p>
-        <% end %>
-        <% if headache_log.notes.present? %>
-          <p>Notes: <%= headache_log.notes %></p>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+<div class="join join-vertical w-full mb-4">
+  <%= render "shared/filter_form" %>
 </div>
+
+<article class="prose mb-2">
+  <h1>Charts</h1>
+</article>
+<%= render partial: 'shared/charts', locals: { headache_logs: @headache_logs, chart_data: @chart_data } %>
+
+<article class="prose mb-2">
+  <h1>Headache Logs</h1>
+</article>
+<%= turbo_stream_from @user, "headache_logs" %>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+  <%= render @headache_logs, hide_actions: true %>
+</div>
+
