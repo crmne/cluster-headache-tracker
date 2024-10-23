@@ -52,6 +52,9 @@ gem "devise"
 # CSV will not be in the standard library from ruby 3.4.0
 gem "csv"
 
+# Heroicons
+gem "rails_heroicon"
+
 group :production do
   # Honeybadger error tracking
   gem "honeybadger"

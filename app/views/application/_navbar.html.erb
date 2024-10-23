@@ -1,71 +1,37 @@
-<nav class="bg-indigo-600 p-4" x-data="{ isOpen: false }">
-  <div class="container mx-auto">
-    <div class="flex items-center justify-between">
-      <!-- Logo, Title, and Hamburger Menu -->
-      <div class="flex items-center">
-        <!-- Hamburger menu button, hidden on large and larger screens -->
-        <button x-on:click="isOpen = !isOpen" class="lg:hidden text-white hover:text-indigo-200 mr-2 focus:outline-none">
-          <template x-if="!isOpen">
-            <svg class="h-6 w-6" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path fill="white" fill-rule="evenodd" clip-rule="evenodd" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" />
-            </svg>
-          </template>
-          <template x-if="isOpen">
-            <svg class="h-6 w-6 fill-current text-white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-              <path d="M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-            </svg>
-          </template>
-        </button>
-        <%= image_tag "logo_small.png", size: 32, class: "mr-2" %>
-        <div class="text-white font-bold text-xl truncate max-w-[260px] sm:max-w-none">
-          <% if user_signed_in? %>
-            <%= link_to "Cluster Headache Tracker", headache_logs_path %>
-          <% else %>
-            <%= link_to "Cluster Headache Tracker", root_path %>
-          <% end %>
-        </div>
+<nav class="navbar bg-primary text-primary-content drop-shadow">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+        <%= heroicon "bars-3-bottom-left", class: "w-5 h-5" %>
       </div>
-
-      <!-- Navigation Links and User Actions for larger screens -->
-      <div class="hidden lg:flex lg:items-center lg:justify-between lg:flex-1 lg:ml-4">
-        <div class="flex space-x-4">
-          <%= link_to "FAQ", faq_path, class: "text-white hover:text-indigo-200" %>
-          <% if user_signed_in? %>
-            <%= link_to "Headache Logs", headache_logs_path, class: "text-white hover:text-indigo-200 whitespace-nowrap" %>
-            <%= link_to "Charts", charts_path, class: "text-white hover:text-indigo-200" %>
-          <% end %>
-        </div>
-
-        <!-- User Actions -->
-        <div class="flex items-center space-x-4">
-          <% if user_signed_in? %>
-            <span class="text-white truncate max-w-[200px]"><%= current_user.username %></span>
-            <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded whitespace-nowrap" %>
-          <% else %>
-            <%= link_to "Sign In", new_user_session_path, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded whitespace-nowrap" %>
-            <%= link_to "Sign Up", new_user_registration_path, class: "bg-white text-indigo-600 font-medium py-2 px-4 rounded hover:bg-indigo-100 whitespace-nowrap" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile menu, visible only when the hamburger button is clicked -->
-    <div x-show="isOpen" class="lg:hidden mt-4">
-      <div class="flex flex-col space-y-2">
-        <%= link_to "FAQ", faq_path, class: "text-white hover:text-indigo-200" %>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content bg-primary rounded-box z-[1] mt-3 w-32 p-2 shadow">
+        <li><%= link_to faq_path do %><%= heroicon "question-mark-circle", variant: "micro" %> FAQ <% end %></li>
         <% if user_signed_in? %>
-          <%= link_to "Headache Logs", headache_logs_path, class: "text-white hover:text-indigo-200 block py-2" %>
-          <%= link_to "Charts", charts_path, class: "text-white hover:text-indigo-200 block py-2" %>
-          <div class="border-t border-indigo-500 my-4"></div>
-          <span class="text-white py-2 truncate"><%= current_user.username %></span>
-          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded w-full text-left mt-2" %>
-        <% else %>
-          <div class="border-t border-indigo-500 my-4"></div>
-          <%= link_to "Sign In", new_user_session_path, class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded block text-center" %>
-          <%= link_to "Sign Up", new_user_registration_path, class: "bg-white text-indigo-600 font-medium py-2 px-4 rounded hover:bg-indigo-100 block text-center mt-2" %>
+          <li><%= link_to headache_logs_path do %><%= heroicon "calendar-days", variant: "micro" %> Logs<% end %></li>
+          <li><%= link_to charts_path do %><%= heroicon "chart-bar", variant: "micro" %> Charts <% end %></li>
         <% end %>
-      </div>
+      </ul>
     </div>
+    <%= link_to user_signed_in? ? headache_logs_path : root_path, class: "btn btn-ghost text-xl" do %>
+      <%= image_tag "logo_small.png", size: 32 %> <span class="hidden md:block">Cluster Headache Tracker</span>
+    <% end %>
+  </div>
+  <div class="navbar-center">
+    <span class="font-black text-lg"><%= content_for(:navbar) %></span>
+  </div>
+  <div class="navbar-end">
+    <% if user_signed_in? %>
+      <div class="flex items-center gap-4 px-2">
+        <%= button_to current_user.username, "", class: "btn-primary hidden md:block" %>
+        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn" %>
+      </div>
+    <% else %>
+      <div class="flex items-center gap-4">
+        <%= button_to "Sign In", new_user_session_path, class: "btn-primary" %>
+        <%= button_to "Sign Up", new_user_registration_path, class: "btn" %>
+      </div>
+    <% end %>
   </div>
 </nav>

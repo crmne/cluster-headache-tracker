@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
     <title><%= content_for(:title) || "Cluster Headache Tracker | Free Tool for Managing Cluster Headaches" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -20,6 +20,7 @@
     <%= yield :head %>
     <%= render 'application/favicon' %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <script async src="https://tally.so/widgets/embed.js"></script>
@@ -27,7 +28,7 @@
       <script defer data-domain="clusterheadachetracker.com" src="https://plausible.io/js/script.js"></script>
     <% end %>
   </head>
-  <body class="bg-gray-100">
+  <body>
     <%= render 'navbar' %>
     <main class="w-full">
       <% if current_page? root_path %>
@@ -48,11 +49,6 @@
       <% end %>
     </main>
     <%= render 'footer' %>
-    <div id="feedback-button" class="fixed bottom-4 right-4 z-[9999]" style="position: fixed; bottom: 1rem; right: 1rem;">
-      <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" data-tally-open="31JxWO" data-tally-emoji-text="👋" data-tally-emoji-animation="wave" style="background-color: #4f46e5; color: white; padding: 0.5rem 1rem; border-radius: 9999px; font-weight: bold; display: flex; align-items: center; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);">
-        <span style="margin-right: 0.5rem;">👋</span>
-        Help us improve
-      </button>
-    </div>
+    <%= render 'bottom_navbar' %>
   </body>
 </html>

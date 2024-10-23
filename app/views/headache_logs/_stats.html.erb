@@ -1,0 +1,28 @@
+<div class="grid">
+  <div class="stats stats-vertical md:stats-horizontal shadow mb-8">
+    <div class="stat">
+      <div class="stat-figure text-primary">
+        <%= heroicon "bolt", class: "inline-block h-8 w-8 stroke-current" %>
+      </div>
+      <div class="stat-title">Total Headaches</div>
+      <div class="stat-value text-primary"><%= @headache_logs.count %></div>
+      <div class="stat-desc"></div>
+    </div>
+    <div class="stat">
+      <div class="stat-figure text-secondary">
+        <%= heroicon "bolt", class: "inline-block h-8 w-8 stroke-current" %>
+      </div>
+      <div class="stat-title">Headaches Today</div>
+      <div class="stat-value text-secondary"><%= @headache_logs.select { |log| log.start_time.to_date == Date.today }.count %></div>
+      <div class="stat-desc"></div>
+    </div>
+    <div class="stat">
+      <div class="stat-figure text-accent">
+        <%= heroicon "bolt", class: "inline-block h-8 w-8 stroke-current" %>
+      </div>
+      <div class="stat-title">Average Intensity</div>
+      <div class="stat-value text-accent"><%= (@headache_logs.map { |l| l.intensity }.inject { |sum, el| sum + el }.to_f / @headache_logs.size).round(2) %></div>
+      <div class="stat-desc"></div>
+    </div>
+  </div>
+</div>
