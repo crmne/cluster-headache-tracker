@@ -1,24 +1,47 @@
-<%= form_with url: local_assigns[:url], method: :get, class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" do |form| %>
-  <div class="mb-4 flex flex-wrap -mx-2">
-    <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
-      <%= form.label :start_time, "Start Date", class: "block text-gray-700 text-sm font-bold mb-2" %>
-      <%= form.date_field :start_time, value: params[:start_time], class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-    </div>
-    <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
-      <%= form.label :end_time, "End Date", class: "block text-gray-700 text-sm font-bold mb-2" %>
-      <%= form.date_field :end_time, value: params[:end_time], class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-    </div>
-    <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
-      <%= form.label :triggers, "Triggers", class: "block text-gray-700 text-sm font-bold mb-2" %>
-      <%= form.text_field :triggers, value: params[:triggers], class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-    </div>
-    <div class="w-full md:w-1/4 px-2">
-      <%= form.label :medication, "Medication", class: "block text-gray-700 text-sm font-bold mb-2" %>
-      <%= form.text_field :medication, value: params[:medication], class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-    </div>
+<details class="collapse bg-base-200 collapse-arrow">
+  <summary class="collapse-title text-xl font-medium">Filters</summary>
+  <div class="collapse-content">
+    <%= form_with url: local_assigns[:url], method: :get  do |form| %>
+      <div class="mb-4 flex flex-wrap -mx-2">
+        <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
+          <%= form.label :start_time, class: "form-control w-full max-w-ws" do %>
+            <div class="label">
+              <span class="label-text">Start Date</span>
+            </div>
+            <%= form.date_field :start_time, value: params[:start_time], class: "input input-bordered w-full max-w-xs" %>
+          <% end %>
+        </div>
+        <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
+          <%= form.label :end_time, class: "form-control w-full max-w-ws" do %>
+            <div class="label">
+              <span class="label-text">End Date</span>
+            </div>
+            <%= form.date_field :end_time, value: params[:end_time], class: "input input-bordered w-full max-w-xs" %>
+          <% end %>
+        </div>
+        <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
+          <%= form.label :triggers, class: "form-control w-full max-w-ws" do %>
+            <div class="label">
+              <span class="label-text">Triggers</span>
+              <%= heroicon "magnifying-glass", variant: "micro", class: "h-4 w-4 opacity-70" %>
+            </div>
+            <%= form.text_field :triggers, value: params[:triggers], class: "input input-bordered w-full max-w-xs", placeholder: "Sleeping" %>
+          <% end %>
+        </div>
+        <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
+          <%= form.label :medication, class: "form-control w-full max-w-ws" do %>
+            <div class="label">
+              <span class="label-text">Medication</span>
+              <%= heroicon "magnifying-glass", variant: "micro", class: "h-4 w-4 opacity-70" %>
+            </div>
+            <%= form.text_field :medication, value: params[:medication], class: "input input-bordered w-full max-w-xs", placeholder: "Oxygen" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="flex items-center justify-between">
+        <%= link_to "Clear Filters", local_assigns[:url], class: "btn btn-ghost" %>
+        <%= form.submit "Apply Filters", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-  <div class="flex items-center justify-between">
-    <%= form.submit "Apply Filters", class: "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
-    <%= link_to "Clear Filters", local_assigns[:url], class: "inline-block align-baseline font-bold text-sm text-indigo-500 hover:text-indigo-800" %>
-  </div>
-<% end %>
+</details>

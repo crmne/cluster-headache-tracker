@@ -1,3 +1,4 @@
 <% content_for :title, "Charts" %>
 <% content_for :navbar, "Charts" %>
-<%= render partial: 'shared/charts', locals: { headache_logs: @headache_logs, chart_data: @chart_data } %>
+<%= render 'shared/filter_form' %>
+<%= render 'shared/charts', { headache_logs: @headache_logs, chart_data: @chart_data } %>
