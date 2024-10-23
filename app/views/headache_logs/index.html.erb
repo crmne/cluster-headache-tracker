@@ -1,6 +1,8 @@
 <% content_for :title, "Headache Logs" %>
 <% content_for :navbar, "Headache Logs" %>
 
+<%= render "shared/filter_form" %>
+
 <!-- <div class="flow-root">
   <%= link_to new_headache_log_path, class: "btn btn-primary float-right" do %>
     <%= heroicon "plus-circle" %> New Headache
