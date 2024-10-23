@@ -1,3 +1,4 @@
+<%# app/views/headache_logs/_share_link.html.erb %>
 <details class="collapse bg-base-200 collapse-arrow shadow join-item" data-accordion="share" <%= 'open' if flash[:generate_link] %>>
   <summary class="collapse-title text-xl font-medium">
     <%= heroicon "share", class: "w-6 h-6 mr-2 inline-block" %>
@@ -19,8 +20,8 @@
       <div class="text-sm opacity-75 mb-4">
         Expires in <%= distance_of_time_in_words(Time.current, share_token.expires_at) %>
       </div>
-      <div class="flex justify-between">
-        <%= button_to expire_share_link_path, method: :delete, class: "btn btn-error btn-outline flex-1", data: { turbo_confirm: "Are you sure? This will immediately invalidate the current share link." } do %>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <%= button_to expire_share_link_path, method: :delete, class: "btn btn-error btn-outline", data: { turbo_confirm: "Are you sure? This will immediately invalidate the current share link." } do %>
           <%= heroicon "trash", class: "h-4 w-4" %>
           Expire Link
         <% end %>

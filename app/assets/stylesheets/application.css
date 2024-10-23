@@ -1,3 +1,5 @@
+/* app/assets/stylesheets/application.css */
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,6 +15,33 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  flex: 1 0 auto;
+  /* Ensure minimum height pushes content past bottom nav */
+  min-height: calc(100vh - 4rem); /* subtract top navbar height */
+}
+
+/* Ensure content has enough padding to scroll past bottom nav */
+body:has(.btm-nav) {
+  padding-bottom: 4rem; /* bottom navbar height */
+}
+
+/* Add padding to main content to prevent footer from being hidden */
+body:has(.btm-nav) main {
+  margin-bottom: 4rem; /* extra space for footer */
+}
+
+footer {
+  flex-shrink: 0;
+}
 
 .loading-spinner {
   display: none;
