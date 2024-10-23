@@ -71,6 +71,7 @@ PreCommit:
     enabled: true
     auto_correct: true
     exclude:
+      - 'node_modules/**/*' # Ignore trailing whitespace in node_modules
       - '**/db/structure.sql' # Ignore trailing whitespace in generated files
 
 PrePush:

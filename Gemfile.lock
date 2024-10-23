@@ -304,6 +304,9 @@ GEM
       json
       require_all (~> 3.0)
       ruby-progressbar
+    rails_heroicon (2.3.0)
+      actionview
+      railties
     rails_real_favicon (0.1.1)
       json (>= 1.7, < 3)
       rails
@@ -476,6 +479,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.0.0.rc1)
   rails_best_practices
+  rails_heroicon
   rails_real_favicon
   rubocop-rails-omakase
   selenium-webdriver
