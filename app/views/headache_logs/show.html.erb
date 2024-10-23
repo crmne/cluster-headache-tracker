@@ -1,59 +1,12 @@
-<% content_for :title, "Headache Log Details" %>
-<div class="card bg-base-100 shadow-xl">
-  <div class="card-body">
-    <h2 class="card-title">Headache Log</h2>
-
-    <div class="stats shadow">
-      <div class="stat">
-        <div class="stat-title">Start Time</div>
-        <div class="stat-value"><%= @headache_log.start_time.strftime("%H:%M") %></div>
-        <div class="stat-desc"><%= @headache_log.start_time.strftime("%B %d, %Y") %></div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-title">End Time</div>
-        <% if @headache_log.end_time %>
-          <div class="stat-value"><%= @headache_log.end_time.strftime("%H:%M") %></div>
-          <div class="stat-desc"><%= @headache_log.end_time.strftime("%B %d, %Y") %></div>
-        <% else %>
-          <div class="stat-value text-error">Ongoing</div>
-        <% end %>
-      </div>
-
-      <div class="stat">
-        <div class="stat-title">Intensity</div>
-        <div class="stat-value"><%= @headache_log.intensity %></div>
-        <div class="stat-desc">out of 10</div>
-      </div>
-    </div>
-
-    <% if @headache_log.medication.present? %>
-      <div class="alert">
-        <span class="font-bold">Medication:</span>
-        <%= @headache_log.medication %>
-      </div>
+<% content_for :title, "Headache Log" %>
+<% content_for :navbar, "Headache Log" %>
+<div class="container mx-auto px-4">
+  <div class="flex justify-between items-center mb-6">
+    <%= link_to headache_logs_path, class: "btn btn-ghost" do %>
+      <%= heroicon "arrow-left", variant: "mini", class: "w-4 h-4" %>
+      Back to Logs
     <% end %>
-
-    <% if @headache_log.triggers.present? %>
-      <div class="alert">
-        <span class="font-bold">Triggers:</span>
-        <%= @headache_log.triggers %>
-      </div>
-    <% end %>
-
-    <% if @headache_log.notes.present? %>
-      <div class="alert">
-        <span class="font-bold">Notes:</span>
-        <%= @headache_log.notes %>
-      </div>
-    <% end %>
-
-    <div class="card-actions justify-end mt-6">
-      <%= link_to 'Edit', edit_headache_log_path(@headache_log), class: "btn btn-primary" %>
-      <%= link_to 'Back', headache_logs_path, class: "btn" %>
-      <%= button_to "Delete", headache_log_path(@headache_log), method: :delete,
-          form: { data: { turbo_confirm: "Are you sure?" } },
-          class: "btn btn-error" %>
-    </div>
   </div>
+
+  <%= render @headache_log %>
 </div>
