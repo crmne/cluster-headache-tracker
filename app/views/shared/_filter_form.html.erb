@@ -1,40 +1,40 @@
-<details class="collapse bg-base-200 collapse-arrow">
+<details class="collapse bg-base-200 collapse-arrow shadow mb-4">
   <summary class="collapse-title text-xl font-medium">Filters</summary>
   <div class="collapse-content">
     <%= form_with url: local_assigns[:url], method: :get  do |form| %>
       <div class="mb-4 flex flex-wrap -mx-2">
         <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
-          <%= form.label :start_time, class: "form-control w-full max-w-ws" do %>
+          <%= form.label :start_time, class: "form-control w-full" do %>
             <div class="label">
               <span class="label-text">Start Date</span>
             </div>
-            <%= form.date_field :start_time, value: params[:start_time], class: "input input-bordered w-full max-w-xs" %>
+            <%= form.date_field :start_time, value: params[:start_time], class: "input input-bordered w-full" %>
           <% end %>
         </div>
         <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
-          <%= form.label :end_time, class: "form-control w-full max-w-ws" do %>
+          <%= form.label :end_time, class: "form-control w-full" do %>
             <div class="label">
               <span class="label-text">End Date</span>
             </div>
-            <%= form.date_field :end_time, value: params[:end_time], class: "input input-bordered w-full max-w-xs" %>
+            <%= form.date_field :end_time, value: params[:end_time], class: "input input-bordered w-full" %>
           <% end %>
         </div>
         <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
-          <%= form.label :triggers, class: "form-control w-full max-w-ws" do %>
+          <%= form.label :triggers, class: "form-control w-full" do %>
             <div class="label">
               <span class="label-text">Triggers</span>
-              <%= heroicon "magnifying-glass", variant: "micro", class: "h-4 w-4 opacity-70" %>
+              <span class="label-text-alt"><%= heroicon "magnifying-glass", variant: "micro" %></span>
             </div>
-            <%= form.text_field :triggers, value: params[:triggers], class: "input input-bordered w-full max-w-xs", placeholder: "Sleeping" %>
+            <%= form.text_field :triggers, value: params[:triggers], class: "input input-bordered w-full", placeholder: "Sleeping" %>
           <% end %>
         </div>
         <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
-          <%= form.label :medication, class: "form-control w-full max-w-ws" do %>
+          <%= form.label :medication, class: "form-control w-full" do %>
             <div class="label">
               <span class="label-text">Medication</span>
-              <%= heroicon "magnifying-glass", variant: "micro", class: "h-4 w-4 opacity-70" %>
+              <span class="label-text-alt"><%= heroicon "magnifying-glass", variant: "micro" %></span>
             </div>
-            <%= form.text_field :medication, value: params[:medication], class: "input input-bordered w-full max-w-xs", placeholder: "Oxygen" %>
+            <%= form.text_field :medication, value: params[:medication], class: "input input-bordered w-full", placeholder: "Oxygen" %>
           <% end %>
         </div>
       </div>
