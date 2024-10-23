@@ -1,50 +1,65 @@
-<%= form_with(model: headache_log, local: true, class: "space-y-4") do |form| %>
-  <% if headache_log.errors.any? %>
-    <div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
-      <h2 class="font-bold"><%= pluralize(headache_log.errors.count, "error") %> prohibited this headache log from being saved:</h2>
+<div class="card bg-base-100 shadow-xl">
+  <div class="card-body">
+    <%= form_with(model: headache_log, local: true) do |form| %>
+      <% if headache_log.errors.any? %>
+        <div class="alert alert-error">
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <ul class="list-disc list-inside">
+            <% headache_log.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-      <ul class="list-disc list-inside">
-        <% headache_log.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Start time</span>
+        </label>
+        <%= form.datetime_local_field :start_time, class: "input input-bordered" %>
+      </div>
 
-  <div>
-    <%= form.label :start_time, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.datetime_local_field :start_time, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md", id: "headache_log_start_time" %>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">End time</span>
+        </label>
+        <%= form.datetime_local_field :end_time, class: "input input-bordered" %>
+      </div>
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Intensity (1-10)</span>
+        </label>
+        <%= form.number_field :intensity, min: 1, max: 10, class: "input input-bordered" %>
+      </div>
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Medication</span>
+        </label>
+        <%= form.text_field :medication, class: "input input-bordered" %>
+      </div>
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Triggers</span>
+        </label>
+        <%= form.text_area :triggers, class: "textarea textarea-bordered" %>
+      </div>
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Notes</span>
+        </label>
+        <%= form.text_area :notes, class: "textarea textarea-bordered" %>
+      </div>
+
+      <div class="form-control mt-6">
+        <%= form.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-
-  <div>
-    <%= form.label :end_time, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.datetime_local_field :end_time, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md", id: "headache_log_end_time" %>
-  </div>
-
-  <div>
-    <%= form.label :intensity, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.number_field :intensity, in: 1..10, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-  </div>
-
-  <div>
-    <%= form.label :medication, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.text_field :medication, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-  </div>
-
-  <div>
-    <%= form.label :triggers, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.text_area :triggers, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-  </div>
-
-  <div>
-    <%= form.label :notes, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.text_area :notes, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-  </div>
-
-  <div>
-    <%= form.submit class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-  </div>
-<% end %>
+</div>
 
 <script>
   document.addEventListener('turbo:load', function() {

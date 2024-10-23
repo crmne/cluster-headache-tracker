@@ -1,23 +1,59 @@
 <% content_for :title, "Headache Log Details" %>
-<div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
-  <h1 class="text-2xl font-bold mb-4">Headache Log Details</h1>
+<div class="card bg-base-100 shadow-xl">
+  <div class="card-body">
+    <h2 class="card-title">Headache Log</h2>
 
-  <div class="space-y-2">
-    <p><strong class="font-semibold">Start time:</strong> <%= @headache_log.start_time.strftime("%B %d, %Y at %I:%M %p") %></p>
-    <p><strong class="font-semibold">End time:</strong> <%= @headache_log.end_time&.strftime("%B %d, %Y at %I:%M %p") || "Ongoing" %></p>
-    <p><strong class="font-semibold">Intensity:</strong> <%= @headache_log.intensity %></p>
+    <div class="stats shadow">
+      <div class="stat">
+        <div class="stat-title">Start Time</div>
+        <div class="stat-value"><%= @headache_log.start_time.strftime("%H:%M") %></div>
+        <div class="stat-desc"><%= @headache_log.start_time.strftime("%B %d, %Y") %></div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-title">End Time</div>
+        <% if @headache_log.end_time %>
+          <div class="stat-value"><%= @headache_log.end_time.strftime("%H:%M") %></div>
+          <div class="stat-desc"><%= @headache_log.end_time.strftime("%B %d, %Y") %></div>
+        <% else %>
+          <div class="stat-value text-error">Ongoing</div>
+        <% end %>
+      </div>
+
+      <div class="stat">
+        <div class="stat-title">Intensity</div>
+        <div class="stat-value"><%= @headache_log.intensity %></div>
+        <div class="stat-desc">out of 10</div>
+      </div>
+    </div>
+
     <% if @headache_log.medication.present? %>
-      <p><strong class="font-semibold">Medication:</strong> <%= @headache_log.medication %></p>
+      <div class="alert">
+        <span class="font-bold">Medication:</span>
+        <%= @headache_log.medication %>
+      </div>
     <% end %>
-    <% if @headache_log.triggers.present? %>
-      <p><strong class="font-semibold">Triggers:</strong> <%= @headache_log.triggers %></p>
-    <% end %>
-    <p><strong class="font-semibold">Notes:</strong> <%= @headache_log.notes %></p>
-  </div>
 
-  <div class="mt-4">
-    <%= link_to 'Edit', edit_headache_log_path(@headache_log), class: "text-indigo-500 hover:text-indigo-700 mr-2" %>
-    <%= button_to "Delete", headache_log_path(@headache_log), method: :delete, form: {data: { turbo_confirm: "Are you sure?" }}, class: "text-red-500 hover:text-red-700" %>
-    <%= link_to 'Back', headache_logs_path, class: "text-indigo-500 hover:text-indigo-700" %>
+    <% if @headache_log.triggers.present? %>
+      <div class="alert">
+        <span class="font-bold">Triggers:</span>
+        <%= @headache_log.triggers %>
+      </div>
+    <% end %>
+
+    <% if @headache_log.notes.present? %>
+      <div class="alert">
+        <span class="font-bold">Notes:</span>
+        <%= @headache_log.notes %>
+      </div>
+    <% end %>
+
+    <div class="card-actions justify-end mt-6">
+      <%= link_to 'Edit', edit_headache_log_path(@headache_log), class: "btn btn-primary" %>
+      <%= link_to 'Back', headache_logs_path, class: "btn" %>
+      <%= button_to "Delete", headache_log_path(@headache_log), method: :delete,
+          form: { data: { turbo_confirm: "Are you sure?" } },
+          class: "btn btn-error" %>
+    </div>
   </div>
 </div>
