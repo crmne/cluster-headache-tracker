@@ -1,17 +1,29 @@
+<%# app/views/devise/passwords/new.html.erb %>
 <% content_for :title, "Forgot your password?" %>
-<div class="min-h-full flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full space-y-8">
-    <div>
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        Forgot your password?
-      </h2>
-    </div>
-    <p>
-      Since we don't store email addresses for privacy reasons, it's unfortunately impossible for us to send you password reset instructions. Please create a new account.
-    </p>
-    <div class="text-center space-x-4">
-      <%= link_to "Log in", new_session_path(resource_name), class: "font-medium text-indigo-600 hover:text-indigo-500" %>
-      <%= link_to "Sign up", new_registration_path(resource_name), class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+
+<div class="container max-w-screen-sm mx-auto px-4">
+  <div class="card bg-base-100 md:shadow-xl">
+    <div class="card-body">
+      <div class="text-center mb-8">
+        <%= image_tag "logo_small.png", class: "w-16 h-16 mx-auto mb-4" %>
+        <h2 class="text-2xl font-bold">We can't reset passwords</h2>
+      </div>
+
+      <div class="alert alert-warning shadow-lg">
+        <div>
+          <%= heroicon "exclamation-triangle", class: "h-6 w-6 shrink-0 stroke-current" %>
+          <div>
+            <h3 class="font-bold">Important Privacy Notice</h3>
+            <div class="text-sm">
+              To protect your medical data privacy, we don't store email addresses. Please create a new account if you can't access your existing one.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center space-y-4 mt-4">
+        <%= link_to "Sign in", new_session_path(resource_name), class: "btn btn-primary w-full" %>
+        <%= link_to "Create new account", new_registration_path(resource_name), class: "btn btn-outline w-full" %>
+      </div>
     </div>
   </div>
 </div>

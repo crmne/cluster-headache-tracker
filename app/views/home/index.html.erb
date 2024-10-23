@@ -1,45 +1,217 @@
 <!-- Hero Section -->
 <section class="bg-indigo-600 text-white">
-  <div class="container mx-auto px-4 py-20 flex flex-col items-center text-center">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">Cluster Headache Tracker</h1>
-    <p class="text-xl md:text-2xl mb-8">Track your cluster headaches and share them with your doctor with our free, comprehensive, privacy-focused tracking tool.</p>
-    <%= link_to "Get Started", user_signed_in? ? headache_logs_path : new_user_registration_path, class: "bg-white text-indigo-600 font-bold py-3 px-6 rounded-full text-lg hover:bg-indigo-100 transition duration-300" %>
+  <div class="hero min-h-[50vh]">
+    <div class="hero-content text-center">
+      <div class="max-w-2xl">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">Take Control of Your Cluster Headaches</h1>
+        <p class="text-xl md:text-2xl mb-8">Track your attacks, identify patterns, and share insights with your healthcare provider - all in one intuitive, privacy-focused tool.</p>
+        <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-lg btn-primary bg-white text-indigo-600 hover:bg-indigo-100 border-none mb-8" do %>
+          <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
+          Start Tracking Free
+        <% end %>
 
-    <!-- Add TestFlight and Android Beta Links -->
-    <div class="mt-8 flex flex-col sm:flex-row gap-6">
-      <a href="https://testflight.apple.com/join/GJsAQqz2" target="_blank" rel="noopener noreferrer" class="bg-blue-500 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-blue-600 transition duration-300 flex items-center justify-center">
-        <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.32 2.32-1.89 4.27-3.74 4.25z" />
-        </svg>
-        Download iOS Beta App
-      </a>
-      <a href="https://tally.so/r/w5qXLM" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-green-600 transition duration-300 flex items-center justify-center">
-        <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z" />
-        </svg>
-        Apply for Android Beta App
-      </a>
+        <!-- Mobile App Links -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://testflight.apple.com/join/GJsAQqz2" target="_blank" rel="noopener noreferrer"
+             class="btn btn-outline border-white text-white hover:bg-white hover:text-indigo-600 hover:border-white">
+            <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.32 2.32-1.89 4.27-3.74 4.25z" />
+            </svg>
+            Get iOS App (Beta)
+          </a>
+          <a href="https://tally.so/r/w5qXLM" target="_blank" rel="noopener noreferrer"
+             class="btn btn-outline border-white text-white hover:bg-white hover:text-indigo-600 hover:border-white">
+            <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z" />
+            </svg>
+            Join Android Beta
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Screen Recording Demo Section -->
-<section class="pb-20 bg-indigo-600 text-white">
+<!-- Demo Section -->
+<section class="bg-base-200 py-20">
   <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4">See How It Works</h2>
+      <p class="text-xl text-base-content/80 max-w-2xl mx-auto">A simple, intuitive interface designed specifically for tracking cluster headaches.</p>
+    </div>
     <div class="max-w-6xl mx-auto">
       <div class="aspect-w-16 aspect-h-9 relative">
-        <video id="demo-video" class="w-full h-full" controls loop muted>
+        <video id="demo-video" class="w-full h-full rounded-lg shadow-xl" controls loop muted>
           <source src="/videos/demo.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-        <div id="play-button" class="absolute inset-0 flex items-center justify-center cursor-pointer">
-          <div class="bg-gray-500 rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
-            <svg class="w-12 h-12 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 5V19L19 12L8 5Z" fill="currentColor" />
-            </svg>
+        <div id="play-button" class="absolute inset-0 flex items-center justify-center cursor-pointer bg-black/20 hover:bg-black/10 transition-colors rounded-lg">
+          <button class="btn btn-circle btn-lg bg-indigo-600 hover:bg-indigo-700 border-none">
+            <%= heroicon "play", class: "w-8 h-8" %>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-20">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4">From Our Community</h2>
+      <p class="text-xl text-base-content/80 max-w-2xl mx-auto">Real feedback from cluster headache sufferers</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <!-- Success Story -->
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <%= heroicon "check-badge", class: "w-8 h-8 text-primary mb-4" %>
+          <blockquote class="relative mb-4">
+            <p class="text-lg font-medium">
+              "I use your site for my headache tracking and it was incredibly helpful with my neuro to get oxygen [...] it's easy to use and it tracks the data I need it to track."
+            </p>
+          </blockquote>
+          <div class="flex items-center gap-2">
+            <div class="h-px flex-1 bg-base-content/10"></div>
+            <span class="text-sm font-medium opacity-70">/u/SuprN10doChlmrs</span>
+            <div class="h-px flex-1 bg-base-content/10"></div>
           </div>
         </div>
       </div>
+
+      <!-- Found Solution -->
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <%= heroicon "sparkles", class: "w-8 h-8 text-secondary mb-4" %>
+          <blockquote class="relative mb-4">
+            <p class="text-lg font-medium">
+              "This is a tool I never knew I needed. Thank you for this."
+            </p>
+          </blockquote>
+          <div class="flex items-center gap-2">
+            <div class="h-px flex-1 bg-base-content/10"></div>
+            <span class="text-sm font-medium opacity-70">/u/Guirita_Fallada</span>
+            <div class="h-px flex-1 bg-base-content/10"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Long Search -->
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <%= heroicon "heart", class: "w-8 h-8 text-accent mb-4" %>
+          <blockquote class="relative mb-4">
+            <p class="text-lg font-medium">
+              "Thank you again I've been looking for something like this"
+            </p>
+          </blockquote>
+          <div class="flex items-center gap-2">
+            <div class="h-px flex-1 bg-base-content/10"></div>
+            <span class="text-sm font-medium opacity-70">/u/Maximum-Replacement4</span>
+            <div class="h-px flex-1 bg-base-content/10"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Features Section -->
+<section id="features" class="bg-base-200 py-20">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4">Everything You Need</h2>
+      <p class="text-xl text-base-content/80 max-w-2xl mx-auto">Purpose-built features that help you understand your condition better and communicate effectively with your healthcare team.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <div class="text-4xl mb-4">📊</div>
+          <h3 class="card-title">Smart Analytics</h3>
+          <p>Visualize patterns in your headache cycles, track effectiveness of treatments, and identify potential triggers through interactive charts.</p>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <div class="text-4xl mb-4">⚡️</div>
+          <h3 class="card-title">Quick Logging</h3>
+          <p>Log attacks in seconds with our streamlined interface. Track intensity, duration, medications, and triggers with just a few taps.</p>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <div class="text-4xl mb-4">🩺</div>
+          <h3 class="card-title">Doctor-Ready Reports</h3>
+          <p>Share your detailed history securely with your healthcare provider. Many users have successfully used these reports to get oxygen therapy approved.</p>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <div class="text-4xl mb-4">📱</div>
+          <h3 class="card-title">Cross-Platform Access</h3>
+          <p>Track your headaches from any device. Native apps available for iOS and Android (beta), plus a full-featured web interface.</p>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <div class="text-4xl mb-4">🔒</div>
+          <h3 class="card-title">Privacy First</h3>
+          <p>Your data is encrypted and stored in Germany. No email required - just choose a username to get started.</p>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <div class="text-4xl mb-4">💪</div>
+          <h3 class="card-title">Built by Patients</h3>
+          <p>Created by cluster headache sufferers, for cluster headache sufferers. We understand because we live it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Open Source Section -->
+<section class="bg-emerald-500 text-white py-16">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-4">Community-Driven & Free Forever</h2>
+    <p class="text-xl mb-8 max-w-2xl mx-auto">Join a growing community of patients and developers making cluster headache tracking better for everyone. Open source under GPL-3.0 license.</p>
+    <a href="https://github.com/crmne/cluster_headache_tracker" target="_blank" rel="noopener noreferrer"
+       class="btn btn-outline border-white text-white hover:bg-white hover:text-emerald-600 hover:border-white">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-current" viewBox="0 0 24 24">
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+      </svg>
+      View on GitHub
+    </a>
+  </div>
+</section>
+
+<!-- Support Section -->
+<section class="bg-amber-500 text-white py-16">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-4">Support This Project</h2>
+    <p class="text-xl mb-8 max-w-2xl mx-auto">Help us keep developing better tools for the cluster headache community. Every contribution helps us stay independent and free for everyone.</p>
+    <a href="https://buymeacoffee.com/crmne" target="_blank" rel="noopener noreferrer"
+       class="btn btn-outline border-white text-white hover:bg-white hover:text-amber-500 hover:border-white">
+      🍕 Buy Me a Pizza
+    </a>
+  </div>
+</section>
+
+<!-- Final CTA Section -->
+<section class="py-20">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-4">Ready to Take Control?</h2>
+    <p class="text-xl text-base-content/80 max-w-2xl mx-auto mb-8">Join thousands of cluster headache sufferers who are better understanding and managing their condition.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-lg btn-primary" do %>
+        <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
+        <%= user_signed_in? ? "Go to My Logs" : "Start Free Tracking" %>
+      <% end %>
+
+      <%= link_to faq_path, class: "btn btn-lg btn-outline" do %>
+        <%= heroicon "question-mark-circle", variant: "mini", class: "w-5 h-5" %>
+        Learn More
+      <% end %>
     </div>
   </div>
 </section>
@@ -49,7 +221,7 @@
     const video = document.getElementById('demo-video');
     const playButton = document.getElementById('play-button');
 
-    // Set playback rate to 0.5 (50% speed)
+    // Set playback rate to 0.75 (75% speed)
     video.playbackRate = 0.75;
 
     playButton.addEventListener('click', function() {
@@ -67,89 +239,9 @@
       playButton.style.display = 'none';
     });
 
-    // Ensure the playback rate is set to 0.5 whenever the video loads or is reset
+    // Ensure the playback rate is set whenever the video loads
     video.addEventListener('loadedmetadata', function() {
       video.playbackRate = 0.75;
     });
   });
 </script>
-
-<!-- Features Section -->
-<section id="features" class="py-20">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12">Features</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <div class="text-4xl mb-4">📝</div>
-        <h3 class="text-xl font-semibold mb-4">Detailed Logging</h3>
-        <p>Record intensity, duration, triggers, and medications for each headache episode.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <div class="text-4xl mb-4">📊</div>
-        <h3 class="text-xl font-semibold mb-4">Visual Insights</h3>
-        <p>Gain valuable insights with interactive charts and graphs showing your headache patterns over time.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <div class="text-4xl mb-4">🩺</div>
-        <h3 class="text-xl font-semibold mb-4">Share with Doctors</h3>
-        <p>Generate shareable reports to collaborate effectively with your healthcare providers.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <div class="text-4xl mb-4">💾</div>
-        <h3 class="text-xl font-semibold mb-4">Data Import/Export</h3>
-        <p>Easily import and export your headache logs in CSV format for backup or analysis.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <div class="text-4xl mb-4">🔒</div>
-        <h3 class="text-xl font-semibold mb-4">Privacy-Focused</h3>
-        <p>We don't store any personally identifiable information. Users are identified by a username, not an email address.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <div class="text-4xl mb-4">🇪🇺</div>
-        <h3 class="text-xl font-semibold mb-4">EU-Based</h3>
-        <p>Our servers are hosted in Germany, ensuring compliance with strict EU data protection regulations.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Open Source Section -->
-<section class="bg-green-500 py-16">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold mb-4 text-white">Open Source & Free</h2>
-    <p class="text-xl mb-8 text-white">Cluster Headache Tracker is completely free to use and open source under the GPL-3.0 license. Contribute to its development on GitHub!</p>
-    <a href="https://github.com/crmne/cluster_headache_tracker" target="_blank" rel="noopener noreferrer" class="bg-white text-green-600 font-bold py-3 px-6 rounded-full text-lg hover:bg-green-100 transition duration-300">View on GitHub</a>
-  </div>
-</section>
-
-<!-- Privacy Section -->
-<section class="bg-blue-100 py-16">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold mb-4 text-blue-800">Your Privacy Matters</h2>
-    <p class="text-xl mb-8 text-blue-700">We prioritize your privacy and data security. No personally identifiable information is stored, and all data is hosted on secure servers in Germany.</p>
-    <div class="mt-4">
-      <%= link_to "Read Our Privacy Policy", privacy_policy_path, class: "bg-blue-500 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-blue-600 transition duration-300" %>
-    </div>
-  </div>
-</section>
-
-<!-- Donation Section -->
-<section id="donate" class="bg-yellow-100 py-16">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold mb-4 text-yellow-800">Support This Project</h2>
-    <p class="text-xl mb-8 text-yellow-700">Cluster Headache Tracker is free to use, but your support helps keep it running and improving. If you find this tool valuable, please consider making a donation.</p>
-    <a href="https://buymeacoffee.com/crmne" target="_blank" rel="noopener noreferrer" class="bg-yellow-500 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-yellow-600 transition duration-300">🍕 Buy Me a Pizza</a>
-  </div>
-</section>
-
-<!-- Call to Action -->
-<section class="py-20">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold mb-8">Ready to Take Control?</h2>
-    <% if user_signed_in? %>
-      <%= link_to "Start Logging Your Headaches", headache_logs_path, class: "bg-indigo-600 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-indigo-700 transition duration-300" %>
-    <% else %>
-      <%= link_to "Create Your Free Account", new_user_registration_path, class: "bg-indigo-600 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-indigo-700 transition duration-300" %>
-    <% end %>
-  </div>
-</section>
