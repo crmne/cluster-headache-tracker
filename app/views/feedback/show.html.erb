@@ -1,0 +1,34 @@
+<%# app/views/feedback/show.html.erb %>
+<% content_for :title, "Help us improve Cluster Headache Tracker" %>
+<% content_for :navbar, "Feedback" %>
+
+<div class="container mx-auto px-4" data-controller="tally">
+  <div class="relative min-h-[800px]">
+    <%# Loading state %>
+    <div class="absolute inset-0 flex items-center justify-center bg-base-200"
+         data-tally-loading-indicator>
+      <span class="loading loading-spinner loading-lg text-primary"></span>
+    </div>
+
+    <iframe
+      data-tally-src="https://tally.so/r/31JxWO?transparentBackground=1"
+      width="100%"
+      height="800"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0"
+      title="Help us improve Cluster Headache Tracker"
+      onload="this.previousElementSibling.style.display = 'none'">
+    </iframe>
+  </div>
+</div>
+
+<% content_for :head do %>
+  <script>
+    // Add a flag when Tally script is loaded
+    window.onTallyLoad = function() {
+      document.dispatchEvent(new Event('tally-loaded'))
+    }
+  </script>
+  <script async src="https://tally.so/widgets/embed.js" onload="window.onTallyLoad()"></script>
+<% end %>

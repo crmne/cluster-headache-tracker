@@ -1,0 +1,46 @@
+<% if notice || flash[:notice] %>
+  <div role="alert" class="alert alert-success mb-4 shadow">
+    <%= heroicon "check-circle", class: "h-6 w-6 shrink-0 stroke-current" %>
+    <span><%= notice || flash[:notice] %></span>
+  </div>
+<% end %>
+
+<% if flash[:info] %>
+  <div role="alert" class="alert alert-info mb-4 shadow">
+    <%= heroicon "information-circle", class: "h-6 w-6 shrink-0 stroke-current" %>
+    <span><%= flash[:info] %></span>
+  </div>
+<% end %>
+
+<% if alert || flash[:alert] %>
+  <div role="alert" class="alert alert-warning mb-4 shadow">
+    <%= heroicon "exclamation-triangle", class: "h-6 w-6 shrink-0 stroke-current" %>
+    <span><%= alert || flash[:alert] %></span>
+  </div>
+<% end %>
+
+<% if flash[:error] %>
+  <div role="alert" class="alert alert-error mb-4 shadow">
+    <%= heroicon "x-circle", class: "h-6 w-6 shrink-0 stroke-current" %>
+    <span><%= flash[:error] %></span>
+  </div>
+<% end %>
+
+<%# For devise error messages or form errors %>
+<% if resource&.errors&.any? %>
+  <div role="alert" class="alert alert-error mb-4 shadow">
+    <%= heroicon "x-circle", class: "h-6 w-6 shrink-0 stroke-current" %>
+    <div>
+      <div class="font-bold">
+        <%= I18n.t("errors.messages.not_saved",
+                  count: resource.errors.count,
+                  resource: resource.class.model_name.human.downcase) %>
+      </div>
+      <ul class="mt-2 list-disc list-inside">
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

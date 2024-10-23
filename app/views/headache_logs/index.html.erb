@@ -16,17 +16,6 @@
   <%= render @headache_logs %>
 </ul>
 
-<div class="mt-8 bg-white shadow-md rounded-lg p-6">
-  <h2 class="text-2xl font-semibold mb-4">Import/Export Headache Logs</h2>
-  <div class="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
-    <%= link_to "Export CSV", export_headache_logs_path(format: :csv), class: "bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-center" %>
-    <%= form_tag import_headache_logs_path, multipart: true, class: "flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-2" do %>
-      <%= file_field_tag :file, accept: '.csv', class: "border p-2 rounded w-full sm:w-auto" %>
-      <%= submit_tag "Import CSV", class: "bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded w-full sm:w-auto" %>
-    <% end %>
-  </div>
-</div>
-
 <script>
   function copyShareLink() {
     var copyText = document.getElementById("share-link");
