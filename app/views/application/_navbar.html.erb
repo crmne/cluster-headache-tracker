@@ -14,7 +14,7 @@
         <% end %>
       </ul>
     </div>
-    <%= link_to user_signed_in? ? headache_logs_path : root_path, class: "btn btn-ghost text-xl" do %>
+    <%= link_to user_signed_in? ? headache_logs_path : root_path, class: "btn btn-ghost" do %>
       <%= image_tag "logo_small.png", size: 32 %> <span class="hidden md:block">Cluster Headache Tracker</span>
     <% end %>
   </div>
