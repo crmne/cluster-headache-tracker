@@ -1,17 +1,47 @@
-<nav class="navbar bg-primary text-primary-content drop-shadow">
+<nav class="navbar bg-primary text-primary-content drop-shadow relative z-50">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
         <%= heroicon "bars-3-bottom-left", class: "w-5 h-5" %>
       </div>
-      <ul
-        tabindex="0"
-        class="menu menu-sm dropdown-content bg-primary rounded-box z-[1] mt-3 w-32 p-2 shadow">
-        <li><%= link_to faq_path do %><%= heroicon "question-mark-circle", variant: "micro" %> FAQ <% end %></li>
+      <ul tabindex="0"
+          class="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-primary rounded-box w-52">
         <% if user_signed_in? %>
           <li><%= link_to headache_logs_path do %><%= heroicon "calendar-days", variant: "micro" %> Logs<% end %></li>
-          <li><%= link_to charts_path do %><%= heroicon "chart-bar", variant: "micro" %> Charts <% end %></li>
+          <li><%= link_to charts_path do %><%= heroicon "chart-bar", variant: "micro" %> Charts<% end %></li>
+          <li><%= link_to new_headache_log_path do %><%= heroicon "plus-circle", variant: "micro" %> New Log<% end %></li>
+          <li><%= link_to settings_path do %><%= heroicon "user", variant: "micro" %> Account Settings<% end %></li>
+          <li><%= link_to feedback_path do %><%= heroicon "chat-bubble-left-ellipsis", variant: "micro" %> Feedback<% end %></li>
         <% end %>
+
+        <li class="menu-title">Resources</li>
+        <li><%= link_to faq_path do %><%= heroicon "question-mark-circle", variant: "micro" %> FAQ<% end %></li>
+        <li>
+          <%= link_to "https://github.com/crmne/cluster_headache_tracker", target: "_blank", rel: "noopener noreferrer" do %>
+            <%= heroicon "code-bracket", variant: "micro" %> Source Code
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "https://buymeacoffee.com/crmne", target: "_blank", rel: "noopener noreferrer" do %>
+            <%= heroicon "heart", variant: "micro" %> Support Project
+          <% end %>
+        </li>
+
+        <li class="menu-title">Mobile Apps</li>
+        <li>
+          <%= link_to "https://testflight.apple.com/join/GJsAQqz2", target: "_blank", rel: "noopener noreferrer" do %>
+            <%= heroicon "device-phone-mobile", variant: "micro" %> iOS Beta
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "https://tally.so/r/w5qXLM", target: "_blank", rel: "noopener noreferrer" do %>
+            <%= heroicon "device-phone-mobile", variant: "micro" %> Android Beta Signup
+          <% end %>
+        </li>
+
+        <li class="menu-title">Legal</li>
+        <li><%= link_to privacy_policy_path do %><%= heroicon "shield-check", variant: "micro" %> Privacy Policy<% end %></li>
+        <li><%= link_to imprint_path do %><%= heroicon "document-text", variant: "micro" %> Imprint<% end %></li>
       </ul>
     </div>
     <%= link_to user_signed_in? ? headache_logs_path : root_path, class: "btn btn-ghost" do %>

@@ -46,13 +46,13 @@
           </span>
         </label>
         <div class="flex items-center gap-4">
-          <input type="range" min="1" max="10" 
-                 class="range flex-1" 
+          <input type="range" min="1" max="10"
+                 class="range flex-1"
                  name="headache_log[intensity]"
                  value="<%= headache_log.intensity || 5 %>"
                  data-intensity-target="slider"
                  data-action="input->intensity#update"
-                 style="background: linear-gradient(to right, hsl(120, 80%, 40%), hsl(60, 80%, 40%), hsl(0, 80%, 40%))" />
+                 style="background: linear-gradient(to right, hsl(120, 80%, 40%), hsl(60, 80%, 40%), hsl(0, 80%, 40%))">
           <div class="radial-progress" style="--size:3rem;" data-intensity-target="badge">
             <span class="text-lg font-bold" data-intensity-target="value"><%= headache_log.intensity || 5 %></span>
           </div>
