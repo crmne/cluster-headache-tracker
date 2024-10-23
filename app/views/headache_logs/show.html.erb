@@ -1,12 +1,6 @@
 <% content_for :title, "Headache Log" %>
 <% content_for :navbar, "Headache Log" %>
-<div class="container mx-auto px-4">
-  <div class="flex justify-between items-center mb-6">
-    <%= link_to headache_logs_path, class: "btn btn-ghost" do %>
-      <%= heroicon "arrow-left", variant: "mini", class: "w-4 h-4" %>
-      Back to Logs
-    <% end %>
-  </div>
 
-  <%= render @headache_log %>
-</div>
+<%= render 'shared/back', back_path: headache_logs_path %>
+
+<%= render @headache_log %>
