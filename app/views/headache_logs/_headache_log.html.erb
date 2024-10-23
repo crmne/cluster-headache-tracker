@@ -1,24 +1,50 @@
-<li>
-  <div class="timeline-middle">
-    <%= heroicon "face-frown", variant: "mini" %>
-  </div>
-  <div class="<%= cycle('timeline-start md:text-end', 'timeline-end') %> mb-10">
-    <span class="text-lg font-black"><%= headache_log.start_time.strftime("%B %d, %Y") %></span>
-    <time class="font-mono italic"><%= headache_log.start_time.strftime("%I:%M %p") %> - <%= headache_log.end_time.present? ? headache_log.end_time.strftime("%I:%M %p") + " (" + distance_of_time_in_words(headache_log.end_time, headache_log.start_time) + ")" : "Ongoing" %></time>
-    <div class="text-lg font-black">Cluster Headache, <%= headache_log.intensity %></div>
-    <% if headache_log.medication.present? %>
-      <div class="badge badge-outline badge-primary"><%= headache_log.medication %></div>
-    <% end %>
-    <% if headache_log.triggers.present? %>
-      <div class="badge badge-outline badge-secondary"><%= headache_log.triggers %></div>
-    <% end %>
-    <% if headache_log.notes.present? %>
-      <p><%= headache_log.notes %></p>
-    <% end %>
-    <div class="mt-2">
-      <%= link_to "Edit", edit_headache_log_path(headache_log), class: "link link-primary" %>
-      <%= button_to "Delete", headache_log_path(headache_log), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "link link-error" %>
-    </div>
-  </div>
-  <hr>
-</li>
+<div class="card bg-base-100 shadow-xl mb-4">
+        <div class="card-body">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="card-title"><%= headache_log.start_time.strftime("%B %d, %Y") %></h3>
+              <p class="text-sm opacity-70">
+                <%= headache_log.start_time.strftime("%I:%M %p") %> - 
+                <%= headache_log.end_time.present? ? 
+                    "#{headache_log.end_time.strftime("%I:%M %p")} (#{distance_of_time_in_words(headache_log.end_time, headache_log.start_time)})" : 
+                    "Ongoing" %>
+              </p>
+            </div>
+            <div class="badge badge-lg">
+              Intensity: <%= headache_log.intensity %>/10
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-2">
+            <% if headache_log.medication.present? %>
+              <div class="badge badge-primary"><%= headache_log.medication %></div>
+            <% end %>
+            <% if headache_log.triggers.present? %>
+              <div class="badge badge-secondary"><%= headache_log.triggers %></div>
+            <% end %>
+          </div>
+
+          <% if headache_log.notes.present? %>
+            <div class="mt-2 text-sm opacity-70">
+              <%= headache_log.notes %>
+            </div>
+          <% end %>
+
+          <div class="card-actions justify-end mt-4">
+            <%= link_to edit_headache_log_path(headache_log), class: "btn btn-sm btn-ghost" do %>
+              <%= heroicon "pencil-square", variant: "mini", class: "w-4 h-4" %>
+              Edit
+            <% end %>
+            <%= link_to headache_log_path(headache_log), class: "btn btn-sm btn-ghost" do %>
+              <%= heroicon "eye", variant: "mini", class: "w-4 h-4" %>
+              View
+            <% end %>
+            <%= button_to headache_log_path(headache_log), method: :delete, 
+                data: { turbo_confirm: "Are you sure?" }, 
+                class: "btn btn-sm btn-ghost btn-error" do %>
+              <%= heroicon "trash", variant: "mini", class: "w-4 h-4" %>
+              Delete
+            <% end %>
+          </div>
+        </div>
+      </div>
