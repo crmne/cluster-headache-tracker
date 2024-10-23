@@ -1,7 +1,10 @@
-<% content_for :title, "New headache log" %>
-<div class="container mx-auto mt-8 px-4">
-  <div class="mx-auto md:w-2/3 w-full">
-    <h1 class="font-bold text-4xl">New headache log</h1>
-    <%= render "form", headache_log: @headache_log %>
-  </div>
+<% content_for :title, "New Headache Log" %>
+<% content_for :navbar, "New Headache Log" %>
+<div class="flex justify-between items-center mb-6">
+  <%= link_to headache_logs_path, class: "btn btn-ghost" do %>
+    <%= heroicon "arrow-left", variant: "mini", class: "w-4 h-4" %>
+    Back to Logs
+  <% end %>
 </div>
+
+<%= render 'form', headache_log: @headache_log %>

@@ -1,7 +1,8 @@
+<%# app/views/headache_logs/index.html.erb %>
 <% content_for :title, "Headache Logs" %>
 <% content_for :navbar, "Headache Logs" %>
 
-<div class="join join-vertical w-full">
+<div class="join join-vertical w-full mb-4">
   <%= render "share_link" %>
   <%= render "shared/filter_form" %>
 </div>
@@ -9,6 +10,6 @@
 <%= render "stats" %>
 
 <%= turbo_stream_from current_user, "headache_logs" %>
-<ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
   <%= render @headache_logs %>
-</ul>
+</div>
