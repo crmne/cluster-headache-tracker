@@ -4,9 +4,9 @@
             <div>
               <h3 class="card-title"><%= headache_log.start_time.strftime("%B %d, %Y") %></h3>
               <p class="text-sm opacity-70">
-                <%= headache_log.start_time.strftime("%I:%M %p") %> - 
-                <%= headache_log.end_time.present? ? 
-                    "#{headache_log.end_time.strftime("%I:%M %p")} (#{distance_of_time_in_words(headache_log.end_time, headache_log.start_time)})" : 
+                <%= headache_log.start_time.strftime("%I:%M %p") %> -
+                <%= headache_log.end_time.present? ?
+                    "#{headache_log.end_time.strftime("%I:%M %p")} (#{distance_of_time_in_words(headache_log.end_time, headache_log.start_time)})" :
                     "Ongoing" %>
               </p>
             </div>
@@ -39,8 +39,8 @@
               <%= heroicon "eye", variant: "mini", class: "w-4 h-4" %>
               View
             <% end %>
-            <%= button_to headache_log_path(headache_log), method: :delete, 
-                data: { turbo_confirm: "Are you sure?" }, 
+            <%= button_to headache_log_path(headache_log), method: :delete,
+                data: { turbo_confirm: "Are you sure?" },
                 class: "btn btn-sm btn-ghost btn-error" do %>
               <%= heroicon "trash", variant: "mini", class: "w-4 h-4" %>
               Delete

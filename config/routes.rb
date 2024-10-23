@@ -22,8 +22,9 @@ Rails.application.routes.draw do
   # Shared Logs
   get "shared_logs/:token", to: "shared_logs#index", as: :shared_logs
 
-  # Generate Share Link
+  # Share Link
   post "generate_share_link", to: "headache_logs#generate_share_link"
+  delete "expire_share_link", to: "headache_logs#expire_share_link"
 
   # Charts
   get "charts/index"

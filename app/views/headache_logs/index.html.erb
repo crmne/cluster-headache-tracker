@@ -1,13 +1,10 @@
 <% content_for :title, "Headache Logs" %>
 <% content_for :navbar, "Headache Logs" %>
 
-<%= render "shared/filter_form" %>
-
-<!-- <div class="flow-root">
-  <%= link_to new_headache_log_path, class: "btn btn-primary float-right" do %>
-    <%= heroicon "plus-circle" %> New Headache
-  <% end %>
-</div> -->
+<div class="join join-vertical w-full">
+  <%= render "share_link" %>
+  <%= render "shared/filter_form" %>
+</div>
 
 <%= render "stats" %>
 
@@ -15,15 +12,3 @@
 <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
   <%= render @headache_logs %>
 </ul>
-
-<script>
-  function copyShareLink() {
-    var copyText = document.getElementById("share-link");
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); // For mobile devices
-    document.execCommand("copy");
-
-    // Optional: Provide user feedback
-    alert("Copied the link: " + copyText.value);
-  }
-</script>

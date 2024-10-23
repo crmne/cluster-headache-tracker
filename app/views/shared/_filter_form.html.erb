@@ -1,5 +1,8 @@
-<details class="collapse bg-base-200 collapse-arrow shadow mb-4">
-  <summary class="collapse-title text-xl font-medium">Filters</summary>
+<details class="collapse bg-base-200 collapse-arrow shadow mb-4 join-item" data-accordion="filters">
+  <summary class="collapse-title text-xl font-medium">
+    <%= heroicon "funnel", class: "w-6 h-6 mr-2 inline-block" %>
+    Filters
+  </summary>
   <div class="collapse-content">
     <%= form_with url: local_assigns[:url], method: :get  do |form| %>
       <div class="mb-4 flex flex-wrap -mx-2">
