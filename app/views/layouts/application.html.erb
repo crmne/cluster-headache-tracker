@@ -23,7 +23,6 @@
     <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <script async src="https://tally.so/widgets/embed.js"></script>
     <% if Rails.env.production? %>
       <script defer data-domain="clusterheadachetracker.com" src="https://plausible.io/js/script.js"></script>
     <% end %>
@@ -36,13 +35,7 @@
       <% else %>
         <div class="container mx-auto mt-8 px-4">
           <div class="w-full">
-            <% if notice.present? %>
-              <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-            <% else %>
-              <% flash.each do |key, value| %>
-                <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="<%= key %>"><%= value %></p>
-              <% end %>
-            <% end %>
+            <%= render 'flash_messages', resource: local_assigns[:resource] %>
             <%= yield %>
           </div>
         </div>

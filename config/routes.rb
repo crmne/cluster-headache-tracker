@@ -35,4 +35,11 @@ Rails.application.routes.draw do
       post :import
     end
   end
+
+  resource :settings, only: [ :show ], controller: "users/settings" do
+    patch :update_username
+    patch :update_password
+  end
+
+  resource :feedback, only: [ :show ], controller: "feedback"
 end

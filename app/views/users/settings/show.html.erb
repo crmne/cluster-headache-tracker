@@ -1,0 +1,106 @@
+<% content_for :title, "Account Settings" %>
+<% content_for :navbar, "Account Settings" %>
+
+<%= render 'application/flash_messages', resource: @user %>
+
+<!-- Data Management Section -->
+<div class="card bg-base-100 shadow-xl mb-6">
+  <div class="card-body">
+    <h2 class="card-title">Data Management</h2>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <button onclick="import_modal.showModal()" class="btn btn-secondary">
+        <%= heroicon "arrow-up-tray", variant: "mini" %>
+        Import CSV
+      </button>
+      <%= link_to export_headache_logs_path(format: :csv), class: "btn btn-accent" do %>
+        <%= heroicon "arrow-down-tray", variant: "mini" %>
+        Export CSV
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Change Username Section -->
+<div class="card bg-base-100 shadow-xl mb-6">
+  <div class="card-body">
+    <h2 class="card-title">Change Username</h2>
+    <%= form_for(@user, url: update_username_settings_path, method: :patch, html: { class: "form-control w-full max-w-md" }) do |f| %>
+      <div class="mb-4">
+        <%= f.label :username, class: "label" do %>
+          <span class="label-text">New Username</span>
+        <% end %>
+        <%= f.text_field :username, class: "input input-bordered w-full" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :current_password, class: "label" do %>
+          <span class="label-text">Current Password <span class="text-error">(required)</span></span>
+        <% end %>
+        <%= f.password_field :current_password, class: "input input-bordered w-full" %>
+      </div>
+
+      <div class="card-actions">
+        <%= f.submit "Update Username", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- Change Password Section -->
+<div class="card bg-base-100 shadow-xl mb-6">
+  <div class="card-body">
+    <h2 class="card-title">Change Password</h2>
+    <%= form_for(@user, url: update_password_settings_path, method: :patch, html: { class: "form-control w-full max-w-md" }) do |f| %>
+      <div class="mb-4">
+        <%= f.label :current_password, class: "label" do %>
+          <span class="label-text">Current Password <span class="text-error">(required)</span></span>
+        <% end %>
+        <%= f.password_field :current_password, class: "input input-bordered w-full" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :password, class: "label" do %>
+          <span class="label-text">New Password
+            <% if @minimum_password_length %>
+              <span class="text-info">(<%= @minimum_password_length %> characters minimum)</span>
+            <% end %>
+          </span>
+        <% end %>
+        <%= f.password_field :password, class: "input input-bordered w-full" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :password_confirmation, class: "label" do %>
+          <span class="label-text">Confirm New Password</span>
+        <% end %>
+        <%= f.password_field :password_confirmation, class: "input input-bordered w-full" %>
+      </div>
+
+      <div class="card-actions">
+        <%= f.submit "Update Password", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- Import Modal -->
+<dialog id="import_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg mb-4">Import Headache Logs</h3>
+    <%= form_tag import_headache_logs_path, multipart: true, class: "space-y-4" do %>
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text">Choose CSV File</span>
+        </label>
+        <%= file_field_tag :file, accept: '.csv', class: "file-input file-input-bordered w-full" %>
+      </div>
+      <div class="modal-action">
+        <%= submit_tag "Import", class: "btn btn-primary" %>
+        <button type="button" class="btn" onclick="import_modal.close()">Cancel</button>
+      </div>
+    <% end %>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
