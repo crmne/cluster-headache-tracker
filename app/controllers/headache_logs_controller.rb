@@ -64,7 +64,13 @@ class HeadacheLogsController < ApplicationController
   def generate_share_link
     share_token = current_user.generate_share_token
     @share_link = shared_logs_url(token: share_token.token)
+    flash[:generate_link] = true
     redirect_to headache_logs_path, notice: "Share link generated successfully."
+  end
+
+  def expire_share_link
+    current_user.share_tokens.destroy_all
+    redirect_to headache_logs_path, notice: "Share link has been expired."
   end
 
   def export
