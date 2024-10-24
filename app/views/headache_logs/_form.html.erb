@@ -1,4 +1,3 @@
-<%# app/views/headache_logs/_form.html.erb %>
 <div class="card bg-base-100 shadow-xl">
   <div class="card-body">
     <%= form_with(model: headache_log, local: true, class: "space-y-6") do |form| %>
@@ -150,7 +149,19 @@
 
       <%# Submit Button %>
       <div class="form-control mt-6">
-        <%= form.submit class: "btn btn-primary" %>
+        <%= form.submit class: "btn btn-primary w-full" %>
+      </div>
+    <% end %>
+
+    <% if headache_log.persisted? %>
+      <div class="form-control mt-2">
+        <%= button_to headache_log_path(headache_log),
+          method: :delete,
+          class: "btn btn-outline btn-error w-full",
+          form: { data: { turbo_confirm: "Are you sure you want to delete this headache log?" } } do %>
+          <%= heroicon "trash", variant: "mini", class: "w-4 h-4" %>
+          Delete
+        <% end %>
       </div>
     <% end %>
   </div>
