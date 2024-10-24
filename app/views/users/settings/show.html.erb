@@ -1,6 +1,8 @@
 <% content_for :title, "Account Settings" %>
 <% content_for :navbar, "Account Settings" %>
-
+<% content_for :hotwire_button do %>
+  <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn" %>
+<% end %>
 <%= render 'application/flash_messages', resource: @user %>
 
 <!-- Data Management Section -->

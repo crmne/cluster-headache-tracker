@@ -4,6 +4,8 @@
 
 <%= render "ongoing_headaches" %>
 
-<%= render 'shared/back', back_path: headache_logs_path %>
+<% unless hotwire_native_app? %>
+  <%= render 'shared/back', back_path: headache_logs_path %>
+<% end %>
 
 <%= render 'form', headache_log: @headache_log %>

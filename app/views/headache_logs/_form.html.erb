@@ -1,6 +1,6 @@
 <div class="card bg-base-100 shadow-xl">
   <div class="card-body">
-    <%= form_with(model: headache_log, local: true, class: "space-y-6") do |form| %>
+    <%= form_with(model: headache_log, local: true, class: "space-y-6", id: "headache_log") do |form| %>
       <% if headache_log.errors.any? %>
         <div class="alert alert-error">
           <%= heroicon "x-circle", variant: "mini", class: "w-5 h-5" %>
@@ -151,6 +151,12 @@
       <div class="form-control mt-6">
         <%= form.submit class: "btn btn-primary w-full" %>
       </div>
+
+      <% content_for :hotwire_button do %>
+        <div class="flex items-center gap-4">
+          <%= form.submit form.send(:submit_default_value).split.first, class: "btn", form: form.object_name %>
+        </div>
+      <% end %>
     <% end %>
 
     <% if headache_log.persisted? %>
