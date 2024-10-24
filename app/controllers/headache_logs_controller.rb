@@ -4,6 +4,7 @@ class HeadacheLogsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_headache_log, only: %i[ show edit update destroy ]
   before_action :set_share_link, only: %i[ index ]
+  before_action :set_ongoing_headaches
 
   # GET /headache_logs or /headache_logs.json
   def index
@@ -119,6 +120,10 @@ class HeadacheLogsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_headache_log
     @headache_log = current_user.headache_logs.find(params[:id])
+  end
+
+  def set_ongoing_headaches
+    @ongoing_headaches = current_user.headache_logs.where(end_time: nil).order(start_time: :desc)
   end
 
   # Only allow a list of trusted parameters through.

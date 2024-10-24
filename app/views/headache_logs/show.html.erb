@@ -1,6 +1,8 @@
 <% content_for :title, "Headache Log" %>
 <% content_for :navbar, "Headache Log" %>
 
+<%= render "ongoing_headaches" %>
+
 <%= render 'shared/back', back_path: headache_logs_path %>
 
 <%= render @headache_log %>
