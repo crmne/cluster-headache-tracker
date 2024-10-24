@@ -13,19 +13,23 @@
         </div>
       <% end %>
 
-      <%# Time Selection Section %>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="form-control">
+        <div class="form-control w-full">
           <label class="label">
             <span class="label-text font-semibold flex items-center gap-2">
               <%= heroicon "clock", variant: "mini", class: "w-4 h-4" %>
               Start Time
             </span>
           </label>
-          <%= form.datetime_local_field :start_time, class: "input input-bordered" %>
+          <div class="join w-full">
+            <%= form.datetime_local_field :start_time, class: "input input-bordered join-item flex-1" %>
+            <button type="button" class="btn join-item" onclick="setCurrentTime('headache_log_start_time')">
+              Now
+            </button>
+          </div>
         </div>
 
-        <div class="form-control">
+        <div class="form-control w-full">
           <label class="label">
             <span class="label-text font-semibold flex items-center gap-2">
               <%= heroicon "clock", variant: "mini", class: "w-4 h-4" %>
@@ -33,9 +37,27 @@
             </span>
             <span class="label-text-alt opacity-70">(Leave blank if ongoing)</span>
           </label>
-          <%= form.datetime_local_field :end_time, class: "input input-bordered" %>
+          <div class="join w-full">
+            <%= form.datetime_local_field :end_time, class: "input input-bordered join-item flex-1" %>
+            <button type="button" class="btn join-item" onclick="setCurrentTime('headache_log_end_time')">
+              Now
+            </button>
+          </div>
         </div>
       </div>
+
+      <script>
+        function setCurrentTime(fieldId) {
+          const now = new Date();
+          const year = now.getFullYear();
+          const month = String(now.getMonth() + 1).padStart(2, '0');
+          const day = String(now.getDate()).padStart(2, '0');
+          const hours = String(now.getHours()).padStart(2, '0');
+          const minutes = String(now.getMinutes()).padStart(2, '0');
+
+          document.getElementById(fieldId).value = `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+      </script>
 
       <%# Intensity Section %>
       <div class="form-control" data-controller="intensity">
@@ -47,15 +69,15 @@
         </label>
         <div class="flex items-center gap-4">
           <input type="range" min="1" max="10"
-                 class="range flex-1"
-                 name="headache_log[intensity]"
-                 value="<%= headache_log.intensity || 5 %>"
-                 data-intensity-target="slider"
-                 data-action="input->intensity#update"
-                 style="background: linear-gradient(to right, hsl(120, 80%, 40%), hsl(60, 80%, 40%), hsl(0, 80%, 40%))">
-          <div class="radial-progress" style="--size:3rem;" data-intensity-target="badge">
-            <span class="text-lg font-bold" data-intensity-target="value"><%= headache_log.intensity || 5 %></span>
-          </div>
+                                      class="range flex-1"
+                                      name="headache_log[intensity]"
+                                      value="<%= headache_log.intensity || 5 %>"
+                                      data-intensity-target="slider"
+                                      data-action="input->intensity#update"
+                                      style="background: linear-gradient(to right, hsl(120, 80%, 40%), hsl(60, 80%, 40%), hsl(0, 80%, 40%))">
+                                      <div class="radial-progress" style="--size:3rem;" data-intensity-target="badge">
+                                        <span class="text-lg font-bold" data-intensity-target="value"><%= headache_log.intensity || 5 %></span>
+                                      </div>
         </div>
       </div>
 
@@ -69,7 +91,7 @@
           <span class="label-text-alt opacity-70">Separate multiple medications with +</span>
         </label>
         <%= form.text_field :medication, class: "input input-bordered",
-            placeholder: "e.g., Sumatriptan + Oxygen" %>
+          placeholder: "e.g., Sumatriptan + Oxygen" %>
       </div>
 
       <%# Triggers Section %>
@@ -82,7 +104,7 @@
           <span class="label-text-alt opacity-70">Separate multiple triggers with commas</span>
         </label>
         <%= form.text_field :triggers, class: "input input-bordered",
-            placeholder: "e.g., Alcohol, Stress, Poor Sleep" %>
+          placeholder: "e.g., Alcohol, Stress, Poor Sleep" %>
       </div>
 
       <%# Notes Section %>
@@ -94,7 +116,7 @@
           </span>
         </label>
         <%= form.text_area :notes, class: "textarea textarea-bordered h-24",
-            placeholder: "Any additional observations or details..." %>
+          placeholder: "Any additional observations or details..." %>
       </div>
 
       <%# Submit Button %>
