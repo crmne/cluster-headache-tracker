@@ -2,6 +2,8 @@
 <% content_for :title, "Edit Headache Log" %>
 <% content_for :navbar, "Edit Headache Log" %>
 
+<%= render "ongoing_headaches" %>
+
 <%= render 'shared/back', back_path: headache_logs_path %>
 
 <%= render 'form', headache_log: @headache_log %>
