@@ -1,31 +1,32 @@
 {
-  "settings": {},
+  "settings": {
+    "navigationBarStyle": {
+      "backgroundColor": "#4f46e5"
+    },
+  },
   "rules": [
     {
       "patterns": [
-        ".*"
+        "/headache_logs$",
+        "/charts$",
+        "/settings$",
+        "/feedback$"
       ],
       "properties": {
         "context": "default",
-        "pull_to_refresh_enabled": true
+        "presentation": "replace"
       }
     },
     {
       "patterns": [
-        "/headache_logs/new$"
+        "/headache_logs/new$",
+        "/headache_logs/[0-9]+/edit$"
       ],
       "properties": {
         "context": "modal",
-        "pull_to_refresh_enabled": false
+        "pull_to_refresh_enabled": false,
+        "presentation": "modal"
       }
-    },
-    {
-      "patterns": [
-        "/$"
-      ],
-      "properties": {
-        "title": "Cluster Headache Tracker"
-      }
-    },
+    }
   ]
 }

@@ -1,4 +1,4 @@
-<nav class="navbar bg-primary text-primary-content drop-shadow relative z-50">
+<nav class="navbar bg-primary text-primary-content drop-shadow relative z-50 pt-safe-offset-2">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
@@ -52,16 +52,18 @@
     <span class="font-black text-lg"><%= content_for(:navbar) %></span>
   </div>
   <div class="navbar-end">
-    <% if user_signed_in? %>
-      <div class="flex items-center gap-4 px-2">
-        <%= link_to current_user.username, settings_path, class: "btn-primary hidden md:block" %>
-        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn" %>
-      </div>
-    <% else %>
-      <div class="flex items-center gap-4">
-        <%= link_to "Sign In", new_user_session_path, class: "btn-primary" %>
-        <%= link_to "Sign Up", new_user_registration_path, class: "btn" %>
-      </div>
-    <% end %>
+      <% if user_signed_in? and hotwire_native_app? %>
+        <%= yield :hotwire_button %>
+      <% elsif user_signed_in? and not hotwire_native_app? %>
+        <div class="flex items-center gap-4 px-2">
+          <%= link_to current_user.username, settings_path, class: "btn-primary hidden md:block" %>
+          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn" %>
+        </div>
+      <% else %>
+        <div class="flex items-center gap-4">
+          <%= link_to "Sign In", new_user_session_path, class: "btn-primary" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn" %>
+        </div>
+      <% end %>
   </div>
 </nav>
