@@ -66,7 +66,7 @@
             Pain Intensity
           </span>
         <% end %>
-        
+
         <div class="flex items-center gap-4">
           <%= form.range_field :intensity,
                 in: 1..10,
@@ -76,16 +76,16 @@
                   intensity_target: "slider",
                   action: "input->intensity#slide"
                 } %>
-          <div class="radial-progress" 
-               style="--size:3rem;" 
+          <div class="radial-progress"
+               style="--size:3rem;"
                data-intensity-target="badge">
-            <span class="text-lg font-bold" 
+            <span class="text-lg font-bold"
                   data-intensity-target="value">
               <%= form.object.intensity || 5 %>
             </span>
           </div>
         </div>
-        
+
         <div class="mt-2 text-sm opacity-70" data-intensity-target="preview"></div>
       </div>
 
@@ -98,11 +98,11 @@
           </span>
           <span class="label-text-alt opacity-70">Separate multiple medications with +</span>
         <% end %>
-        <%= form.text_field :medication, 
+        <%= form.text_field :medication,
               class: "input input-bordered",
               placeholder: "e.g., Sumatriptan + Oxygen",
               list: "common-medications" %>
-        
+
         <datalist id="common-medications">
           <option value="Sumatriptan">
           <option value="Oxygen">
@@ -121,11 +121,11 @@
           </span>
           <span class="label-text-alt opacity-70">Separate multiple triggers with commas</span>
         <% end %>
-        <%= form.text_field :triggers, 
+        <%= form.text_field :triggers,
               class: "input input-bordered",
               placeholder: "e.g., Alcohol, Stress, Poor Sleep",
               list: "common-triggers" %>
-        
+
         <datalist id="common-triggers">
           <option value="Alcohol">
           <option value="Stress">
@@ -143,7 +143,7 @@
             Notes
           </span>
         <% end %>
-        <%= form.text_area :notes, 
+        <%= form.text_area :notes,
               class: "textarea textarea-bordered h-24",
               placeholder: "Any additional observations or details..." %>
       </div>

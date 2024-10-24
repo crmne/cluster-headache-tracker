@@ -11,7 +11,7 @@
 
     <% if @share_link && (share_token = current_user.share_tokens.last) %>
       <div class="join join-horizontal w-full mb-4">
-        <input type="text" readonly id="share-link" value="<%= @share_link %>" class="input input-bordered join-item w-full">
+        <input type="text" readonly id="share-link" autocomplete="off" value="<%= @share_link %>" class="input input-bordered join-item w-full">
         <button onclick="copyShareLink(this)" class="btn btn-primary join-item min-w-24">
           <%= heroicon "clipboard", variant: "mini", class: "h-4 w-4" %>
           <span>Copy</span>
