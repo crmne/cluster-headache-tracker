@@ -1,22 +1,22 @@
 <% unless current_page? root_path or current_page? faq_path or current_page? imprint_path or current_page? privacy_policy_path %>
 <div class="btm-nav drop-shadow-2xl">
-  <%= link_to headache_logs_path, class: "text-primary #{if current_page? headache_logs_path then 'active' end}" do %>
+  <%= link_to headache_logs_path, class: "#{if current_page? headache_logs_path then 'active' end}" do %>
     <%= heroicon "calendar-days", variant: "solid" %>
     <span class="btm-nav-label font-bold">Logs</span>
   <% end %>
-  <%= link_to charts_path, class: "text-primary #{if current_page? charts_path then 'active' end}" do %>
+  <%= link_to charts_path, class: "#{if current_page? charts_path then 'active' end}" do %>
     <%= heroicon "chart-bar", variant: "solid" %>
     <span class="btm-nav-label font-bold">Charts</span>
   <% end %>
-  <%= link_to new_headache_log_path, class: "text-secondary #{if current_page? new_headache_log_path then 'active' end}" do %>
+  <%= link_to new_headache_log_path, class: "text-primary #{if current_page? new_headache_log_path then 'active' end}" do %>
     <%= heroicon "plus-circle", variant: "solid", size: 40 %>
     <span class="btm-nav-label font-bold">New</span>
   <% end %>
-  <%= link_to settings_path, class: "text-primary #{if current_page? settings_path then 'active' end}" do %>
+  <%= link_to settings_path, class: "#{if current_page? settings_path then 'active' end}" do %>
     <%= heroicon "user", variant: "solid" %>
     <span class="btm-nav-label font-bold">Account</span>
   <% end %>
-  <%= link_to feedback_path, class: "text-primary #{if current_page? feedback_path then 'active' end}" do %>
+  <%= link_to feedback_path, class: "#{if current_page? feedback_path then 'active' end}" do %>
     <%= heroicon "chat-bubble-left-ellipsis", variant: "solid" %>
     <span class="btm-nav-label font-bold">Feedback</span>
   <% end %>

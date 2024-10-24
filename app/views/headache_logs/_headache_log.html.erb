@@ -1,5 +1,5 @@
 <div class="card bg-base-100 shadow-xl mb-4">
-  <div class="card-body">
+  <div class="card-body flex flex-col h-full">
     <%# Header Section with Time and Intensity %>
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
       <div class="flex-1">
@@ -79,6 +79,9 @@
         </div>
       </div>
     <% end %>
+
+    <%# This empty div will push the actions to the bottom when content is short %>
+    <div class="flex-grow"></div>
 
     <%# Actions Section %>
     <div class="card-actions justify-end mt-6">
