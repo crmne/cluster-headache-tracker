@@ -9,8 +9,8 @@
     <span class="btm-nav-label font-bold">Charts</span>
   <% end %>
   <%= link_to new_headache_log_path, class: "text-primary #{if current_page? new_headache_log_path then 'active' end}" do %>
-    <%= heroicon "plus-circle", variant: "solid", size: 40 %>
-    <span class="btm-nav-label font-bold">New</span>
+    <%= heroicon "plus-circle", variant: "solid" %>
+    <span class="btm-nav-label font-black">New</span>
   <% end %>
   <%= link_to settings_path, class: "#{if current_page? settings_path then 'active' end}" do %>
     <%= heroicon "user", variant: "solid" %>
