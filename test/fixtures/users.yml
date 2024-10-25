@@ -1,9 +1,7 @@
 one:
-  id: 1
-  username: user1@example.com
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  username: testuser1
+  encrypted_password: <%= User.new.send(:password_digest, 'password123') %>
 
 two:
-  id: 2
-  username: user2@example.com
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  username: testuser2
+  encrypted_password: <%= User.new.send(:password_digest, 'password123') %>

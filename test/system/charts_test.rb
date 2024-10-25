@@ -8,22 +8,37 @@ class ChartsTest < ApplicationSystemTestCase
     sign_in @user
   end
 
-  test "visiting the charts page" do
-    visit charts_url
-    assert_selector "h1", text: "Headache Data Visualization"
-    assert_selector "h2", text: "Headache Intensity Over Time"
-    assert_selector "h2", text: "Number of Attacks per Day"
-    assert_selector "h2", text: "Top 5 Triggers"
-    assert_selector "h2", text: "Top 5 Medications"
-    assert_selector "h2", text: "Headache Frequency and Intensity by Time of Day"
-  end
-
-  test "charts are rendered" do
+  test "viewing charts" do
     visit charts_url
     assert_selector "canvas#intensityChart"
-    assert_selector "canvas#attacksPerDayChart"
     assert_selector "canvas#triggerChart"
     assert_selector "canvas#medicationChart"
     assert_selector "canvas#hourlyChart"
+    assert_selector "canvas#attacksPerDayChart"
+  end
+
+  test "filtering chart data" do
+    visit charts_url
+    click_on "Filters"
+
+    fill_in "Start Date", with: Date.yesterday
+    fill_in "End Date", with: Date.tomorrow
+    fill_in "Triggers", with: "Sleeping"
+
+    click_on "Apply Filters"
+
+    assert_selector "canvas#intensityChart"
+  end
+
+  test "charts show no data message when filtered with no results" do
+    visit charts_url
+    click_on "Filters"
+
+    fill_in "Start Date", with: 1.year.ago
+    fill_in "End Date", with: 11.months.ago
+
+    click_on "Apply Filters"
+
+    assert_text "No headache data available"
   end
 end

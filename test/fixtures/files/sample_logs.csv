@@ -1,0 +1,4 @@
+start_time,end_time,intensity,medication,triggers,notes
+2024-03-01 08:00:00,2024-03-01 10:30:00,7,Sumatriptan,Lack of sleep,Morning attack
+2024-03-02 23:00:00,2024-03-03 01:15:00,8,Oxygen,Alcohol,Night attack
+2024-03-04 15:30:00,2024-03-04 17:45:00,6,Sumatriptan + Oxygen,Stress,Afternoon attack
