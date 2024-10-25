@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
-  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
-  # allow_browser versions: :modern
+  before_action :set_ongoing_headaches, if: :user_signed_in?
   helper_method :hotwire_native_app?
+
+  private
+
+  def set_ongoing_headaches
+    @ongoing_headaches = current_user.headache_logs.where(end_time: nil).order(start_time: :desc)
+  end
 end

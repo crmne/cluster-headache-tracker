@@ -1,8 +1,6 @@
 <% content_for :title, "New Headache Log" %>
 <% content_for :navbar, "New Headache Log" %>
 
-<%= render "ongoing_headaches" %>
-
 <% unless hotwire_native_app? %>
   <%= render "shared/back", back_path: headache_logs_path %>
 <% end %>
