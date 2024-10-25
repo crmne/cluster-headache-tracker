@@ -22,15 +22,6 @@
     <%= render 'application/favicon' %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <% if defined? Honeybadger %>
-      <script>
-        window.honeybadgerConfig = {
-          apiKey: "<%= Honeybadger.config.yaml[:api_key] %>",
-          environment: "<%= Rails.env %>",
-          revision: "<%= Honeybadger.config.ruby[:revision] %>"
-        };
-      </script>
-    <% end %>
     <%= javascript_importmap_tags %>
     <% if Rails.env.production? %>
       <script defer data-domain="clusterheadachetracker.com" src="https://plausible.io/js/script.js"></script>

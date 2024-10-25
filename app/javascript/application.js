@@ -2,12 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import { initializeCharts } from "headache_charts"
-import Honeybadger from '@honeybadger-io/js';
 
 if (typeof window.initializeCharts == "undefined") {
   window.initializeCharts = initializeCharts;
-}
-
-if (window.honeybadgerConfig) {
-  Honeybadger.configure(window.honeybadgerConfig);
 }
