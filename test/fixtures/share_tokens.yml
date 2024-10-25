@@ -1,9 +1,9 @@
 one:
-  user_id: 1
-  token: MyString
-  expires_at: 2024-08-13 09:57:16
+  user: one
+  token: <%= SecureRandom.urlsafe_base64(16) %>
+  expires_at: <%= 30.days.from_now %>
 
 two:
-  user_id: 2
-  token: MyString
-  expires_at: 2024-08-13 09:57:16
+  user: two
+  token: <%= SecureRandom.urlsafe_base64(16) %>
+  expires_at: <%= 30.days.from_now %>

@@ -1,21 +1,23 @@
 one:
-  user_id: 1
+  user: one
   start_time: <%= Time.current %>
+  end_time: <%= Time.current + 2.hours %>
   medication: Zolmitriptan
   triggers: Sleeping
   intensity: 5
 
 two:
-  user_id: 2
-  start_time: <%= Time.current %>
+  user: two
+  start_time: <%= Time.current - 1.day %>
+  end_time: <%= Time.current - 1.day + 2.hours %>
   medication: Sumatriptan
   triggers: Waking up
   intensity: 7
 
 three:
-  user_id: 1
-  start_time: <%= Time.current %>
+  user: one
+  start_time: <%= Time.current - 2.days %>
+  end_time: <%= Time.current - 2.days + 2.hours %>
   medication: Sumatriptan + Oxygen
   triggers: Sleeping
   intensity: 5
-
