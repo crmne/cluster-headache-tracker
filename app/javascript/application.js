@@ -8,10 +8,6 @@ if (typeof window.initializeCharts == "undefined") {
   window.initializeCharts = initializeCharts;
 }
 
-<% if defined? Honeybadger %>
-Honeybadger.configure({
-  apiKey: "<%= Honeybadger.config.yaml[:api_key] %>",
-  environment: "<%= Rails.env %>",
-  revision: "<%= Honeybadger.config.ruby[:revision] %>",
-});
-<% end %>
+if (window.honeybadgerConfig) {
+  Honeybadger.configure(window.honeybadgerConfig);
+}

@@ -8,12 +8,12 @@
   "theme_color": "#4f46e5",
   "icons": [
     {
-      "src": <% asset_path "favicon/android-chrome-192x192.png" %>,
+      "src": "<%= asset_path 'favicon/android-chrome-192x192.png' %>",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": <% asset_path "favicon/android-chrome-512x512.png" %>,
+      "src": "<%= asset_path 'favicon/android-chrome-512x512.png' %>",
       "sizes": "512x512",
       "type": "image/png"
     }
@@ -24,14 +24,14 @@
       "short_name": "Add Log",
       "description": "Create a new headache log",
       "url": "/headache_logs/new",
-      "icons": [{ "src": "/assets/favicon/android-chrome-192x192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "<%= asset_path 'favicon/android-chrome-192x192.png' %>", "sizes": "192x192" }]
     },
     {
       "name": "View Charts",
       "short_name": "Charts",
       "description": "View headache charts and analytics",
       "url": "/charts",
-      "icons": [{ "src": "/assets/favicon/android-chrome-192x192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "<%= asset_path 'favicon/android-chrome-192x192.png' %>", "sizes": "192x192" }]
     }
   ]
 }
