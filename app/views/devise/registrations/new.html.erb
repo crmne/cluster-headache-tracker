@@ -4,11 +4,9 @@
 <div class="container max-w-screen-sm mx-auto px-4">
   <div class="card bg-base-100 md:shadow-xl">
     <div class="card-body">
-      <div class="text-center mb-8">
-        <%= image_tag "logo_small.png", class: "w-16 h-16 mx-auto mb-4" %>
-        <h2 class="text-2xl font-bold">Create your account</h2>
-        <p class="text-base-content/60">Start tracking your headaches today</p>
-      </div>
+      <%= render "devise/shared/auth_logo",
+                 title: "Create your account",
+                 subtitle: "Start tracking your headaches today" %>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>

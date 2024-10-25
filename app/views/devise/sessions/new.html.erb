@@ -1,14 +1,11 @@
-<%# app/views/devise/sessions/new.html.erb %>
 <% content_for :title, "Sign in to your account" %>
 
 <div class="container max-w-screen-sm mx-auto px-4">
   <div class="card bg-base-100 md:shadow-xl">
     <div class="card-body">
-      <div class="text-center mb-8">
-        <%= image_tag "logo_small.png", class: "w-16 h-16 mx-auto mb-4" %>
-        <h2 class="text-2xl font-bold">Welcome back</h2>
-        <p class="text-base-content/60">Sign in to continue tracking your headaches</p>
-      </div>
+      <%= render "devise/shared/auth_logo",
+                 title: "Welcome back",
+                 subtitle: "Sign in to continue tracking your headaches" %>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="space-y-6">

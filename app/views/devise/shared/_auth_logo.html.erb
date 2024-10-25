@@ -1,0 +1,11 @@
+<div class="text-center mb-8">
+  <%= image_tag "logo_small.png",
+                srcset: "#{asset_path('logo_small.png')} 1x, #{asset_path('logo_small@2x.png')} 2x",
+                size: "64",
+                class: "mx-auto mb-4 drop-shadow",
+                alt: "Cluster Headache Tracker Logo" %>
+  <h2 class="text-2xl font-bold"><%= title %></h2>
+  <% if subtitle %>
+    <p class="text-base-content/60"><%= subtitle %></p>
+  <% end %>
+</div>
