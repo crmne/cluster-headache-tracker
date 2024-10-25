@@ -95,19 +95,19 @@
             <%= heroicon "beaker", variant: "mini", class: "w-4 h-4" %>
             Medication
           </span>
-          <span class="label-text-alt opacity-70">Separate multiple medications with +</span>
+          <span class="label-text-alt opacity-70">Separate multiple medications with commas</span>
         <% end %>
         <%= form.text_field :medication,
-              class: "input input-bordered",
-              placeholder: "e.g., Sumatriptan + Oxygen",
-              list: "common-medications" %>
+          class: "input input-bordered",
+          placeholder: "e.g., Oxygen, Sumatriptan",
+          list: "common-medications" %>
 
         <datalist id="common-medications">
-          <option value="Sumatriptan">
           <option value="Oxygen">
-          <option value="Sumatriptan + Oxygen">
           <option value="Zolmitriptan">
-          <option value="Verapamil">
+          <option value="Ibuprofen">
+          <option value="Paracetamol">
+          <option value="Sumatriptan">
         </datalist>
       </div>
 
@@ -121,16 +121,16 @@
           <span class="label-text-alt opacity-70">Separate multiple triggers with commas</span>
         <% end %>
         <%= form.text_field :triggers,
-              class: "input input-bordered",
-              placeholder: "e.g., Alcohol, Stress, Poor Sleep",
-              list: "common-triggers" %>
+          class: "input input-bordered",
+          placeholder: "e.g., Sleep, Tired",
+          list: "common-triggers" %>
 
         <datalist id="common-triggers">
-          <option value="Alcohol">
-          <option value="Stress">
-          <option value="Poor Sleep">
-          <option value="Weather Change">
-          <option value="Strong Smells">
+          <option value="Sleep">
+          <option value="Unknown">
+          <option value="Tired">
+          <option value="Woke up">
+          <option value="Laying down">
         </datalist>
       </div>
 

@@ -44,7 +44,7 @@
         <div>
           <div class="font-semibold mb-1">Treatment</div>
           <div class="flex flex-wrap gap-2">
-            <% headache_log.medication.split("+").map(&:strip).each do |med| %>
+            <% headache_log.medication.split(",").map(&:strip).each do |med| %>
               <span class="badge badge-primary"><%= med %></span>
             <% end %>
           </div>
