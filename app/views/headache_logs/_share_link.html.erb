@@ -1,5 +1,18 @@
 <%# app/views/headache_logs/_share_link.html.erb %>
-<details class="collapse bg-base-200 collapse-arrow shadow join-item" data-accordion="share" <%= 'open' if flash[:generate_link] %>>
+<details class="collapse bg-base-200 collapse-arrow shadow join-item"
+         data-accordion="share"
+         data-controller="share-link"
+         <%= 'open' if flash[:generate_link] %>>
+  <%# Hidden templates for button states %>
+  <template data-share-link-target="copyTemplate">
+    <%= heroicon "clipboard", variant: "mini", class: "h-4 w-4" %>
+    <span>Copy</span>
+  </template>
+  <template data-share-link-target="copiedTemplate">
+    <%= heroicon "check", variant: "mini", class: "h-4 w-4" %>
+    <span>Copied!</span>
+  </template>
+
   <summary class="collapse-title text-xl font-medium">
     <%= heroicon "share", class: "w-6 h-6 mr-2 inline-block" %>
     Share with Healthcare Provider
@@ -8,11 +21,17 @@
     <div class="text-sm opacity-75 mb-4">
       Share your headache logs securely with your healthcare provider.
     </div>
-
     <% if @share_link && (share_token = current_user.share_tokens.last) %>
       <div class="join join-horizontal w-full mb-4">
-        <input type="text" readonly id="share-link" autocomplete="off" value="<%= @share_link %>" class="input input-bordered join-item w-full">
-        <button onclick="copyShareLink(this)" class="btn btn-primary join-item min-w-24">
+        <input type="text"
+               readonly
+               data-share-link-target="input"
+               autocomplete="off"
+               value="<%= @share_link %>"
+               class="input input-bordered join-item w-full">
+        <button data-share-link-target="button"
+                data-action="click->share-link#copy"
+                class="btn btn-primary join-item min-w-24">
           <%= heroicon "clipboard", variant: "mini", class: "h-4 w-4" %>
           <span>Copy</span>
         </button>
@@ -38,36 +57,3 @@
     <% end %>
   </div>
 </details>
-
-<script>
-  // Coordinate accordions
-  document.addEventListener('click', function(e) {
-    const summary = e.target.closest('summary');
-    if (summary) {
-      const details = summary.parentElement;
-      const otherDetails = document.querySelector(`details[data-accordion]:not([data-accordion="${details.dataset.accordion}"])`);
-      if (otherDetails && otherDetails.open) {
-        otherDetails.open = false;
-      }
-    }
-  });
-
-  function copyShareLink(button) {
-    var copyText = document.getElementById("share-link");
-    copyText.select();
-    copyText.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(copyText.value).then(() => {
-      const originalHtml = button.innerHTML;
-      button.innerHTML = `
-        <%= heroicon "check", variant: "mini", class: "h-4 w-4" %>
-        <span>Copied!</span>
-      `;
-      button.disabled = true;
-
-      setTimeout(() => {
-        button.innerHTML = originalHtml;
-        button.disabled = false;
-      }, 2000);
-    });
-  }
-</script>
