@@ -7,7 +7,7 @@
       <div class="stat-title">Time Since Last</div>
       <div class="stat-value text-info">
         <% if last_headache = @headache_logs.max_by(&:start_time) %>
-          <%= time_ago_in_words(last_headache.start_time) %>
+          <%= time_ago_in_words(last_headache.start_time, format: :short).truncate(10) %>
         <% else %>
           N/A
         <% end %>
