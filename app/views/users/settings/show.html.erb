@@ -3,7 +3,6 @@
 <% content_for :hotwire_button do %>
   <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn" %>
 <% end %>
-<%= render 'application/flash_messages', resource: @user %>
 
 <!-- Data Management Section -->
 <div class="card bg-base-100 shadow-xl mb-6">
