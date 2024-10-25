@@ -260,6 +260,11 @@ GEM
     path_expander (1.1.3)
     pg (1.5.8)
     progress (3.6.0)
+    propshaft (1.1.0)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
+      railties (>= 7.0.0)
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
@@ -392,10 +397,6 @@ GEM
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
-    sprockets-rails (3.5.2)
-      actionpack (>= 6.1)
-      activesupport (>= 6.1)
-      sprockets (>= 3.0.0)
     sshkit (1.23.2)
       base64
       net-scp (>= 1.1.2)
@@ -476,6 +477,7 @@ DEPENDENCIES
   license_finder
   overcommit
   pg (~> 1.1)
+  propshaft
   puma (>= 5.0)
   rails (~> 8.0.0.rc1)
   rails_best_practices
@@ -486,7 +488,6 @@ DEPENDENCIES
   solid_cable
   solid_cache
   solid_queue
-  sprockets-rails
   stimulus-rails
   tailwindcss-rails
   thruster
