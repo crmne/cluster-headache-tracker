@@ -1,9 +1,5 @@
 {
-  "settings": {
-    "navigationBarStyle": {
-      "backgroundColor": "#4f46e5"
-    },
-  },
+  "settings": {},
   "rules": [
     {
       "patterns": [
