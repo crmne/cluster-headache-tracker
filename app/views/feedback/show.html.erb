@@ -1,40 +1,28 @@
 <%# app/views/feedback/show.html.erb %>
 <% content_for :title, "Help us improve Cluster Headache Tracker" %>
 <% content_for :navbar, "Feedback" %>
+<% content_for :force_navbar_button do %>
+  <%= link_to "https://buymeacoffee.com/crmne", target: "_blank", rel: "noopener noreferrer", class: "btn" do %>
+    Buy me a pizza 🍕
+  <% end %>
+<% end %>
 
-<div class="container mx-auto">
-  <div class="alert alert-info shadow-lg mb-4">
-    <%= heroicon "information-circle", class: "stroke-current shrink-0 w-6 h-6" %>
-    <div>
-      <h3 class="font-bold">Support the Project</h3>
-      <div class="text-sm">If you find this tool helpful, consider supporting its development:</div>
-    </div>
-    <%= link_to "https://buymeacoffee.com/crmne", target: "_blank", rel: "noopener noreferrer", class: "btn" do %>
-      Buy me a pizza 🍕
-    <% end %>
+<div class="h-[calc(100vh-13rem)] md:h-[calc(100vh-8rem)] relative" data-controller="tally">
+  <%# Loading state %>
+  <div class="absolute inset-0 flex items-center justify-center bg-base-200"
+       data-tally-loading-indicator>
+    <span class="loading loading-spinner loading-lg text-primary"></span>
   </div>
 
-  <div class="relative" data-controller="tally" style="height: calc(
-    100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom)) - 22em
-  );
-  height: -webkit-fill-available;">
-    <%# Loading state %>
-    <div class="absolute inset-0 flex items-center justify-center bg-base-200"
-         data-tally-loading-indicator>
-      <span class="loading loading-spinner loading-lg text-primary"></span>
-    </div>
-
-    <iframe
+  <iframe
       data-tally-src="https://tally.so/r/31JxWO"
-      width="100%"
-      height="100%"
+      class="w-full h-full"
       frameborder="0"
       marginheight="0"
       marginwidth="0"
       title="Help us improve Cluster Headache Tracker"
       onload="this.previousElementSibling.style.display = 'none'">
-    </iframe>
-  </div>
+  </iframe>
 </div>
 
 <% content_for :head do %>

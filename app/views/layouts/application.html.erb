@@ -30,7 +30,7 @@
   <body>
     <%= render 'navbar' %>
     <main class="w-full pt-safe-offset-16">
-      <% if current_page? root_path %>
+      <% if current_page? root_path or current_page? feedback_path %>
         <%= yield %>
       <% else %>
         <div class="container mx-auto mt-4 px-4 pb-safe-offset-24">
