@@ -5,7 +5,7 @@
 <% end %>
 
 <!-- Data Management Section -->
-<div class="card bg-base-100 shadow-xl mb-6">
+<div class="card card-compact md:card-normal bg-base-100 shadow-xl mb-6">
   <div class="card-body">
     <h2 class="card-title">Data Management</h2>
     <div class="flex flex-col sm:flex-row gap-4">
@@ -22,7 +22,7 @@
 </div>
 
 <!-- Change Username Section -->
-<div class="card bg-base-100 shadow-xl mb-6">
+<div class="card card-compact md:card-normal bg-base-100 shadow-xl mb-6">
   <div class="card-body">
     <h2 class="card-title">Change Username</h2>
     <%= form_for(@user, url: update_username_settings_path, method: :patch, html: { class: "form-control w-full max-w-md" }) do |f| %>
@@ -48,7 +48,7 @@
 </div>
 
 <!-- Change Password Section -->
-<div class="card bg-base-100 shadow-xl mb-6">
+<div class="card card-compact md:card-normal bg-base-100 shadow-xl mb-6">
   <div class="card-body">
     <h2 class="card-title">Change Password</h2>
     <%= form_for(@user, url: update_password_settings_path, method: :patch, html: { class: "form-control w-full max-w-md" }) do |f| %>

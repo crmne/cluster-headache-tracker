@@ -1,8 +1,8 @@
 <% unless headache_logs.any? %>
   <p>No headache data available. Try adjusting your filter criteria or add more headache logs.</p>
 <% else %>
-<div class="grid lg:grid-cols-2 gap-4 sm:grid-cols-1 mb-8">
-  <div class="card bg-base-100 shadow-xl">
+<div class="grid lg:grid-cols-2 gap-4 grid-cols-1 mb-8">
+  <div class="card card-compact md:card-normal bg-base-100 shadow-xl">
     <div class="card-body">
       <h2 class="card-title">Headache Intensity Over Time</h2>
       <div id="intensityChartContainer">
@@ -15,7 +15,7 @@
       </div>
     </div>
   </div>
-  <div class="card bg-base-100 shadow-xl">
+  <div class="card card-compact md:card-normal bg-base-100 shadow-xl">
     <div class="card-body">
       <h2 class="card-title">Number of Attacks per Day</h2>
       <div id="attacksPerDayChartContainer">
@@ -28,7 +28,7 @@
       </div>
     </div>
   </div>
-  <div class="card bg-base-100 shadow-xl">
+  <div class="card card-compact md:card-normal bg-base-100 shadow-xl">
     <div class="card-body">
       <h2 class="card-title">Top 5 Triggers</h2>
 
@@ -44,7 +44,7 @@
       </div>
     </div>
   </div>
-  <div class="card bg-base-100 shadow-xl">
+  <div class="card card-compact md:card-normal bg-base-100 shadow-xl">
     <div class="card-body">
       <h2 class="card-title">Top 5 Medications</h2>
       <div id="medicationChartContainer">
@@ -58,7 +58,7 @@
       </div>
     </div>
   </div>
-  <div class="card bg-base-100 shadow-xl">
+  <div class="card card-compact md:card-normal bg-base-100 shadow-xl">
     <div class="card-body">
       <h2 class="card-title">Headache Frequency and Intensity by Time of Day</h2>
       <div id="hourlyChartContainer">
