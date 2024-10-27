@@ -24,8 +24,10 @@
             <%= form.datetime_local_field :start_time,
                   class: "input input-bordered join-item flex-1",
                   required: true,
-                  data: { time_target: "field" },
-                  value: form.object.start_time&.strftime("%Y-%m-%dT%H:%M") || Time.current.strftime("%Y-%m-%dT%H:%M") %>
+                  data: {
+                    time_target: "field",
+                    action: "change->time#timeChanged"
+                  } %>
             <button type="button" class="btn join-item" data-action="time#setNow">
               Now
             </button>
@@ -50,13 +52,14 @@
                     time_target: "field",
                     action: "change->time#timeChanged"
                   },
-                  value: form.object.end_time&.strftime("%Y-%m-%dT%H:%M") %>
+                  value: nil %>
             <button type="button" class="btn join-item" data-action="time#setNow">
               Now
             </button>
           </div>
         </div>
       </div>
+
       <%# Intensity Slider %>
       <div class="form-control" data-controller="intensity">
         <%= form.label :intensity, class: "label" do %>
