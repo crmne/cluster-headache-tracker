@@ -17,7 +17,7 @@
     {
       "patterns": [
         "/headache_logs/new$",
-        "/headache_logs/[0-9]+/edit$"
+        "/headache_logs/.*/edit$"
       ],
       "properties": {
         "context": "modal",

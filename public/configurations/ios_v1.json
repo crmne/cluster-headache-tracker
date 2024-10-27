@@ -16,12 +16,11 @@
     {
       "patterns": [
         "/headache_logs/new$",
-        "/headache_logs/[0-9]+/edit$"
+        "/headache_logs/.*/edit$"
       ],
       "properties": {
         "context": "modal",
-        "pull_to_refresh_enabled": false,
-        "presentation": "modal"
+        "pull_to_refresh_enabled": false
       }
     }
   ]
