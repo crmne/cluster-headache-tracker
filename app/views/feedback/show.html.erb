@@ -14,7 +14,10 @@
     <% end %>
   </div>
 
-  <div class="relative max-h-screen-safe" data-controller="tally">
+  <div class="relative" data-controller="tally" style="height: calc(
+    100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom)) - 22em
+  );
+  height: -webkit-fill-available;">
     <%# Loading state %>
     <div class="absolute inset-0 flex items-center justify-center bg-base-200"
          data-tally-loading-indicator>
