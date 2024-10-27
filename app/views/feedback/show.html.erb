@@ -7,7 +7,7 @@
   <% end %>
 <% end %>
 
-<div class="h-[calc(100vh-8rem)] relative" data-controller="tally">
+<div class="relative" style="height: calc(100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom)) - 8rem)" data-controller="tally">
   <%# Loading state %>
   <div class="absolute inset-0 flex items-center justify-center bg-base-200"
        data-tally-loading-indicator>
