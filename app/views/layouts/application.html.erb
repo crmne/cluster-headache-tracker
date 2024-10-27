@@ -29,7 +29,7 @@
   </head>
   <body>
     <%= render 'navbar' %>
-    <main class="w-full pt-16">
+    <main class="w-full pt-safe-offset-16">
       <% if current_page? root_path %>
         <%= yield %>
       <% else %>
