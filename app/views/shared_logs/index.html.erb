@@ -1,5 +1,5 @@
 <% content_for :title, "Headache Logs for #{@user.username}" %>
-<% content_for :navbar, "Headache Logs for #{@user.username}" %>
+<% content_for :navbar, @user.username %>
 
 <div class="join join-vertical w-full mb-4">
   <%= render "shared/filter_form" %>
