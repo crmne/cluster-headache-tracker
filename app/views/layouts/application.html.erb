@@ -33,7 +33,7 @@
       <% if current_page? root_path %>
         <%= yield %>
       <% else %>
-        <div class="container mx-auto mt-8 px-4">
+        <div class="container mx-auto mt-4 px-4 pb-safe-offset-24">
           <%= render 'flash_messages', resource: local_assigns[:resource] %>
           <%= yield %>
         </div>
