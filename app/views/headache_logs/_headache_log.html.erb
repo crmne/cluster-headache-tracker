@@ -1,7 +1,7 @@
-<div class="card bg-base-100 shadow-xl mb-4">
+<div class="card bg-base-100 shadow-xl">
   <div class="card-body flex flex-col h-full">
     <%# Header Section with Time and Intensity %>
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div class="flex flex-row justify-between items-start md:items-center gap-4">
       <div class="flex-1">
         <h3 class="card-title text-lg md:text-xl">
           <%= heroicon "clock", variant: "mini", class: "w-5 h-5" %>
@@ -13,7 +13,7 @@
             <span>
               <%= headache_log.start_time.strftime("%I:%M %p") %> -
               <%= headache_log.end_time.strftime("%I:%M %p") %>
-              <span class="badge badge-ghost badge-sm ml-2">
+              <span class="badge badge-ghost badge-sm">
                 <%= distance_of_time_in_words(headache_log.end_time, headache_log.start_time) %>
               </span>
             </span>
@@ -29,17 +29,17 @@
       <%# Intensity Indicator %>
       <div class="flex flex-col items-center">
         <div class="radial-progress"
-             style="--value:<%= (headache_log.intensity.to_f / 10 * 100).round %>; --size:4rem;
+             style="--value:<%= (headache_log.intensity.to_f / 10 * 100).round %>; --size:2rem;
                     color: <%= "hsl(#{120 - (headache_log.intensity - 1) * 12}, 80%, 40%)" %>;">
           <span class="text-lg font-bold"><%= headache_log.intensity %></span>
         </div>
-        <span class="text-xs mt-1">Intensity</span>
+        <span class="text-xs">Intensity</span>
       </div>
     </div>
 
     <%# Treatment Section %>
     <% if headache_log.medication.present? %>
-      <div class="flex items-start gap-2 mt-4">
+      <div class="flex items-start gap-2">
         <%= heroicon "beaker", variant: "mini", class: "w-5 h-5 shrink-0 mt-0.5" %>
         <div>
           <div class="font-semibold mb-1">Treatment</div>
@@ -54,7 +54,7 @@
 
     <%# Triggers Section %>
     <% if headache_log.triggers.present? %>
-      <div class="flex items-start gap-2 mt-4">
+      <div class="flex items-start gap-2">
         <%= heroicon "bolt", variant: "mini", class: "w-5 h-5 shrink-0 mt-0.5" %>
         <div>
           <div class="font-semibold mb-1">Triggers</div>
@@ -69,7 +69,7 @@
 
     <%# Notes Section %>
     <% if headache_log.notes.present? %>
-      <div class="flex items-start gap-2 mt-4">
+      <div class="flex items-start gap-2">
         <%= heroicon "document-text", variant: "mini", class: "w-5 h-5 shrink-0 mt-0.5" %>
         <div>
           <div class="font-semibold mb-1">Notes</div>
@@ -84,7 +84,7 @@
     <div class="flex-grow"></div>
 
     <%# Actions Section %>
-    <div class="card-actions justify-end mt-6">
+    <div class="card-actions justify-end">
       <% unless local_assigns[:hide_actions] %>
         <%= link_to edit_headache_log_path(headache_log), class: "btn btn-ghost btn-sm" do %>
           <%= heroicon "pencil-square", variant: "mini", class: "w-4 h-4" %>

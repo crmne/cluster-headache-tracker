@@ -1,22 +1,22 @@
 <div class="btm-nav drop-shadow-2xl" style="height: max(4rem, calc(4rem + env(safe-area-inset-bottom)));">
   <%= link_to headache_logs_path, class: "#{if current_page? headache_logs_path then 'active' end}" do %>
     <%= heroicon "calendar-days", variant: "solid" %>
-    <span class="btm-nav-label font-bold">Logs</span>
+    <span class="btm-nav-label">Logs</span>
   <% end %>
   <%= link_to charts_path, class: "#{if current_page? charts_path then 'active' end}" do %>
     <%= heroicon "chart-bar", variant: "solid" %>
-    <span class="btm-nav-label font-bold">Charts</span>
+    <span class="btm-nav-label">Charts</span>
   <% end %>
   <%= link_to new_headache_log_path, class: "text-primary #{if current_page? new_headache_log_path then 'active' end}" do %>
     <%= heroicon "plus-circle", variant: "solid" %>
-    <span class="btm-nav-label font-black">New</span>
+    <span class="btm-nav-label font-bold">New</span>
   <% end %>
   <%= link_to settings_path, class: "#{if current_page? settings_path then 'active' end}" do %>
     <%= heroicon "user", variant: "solid" %>
-    <span class="btm-nav-label font-bold">Account</span>
+    <span class="btm-nav-label">Account</span>
   <% end %>
   <%= link_to feedback_path, class: "#{if current_page? feedback_path then 'active' end}" do %>
     <%= heroicon "chat-bubble-left-ellipsis", variant: "solid" %>
-    <span class="btm-nav-label font-bold">Feedback</span>
+    <span class="btm-nav-label">Feedback</span>
   <% end %>
 </div>
