@@ -28,7 +28,7 @@
     <% end %>
   </head>
   <body>
-    <%= render 'navbar' unless native_app_form_page? %>
+    <%= render 'navbar' %>
     <main class="w-full pt-safe-offset-16">
       <% if static_page? %>
         <%= yield %>
