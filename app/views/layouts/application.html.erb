@@ -28,20 +28,18 @@
     <% end %>
   </head>
   <body>
-    <%= render 'navbar' %>
+    <%= render 'navbar' unless native_app_form_page? %>
     <main class="w-full pt-safe-offset-16">
-      <% if current_page? root_path %>
+      <% if static_page? %>
         <%= yield %>
       <% else %>
         <div class="container mx-auto mt-8 px-4">
-          <div class="w-full">
-            <%= render 'flash_messages', resource: local_assigns[:resource] %>
-            <%= yield %>
-          </div>
+          <%= render 'flash_messages', resource: local_assigns[:resource] %>
+          <%= yield %>
         </div>
       <% end %>
     </main>
-    <%= render 'footer' %>
-    <%= render 'bottom_navbar' %>
+    <%= render 'footer' if static_page? %>
+    <%= render 'bottom_navbar' unless static_page? || native_app_form_page? %>
   </body>
 </html>

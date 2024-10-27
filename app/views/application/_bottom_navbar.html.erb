@@ -1,4 +1,3 @@
-<% unless current_page? root_path or current_page? faq_path or current_page? imprint_path or current_page? privacy_policy_path or (hotwire_native_app? and current_page? new_headache_log_path) %>
 <div class="btm-nav drop-shadow-2xl" style="height: max(4rem, calc(4rem + env(safe-area-inset-bottom)));">
   <%= link_to headache_logs_path, class: "#{if current_page? headache_logs_path then 'active' end}" do %>
     <%= heroicon "calendar-days", variant: "solid" %>
@@ -21,4 +20,3 @@
     <span class="btm-nav-label font-bold">Feedback</span>
   <% end %>
 </div>
-<% end %>
