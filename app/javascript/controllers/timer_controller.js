@@ -1,4 +1,3 @@
-// app/javascript/controllers/timer_controller.js
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
@@ -23,30 +22,29 @@ export default class extends Controller {
   }
 
   updateTimer() {
+    // Parse the ISO string from data-timer-start-value
     const startTime = new Date(this.startValue)
     const now = new Date()
-    const diffInSeconds = Math.floor((now - startTime) / 1000)
 
-    const days = Math.floor(diffInSeconds / (3600 * 24))
-    const hours = Math.floor((diffInSeconds % (3600 * 24)) / 3600)
-    const minutes = Math.floor((diffInSeconds % 3600) / 60)
+    // Calculate difference in seconds, ensuring positive value
+    const diffInSeconds = Math.max(0, Math.floor((now - startTime) / 1000))
+
+    // Calculate all time units
+    const days = Math.floor(diffInSeconds / (24 * 60 * 60))
+    const hours = Math.floor((diffInSeconds % (24 * 60 * 60)) / (60 * 60))
+    const minutes = Math.floor((diffInSeconds % (60 * 60)) / 60)
     const seconds = diffInSeconds % 60
 
-    // Update values and visibility
-    this.updateValue('days', days)
-    this.updateValue('hours', hours)
-    this.updateValue('minutes', minutes)
-    this.updateValue('seconds', seconds)
-  }
+    // Always show all units when there's an active timer
+    this.daysContainerTarget.classList.remove('hidden')
+    this.hoursContainerTarget.classList.remove('hidden')
+    this.minutesContainerTarget.classList.remove('hidden')
+    this.secondsContainerTarget.classList.remove('hidden')
 
-  updateValue(unit, value) {
-    const container = this[`${unit}ContainerTarget`]
-    const element = this[`${unit}Target`]
-
-    // Show/hide the container based on the value
-    container.classList.toggle('hidden', value === 0)
-
-    // Update the countdown value
-    element.style.setProperty('--value', value)
+    // Set the values
+    this.daysTarget.style.setProperty('--value', days)
+    this.hoursTarget.style.setProperty('--value', hours)
+    this.minutesTarget.style.setProperty('--value', minutes)
+    this.secondsTarget.style.setProperty('--value', seconds)
   }
 }

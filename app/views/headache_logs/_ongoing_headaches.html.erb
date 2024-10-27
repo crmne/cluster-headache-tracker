@@ -1,4 +1,4 @@
-<%# app/views/headache_logs/index.html.erb - add this after the filter form %>
+<%# app/views/headache_logs/_ongoing_headaches.html.erb %>
 
 <%# Warning for multiple ongoing headaches %>
 <% if @ongoing_headaches.size > 1 %>
@@ -31,29 +31,30 @@
     <span>
       <h3 class="font-bold">Ongoing Headache</h3>
     </span>
-    <div data-controller="timer" data-timer-start-value="<%= ongoing_log.start_time.iso8601 %>">
+    <div data-controller="timer"
+         data-timer-start-value="<%= ongoing_log.start_time.strftime('%Y-%m-%dT%H:%M:%S') %>">
       <div class="grid auto-cols-max grid-flow-col gap-5 text-center">
         <div class="flex flex-col" data-timer-target="daysContainer">
           <span class="countdown font-mono text-xl">
-            <span data-timer-target="days" style="--value: 0;"></span>
+            <span data-timer-target="days" style="--value:0;"></span>
           </span>
           days
         </div>
         <div class="flex flex-col" data-timer-target="hoursContainer">
           <span class="countdown font-mono text-xl">
-            <span data-timer-target="hours" style="--value: 0;"></span>
+            <span data-timer-target="hours" style="--value:0;"></span>
           </span>
           hours
         </div>
         <div class="flex flex-col" data-timer-target="minutesContainer">
           <span class="countdown font-mono text-xl">
-            <span data-timer-target="minutes" style="--value: 0;"></span>
+            <span data-timer-target="minutes" style="--value:0;"></span>
           </span>
           min
         </div>
         <div class="flex flex-col" data-timer-target="secondsContainer">
           <span class="countdown font-mono text-xl">
-            <span data-timer-target="seconds" style="--value: 0;"></span>
+            <span data-timer-target="seconds" style="--value:0;"></span>
           </span>
           sec
         </div>
