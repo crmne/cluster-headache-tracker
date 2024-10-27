@@ -52,10 +52,10 @@
     <span class="font-black text-lg"><%= content_for(:navbar) %></span>
   </div>
   <div class="navbar-end">
-      <% if user_signed_in? and hotwire_native_app? %>
-        <%= yield :hotwire_button %>
-      <% elsif content_for? :force_navbar_button %>
+      <% if content_for? :force_navbar_button %>
         <%= yield :force_navbar_button %>
+      <% elsif user_signed_in? and hotwire_native_app? %>
+        <%= yield :hotwire_button %>
       <% elsif user_signed_in? and not hotwire_native_app? %>
         <div class="flex items-center gap-4 px-2">
           <%= link_to current_user.username, settings_path, class: "btn-primary hidden md:block" %>

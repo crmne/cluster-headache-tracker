@@ -1,5 +1,5 @@
 <%# app/views/feedback/show.html.erb %>
-<% content_for :title, "Help us improve Cluster Headache Tracker" %>
+<% content_for :title, "Feedback" %>
 <% content_for :navbar, "Feedback" %>
 <% content_for :force_navbar_button do %>
   <%= link_to "https://buymeacoffee.com/crmne", target: "_blank", rel: "noopener noreferrer", class: "btn" do %>
@@ -7,7 +7,7 @@
   <% end %>
 <% end %>
 
-<div class="h-[calc(100vh-13rem)] md:h-[calc(100vh-8rem)] relative" data-controller="tally">
+<div class="h-[calc(100vh-8rem)] relative" data-controller="tally">
   <%# Loading state %>
   <div class="absolute inset-0 flex items-center justify-center bg-base-200"
        data-tally-loading-indicator>
