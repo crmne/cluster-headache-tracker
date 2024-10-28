@@ -1,37 +1,53 @@
-[![Buy me a pizza](app/assets/images/buymeapizza.png)](https://buymeacoffee.com/crmne)
-
 # 🧠 Cluster Headache Tracker
 
 Cluster Headache Tracker is a free, open-source web application designed to help individuals suffering from cluster headaches track and manage their condition. By providing detailed logging, visual insights, and easy sharing with healthcare providers, this tool aims to improve the understanding and treatment of cluster headaches.
 
+## 💝 Support the Project
+
+If you find Cluster Headache Tracker helpful in managing your condition, please consider supporting its development:
+
+[![Buy me a pizza](app/assets/images/buymeapizza.png)](https://buymeacoffee.com/crmne)
+
+Your support helps keep this tool free and continuously improving for the cluster headache community.
+
 ## 🎥 Demo
 
-https://github.com/user-attachments/assets/75b4bd2b-b539-4d44-90ad-c3c03148daed
+[![Cluster Headache Tracker Demo](https://img.youtube.com/vi/4HlsqANZdv8/maxresdefault.jpg)](https://youtu.be/4HlsqANZdv8)
 
 ## 🚀 Getting Started
 
 Visit [https://clusterheadachetracker.com](https://clusterheadachetracker.com) to create a free account and start tracking your cluster headaches.
 
-## 📱 Mobile App
+## 📱 Mobile Apps
 
-We now have a beta version of our iOS app available through TestFlight! This app wraps the web application in a native iOS shell, making it easier for iOS users to access Cluster Headache Tracker.
-
+### iOS App (Beta)
+We have a beta version of our iOS app available through TestFlight! This native app provides the best possible experience for iOS users.
 - [Download the iOS Beta App](https://testflight.apple.com/join/GJsAQqz2)
-- [View the iOS App Repository](https://github.com/crmne/cluster-headache-tracker-ios)
+- [Contribute to the iOS Beta App](https://github.com/crmne/cluster-headache-tracker-ios)
 
-The iOS app provides the same features as the web application but in a more accessible format for iOS users. It's built using Hotwire Native, ensuring a consistent experience across platforms.
+### Android App (Beta)
+The Beta Android app is available for direct download from our website:
+- [Download the Android Beta App](https://clusterheadachetracker.com/cluster-headache-tracker.apk)
+- [Contribute to the Android Beta App](https://github.com/crmne/cluster-headache-tracker-android)
+
+Both apps provide the same features as the web application in a native mobile interface:
+- Quick logging during attacks
+- Automatic time filling
+- Real-time attack duration tracking
+- Charts and statistics
+- Easy sharing with doctors
 
 ## ✨ Features
 
-- 📝 **Detailed Logging**: Record intensity, duration, triggers, and medications for each headache episode.
-- 📊 **Visual Insights**: Gain valuable insights with interactive charts and graphs showing your headache patterns over time.
-- 🩺 **Share with Doctors**: Generate shareable reports to collaborate effectively with your healthcare providers.
-- 💾 **Data Import/Export**: Easily import and export your headache logs in CSV format for backup or analysis.
-- 🔒 **Secure & Private**: Your health data is encrypted and stored securely, with full control over sharing.
-- 🕵️ **Privacy-Focused**: We don't store any personally identifiable information. Users are identified by a username, not an email address.
-- 🇪🇺 **EU-Based**: Our servers are hosted in Germany, ensuring compliance with strict EU data protection regulations.
-- 📱 **Mobile Friendly**: Access your tracker on any device with our responsive, mobile-friendly design.
-- 🌟 **Open Source**: Contribute to the development and customize the tracker to fit your needs.
+- 📝 **Smart Logging**: Auto-fills current time, just slide for intensity during attacks
+- ⏱️ **Attack Tracking**: Real-time duration timer for ongoing attacks
+- 📊 **Visual Insights**: Interactive charts showing attack patterns and predicting cluster period endings
+- 🩺 **Doctor's View**: Generate shareable reports that have helped many users get oxygen therapy approved
+- 💾 **Data Import/Export**: Easy CSV import/export for backup or analysis
+- 🔒 **Secure & Private**: Encrypted data stored in Germany, no email required
+- 🇪🇺 **EU-Based**: Full compliance with strict EU data protection regulations
+- 📱 **Native Apps**: Dedicated apps for iOS and Android
+- 🌟 **Open Source**: Free forever, community-driven development
 
 ## 💻 Development Setup
 
@@ -39,6 +55,7 @@ The iOS app provides the same features as the web application but in a more acce
 
 - Ruby 3.3.4
 - PostgreSQL
+- Node.js
 
 ### Setup Instructions
 
@@ -51,6 +68,7 @@ The iOS app provides the same features as the web application but in a more acce
 2. Install dependencies:
    ```
    bundle install
+   npm install
    ```
 
 3. Set up the database:
@@ -104,12 +122,6 @@ Cluster Headache Tracker is released under the [GNU General Public License v3.0 
 ## 🔒 Privacy
 
 We take your privacy seriously. Cluster Headache Tracker does not collect or store any personally identifiable information. Users are identified by a username only, not an email address. All data is stored on servers located in Germany, ensuring compliance with strict EU data protection regulations.
-
-## 🍕 Support the Project
-
-If you find this tool valuable, please consider making a donation:
-
-[![Buy me a pizza](app/assets/images/buymeapizza.png)](https://buymeacoffee.com/crmne)
 
 ## 🆘 Support
 
