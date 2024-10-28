@@ -37,14 +37,15 @@
     </div>
     <div class="max-w-6xl mx-auto">
       <div class="aspect-w-16 aspect-h-9 relative">
-        <video id="demo-video" class="w-full h-full rounded-lg shadow-xl" controls loop muted>
-          <source src="/videos/demo.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <div id="play-button" class="absolute inset-0 flex items-center justify-center cursor-pointer bg-black/20 hover:bg-black/10 transition-colors rounded-lg">
-          <button class="btn btn-circle btn-lg bg-indigo-600 hover:bg-indigo-700 border-none">
-            <%= heroicon "play", class: "w-8 h-8" %>
-          </button>
+        <div class="aspect-w-16 aspect-h-9">
+          <iframe
+             class="w-full h-full rounded-lg shadow-xl"
+             src="https://www.youtube.com/embed/4HlsqANZdv8?cc_load_policy=1&cc_lang_pref=en"
+             title="Cluster Headache Tracker Demo"
+             frameborder="0"
+             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+             allowfullscreen>
+          </iframe>
         </div>
       </div>
     </div>
@@ -255,33 +256,3 @@
     </div>
   </div>
 </section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const video = document.getElementById('demo-video');
-    const playButton = document.getElementById('play-button');
-
-    // Set playback rate to 0.75 (75% speed)
-    video.playbackRate = 0.75;
-
-    playButton.addEventListener('click', function() {
-      if (video.paused) {
-        video.play();
-        playButton.style.display = 'none';
-      }
-    });
-
-    video.addEventListener('pause', function() {
-      playButton.style.display = 'flex';
-    });
-
-    video.addEventListener('play', function() {
-      playButton.style.display = 'none';
-    });
-
-    // Ensure the playback rate is set whenever the video loads
-    video.addEventListener('loadedmetadata', function() {
-      video.playbackRate = 0.75;
-    });
-  });
-</script>
