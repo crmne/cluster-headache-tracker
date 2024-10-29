@@ -5,4 +5,5 @@
   <%= render "shared/filter_form" %>
 </div>
 
+<%= render "headache_logs/stats", headache_logs: @headache_logs %>
 <%= render 'shared/charts', { headache_logs: @headache_logs, chart_data: @chart_data } %>

@@ -1,4 +1,3 @@
-# app/controllers/concerns/chart_data_processor.rb
 module ChartDataProcessor
   extend ActiveSupport::Concern
 
@@ -8,7 +7,8 @@ module ChartDataProcessor
       trigger_data: process_trigger_data(headache_logs),
       medication_data: process_medication_data(headache_logs),
       hourly_data: process_hourly_data(headache_logs),
-      attacks_per_day_data: process_attacks_per_day_data(headache_logs)
+      attacks_per_day_data: process_attacks_per_day_data(headache_logs),
+      duration_data: process_duration_data(headache_logs)
     }
   end
 
@@ -61,5 +61,20 @@ module ChartDataProcessor
                           .transform_values(&:count)
 
     attacks_per_day.map { |date, count| { x: date, y: count } }
+  end
+
+  def process_duration_data(logs)
+    # Only include logs that have both start and end times
+    complete_logs = logs.reject { |log| log.end_time.nil? }
+
+    # Calculate durations in hours
+    complete_logs.map do |log|
+      duration_hours = ((log.end_time - log.start_time) / 1.hour).round(1)
+      {
+        x: log.start_time,
+        y: duration_hours,
+        intensity: log.intensity # Include intensity for potential correlation analysis
+      }
+    end
   end
 end

@@ -297,26 +297,108 @@ function hideLoading(chartId) {
   }
 }
 
-export function initializeCharts(intensityData, triggerData, medicationData, hourlyData, attacksPerDayData) {
+function initializeDurationChart(durationData) {
+  if (durationData && Object.keys(durationData).length > 0) {
+    const durationCtx = document.getElementById('durationChart');
+    if (durationCtx) {
+      if (chartInstances.durationChart) {
+        chartInstances.durationChart.destroy();
+      }
+
+      // Calculate average duration
+      const avgDuration = durationData.reduce((acc, curr) => acc + curr.y, 0) / durationData.length;
+
+      chartInstances.durationChart = createChart(durationCtx, {
+        type: 'line',
+        data: {
+          datasets: [{
+            label: 'Attack Duration',
+            data: durationData,
+            borderColor: 'rgb(147, 51, 234)', // Purple color for distinction
+            backgroundColor: 'rgba(147, 51, 234, 0.1)',
+            pointRadius: 6,
+            pointHoverRadius: 8,
+            tension: 0.1
+          }]
+        },
+        options: {
+          scales: {
+            x: {
+              type: 'time',
+              time: {
+                unit: 'day'
+              },
+              title: {
+                display: true,
+                text: 'Date'
+              }
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Duration (hours)'
+              }
+            }
+          },
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  const duration = context.raw.y;
+                  const intensity = context.raw.intensity;
+                  return [
+                    `Duration: ${duration} hours`,
+                    `Intensity: ${intensity}/10`
+                  ];
+                }
+              }
+            },
+            annotation: {
+              annotations: {
+                averageLine: {
+                  type: 'line',
+                  yMin: avgDuration,
+                  yMax: avgDuration,
+                  borderColor: 'rgb(255, 99, 132)',
+                  borderWidth: 2,
+                  borderDash: [6, 6],
+                  label: {
+                    enabled: true,
+                    content: `Average: ${avgDuration.toFixed(1)} hours`,
+                    position: 'end'
+                  }
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+  }
+}
+
+export function initializeCharts(intensityData, triggerData, medicationData, hourlyData, attacksPerDayData, durationData) {
   showLoading('intensity');
   showLoading('trigger');
   showLoading('medication');
   showLoading('hourly');
   showLoading('attacksPerDay');
+  showLoading('duration');
 
-  // Use setTimeout to defer chart initialization to the next event loop
   setTimeout(() => {
     initializeIntensityChart(intensityData);
     initializeTriggerChart(triggerData);
     initializeMedicationChart(medicationData);
     initializeHourlyChart(hourlyData);
     initializeAttacksPerDayChart(attacksPerDayData);
+    initializeDurationChart(durationData);
 
     hideLoading('intensity');
     hideLoading('trigger');
     hideLoading('medication');
     hideLoading('hourly');
     hideLoading('attacksPerDay');
+    hideLoading('duration');
   }, 0);
 }
-
