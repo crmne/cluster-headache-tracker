@@ -2,9 +2,11 @@ import {
   Chart,
   TimeScale,
   LinearScale,
+  LogarithmicScale,
   PointElement,
   LineElement,
   LineController,
+  ScatterController,
   PieController,
   BarController,
   BarElement,
@@ -19,9 +21,11 @@ import "chartjs-adapter-date-fns";
 Chart.register(
   TimeScale,
   LinearScale,
+  LogarithmicScale,
   PointElement,
   LineElement,
   LineController,
+  ScatterController,
   PieController,
   BarController,
   BarElement,
@@ -35,22 +39,12 @@ Chart.register(
 let chartInstances = {};
 
 function createChart(ctx, config) {
-  // Merge default options with provided config
-  const defaultOptions = {
-    responsive: true,
-    maintainAspectRatio: false,  // This allows the chart to fill its container
-    interaction: {
-      mode: 'nearest',
-      axis: 'x',
-      intersect: false
-    }
-  };
-
   return new Chart(ctx, {
     ...config,
     options: {
-      ...defaultOptions,
       ...config.options,
+      responsive: true,
+      maintainAspectRatio: false
     }
   });
 }
@@ -309,27 +303,34 @@ function hideLoading(chartId) {
 }
 
 function initializeDurationChart(durationData) {
-  if (durationData && Object.keys(durationData).length > 0) {
+  if (durationData && durationData.length > 0) {
     const durationCtx = document.getElementById('durationChart');
     if (durationCtx) {
       if (chartInstances.durationChart) {
         chartInstances.durationChart.destroy();
       }
 
-      // Calculate average duration
-      const avgDuration = durationData.reduce((acc, curr) => acc + curr.y, 0) / durationData.length;
+      // Filter out any zero or undefined durations to avoid log(0) issues
+      const validData = durationData.filter(d => d.y > 0);
+
+      // Calculate geometric mean for log scale
+      const logSum = validData.reduce((acc, curr) => acc + Math.log(curr.y), 0);
+      const geometricMean = Math.exp(logSum / validData.length);
+
+      // Find min and max for better scale configuration
+      const minDuration = Math.min(...validData.map(d => d.y));
+      const maxDuration = Math.max(...validData.map(d => d.y));
 
       chartInstances.durationChart = createChart(durationCtx, {
-        type: 'line',
+        type: 'scatter',
         data: {
           datasets: [{
             label: 'Attack Duration',
-            data: durationData,
-            borderColor: 'rgb(147, 51, 234)', // Purple color for distinction
-            backgroundColor: 'rgba(147, 51, 234, 0.1)',
+            data: validData,
+            borderColor: 'rgb(147, 51, 234)',
+            backgroundColor: 'rgba(147, 51, 234, 0.5)',
             pointRadius: 6,
             pointHoverRadius: 8,
-            tension: 0.1
           }]
         },
         options: {
@@ -337,7 +338,10 @@ function initializeDurationChart(durationData) {
             x: {
               type: 'time',
               time: {
-                unit: 'day'
+                unit: 'day',
+                displayFormats: {
+                  day: 'MMM d, yyyy'
+                }
               },
               title: {
                 display: true,
@@ -345,10 +349,30 @@ function initializeDurationChart(durationData) {
               }
             },
             y: {
-              beginAtZero: true,
+              type: 'logarithmic',
               title: {
                 display: true,
                 text: 'Duration (hours)'
+              },
+              min: Math.max(0.1, minDuration / 2),
+              suggestedMax: maxDuration * 1.1,
+              ticks: {
+                callback: function(value) {
+                  if (value < 1) {
+                    return (value * 60).toFixed(0) + 'm';
+                  } else if (value === 1) {
+                    return '1h';
+                  } else if (value < 24) {
+                    return value + 'h';
+                  } else {
+                    return (value / 24).toFixed(1) + 'd';
+                  }
+                },
+                autoSkip: true,
+                maxTicksLimit: 8
+              },
+              grid: {
+                color: 'rgba(0, 0, 0, 0.1)'
               }
             }
           },
@@ -358,8 +382,18 @@ function initializeDurationChart(durationData) {
                 label: function(context) {
                   const duration = context.raw.y;
                   const intensity = context.raw.intensity;
+                  const date = new Date(context.raw.x).toLocaleDateString();
+                  let durationStr;
+                  if (duration < 1) {
+                    durationStr = `${Math.round(duration * 60)} minutes`;
+                  } else if (duration < 24) {
+                    durationStr = `${duration.toFixed(1)} hours`;
+                  } else {
+                    durationStr = `${(duration / 24).toFixed(1)} days`;
+                  }
                   return [
-                    `Duration: ${duration} hours`,
+                    `Date: ${date}`,
+                    `Duration: ${durationStr}`,
                     `Intensity: ${intensity}/10`
                   ];
                 }
@@ -367,17 +401,17 @@ function initializeDurationChart(durationData) {
             },
             annotation: {
               annotations: {
-                averageLine: {
+                average: {
                   type: 'line',
-                  yMin: avgDuration,
-                  yMax: avgDuration,
-                  borderColor: 'rgb(255, 99, 132)',
+                  yMin: geometricMean,
+                  yMax: geometricMean,
+                  borderColor: 'rgba(255, 99, 132, 0.8)',
                   borderWidth: 2,
                   borderDash: [6, 6],
                   label: {
-                    enabled: true,
-                    content: `Average: ${avgDuration.toFixed(1)} hours`,
-                    position: 'end'
+                    display: true,
+                    content: formatDuration(geometricMean) + ' (geometric mean)',
+                    position: 'start'
                   }
                 }
               }
@@ -386,6 +420,17 @@ function initializeDurationChart(durationData) {
         }
       });
     }
+  }
+}
+
+// Helper function to format duration consistently
+function formatDuration(hours) {
+  if (hours < 1) {
+    return `${Math.round(hours * 60)}m`;
+  } else if (hours < 24) {
+    return `${hours.toFixed(1)}h`;
+  } else {
+    return `${(hours / 24).toFixed(1)}d`;
   }
 }
 
