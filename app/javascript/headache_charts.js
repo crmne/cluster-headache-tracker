@@ -35,11 +35,22 @@ Chart.register(
 let chartInstances = {};
 
 function createChart(ctx, config) {
+  // Merge default options with provided config
+  const defaultOptions = {
+    responsive: true,
+    maintainAspectRatio: false,  // This allows the chart to fill its container
+    interaction: {
+      mode: 'nearest',
+      axis: 'x',
+      intersect: false
+    }
+  };
+
   return new Chart(ctx, {
     ...config,
     options: {
+      ...defaultOptions,
       ...config.options,
-      responsive: true,
     }
   });
 }
