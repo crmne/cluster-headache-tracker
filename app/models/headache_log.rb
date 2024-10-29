@@ -6,8 +6,8 @@ class HeadacheLog < ApplicationRecord
   broadcasts_to ->(headache_log) { [ headache_log.user, "headache_logs" ] }, inserts_by: :prepend
 
   # filters
-  scope :started_after, ->(start_time) { where("start_time >= ?", start_time) }
-  scope :ended_before, ->(end_time) { where("end_time <= ?", end_time) }
+  scope :started_after, ->(start_time) { where("start_time >= ?", Date.parse(start_time).beginning_of_day) }
+  scope :ended_before, ->(end_time) { where("end_time <= ?", Date.parse(end_time).end_of_day) }
   scope :with_triggers, ->(triggers) { where("triggers ILIKE ?", "%#{triggers}%") }
   scope :with_medication, ->(medication) { where("medication ILIKE ?", "%#{medication}%") }
 

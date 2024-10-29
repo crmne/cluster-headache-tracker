@@ -43,17 +43,23 @@ class HeadacheLogTest < ActiveSupport::TestCase
   end
 
   test "should filter by date range" do
-    log = headache_logs(:one)
-    log_date = log.start_time.to_date
+    # Create a log that should be included in the filter
+    included_log = headache_logs(:one)
 
+    # Get the date range for filtering
+    start_date = included_log.start_time.to_date
+    end_date = start_date + 1.day
+
+    # Apply the date filter
     filtered_logs = HeadacheLog.filter_by_params({
-      start_time: log_date - 1.day,
-      end_time: log_date + 1.day
+      start_time: start_date.to_s,
+      end_time: end_date.to_s
     })
 
-    assert_includes filtered_logs, log
-    assert filtered_logs.all? { |l| l.start_time >= (log_date - 1.day).beginning_of_day }
-    assert filtered_logs.all? { |l| l.start_time <= (log_date + 1.day).end_of_day }
+    # Verify results
+    assert_includes filtered_logs, included_log
+    assert filtered_logs.all? { |l| l.start_time.to_date >= start_date }
+    assert filtered_logs.all? { |l| l.start_time.to_date <= end_date }
   end
 
   test "should filter by triggers" do
