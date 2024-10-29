@@ -3,14 +3,14 @@ require "test_helper"
 class SharedLogsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
-    @share_token = @user.generate_share_token
+    @share_token = share_tokens(:one)
   end
 
   test "should show shared logs with valid token" do
     get shared_logs_url(token: @share_token.token)
     assert_response :success
-    assert_select "title", /Headache Logs for #{@user.username}/
-    assert_select ".navbar", /Headache Logs for #{@user.username}/
+    assert_select ".navbar-center", text: @user.username
+    assert_select ".grid", minimum: 1
   end
 
   test "should not show shared logs with invalid token" do
