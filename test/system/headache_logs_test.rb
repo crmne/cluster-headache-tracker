@@ -10,7 +10,7 @@ class HeadacheLogsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit headache_logs_url
-    assert_selector "h1", text: "Headache Logs"
+    assert_selector "div.navbar-center", text: "Headache Logs"
     assert_selector ".stats", count: 1
     assert_selector ".card", minimum: 1
   end
@@ -19,7 +19,7 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     visit headache_logs_url
     click_on "New"
 
-    fill_in "Start time", with: Time.current.strftime("%Y-%m-%dT%H:%M")
+    fill_in "Start Time", with: Time.current.strftime("%Y-%m-%dT%H:%M")
     fill_in "Intensity", with: 7
     fill_in "Medication", with: "Sumatriptan + Oxygen"
     fill_in "Triggers", with: "Lack of sleep, Stress"
@@ -52,7 +52,7 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     assert_text "Ongoing"
 
     click_on "Update Log"
-    fill_in "End time", with: Time.current.strftime("%Y-%m-%dT%H:%M")
+    fill_in "End Time", with: Time.current.strftime("%Y-%m-%dT%H:%M")
     click_on "Update Headache log"
 
     assert_text "Headache log was successfully updated"
@@ -61,7 +61,7 @@ class HeadacheLogsTest < ApplicationSystemTestCase
 
   test "filtering headache logs" do
     visit headache_logs_url
-    click_on "Filters"
+    open_accordion "filters"
 
     fill_in "Start Date", with: Date.yesterday
     fill_in "End Date", with: Date.tomorrow
@@ -74,8 +74,8 @@ class HeadacheLogsTest < ApplicationSystemTestCase
 
   test "generating and copying share link" do
     visit headache_logs_url
-    click_on "Share with Healthcare Provider"
-    click_on "Generate Share Link"
+    open_accordion "share"
+    click_on "Generate New Link"
 
     assert_text "Share link generated successfully"
 
