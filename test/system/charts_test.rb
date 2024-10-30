@@ -19,7 +19,7 @@ class ChartsTest < ApplicationSystemTestCase
 
   test "filtering chart data" do
     visit charts_url
-    click_on "Filters"
+    open_accordion "filters"
 
     fill_in "Start Date", with: Date.yesterday
     fill_in "End Date", with: Date.tomorrow
@@ -32,7 +32,7 @@ class ChartsTest < ApplicationSystemTestCase
 
   test "charts show no data message when filtered with no results" do
     visit charts_url
-    click_on "Filters"
+    open_accordion "filters"
 
     fill_in "Start Date", with: 1.year.ago
     fill_in "End Date", with: 11.months.ago

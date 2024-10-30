@@ -19,4 +19,12 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     logs = logs.select { |log| log.level == level } if level
     assert logs.empty?, "Unexpected console messages:\n" + logs.map(&:message).join("\n\n")
   end
+
+  def open_accordion(data_attribute)
+    # Locate the accordion using the data attribute selector
+    accordion = find("details[data-accordion=\"#{data_attribute}\"]")
+    accordion.click
+
+    assert_selector "details[open][data-accordion=\"#{data_attribute}\"]"
+  end
 end
