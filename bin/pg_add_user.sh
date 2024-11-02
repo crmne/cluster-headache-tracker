@@ -20,6 +20,6 @@ SQL="CREATE USER $USERNAME WITH PASSWORD '$PASSWORD' CREATEDB SUPERUSER;"
 # Execute the command
 DBNAME="postgres"
 psql -d "$DBNAME" -c "$SQL" ||
+  psql -h localhost -p 5432 -U postgres -d "$DBNAME" -c "$SQL" ||
   sudo -u postgres psql -d "$DBNAME" -c "$SQL"
-
 echo "User $USERNAME has been created."
