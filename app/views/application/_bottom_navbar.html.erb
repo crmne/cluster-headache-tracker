@@ -1,4 +1,4 @@
-<div class="btm-nav drop-shadow-2xl" style="height: max(4rem, calc(4rem + env(safe-area-inset-bottom)));">
+<div class="btm-nav drop-shadow-2xl print:hidden" style="height: max(4rem, calc(4rem + env(safe-area-inset-bottom)));">
   <%= link_to headache_logs_path, class: "#{if current_page? headache_logs_path then 'active' end}" do %>
     <%= heroicon "calendar-days", variant: "solid" %>
     <span class="btm-nav-label">Logs</span>
