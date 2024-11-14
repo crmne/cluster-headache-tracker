@@ -9,7 +9,7 @@ class SharedLogsControllerTest < ActionDispatch::IntegrationTest
   test "should show shared logs with valid token" do
     get shared_logs_url(token: @share_token.token)
     assert_response :success
-    assert_select ".navbar-center", text: @user.username
+    assert_select ".navbar-center", text: "Doctor's view"
     assert_select ".grid", minimum: 1
   end
 
