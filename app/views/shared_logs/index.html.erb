@@ -1,40 +1,30 @@
 <% content_for :title, "Headache Logs for #{@user.username}" %>
 <% content_for :navbar, @user.username %>
 
-<%# Print Header %>
 <article class="prose hidden print:block print:mb-8">
   <h1>Cluster Headache Report</h1>
   <h2>Patient: <%= @user.username %></h2>
 </article>
 
-<%# Filters - Hide in print %>
 <div class="print:hidden join join-vertical w-full mb-4">
   <%= render "shared/filter_form" %>
 </div>
 
-<%# Stats - Optimize for print %>
 <div class="print:max-w-none print:w-full">
   <%= render "headache_logs/stats", headache_logs: @headache_logs %>
 </div>
 
-<%# Charts Section %>
-<article class="prose mb-2 print:prose-sm">
+<article class="prose mb-2">
   <h1>Analysis</h1>
 </article>
-<div class="print:max-w-none print:w-full">
-  <%= render partial: 'shared/charts', locals: { headache_logs: @headache_logs, chart_data: @chart_data } %>
-</div>
+<%= render partial: 'shared/charts', locals: { headache_logs: @headache_logs, chart_data: @chart_data } %>
 
-<%# Logs Section %>
-<article class="prose mb-2 print:prose-sm print:mt-4">
+<article class="prose mb-2">
   <h1>Detailed Log Entries</h1>
 </article>
 <%= turbo_stream_from @user, "headache_logs" %>
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 print:grid-cols-2 print:gap-2 print:max-w-none print:w-full">
-  <%= render @headache_logs, hide_actions: true %>
-</div>
+<%= render "headache_logs/table", headache_logs: @headache_logs, hide_actions: true %>
 
-<%# Print Footer %>
 <article class="hidden print:block prose">
   <p>Report generated from Cluster Headache Tracker (clusterheadachetracker.com)</p>
 </div>
