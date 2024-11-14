@@ -1,9 +1,8 @@
 <% unless headache_logs.any? %>
   <p>No headache data available. Try adjusting your filter criteria or add more headache logs.</p>
 <% else %>
-  <div class="grid gap-4 grid-cols-1">
-    <!-- Line/Bar Charts (Full Width on Mobile) -->
-    <div class="card card-compact md:card-normal bg-base-100 shadow-xl">
+  <div class="grid gap-4 grid-cols-1 mb-4">
+    <div class="card card-compact md:card-normal bg-base-100 shadow-xl print:shadow-none print:break-inside-avoid">
       <div class="card-body">
         <h2 class="card-title">Headache Intensity Over Time</h2>
         <div id="intensityChartContainer" class="h-[300px]">
@@ -17,7 +16,7 @@
       </div>
     </div>
 
-    <div class="card card-compact md:card-normal bg-base-100 shadow-xl">
+    <div class="card card-compact md:card-normal bg-base-100 shadow-xl print:shadow-none print:break-inside-avoid">
       <div class="card-body">
         <h2 class="card-title">Number of Attacks per Day</h2>
         <div id="attacksPerDayChartContainer" class="h-[300px]">
@@ -31,7 +30,7 @@
       </div>
     </div>
 
-    <div class="card card-compact md:card-normal bg-base-100 shadow-xl">
+    <div class="card card-compact md:card-normal bg-base-100 shadow-xl print:shadow-none print:break-inside-avoid">
       <div class="card-body">
         <h2 class="card-title">Attack Duration Over Time</h2>
         <div id="durationChartContainer" class="h-[300px]">
@@ -45,7 +44,7 @@
       </div>
     </div>
 
-    <div class="card card-compact md:card-normal bg-base-100 shadow-xl">
+    <div class="card card-compact md:card-normal bg-base-100 shadow-xl print:shadow-none print:break-inside-avoid">
       <div class="card-body">
         <h2 class="card-title">Headache Frequency and Intensity by Time of Day</h2>
         <div id="hourlyChartContainer" class="h-[300px]">
@@ -58,11 +57,10 @@
         </div>
       </div>
     </div>
-
-    <!-- Pie Charts (Side by Side on Desktop) -->
   </div>
+
   <div class="grid gap-4 grid-cols-2 mb-8">
-    <div class="card card-compact md:card-normal bg-base-100 shadow-xl">
+    <div class="card card-compact md:card-normal bg-base-100 shadow-xl print:shadow-none print:break-inside-avoid">
       <div class="card-body">
         <h2 class="card-title">Top 5 Triggers</h2>
         <div id="triggerChartContainer" class="h-[300px]">
@@ -76,7 +74,7 @@
       </div>
     </div>
 
-    <div class="card card-compact md:card-normal bg-base-100 shadow-xl">
+    <div class="card card-compact md:card-normal bg-base-100 shadow-xl print:shadow-none print:break-inside-avoid">
       <div class="card-body">
         <h2 class="card-title">Top 5 Medications</h2>
         <div id="medicationChartContainer" class="h-[300px]">

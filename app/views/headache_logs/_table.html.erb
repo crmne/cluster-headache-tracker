@@ -64,7 +64,7 @@
           <%# Intensity %>
           <td>
             <div class="flex items-center gap-2">
-              <div class="radial-progress" 
+              <div class="radial-progress"
                    style="--value:<%= (log.intensity.to_f / 10 * 100).round %>; --size:2rem;
                           color: <%= "hsl(#{120 - (log.intensity - 1) * 12}, 80%, 40%)" %>;">
                 <span class="text-sm font-bold"><%= log.intensity %></span>
@@ -78,7 +78,7 @@
             <% if log.medication.present? %>
               <div class="flex flex-wrap gap-1">
                 <% log.medication.split(",").map(&:strip).each do |med| %>
-                  <span class="badge badge-primary badge-sm"><%= med %></span>
+                  <span class="badge badge-primary badge-sm whitespace-nowrap"><%= med %></span>
                 <% end %>
               </div>
             <% else %>
@@ -91,7 +91,7 @@
             <% if log.triggers.present? %>
               <div class="flex flex-wrap gap-1">
                 <% log.triggers.split(",").map(&:strip).each do |trigger| %>
-                  <span class="badge badge-secondary badge-sm"><%= trigger %></span>
+                  <span class="badge badge-secondary badge-sm whitespace-nowrap"><%= trigger %></span>
                 <% end %>
               </div>
             <% else %>
