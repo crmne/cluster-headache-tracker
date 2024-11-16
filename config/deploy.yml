@@ -36,6 +36,16 @@ asset_path: /rails/public/assets
 
 builder:
   arch: amd64
+  # Only uncomment the following two lines if you know what you're doing and
+  # PLEASE always commit them COMMENTED.
+  # You can uncomment, deploy, and comment. No need to commit this uncommented to deploy.
+  # This is a workaround for an issue with Docker on Apple Silicon,
+  # which would not go past the tailwindcss build.
+  # This way we are connecting to an Ubuntu VM created with Lima.
+  # The template to start the VM is in lima-docker-amd64.yaml
+  # More info at https://github.com/lima-vm/lima
+  # local: false
+  # remote: unix://<%= ENV['HOME'] %>/.lima/docker-amd64/lima-docker-amd64/sock/docker.sock
 
 accessories:
   db:
