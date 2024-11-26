@@ -88,6 +88,13 @@
 <dialog id="import_modal" class="modal">
   <div class="modal-box">
     <h3 class="font-bold text-lg mb-4">Import Headache Logs</h3>
+    <p class="mb-4">
+    The CSV file needs to have the following format:
+    <div class="mb-4">
+      <code>start_time, end_time, intensity, medication, triggers, notes</code>
+    </div>
+    <p>
+    <p>Any CSV file exported from Cluster Headache Tracker will work.</p>
     <%= form_tag import_headache_logs_path, multipart: true, class: "space-y-4" do %>
       <div class="form-control w-full">
         <label class="label">
