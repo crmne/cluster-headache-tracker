@@ -8,7 +8,9 @@ servers:
 
 proxy:
   ssl: true
-  host: clusterheadachetracker.com
+  hosts:
+    - clusterheadachetracker.com
+    - www.clusterheadachetracker.com
 
 registry:
   username: crmne
