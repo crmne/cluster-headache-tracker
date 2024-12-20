@@ -20,7 +20,6 @@ env:
     DB_HOST: cluster-headache-tracker-db
   secret:
     - RAILS_MASTER_KEY
-    - HONEYBADGER_API_KEY
     - POSTGRES_PASSWORD
 
 aliases:
