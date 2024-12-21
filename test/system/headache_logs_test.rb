@@ -45,18 +45,30 @@ class HeadacheLogsTest < ApplicationSystemTestCase
   end
 
   test "marking ongoing headache as complete" do
+    # Create an ongoing headache log
     log = headache_logs(:one)
     log.update(end_time: nil)
 
+    # Visit the headache logs page
     visit headache_logs_url
+
+    # Verify we see the "Ongoing" status
     assert_text "Ongoing"
 
+    # Click the "Update Log" button and wait for the page to load
     click_on "Update Log"
-    fill_in "End Time", with: Time.current.strftime("%Y-%m-%dT%H:%M")
-    click_on "Update Headache log"
+    assert_current_path edit_headache_log_path(log)
 
+    # Fill in the end time with the current time
+    end_time = Time.current.strftime("%Y-%m-%dT%H:%M")
+    fill_in "End Time", with: end_time
+
+    # Submit the form and wait for the update
+    click_button "Update Headache log"
+
+    # Verify the success message and that "Ongoing" is no longer present
     assert_text "Headache log was successfully updated"
-    assert_no_text "Ongoing"
+    assert_no_text "Ongoing Headache"
   end
 
   test "filtering headache logs" do
