@@ -379,6 +379,8 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     sexp_processor (4.17.3)
+    sitemap_generator (6.3.0)
+      builder (~> 3.0)
     smart_properties (1.17.0)
     solid_cable (3.0.5)
       actioncable (>= 7.2)
@@ -488,6 +490,7 @@ DEPENDENCIES
   rails_real_favicon
   rubocop-rails-omakase
   selenium-webdriver
+  sitemap_generator (~> 6.3)
   solid_cable
   solid_cache
   solid_queue

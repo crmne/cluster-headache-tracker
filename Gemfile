@@ -105,3 +105,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "sitemap_generator", "~> 6.3"
