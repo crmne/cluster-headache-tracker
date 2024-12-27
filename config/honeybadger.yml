@@ -28,7 +28,3 @@ debug: false
 # Enable Honeybadger Insights
 insights:
   enabled: false
-
-# I don't use Solid Queue here
-skipped_plugins:
-  - solid_queue
