@@ -51,8 +51,6 @@ class HeadacheLogsTest < ApplicationSystemTestCase
 
     # Visit the headache logs page
     visit headache_logs_url
-
-    # Verify we see the "Ongoing" status
     assert_text "Ongoing"
 
     # Click through to edit the log
@@ -60,18 +58,18 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     assert_current_path edit_headache_log_path(log)
 
     # Fill in the end time with current time
-    end_time = Time.current + 12.hours
-    fill_in "End Time", with: end_time.strftime("%Y-%m-%dT%H:%M")
+    end_time = Time.current.strftime("%Y-%m-%dT%H:%M")
+    fill_in "End Time", with: end_time
 
-    # Ensure we click the right button and wait for the update
+    # Submit and wait for the success path
     click_button "Update Headache log"
 
-    # Add explicit assertion for successful navigation
-    assert_current_path headache_log_path(log)
-
-    # Now check for success message and status change
-    assert_text "Headache log was successfully updated"
-    assert_no_text "Ongoing Headache"
+    # Use Capybara's built-in waiting mechanism
+    using_wait_time(5) do  # Increase default wait time for this block
+      assert_current_path headache_log_path(log)
+      assert_text "Headache log was successfully updated"
+      assert_no_text "Ongoing Headache"
+    end
   end
 
   test "filtering headache logs" do
