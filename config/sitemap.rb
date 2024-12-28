@@ -8,4 +8,7 @@ SitemapGenerator::Sitemap.create do
   add imprint_path, priority: 0.7, changefreq: "monthly"
   add privacy_policy_path, priority: 0.7, changefreq: "monthly"
   add feedback_path, priority: 0.7, changefreq: "monthly"
+  add new_user_session_path, priority: 0.7, changefreq: "monthly"
+  add new_user_registration_path, priority: 0.7, changefreq: "monthly"
+  add new_user_password_path, priority: 0.7, changefreq: "monthly"
 end
