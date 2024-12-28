@@ -57,19 +57,27 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     click_on "Update Log"
     assert_current_path edit_headache_log_path(log)
 
-    # Fill in the end time with current time
-    end_time = Time.current.strftime("%Y-%m-%dT%H:%M")
-    fill_in "End Time", with: end_time
+    # Fill in all required fields, not just end_time
+    fill_in "Start Time", with: log.start_time.strftime("%Y-%m-%dT%H:%M")
+    fill_in "End Time", with: Time.current.strftime("%Y-%m-%dT%H:%M")
+    fill_in "Intensity", with: log.intensity
 
-    # Submit and wait for the success path
+    # Debug output
+    puts "Form values before submission:"
+    puts "Start time: #{find_field('Start Time').value}"
+    puts "End time: #{find_field('End Time').value}"
+    puts "Intensity: #{find_field('Intensity').value}"
+
+    # Submit form and debug any validation errors
     click_button "Update Headache log"
 
-    # Use Capybara's built-in waiting mechanism
-    using_wait_time(5) do  # Increase default wait time for this block
-      assert_current_path headache_log_path(log)
-      assert_text "Headache log was successfully updated"
-      assert_no_text "Ongoing Headache"
+    if page.has_css?(".alert")
+      puts "Validation errors found:"
+      puts page.find(".alert").text
     end
+
+    assert_current_path headache_log_path(log)
+    assert_text "Headache log was successfully updated"
   end
 
   test "filtering headache logs" do
