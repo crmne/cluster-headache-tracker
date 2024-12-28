@@ -47,6 +47,7 @@ class HeadacheLogsTest < ApplicationSystemTestCase
   test "marking ongoing headache as complete" do
     # Create an ongoing headache log
     log = headache_logs(:one)
+    end_time = log.end_time
     log.update(end_time: nil)
 
     # Visit the headache logs page
@@ -60,22 +61,10 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     assert_current_path edit_headache_log_path(log)
 
     # Fill in the end time with the current time
-    end_time = headache_logs(:one).end_time
     fill_in "End Time", with: end_time
-
-    # Debug output
-    puts "Form values before submission:"
-    puts "Start time: #{find_field('Start Time').value}"
-    puts "End time: #{find_field('End Time').value}"
-    puts "Intensity: #{find_field('Intensity').value}"
 
     # Submit the form and wait for the update
     click_button "Update Headache log"
-
-    if page.has_css?(".alert")
-      puts "Validation errors found:"
-      puts page.find(".alert").text
-    end
 
     # Verify the success message and that "Ongoing" is no longer present
     assert_text "Headache log was successfully updated"

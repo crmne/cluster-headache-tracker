@@ -86,6 +86,10 @@ PrePush:
     required_executable: 'git-lfs'
     flags: ['pre-push']
 
+  SystemTests:
+    enabled: true
+    command: ['bundle', 'exec', 'rails', 'test:system']
+
 PostCheckout:
   ALL: # Special hook name that customizes all hooks of this type
     quiet: true # Change all post-checkout hooks to only display output on failure
