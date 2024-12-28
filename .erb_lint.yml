@@ -1,0 +1,8 @@
+---
+EnableDefaultLinters: true
+linters:
+  AllowedScriptType:
+    enabled: true
+    allowed_types:
+      - 'application/json'
+      - 'application/ld+json'

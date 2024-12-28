@@ -1,45 +1,77 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="custom">
-  <head>
-    <title><%= content_for(:title) || "Cluster Headache Tracker | Free Tool for Managing Cluster Headaches" %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#4f46e5">
-    <meta name="description" content="Track and manage your cluster headaches with our free, privacy-focused tool. Log symptoms, analyze patterns, and share reports with your doctor.">
-    <meta name="keywords" content="cluster headache, headache tracker, headache log, migraine tracker, health app, headache diary">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Cluster Headache Tracker | Free Tool for Managing Cluster Headaches">
-    <meta property="og:description" content="Track and manage your cluster headaches with our free, privacy-focused tool. Log symptoms, analyze patterns, and share reports with your doctor.">
-    <meta property="og:image" content="<%= image_url('logo.png') %>">
-    <meta property="og:url" content="https://clusterheadachetracker.com">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="canonical" href="https://clusterheadachetracker.com">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= yield :head %>
-    <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-    <%= render 'application/favicon' %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-    <% if Rails.env.production? %>
-      <script defer data-domain="clusterheadachetracker.com" src="https://plausible.io/js/script.js"></script>
+
+<head>
+  <title><%= page_title %></title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="description" content="<%= page_meta_description %>">
+  <meta name="keywords" content="cluster headache, headache tracker, headache log, migraine tracker, health app, headache diary">
+  <meta name="robots" content="index, follow">
+
+  <!-- OpenGraph Meta Tags -->
+  <meta property="og:title" content="<%= page_title %>">
+  <meta property="og:description" content="<%= page_meta_description %>">
+  <meta property="og:image" content="<%= image_url('logo.png') %>">
+  <meta property="og:url" content="<%= canonical_url %>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cluster Headache Tracker">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= page_title %>">
+  <meta name="twitter:description" content="<%= page_meta_description %>">
+  <meta name="twitter:image" content="<%= image_url('logo.png') %>">
+
+  <%= tag :link, rel: 'canonical', href: canonical_url %>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= yield :head %>
+  <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+  <%= render 'application/favicon' %>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+  <% if Rails.env.production? %>
+  <script defer data-domain="clusterheadachetracker.com" src="https://plausible.io/js/script.js"></script>
+  <% end %>
+</head>
+
+<body>
+  <%= render 'navbar' %>
+  <main class="w-full pt-safe-offset-16">
+    <% if current_page? root_path or current_page? feedback_path %>
+    <%= yield %>
+    <% else %>
+    <div class="container mx-auto mt-4 px-4 pb-safe-offset-24 print:m-0 print:w-full print:p-0 print:max-w-none">
+      <%= render 'flash_messages', resource: local_assigns[:resource] %>
+      <%= yield %>
+    </div>
     <% end %>
-  </head>
-  <body>
-    <%= render 'navbar' %>
-    <main class="w-full pt-safe-offset-16">
-      <% if current_page? root_path or current_page? feedback_path %>
-        <%= yield %>
-      <% else %>
-        <div class="container mx-auto mt-4 px-4 pb-safe-offset-24 print:m-0 print:w-full print:p-0 print:max-w-none">
-          <%= render 'flash_messages', resource: local_assigns[:resource] %>
-          <%= yield %>
-        </div>
-      <% end %>
-    </main>
-    <%= render 'footer' if static_page? %>
-    <%= render 'bottom_navbar' if user_signed_in? and not static_page? and not native_app_form_page? %>
-  </body>
+  </main>
+  <%= render 'footer' if static_page? %>
+  <%= render 'bottom_navbar' if user_signed_in? and not static_page? and not native_app_form_page? %>
+    <script type="application/ld+json">
+      {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "<%= app_title %>",
+  "url": "<%= root_url %>",
+  "logo": "<%= image_url('logo.png') %>",
+  "description": "<%= page_meta_description %>",
+  "sameAs": [
+    <% others = [] %>
+    <% others << "https://testflight.apple.com/join/GJsAQqz2" %>
+    <% others << "https://github.com/crmne/cluster-headache-tracker" %>
+    <% others << "https://github.com/crmne/cluster-headache-tracker-ios" %>
+    <% others << "https://github.com/crmne/cluster-headache-tracker-android" %>
+    <%= others.map { |url| "\"#{url}\"" }.join(", ").html_safe %>
+  ]
+}
+    </script>
+</body>
 </html>

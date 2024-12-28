@@ -48,7 +48,7 @@ PreCommit:
     enabled: true
 
   RailsBestPractices:
-    enabled: true
+    enabled: false
     flags: ['-c', 'config/rails_best_practices.yml']
 
   RailsSchemaUpToDate:

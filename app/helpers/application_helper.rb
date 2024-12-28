@@ -22,4 +22,32 @@ module ApplicationHelper
       super(from_time)
     end
   end
+
+  def canonical_url
+    request.base_url + request.path
+  end
+
+  def app_title
+   "Cluster Headache Tracker"
+  end
+
+  def app_short_description
+    "Free, Private Tool for Tracking Cluster Headaches"
+  end
+
+  def app_description
+    "Track and manage your cluster headaches with our free, privacy-focused tool. Log symptoms, analyze patterns, and share reports with your doctor."
+  end
+
+  def page_title
+    if content_for(:title)
+      [ content_for(:title), app_title ].compact.join(" | ")
+    else
+      [ app_title, app_short_description ].compact.join(" | ")
+    end
+  end
+
+  def page_meta_description
+    content_for?(:meta_description) ? content_for(:meta_description) : app_description
+  end
 end
