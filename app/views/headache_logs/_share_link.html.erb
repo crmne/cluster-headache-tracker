@@ -15,11 +15,11 @@
 
   <summary class="collapse-title text-xl font-medium">
     <%= heroicon "share", class: "w-6 h-6 mr-2 inline-block" %>
-    Share with Healthcare Provider
+    Share Report with Doctor/Print
   </summary>
   <div class="collapse-content">
     <div class="text-sm opacity-75 mb-4">
-      Share your headache logs securely with your healthcare provider.
+      Share your headache logs securely with your doctor or your family. The link includes printing options.
     </div>
     <% if @share_link && (share_token = current_user.share_tokens.last) %>
       <div class="join join-horizontal w-full mb-4">
