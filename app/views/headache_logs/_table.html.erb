@@ -64,12 +64,14 @@
           <%# Intensity %>
           <td>
             <div class="flex items-center gap-2">
-              <div class="radial-progress"
-                   style="--value:<%= (log.intensity.to_f / 10 * 100).round %>; --size:2rem;
+              <div class="radial-progress print:hidden"
+                  style="--value:<%= (log.intensity.to_f / 10 * 100).round %>; --size:2rem;
                           color: <%= "hsl(#{120 - (log.intensity - 1) * 12}, 80%, 40%)" %>;">
                 <span class="text-sm font-bold"><%= log.intensity %></span>
               </div>
-              <span class="text-sm opacity-70">/10</span>
+              <%# Only show in print view %>
+              <span class="hidden print:inline font-bold"><%= log.intensity %></span>
+              <span>/10</span>
             </div>
           </td>
 
