@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get "faq", to: "home#faq", as: :faq
   get "imprint", to: "home#imprint", as: :imprint
   get "privacy-policy", to: "home#privacy_policy", as: :privacy_policy
+  get "neurologist", to: "home#neurologist", as: :neurologist
 
   # Shared Logs
   get "shared_logs/:token", to: "shared_logs#index", as: :shared_logs

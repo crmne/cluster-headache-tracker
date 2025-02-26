@@ -1,31 +1,201 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  app:
+    name: "Cluster Headache Tracker"
+    short_description: "Free, Private Tool for Tracking Cluster Headaches"
+    description: "Track and manage your cluster headaches with our free, privacy-focused tool. Log symptoms, analyze patterns, and share reports with your doctor."
+
+  shared:
+    back: "Back"
+    actions:
+      edit: "Edit"
+      delete: "Delete"
+      update: "Update"
+      create: "Create"
+      import: "Import"
+      export: "Export"
+      apply: "Apply"
+      clear: "Clear"
+      copy: "Copy"
+      copied: "Copied!"
+      print: "Print"
+      save_pdf: "Save as PDF"
+      cancel: "Cancel"
+    time:
+      now: "Now"
+      just_now: "just now"
+      ago: "%{time} ago"
+      duration: "%{duration}"
+    confirmations:
+      delete: "Are you sure you want to delete this headache log?"
+
+  navigation:
+    logs: "Logs"
+    charts: "Charts"
+    new: "New"
+    account: "Account"
+    feedback: "Feedback"
+    resources: "Resources"
+    legal: "Legal"
+
+  headache_logs:
+    index:
+      title: "Headache Logs"
+      no_logs: "No headache logs available. Try adjusting your filter criteria or add more headache logs."
+    new:
+      title: "New Headache Log"
+    edit:
+      title: "Edit Headache Log"
+    form:
+      fields:
+        start_time: "Start Time"
+        end_time: "End Time"
+        intensity: "Pain Intensity"
+        medication: "Medication"
+        medication_placeholder: "e.g., Oxygen, Sumatriptan"
+        triggers: "Triggers"
+        triggers_placeholder: "e.g., Sleep, Tired"
+        notes: "Notes"
+        notes_placeholder: "Any additional observations or details..."
+      hints:
+        medication: "Separate multiple medications with commas"
+        triggers: "Separate multiple triggers with commas"
+    notifications:
+      created: "Headache log was successfully created."
+      updated: "Headache log was successfully updated."
+      deleted: "Headache log was successfully deleted."
+    status:
+      ongoing: "Ongoing"
+      duration: "Duration"
+
+  charts:
+    title: "Charts"
+    intensity:
+      title: "Headache Intensity Over Time"
+      no_data: "No intensity data available."
+    attacks_per_day:
+      title: "Number of Attacks per Day"
+      no_data: "No attack data available."
+    duration:
+      title: "Attack Duration Over Time"
+      no_data: "No duration data available."
+    hourly:
+      title: "Headache Frequency and Intensity by Time of Day"
+      no_data: "No hourly data available."
+    triggers:
+      title: "Top 5 Triggers"
+      no_data: "No trigger data available."
+    medication:
+      title: "Top 5 Medications"
+      no_data: "No medication data available."
+
+  stats:
+    time_since_last: "Time Since Last"
+    headaches_today: "Headaches Today"
+    average_intensity: "Average Intensity"
+
+  filters:
+    title: "Filters"
+    start_date: "Start Date"
+    end_date: "End Date"
+    triggers: "Triggers"
+    triggers_placeholder: "Sleeping"
+    medication: "Medication"
+    medication_placeholder: "Oxygen"
+    actions:
+      apply: "Apply Filters"
+      clear: "Clear Filters"
+
+  share:
+    title: "Share with Healthcare Provider"
+    description: "Share your headache logs securely with your healthcare provider."
+    expiry: "Expires in %{time}"
+    actions:
+      generate: "Generate Share Link"
+      generate_new: "Generate New Link"
+      expire: "Expire Link"
+    notifications:
+      generated: "Share link generated successfully."
+      expired: "Share link has been expired."
+    confirmations:
+      expire: "Are you sure? This will immediately invalidate the current share link."
+
+  auth:
+    sign_in:
+      title: "Welcome back"
+      subtitle: "Sign in to continue tracking your headaches"
+      button: "Sign in"
+    sign_up:
+      title: "Create your account"
+      subtitle: "Start tracking your headaches today"
+      button: "Create account"
+    shared:
+      username: "Username"
+      password: "Password"
+      password_confirmation: "Confirm Password"
+      remember_me: "Remember me"
+      forgot_password: "Forgot password?"
+      no_account: "Don't have an account?"
+      already_have_account: "Already have an account?"
+      password_length: "%{count} characters minimum"
+
+  settings:
+    title: "Account Settings"
+    data_management:
+      title: "Data Management"
+      import:
+        title: "Import Headache Logs"
+        description: "The CSV file needs to have the following format:"
+        format: "start_time, end_time, intensity, medication, triggers, notes"
+        note: "Any CSV file exported from Cluster Headache Tracker will work."
+    username:
+      title: "Change Username"
+      new_username: "New Username"
+    password:
+      title: "Change Password"
+      current_password: "Current Password"
+      new_password: "New Password"
+      confirm_new_password: "Confirm New Password"
+      required: "(required)"
+
+  feedback:
+    title: "Feedback"
+    support: "Buy me a pizza 🍕"
+
+  pages:
+    home:
+      hero:
+        title: "Take Control of Your Cluster Headaches"
+        subtitle: "Track your attacks, identify patterns, and share insights with your healthcare provider - all in one intuitive, privacy-focused tool."
+        cta: "Start Tracking Free"
+      demo:
+        title: "See How It Works"
+        subtitle: "A simple, intuitive interface designed specifically for tracking cluster headaches."
+      testimonials:
+        title: "From Our Community"
+        subtitle: "Real feedback from cluster headache sufferers"
+      features:
+        title: "Everything You Need"
+        subtitle: "Purpose-built features that help you understand your condition better and communicate effectively with your healthcare team."
+      apps:
+        title: "Use It Anywhere"
+        subtitle: "Access your headache tracker from any device with a seamless, responsive experience."
+        ios: "Get iOS App (Beta)"
+        android: "Get Android App (Beta)"
+      open_source:
+        title: "Community-Driven & Free Forever"
+        subtitle: "Join a growing community of patients and developers making cluster headache tracking better for everyone. Open source under GPL-3.0 license."
+      support:
+        title: "Support This Project"
+        subtitle: "Help us keep developing better tools for the cluster headache community. Every contribution helps us stay independent and free for everyone."
+      final_cta:
+        title: "Ready to Take Control?"
+        subtitle: "Join thousands of cluster headache sufferers who are better understanding and managing their condition."
+
+  footer:
+    copyright: "© %{year} Carmine Paolino. Open Source and Free"
+    links:
+      github: "View on GitHub"
+      donate: "Donate"
+      privacy: "Privacy Policy"
+      imprint: "Imprint"
+      faq: "FAQ"

@@ -28,15 +28,15 @@ module ApplicationHelper
   end
 
   def app_title
-   "Cluster Headache Tracker"
+    "Cluster Headache Tracker | Free Tracking Tool"
   end
 
   def app_short_description
-    "Free, Private Tool for Tracking Cluster Headaches"
+    "Track and Manage Cluster Headaches | Free Privacy-Focused App"
   end
 
   def app_description
-    "Track and manage your cluster headaches with our free, privacy-focused tool. Log symptoms, analyze patterns, and share reports with your doctor."
+    "Track your cluster headaches, identify triggers, and share doctor reports to get oxygen therapy approved. Free, private tool used by 340+ patients. iOS & Android apps available."
   end
 
   def page_title
@@ -49,5 +49,18 @@ module ApplicationHelper
 
   def page_meta_description
     content_for?(:meta_description) ? content_for(:meta_description) : app_description
+  end
+
+  # New: Add specific meta descriptions for key pages
+  def home_meta_description
+    "Free cluster headache tracking app used by 340+ patients to identify triggers, track attack patterns, and get oxygen therapy approved. Available on web, iOS, and Android."
+  end
+
+  def faq_meta_description
+    "Frequently asked questions about cluster headaches, tracking methods, and how our free app helps patients manage their condition and get treatments approved."
+  end
+
+  def charts_meta_description
+    "Visualize your cluster headache patterns with interactive charts. Track intensity, duration, triggers, and medication effectiveness over time."
   end
 end
