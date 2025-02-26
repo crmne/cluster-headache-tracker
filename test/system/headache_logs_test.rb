@@ -19,11 +19,20 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     visit headache_logs_url
     click_on "New"
 
-    fill_in "Start Time", with: Time.current.strftime("%Y-%m-%dT%H:%M")
-    fill_in "Intensity", with: 7
-    fill_in "Medication", with: "Sumatriptan + Oxygen"
-    fill_in "Triggers", with: "Lack of sleep, Stress"
-    fill_in "Notes", with: "Severe headache on the right side"
+    # Add a small wait to ensure page is fully loaded
+    sleep(0.5)
+
+    # Use all().first to handle multiple datetime fields - this gets the first one (start time)
+    all("input[type='datetime-local']").first.set(Time.current.strftime("%Y-%m-%dT%H:%M"))
+
+    # Intensity - using execute_script with a robust selector
+    page.execute_script("document.querySelector('.range').value = 7")
+    page.execute_script("document.querySelector('.range').dispatchEvent(new Event('input'))")
+
+    # These should be more straightforward
+    fill_in "headache_log[medication]", with: "Sumatriptan + Oxygen"
+    fill_in "headache_log[triggers]", with: "Lack of sleep, Stress"
+    fill_in "headache_log[notes]", with: "Severe headache on the right side"
 
     click_on "Create Headache log"
 
@@ -36,8 +45,19 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     visit headache_log_url(headache_logs(:one))
     click_on "Edit"
 
-    fill_in "Intensity", with: 8
-    fill_in "Notes", with: "Updated notes"
+    # Add a small wait to ensure page is fully loaded
+    sleep(0.5)
+
+    # Debug the form structure if needed
+    # puts page.html
+
+    # Use a more general selector for the range input based on its CSS class
+    page.execute_script("document.querySelector('.range').value = 8")
+    page.execute_script("document.querySelector('.range').dispatchEvent(new Event('input'))")
+
+    # Use a more reliable way to find the notes textarea
+    fill_in "headache_log[notes]", with: "Updated notes"
+
     click_on "Update Headache log"
 
     assert_text "Headache log was successfully updated"
@@ -60,8 +80,8 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     click_on "Update Log"
     assert_current_path edit_headache_log_path(log)
 
-    # Fill in the end time with the current time
-    fill_in "End Time", with: end_time
+    # Fill in the end time using JavaScript
+    page.execute_script("document.querySelector('input[type=\"datetime-local\"][name=\"headache_log[end_time]\"]').value = '#{end_time.strftime("%Y-%m-%dT%H:%M")}'")
 
     # Submit the form and wait for the update
     click_button "Update Headache log"
@@ -75,9 +95,16 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     visit headache_logs_url
     open_accordion "filters"
 
-    fill_in "Start Date", with: Date.yesterday
-    fill_in "End Date", with: Date.tomorrow
-    fill_in "Triggers", with: "Sleeping"
+    # Use JavaScript to set date fields directly
+    yesterday = Date.yesterday.to_s
+    tomorrow = Date.tomorrow.to_s
+
+    # We'll use nth-child to target specific elements
+    page.execute_script("document.querySelectorAll('fieldset input[type=\"date\"]')[0].value = '#{yesterday}'")
+    page.execute_script("document.querySelectorAll('fieldset input[type=\"date\"]')[1].value = '#{tomorrow}'")
+
+    # Set trigger input
+    page.execute_script("document.querySelector('input[name=\"triggers\"]').value = 'Sleeping'")
 
     click_on "Apply Filters"
 

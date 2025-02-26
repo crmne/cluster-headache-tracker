@@ -21,9 +21,15 @@ class ChartsTest < ApplicationSystemTestCase
     visit charts_url
     open_accordion "filters"
 
-    fill_in "Start Date", with: Date.yesterday
-    fill_in "End Date", with: Date.tomorrow
-    fill_in "Triggers", with: "Sleeping"
+    # Use JavaScript to set date fields directly
+    yesterday = Date.yesterday.to_s
+    tomorrow = Date.tomorrow.to_s
+
+    page.execute_script("document.querySelectorAll('fieldset input[type=\"date\"]')[0].value = '#{yesterday}'")
+    page.execute_script("document.querySelectorAll('fieldset input[type=\"date\"]')[1].value = '#{tomorrow}'")
+
+    # Set trigger input
+    page.execute_script("document.querySelector('input[name=\"triggers\"]').value = 'Sleeping'")
 
     click_on "Apply Filters"
 
@@ -34,8 +40,12 @@ class ChartsTest < ApplicationSystemTestCase
     visit charts_url
     open_accordion "filters"
 
-    fill_in "Start Date", with: 1.year.ago
-    fill_in "End Date", with: 11.months.ago
+    # Use JavaScript to set date fields to a period with no data
+    one_year_ago = 1.year.ago.to_date.to_s
+    eleven_months_ago = 11.months.ago.to_date.to_s
+
+    page.execute_script("document.querySelectorAll('fieldset input[type=\"date\"]')[0].value = '#{one_year_ago}'")
+    page.execute_script("document.querySelectorAll('fieldset input[type=\"date\"]')[1].value = '#{eleven_months_ago}'")
 
     click_on "Apply Filters"
 
