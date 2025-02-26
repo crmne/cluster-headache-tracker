@@ -33,7 +33,7 @@
   <%= yield :head %>
   <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
   <%= render 'application/favicon' %>
-  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
   <% if Rails.env.production? %>
@@ -43,7 +43,7 @@
 
 <body>
   <%= render 'navbar' %>
-  <main class="w-full pt-safe-offset-16">
+  <main class="w-full pt-safe-offset-16 bg-base-200 min-h-full">
     <% if current_page? root_path or current_page? feedback_path %>
     <%= yield %>
     <% else %>

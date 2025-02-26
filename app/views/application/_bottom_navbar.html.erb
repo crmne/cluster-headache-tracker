@@ -1,22 +1,26 @@
-<div class="btm-nav drop-shadow-2xl print:hidden" style="height: max(4rem, calc(4rem + env(safe-area-inset-bottom)));">
-  <%= link_to headache_logs_path, class: "#{if current_page? headache_logs_path then 'active' end}" do %>
-    <%= heroicon "calendar-days", variant: "solid" %>
-    <span class="btm-nav-label">Logs</span>
+<div class="dock dock-xl bg-neutral text-neutral-content shadow-lg print:hidden" style="padding-bottom: env(safe-area-inset-bottom);">
+  <%= link_to headache_logs_path, class: "#{current_page?(headache_logs_path) ? 'dock-active' : ''}" do %>
+    <%= heroicon "calendar-days", variant: "solid", class: "size-6" %>
+    <span class="dock-label">Logs</span>
   <% end %>
-  <%= link_to charts_path, class: "#{if current_page? charts_path then 'active' end}" do %>
-    <%= heroicon "chart-bar", variant: "solid" %>
-    <span class="btm-nav-label">Charts</span>
+
+  <%= link_to charts_path, class: "#{current_page?(charts_path) ? 'dock-active' : ''}" do %>
+    <%= heroicon "chart-bar", variant: "solid", class: "size-6" %>
+    <span class="dock-label">Charts</span>
   <% end %>
-  <%= link_to new_headache_log_path, class: "text-primary #{if current_page? new_headache_log_path then 'active' end}" do %>
-    <%= heroicon "plus-circle", variant: "solid" %>
-    <span class="btm-nav-label font-bold">New</span>
+
+  <%= link_to new_headache_log_path, class: "bg-primary font-bold #{current_page?(new_headache_log_path) ? 'dock-active' : ''}" do %>
+    <%= heroicon "plus-circle", variant: "solid", class: "size-8" %>
+    <span class="dock-label">New</span>
   <% end %>
-  <%= link_to settings_path, class: "#{if current_page? settings_path then 'active' end}" do %>
-    <%= heroicon "user", variant: "solid" %>
-    <span class="btm-nav-label">Account</span>
+
+  <%= link_to settings_path, class: "#{current_page?(settings_path) ? 'dock-active' : ''}" do %>
+    <%= heroicon "user", variant: "solid", class: "size-6" %>
+    <span class="dock-label">Account</span>
   <% end %>
-  <%= link_to feedback_path, class: "#{if current_page? feedback_path then 'active' end}" do %>
-    <%= heroicon "chat-bubble-left-ellipsis", variant: "solid" %>
-    <span class="btm-nav-label">Feedback</span>
+
+  <%= link_to feedback_path, class: "#{current_page?(feedback_path) ? 'dock-active' : ''}" do %>
+    <%= heroicon "chat-bubble-left-ellipsis", variant: "solid", class: "size-6" %>
+    <span class="dock-label">Feedback</span>
   <% end %>
 </div>

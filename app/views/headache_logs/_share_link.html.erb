@@ -1,5 +1,4 @@
-<%# app/views/headache_logs/_share_link.html.erb %>
-<details class="collapse bg-base-200 collapse-arrow shadow join-item"
+<details class="collapse bg-base-100 collapse-arrow shadow join-item"
          data-accordion="share"
          data-controller="share-link"
          <%= 'open' if flash[:generate_link] %>>
@@ -22,23 +21,26 @@
       Share your headache logs securely with your doctor or your family. The link includes printing options.
     </div>
     <% if @share_link && (share_token = current_user.share_tokens.last) %>
-      <div class="join join-horizontal w-full mb-4">
-        <input type="text"
-               readonly
-               data-share-link-target="input"
-               autocomplete="off"
-               value="<%= @share_link %>"
-               class="input input-bordered join-item w-full">
-        <button data-share-link-target="button"
-                data-action="click->share-link#copy"
-                class="btn btn-primary join-item min-w-24">
-          <%= heroicon "clipboard", variant: "mini", class: "h-4 w-4" %>
-          <span>Copy</span>
-        </button>
-      </div>
-      <div class="text-sm opacity-75 mb-4">
-        Expires in <%= distance_of_time_in_words(Time.current, share_token.expires_at) %>
-      </div>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Share Link</legend>
+        <div class="join">
+          <input type="text"
+                 readonly
+                 data-share-link-target="input"
+                 autocomplete="off"
+                 value="<%= @share_link %>"
+                 class="input input-bordered join-item w-full">
+          <button data-share-link-target="button"
+                  data-action="click->share-link#copy"
+                  class="btn btn-primary join-item">
+            <%= heroicon "clipboard", variant: "mini", class: "h-4 w-4" %>
+            <span>Copy</span>
+          </button>
+        </div>
+        <div class="text-sm opacity-75 mt-2">
+          Expires in <%= distance_of_time_in_words(Time.current, share_token.expires_at) %>
+        </div>
+      </fieldset>
       <div class="flex flex-col sm:flex-row gap-4">
         <%= button_to expire_share_link_path, method: :delete, class: "btn btn-error btn-outline", data: { turbo_confirm: "Are you sure? This will immediately invalidate the current share link." } do %>
           <%= heroicon "trash", class: "h-4 w-4" %>

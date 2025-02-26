@@ -1,46 +1,44 @@
-<details class="collapse bg-base-200 collapse-arrow shadow join-item print:hidden" data-accordion="filters">
+<details class="collapse bg-base-100 collapse-arrow shadow join-item print:hidden" data-accordion="filters">
   <summary class="collapse-title text-xl font-medium">
     <%= heroicon "funnel", class: "w-6 h-6 mr-2 inline-block" %>
     Filters
   </summary>
   <div class="collapse-content">
-    <%= form_with url: local_assigns[:url], method: :get  do |form| %>
-      <div class="mb-4 flex flex-wrap -mx-2">
-        <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
-          <%= form.label :start_time, class: "form-control w-full" do %>
-            <div class="label">
-              <span class="label-text">Start Date</span>
+    <%= form_with url: local_assigns[:url], method: :get do |form| %>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <fieldset class="fieldset p-4 rounded-box">
+          <legend class="fieldset-legend">Date Range</legend>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="fieldset-label">Start Date</label>
+              <%= form.date_field :start_time, value: params[:start_time], class: "input input-bordered w-full" %>
             </div>
-            <%= form.date_field :start_time, value: params[:start_time], class: "input input-bordered w-full" %>
-          <% end %>
-        </div>
-        <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
-          <%= form.label :end_time, class: "form-control w-full" do %>
-            <div class="label">
-              <span class="label-text">End Date</span>
+
+            <div>
+              <label class="fieldset-label">End Date</label>
+              <%= form.date_field :end_time, value: params[:end_time], class: "input input-bordered w-full" %>
             </div>
-            <%= form.date_field :end_time, value: params[:end_time], class: "input input-bordered w-full" %>
-          <% end %>
-        </div>
-        <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
-          <%= form.label :triggers, class: "form-control w-full" do %>
-            <div class="label">
-              <span class="label-text">Triggers</span>
-              <span class="label-text-alt"><%= heroicon "magnifying-glass", variant: "micro" %></span>
+          </div>
+        </fieldset>
+
+        <fieldset class="fieldset p-4 rounded-box">
+          <legend class="fieldset-legend">Keywords</legend>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="fieldset-label">Triggers</label>
+              <%= form.text_field :triggers, value: params[:triggers], class: "input input-bordered w-full", placeholder: "Sleeping" %>
             </div>
-            <%= form.text_field :triggers, value: params[:triggers], class: "input input-bordered w-full", placeholder: "Sleeping" %>
-          <% end %>
-        </div>
-        <div class="w-full md:w-1/4 px-2 mb-4 md:mb-0">
-          <%= form.label :medication, class: "form-control w-full" do %>
-            <div class="label">
-              <span class="label-text">Medication</span>
-              <span class="label-text-alt"><%= heroicon "magnifying-glass", variant: "micro" %></span>
+
+            <div>
+              <label class="fieldset-label">Medication</label>
+              <%= form.text_field :medication, value: params[:medication], class: "input input-bordered w-full", placeholder: "Oxygen" %>
             </div>
-            <%= form.text_field :medication, value: params[:medication], class: "input input-bordered w-full", placeholder: "Oxygen" %>
-          <% end %>
-        </div>
+          </div>
+        </fieldset>
       </div>
+
       <div class="flex items-center justify-between">
         <%= link_to "Clear Filters", local_assigns[:url], class: "btn btn-ghost" %>
         <%= form.submit "Apply Filters", class: "btn btn-primary" %>

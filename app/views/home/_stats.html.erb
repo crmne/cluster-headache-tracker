@@ -1,0 +1,19 @@
+<div class="stats stats-vertical md:stats-horizontal shadow my-8 bg-base-100 text-primary">
+  <div class="stat">
+    <div class="stat-figure">
+      <%= heroicon "user-group", class: "w-8 h-8" %>
+    </div>
+    <div class="stat-title">Active Users</div>
+    <div class="stat-value"><%= @users_count %>+</div>
+    <div class="stat-desc">Tracking their headaches</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-figure">
+      <%= heroicon "document-chart-bar", class: "w-8 h-8" %>
+    </div>
+    <div class="stat-title">Headaches Logged</div>
+    <div class="stat-value"><%= @logs_count %>+</div>
+    <div class="stat-desc">And growing every day</div>
+  </div>
+</div>

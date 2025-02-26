@@ -1,10 +1,11 @@
 <!-- Hero Section -->
-<section class="bg-indigo-600 text-white">
+<section class="bg-primary text-white">
   <div class="hero min-h-[50vh]">
     <div class="hero-content text-center">
       <div class="max-w-2xl">
         <h1 class="text-4xl md:text-6xl font-bold mb-6">Take Control of Your Cluster Headaches</h1>
         <p class="text-xl md:text-2xl mb-8">Track your attacks, identify patterns, and share insights with your healthcare provider - all in one intuitive, privacy-focused tool.</p>
+
         <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-lg btn-primary bg-white text-indigo-600 hover:bg-indigo-100 border-none mb-8" do %>
           <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
           Start Tracking Free
@@ -23,6 +24,8 @@
             Get Android App (Beta)
           </a>
         </div>
+
+        <%= render 'stats' %>
       </div>
     </div>
   </div>
@@ -36,30 +39,28 @@
       <p class="text-xl text-base-content/80 max-w-2xl mx-auto">A simple, intuitive interface designed specifically for tracking cluster headaches.</p>
     </div>
     <div class="max-w-6xl mx-auto">
-      <div class="aspect-w-16 aspect-h-9 relative">
-        <div class="aspect-w-16 aspect-h-9">
-          <iframe
-             class="w-full h-full rounded-lg shadow-xl"
-             src="https://www.youtube.com/embed/4HlsqANZdv8?cc_load_policy=1&cc_lang_pref=en"
-             title="Cluster Headache Tracker Demo"
-             frameborder="0"
-             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-             allowfullscreen>
-          </iframe>
-        </div>
+      <div class="relative w-full" style="padding-bottom: 56.25%;">  <!-- 56.25% = 9/16 (maintains 16:9 aspect ratio) -->
+        <iframe
+          class="absolute top-0 left-0 w-full h-full rounded-lg shadow-xl"
+          src="https://www.youtube.com/embed/4HlsqANZdv8?cc_load_policy=1&cc_lang_pref=en"
+          title="Cluster Headache Tracker Demo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Testimonials Section -->
-<section class="py-20">
+<section class="py-20 bg-success text-white">
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
       <h2 class="text-3xl font-bold mb-4">From Our Community</h2>
-      <p class="text-xl text-base-content/80 max-w-2xl mx-auto">Real feedback from cluster headache sufferers</p>
+      <p class="text-xl max-w-2xl mx-auto">Real feedback from cluster headache sufferers</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-base-content">
       <!-- Success Story - Practical Value -->
       <div class="card bg-base-100 shadow-xl">
         <div class="card-body">
@@ -115,13 +116,13 @@
 </section>
 
 <!-- Features Section -->
-<section id="features" class="bg-base-200 py-20">
+<section id="features" class="bg-accent text-white py-20">
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
       <h2 class="text-3xl font-bold mb-4">Everything You Need</h2>
-      <p class="text-xl text-base-content/80 max-w-2xl mx-auto">Purpose-built features that help you understand your condition better and communicate effectively with your healthcare team.</p>
+      <p class="text-xl max-w-2xl mx-auto">Purpose-built features that help you understand your condition better and communicate effectively with your healthcare team.</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-base-content">
       <div class="card bg-base-100 shadow-xl">
         <div class="card-body">
           <div class="text-4xl mb-4">📊</div>
@@ -169,13 +170,13 @@
 </section>
 
 <!-- Device Compatibility Section -->
-<section class="bg-emerald-600 py-20">
+<section class="bg-neutral text-white py-20">
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
       <h2 class="text-3xl font-bold mb-4">Use It Anywhere</h2>
       <p class="text-xl max-w-2xl mx-auto">Access your headache tracker from any device with a seamless, responsive experience.</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-base-content">
       <div class="card bg-base-100 shadow-xl">
         <div class="card-body">
           <div class="text-4xl mb-4">📱</div>
@@ -214,7 +215,7 @@
 </section>
 
 <!-- Open Source Section -->
-<section class="bg-emerald-500 text-white py-16">
+<section class="bg-success text-white py-16">
   <div class="container mx-auto px-4 text-center">
     <h2 class="text-3xl font-bold mb-4">Community-Driven & Free Forever</h2>
     <p class="text-xl mb-8 max-w-2xl mx-auto">Join a growing community of patients and developers making cluster headache tracking better for everyone. Open source under GPL-3.0 license.</p>
@@ -227,13 +228,13 @@
 </section>
 
 <!-- Support Section -->
-<section class="bg-amber-500 text-white py-16">
+<section class="bg-info text-white py-16">
   <div class="container mx-auto px-4 text-center">
     <h2 class="text-3xl font-bold mb-4">Support This Project</h2>
     <p class="text-xl mb-8 max-w-2xl mx-auto">Help us keep developing better tools for the cluster headache community. Every contribution helps us stay independent and free for everyone.</p>
     <a href="https://buymeacoffee.com/crmne" target="_blank" rel="noopener noreferrer"
-       class="btn btn-outline border-white text-white hover:bg-white hover:text-amber-500 hover:border-white">
-      🍕 Buy Me a Pizza
+       class="btn btn-outline">
+      ☕️ Buy Me a Coffee
     </a>
   </div>
 </section>
