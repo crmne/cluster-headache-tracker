@@ -1,31 +1,35 @@
-<%= render "headache_logs/ongoing_headaches" if current_user %>
+<div id="flash-messages" class="fixed top-safe-offset-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-md px-4 space-y-3 pointer-events-none">
+  <% if notice || flash[:notice] %>
+    <div role="alert" class="alert alert-success shadow-lg relative pr-10 pointer-events-auto" data-controller="flash">
+      <%= heroicon "check-circle", class: "h-6 w-6 shrink-0 stroke-current" %>
+      <span><%= notice || flash[:notice] %></span>
+      <%= render "flash_close_button" %>
+    </div>
+  <% end %>
 
-<% if notice || flash[:notice] %>
-  <div role="alert" class="alert alert-success mb-4 shadow">
-    <%= heroicon "check-circle", class: "h-6 w-6 shrink-0 stroke-current" %>
-    <span><%= notice || flash[:notice] %></span>
-  </div>
-<% end %>
+  <% if flash[:info] %>
+    <div role="alert" class="alert alert-info shadow-lg relative pr-10 pointer-events-auto" data-controller="flash">
+      <%= heroicon "information-circle", class: "h-6 w-6 shrink-0 stroke-current" %>
+      <span><%= flash[:info] %></span>
+      <%= render "flash_close_button" %>
+    </div>
+  <% end %>
 
-<% if flash[:info] %>
-  <div role="alert" class="alert alert-info mb-4 shadow">
-    <%= heroicon "information-circle", class: "h-6 w-6 shrink-0 stroke-current" %>
-    <span><%= flash[:info] %></span>
-  </div>
-<% end %>
+  <% if alert || flash[:alert] %>
+    <div role="alert" class="alert alert-warning shadow-lg relative pr-10 pointer-events-auto" data-controller="flash">
+      <%= heroicon "exclamation-triangle", class: "h-6 w-6 shrink-0 stroke-current" %>
+      <span><%= alert || flash[:alert] %></span>
+      <%= render "flash_close_button" %>
+    </div>
+  <% end %>
 
-<% if alert || flash[:alert] %>
-  <div role="alert" class="alert alert-warning mb-4 shadow">
-    <%= heroicon "exclamation-triangle", class: "h-6 w-6 shrink-0 stroke-current" %>
-    <span><%= alert || flash[:alert] %></span>
-  </div>
-<% end %>
+  <% if flash[:error] %>
+    <div role="alert" class="alert alert-error shadow-lg relative pr-10 pointer-events-auto" data-controller="flash">
+      <%= heroicon "x-circle", class: "h-6 w-6 shrink-0 stroke-current" %>
+      <span><%= flash[:error] %></span>
+      <%= render "flash_close_button" %>
+    </div>
+  <% end %>
 
-<% if flash[:error] %>
-  <div role="alert" class="alert alert-error mb-4 shadow">
-    <%= heroicon "x-circle", class: "h-6 w-6 shrink-0 stroke-current" %>
-    <span><%= flash[:error] %></span>
-  </div>
-<% end %>
-
-<%= render "devise_error_messages", resource: @user %>
+  <%= render "devise/shared/error_messages", resource: local_assigns[:resource] if local_assigns[:resource].present? %>
+</div>

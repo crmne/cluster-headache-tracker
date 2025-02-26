@@ -1,10 +1,11 @@
 <% if resource.errors.any? %>
-  <div class="alert alert-error">
+  <div class="alert alert-error relative pr-10 mb-4 pointer-events-auto" data-controller="flash">
     <%= heroicon "x-circle", class: "stroke-current shrink-0 h-6 w-6" %>
     <ul class="list-disc list-inside">
       <% resource.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
+    <%= render "flash_close_button" %>
   </div>
 <% end %>
