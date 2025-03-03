@@ -53,7 +53,7 @@ Both apps provide the same features as the web application in a native mobile in
 
 ### Prerequisites
 
-- Ruby 3.3.4
+- Ruby 3.4.2
 - PostgreSQL
 - Node.js
 
