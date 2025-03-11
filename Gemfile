@@ -107,3 +107,5 @@ group :test do
 end
 
 gem "sitemap_generator", "~> 6.3"
+
+gem "rack-attack", "~> 6.7"
