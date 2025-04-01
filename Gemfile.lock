@@ -147,7 +147,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    honeybadger (5.26.4)
+    honeybadger (5.27.1)
       logger
       ostruct
     i18n (1.14.7)
@@ -211,7 +211,7 @@ GEM
       with_env (= 1.1.0)
       xml-simple (~> 1.1.9)
     lint_roller (1.1.0)
-    logger (1.6.6)
+    logger (1.7.0)
     loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
