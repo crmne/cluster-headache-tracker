@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "daisyui": "^5.0.0-beta.8",
+    "daisyui": "^5.0.43",
     "tailwindcss-safe-area": "^0.6.0"
   },
   "dependencies": {
