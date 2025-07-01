@@ -396,7 +396,7 @@ GEM
     sitemap_generator (6.3.0)
       builder (~> 3.0)
     smart_properties (1.17.0)
-    solid_cable (3.0.10)
+    solid_cable (3.0.11)
       actioncable (>= 7.2)
       activejob (>= 7.2)
       activerecord (>= 7.2)
