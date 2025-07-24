@@ -22,13 +22,9 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     # Add a small wait to ensure page is fully loaded
     sleep(0.5)
 
-    # Use all().first to handle multiple datetime fields - this gets the first one (start time)
-    datetime_input = all("input[type='datetime-local']").first
-    if datetime_input
-      datetime_input.set(Time.current.strftime("%Y-%m-%dT%H:%M"))
-    else
-      # Fallback: try finding by name attribute
-      fill_in "headache_log[start_time]", with: Time.current.strftime("%Y-%m-%dT%H:%M")
+    # Fill in start time - the field should be present after page load
+    within("fieldset", text: "Start Time") do
+      find("input[type='datetime-local']").set(Time.current.strftime("%Y-%m-%dT%H:%M"))
     end
 
     # Intensity - using execute_script with a robust selector
@@ -125,7 +121,8 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     assert_text "Share link generated successfully"
 
     click_on "Copy"
-    assert_text "Copied!"
+    # Wait for the JavaScript to update the button text
+    assert_selector "button", text: "Copied!", wait: 2
   end
 
   test "importing CSV file" do
