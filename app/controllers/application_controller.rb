@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery unless: -> { Rails.env.development? && hotwire_native_app? }
+
   before_action :set_ongoing_headaches, if: :user_signed_in?
   before_action :set_locale
   helper_method :hotwire_native_app?

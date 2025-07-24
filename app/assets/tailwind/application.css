@@ -68,6 +68,22 @@
   #root {
     height: -webkit-fill-available;
   }
+
+  /* Prevent overscroll background color change on mobile */
+  html {
+    background-color: var(--color-base-200);
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    background-color: var(--color-base-200);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
 }
 
 /* Flash message animations */

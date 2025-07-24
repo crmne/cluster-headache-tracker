@@ -41,21 +41,28 @@
   <% end %>
 </head>
 
-<body>
+<body class="min-h-screen bg-base-200 flex flex-col">
   <%= render 'navbar' %>
   <%= render 'flash_messages', resource: local_assigns[:resource] %>
-  <main class="w-full pt-safe-offset-16 bg-base-200 min-h-full">
+  <main class="w-full pt-safe-offset-16 flex-grow">
     <% if current_page? root_path or current_page? feedback_path %>
     <%= yield %>
     <% else %>
-    <div class="container mx-auto mt-4 px-4 pb-safe-offset-24 print:m-0 print:w-full print:p-0 print:max-w-none">
+    <div class="container mx-auto mt-4 px-4 <%= user_signed_in? && !static_page? && !native_app_form_page? && !native_app_with_tabs? ? 'pb-safe-offset-24' : 'pb-4' %> print:m-0 print:w-full print:p-0 print:max-w-none">
       <%= render "headache_logs/ongoing_headaches" if current_user %>
       <%= yield %>
     </div>
     <% end %>
   </main>
-  <%= render 'footer' if static_page? %>
-  <%= render 'bottom_navbar' if user_signed_in? and not static_page? and not native_app_form_page? %>
+  <% unless hotwire_native_app? %>
+    <% if user_signed_in? && !static_page? && !native_app_form_page? && !native_app_with_tabs? %>
+      <%= render 'bottom_navbar' %>
+    <% else %>
+      <%= render 'footer' %>
+    <% end %>
+  <% else %>
+    <%= render 'bottom_navbar' if user_signed_in? && !native_app_form_page? && !native_app_with_tabs? %>
+  <% end %>
     <script type="application/ld+json">
       {
   "@context": "https://schema.org",

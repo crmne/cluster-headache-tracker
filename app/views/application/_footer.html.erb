@@ -1,65 +1,65 @@
-<footer class="footer sm:footer-horizontal p-10 bg-neutral text-neutral-content">
-  <nav>
-    <h6 class="footer-title">Legal</h6>
-    <%= link_to "Imprint", imprint_path, class: "link link-hover" %>
-    <%= link_to "Privacy Policy", privacy_policy_path, class: "link link-hover" %>
-  </nav>
+<footer class="mt-auto bg-neutral text-neutral-content">
+  <div class="footer sm:footer-horizontal p-10">
+    <nav>
+      <h6 class="footer-title">Legal</h6>
+      <%= link_to "Imprint", imprint_path, class: "link link-hover" %>
+      <%= link_to "Privacy Policy", privacy_policy_path, class: "link link-hover" %>
+    </nav>
 
-  <nav>
-    <h6 class="footer-title">Resources</h6>
-    <%= link_to "FAQ", faq_path, class: "link link-hover" %>
-    <%= link_to "View on GitHub", "https://github.com/crmne/cluster_headache_tracker", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %>
-    <%= link_to "Donate", "https://buymeacoffee.com/crmne", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %>
-  </nav>
+    <nav>
+      <h6 class="footer-title">Resources</h6>
+      <%= link_to "FAQ", faq_path, class: "link link-hover" %>
+      <%= link_to "View on GitHub", "https://github.com/crmne/cluster_headache_tracker", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %>
+      <%= link_to "Donate", "https://buymeacoffee.com/crmne", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %>
+    </nav>
 
-  <nav>
-    <h6 class="footer-title">Mobile Apps</h6>
-    <%= link_to "https://testflight.apple.com/join/GJsAQqz2", class: "link link-hover flex items-center gap-2", target: "_blank", rel: "noopener noreferrer" do %>
-      <%= icon "ios", class: "fill-current", width: 24, height: 24 %>
-      iOS Beta App
-    <% end %>
-    <%= link_to "/cluster-headache-tracker.apk", class: "link link-hover flex items-center gap-2", target: "_blank", rel: "noopener noreferrer" do %>
-      <%= icon "android", class: "fill-current", width: 24, height: 24 %>
-      Android Beta App
-    <% end %>
-  </nav>
+    <nav>
+      <h6 class="footer-title">Mobile Apps</h6>
+      <%= link_to "https://testflight.apple.com/join/GJsAQqz2", class: "link link-hover flex items-center gap-2", target: "_blank", rel: "noopener noreferrer" do %>
+        <%= icon "ios", class: "fill-current", width: 24, height: 24 %>
+        iOS Beta App
+      <% end %>
+      <%= link_to "/cluster-headache-tracker.apk", class: "link link-hover flex items-center gap-2", target: "_blank", rel: "noopener noreferrer" do %>
+        <%= icon "android", class: "fill-current", width: 24, height: 24 %>
+        Android Beta App
+      <% end %>
+    </nav>
 
-  <nav>
-    <h6 class="footer-title">Other Projects</h6>
-    <%= link_to "Chat with Work", "https://chatwithwork.com", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %>
-    <%= link_to "RubyLLM", "https://rubyllm.com", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %>
-    <%= link_to "Floppy Disco", "https://floppydisco.live", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %>
-    <%= link_to "Mindscape Productions", "https://mindscape.productions", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %>
-  </nav>
+    <nav>
+      <h6 class="footer-title">Other Projects</h6>
+      <%= link_to "Chat with Work", "https://chatwithwork.com", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %>
+      <%= link_to "RubyLLM", "https://rubyllm.com", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %>
+      <%= link_to "Floppy Disco", "https://floppydisco.live", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %>
+      <%= link_to "Mindscape Productions", "https://mindscape.productions", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %>
+    </nav>
 
-  <form method="post" action="https://sendfox.com/form/mnn6xq/1wj8v6" class="sendfox-form" id="1wj8v6" data-async="true" data-recaptcha="true">
-    <h6 class="footer-title">Newsletter</h6>
-    <fieldset class="w-full md:w-80">
-      <label class="label">
-        <span class="label-text text-neutral-content">Stay updated on new features</span>
-      </label>
-      <div class="join">
-        <input type="email" name="email" id="sendfox_form_email" autocomplete="off" placeholder="email@example.com" required class="input input-bordered join-item w-full">
-        <button type="submit" class="btn btn-primary join-item">Subscribe</button>
-      </div>
-      <div style="position: absolute; left: -5000px;" aria-hidden="true">
-        <input type="text" name="a_password" tabindex="-1" value="" autocomplete="off">
-      </div>
-    </fieldset>
-  </form>
-</footer>
+    <form method="post" action="https://sendfox.com/form/mnn6xq/1wj8v6" class="sendfox-form" id="1wj8v6" data-async="true" data-recaptcha="true">
+      <h6 class="footer-title">Newsletter</h6>
+      <fieldset class="w-full md:w-80">
+        <label class="label">
+          <span class="label-text text-neutral-content">Stay updated on new features</span>
+        </label>
+        <div class="join">
+          <input type="email" name="email" id="sendfox_form_email" autocomplete="off" placeholder="email@example.com" required class="input input-bordered join-item w-full">
+          <button type="submit" class="btn btn-primary join-item">Subscribe</button>
+        </div>
+        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+          <input type="text" name="a_password" tabindex="-1" value="" autocomplete="off">
+        </div>
+      </fieldset>
+    </form>
+  </div>
 
-<footer class="footer px-10 py-4 border-t bg-neutral text-neutral-content border-base-300">
-  <aside class="flex items-center gap-2">
-    <%= image_tag "logo_small.png", size: 32, alt: "Cluster Headache Tracker Logo", class: "fill-current" %>
-    <p>© <%= Date.today.year %> <%= link_to "Carmine Paolino", "https://paolino.me", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %><br>Open Source and Free</p>
-  </aside>
-  <nav class="md:place-self-center md:justify-self-end">
-    <div class="flex gap-4">
+  <div class="flex flex-col md:flex-row items-center justify-between px-10 py-4 border-t border-base-300 gap-4">
+    <aside class="flex items-center gap-2">
+      <%= image_tag "logo_small.png", size: 32, alt: "Cluster Headache Tracker Logo", class: "fill-current" %>
+      <p>© <%= Date.today.year %> <%= link_to "Carmine Paolino", "https://paolino.me", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %><br>Open Source and Free</p>
+    </aside>
+    <nav>
       <%= link_to "https://github.com/crmne/cluster_headache_tracker", target: "_blank", rel: "noopener noreferrer", class: "btn btn-circle btn-ghost" do %>
         <%= icon "github", class: "fill-current", width: 24, height: 24 %>
         <span class="sr-only">View on GitHub</span>
       <% end %>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </footer>

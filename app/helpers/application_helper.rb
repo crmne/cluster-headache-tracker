@@ -63,4 +63,23 @@ module ApplicationHelper
   def charts_meta_description
     "Visualize your cluster headache patterns with interactive charts. Track intensity, duration, triggers, and medication effectiveness over time."
   end
+
+  def native_app_with_tabs?
+    return false unless hotwire_native_app?
+
+    # Extract version from user agent
+    match = request.user_agent.match(/ClusterHeadacheTracker\/(\d+)\.(\d+)\.(\d+)/)
+    return false unless match
+
+    major = match[1].to_i
+    minor = match[2].to_i
+    build = match[3].to_i
+
+    # Return true for version 1.0.8+ or any version higher than 1.0.x
+    return true if major > 1
+    return true if major == 1 && minor > 0
+    return true if major == 1 && minor == 0 && build >= 8
+
+    false
+  end
 end

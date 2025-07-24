@@ -24,44 +24,45 @@
 <%# Info for single ongoing headache %>
 <% if @ongoing_headaches.size == 1 %>
   <% ongoing_log = @ongoing_headaches.first %>
-  <div role="alert" class="alert alert-info shadow-lg mb-4">
-    <%= heroicon "clock", class: "h-6 w-6 shrink-0" %>
-    <span>
+  <div role="alert" class="alert alert-info shadow-lg mb-4 flex-col sm:flex-row">
+    <div class="flex items-center gap-2 w-full sm:w-auto">
+      <%= heroicon "clock", class: "h-6 w-6 shrink-0" %>
       <h3 class="font-bold">Ongoing Headache</h3>
-    </span>
+    </div>
     <div data-controller="timer"
-         data-timer-start-value="<%= ongoing_log.start_time.strftime('%Y-%m-%dT%H:%M:%S') %>">
-      <div class="grid auto-cols-max grid-flow-col gap-5 text-center">
+         data-timer-start-value="<%= ongoing_log.start_time.strftime('%Y-%m-%dT%H:%M:%S') %>"
+         class="flex-1">
+      <div class="grid auto-cols-max grid-flow-col gap-2 sm:gap-5 text-center justify-center">
         <div class="flex flex-col" data-timer-target="daysContainer">
-          <span class="countdown font-mono text-xl">
+          <span class="countdown font-mono text-lg sm:text-xl">
             <span data-timer-target="days" style="--value:0;"></span>
           </span>
-          days
+          <span class="text-xs">days</span>
         </div>
         <div class="flex flex-col" data-timer-target="hoursContainer">
-          <span class="countdown font-mono text-xl">
+          <span class="countdown font-mono text-lg sm:text-xl">
             <span data-timer-target="hours" style="--value:0;"></span>
           </span>
-          hours
+          <span class="text-xs">hours</span>
         </div>
         <div class="flex flex-col" data-timer-target="minutesContainer">
-          <span class="countdown font-mono text-xl">
+          <span class="countdown font-mono text-lg sm:text-xl">
             <span data-timer-target="minutes" style="--value:0;"></span>
           </span>
-          min
+          <span class="text-xs">min</span>
         </div>
         <div class="flex flex-col" data-timer-target="secondsContainer">
-          <span class="countdown font-mono text-xl">
+          <span class="countdown font-mono text-lg sm:text-xl">
             <span data-timer-target="seconds" style="--value:0;"></span>
           </span>
-          sec
+          <span class="text-xs">sec</span>
         </div>
       </div>
     </div>
-    <div>
-      <%= link_to edit_headache_log_path(ongoing_log), class: "btn" do %>
-        <%= heroicon "pencil-square", variant: "mini", class: "w-4 h-4 mr-1" %>
-        Update Log
+    <div class="w-full sm:w-auto mt-2 sm:mt-0">
+      <%= link_to edit_headache_log_path(ongoing_log), class: "btn btn-sm sm:btn-md w-full sm:w-auto" do %>
+        <%= heroicon "pencil-square", variant: "mini", class: "w-4 h-4" %>
+        Edit
       <% end %>
     </div>
   </div>
