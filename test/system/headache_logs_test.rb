@@ -78,8 +78,8 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     # Verify we see the "Ongoing" status
     assert_text "Ongoing"
 
-    # Click the "Update Log" button and wait for the page to load
-    click_on "Update Log"
+    # Click the "Edit" button and wait for the page to load
+    click_on "Edit"
     assert_current_path edit_headache_log_path(log)
 
     # Fill in the end time using JavaScript
