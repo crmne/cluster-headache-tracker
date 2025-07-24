@@ -78,8 +78,10 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     # Verify we see the "Ongoing" status
     assert_text "Ongoing"
 
-    # Click the "Edit" button and wait for the page to load
-    click_on "Edit"
+    # Click the "Edit" button within the ongoing headache alert
+    within(".alert-info") do
+      click_on "Edit"
+    end
     assert_current_path edit_headache_log_path(log)
 
     # Fill in the end time using JavaScript
