@@ -23,7 +23,13 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     sleep(0.5)
 
     # Use all().first to handle multiple datetime fields - this gets the first one (start time)
-    all("input[type='datetime-local']").first.set(Time.current.strftime("%Y-%m-%dT%H:%M"))
+    datetime_input = all("input[type='datetime-local']").first
+    if datetime_input
+      datetime_input.set(Time.current.strftime("%Y-%m-%dT%H:%M"))
+    else
+      # Fallback: try finding by name attribute
+      fill_in "headache_log[start_time]", with: Time.current.strftime("%Y-%m-%dT%H:%M")
+    end
 
     # Intensity - using execute_script with a robust selector
     page.execute_script("document.querySelector('.range').value = 7")
