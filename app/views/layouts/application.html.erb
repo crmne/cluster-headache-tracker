@@ -50,7 +50,7 @@
 <body class="min-h-screen bg-base-200 flex flex-col">
   <%= render 'navbar' %>
   <%= render 'flash_messages', resource: local_assigns[:resource] %>
-  <main class="w-full pt-safe-offset-16 flex-grow">
+  <main class="w-full <%= 'pt-safe-offset-16' unless native_app_with_tabs? %> flex-grow">
     <% if current_page? root_path or current_page? feedback_path %>
     <%= yield %>
     <% else %>

@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   resource :settings, only: [ :show ], controller: "users/settings" do
     patch :update_username
     patch :update_password
+    post :changelog_acknowledged
   end
 
   resource :feedback, only: [ :show ], controller: "feedback"

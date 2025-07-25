@@ -23,6 +23,15 @@ class Users::SettingsController < ApplicationController
     end
   end
 
+  def changelog_acknowledged
+    version = params[:version]
+    if version.present? && current_user.update(last_seen_changelog: version)
+      head :ok
+    else
+      head :unprocessable_entity
+    end
+  end
+
   private
 
   def set_user

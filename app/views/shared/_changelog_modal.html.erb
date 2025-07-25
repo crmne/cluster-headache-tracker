@@ -1,0 +1,76 @@
+<%
+  current_version = "v2.0.0"
+  should_show = user_signed_in? && current_user.last_seen_changelog != current_version
+%>
+
+<% if should_show %>
+  <dialog id="changelog_modal" class="modal" data-controller="changelog bridge--share" data-changelog-version-value="<%= current_version %>">
+    <div class="modal-box max-w-md">
+      <div class="text-center mb-4">
+        <div class="inline-flex items-center justify-center w-14 h-14 bg-primary/10 rounded-full mb-3">
+          <%= heroicon "sparkles", variant: "solid", class: "w-7 h-7 text-primary" %>
+        </div>
+        <h3 class="text-xl font-bold mb-1">Everything is New! 🎉</h3>
+        <p class="text-sm text-base-content/70">Complete redesign + brand new mobile apps</p>
+      </div>
+
+      <div class="space-y-3 mb-4">
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <%= heroicon "paint-brush", variant: "mini", class: "w-4 h-4 text-primary" %>
+          </div>
+          <div>
+            <h4 class="font-semibold">Completely Redesigned</h4>
+            <p class="text-xs text-base-content/70">Beautiful new interface with color-coded intensity tracking</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <%= heroicon "device-phone-mobile", variant: "mini", class: "w-4 h-4 text-secondary" %>
+          </div>
+          <div>
+            <h4 class="font-semibold">New iOS & Android Apps</h4>
+            <p class="text-xs text-base-content/70">Native apps with better sharing, exports, and one-handed use</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-primary/5 rounded-lg p-3 text-center">
+        <p class="text-xs mb-2 leading-relaxed">
+          <span class="font-semibold">Built by a fellow cluster headache sufferer - free forever!</span><br>
+          <span class="text-base-content/70">Not enough people know this exists - please help spread the word!</span>
+        </p>
+        <div class="flex flex-col gap-2">
+          <button data-bridge--share-target="shareButton"
+                  data-action="click->bridge--share#shareViaBridge click->changelog#share"
+                  data-share-url="https://clusterheadachetracker.com"
+                  data-share-title="Cluster Headache Tracker"
+                  data-share-text="I use this free app to track my cluster headaches. It just got a huge update!"
+                  class="btn btn-primary w-full">
+            <%= heroicon "share", variant: "mini", class: "w-4 h-4" %>
+            Share with Friends
+          </button>
+          <a href="https://buymeacoffee.com/crmne"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn btn-secondary btn-sm w-full">
+            <%= heroicon "heart", variant: "mini", class: "w-4 h-4" %>
+            Support Development
+          </a>
+        </div>
+      </div>
+
+      <div class="modal-action justify-center mt-4">
+        <form method="dialog">
+          <button class="btn btn-ghost btn-sm" data-action="click->changelog#acknowledge">
+            Continue to App
+          </button>
+        </form>
+      </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+<% end %>

@@ -1,4 +1,4 @@
-<nav class="navbar bg-primary text-primary-content drop-shadow z-50 pt-safe-offset-2 fixed top-0 print:hidden">
+<nav class="navbar bg-primary text-primary-content drop-shadow z-50 pt-safe-offset-2 fixed top-0 print:hidden <%= 'hidden' if native_app_with_tabs? %>">
   <div class="navbar-start">
     <% unless hotwire_native_app? %>
       <div class="dropdown">
@@ -56,6 +56,11 @@
   <div class="navbar-end">
       <% if content_for? :force_navbar_button %>
         <%= yield :force_navbar_button %>
+      <% elsif user_signed_in? and native_app_with_tabs? %>
+        <%# Hide navbar buttons for native app with tabs - they'll be shown natively %>
+        <div data-controller="bridge--navigation-button" class="hidden">
+          <%= yield :hotwire_button %>
+        </div>
       <% elsif user_signed_in? and hotwire_native_app? %>
         <%= yield :hotwire_button %>
       <% elsif user_signed_in? and not hotwire_native_app? %>

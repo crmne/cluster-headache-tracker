@@ -40,7 +40,10 @@ module ApplicationHelper
   end
 
   def page_title
-    if content_for(:title)
+    if hotwire_native_app? && content_for(:title)
+      # For native apps, only show the page title
+      content_for(:title)
+    elsif content_for(:title)
       [ content_for(:title), app_title ].compact.join(" | ")
     else
       [ app_title, app_short_description ].compact.join(" | ")
