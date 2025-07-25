@@ -1,61 +1,58 @@
-<details class="collapse bg-base-100 collapse-arrow shadow join-item"
-         data-accordion="share"
-         data-controller="share-link"
-         <%= 'open' if flash[:generate_link] %>>
+<%= turbo_frame_tag "share_link" do %>
+<div class="card bg-base-100 shadow join-item" data-controller="share-link bridge--share">
   <%# Hidden templates for button states %>
-  <template data-share-link-target="copyTemplate">
-    <%= heroicon "clipboard", variant: "mini", class: "h-4 w-4" %>
-    <span>Copy</span>
+  <template data-share-link-target="shareTemplate">
+    <%= heroicon "share", variant: "mini", class: "h-4 w-4" %>
+    <span>Share</span>
   </template>
   <template data-share-link-target="copiedTemplate">
     <%= heroicon "check", variant: "mini", class: "h-4 w-4" %>
     <span>Copied!</span>
   </template>
 
-  <summary class="collapse-title text-xl font-medium">
-    <%= heroicon "share", class: "w-6 h-6 mr-2 inline-block" %>
-    Share Report with Doctor/Print
-  </summary>
-  <div class="collapse-content">
-    <div class="text-sm opacity-75 mb-4">
-      Share your headache logs securely with your doctor or your family. The link includes printing options.
+  <div class="card-body p-3 sm:p-4">
+    <div class="flex items-center justify-between">
+      <h3 class="text-sm sm:text-base font-medium flex items-center gap-2">
+        <%= heroicon "share", class: "w-5 h-5" %>
+        Share with Doctor
+      </h3>
+      <% if @share_link && current_user.share_tokens.last %>
+        <span class="text-xs text-base-content/60">
+          Expires in <%= distance_of_time_in_words_to_now(current_user.share_tokens.last.expires_at) %>
+        </span>
+      <% end %>
     </div>
+
     <% if @share_link && (share_token = current_user.share_tokens.last) %>
-      <fieldset class="fieldset">
-        <legend class="fieldset-legend">Share Link</legend>
-        <div class="join">
-          <input type="text"
-                 readonly
-                 data-share-link-target="input"
-                 autocomplete="off"
-                 value="<%= @share_link %>"
-                 class="input input-bordered join-item w-full">
-          <button data-share-link-target="button"
-                  data-action="click->share-link#copy"
-                  class="btn btn-primary join-item">
-            <%= heroicon "clipboard", variant: "mini", class: "h-4 w-4" %>
-            <span>Copy</span>
-          </button>
-        </div>
-        <div class="text-sm opacity-75 mt-2">
-          Expires in <%= distance_of_time_in_words(Time.current, share_token.expires_at) %>
-        </div>
-      </fieldset>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <%= button_to expire_share_link_path, method: :delete, class: "btn btn-error btn-outline", data: { turbo_confirm: "Are you sure? This will immediately invalidate the current share link." } do %>
-          <%= heroicon "trash", class: "h-4 w-4" %>
-          Expire Link
-        <% end %>
-        <%= button_to generate_share_link_path, class: "btn btn-primary" do %>
-          <%= heroicon "plus-circle", class: "h-4 w-4" %>
-          Generate New Link
+      <div class="flex gap-2 mt-3">
+        <input type="text"
+               readonly
+               data-share-link-target="input"
+               autocomplete="off"
+               value="<%= @share_link %>"
+               class="input input-bordered input-sm flex-1 text-xs">
+        <button data-share-link-target="shareButton"
+                data-bridge--share-target="shareButton"
+                data-action="click->bridge--share#shareViaBridge click->share-link#share"
+                data-share-url="<%= @share_link %>"
+                data-share-title="My Headache Logs"
+                data-share-text="View my headache tracking history"
+                class="btn btn-primary btn-sm">
+          <%= heroicon "share", variant: "mini", class: "h-4 w-4" %>
+          <span>Share</span>
+        </button>
+        <%= button_to expire_share_link_path, method: :delete, class: "btn btn-ghost btn-sm text-error" do %>
+          <%= heroicon "x-mark", variant: "mini", class: "h-4 w-4" %>
         <% end %>
       </div>
     <% else %>
-      <%= button_to generate_share_link_path, class: "btn btn-primary" do %>
-        <%= heroicon "plus-circle", class: "h-4 w-4" %>
-        Generate Share Link
-      <% end %>
+      <div class="mt-3">
+        <%= button_to generate_share_link_path, class: "btn btn-primary btn-sm w-full" do %>
+          <%= heroicon "plus-circle", class: "h-4 w-4" %>
+          Generate Share Link
+        <% end %>
+      </div>
     <% end %>
   </div>
-</details>
+</div>
+<% end %>

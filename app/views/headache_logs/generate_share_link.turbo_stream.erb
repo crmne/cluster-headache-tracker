@@ -1,0 +1,12 @@
+<%= turbo_stream.replace "share_link" do %>
+  <%= render "share_link" %>
+<% end %>
+
+<%= turbo_stream.append "flash_messages" do %>
+  <div class="alert alert-success shadow-lg mb-4" data-turbo-cache="false">
+    <div>
+      <%= heroicon "check-circle", class: "stroke-current flex-shrink-0 h-6 w-6" %>
+      <span>Share link generated successfully</span>
+    </div>
+  </div>
+<% end %>

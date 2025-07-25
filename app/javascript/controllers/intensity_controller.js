@@ -2,7 +2,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "slider", "value", "badge", "preview" ]
+  static targets = [ "slider", "value", "badge", "preview", "glow" ]
   static values = {
     current: Number,
     min: { type: Number, default: 1 },
@@ -31,6 +31,11 @@ export default class extends Controller {
     this.badgeTarget.style.setProperty('--value', (value / this.maxValue * 100))
     this.badgeTarget.style.color = color
 
+    // Update glow effect if present
+    if (this.hasGlowTarget) {
+      this.glowTarget.style.backgroundColor = color
+    }
+
     // Update slider appearance
     this.updateSliderGradient()
   }
@@ -53,35 +58,37 @@ export default class extends Controller {
   }
 
   calculateColor(value) {
-    if (value <= 2) {
-      // Green (1-2): Linear transition from bright to darker green
-      const greenHue = 120
-      return `hsl(${greenHue}, 80%, ${60 - (value - 1) * 10}%)`
-    } else if (value <= 4) {
-      // Yellow to Orange (3-4): Transition from yellow to orange
-      const yellowToOrangeHue = 60 - (value - 3) * 30
-      return `hsl(${yellowToOrangeHue}, 80%, 50%)`
-    } else if (value <= 7) {
-      // Red intensifying (5-7): Getting deeper and more saturated
-      const saturation = 80 + (value - 5) * 5
-      const lightness = 45 - (value - 5) * 5
-      return `hsl(0, ${saturation}%, ${lightness}%)`
+    // Smooth interpolation between green, yellow, and red
+    if (value <= 3) {
+      // Green range (1-3)
+      return 'hsl(142, 71%, 45%)'
+    } else if (value <= 6) {
+      // Interpolate from green to yellow (3-6)
+      const ratio = (value - 3) / 3
+      const hue = 142 - (ratio * (142 - 45)) // 142 (green) to 45 (yellow)
+      const saturation = 71 + (ratio * (93 - 71)) // 71% to 93%
+      const lightness = 45 + (ratio * (47 - 45)) // 45% to 47%
+      return `hsl(${Math.round(hue)}, ${Math.round(saturation)}%, ${Math.round(lightness)}%)`
     } else {
-      // Beyond red (8-10): Adding purple tones for extreme severity
-      const purpleHue = 350 + (value - 8) * 5
-      const saturation = 90 + (value - 8) * 3
-      const lightness = 35 - (value - 8) * 3
-      return `hsl(${purpleHue}, ${saturation}%, ${lightness}%)`
+      // Interpolate from yellow to red (6-10)
+      const ratio = (value - 6) / 4
+      const hue = 45 * (1 - ratio) // 45 (yellow) to 0 (red)
+      const saturation = 93 - (ratio * (93 - 84)) // 93% to 84%
+      const lightness = 47 + (ratio * (60 - 47)) // 47% to 60%
+      return `hsl(${Math.round(hue)}, ${Math.round(saturation)}%, ${Math.round(lightness)}%)`
     }
   }
 
   updateSliderGradient() {
-    const gradientStops = Array.from({ length: 10 }, (_, i) => {
-      const value = i + 1
-      return this.calculateColor(value)
-    })
+    // Create a smooth gradient by calculating colors at each point
+    const stops = []
+    for (let i = 1; i <= 10; i++) {
+      const color = this.calculateColor(i)
+      const position = ((i - 1) / 9) * 100
+      stops.push(`${color} ${position}%`)
+    }
 
-    this.sliderTarget.style.background = `linear-gradient(to right, ${gradientStops.join(', ')})`
+    this.sliderTarget.style.background = `linear-gradient(to right, ${stops.join(', ')})`
   }
 
   // Called when slider value changes

@@ -1,14 +1,19 @@
 <% unless headache_logs.any? %>
   <div class="text-center py-12">
     <div class="max-w-md mx-auto">
-      <p class="text-xl text-base-content/60 mb-8">No headache data available for charts</p>
-      <p class="text-base-content/60 mb-8">Tap the <span class="font-bold text-primary">New</span> button to log your first headache</p>
-    </div>
-    <div class="flex flex-col items-center" style="height: calc(100vh - 40rem);">
-      <div class="w-1 flex-grow bg-primary/20"></div>
-      <svg class="w-12 h-12 text-primary animate-bounce mb-16 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-      </svg>
+      <% if params[:start_time].present? || params[:end_time].present? || params[:triggers].present? || params[:medication].present? %>
+        <p class="text-xl text-base-content/60 mb-4">No headaches found matching your filters</p>
+        <%= link_to "Clear Filters", charts_path, class: "btn btn-primary" %>
+      <% else %>
+        <p class="text-xl text-base-content/60 mb-8">No headache data available for charts</p>
+        <p class="text-base-content/60 mb-8">Tap the <span class="font-bold text-primary">New</span> button to log your first headache</p>
+        <div class="flex flex-col items-center" style="height: calc(100vh - 40rem);">
+          <div class="w-1 flex-grow bg-primary/20"></div>
+          <svg class="w-12 h-12 text-primary animate-bounce mb-16 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </div>
+      <% end %>
     </div>
   </div>
 <% else %>
@@ -20,56 +25,68 @@
        data-charts-hourly-value="<%= chart_data[:hourly_data].to_json %>"
        data-charts-attacks-per-day-value="<%= chart_data[:attacks_per_day_data].to_json %>"
        data-charts-duration-value="<%= chart_data[:duration_data].to_json %>">
-    <div class="card card-compact md:card-normal bg-base-100 shadow-md print:shadow-none print:break-inside-avoid">
-      <div class="card-body">
-        <h2 class="card-title">Headache Intensity Over Time</h2>
+    <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 print:shadow-none print:break-inside-avoid">
+      <div class="card-body p-3 sm:p-4">
+        <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2">
+          <%= heroicon "chart-bar", variant: "mini", class: "w-4 h-4 text-primary" %>
+          Headache Intensity Over Time
+        </h2>
         <div id="intensityChartContainer" class="h-[300px]">
           <% if chart_data[:intensity_data].any? %>
             <canvas id="intensityChart"></canvas>
           <% else %>
-            <p>No intensity data available.</p>
+            <p class="text-sm text-base-content/60">No intensity data available</p>
           <% end %>
           <div class="loading-spinner hidden"></div>
         </div>
       </div>
     </div>
 
-    <div class="card card-compact md:card-normal bg-base-100 shadow-md print:shadow-none print:break-inside-avoid">
-      <div class="card-body">
-        <h2 class="card-title">Number of Attacks per Day</h2>
+    <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 print:shadow-none print:break-inside-avoid">
+      <div class="card-body p-3 sm:p-4">
+        <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2">
+          <%= heroicon "calendar", variant: "mini", class: "w-4 h-4 text-secondary" %>
+          Number of Attacks per Day
+        </h2>
         <div id="attacksPerDayChartContainer" class="h-[300px]">
           <% if chart_data[:attacks_per_day_data].any? %>
             <canvas id="attacksPerDayChart"></canvas>
           <% else %>
-            <p>No attack data available.</p>
+            <p class="text-sm text-base-content/60">No attack data available</p>
           <% end %>
           <div class="loading-spinner hidden"></div>
         </div>
       </div>
     </div>
 
-    <div class="card card-compact md:card-normal bg-base-100 shadow-md print:shadow-none print:break-inside-avoid">
-      <div class="card-body">
-        <h2 class="card-title">Attack Duration Over Time</h2>
+    <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 print:shadow-none print:break-inside-avoid">
+      <div class="card-body p-3 sm:p-4">
+        <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2">
+          <%= heroicon "clock", variant: "mini", class: "w-4 h-4 text-info" %>
+          Attack Duration Over Time
+        </h2>
         <div id="durationChartContainer" class="h-[300px]">
           <% if chart_data[:duration_data].any? %>
             <canvas id="durationChart"></canvas>
           <% else %>
-            <p>No duration data available.</p>
+            <p class="text-sm text-base-content/60">No duration data available</p>
           <% end %>
           <div class="loading-spinner hidden"></div>
         </div>
       </div>
     </div>
 
-    <div class="card card-compact md:card-normal bg-base-100 shadow-md print:shadow-none print:break-inside-avoid">
-      <div class="card-body">
-        <h2 class="card-title">Headache Frequency and Intensity by Time of Day</h2>
+    <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 print:shadow-none print:break-inside-avoid">
+      <div class="card-body p-3 sm:p-4">
+        <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2">
+          <%= heroicon "sun", variant: "mini", class: "w-4 h-4 text-warning" %>
+          Headache Frequency and Intensity by Time of Day
+        </h2>
         <div id="hourlyChartContainer" class="h-[300px]">
           <% if chart_data[:hourly_data].any? %>
             <canvas id="hourlyChart"></canvas>
           <% else %>
-            <p>No hourly data available.</p>
+            <p class="text-sm text-base-content/60">No hourly data available</p>
           <% end %>
           <div class="loading-spinner hidden"></div>
         </div>
@@ -77,29 +94,35 @@
     </div>
   </div>
 
-  <div class="grid gap-4 grid-cols-2 mb-8">
-    <div class="card card-compact md:card-normal bg-base-100 shadow-md print:shadow-none print:break-inside-avoid">
-      <div class="card-body">
-        <h2 class="card-title">Top 5 Triggers</h2>
+  <div class="grid gap-4 grid-cols-1 md:grid-cols-2 mb-8">
+    <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 print:shadow-none print:break-inside-avoid">
+      <div class="card-body p-3 sm:p-4">
+        <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2">
+          <%= heroicon "bolt", variant: "mini", class: "w-4 h-4 text-secondary" %>
+          Top 5 Triggers
+        </h2>
         <div id="triggerChartContainer" class="h-[300px]">
           <% if chart_data[:trigger_data].any? %>
             <canvas id="triggerChart"></canvas>
           <% else %>
-            <p>No trigger data available.</p>
+            <p class="text-sm text-base-content/60">No trigger data available</p>
           <% end %>
           <div class="loading-spinner hidden"></div>
         </div>
       </div>
     </div>
 
-    <div class="card card-compact md:card-normal bg-base-100 shadow-md print:shadow-none print:break-inside-avoid">
-      <div class="card-body">
-        <h2 class="card-title">Top 5 Medications</h2>
+    <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 print:shadow-none print:break-inside-avoid">
+      <div class="card-body p-3 sm:p-4">
+        <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2">
+          <%= heroicon "beaker", variant: "mini", class: "w-4 h-4 text-primary" %>
+          Top 5 Medications
+        </h2>
         <div id="medicationChartContainer" class="h-[300px]">
           <% if chart_data[:medication_data].any? %>
             <canvas id="medicationChart"></canvas>
           <% else %>
-            <p>No medication data available.</p>
+            <p class="text-sm text-base-content/60">No medication data available</p>
           <% end %>
           <div class="loading-spinner hidden"></div>
         </div>

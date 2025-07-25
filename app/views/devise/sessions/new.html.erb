@@ -8,25 +8,25 @@
                  subtitle: "Sign in to continue tracking your headaches" %>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
-        <div class="space-y-6">
+        <div class="space-y-4">
           <div class="form-control">
-            <%= f.label :username, class: "label" do %>
-              <span class="label-text font-semibold flex items-center gap-2">
+            <%= f.label :username, class: "label py-1" do %>
+              <span class="label-text text-sm font-semibold flex items-center gap-2">
                 <%= heroicon "user", variant: "mini", class: "w-4 h-4" %>
                 Username
               </span>
             <% end %>
-            <%= f.text_field :username, class: "input input-bordered w-full", required: true %>
+            <%= f.text_field :username, class: "input input-bordered w-full input-sm sm:input-md", required: true %>
           </div>
 
           <div class="form-control">
-            <%= f.label :password, class: "label" do %>
-              <span class="label-text font-semibold flex items-center gap-2">
+            <%= f.label :password, class: "label py-1" do %>
+              <span class="label-text text-sm font-semibold flex items-center gap-2">
                 <%= heroicon "key", variant: "mini", class: "w-4 h-4" %>
                 Password
               </span>
             <% end %>
-            <%= f.password_field :password, class: "input input-bordered w-full", required: true %>
+            <%= f.password_field :password, class: "input input-bordered w-full input-sm sm:input-md", required: true %>
           </div>
 
           <div class="flex items-center justify-between">
@@ -42,11 +42,11 @@
             <% end %>
           </div>
 
-          <%= f.submit "Sign in", class: "btn btn-primary w-full mt-6" %>
+          <%= f.submit "Sign in", class: "btn btn-primary w-full mt-4" %>
         </div>
       <% end %>
 
-      <div class="divider mt-8">Don't have an account?</div>
+      <div class="divider my-4 sm:my-6">Don't have an account?</div>
 
       <div class="text-center">
         <%= link_to "Create new account", new_registration_path(resource_name), class: "btn btn-outline btn-wide" %>

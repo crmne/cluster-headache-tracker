@@ -2,30 +2,34 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["input", "button", "copyTemplate", "copiedTemplate"]
+  static targets = ["input", "shareButton", "shareTemplate", "copiedTemplate"]
 
-  connect() {
-    // Handle accordion behavior
-    document.addEventListener('click', this.handleAccordion.bind(this))
-  }
+  async share(event) {
+    const button = event.currentTarget
+    const url = button.dataset.shareUrl
+    const title = button.dataset.shareTitle
+    const text = button.dataset.shareText
 
-  disconnect() {
-    document.removeEventListener('click', this.handleAccordion.bind(this))
-  }
-
-  handleAccordion(event) {
-    const summary = event.target.closest('summary')
-    if (summary) {
-      const details = summary.parentElement
-      const otherDetails = document.querySelector(`details[data-accordion]:not([data-accordion="${details.dataset.accordion}"])`)
-      if (otherDetails && otherDetails.open) {
-        otherDetails.open = false
+    // Check if Web Share API is available (mobile/native)
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: title,
+          text: text,
+          url: url
+        })
+      } catch (err) {
+        // User cancelled share or error occurred
+        console.log('Share cancelled or failed:', err)
       }
+    } else {
+      // Fallback to copy functionality
+      await this.copyToClipboard()
     }
   }
 
-  async copy() {
-    const originalHtml = this.buttonTarget.innerHTML
+  async copyToClipboard() {
+    const originalHtml = this.shareButtonTarget.innerHTML
 
     // Create temporary textarea for iOS compatibility
     const textarea = document.createElement('textarea')
@@ -53,12 +57,12 @@ export default class extends Controller {
       }
 
       // Update button UI using template content
-      this.buttonTarget.innerHTML = this.copiedTemplateTarget.innerHTML
-      this.buttonTarget.disabled = true
+      this.shareButtonTarget.innerHTML = this.copiedTemplateTarget.innerHTML
+      this.shareButtonTarget.disabled = true
 
       setTimeout(() => {
-        this.buttonTarget.innerHTML = this.copyTemplateTarget.innerHTML
-        this.buttonTarget.disabled = false
+        this.shareButtonTarget.innerHTML = this.shareTemplateTarget.innerHTML
+        this.shareButtonTarget.disabled = false
       }, 2000)
     } catch (err) {
       console.error('Copy failed', err)

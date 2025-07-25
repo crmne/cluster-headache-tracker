@@ -1,0 +1,12 @@
+<%= turbo_stream.replace "share_link" do %>
+  <%= render "share_link" %>
+<% end %>
+
+<%= turbo_stream.append "flash_messages" do %>
+  <div class="alert alert-info shadow-lg mb-4" data-turbo-cache="false">
+    <div>
+      <%= heroicon "information-circle", class: "stroke-current flex-shrink-0 h-6 w-6" %>
+      <span>Share link has been expired</span>
+    </div>
+  </div>
+<% end %>

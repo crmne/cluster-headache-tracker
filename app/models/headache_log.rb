@@ -10,7 +10,7 @@ class HeadacheLog < ApplicationRecord
 
   # filters
   scope :started_after, ->(start_time) { where("start_time >= ?", Date.parse(start_time).beginning_of_day) }
-  scope :ended_before, ->(end_time) { where("end_time <= ?", Date.parse(end_time).end_of_day) }
+  scope :ended_before, ->(end_time) { where("end_time <= ? OR end_time IS NULL", Date.parse(end_time).end_of_day) }
   scope :with_triggers, ->(triggers) { where("triggers ILIKE ?", "%#{triggers}%") }
   scope :with_medication, ->(medication) { where("medication ILIKE ?", "%#{medication}%") }
 

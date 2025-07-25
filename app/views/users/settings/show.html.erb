@@ -5,64 +5,92 @@
 <% end %>
 
 <!-- Data Management Section -->
-<div class="card card-compact md:card-normal bg-base-100 shadow-md mb-6">
-  <div class="card-body">
-    <h2 class="card-title">Data Management</h2>
-    <div class="flex flex-col sm:flex-row gap-4">
-      <button onclick="import_modal.showModal()" class="btn btn-secondary">
-        <%= heroicon "arrow-up-tray", variant: "mini" %>
+<div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 mb-4">
+  <div class="card-body p-3 sm:p-4">
+    <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2 mb-3">
+      <%= heroicon "circle-stack", variant: "mini", class: "w-4 h-4 text-primary" %>
+      Data Management
+    </h2>
+    <div class="flex flex-col sm:flex-row gap-2">
+      <button onclick="import_modal.showModal()" class="btn btn-outline btn-sm">
+        <%= heroicon "arrow-up-tray", variant: "mini", class: "w-4 h-4" %>
         Import CSV
       </button>
-      <%= link_to export_headache_logs_path(format: :csv), class: "btn btn-accent" do %>
-        <%= heroicon "arrow-down-tray", variant: "mini" %>
+      <%= link_to export_headache_logs_path(format: :csv),
+                  class: "btn btn-primary btn-sm",
+                  data: {
+                    controller: "download",
+                    download_url_value: export_headache_logs_path(format: :csv),
+                    action: "click->download#export"
+                  } do %>
+        <%= heroicon "arrow-down-tray", variant: "mini", class: "w-4 h-4" %>
         Export CSV
       <% end %>
     </div>
   </div>
 </div>
 
-<!-- Change Username Section -->
-<div class="card card-compact md:card-normal bg-base-100 shadow-md mb-6">
-  <div class="card-body">
-    <h2 class="card-title">User Management</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <%= form_for(@user, url: update_username_settings_path, method: :patch) do |f| %>
-      <fieldset class="fieldset p-4 rounded-box w-fulld">
-        <legend class="fieldset-legend">Update Username</legend>
+<!-- User Management Section -->
+<div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 mb-4">
+  <div class="card-body p-3 sm:p-4">
+    <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2 mb-3">
+      <%= heroicon "user-circle", variant: "mini", class: "w-4 h-4 text-accent" %>
+      User Management
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <%= form_for(@user, url: update_username_settings_path, method: :patch) do |f| %>
+        <div class="bg-base-200/50 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-3">Update Username</h3>
 
-        <label class="fieldset-label">New Username</label>
-        <%= f.text_field :username, class: "input input-bordered w-full" %>
+          <div class="space-y-3">
+            <div>
+              <label class="text-xs text-base-content/60 mb-1 block">New Username</label>
+              <%= f.text_field :username, class: "input input-bordered input-sm w-full" %>
+            </div>
 
-        <label class="fieldset-label mt-4">Current Password <span class="text-error">(required)</span></label>
-        <%= f.password_field :current_password, class: "input input-bordered w-full" %>
+            <div>
+              <label class="text-xs text-base-content/60 mb-1 block">Current Password <span class="text-error">(required)</span></label>
+              <%= f.password_field :current_password, class: "input input-bordered input-sm w-full" %>
+            </div>
 
-        <div class="mt-4">
-          <%= f.submit "Update Username", class: "btn btn-primary w-full" %>
+            <div class="mt-3">
+              <%= f.submit "Update Username", class: "btn btn-primary btn-sm w-full" %>
+            </div>
+          </div>
         </div>
-      </fieldset>
-    <% end %>
-    <%= form_for(@user, url: update_password_settings_path, method: :patch) do |f| %>
-      <fieldset class="fieldset p-4 rounded-box w-full">
-        <legend class="fieldset-legend">Update Password</legend>
+      <% end %>
 
-        <label class="fieldset-label">Current Password <span class="text-error">(required)</span></label>
-        <%= f.password_field :current_password, class: "input input-bordered w-full" %>
+      <%= form_for(@user, url: update_password_settings_path, method: :patch) do |f| %>
+        <div class="bg-base-200/50 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-3">Update Password</h3>
 
-        <label class="fieldset-label mt-4">New Password
-          <% if @minimum_password_length %>
-            <span class="text-info">(<%= @minimum_password_length %> characters minimum)</span>
-          <% end %>
-        </label>
-        <%= f.password_field :password, class: "input input-bordered w-full" %>
+          <div class="space-y-3">
+            <div>
+              <label class="text-xs text-base-content/60 mb-1 block">Current Password <span class="text-error">(required)</span></label>
+              <%= f.password_field :current_password, class: "input input-bordered input-sm w-full" %>
+            </div>
 
-        <label class="fieldset-label mt-4">Confirm New Password</label>
-        <%= f.password_field :password_confirmation, class: "input input-bordered w-full" %>
+            <div>
+              <label class="text-xs text-base-content/60 mb-1 block">
+                New Password
+                <% if @minimum_password_length %>
+                  <span class="text-info">(<%= @minimum_password_length %> characters minimum)</span>
+                <% end %>
+              </label>
+              <%= f.password_field :password, class: "input input-bordered input-sm w-full" %>
+            </div>
 
-        <div class="mt-4">
-          <%= f.submit "Update Password", class: "btn btn-primary w-full" %>
+            <div>
+              <label class="text-xs text-base-content/60 mb-1 block">Confirm New Password</label>
+              <%= f.password_field :password_confirmation, class: "input input-bordered input-sm w-full" %>
+            </div>
+
+            <div class="mt-3">
+              <%= f.submit "Update Password", class: "btn btn-primary btn-sm w-full" %>
+            </div>
+          </div>
         </div>
-      </fieldset>
-    <% end %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -70,26 +98,32 @@
 <!-- Import Modal -->
 <dialog id="import_modal" class="modal">
   <div class="modal-box">
-    <h3 class="font-bold text-lg mb-4">Import Headache Logs</h3>
+    <h3 class="text-base font-semibold mb-4 flex items-center gap-2">
+      <%= heroicon "arrow-up-tray", variant: "mini", class: "w-5 h-5 text-primary" %>
+      Import Headache Logs
+    </h3>
 
-    <fieldset class="fieldset bg-base-200 border border-base-300 p-4 rounded-box">
-      <legend class="fieldset-legend">CSV Format</legend>
-      <p class="mb-2">The CSV file needs to have the following format:</p>
-      <div class="mb-2 bg-base-300 p-2 rounded-md">
-        <code>start_time, end_time, intensity, medication, triggers, notes</code>
+    <div class="bg-info/10 rounded-lg p-3 mb-4">
+      <h4 class="text-sm font-semibold mb-2 flex items-center gap-2">
+        <%= heroicon "information-circle", variant: "mini", class: "w-4 h-4 text-info" %>
+        CSV Format
+      </h4>
+      <p class="text-xs text-base-content/70 mb-2">The CSV file needs to have the following format:</p>
+      <div class="bg-base-300 p-2 rounded text-xs font-mono">
+        start_time, end_time, intensity, medication, triggers, notes
       </div>
-      <p>Any CSV file exported from Cluster Headache Tracker will work.</p>
-    </fieldset>
+      <p class="text-xs text-base-content/70 mt-2">Any CSV file exported from Cluster Headache Tracker will work.</p>
+    </div>
 
-    <%= form_tag import_headache_logs_path, multipart: true, class: "mt-4" do %>
-      <fieldset class="fieldset bg-base-200 border border-base-300 p-4 rounded-box">
-        <legend class="fieldset-legend">Upload File</legend>
-        <%= file_field_tag :file, accept: '.csv', class: "file-input file-input-bordered w-full" %>
-      </fieldset>
+    <%= form_tag import_headache_logs_path, multipart: true do %>
+      <div class="bg-base-200/50 rounded-lg p-3">
+        <h4 class="text-sm font-semibold mb-2">Select File</h4>
+        <%= file_field_tag :file, accept: '.csv', class: "file-input file-input-bordered file-input-sm w-full" %>
+      </div>
 
       <div class="modal-action">
-        <%= submit_tag "Import", class: "btn btn-primary" %>
-        <button type="button" class="btn" onclick="import_modal.close()">Cancel</button>
+        <%= submit_tag "Import", class: "btn btn-primary btn-sm" %>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="import_modal.close()">Cancel</button>
       </div>
     <% end %>
   </div>

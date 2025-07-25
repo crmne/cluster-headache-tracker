@@ -1,26 +1,34 @@
-<div class="dock dock-xl bg-neutral text-neutral-content shadow-lg print:hidden" style="padding-bottom: env(safe-area-inset-bottom);">
-  <%= link_to headache_logs_path, class: "#{current_page?(headache_logs_path) ? 'dock-active' : ''}" do %>
-    <%= heroicon "calendar-days", variant: "solid", class: "size-6" %>
-    <span class="dock-label">Logs</span>
+<div class="dock dock-xl bg-base-100 border-t border-base-200 shadow-xl print:hidden" style="padding-bottom: env(safe-area-inset-bottom);">
+  <%= link_to headache_logs_path,
+      class: "transition-all duration-200 #{current_page?(headache_logs_path) ? 'dock-active text-primary' : 'hover:text-primary'}" do %>
+    <%= heroicon "calendar-days", variant: current_page?(headache_logs_path) ? "solid" : "outline", class: "size-5 sm:size-6" %>
+    <span class="dock-label text-xs mt-1">Logs</span>
   <% end %>
 
-  <%= link_to charts_path, class: "#{current_page?(charts_path) ? 'dock-active' : ''}" do %>
-    <%= heroicon "chart-bar", variant: "solid", class: "size-6" %>
-    <span class="dock-label">Charts</span>
+  <%= link_to charts_path,
+      class: "transition-all duration-200 #{current_page?(charts_path) ? 'dock-active text-secondary' : 'hover:text-secondary'}" do %>
+    <%= heroicon "chart-bar", variant: current_page?(charts_path) ? "solid" : "outline", class: "size-5 sm:size-6" %>
+    <span class="dock-label text-xs mt-1">Charts</span>
   <% end %>
 
-  <%= link_to new_headache_log_path, class: "bg-primary font-bold #{current_page?(new_headache_log_path) ? 'dock-active' : ''}" do %>
-    <%= heroicon "plus-circle", variant: "solid", class: "size-8" %>
-    <span class="dock-label">New</span>
+  <%= link_to new_headache_log_path,
+      class: "transition-all duration-200 #{current_page?(new_headache_log_path) ? 'dock-active text-primary' : 'hover:text-primary'}" do %>
+    <div class="relative inline-flex items-center justify-center">
+      <div class="absolute w-12 h-12 sm:w-14 sm:h-14 bg-primary rounded-full opacity-40 blur-md"></div>
+      <%= heroicon "plus-circle", variant: "solid", class: "size-7 sm:size-8 relative z-10" %>
+    </div>
+    <span class="dock-label text-xs mt-1">New</span>
   <% end %>
 
-  <%= link_to settings_path, class: "#{current_page?(settings_path) ? 'dock-active' : ''}" do %>
-    <%= heroicon "user", variant: "solid", class: "size-6" %>
-    <span class="dock-label">Account</span>
+  <%= link_to settings_path,
+      class: "transition-all duration-200 #{current_page?(settings_path) ? 'dock-active text-accent' : 'hover:text-accent'}" do %>
+    <%= heroicon "user", variant: current_page?(settings_path) ? "solid" : "outline", class: "size-5 sm:size-6" %>
+    <span class="dock-label text-xs mt-1">Account</span>
   <% end %>
 
-  <%= link_to feedback_path, class: "#{current_page?(feedback_path) ? 'dock-active' : ''}" do %>
-    <%= heroicon "chat-bubble-left-ellipsis", variant: "solid", class: "size-6" %>
-    <span class="dock-label">Feedback</span>
+  <%= link_to feedback_path,
+      class: "transition-all duration-200 #{current_page?(feedback_path) ? 'dock-active text-info' : 'hover:text-info'}" do %>
+    <%= heroicon "chat-bubble-left-ellipsis", variant: current_page?(feedback_path) ? "solid" : "outline", class: "size-5 sm:size-6" %>
+    <span class="dock-label text-xs mt-1">Feedback</span>
   <% end %>
 </div>

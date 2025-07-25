@@ -1,51 +1,57 @@
 <details class="collapse bg-base-100 collapse-arrow shadow join-item print:hidden" data-accordion="filters">
-  <summary class="collapse-title text-xl font-medium">
-    <%= heroicon "funnel", class: "w-6 h-6 mr-2 inline-block" %>
+  <summary class="collapse-title text-sm sm:text-base font-medium py-3 sm:py-4">
+    <%= heroicon "funnel", class: "w-5 h-5 mr-2 inline-block" %>
     Filters
     <% active_filters = [params[:start_time], params[:end_time], params[:triggers], params[:medication]].compact.count { |p| p.present? } %>
     <% if active_filters > 0 %>
       <span class="badge badge-primary badge-sm ml-2"><%= active_filters %> active</span>
     <% end %>
   </summary>
-  <div class="collapse-content">
+  <div class="collapse-content pt-2">
     <%= form_with url: local_assigns[:url], method: :get, data: { turbo_frame: "_top" } do |form| %>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <fieldset class="fieldset p-4 rounded-box">
-          <legend class="fieldset-legend">Date Range</legend>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+        <div class="bg-base-200/50 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-2 flex items-center gap-2">
+            <%= heroicon "calendar", variant: "mini", class: "w-4 h-4" %>
+            Date Range
+          </h3>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="grid grid-cols-2 gap-2">
             <div>
-              <label class="fieldset-label">Start Date</label>
-              <%= form.date_field :start_time, value: params[:start_time], class: "input input-bordered w-full" %>
+              <label class="text-xs text-base-content/60 mb-1 block">Start</label>
+              <%= form.date_field :start_time, value: params[:start_time], class: "input input-bordered input-sm w-full" %>
             </div>
 
             <div>
-              <label class="fieldset-label">End Date</label>
-              <%= form.date_field :end_time, value: params[:end_time], class: "input input-bordered w-full" %>
-            </div>
-          </div>
-        </fieldset>
-
-        <fieldset class="fieldset p-4 rounded-box">
-          <legend class="fieldset-legend">Keywords</legend>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="fieldset-label">Triggers</label>
-              <%= form.text_field :triggers, value: params[:triggers], class: "input input-bordered w-full", placeholder: "Sleeping" %>
-            </div>
-
-            <div>
-              <label class="fieldset-label">Medication</label>
-              <%= form.text_field :medication, value: params[:medication], class: "input input-bordered w-full", placeholder: "Oxygen" %>
+              <label class="text-xs text-base-content/60 mb-1 block">End</label>
+              <%= form.date_field :end_time, value: params[:end_time], class: "input input-bordered input-sm w-full" %>
             </div>
           </div>
-        </fieldset>
+        </div>
+
+        <div class="bg-base-200/50 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-2 flex items-center gap-2">
+            <%= heroicon "magnifying-glass", variant: "mini", class: "w-4 h-4" %>
+            Search Keywords
+          </h3>
+
+          <div class="space-y-2">
+            <div>
+              <label class="text-xs text-base-content/60 mb-1 block">Triggers</label>
+              <%= form.text_field :triggers, value: params[:triggers], class: "input input-bordered input-sm w-full", placeholder: "e.g., Sleep, Stress" %>
+            </div>
+
+            <div>
+              <label class="text-xs text-base-content/60 mb-1 block">Medication</label>
+              <%= form.text_field :medication, value: params[:medication], class: "input input-bordered input-sm w-full", placeholder: "e.g., Oxygen, Sumatriptan" %>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="flex items-center justify-between">
-        <%= link_to "Clear Filters", local_assigns[:url], class: "btn btn-ghost" %>
-        <%= form.submit "Apply Filters", class: "btn btn-primary" %>
+      <div class="flex items-center justify-between gap-2">
+        <%= link_to "Clear Filters", local_assigns[:url], class: "btn btn-ghost btn-sm" %>
+        <%= form.submit "Apply Filters", class: "btn btn-primary btn-sm" %>
       </div>
     <% end %>
   </div>
