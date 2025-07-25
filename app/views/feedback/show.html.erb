@@ -3,11 +3,9 @@
 <% content_for :navbar, "Feedback" %>
 <% content_for :force_navbar_button do %>
   <%= link_to "https://buymeacoffee.com/crmne", target: "_blank", rel: "noopener noreferrer", class: "btn",
-      data: { 
+      data: {
         controller: "bridge--button",
-        bridge_title: "Donate",
-        bridge_ios_image: "cup.and.saucer",
-        bridge_android_image: "coffee"
+        bridge_title: "Donate"
       } do %>
     Donate ☕️
   <% end %>

@@ -5,11 +5,9 @@
 <% end %>
 <% content_for :hotwire_button do %>
   <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn",
-      data: { 
+      data: {
         controller: "bridge--button",
-        bridge_title: "Sign Out",
-        bridge_ios_image: "arrow.right.square",
-        bridge_android_image: "logout"
+        bridge_title: "Sign Out"
       } %>
 <% end %>
 

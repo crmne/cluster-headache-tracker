@@ -149,11 +149,9 @@
       </div>
 
       <% content_for :hotwire_button do %>
-        <div class="flex items-center gap-4" 
+        <div class="flex items-center gap-4"
              data-controller="bridge--button"
-             data-bridge-title="<%= form.send(:submit_default_value).split.first %>"
-             data-bridge-ios-image="checkmark"
-             data-bridge-android-image="check">
+             data-bridge-title="<%= form.send(:submit_default_value).split.first %>">
           <%= form.submit form.send(:submit_default_value).split.first, class: "btn", form: form.object_name %>
         </div>
       <% end %>
