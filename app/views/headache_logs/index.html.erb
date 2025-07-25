@@ -1,6 +1,12 @@
 <%# app/views/headache_logs/index.html.erb %>
 <% content_for :title, "Headache Logs" %>
 <% content_for :navbar, "Headache Logs" %>
+<% content_for :hotwire_button do %>
+  <%= link_to new_headache_log_path, class: "btn btn-primary" do %>
+    <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
+    New
+  <% end %>
+<% end %>
 
 <div class="join join-vertical w-full mb-4">
   <%= render "share_link" %>

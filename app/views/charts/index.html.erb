@@ -1,5 +1,11 @@
 <% content_for :title, "Charts" %>
 <% content_for :navbar, "Charts" %>
+<% content_for :hotwire_button do %>
+  <%= link_to new_headache_log_path, class: "btn btn-primary" do %>
+    <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
+    New
+  <% end %>
+<% end %>
 
 <%= turbo_stream_from current_user, "charts" %>
 

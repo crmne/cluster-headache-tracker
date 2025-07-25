@@ -57,16 +57,12 @@
       <% if content_for? :force_navbar_button %>
         <%= yield :force_navbar_button %>
       <% elsif user_signed_in? and native_app_with_tabs? %>
-        <%# Hide navbar buttons for native app with tabs - they'll be shown natively %>
-        <div data-controller="bridge--navigation-button" class="hidden">
-          <%= yield :hotwire_button %>
-        </div>
+        <%# Hide navbar buttons for native app with tabs %>
       <% elsif user_signed_in? and hotwire_native_app? %>
         <%= yield :hotwire_button %>
       <% elsif user_signed_in? and not hotwire_native_app? %>
         <div class="flex items-center gap-4 px-2">
-          <%= link_to current_user.username, settings_path, class: "btn-primary hidden md:block" %>
-          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn" %>
+          <%= link_to current_user.username, settings_path, class: "btn btn-primary" %>
         </div>
       <% else %>
         <div class="flex items-center gap-4">
