@@ -1,0 +1,9 @@
+<%= turbo_stream.replace "headache_stats" do %>
+  <%= render "headache_logs/stats", headache_logs: @headache_logs %>
+<% end %>
+
+<%= turbo_stream.replace "charts" do %>
+  <%= turbo_frame_tag "charts" do %>
+    <%= render 'shared/charts', { headache_logs: @headache_logs, chart_data: @chart_data } %>
+  <% end %>
+<% end %>

@@ -1,0 +1,23 @@
+<%= turbo_frame_tag "headache_logs", class: "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4" do %>
+  <% if headache_logs.any? %>
+    <%= render headache_logs %>
+  <% else %>
+    <div class="col-span-full text-center py-12">
+      <div class="max-w-md mx-auto">
+        <% if params[:start_time].present? || params[:end_time].present? || params[:triggers].present? || params[:medication].present? %>
+          <p class="text-xl text-base-content/60 mb-4">No headaches found matching your filters</p>
+          <%= link_to "Clear Filters", headache_logs_path, class: "btn btn-primary" %>
+        <% else %>
+          <p class="text-xl text-base-content/60 mb-8">No headaches logged yet</p>
+          <p class="text-base-content/60 mb-8">Tap the <span class="font-bold text-primary">New</span> button to log your first headache</p>
+          <div class="flex flex-col items-center" style="height: calc(100vh - 40rem);">
+            <div class="w-1 flex-grow bg-primary/20"></div>
+            <svg class="w-12 h-12 text-primary animate-bounce mb-16 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

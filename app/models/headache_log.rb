@@ -26,14 +26,18 @@ class HeadacheLog < ApplicationRecord
   private
 
   def broadcast_create
-    broadcast_prepend_to [ user, "headache_logs" ], target: "headache_logs",
-                                                   partial: "headache_logs/headache_log",
-                                                   locals: { headache_log: self }
-
-    # Also prepend to charts page if viewing it
-    broadcast_prepend_to [ user, "charts" ], target: "headache_logs",
-                                            partial: "headache_logs/headache_log",
-                                            locals: { headache_log: self }
+    # Check if this is the first headache log
+    if user.headache_logs.count == 1
+      # Replace the entire frame to remove empty state
+      broadcast_replace_to [ user, "headache_logs" ], target: "headache_logs",
+                                                     partial: "headache_logs/logs_grid",
+                                                     locals: { headache_logs: user.headache_logs.order(start_time: :desc) }
+    else
+      # Just prepend the new log
+      broadcast_prepend_to [ user, "headache_logs" ], target: "headache_logs",
+                                                     partial: "headache_logs/headache_log",
+                                                     locals: { headache_log: self }
+    end
 
     broadcast_update_stats
     broadcast_update_ongoing_headaches
@@ -62,6 +66,14 @@ class HeadacheLog < ApplicationRecord
 
     # Also remove from charts page if viewing it
     broadcast_remove_to [ user, "charts" ], target: self
+
+    # Check if this was the last headache log
+    if user.headache_logs.count == 0
+      # Replace the entire frame to show empty state
+      broadcast_replace_to [ user, "headache_logs" ], target: "headache_logs",
+                                                     partial: "headache_logs/logs_grid",
+                                                     locals: { headache_logs: user.headache_logs.order(start_time: :desc) }
+    end
 
     broadcast_update_stats
     broadcast_update_ongoing_headaches

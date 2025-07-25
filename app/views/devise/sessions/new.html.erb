@@ -1,13 +1,13 @@
 <% content_for :title, "Sign in to your account" %>
 
 <div class="container max-w-screen-sm mx-auto">
-  <div class="card card-compact sm:card-normal bg-base-100 shadow-xl">
+  <div class="card card-compact sm:card-normal bg-base-100 shadow-md">
     <div class="card-body">
       <%= render "devise/shared/auth_logo",
                  title: "Welcome back",
                  subtitle: "Sign in to continue tracking your headaches" %>
 
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
         <div class="space-y-6">
           <div class="form-control">
             <%= f.label :username, class: "label" do %>

@@ -10,11 +10,16 @@
         <%= heroicon "clock", class: "inline-block h-8 w-8 stroke-current" %>
       </div>
       <div class="stat-title">Time Since Last</div>
-      <div class="stat-value text-info"
-           data-controller="timer"
-           data-timer-format-value="short"
-           data-timer-start-value="<%= headache_logs.max_by(&:start_time)&.start_time&.strftime('%Y-%m-%dT%H:%M:%S') %>">
-        <span data-timer-target="timeAgo">...</span>
+      <div class="stat-value text-info">
+        <% if headache_logs.any? %>
+          <div data-controller="timer"
+               data-timer-format-value="short"
+               data-timer-start-value="<%= headache_logs.max_by(&:start_time).start_time.strftime('%Y-%m-%dT%H:%M:%S') %>">
+            <span data-timer-target="timeAgo">...</span>
+          </div>
+        <% else %>
+          <span class="text-info">None yet</span>
+        <% end %>
       </div>
       <div class="stat-desc"></div>
     </div>

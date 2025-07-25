@@ -1,5 +1,16 @@
 <% unless headache_logs.any? %>
-  <p>No headache data available. Try adjusting your filter criteria or add more headache logs.</p>
+  <div class="text-center py-12">
+    <div class="max-w-md mx-auto">
+      <p class="text-xl text-base-content/60 mb-8">No headache data available for charts</p>
+      <p class="text-base-content/60 mb-8">Tap the <span class="font-bold text-primary">New</span> button to log your first headache</p>
+    </div>
+    <div class="flex flex-col items-center" style="height: calc(100vh - 40rem);">
+      <div class="w-1 flex-grow bg-primary/20"></div>
+      <svg class="w-12 h-12 text-primary animate-bounce mb-16 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </div>
 <% else %>
   <div class="grid gap-4 grid-cols-1 mb-4"
        data-controller="charts"
@@ -9,7 +20,7 @@
        data-charts-hourly-value="<%= chart_data[:hourly_data].to_json %>"
        data-charts-attacks-per-day-value="<%= chart_data[:attacks_per_day_data].to_json %>"
        data-charts-duration-value="<%= chart_data[:duration_data].to_json %>">
-    <div class="card card-compact md:card-normal bg-base-100 shadow-xl print:shadow-none print:break-inside-avoid">
+    <div class="card card-compact md:card-normal bg-base-100 shadow-md print:shadow-none print:break-inside-avoid">
       <div class="card-body">
         <h2 class="card-title">Headache Intensity Over Time</h2>
         <div id="intensityChartContainer" class="h-[300px]">
@@ -23,7 +34,7 @@
       </div>
     </div>
 
-    <div class="card card-compact md:card-normal bg-base-100 shadow-xl print:shadow-none print:break-inside-avoid">
+    <div class="card card-compact md:card-normal bg-base-100 shadow-md print:shadow-none print:break-inside-avoid">
       <div class="card-body">
         <h2 class="card-title">Number of Attacks per Day</h2>
         <div id="attacksPerDayChartContainer" class="h-[300px]">
@@ -37,7 +48,7 @@
       </div>
     </div>
 
-    <div class="card card-compact md:card-normal bg-base-100 shadow-xl print:shadow-none print:break-inside-avoid">
+    <div class="card card-compact md:card-normal bg-base-100 shadow-md print:shadow-none print:break-inside-avoid">
       <div class="card-body">
         <h2 class="card-title">Attack Duration Over Time</h2>
         <div id="durationChartContainer" class="h-[300px]">
@@ -51,7 +62,7 @@
       </div>
     </div>
 
-    <div class="card card-compact md:card-normal bg-base-100 shadow-xl print:shadow-none print:break-inside-avoid">
+    <div class="card card-compact md:card-normal bg-base-100 shadow-md print:shadow-none print:break-inside-avoid">
       <div class="card-body">
         <h2 class="card-title">Headache Frequency and Intensity by Time of Day</h2>
         <div id="hourlyChartContainer" class="h-[300px]">
@@ -67,7 +78,7 @@
   </div>
 
   <div class="grid gap-4 grid-cols-2 mb-8">
-    <div class="card card-compact md:card-normal bg-base-100 shadow-xl print:shadow-none print:break-inside-avoid">
+    <div class="card card-compact md:card-normal bg-base-100 shadow-md print:shadow-none print:break-inside-avoid">
       <div class="card-body">
         <h2 class="card-title">Top 5 Triggers</h2>
         <div id="triggerChartContainer" class="h-[300px]">
@@ -81,7 +92,7 @@
       </div>
     </div>
 
-    <div class="card card-compact md:card-normal bg-base-100 shadow-xl print:shadow-none print:break-inside-avoid">
+    <div class="card card-compact md:card-normal bg-base-100 shadow-md print:shadow-none print:break-inside-avoid">
       <div class="card-body">
         <h2 class="card-title">Top 5 Medications</h2>
         <div id="medicationChartContainer" class="h-[300px]">

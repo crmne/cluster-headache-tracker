@@ -2,9 +2,13 @@
   <summary class="collapse-title text-xl font-medium">
     <%= heroicon "funnel", class: "w-6 h-6 mr-2 inline-block" %>
     Filters
+    <% active_filters = [params[:start_time], params[:end_time], params[:triggers], params[:medication]].compact.count { |p| p.present? } %>
+    <% if active_filters > 0 %>
+      <span class="badge badge-primary badge-sm ml-2"><%= active_filters %> active</span>
+    <% end %>
   </summary>
   <div class="collapse-content">
-    <%= form_with url: local_assigns[:url], method: :get, data: { turbo_frame: "headache_logs" } do |form| %>
+    <%= form_with url: local_assigns[:url], method: :get, data: { turbo_frame: "_top" } do |form| %>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <fieldset class="fieldset p-4 rounded-box">
           <legend class="fieldset-legend">Date Range</legend>
