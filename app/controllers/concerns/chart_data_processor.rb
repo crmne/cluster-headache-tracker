@@ -15,7 +15,7 @@ module ChartDataProcessor
   private
 
   def process_intensity_data(logs)
-    logs.map { |log| { x: log.start_time, y: log.intensity } }
+    logs.map { |log| { x: log.start_time.iso8601, y: log.intensity } }
   end
 
   def process_trigger_data(logs)
@@ -60,7 +60,7 @@ module ChartDataProcessor
     attacks_per_day = logs.group_by { |log| log.start_time.to_date }
                           .transform_values(&:count)
 
-    attacks_per_day.map { |date, count| { x: date, y: count } }
+    attacks_per_day.map { |date, count| { x: date.iso8601, y: count } }
   end
 
   def process_duration_data(logs)
@@ -69,9 +69,9 @@ module ChartDataProcessor
 
     # Calculate durations in hours
     complete_logs.map do |log|
-      duration_hours = ((log.end_time - log.start_time) / 1.hour).round(1)
+      duration_hours = ((log.end_time - log.start_time) / 1.hour).round(2)  # More precision for short durations
       {
-        x: log.start_time,
+        x: log.start_time.iso8601,  # Ensure proper date format for JavaScript
         y: duration_hours,
         intensity: log.intensity # Include intensity for potential correlation analysis
       }

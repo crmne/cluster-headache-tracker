@@ -10,6 +10,6 @@
 <%= render "stats" %>
 
 <%= turbo_stream_from current_user, "headache_logs" %>
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+<%= turbo_frame_tag "headache_logs", class: "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4" do %>
   <%= render @headache_logs %>
-</div>
+<% end %>

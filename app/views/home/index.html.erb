@@ -25,6 +25,9 @@
           </a>
         </div>
 
+        <% if user_signed_in? %>
+          <%= turbo_stream_from current_user, "homepage" %>
+        <% end %>
         <%= render 'stats' %>
       </div>
     </div>

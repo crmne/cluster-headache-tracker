@@ -8,11 +8,16 @@ class HeadacheLogsController < ApplicationController
   # GET /headache_logs or /headache_logs.json
   def index
     @headache_logs = current_user.headache_logs.filter_by_params(params).order(start_time: :desc)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   # GET /headache_logs/1 or /headache_logs/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /headache_logs/new
   def new
@@ -29,11 +34,11 @@ class HeadacheLogsController < ApplicationController
 
     respond_to do |format|
       if @headache_log.save
-        format.html { redirect_to headache_log_url(@headache_log), notice: "Headache log was successfully created." }
-        format.json { render :show, status: :created, location: @headache_log }
+        format.html { redirect_to headache_logs_url, notice: "Headache log was successfully created.", status: :see_other }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @headache_log.errors, status: :unprocessable_entity }
+        format.turbo_stream { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +47,11 @@ class HeadacheLogsController < ApplicationController
   def update
     respond_to do |format|
       if @headache_log.update(headache_log_params)
-        format.html { redirect_to headache_log_url(@headache_log), notice: "Headache log was successfully updated." }
-        format.json { render :show, status: :ok, location: @headache_log }
+        format.html { redirect_to headache_logs_url, notice: "Headache log was successfully updated." }
+        format.turbo_stream
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @headache_log.errors, status: :unprocessable_entity }
+        format.turbo_stream { render :edit, status: :unprocessable_entity }
       end
     end
   end
@@ -56,8 +61,8 @@ class HeadacheLogsController < ApplicationController
     @headache_log.destroy!
 
     respond_to do |format|
-      format.html { redirect_to headache_logs_url, notice: "Headache log was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to headache_logs_url, notice: "Headache log was successfully destroyed.", status: :see_other }
+      format.turbo_stream
     end
   end
 

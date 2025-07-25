@@ -1,0 +1,5 @@
+<%= turbo_stream.replace "headache_logs" do %>
+  <%= turbo_frame_tag "headache_logs", class: "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4" do %>
+    <%= render @headache_logs %>
+  <% end %>
+<% end %>

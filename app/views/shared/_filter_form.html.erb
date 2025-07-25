@@ -4,7 +4,7 @@
     Filters
   </summary>
   <div class="collapse-content">
-    <%= form_with url: local_assigns[:url], method: :get do |form| %>
+    <%= form_with url: local_assigns[:url], method: :get, data: { turbo_frame: "headache_logs" } do |form| %>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <fieldset class="fieldset p-4 rounded-box">
           <legend class="fieldset-legend">Date Range</legend>

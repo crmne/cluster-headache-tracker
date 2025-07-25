@@ -1,7 +1,14 @@
 <% unless headache_logs.any? %>
   <p>No headache data available. Try adjusting your filter criteria or add more headache logs.</p>
 <% else %>
-  <div class="grid gap-4 grid-cols-1 mb-4">
+  <div class="grid gap-4 grid-cols-1 mb-4"
+       data-controller="charts"
+       data-charts-intensity-value="<%= chart_data[:intensity_data].to_json %>"
+       data-charts-trigger-value="<%= chart_data[:trigger_data].to_json %>"
+       data-charts-medication-value="<%= chart_data[:medication_data].to_json %>"
+       data-charts-hourly-value="<%= chart_data[:hourly_data].to_json %>"
+       data-charts-attacks-per-day-value="<%= chart_data[:attacks_per_day_data].to_json %>"
+       data-charts-duration-value="<%= chart_data[:duration_data].to_json %>">
     <div class="card card-compact md:card-normal bg-base-100 shadow-xl print:shadow-none print:break-inside-avoid">
       <div class="card-body">
         <h2 class="card-title">Headache Intensity Over Time</h2>
@@ -88,16 +95,4 @@
       </div>
     </div>
   </div>
-  <script>
-    document.addEventListener('turbo:load', function() {
-      window.initializeCharts(
-        <%= raw chart_data[:intensity_data].to_json %>,
-        <%= raw chart_data[:trigger_data].to_json %>,
-        <%= raw chart_data[:medication_data].to_json %>,
-        <%= raw chart_data[:hourly_data].to_json %>,
-        <%= raw chart_data[:attacks_per_day_data].to_json %>,
-        <%= raw chart_data[:duration_data].to_json %>
-      );
-    });
-  </script>
 <% end %>

@@ -1,4 +1,4 @@
-<div class="card card-compact lg:card-normal bg-base-100 shadow-xl">
+<%= content_tag :div, id: dom_id(headache_log), class: "card card-compact lg:card-normal bg-base-100 shadow-xl" do %>
   <div class="card-body flex flex-col h-full">
     <%# Header Section with Time and Intensity %>
     <div class="flex flex-row justify-between items-start md:items-center gap-4">
@@ -86,19 +86,21 @@
     <%# Actions Section %>
     <div class="card-actions justify-end">
       <% unless local_assigns[:hide_actions] %>
-        <%= link_to edit_headache_log_path(headache_log), class: "btn btn-ghost btn-sm" do %>
+        <%= link_to edit_headache_log_path(headache_log), class: "btn btn-ghost btn-sm", data: { turbo_frame: "_top" } do %>
           <%= heroicon "pencil-square", variant: "mini", class: "w-4 h-4" %>
           Edit
         <% end %>
 
         <%= button_to headache_log_path(headache_log),
-              method: :delete,
-              class: "btn btn-ghost btn-sm btn-error",
-              form: { data: { turbo_confirm: "Are you sure you want to delete this headache log?" } } do %>
+            method: :delete,
+            class: "btn btn-ghost btn-sm btn-error",
+            data: {
+              turbo_confirm: "Are you sure you want to delete this headache log?"
+            } do %>
           <%= heroicon "trash", variant: "mini", class: "w-4 h-4" %>
           Delete
         <% end %>
       <% end %>
     </div>
   </div>
-</div>
+<% end %>

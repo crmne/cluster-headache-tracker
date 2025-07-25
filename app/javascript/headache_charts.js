@@ -285,11 +285,18 @@ function initializeAttacksPerDayChart(attacksPerDayData) {
 function initializeDurationChart(durationData) {
   const ctx = getChartContext('durationChart');
   if (ctx && durationData && durationData.length > 0) {
-    const validData = durationData.filter(d => d.y > 0);
-    if (validData.length === 0) return null;
+    const validData = durationData.filter(d => d && d.y >= 0);  // Allow 0 duration
+    if (validData.length === 0) {
+      console.warn('No valid duration data after filtering');
+      return null;
+    }
 
-    const logSum = validData.reduce((acc, curr) => acc + Math.log(curr.y), 0);
-    const geometricMean = Math.exp(logSum / validData.length);
+    // For geometric mean, only use non-zero values
+    const nonZeroData = validData.filter(d => d.y > 0);
+    const geometricMean = nonZeroData.length > 0
+      ? Math.exp(nonZeroData.reduce((acc, curr) => acc + Math.log(curr.y), 0) / nonZeroData.length)
+      : 0;
+
     const minDuration = Math.min(...validData.map(d => d.y));
     const maxDuration = Math.max(...validData.map(d => d.y));
 
@@ -321,13 +328,13 @@ function initializeDurationChart(durationData) {
             }
           },
           y: {
-            type: 'logarithmic',
+            type: maxDuration > 1 ? 'logarithmic' : 'linear',  // Use linear for small durations
             title: {
               display: true,
               text: 'Duration (hours)'
             },
-            min: Math.max(0.1, minDuration / 2),
-            suggestedMax: maxDuration * 1.1,
+            min: 0,  // Allow 0 on the scale
+            suggestedMax: maxDuration > 0 ? maxDuration * 1.1 : 1,
             ticks: {
               callback: formatDuration,
               autoSkip: true,

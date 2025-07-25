@@ -1,9 +1,13 @@
 <% content_for :title, "Charts" %>
 <% content_for :navbar, "Charts" %>
 
+<%= turbo_stream_from current_user, "charts" %>
+
 <div class="join join-vertical w-full mb-4">
-  <%= render "shared/filter_form" %>
+  <%= render "shared/filter_form", url: charts_path %>
 </div>
 
 <%= render "headache_logs/stats", headache_logs: @headache_logs %>
-<%= render 'shared/charts', { headache_logs: @headache_logs, chart_data: @chart_data } %>
+<%= turbo_frame_tag "charts" do %>
+  <%= render 'shared/charts', { headache_logs: @headache_logs, chart_data: @chart_data } %>
+<% end %>

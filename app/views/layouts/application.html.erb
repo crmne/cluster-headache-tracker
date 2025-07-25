@@ -30,6 +30,12 @@
 
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+
+  <!-- Turbo Configuration -->
+  <meta name="turbo-cache-control" content="no-preview">
+  <meta name="turbo-prefetch" content="true">
+  <meta name="turbo-refresh-method" content="morph">
+  <meta name="turbo-refresh-scroll" content="preserve">
   <%= yield :head %>
   <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
   <%= render 'application/favicon' %>
@@ -49,7 +55,10 @@
     <%= yield %>
     <% else %>
     <div class="container mx-auto mt-4 px-4 <%= user_signed_in? && !static_page? && !native_app_form_page? && !native_app_with_tabs? ? 'pb-safe-offset-24' : 'pb-4' %> print:m-0 print:w-full print:p-0 print:max-w-none">
-      <%= render "headache_logs/ongoing_headaches" if current_user %>
+      <% if current_user %>
+        <%= turbo_stream_from current_user, "application" %>
+        <%= render "headache_logs/ongoing_headaches" %>
+      <% end %>
       <%= yield %>
     </div>
     <% end %>

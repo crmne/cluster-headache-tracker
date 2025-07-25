@@ -1,15 +1,20 @@
-<%# Warning for multiple ongoing headaches %>
-<% if @ongoing_headaches.size > 1 %>
+<%
+  # Support both instance variable and local variable
+  ongoing_headaches = @ongoing_headaches || current_user.headache_logs.where(end_time: nil).order(start_time: :desc)
+%>
+<%= turbo_frame_tag "ongoing_headaches" do %>
+  <%# Warning for multiple ongoing headaches %>
+  <% if ongoing_headaches.size > 1 %>
   <div class="alert alert-warning shadow-lg mb-4">
     <div>
       <%= heroicon "exclamation-triangle", class: "h-6 w-6 shrink-0 stroke-current" %>
       <div>
         <h3 class="font-bold">Multiple Ongoing Headaches Detected</h3>
         <div class="text-sm">
-          You have <%= @ongoing_headaches.size %> unfinished headache logs. Consider updating:
+          You have <%= ongoing_headaches.size %> unfinished headache logs. Consider updating:
           <div class="mt-2 flex flex-wrap gap-2">
-            <% @ongoing_headaches.each do |log| %>
-              <%= link_to edit_headache_log_path(log), class: "btn btn-sm" do %>
+            <% ongoing_headaches.each do |log| %>
+              <%= link_to edit_headache_log_path(log), class: "btn btn-sm", data: { turbo_frame: "_top" } do %>
                 <%= heroicon "pencil-square", variant: "mini", class: "w-4 h-4 mr-1" %>
                 <%= log.start_time.strftime("%B %d, %I:%M %p") %>
               <% end %>
@@ -22,8 +27,8 @@
 <% end %>
 
 <%# Info for single ongoing headache %>
-<% if @ongoing_headaches.size == 1 %>
-  <% ongoing_log = @ongoing_headaches.first %>
+<% if ongoing_headaches.size == 1 %>
+  <% ongoing_log = ongoing_headaches.first %>
   <div role="alert" class="alert alert-info shadow-lg mb-4 flex-col sm:flex-row">
     <div class="flex items-center gap-2 w-full sm:w-auto">
       <%= heroicon "clock", class: "h-6 w-6 shrink-0" %>
@@ -60,10 +65,11 @@
       </div>
     </div>
     <div class="w-full sm:w-auto mt-2 sm:mt-0">
-      <%= link_to edit_headache_log_path(ongoing_log), class: "btn btn-sm sm:btn-md w-full sm:w-auto" do %>
+      <%= link_to edit_headache_log_path(ongoing_log), class: "btn btn-sm sm:btn-md w-full sm:w-auto", data: { turbo_frame: "_top" } do %>
         <%= heroicon "pencil-square", variant: "mini", class: "w-4 h-4" %>
         Edit
       <% end %>
     </div>
   </div>
+<% end %>
 <% end %>

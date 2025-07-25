@@ -124,7 +124,9 @@
                 <%= button_to headache_log_path(log),
                       method: :delete,
                       class: "btn btn-ghost btn-sm btn-error join-item",
-                      form: { data: { turbo_confirm: "Are you sure you want to delete this headache log?" } } do %>
+                      data: {
+                        turbo_confirm: "Are you sure you want to delete this headache log?"
+                      } do %>
                   <%= heroicon "trash", variant: "mini", class: "w-4 h-4" %>
                   <span class="sr-only">Delete</span>
                 <% end %>

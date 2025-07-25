@@ -1,0 +1,3 @@
+<%= turbo_frame_tag "charts", data: { charts_updated_at: Time.current.to_i } do %>
+  <%= render 'shared/charts', { headache_logs: headache_logs, chart_data: chart_data } %>
+<% end %>
