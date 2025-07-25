@@ -20,4 +20,8 @@ class User < ApplicationRecord
   def will_save_change_to_email?
     false
   end
+
+  def admin?
+    username == "carmine"
+  end
 end

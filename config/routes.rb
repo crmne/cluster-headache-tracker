@@ -46,4 +46,20 @@ Rails.application.routes.draw do
   end
 
   resource :feedback, only: [ :show ], controller: "feedback"
+
+  namespace :admin do
+    root "dashboard#index"
+    get "dashboard", to: "dashboard#index"
+
+    resources :users, only: [ :index, :destroy ] do
+      member do
+        post :reset_password
+        post :reset_changelog
+      end
+
+      collection do
+        post :reset_all_changelogs
+      end
+    end
+  end
 end

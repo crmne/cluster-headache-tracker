@@ -23,6 +23,19 @@ class HeadacheLog < ApplicationRecord
     headache_logs
   end
 
+  def intensity_badge_class
+    case intensity
+    when 1..3
+      "badge-success"
+    when 4..6
+      "badge-warning"
+    when 7..10
+      "badge-error"
+    else
+      "badge-ghost"
+    end
+  end
+
   private
 
   def broadcast_create

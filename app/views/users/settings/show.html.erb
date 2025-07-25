@@ -1,7 +1,16 @@
 <% content_for :title, "Account Settings" %>
 <% content_for :navbar, "Account Settings" %>
-<% content_for :hotwire_button do %>
+<% content_for :web_button do %>
   <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn" %>
+<% end %>
+<% content_for :hotwire_button do %>
+  <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn",
+      data: { 
+        controller: "bridge--button",
+        bridge_title: "Sign Out",
+        bridge_ios_image: "arrow.right.square",
+        bridge_android_image: "logout"
+      } %>
 <% end %>
 
 <!-- Data Management Section -->

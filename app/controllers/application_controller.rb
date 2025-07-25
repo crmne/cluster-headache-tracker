@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
+
+  # Devise redirect after sign up
+  def after_sign_up_path_for(resource)
+    headache_logs_path
+  end
 end

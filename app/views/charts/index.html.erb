@@ -1,7 +1,19 @@
 <% content_for :title, "Charts" %>
 <% content_for :navbar, "Charts" %>
+<% content_for :web_button do %>
+  <%= link_to new_headache_log_path, class: "btn" do %>
+    <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
+    New
+  <% end %>
+<% end %>
 <% content_for :hotwire_button do %>
-  <%= link_to new_headache_log_path, class: "btn btn-primary" do %>
+  <%= link_to new_headache_log_path, class: "btn", 
+      data: { 
+        controller: "bridge--button",
+        bridge_title: "New",
+        bridge_ios_image: "plus",
+        bridge_android_image: "add"
+      } do %>
     <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
     New
   <% end %>

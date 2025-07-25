@@ -10,7 +10,7 @@
         <% else %>
           <p class="text-xl text-base-content/60 mb-8">No headaches logged yet</p>
           <p class="text-base-content/60 mb-8">Tap the <span class="font-bold text-primary">New</span> button to log your first headache</p>
-          <div class="flex flex-col items-center" style="height: calc(100vh - 40rem);">
+          <div class="flex flex-col items-center" style="height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - <%= native_app_with_tabs? ? '30rem' : '35rem' %>);">
             <div class="w-1 flex-grow bg-primary/20"></div>
             <svg class="w-12 h-12 text-primary animate-bounce mb-16 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>

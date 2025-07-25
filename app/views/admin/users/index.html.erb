@@ -1,0 +1,119 @@
+<% content_for :title, "Admin - Users" %>
+<% content_for :navbar, "Admin - Users" %>
+
+<div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+  <div>
+    <h1 class="text-3xl font-bold">Users</h1>
+    <p class="text-base-content/70">Manage all users</p>
+  </div>
+  
+  <div class="flex gap-2">
+    <%= link_to admin_dashboard_path, class: "btn btn-ghost" do %>
+      <%= heroicon "arrow-left", variant: "mini", class: "w-4 h-4" %>
+      Dashboard
+    <% end %>
+    <%= button_to reset_all_changelogs_admin_users_path,
+        method: :post,
+        form: { data: { turbo_confirm: "This will make ALL users see the changelog modal again. Continue?" } },
+        class: "btn btn-warning" do %>
+      <%= heroicon "arrow-path", variant: "mini", class: "w-4 h-4" %>
+      Reset All Changelogs
+    <% end %>
+  </div>
+</div>
+
+<!-- Search -->
+<div class="mb-6">
+  <%= form_with url: admin_users_path, method: :get, local: true, class: "form-control" do |f| %>
+    <div class="join">
+      <%= text_field_tag :search, params[:search], 
+          placeholder: "Search by username...", 
+          class: "input input-bordered join-item w-full max-w-xs",
+          autocomplete: "off" %>
+      <%= button_tag type: :submit, class: "btn join-item" do %>
+        <%= heroicon "magnifying-glass", variant: "mini", class: "w-4 h-4" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<!-- Flash messages for password reset -->
+<% if flash[:notice] && flash[:notice].include?("New password:") %>
+  <div class="alert alert-success mb-6">
+    <div>
+      <%= heroicon "check-circle", variant: "mini", class: "w-5 h-5" %>
+      <span><%= flash[:notice] %></span>
+    </div>
+  </div>
+<% end %>
+
+<!-- Users Table -->
+<div class="overflow-x-auto">
+  <table class="table table-zebra">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Headaches</th>
+        <th>Joined</th>
+        <th>Changelog</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <div class="font-bold"><%= user.username %></div>
+            <% if user.admin? %>
+              <span class="badge badge-primary badge-sm">Admin</span>
+            <% end %>
+          </td>
+          <td>
+            <div class="text-lg font-semibold"><%= user.headache_logs.count %></div>
+            <% if user.headache_logs.any? %>
+              <div class="text-xs text-base-content/70">
+                Last: <%= time_ago_in_words(user.headache_logs.maximum(:created_at)) %> ago
+              </div>
+            <% end %>
+          </td>
+          <td>
+            <div><%= user.created_at.strftime("%b %d, %Y") %></div>
+            <div class="text-xs text-base-content/70"><%= time_ago_in_words(user.created_at) %> ago</div>
+          </td>
+          <td>
+            <% if user.last_seen_changelog == "v2.0.0" %>
+              <span class="badge badge-success">Seen</span>
+            <% else %>
+              <span class="badge badge-ghost">Not seen</span>
+            <% end %>
+          </td>
+          <td>
+            <div class="flex flex-wrap gap-1">
+              <%= button_to reset_password_admin_user_path(user), 
+                  method: :post,
+                  form: { data: { turbo_confirm: "Reset password for #{user.username}?" } },
+                  class: "btn btn-ghost btn-xs" do %>
+                <%= heroicon "key", variant: "mini", class: "w-4 h-4" %>
+              <% end %>
+              
+              <%= button_to reset_changelog_admin_user_path(user),
+                  method: :post,
+                  class: "btn btn-ghost btn-xs" do %>
+                <%= heroicon "arrow-path", variant: "mini", class: "w-4 h-4" %>
+              <% end %>
+              
+              <% unless user.admin? %>
+                <%= button_to admin_user_path(user), 
+                    method: :delete,
+                    form: { data: { turbo_confirm: "Delete #{user.username} and all their data? This cannot be undone!" } },
+                    class: "btn btn-error btn-xs" do %>
+                  <%= heroicon "trash", variant: "mini", class: "w-4 h-4" %>
+                <% end %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

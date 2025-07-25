@@ -13,6 +13,9 @@
             <li><%= link_to new_headache_log_path do %><%= heroicon "plus-circle", variant: "micro" %> New Log<% end %></li>
             <li><%= link_to settings_path do %><%= heroicon "user", variant: "micro" %> Account Settings<% end %></li>
             <li><%= link_to feedback_path do %><%= heroicon "chat-bubble-left-ellipsis", variant: "micro" %> Feedback<% end %></li>
+            <% if current_user.admin? %>
+              <li><%= link_to admin_dashboard_path do %><%= heroicon "shield-check", variant: "micro" %> Admin<% end %></li>
+            <% end %>
           <% end %>
 
           <li class="menu-title">Resources</li>
@@ -57,13 +60,17 @@
       <% if content_for? :force_navbar_button %>
         <%= yield :force_navbar_button %>
       <% elsif user_signed_in? and native_app_with_tabs? %>
-        <%# Hide navbar buttons for native app with tabs %>
+        <%= yield :hotwire_button %>
       <% elsif user_signed_in? and hotwire_native_app? %>
         <%= yield :hotwire_button %>
       <% elsif user_signed_in? and not hotwire_native_app? %>
-        <div class="flex items-center gap-4 px-2">
-          <%= link_to current_user.username, settings_path, class: "btn btn-primary" %>
-        </div>
+        <% if content_for? :web_button %>
+          <%= yield :web_button %>
+        <% else %>
+          <div class="flex items-center gap-4 px-2">
+            <%= link_to current_user.username, settings_path, class: "btn btn-primary" %>
+          </div>
+        <% end %>
       <% else %>
         <div class="flex items-center gap-4">
           <%= link_to "Sign In", new_user_session_path, class: "btn-primary" %>

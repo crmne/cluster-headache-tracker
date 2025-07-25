@@ -1,0 +1,78 @@
+<% content_for :title, "Admin Dashboard" %>
+<% content_for :navbar, "Admin Dashboard" %>
+
+<div class="mb-8">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-3xl font-bold">Admin Dashboard</h1>
+    <%= link_to "Manage Users", admin_users_path, class: "btn btn-primary" %>
+  </div>
+</div>
+
+<!-- Stats Grid -->
+<div class="grid">
+  <div class="stats stats-vertical md:stats-horizontal shadow mb-3 bg-base-100 [&_.stat]:py-3 [&_.stat]:px-4">
+    <div class="stat">
+      <div class="stat-figure text-primary">
+        <%= heroicon "users", variant: "solid", class: "inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current" %>
+      </div>
+      <div class="stat-title text-xs sm:text-sm">Total Users</div>
+      <div class="stat-value text-primary text-lg sm:text-2xl"><%= @total_users %></div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-figure text-secondary">
+        <%= heroicon "clipboard-document-list", variant: "solid", class: "inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current" %>
+      </div>
+      <div class="stat-title text-xs sm:text-sm">Total Logs</div>
+      <div class="stat-value text-secondary text-lg sm:text-2xl"><%= @total_headache_logs %></div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-figure text-accent">
+        <%= heroicon "chart-bar", variant: "solid", class: "inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current" %>
+      </div>
+      <div class="stat-title text-xs sm:text-sm">Avg Logs/User</div>
+      <div class="stat-value text-accent text-lg sm:text-2xl"><%= @average_logs_per_user %></div>
+      <div class="stat-desc text-xs">Active users only</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-figure text-info">
+        <%= heroicon "sparkles", variant: "solid", class: "inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current" %>
+      </div>
+      <div class="stat-title text-xs sm:text-sm">Changelog Seen</div>
+      <div class="stat-value text-info text-lg sm:text-2xl"><%= @changelog_percentage %>%</div>
+      <div class="stat-desc text-xs"><%= @users_seen_changelog %> of <%= @total_users %> users</div>
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 gap-6">
+  <!-- Recent Users -->
+  <div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title">Recent Users</h2>
+      <div class="overflow-x-auto">
+        <table class="table table-compact">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Joined</th>
+              <th>Logs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @recent_users.each do |user| %>
+              <tr>
+                <td class="font-medium"><%= user.username %></td>
+                <td class="text-sm"><%= user.created_at.strftime("%b %d, %Y") %></td>
+                <td><%= user.headache_logs.count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <%= link_to "View All Users", admin_users_path, class: "btn btn-primary btn-sm mt-4" %>
+    </div>
+  </div>
+</div>
