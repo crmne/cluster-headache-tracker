@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   # resources :headache_logs
-  devise_for :users, controllers: { sessions: "users/sessions" }
+  devise_for :users, controllers: {
+    sessions: "users/sessions",
+    registrations: "users/registrations"
+  }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -15,6 +18,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   get "home/index"
   root "home#index"
+
+  # Hotwire Native navigation helpers
+  get "/recede_historical_location", to: "application#recede_historical_location"
 
   get "faq", to: "home#faq", as: :faq
   get "imprint", to: "home#imprint", as: :imprint
@@ -43,6 +49,7 @@ Rails.application.routes.draw do
     patch :update_username
     patch :update_password
     post :changelog_acknowledged
+    post :welcome_acknowledged
   end
 
   resource :feedback, only: [ :show ], controller: "feedback"
@@ -55,10 +62,12 @@ Rails.application.routes.draw do
       member do
         post :reset_password
         post :reset_changelog
+        post :reset_welcome
       end
 
       collection do
         post :reset_all_changelogs
+        post :reset_all_welcomes
       end
     end
   end

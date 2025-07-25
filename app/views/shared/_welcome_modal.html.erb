@@ -1,0 +1,62 @@
+<% if user_signed_in? && !current_user.has_seen_welcome %>
+  <dialog id="welcomeModal" class="modal" data-controller="welcome" data-welcome-target="modal">
+    <div class="modal-box max-w-md">
+      <div class="text-center mb-4">
+        <div class="inline-flex items-center justify-center w-14 h-14 bg-primary/10 rounded-full mb-3">
+          <%= heroicon "hand-raised", variant: "solid", class: "w-7 h-7 text-primary" %>
+        </div>
+        <h3 class="text-xl font-bold mb-1">Welcome! 👋</h3>
+        <p class="text-sm text-base-content/70">Track your headaches in 3 simple steps</p>
+      </div>
+
+      <div class="space-y-3 mb-4">
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <span class="text-xs font-bold">1</span>
+          </div>
+          <div>
+            <h4 class="font-semibold">Log when it starts</h4>
+            <p class="text-xs text-base-content/70">Hit "New" when headache begins - time is auto-filled</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <span class="text-xs font-bold">2</span>
+          </div>
+          <div>
+            <h4 class="font-semibold">Update when it ends</h4>
+            <p class="text-xs text-base-content/70">Add duration, intensity, medications & notes</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <span class="text-xs font-bold">3</span>
+          </div>
+          <div>
+            <h4 class="font-semibold">Share with your doctor</h4>
+            <p class="text-xs text-base-content/70">Export logs, view charts, or create secure share links</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-warning">
+        <%= heroicon "key", class: "w-5 h-5 shrink-0" %>
+        <div>
+          <p class="text-xs"><strong>Save your password!</strong> We can't recover it since we don't store your email.</p>
+        </div>
+      </div>
+
+      <div class="modal-action justify-center mt-4">
+        <button class="btn btn-primary btn-wide" data-action="click->welcome#acknowledge" data-welcome-target="startButton" disabled>
+          <span data-welcome-target="buttonText">Start Tracking</span>
+          <span data-welcome-target="countdown" class="hidden"></span>
+        </button>
+      </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+<% end %>

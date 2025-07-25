@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::BaseController
-  before_action :set_user, only: [ :destroy, :reset_password, :reset_changelog ]
+  before_action :set_user, only: [ :destroy, :reset_password, :reset_changelog, :reset_welcome ]
 
   def index
     @users = User.includes(:headache_logs)
@@ -37,6 +37,16 @@ class Admin::UsersController < Admin::BaseController
   def reset_all_changelogs
     User.update_all(last_seen_changelog: nil)
     redirect_to admin_users_path, notice: "All users will see the changelog on their next visit."
+  end
+
+  def reset_welcome
+    @user.update(has_seen_welcome: false)
+    redirect_to admin_users_path, notice: "Welcome modal reset for #{@user.username}. They will see it on next visit."
+  end
+
+  def reset_all_welcomes
+    User.update_all(has_seen_welcome: false)
+    redirect_to admin_users_path, notice: "All users will see the welcome modal on their next visit."
   end
 
   private

@@ -5,7 +5,11 @@ export default class extends Controller {
 
   connect() {
     // Show the modal when the controller connects
-    this.element.showModal()
+    // Don't auto-show if welcome modal is present
+    const welcomeModal = document.getElementById('welcomeModal')
+    if (!welcomeModal || welcomeModal.getAttribute('data-controller') === null) {
+      this.element.showModal()
+    }
   }
 
   acknowledge() {

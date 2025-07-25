@@ -32,6 +32,14 @@ class Users::SettingsController < ApplicationController
     end
   end
 
+  def welcome_acknowledged
+    if current_user.update(has_seen_welcome: true)
+      head :ok
+    else
+      head :unprocessable_entity
+    end
+  end
+
   private
 
   def set_user
