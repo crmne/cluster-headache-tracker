@@ -12,30 +12,32 @@
 <% end %>
 
 <!-- Data Management Section -->
-<div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 mb-4">
-  <div class="card-body p-3 sm:p-4">
-    <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2 mb-3">
-      <%= heroicon "circle-stack", variant: "mini", class: "w-4 h-4 text-primary" %>
-      Data Management
-    </h2>
-    <div class="flex flex-col sm:flex-row gap-2">
-      <button onclick="import_modal.showModal()" class="btn btn-outline btn-sm">
-        <%= heroicon "arrow-up-tray", variant: "mini", class: "w-4 h-4" %>
-        Import CSV
-      </button>
-      <%= link_to export_headache_logs_path(format: :csv),
-                  class: "btn btn-primary btn-sm",
-                  data: {
-                    controller: "download",
-                    download_url_value: export_headache_logs_path(format: :csv),
-                    action: "click->download#export"
-                  } do %>
-        <%= heroicon "arrow-down-tray", variant: "mini", class: "w-4 h-4" %>
-        Export CSV
-      <% end %>
+<% unless native_app_with_tabs? %>
+  <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 mb-4">
+    <div class="card-body p-3 sm:p-4">
+      <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2 mb-3">
+        <%= heroicon "circle-stack", variant: "mini", class: "w-4 h-4 text-primary" %>
+        Data Management
+      </h2>
+      <div class="flex flex-col sm:flex-row gap-2">
+        <button onclick="import_modal.showModal()" class="btn btn-outline btn-sm">
+          <%= heroicon "arrow-up-tray", variant: "mini", class: "w-4 h-4" %>
+          Import CSV
+        </button>
+        <%= link_to export_headache_logs_path(format: :csv),
+                    class: "btn btn-primary btn-sm",
+                    data: {
+                      controller: "download",
+                      download_url_value: export_headache_logs_path(format: :csv),
+                      action: "click->download#export"
+                    } do %>
+          <%= heroicon "arrow-down-tray", variant: "mini", class: "w-4 h-4" %>
+          Export CSV
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 
 <!-- User Management Section -->
 <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 mb-4">
