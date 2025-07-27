@@ -28,15 +28,15 @@ module ApplicationHelper
   end
 
   def app_title
-    "Cluster Headache Tracker | Free Tracking Tool"
+    "Cluster Headache Tracker - Free Tracking by a Fellow Sufferer"
   end
 
   def app_short_description
-    "Track and Manage Cluster Headaches | Free Privacy-Focused App"
+    "Private, Free Cluster Headache Tracking That Actually Helps"
   end
 
   def app_description
-    "Track your cluster headaches, identify triggers, and share doctor reports to get oxygen therapy approved. Free, private tool used by 340+ patients. iOS & Android apps available."
+    "Built by a cluster headache sufferer who needed better tracking. Log attacks in seconds, spot real patterns, get reports that helped others get oxygen approved. Free forever, no email required, your data stays private."
   end
 
   def page_title
@@ -56,15 +56,15 @@ module ApplicationHelper
 
   # New: Add specific meta descriptions for key pages
   def home_meta_description
-    "Free cluster headache tracking app used by 340+ patients to identify triggers, track attack patterns, and get oxygen therapy approved. Available on web, iOS, and Android."
+    "I built this free cluster headache tracker because I needed it. Join 340+ sufferers who finally have data that helps. Log attacks fast, see patterns clearly, share with doctors. No email, no tracking, just help."
   end
 
   def faq_meta_description
-    "Frequently asked questions about cluster headaches, tracking methods, and how our free app helps patients manage their condition and get treatments approved."
+    "Real answers about cluster headaches from someone who gets them. Learn why tracking matters, how this free tool helps, and what actually works for getting treatment approved."
   end
 
   def charts_meta_description
-    "Visualize your cluster headache patterns with interactive charts. Track intensity, duration, triggers, and medication effectiveness over time."
+    "See your cluster headache patterns like never before. Charts that show real cycles, trigger correlations, and treatment effectiveness. Data that helps you and your doctor make better decisions."
   end
 
   def native_app_with_tabs?

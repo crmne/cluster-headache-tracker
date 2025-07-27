@@ -1,108 +1,226 @@
-<% content_for :title, "Guide for Neurologists" %>
-<article class="prose">
-  <%= image_tag "logo.png" %>
-  <h1>Cluster Headache Tracker</h1>
-  <p class="subtitle">A Clinical Tool for Tracking and Managing Cluster Headaches</p>
+<% content_for :title, "For Neurologists - Data That Actually Helps" %>
+<% content_for :meta_description, "Free cluster headache tracking tool your patients love using. Get clean data, clear patterns, and documentation that supports oxygen approval. Built by a patient who gets it." %>
 
-  <div class="highlight-box">
-    <h3>Key Benefits for Clinicians</h3>
-    <ul>
-      <li><strong>Evidence-Based Treatment Decisions:</strong> Access to detailed attack frequency, duration, intensity, and treatment response data</li>
-      <li><strong>Objective Documentation:</strong> Standardized reports for insurance authorization of oxygen therapy and other treatments</li>
-      <li><strong>Improved Patient Compliance:</strong> Greater patient engagement through digital tracking</li>
-      <li><strong>Efficient Appointments:</strong> Pre-formatted reports allow for more meaningful consultation time</li>
-    </ul>
-  </div>
-
-  <h2>Clinical Utility</h2>
-  <p>Cluster Headache Tracker provides a structured approach to monitoring this debilitating condition, offering accurate and comprehensive data that supports clinical decision-making and treatment plan development.</p>
-
-  <div class="two-column">
-    <div class="column">
-      <h3>Data Collection Parameters</h3>
-      <ul>
-        <li><strong>Temporal Patterns:</strong> Precise attack timing, duration, and circadian rhythm analysis</li>
-        <li><strong>Pain Intensity:</strong> Standardized 1-10 pain scale</li>
-        <li><strong>Associated Symptoms:</strong> Tracking of autonomic features</li>
-        <li><strong>Trigger Identification:</strong> Common and patient-specific triggers</li>
-        <li><strong>Treatment Response:</strong> Medication effectiveness and oxygen usage</li>
-      </ul>
-    </div>
-    <div class="column">
-      <h3>Visualized Reports for Clinical Use</h3>
-      <ul>
-        <li><strong>Attack Frequency Charts:</strong> Daily/weekly/monthly patterns</li>
-        <li><strong>Cluster Period Analysis:</strong> Identification of bout patterns</li>
-        <li><strong>Treatment Response Metrics:</strong> Measuring intervention efficacy</li>
-        <li><strong>Trigger Correlation:</strong> Statistical associations with potential triggers</li>
-      </ul>
+<!-- Hero Section -->
+<section class="bg-primary text-white">
+  <div class="hero min-h-[40vh]">
+    <div class="hero-content text-center">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Dear Neurologist: Your Patients Finally Have Good Data</h1>
+        <p class="text-xl md:text-2xl mb-8">A tracking tool built by a cluster headache patient who was tired of paper diaries nobody reads</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#how-it-works" class="btn btn-lg btn-primary bg-white text-indigo-600 hover:bg-indigo-100 border-none">
+            <%= heroicon "chart-bar", variant: "mini", class: "w-5 h-5" %>
+            See Sample Reports
+          </a>
+          <a href="#recommend" class="btn btn-lg btn-outline border-white text-white hover:bg-white hover:text-indigo-600">
+            <%= heroicon "user-group", variant: "mini", class: "w-5 h-5" %>
+            How to Recommend
+          </a>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <h2>Sample Patient Reports</h2>
-  <p>The following examples demonstrate the type of data visualization and reports your patients can share:</p>
-
-  <h3>Attack Pattern Analysis</h3>
-  <p>[Sample chart image showing attack patterns over time]</p>
-
-  <h3>Treatment Response Analysis</h3>
-  <p>[Sample chart showing effectiveness of treatments]</p>
-
-  <table>
-    <tr>
-      <th>Parameter</th>
-      <th>Clinical Value</th>
-      <th>Treatment Implications</th>
-    </tr>
-    <tr>
-      <td>Attack Timing</td>
-      <td>Identifies circadian patterns and cluster period duration</td>
-      <td>Supports preventive medication timing decisions</td>
-    </tr>
-    <tr>
-      <td>Attack Duration</td>
-      <td>Objective measurement of pain episode length</td>
-      <td>Helps assess abortive treatment effectiveness</td>
-    </tr>
-    <tr>
-      <td>Medication Efficacy</td>
-      <td>Quantified response to specific interventions</td>
-      <td>Guides medication adjustments and discontinuation decisions</td>
-    </tr>
-    <tr>
-      <td>Oxygen Usage</td>
-      <td>Detailed documentation of oxygen requirements</td>
-      <td>Supports insurance authorization for home oxygen</td>
-    </tr>
-  </table>
-
-  <h2>Integration Into Clinical Practice</h2>
-  <p>Cluster Headache Tracker has been designed with clinical workflows in mind:</p>
-  <ul>
-    <li><strong>No Cost to You or Your Patients:</strong> Free, open-source tool dedicated to improving cluster headache care</li>
-    <li><strong>HIPAA Considerations:</strong> Patients control their own data and sharing</li>
-    <li><strong>Insurance Documentation:</strong> Reports specifically formatted to support oxygen therapy and other treatment authorizations</li>
-    <li><strong>Multi-Platform Support:</strong> Web, iOS, and Android options ensure accessibility for all your patients</li>
-  </ul>
-
-  <div class="cta">
-    <h3>How to Recommend to Your Patients</h3>
-    <p>Simply direct your cluster headache patients to <strong>clusterheadachetracker.com</strong> or recommend the mobile apps available on iOS App Store and Android.</p>
-    <p>For technical questions or clinical collaboration opportunities, contact: hello@clusterheadachetracker.com</p>
+<!-- Why It Works Section -->
+<section class="py-20 bg-base-200">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4">Why Your Patients Love This (And You Will Too)</h2>
+      <p class="text-xl text-base-content/80 max-w-2xl mx-auto">Built by someone who gets it. Used by 340+ patients who finally have data that matters.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <div class="card bg-base-100 shadow-md">
+        <div class="card-body">
+          <div class="text-3xl mb-3">⚡</div>
+          <h3 class="font-bold mb-2">They Actually Use It</h3>
+          <p class="text-sm">Built for speed during attacks - log in seconds, not minutes</p>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-md">
+        <div class="card-body">
+          <div class="text-3xl mb-3">📊</div>
+          <h3 class="font-bold mb-2">Real Patterns Emerge</h3>
+          <p class="text-sm">Charts show cycles you can't see in scattered diary entries</p>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-md">
+        <div class="card-body">
+          <div class="text-3xl mb-3">✅</div>
+          <h3 class="font-bold mb-2">Insurance-Ready</h3>
+          <p class="text-sm">Multiple patients got oxygen approved using our reports</p>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-md">
+        <div class="card-body">
+          <div class="text-3xl mb-3">📱</div>
+          <h3 class="font-bold mb-2">Always Available</h3>
+          <p class="text-sm">No more "I forgot my diary" - data syncs across devices</p>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <h2>Clinical Research Opportunities</h2>
-  <p>We welcome collaboration with clinicians and researchers. With proper consent, anonymized data from the platform could support research into:</p>
-  <ul>
-    <li>Novel treatment approaches for cluster headaches</li>
-    <li>Trigger identification and management</li>
-    <li>Chronobiological patterns in cluster headache</li>
-    <li>Quality of life improvements with proper management</li>
-  </ul>
+<!-- Data Collection Section -->
+<section id="how-it-works" class="py-20 bg-accent text-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4">Clinical-Grade Data Collection</h2>
+      <p class="text-xl max-w-2xl mx-auto">Every parameter you need to make informed treatment decisions</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-base-content">
+      <div class="card bg-base-100 shadow-md">
+        <div class="card-body">
+          <h3 class="card-title text-xl mb-4">Data Points Tracked</h3>
+          <ul class="space-y-2">
+            <li>• <strong>Attack timing:</strong> Precise start/end times with circadian patterns</li>
+            <li>• <strong>Pain intensity:</strong> Standardized 1-10 scale</li>
+            <li>• <strong>Duration:</strong> Automatic calculation with manual override</li>
+            <li>• <strong>Medications:</strong> What worked, what didn't</li>
+            <li>• <strong>Triggers:</strong> Patient-identified correlations</li>
+            <li>• <strong>Associated symptoms:</strong> Autonomic features tracking</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-md">
+        <div class="card-body">
+          <h3 class="card-title text-xl mb-4">Reports You Get</h3>
+          <ul class="space-y-2">
+            <li>• <strong>Attack frequency:</strong> Daily/weekly/monthly patterns</li>
+            <li>• <strong>Cluster periods:</strong> Bout identification and duration</li>
+            <li>• <strong>Treatment response:</strong> Medication effectiveness metrics</li>
+            <li>• <strong>Time analysis:</strong> Peak attack hours visualization</li>
+            <li>• <strong>Intensity trends:</strong> Pain level patterns over time</li>
+            <li>• <strong>Export options:</strong> CSV data for your own analysis</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <div class="footer">
-    <p>&copy; 2025 Cluster Headache Tracker | clusterheadachetracker.com</p>
-    <p>An open-source tool developed by Carmine Paolino with input from neurologists and cluster headache patients.</p>
+<!-- Sample Data Section -->
+<section class="py-20 bg-neutral text-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4">What You'll See</h2>
+      <p class="text-xl max-w-2xl mx-auto">Clean visualizations that support clinical decision-making</p>
+    </div>
+    <div class="max-w-5xl mx-auto">
+      <div class="bg-base-100 rounded-lg shadow-lg p-8 text-base-content">
+        <div class="overflow-x-auto">
+          <table class="table table-zebra w-full">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Clinical Value</th>
+                <th>Treatment Implications</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="font-medium">Attack Timing</td>
+                <td>Circadian patterns, cluster duration</td>
+                <td>Preventive medication timing</td>
+              </tr>
+              <tr>
+                <td class="font-medium">Attack Duration</td>
+                <td>Objective pain episode length</td>
+                <td>Abortive treatment effectiveness</td>
+              </tr>
+              <tr>
+                <td class="font-medium">Medication Response</td>
+                <td>Quantified intervention success</td>
+                <td>Adjustment/continuation decisions</td>
+              </tr>
+              <tr>
+                <td class="font-medium">Oxygen Usage</td>
+                <td>Detailed requirement documentation</td>
+                <td>Insurance authorization support</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
+
+<!-- How to Recommend Section -->
+<section id="recommend" class="py-20 bg-success text-white">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-8">Zero Friction for You and Your Patients</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-base-content">
+        <div class="card bg-base-100 shadow-md">
+          <div class="card-body">
+            <h3 class="card-title mb-4">For Your Patients</h3>
+            <ol class="text-left space-y-2">
+              <li>1. Visit clusterheadachetracker.com</li>
+              <li>2. Pick a username (no email needed)</li>
+              <li>3. Start tracking immediately</li>
+              <li>4. Share data with you via secure link</li>
+            </ol>
+          </div>
+        </div>
+        <div class="card bg-base-100 shadow-md">
+          <div class="card-body">
+            <h3 class="card-title mb-4">For You</h3>
+            <ol class="text-left space-y-2">
+              <li>1. Patient shares link during visit</li>
+              <li>2. Click to view their data</li>
+              <li>3. No login or account needed</li>
+              <li>4. Print or save reports as needed</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white/10 p-8 rounded-lg">
+        <h3 class="text-2xl font-bold mb-4">Just Tell Them:</h3>
+        <p class="text-3xl font-mono mb-6">"Use clusterheadachetracker.com"</p>
+        <p class="text-lg">That's it. No complex setup. When they come back, they'll have data you can actually use.</p>
+      </div>
+    </div>
   </div>
-</article>
+</section>
+
+<!-- Testimonial Section -->
+<section class="py-20 bg-info text-white">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-8">Real Impact</h2>
+      <div class="bg-white/10 p-8 rounded-lg mb-8">
+        <blockquote class="text-xl italic mb-4">
+          "I use your site for my headache tracking and it was incredibly helpful with my neuro to get oxygen."
+        </blockquote>
+        <cite class="text-lg">— Actual patient feedback</cite>
+      </div>
+      <p class="text-xl mb-8">This isn't theoretical. Patients are getting better care because they have better data.</p>
+      <p class="text-lg">Questions? I personally respond to every email:</p>
+      <a href="mailto:hello@clusterheadachetracker.com" class="text-2xl font-mono hover:underline">hello@clusterheadachetracker.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="py-20">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-6">Help Your Patients Track Better</h2>
+    <p class="text-xl text-base-content/80 max-w-2xl mx-auto mb-8">Free forever. No ads. No data selling. Just a tool that helps.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="<%= root_url %>" target="_blank" class="btn btn-lg btn-primary">
+        <%= heroicon "arrow-top-right-on-square", variant: "mini", class: "w-5 h-5" %>
+        Visit the Site
+      </a>
+      <a href="mailto:hello@clusterheadachetracker.com" class="btn btn-lg btn-outline">
+        <%= heroicon "envelope", variant: "mini", class: "w-5 h-5" %>
+        Contact Me
+      </a>
+    </div>
+    <p class="mt-12 text-sm text-base-content/60">
+      Built with love (and pain) by Carmine Paolino, a cluster headache sufferer who needed better tools.
+    </p>
+  </div>
+</section>
