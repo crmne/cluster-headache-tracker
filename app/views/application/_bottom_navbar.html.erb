@@ -27,8 +27,8 @@
   <% end %>
 
   <%= link_to feedback_path,
-      class: "transition-all duration-200 #{current_page?(feedback_path) ? 'dock-active text-info' : 'hover:text-info'}" do %>
-    <%= heroicon "chat-bubble-left-ellipsis", variant: current_page?(feedback_path) ? "solid" : "outline", class: "size-5 sm:size-6" %>
+      class: "transition-all duration-200 #{current_page?(feedback_path) || current_page?(new_feedback_path) || current_page?(thank_you_feedback_path) ? 'dock-active text-info' : 'hover:text-info'}" do %>
+    <%= heroicon "chat-bubble-left-ellipsis", variant: current_page?(feedback_path) || current_page?(new_feedback_path) || current_page?(thank_you_feedback_path) ? "solid" : "outline", class: "size-5 sm:size-6" %>
     <span class="dock-label text-xs mt-1">Feedback</span>
   <% end %>
 </div>

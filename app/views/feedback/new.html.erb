@@ -1,0 +1,158 @@
+<% content_for :title, "Feedback" %>
+<% content_for :navbar, "Feedback" %>
+
+<div class="container mx-auto px-3 sm:px-4 max-w-2xl py-4 sm:py-6">
+  <div class="mb-4">
+    <h1 class="text-xl sm:text-2xl font-bold mb-2">Help us improve</h1>
+    <p class="text-sm sm:text-base text-base-content/70">Your feedback shapes the future of this tool.</p>
+  </div>
+
+  <div class="card bg-base-100 shadow-md">
+    <div class="card-body p-3 sm:p-4">
+      <%= form_with(model: @feedback_survey, url: feedback_path, class: "space-y-4") do |form| %>
+        <% if @feedback_survey.errors.any? %>
+          <div class="alert alert-error">
+            <%= heroicon "x-circle", variant: "mini", class: "w-5 h-5" %>
+            <ul class="list-disc list-inside">
+              <% @feedback_survey.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="bg-base-200/50 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-2">Usage Duration</h3>
+          <%= form.select :usage_duration,
+              options_for_select(FeedbackSurvey::USAGE_DURATIONS),
+              { prompt: "Select duration" },
+              { class: "select select-bordered select-sm w-full", required: true } %>
+        </div>
+
+        <div class="bg-primary/5 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-2 text-primary">Platform Usage</h3>
+          <p class="text-xs text-base-content/60 mb-2">Check all that apply</p>
+          <div class="grid grid-cols-2 gap-2">
+            <% FeedbackSurvey::VERSIONS.each do |version| %>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <%= form.check_box :versions, { multiple: true, class: "checkbox checkbox-sm checkbox-primary", include_hidden: false }, version, nil %>
+                <span class="text-sm"><%= version %></span>
+              </label>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="bg-secondary/5 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-2 text-secondary">Useful Features</h3>
+          <p class="text-xs text-base-content/60 mb-2">Check all that apply</p>
+          <div class="space-y-2">
+            <% FeedbackSurvey::FEATURES.each do |feature| %>
+              <label class="flex items-start gap-2 cursor-pointer">
+                <%= form.check_box :most_useful_features, { multiple: true, class: "checkbox checkbox-sm checkbox-secondary mt-0.5", include_hidden: false }, feature, nil %>
+                <span class="text-sm"><%= feature %></span>
+              </label>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="bg-base-200/50 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-2">Additional Features</h3>
+          <%= form.text_area :additional_features,
+              class: "textarea textarea-bordered textarea-sm w-full",
+              rows: 3,
+              placeholder: "What would make this tool better for you?" %>
+        </div>
+
+        <div class="bg-accent/5 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-2 text-accent">Ease of Use</h3>
+          <div class="flex items-center justify-between">
+            <div class="rating rating-md">
+              <% (1..5).each do |rating| %>
+                <%= form.radio_button :ease_of_use, rating, class: "mask mask-star-2 bg-accent", required: true %>
+              <% end %>
+            </div>
+            <span class="text-xs text-base-content/60">1 = Difficult, 5 = Easy</span>
+          </div>
+        </div>
+
+        <div class="bg-info/5 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-2 text-info">Doctor Sharing</h3>
+          <p class="text-xs text-base-content/60 mb-2">Have you shared your data with your doctor?</p>
+          <div class="flex flex-wrap gap-3">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <%= form.radio_button :shared_with_doctor, true, class: "radio radio-sm radio-info", required: true %>
+              <span class="text-sm">Yes</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <%= form.radio_button :shared_with_doctor, false, class: "radio radio-sm radio-info", required: true %>
+              <span class="text-sm">No</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <%= form.radio_button :shared_with_doctor, nil, class: "radio radio-sm radio-info", required: true %>
+              <span class="text-sm">Wasn't aware</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="bg-base-200/50 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-2">Impact & Experience</h3>
+          <%= form.text_area :impact,
+              class: "textarea textarea-bordered textarea-sm w-full",
+              rows: 3,
+              placeholder: "How has the tracker helped with your headache management?" %>
+        </div>
+
+        <div class="bg-warning/5 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-2 text-warning">One Change</h3>
+          <%= form.text_area :change_suggestion,
+              class: "textarea textarea-bordered textarea-sm w-full",
+              rows: 2,
+              placeholder: "If you could change one thing, what would it be?" %>
+        </div>
+
+        <div class="bg-secondary/5 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-2 text-secondary">Recommendation</h3>
+          <div class="flex items-center justify-between">
+            <div class="rating rating-md">
+              <% (1..5).each do |rating| %>
+                <%= form.radio_button :recommendation_likelihood, rating, class: "mask mask-star-2 bg-secondary", required: true %>
+              <% end %>
+            </div>
+            <span class="text-xs text-base-content/60">1 = Unlikely, 5 = Very likely</span>
+          </div>
+        </div>
+
+        <div class="bg-base-200/50 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-2">Suggestions</h3>
+          <%= form.text_area :promotion_suggestions,
+              class: "textarea textarea-bordered textarea-sm w-full",
+              rows: 3,
+              placeholder: "How can we improve or reach more people who need this?" %>
+        </div>
+
+        <div class="bg-primary/5 rounded-lg p-3">
+          <h3 class="text-sm font-semibold mb-2 text-primary">Mobile Apps</h3>
+          <p class="text-xs text-base-content/60 mb-2">Native apps are in development!</p>
+          <%= form.select :mobile_interest,
+              options_for_select([
+                ["Yes, for iOS", "ios"],
+                ["Yes, for Android", "android"],
+                ["Yes, for both", "both"],
+                ["No, web version works great", "none"],
+                ["I use the PWA", "pwa"]
+              ]),
+              { prompt: "Select your preference" },
+              { class: "select select-bordered select-sm w-full" } %>
+        </div>
+
+        <div class="form-control mt-4">
+          <%= form.submit "Submit Feedback", class: "btn btn-primary w-full" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% unless native_app_with_tabs? %>
+    <div class="pb-24"></div>
+  <% end %>
+</div>

@@ -1,0 +1,205 @@
+<% content_for :title, "Feedback Dashboard" %>
+<% content_for :navbar, "Feedback Dashboard" %>
+
+<div class="mb-8">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-3xl font-bold">Feedback Dashboard</h1>
+    <div class="flex gap-2">
+      <%= link_to "Admin Home", admin_dashboard_path, class: "btn btn-ghost" %>
+      <button class="btn btn-primary" onclick="import_modal.showModal()">
+        <%= heroicon "arrow-up-tray", variant: "mini", class: "w-4 h-4" %>
+        Import from Tally
+      </button>
+      <% if @feedback_surveys.any? %>
+        <button class="btn btn-error btn-outline" onclick="reset_all_modal.showModal()">
+          <%= heroicon "trash", variant: "mini", class: "w-4 h-4" %>
+          Reset All
+        </button>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Stats Grid -->
+<div class="grid mb-6">
+  <div class="stats stats-vertical lg:stats-horizontal shadow bg-base-100 [&_.stat]:py-3 [&_.stat]:px-4">
+    <div class="stat">
+      <div class="stat-figure text-primary">
+        <%= heroicon "chat-bubble-left-right", variant: "solid", class: "inline-block h-6 w-6 sm:h-8 sm:w-8" %>
+      </div>
+      <div class="stat-title text-xs sm:text-sm">Total Responses</div>
+      <div class="stat-value text-primary text-lg sm:text-2xl"><%= @stats[:total_responses] %></div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-figure text-secondary">
+        <%= heroicon "star", variant: "solid", class: "inline-block h-6 w-6 sm:h-8 sm:w-8" %>
+      </div>
+      <div class="stat-title text-xs sm:text-sm">Avg Ease of Use</div>
+      <div class="stat-value text-secondary text-lg sm:text-2xl"><%= @stats[:average_ease] || "N/A" %></div>
+      <div class="stat-desc text-xs">out of 5</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-figure text-accent">
+        <%= heroicon "heart", variant: "solid", class: "inline-block h-6 w-6 sm:h-8 sm:w-8" %>
+      </div>
+      <div class="stat-title text-xs sm:text-sm">Avg Recommendation</div>
+      <div class="stat-value text-accent text-lg sm:text-2xl"><%= @stats[:average_recommendation] || "N/A" %></div>
+      <div class="stat-desc text-xs">out of 5</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-figure text-info">
+        <%= heroicon "share", variant: "solid", class: "inline-block h-6 w-6 sm:h-8 sm:w-8" %>
+      </div>
+      <div class="stat-title text-xs sm:text-sm">Shared w/ Doctor</div>
+      <div class="stat-value text-info text-lg sm:text-2xl"><%= @stats[:shared_with_doctor] %></div>
+      <div class="stat-desc text-xs">users</div>
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+  <!-- Platform Usage -->
+  <div class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h2 class="card-title text-lg">Platform Usage</h2>
+      <% if @stats[:platforms].any? %>
+        <div class="space-y-2">
+          <% @stats[:platforms].sort_by { |_, count| -count }.each do |platform, count| %>
+            <div class="flex justify-between items-center">
+              <span class="text-sm"><%= platform %></span>
+              <div class="flex items-center gap-2">
+                <progress class="progress progress-primary w-24" value="<%= count %>" max="<%= @stats[:total_responses] %>"></progress>
+                <span class="text-sm font-medium"><%= count %></span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-sm text-base-content/60">No platform data yet</p>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Most Useful Features -->
+  <div class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h2 class="card-title text-lg">Most Useful Features</h2>
+      <% if @stats[:features].any? %>
+        <div class="space-y-2">
+          <% @stats[:features].sort_by { |_, count| -count }.first(6).each do |feature, count| %>
+            <div class="flex justify-between items-center">
+              <span class="text-sm"><%= feature.gsub("Logging headache episodes", "Logging episodes") %></span>
+              <div class="flex items-center gap-2">
+                <progress class="progress progress-secondary w-24" value="<%= count %>" max="<%= @stats[:total_responses] %>"></progress>
+                <span class="text-sm font-medium"><%= count %></span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-sm text-base-content/60">No feature data yet</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Feedback -->
+<div class="card bg-base-100 shadow-xl">
+  <div class="card-body">
+    <h2 class="card-title">Recent Feedback</h2>
+    <div class="overflow-x-auto">
+      <table class="table table-zebra">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Usage</th>
+            <th>Ease</th>
+            <th>Recommend</th>
+            <th>Submitted</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @feedback_surveys.each do |survey| %>
+            <tr>
+              <td class="font-medium"><%= survey.user.username %></td>
+              <td class="text-sm"><%= survey.usage_duration %></td>
+              <td>
+                <div class="rating rating-sm">
+                  <% (1..5).each do |i| %>
+                    <input type="radio" class="mask mask-star-2 bg-orange-400" disabled <%= "checked" if survey.ease_of_use == i %>>
+                  <% end %>
+                </div>
+              </td>
+              <td>
+                <div class="rating rating-sm">
+                  <% (1..5).each do |i| %>
+                    <input type="radio" class="mask mask-star-2 bg-green-400" disabled <%= "checked" if survey.recommendation_likelihood == i %>>
+                  <% end %>
+                </div>
+              </td>
+              <td class="text-sm"><%= survey.created_at.strftime("%b %d, %Y") %></td>
+              <td>
+                <div class="flex gap-1">
+                  <%= link_to "View", admin_feedback_survey_path(survey), class: "btn btn-ghost btn-xs" %>
+                  <%= button_to "Reset", admin_feedback_survey_path(survey), method: :delete,
+                      class: "btn btn-ghost btn-xs text-error",
+                      data: { turbo_confirm: "Reset feedback from #{survey.user.username}?" } %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Import Modal -->
+<dialog id="import_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg mb-4">Import Feedback from Tally CSV</h3>
+    <%= form_with url: import_admin_feedback_surveys_path, local: true, html: { multipart: true } do |form| %>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Select CSV file exported from Tally</span>
+        </label>
+        <%= form.file_field :file, class: "file-input file-input-bordered w-full", accept: ".csv", required: true %>
+        <label class="label">
+          <span class="label-text-alt">CSV should include all Tally submission data</span>
+        </label>
+      </div>
+      <div class="modal-action">
+        <button type="button" class="btn btn-ghost" onclick="import_modal.close()">Cancel</button>
+        <%= form.submit "Import", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
+
+<!-- Reset All Modal -->
+<dialog id="reset_all_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg mb-4">Reset All Feedback?</h3>
+    <p class="mb-4">This will permanently delete all <%= @feedback_surveys.count %> feedback entries. This action cannot be undone.</p>
+    <div class="modal-action">
+      <button type="button" class="btn btn-ghost" onclick="reset_all_modal.close()">Cancel</button>
+      <%= button_to "Reset All Feedback", destroy_all_admin_feedback_surveys_path,
+          method: :delete,
+          class: "btn btn-error" %>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
+
+<% unless native_app_with_tabs? %>
+  <div class="pb-24"></div>
+<% end %>

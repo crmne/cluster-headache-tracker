@@ -10,9 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_25_151416) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_27_211041) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "feedback_surveys", force: :cascade do |t|
+    t.string "usage_duration"
+    t.text "versions"
+    t.text "most_useful_features"
+    t.text "additional_features"
+    t.integer "ease_of_use"
+    t.boolean "shared_with_doctor"
+    t.text "impact"
+    t.text "change_suggestion"
+    t.integer "recommendation_likelihood"
+    t.text "promotion_suggestions"
+    t.string "mobile_interest"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "user_agent"
+    t.index ["user_id"], name: "index_feedback_surveys_on_user_id"
+  end
 
   create_table "headache_logs", force: :cascade do |t|
     t.datetime "start_time"
@@ -50,6 +69,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_25_151416) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "feedback_surveys", "users"
   add_foreign_key "headache_logs", "users"
   add_foreign_key "share_tokens", "users"
 end

@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  usage_duration: MyString
+  versions: MyText
+  most_useful_features: MyText
+  additional_features: MyText
+  ease_of_use: 1
+  shared_with_doctor: false
+  impact: MyText
+  change_suggestion: MyText
+  recommendation_likelihood: 1
+  promotion_suggestions: MyText
+  mobile_interest: MyString
+  user: one
+
+two:
+  usage_duration: MyString
+  versions: MyText
+  most_useful_features: MyText
+  additional_features: MyText
+  ease_of_use: 1
+  shared_with_doctor: false
+  impact: MyText
+  change_suggestion: MyText
+  recommendation_likelihood: 1
+  promotion_suggestions: MyText
+  mobile_interest: MyString
+  user: two

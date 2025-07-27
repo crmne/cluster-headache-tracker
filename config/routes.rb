@@ -52,7 +52,9 @@ Rails.application.routes.draw do
     post :welcome_acknowledged
   end
 
-  resource :feedback, only: [ :show ], controller: "feedback"
+  resource :feedback, only: [ :show, :new, :create ], controller: "feedback" do
+    get :thank_you
+  end
 
   namespace :admin do
     root "dashboard#index"
@@ -68,6 +70,13 @@ Rails.application.routes.draw do
       collection do
         post :reset_all_changelogs
         post :reset_all_welcomes
+      end
+    end
+
+    resources :feedback_surveys, only: [ :index, :show, :destroy ] do
+      collection do
+        post :import
+        delete :destroy_all
       end
     end
   end

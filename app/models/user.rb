@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :headache_logs
   has_many :share_tokens
+  has_one :feedback_survey
 
   def email_required?
     false

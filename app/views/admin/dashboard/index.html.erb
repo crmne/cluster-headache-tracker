@@ -4,7 +4,10 @@
 <div class="mb-8">
   <div class="flex justify-between items-center mb-4">
     <h1 class="text-3xl font-bold">Admin Dashboard</h1>
-    <%= link_to "Manage Users", admin_users_path, class: "btn btn-primary" %>
+    <div class="flex gap-2">
+      <%= link_to "Manage Users", admin_users_path, class: "btn btn-primary" %>
+      <%= link_to "View Feedback", admin_feedback_surveys_path, class: "btn btn-secondary" %>
+    </div>
   </div>
 </div>
 
@@ -47,7 +50,7 @@
   </div>
 </div>
 
-<div class="grid grid-cols-1 gap-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
   <!-- Recent Users -->
   <div class="card bg-base-100 shadow-xl">
     <div class="card-body">
@@ -73,6 +76,30 @@
         </table>
       </div>
       <%= link_to "View All Users", admin_users_path, class: "btn btn-primary btn-sm mt-4" %>
+    </div>
+  </div>
+
+  <!-- Feedback Summary -->
+  <div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title">Feedback Summary</h2>
+      <div class="grid grid-cols-1 gap-4">
+        <div class="stat bg-base-200 rounded-lg p-3">
+          <div class="stat-title text-xs">Total Responses</div>
+          <div class="stat-value text-2xl"><%= @total_feedback %></div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="stat bg-primary/10 rounded-lg p-3">
+            <div class="stat-title text-xs">Ease of Use</div>
+            <div class="stat-value text-xl text-primary"><%= @average_ease_rating || "N/A" %>/5</div>
+          </div>
+          <div class="stat bg-secondary/10 rounded-lg p-3">
+            <div class="stat-title text-xs">Recommendation</div>
+            <div class="stat-value text-xl text-secondary"><%= @average_recommendation || "N/A" %>/5</div>
+          </div>
+        </div>
+      </div>
+      <%= link_to "View All Feedback", admin_feedback_surveys_path, class: "btn btn-secondary btn-sm mt-4" %>
     </div>
   </div>
 </div>
