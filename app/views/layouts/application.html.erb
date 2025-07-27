@@ -50,7 +50,7 @@
 <body class="min-h-screen bg-base-200 flex flex-col">
   <%= render 'navbar' %>
   <%= render 'flash_messages', resource: local_assigns[:resource] %>
-  <main class="w-full <%= hotwire_native_app? ? 'pt-safe' : 'pt-safe-offset-16' %> flex-grow">
+  <main class="w-full <%= native_app_with_tabs? ? 'pt-safe pb-2' : 'pt-safe-offset-16 pb-24' %> flex-grow">
     <% if current_page? root_path or current_page? feedback_path or current_page? faq_path or current_page? neurologist_path %>
     <%= yield %>
     <% else %>
