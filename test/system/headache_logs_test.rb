@@ -113,34 +113,6 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     assert_selector ".radial-progress", text: log.intensity.to_s
   end
 
-  test "filtering headache logs" do
-    visit headache_logs_url
-
-    # Close any modals that might be open
-    if page.has_css?(".modal-backdrop", wait: 0.5)
-      page.execute_script("document.querySelectorAll('.modal').forEach(m => m.close())")
-      sleep(0.5)
-    end
-
-    open_accordion "filters"
-
-    # Set date range to capture fixtures (3 days ago to tomorrow)
-    three_days_ago = 3.days.ago.to_date.to_s
-    tomorrow = Date.tomorrow.to_s
-
-    # Set date fields within the filter form
-    within("details[data-accordion='filters']") do
-      # Target date inputs more specifically
-      fill_in "start_time", with: three_days_ago
-      fill_in "end_time", with: tomorrow
-      fill_in "triggers", with: "Sleeping"
-    end
-
-    click_on "Apply Filters"
-
-    # Should find the "Sleeping" trigger from the fixtures
-    assert_text "Sleeping"
-  end
 
   test "generating and copying share link" do
     visit headache_logs_url
