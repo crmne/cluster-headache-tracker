@@ -29,7 +29,7 @@
 <%# Info for single ongoing headache %>
 <% if ongoing_headaches.size == 1 %>
   <% ongoing_log = ongoing_headaches.first %>
-  <div role="alert" class="alert alert-info shadow-lg mb-4 flex-col sm:flex-row">
+  <div role="alert" class="alert alert-warning shadow-lg mb-4 flex-col sm:flex-row">
     <div class="flex items-center gap-2 w-full sm:w-auto">
       <%= heroicon "clock", class: "h-6 w-6 shrink-0" %>
       <h3 class="font-bold">Ongoing Headache</h3>
