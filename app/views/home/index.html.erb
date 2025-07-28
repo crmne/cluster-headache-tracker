@@ -6,8 +6,18 @@
         <%= render 'shared/personal_note', size: 'regular' %>
       </div>
       <div class="lg:w-1/2 text-center lg:text-left">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">Wrestling with cluster headaches?<br class="hidden lg:block"> <span class="text-yellow-300">Tracking shouldn't add to the pain.</span></h1>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">Wrestling with cluster headaches? 😣<br class="hidden lg:block"> <span class="text-yellow-300">Tracking shouldn't add to the pain.</span></h1>
         <p class="text-xl mb-8 opacity-90">Most headache apps don't get it. Too complex when you can't see straight. Useless for oxygen approval. We're different.</p>
+        <div class="flex gap-8 justify-center lg:justify-start mb-8 text-sm">
+          <div>
+            <span class="text-2xl font-bold text-yellow-300"><%= @users_count %>+</span>
+            <span class="opacity-90">people tracking</span>
+          </div>
+          <div>
+            <span class="text-2xl font-bold text-yellow-300"><%= number_with_delimiter(@logs_count) %></span>
+            <span class="opacity-90">attacks logged</span>
+          </div>
+        </div>
 
         <div class="space-y-6">
           <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-lg btn-primary bg-white text-indigo-600 hover:bg-indigo-100 border-none inline-flex" do %>
@@ -42,7 +52,7 @@
 <section class="py-20 bg-base-100">
   <div class="container mx-auto px-4">
     <div class="text-center mb-8">
-      <h2 class="text-3xl font-bold">See it in action</h2>
+      <h2 class="text-3xl font-bold">See it in action 👀</h2>
     </div>
     <div class="max-w-4xl mx-auto">
       <div class="relative w-full" style="padding-bottom: 56.25%;">
@@ -63,7 +73,7 @@
 <section class="py-20 bg-base-200">
   <div class="container mx-auto px-4 max-w-4xl">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4">Built for sufferers, by a sufferer</h2>
+      <h2 class="text-3xl font-bold mb-4">Built for sufferers, by a sufferer 💪</h2>
     </div>
 
     <div class="prose prose-lg mx-auto">
@@ -80,13 +90,13 @@
 <section class="py-20 bg-base-100">
   <div class="container mx-auto px-4 max-w-4xl">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4">For healthcare providers</h2>
+      <h2 class="text-3xl font-bold mb-4">For healthcare providers 👨‍⚕️</h2>
     </div>
 
     <div class="prose prose-lg mx-auto">
       <p>Your patients struggle to explain their pain. We help them show you. They get timestamped logs, KIP scale ratings, duration tracking, treatment notes. You get clean data, not vague recollections.</p>
 
-      <p>Patients can share their logs via secure link. No app needed on your end. Just click and see their complete history.</p>
+      <p>Patients generate a secure link that gives you <strong>beautiful, professional reports</strong>. One click and you see everything: comprehensive tables with every logged attack, visual charts showing patterns and cycles, medication effectiveness graphs. No app needed. Just click and view their complete history presented exactly how you need it.</p>
     </div>
 
     <div class="text-center mt-8">
@@ -101,13 +111,13 @@
 <section id="testimonials" class="py-20 bg-base-100">
   <div class="container mx-auto px-4 max-w-4xl">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4">What people say</h2>
+      <h2 class="text-3xl font-bold mb-4">What people say 💬</h2>
     </div>
 
     <div class="space-y-8">
       <div class="border-l-4 border-primary pl-6">
         <p class="mb-2">"I use your site for my headache tracking and it was <strong>incredibly helpful with my neuro to get oxygen</strong>. It's easy to use and it tracks the data I need it to track."</p>
-        <p class="text-sm text-base-content/70">— /u/SuprN10doChlmrs (got oxygen approved)</p>
+        <p class="text-sm text-base-content/70">— /u/SuprN10doChlmrs (got oxygen approved) ✅</p>
       </div>
 
       <div class="border-l-4 border-primary pl-6">
@@ -128,14 +138,14 @@
   <div class="container mx-auto px-4">
     <div class="text-center mb-16">
       <h2 class="text-4xl font-bold mb-4">What actually matters when you're in pain</h2>
-      <p class="text-xl text-base-content/70 max-w-2xl mx-auto">Real questions. Real answers.</p>
+      <p class="text-xl text-base-content/70 max-w-2xl mx-auto">Real questions. Real answers. Real simple.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
       <!-- Quick Logging -->
       <div class="card bg-base-200 h-full">
         <div class="card-body">
-          <h3 class="card-title text-xl mb-3">Can't think. Need to log. Now.</h3>
+          <h3 class="card-title text-xl mb-3">🎯 Can't think. Need to log. Now.</h3>
           <p class="text-base-content/70">One massive button. Tap it. Done. Add details when you're human again.</p>
         </div>
       </div>
@@ -143,7 +153,7 @@
       <!-- Pattern Recognition -->
       <div class="card bg-base-200 h-full">
         <div class="card-body">
-          <h3 class="card-title text-xl mb-3">Where's my pattern hiding?</h3>
+          <h3 class="card-title text-xl mb-3">📊 Where's my pattern hiding?</h3>
           <p class="text-base-content/70">Visual charts that actually make sense. See cycles, triggers, everything at a glance.</p>
         </div>
       </div>
@@ -151,15 +161,15 @@
       <!-- Doctor Reports -->
       <div class="card bg-base-200 h-full">
         <div class="card-body">
-          <h3 class="card-title text-xl mb-3">Will doctors believe me?</h3>
-          <p class="text-base-content/70">Professional reports that got real people oxygen approved. Print and go.</p>
+          <h3 class="card-title text-xl mb-3">📄 Will doctors believe me?</h3>
+          <p class="text-base-content/70">Professional reports that got real people oxygen approved. Print directly or save as PDF. Share secure links with beautiful charts and tables. Everything you need for appointments.</p>
         </div>
       </div>
 
       <!-- Mobile Access -->
       <div class="card bg-base-200 h-full">
         <div class="card-body">
-          <h3 class="card-title text-xl mb-3">Attack at work?</h3>
+          <h3 class="card-title text-xl mb-3">📱 Attack at work?</h3>
           <p class="text-base-content/70">iOS, Android, web. Your data everywhere. Log from the bathroom stall if needed.</p>
         </div>
       </div>
@@ -167,7 +177,7 @@
       <!-- Privacy -->
       <div class="card bg-base-200 h-full">
         <div class="card-body">
-          <h3 class="card-title text-xl mb-3">Who's watching?</h3>
+          <h3 class="card-title text-xl mb-3">🔒 Who's watching?</h3>
           <p class="text-base-content/70">Nobody. No email. No ads. No BS. German privacy laws. Your pain stays private.</p>
         </div>
       </div>
@@ -175,7 +185,7 @@
       <!-- Trust -->
       <div class="card bg-base-200 h-full">
         <div class="card-body">
-          <h3 class="card-title text-xl mb-3">Why trust you?</h3>
+          <h3 class="card-title text-xl mb-3">🤝 Why trust you?</h3>
           <p class="text-base-content/70">I'm not selling anything. I use this daily. Built by a sufferer who gets it.</p>
         </div>
       </div>
@@ -187,7 +197,7 @@
 <section class="py-20 bg-base-100">
   <div class="container mx-auto px-4 max-w-4xl">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4">Use it anywhere</h2>
+      <h2 class="text-3xl font-bold mb-4">Use it anywhere 🌍</h2>
     </div>
 
     <div class="prose prose-lg mx-auto mb-8">
@@ -219,7 +229,7 @@
   <div class="container mx-auto px-4 max-w-4xl">
     <div class="grid md:grid-cols-2 gap-12">
       <div class="text-center">
-        <h3 class="text-2xl font-bold mb-4">It's open source</h3>
+        <h3 class="text-2xl font-bold mb-4">It's open source 🌟</h3>
         <p class="mb-6">This isn't a startup. It's a tool built by a sufferer, for sufferers. The code is public so it can't disappear when some company gets acquired.</p>
         <a href="https://github.com/crmne/cluster_headache_tracker" target="_blank" rel="noopener noreferrer"
            class="btn btn-outline">
@@ -228,7 +238,7 @@
         </a>
       </div>
       <div class="text-center">
-        <h3 class="text-2xl font-bold mb-4">Help keep it running</h3>
+        <h3 class="text-2xl font-bold mb-4">Help keep it running ☕</h3>
         <p class="mb-6">I pay for servers out of pocket. If this helped you, consider chipping in for coffee. No pressure though - the tool stays free either way.</p>
         <a href="https://buymeacoffee.com/crmne" target="_blank" rel="noopener noreferrer"
            class="btn btn-outline">
@@ -243,7 +253,7 @@
 <section class="py-20 bg-base-100">
   <div class="container mx-auto px-4 max-w-4xl">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold">Common questions</h2>
+      <h2 class="text-3xl font-bold">Common questions 🤔</h2>
     </div>
 
     <div class="prose prose-lg mx-auto">
@@ -276,7 +286,7 @@
 <section class="py-20 bg-base-200">
   <div class="container mx-auto px-4 text-center">
     <h2 class="text-3xl font-bold mb-4">Stop Tracking on Paper. Start Getting Answers.</h2>
-    <p class="text-xl text-base-content/80 max-w-2xl mx-auto mb-8">Join thousands who finally have real data about their attacks. It takes 30 seconds to start.</p>
+    <p class="text-xl text-base-content/80 max-w-2xl mx-auto mb-8">Join <%= @users_count %>+ people who finally have real data about their attacks. It takes 30 seconds to start.</p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-lg btn-primary" do %>
         <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
