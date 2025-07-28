@@ -124,20 +124,21 @@ class HeadacheLogsTest < ApplicationSystemTestCase
 
     open_accordion "filters"
 
-    # Use JavaScript to set date fields directly
-    yesterday = Date.yesterday.to_s
+    # Set date range to capture fixtures (3 days ago to tomorrow)
+    three_days_ago = 3.days.ago.to_date.to_s
     tomorrow = Date.tomorrow.to_s
 
     # Set date fields within the filter form
     within("details[data-accordion='filters']") do
       # Target date inputs more specifically
-      fill_in "start_time", with: yesterday
+      fill_in "start_time", with: three_days_ago
       fill_in "end_time", with: tomorrow
       fill_in "triggers", with: "Sleeping"
     end
 
     click_on "Apply Filters"
 
+    # Should find the "Sleeping" trigger from the fixtures
     assert_text "Sleeping"
   end
 
