@@ -1,25 +1,73 @@
-<%= content_tag :div, id: dom_id(headache_log), class: "card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200" do %>
-  <div class="card-body flex flex-col h-full p-3 sm:p-4">
-    <%# Header Section with Time and Intensity %>
-    <div class="flex flex-row justify-between items-start gap-3">
+<%
+  is_ongoing = headache_log.end_time.nil?
+  card_bg_class = is_ongoing ? "bg-warning/5" : "bg-base-100"
+  header_bg_class = is_ongoing ? "bg-warning" : "bg-primary"
+  header_text_class = is_ongoing ? "text-warning-content" : "text-primary-content"
+%>
+<%= content_tag :div, id: dom_id(headache_log), class: "rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-200 #{card_bg_class}" do %>
+  <%# Header Bar %>
+  <div class="px-4 py-2 <%= header_bg_class %> <%= header_text_class %> flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="text-sm font-semibold">
+        <%= headache_log.start_time.strftime("%b %d, %Y · %I:%M %p") %>
+      </span>
+    </div>
+    <% if is_ongoing %>
+      <span class="text-xs font-medium bg-white/20 px-2 py-0.5 rounded">ONGOING</span>
+    <% elsif headache_log.end_time %>
+      <span class="text-xs opacity-75">
+        <%= heroicon "clock", variant: "mini", class: "w-3 h-3 inline-block" %>
+        <%= distance_of_time_in_words(headache_log.end_time, headache_log.start_time) %>
+      </span>
+    <% end %>
+  </div>
+
+  <%# Card Body %>
+  <div class="p-4">
+    <div class="flex justify-between items-start mb-3">
+      <%# Left side content %>
       <div class="flex-1">
-        <h3 class="text-sm sm:text-base font-semibold text-base-content">
-          <%= headache_log.start_time.strftime("%b %d, %Y · %I:%M %p") %>
-        </h3>
-        <div class="flex items-center gap-2 mt-1">
-          <% if headache_log.end_time %>
-            <span class="text-xs text-base-content/60">
-              <%= heroicon "clock", variant: "mini", class: "w-3 h-3 inline-block" %>
-              <%= distance_of_time_in_words(headache_log.end_time, headache_log.start_time) %>
-            </span>
-          <% else %>
-            <span class="badge badge-error badge-xs animate-pulse">Ongoing</span>
+        <%# Compact Details Section %>
+        <div class="space-y-2">
+          <% if headache_log.medication.present? %>
+            <div class="bg-primary/5 rounded-lg p-2">
+              <div class="flex items-start gap-2">
+                <%= heroicon "beaker", variant: "mini", class: "w-4 h-4 text-primary flex-shrink-0 mt-0.5" %>
+                <div class="flex flex-wrap gap-1">
+                  <% headache_log.medication.split(",").map(&:strip).each do |med| %>
+                    <span class="badge badge-primary badge-sm"><%= med %></span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <% if headache_log.triggers.present? %>
+            <div class="bg-secondary/5 rounded-lg p-2">
+              <div class="flex items-start gap-2">
+                <%= heroicon "bolt", variant: "mini", class: "w-4 h-4 text-secondary flex-shrink-0 mt-0.5" %>
+                <div class="flex flex-wrap gap-1">
+                  <% headache_log.triggers.split(",").map(&:strip).each do |trigger| %>
+                    <span class="badge badge-secondary badge-sm"><%= trigger %></span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <% if headache_log.notes.present? %>
+            <div class="bg-base-200 rounded-lg p-2">
+              <div class="flex items-start gap-2">
+                <%= heroicon "document-text", variant: "mini", class: "w-4 h-4 text-base-content/60 flex-shrink-0 mt-0.5" %>
+                <p class="text-xs text-base-content/70 line-clamp-2"><%= headache_log.notes %></p>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>
 
       <%# Intensity Indicator %>
-      <div class="text-center">
+      <div class="text-center ml-4">
         <div class="relative">
           <%
             # Calculate smooth color interpolation
@@ -42,56 +90,16 @@
             end
           %>
           <div class="radial-progress shadow-sm"
-               style="--value:<%= (headache_log.intensity.to_f / 10 * 100).round %>; --size:2.25rem;
+               style="--value:<%= (headache_log.intensity.to_f / 10 * 100).round %>; --size:2.5rem;
                       color: <%= intensity_color %>;">
             <span class="text-base font-bold"><%= headache_log.intensity %></span>
           </div>
           <div class="absolute -inset-1 rounded-full opacity-30 blur-sm"
                style="background-color: <%= intensity_color %>;"></div>
+          <p class="text-xs text-base-content/60 mt-1">Intensity</p>
         </div>
       </div>
     </div>
-
-    <%# Compact Details Section %>
-    <div class="mt-2 space-y-2">
-      <% if headache_log.medication.present? %>
-        <div class="bg-primary/5 rounded-lg p-2">
-          <div class="flex items-start gap-2">
-            <%= heroicon "beaker", variant: "mini", class: "w-4 h-4 text-primary flex-shrink-0 mt-0.5" %>
-            <div class="flex flex-wrap gap-1">
-              <% headache_log.medication.split(",").map(&:strip).each do |med| %>
-                <span class="badge badge-primary badge-sm"><%= med %></span>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
-      <% if headache_log.triggers.present? %>
-        <div class="bg-secondary/5 rounded-lg p-2">
-          <div class="flex items-start gap-2">
-            <%= heroicon "bolt", variant: "mini", class: "w-4 h-4 text-secondary flex-shrink-0 mt-0.5" %>
-            <div class="flex flex-wrap gap-1">
-              <% headache_log.triggers.split(",").map(&:strip).each do |trigger| %>
-                <span class="badge badge-secondary badge-sm"><%= trigger %></span>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
-      <% if headache_log.notes.present? %>
-        <div class="bg-base-200 rounded-lg p-2">
-          <div class="flex items-start gap-2">
-            <%= heroicon "document-text", variant: "mini", class: "w-4 h-4 text-base-content/60 flex-shrink-0 mt-0.5" %>
-            <p class="text-xs text-base-content/70 line-clamp-2"><%= headache_log.notes %></p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-    <%# This empty div will push the actions to the bottom when content is short %>
-    <div class="flex-grow"></div>
 
     <%# Actions Section %>
     <div class="flex justify-end gap-1 mt-3 pt-2 border-t border-base-200/50">
