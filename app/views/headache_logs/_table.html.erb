@@ -104,7 +104,7 @@
             <% if log.medication.present? %>
               <div class="flex flex-wrap gap-1">
                 <% log.medication.split(",").map(&:strip).each do |med| %>
-                  <span class="badge badge-primary badge-sm whitespace-nowrap"><%= med %></span>
+                  <span class="badge badge-primary badge-sm h-auto min-h-[1.5rem] whitespace-normal"><%= med %></span>
                 <% end %>
               </div>
             <% else %>
@@ -117,7 +117,7 @@
             <% if log.triggers.present? %>
               <div class="flex flex-wrap gap-1">
                 <% log.triggers.split(",").map(&:strip).each do |trigger| %>
-                  <span class="badge badge-secondary badge-sm whitespace-nowrap"><%= trigger %></span>
+                  <span class="badge badge-secondary badge-sm h-auto min-h-[1.5rem] whitespace-normal"><%= trigger %></span>
                 <% end %>
               </div>
             <% else %>

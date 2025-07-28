@@ -35,7 +35,7 @@
                 <%= heroicon "beaker", variant: "mini", class: "w-4 h-4 text-primary flex-shrink-0 mt-0.5" %>
                 <div class="flex flex-wrap gap-1">
                   <% headache_log.medication.split(",").map(&:strip).each do |med| %>
-                    <span class="badge badge-primary badge-sm"><%= med %></span>
+                    <span class="badge badge-primary badge-sm h-auto min-h-[1.5rem] whitespace-normal"><%= med %></span>
                   <% end %>
                 </div>
               </div>
@@ -48,7 +48,7 @@
                 <%= heroicon "bolt", variant: "mini", class: "w-4 h-4 text-secondary flex-shrink-0 mt-0.5" %>
                 <div class="flex flex-wrap gap-1">
                   <% headache_log.triggers.split(",").map(&:strip).each do |trigger| %>
-                    <span class="badge badge-secondary badge-sm"><%= trigger %></span>
+                    <span class="badge badge-secondary badge-sm h-auto min-h-[1.5rem] whitespace-normal"><%= trigger %></span>
                   <% end %>
                 </div>
               </div>
