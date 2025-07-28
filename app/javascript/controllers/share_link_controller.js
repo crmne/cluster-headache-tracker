@@ -19,8 +19,10 @@ export default class extends Controller {
           url: url
         })
       } catch (err) {
-        // User cancelled share or error occurred
-        console.log('Share cancelled or failed:', err)
+        // AbortError is thrown when user cancels the share dialog - this is expected behavior
+        if (err.name !== 'AbortError') {
+          console.error('Share failed:', err)
+        }
       }
     } else {
       // Fallback to copy functionality
