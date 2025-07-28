@@ -1,226 +1,80 @@
-<% content_for :title, "For Neurologists - Data That Actually Helps" %>
-<% content_for :meta_description, "Free cluster headache tracking tool your patients love using. Get clean data, clear patterns, and documentation that supports oxygen approval. Built by a patient who gets it." %>
+<% content_for :title, "For Neurologists" %>
+<% content_for :meta_description, "Free cluster headache tracking tool your patients love using. Get clean data, clear patterns, and documentation that supports oxygen approval." %>
 
 <!-- Hero Section -->
-<section class="bg-primary text-white">
-  <div class="hero min-h-[40vh]">
-    <div class="hero-content text-center">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">Dear Neurologist: Your Patients Finally Have Good Data</h1>
-        <p class="text-xl md:text-2xl mb-8">A tracking tool built by a cluster headache patient who was tired of paper diaries nobody reads</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#how-it-works" class="btn btn-lg btn-primary bg-white text-indigo-600 hover:bg-indigo-100 border-none">
-            <%= heroicon "chart-bar", variant: "mini", class: "w-5 h-5" %>
-            See Sample Reports
-          </a>
-          <a href="#recommend" class="btn btn-lg btn-outline border-white text-white hover:bg-white hover:text-indigo-600">
-            <%= heroicon "user-group", variant: "mini", class: "w-5 h-5" %>
-            How to Recommend
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Why It Works Section -->
-<section class="py-20 bg-base-200">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4">Why Your Patients Love This (And You Will Too)</h2>
-      <p class="text-xl text-base-content/80 max-w-2xl mx-auto">Built by someone who gets it. Used by 340+ patients who finally have data that matters.</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <div class="text-3xl mb-3">⚡</div>
-          <h3 class="font-bold mb-2">They Actually Use It</h3>
-          <p class="text-sm">Built for speed during attacks - log in seconds, not minutes</p>
-        </div>
-      </div>
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <div class="text-3xl mb-3">📊</div>
-          <h3 class="font-bold mb-2">Real Patterns Emerge</h3>
-          <p class="text-sm">Charts show cycles you can't see in scattered diary entries</p>
-        </div>
-      </div>
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <div class="text-3xl mb-3">✅</div>
-          <h3 class="font-bold mb-2">Insurance-Ready</h3>
-          <p class="text-sm">Multiple patients got oxygen approved using our reports</p>
-        </div>
-      </div>
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <div class="text-3xl mb-3">📱</div>
-          <h3 class="font-bold mb-2">Always Available</h3>
-          <p class="text-sm">No more "I forgot my diary" - data syncs across devices</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Data Collection Section -->
-<section id="how-it-works" class="py-20 bg-accent text-white">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4">Clinical-Grade Data Collection</h2>
-      <p class="text-xl max-w-2xl mx-auto">Every parameter you need to make informed treatment decisions</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-base-content">
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <h3 class="card-title text-xl mb-4">Data Points Tracked</h3>
-          <ul class="space-y-2">
-            <li>• <strong>Attack timing:</strong> Precise start/end times with circadian patterns</li>
-            <li>• <strong>Pain intensity:</strong> Standardized 1-10 scale</li>
-            <li>• <strong>Duration:</strong> Automatic calculation with manual override</li>
-            <li>• <strong>Medications:</strong> What worked, what didn't</li>
-            <li>• <strong>Triggers:</strong> Patient-identified correlations</li>
-            <li>• <strong>Associated symptoms:</strong> Autonomic features tracking</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <h3 class="card-title text-xl mb-4">Reports You Get</h3>
-          <ul class="space-y-2">
-            <li>• <strong>Attack frequency:</strong> Daily/weekly/monthly patterns</li>
-            <li>• <strong>Cluster periods:</strong> Bout identification and duration</li>
-            <li>• <strong>Treatment response:</strong> Medication effectiveness metrics</li>
-            <li>• <strong>Time analysis:</strong> Peak attack hours visualization</li>
-            <li>• <strong>Intensity trends:</strong> Pain level patterns over time</li>
-            <li>• <strong>Export options:</strong> CSV data for your own analysis</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Sample Data Section -->
-<section class="py-20 bg-neutral text-white">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4">What You'll See</h2>
-      <p class="text-xl max-w-2xl mx-auto">Clean visualizations that support clinical decision-making</p>
-    </div>
-    <div class="max-w-5xl mx-auto">
-      <div class="bg-base-100 rounded-lg shadow-lg p-8 text-base-content">
-        <div class="overflow-x-auto">
-          <table class="table table-zebra w-full">
-            <thead>
-              <tr>
-                <th>Parameter</th>
-                <th>Clinical Value</th>
-                <th>Treatment Implications</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-medium">Attack Timing</td>
-                <td>Circadian patterns, cluster duration</td>
-                <td>Preventive medication timing</td>
-              </tr>
-              <tr>
-                <td class="font-medium">Attack Duration</td>
-                <td>Objective pain episode length</td>
-                <td>Abortive treatment effectiveness</td>
-              </tr>
-              <tr>
-                <td class="font-medium">Medication Response</td>
-                <td>Quantified intervention success</td>
-                <td>Adjustment/continuation decisions</td>
-              </tr>
-              <tr>
-                <td class="font-medium">Oxygen Usage</td>
-                <td>Detailed requirement documentation</td>
-                <td>Insurance authorization support</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- How to Recommend Section -->
-<section id="recommend" class="py-20 bg-success text-white">
-  <div class="container mx-auto px-4">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-8">Zero Friction for You and Your Patients</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-base-content">
-        <div class="card bg-base-100 shadow-md">
-          <div class="card-body">
-            <h3 class="card-title mb-4">For Your Patients</h3>
-            <ol class="text-left space-y-2">
-              <li>1. Visit clusterheadachetracker.com</li>
-              <li>2. Pick a username (no email needed)</li>
-              <li>3. Start tracking immediately</li>
-              <li>4. Share data with you via secure link</li>
-            </ol>
-          </div>
-        </div>
-        <div class="card bg-base-100 shadow-md">
-          <div class="card-body">
-            <h3 class="card-title mb-4">For You</h3>
-            <ol class="text-left space-y-2">
-              <li>1. Patient shares link during visit</li>
-              <li>2. Click to view their data</li>
-              <li>3. No login or account needed</li>
-              <li>4. Print or save reports as needed</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white/10 p-8 rounded-lg">
-        <h3 class="text-2xl font-bold mb-4">Just Tell Them:</h3>
-        <p class="text-3xl font-mono mb-6">"Use clusterheadachetracker.com"</p>
-        <p class="text-lg">That's it. No complex setup. When they come back, they'll have data you can actually use.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonial Section -->
-<section class="py-20 bg-info text-white">
-  <div class="container mx-auto px-4">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-8">Real Impact</h2>
-      <div class="bg-white/10 p-8 rounded-lg mb-8">
-        <blockquote class="text-xl italic mb-4">
-          "I use your site for my headache tracking and it was incredibly helpful with my neuro to get oxygen."
-        </blockquote>
-        <cite class="text-lg">— Actual patient feedback</cite>
-      </div>
-      <p class="text-xl mb-8">This isn't theoretical. Patients are getting better care because they have better data.</p>
-      <p class="text-lg">Questions? I personally respond to every email:</p>
-      <a href="mailto:hello@clusterheadachetracker.com" class="text-2xl font-mono hover:underline">hello@clusterheadachetracker.com</a>
-    </div>
-  </div>
-</section>
-
-<!-- Final CTA -->
 <section class="py-20">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold mb-6">Help Your Patients Track Better</h2>
-    <p class="text-xl text-base-content/80 max-w-2xl mx-auto mb-8">Free forever. No ads. No data selling. Just a tool that helps.</p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="<%= root_url %>" target="_blank" class="btn btn-lg btn-primary">
-        <%= heroicon "arrow-top-right-on-square", variant: "mini", class: "w-5 h-5" %>
-        Visit the Site
-      </a>
-      <a href="mailto:hello@clusterheadachetracker.com" class="btn btn-lg btn-outline">
-        <%= heroicon "envelope", variant: "mini", class: "w-5 h-5" %>
-        Contact Me
-      </a>
+  <div class="container mx-auto px-4 max-w-4xl text-center">
+    <h1 class="text-4xl font-bold mb-4">For Neurologists</h1>
+    <p class="text-xl text-base-content/70">Your patients finally have good data</p>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-20 bg-base-100">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="prose prose-lg mx-auto">
+      <p class="text-xl">A tracking tool built by a cluster headache patient who was tired of paper diaries nobody reads.</p>
+
+      <h2>Why Your Patients Use This</h2>
+
+      <p>340+ patients track their clusters here because it actually works during an attack. One massive button. Tap it. Done. They can add details later when they're not writhing in pain.</p>
+
+      <p>No complex forms. No tiny buttons. No required fields they can't think about at 3am. Just fast, simple tracking that captures what matters.</p>
+
+      <h2>Data You Actually Need</h2>
+
+      <p><strong>Every attack includes:</strong></p>
+      <ul>
+        <li>Precise start/end times with automatic duration calculation</li>
+        <li>Pain intensity on standard 1-10 scale</li>
+        <li>Medications taken and effectiveness</li>
+        <li>Triggers and associated symptoms</li>
+        <li>Side affected and pain location</li>
+      </ul>
+
+      <p><strong>Reports show:</strong></p>
+      <ul>
+        <li>Attack frequency patterns (daily/weekly/monthly)</li>
+        <li>Cluster period identification and duration</li>
+        <li>Circadian rhythm analysis</li>
+        <li>Treatment response rates</li>
+        <li>Complete medication history</li>
+      </ul>
+
+      <h2>How Patients Share With You</h2>
+
+      <p>During appointments, patients generate a secure share link. You click it. No login needed. You see their complete history with charts, patterns, and raw data. Print it, save it, whatever you need.</p>
+
+      <p>Several patients have told me these reports helped get their oxygen approved. Insurance companies like data. Now your patients have it.</p>
+
+      <h2>Zero Friction</h2>
+
+      <p><strong>For patients:</strong> Sign up with just a username. No email. Start tracking immediately.</p>
+
+      <p><strong>For you:</strong> Click their share link. View data. No account needed.</p>
+
+      <p>That's it. No complex onboarding. No vendor relationships. No IT department involvement.</p>
+
+      <h2>Privacy First</h2>
+
+      <p>No emails collected. No tracking pixels. No ads. Data encrypted and stored in Germany. I built this for fellow sufferers, not to harvest data.</p>
+
+      <p>Patients own their data. They can export everything as CSV anytime. When they share with you, it's temporary (30 days) and read-only.</p>
+
+      <h2>Tell Your Patients</h2>
+
+      <p class="text-xl">Just say: <strong>"Track your clusters at clusterheadachetracker.com"</strong></p>
+
+      <p>That's all. When they come back, they'll have real data instead of vague recollections.</p>
     </div>
-    <p class="mt-12 text-sm text-base-content/60">
-      Built with love (and pain) by Carmine Paolino, a cluster headache sufferer who needed better tools.
-    </p>
+
+    <div class="text-center mt-12">
+      <p class="text-lg mb-4">Questions? I personally respond to every email:</p>
+      <a href="mailto:hello@clusterheadachetracker.com" class="text-xl link">hello@clusterheadachetracker.com</a>
+
+      <p class="mt-8 text-sm text-base-content/60">
+        Built with love (and pain) by Carmine Paolino, a cluster headache sufferer who needed better tools.
+      </p>
+    </div>
   </div>
 </section>

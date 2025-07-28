@@ -1,0 +1,18 @@
+<%
+  size ||= 'regular'
+  padding_class = size == 'compact' ? 'p-4' : 'p-6'
+  text_class = size == 'compact' ? 'text-sm' : 'text-base'
+  emoji_size = size == 'compact' ? '1.875rem' : '2.25rem'
+  emoji_top = size == 'compact' ? '-0.5rem' : '-0.75rem'
+  emoji_right = size == 'compact' ? '-0.5rem' : '-0.75rem'
+%>
+<div class="max-w-md <%= padding_class %> bg-yellow-100 dark:bg-yellow-900/20 border-l-4 border-yellow-400 dark:border-yellow-600 transform -rotate-1 shadow-sm relative">
+  <div class="absolute flex items-center justify-center" style="top: <%= emoji_top %>; right: <%= emoji_right %>; width: <%= emoji_size %>; height: <%= emoji_size %>;">
+    <span class="inline-block origin-bottom animate-wave" style="font-size: <%= emoji_size %>; line-height: 1;">👋</span>
+  </div>
+  <div class="<%= text_class %> text-base-content/90">
+    <p>For tracking when you can barely see. For insurance fights. For showing doctors real data. For finding patterns at 3am.</p>
+    <p class="mt-2">I built this because I needed it. Hope it helps you too.</p>
+    <p class="mt-3">- <%= link_to "Carmine Paolino", "https://paolino.me", class: "link link-hover font-medium", target: "_blank", rel: "noopener noreferrer" %></p>
+  </div>
+</div>

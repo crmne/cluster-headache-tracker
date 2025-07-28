@@ -3,7 +3,8 @@ module LayoutHelper
     current_page?(root_path) ||
     current_page?(faq_path) ||
     current_page?(imprint_path) ||
-    current_page?(privacy_policy_path)
+    current_page?(privacy_policy_path) ||
+    current_page?(neurologist_path)
   end
 
   def form_page?

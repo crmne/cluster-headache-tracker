@@ -12,7 +12,7 @@ export default class extends Controller {
   }
 
   startCountdown() {
-    let seconds = 10 // 10 seconds to read the content
+    let seconds = 5 // 5 seconds to read the content
 
     // Show countdown
     this.buttonTextTarget.classList.add("hidden")

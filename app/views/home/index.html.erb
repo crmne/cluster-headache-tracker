@@ -1,50 +1,53 @@
 <!-- Hero Section -->
-<section class="bg-primary text-white">
-  <div class="hero min-h-[50vh]">
-    <div class="hero-content text-center">
-      <div class="max-w-2xl">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">Finally, a Cluster Headache Tracker That Gets It</h1>
-        <p class="text-xl md:text-2xl mb-8">Built by someone who knows the hell of cluster headaches. Track attacks in seconds, spot patterns that matter, share with your doctor. Private, free, and actually useful.</p>
+<section class="bg-primary text-white overflow-hidden">
+  <div class="hero min-h-[70vh] relative">
+    <div class="hero-content flex-col lg:flex-row-reverse gap-12 py-12">
+      <div class="lg:w-1/2 flex items-center justify-center">
+        <%= render 'shared/personal_note', size: 'regular' %>
+      </div>
+      <div class="lg:w-1/2 text-center lg:text-left">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">Wrestling with cluster headaches?<br class="hidden lg:block"> <span class="text-yellow-300">Tracking shouldn't add to the pain.</span></h1>
+        <p class="text-xl mb-8 opacity-90">Most headache apps don't get it. Too complex when you can't see straight. Useless for oxygen approval. We're different.</p>
 
-        <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-lg btn-primary bg-white text-indigo-600 hover:bg-indigo-100 border-none mb-8" do %>
-          <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
-          Start Tracking Free
-        <% end %>
+        <div class="space-y-6">
+          <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-lg btn-primary bg-white text-indigo-600 hover:bg-indigo-100 border-none inline-flex" do %>
+            <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
+            Start Tracking Free
+          <% end %>
 
-        <!-- Mobile App Links -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://testflight.apple.com/join/GJsAQqz2" target="_blank" rel="noopener noreferrer"
-             class="btn btn-outline border-white text-white hover:bg-white hover:text-indigo-600 hover:border-white">
-            <%= icon "ios", class: "w-6 h-6", fill: "currentColor" %>
-            Get iOS App (Beta)
-          </a>
-          <a href="/cluster-headache-tracker.apk" target="_blank" rel="noopener noreferrer"
-             class="btn btn-outline border-white text-white hover:bg-white hover:text-indigo-600 hover:border-white">
-            <%= icon "android", class: "w-6 h-6", fill: "currentColor" %>
-            Get Android App (Beta)
-          </a>
+          <!-- Mobile App Links - DaisyUI styled -->
+          <div class="flex flex-col sm:flex-row gap-4 lg:justify-start justify-center">
+            <a href="https://testflight.apple.com/join/GJsAQqz2" target="_blank" rel="noopener noreferrer"
+               class="btn btn-lg btn-neutral">
+              <%= icon "ios", class: "w-6 h-6", fill: "currentColor" %>
+              iOS App (Beta)
+            </a>
+            <a href="/cluster-headache-tracker.apk" target="_blank" rel="noopener noreferrer"
+               class="btn btn-lg btn-success">
+              <%= icon "android", class: "w-6 h-6", fill: "currentColor" %>
+              Android App (Beta)
+            </a>
+          </div>
         </div>
 
         <% if user_signed_in? %>
           <%= turbo_stream_from current_user, "homepage" %>
         <% end %>
-        <%= render 'stats' %>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Demo Section -->
-<section class="bg-base-200 py-20">
+<section class="py-20 bg-base-100">
   <div class="container mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4">Watch How It Works (2:26)</h2>
-      <p class="text-xl text-base-content/80 max-w-2xl mx-auto">No fluff. Just a tracker that does what you need when you need it.</p>
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold">See it in action</h2>
     </div>
-    <div class="max-w-6xl mx-auto">
-      <div class="relative w-full" style="padding-bottom: 56.25%;">  <!-- 56.25% = 9/16 (maintains 16:9 aspect ratio) -->
+    <div class="max-w-4xl mx-auto">
+      <div class="relative w-full" style="padding-bottom: 56.25%;">
         <iframe
-          class="absolute top-0 left-0 w-full h-full rounded-lg shadow-md"
+          class="absolute top-0 left-0 w-full h-full rounded-lg"
           src="https://www.youtube.com/embed/4HlsqANZdv8?cc_load_policy=1&cc_lang_pref=en"
           title="Cluster Headache Tracker Demo"
           frameborder="0"
@@ -56,116 +59,124 @@
   </div>
 </section>
 
-<!-- Testimonials Section -->
-<section class="py-20 bg-success text-white">
-  <div class="container mx-auto px-4">
+<!-- For Patients Section -->
+<section class="py-20 bg-base-200">
+  <div class="container mx-auto px-4 max-w-4xl">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4">From Our Community</h2>
-      <p class="text-xl max-w-2xl mx-auto">Real feedback from cluster headache sufferers</p>
+      <h2 class="text-3xl font-bold mb-4">Built for sufferers, by a sufferer</h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-base-content">
-      <!-- Success Story - Practical Value -->
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <%= heroicon "check-badge", class: "w-8 h-8 text-primary mb-4" %>
-          <blockquote class="relative mb-4">
-            <p class="text-lg font-medium">
-              "I use your site for my headache tracking and it was incredibly helpful with my neuro to get oxygen [...] it's easy to use and it tracks the data I need it to track."
-            </p>
-          </blockquote>
-          <div class="flex items-center gap-2">
-            <div class="h-px flex-1 bg-base-content/10"></div>
-            <span class="text-sm font-medium opacity-70">/u/SuprN10doChlmrs</span>
-            <div class="h-px flex-1 bg-base-content/10"></div>
-          </div>
-        </div>
+
+    <div class="prose prose-lg mx-auto">
+      <p>Most headache apps are built by people who've never had a cluster headache. They don't get it. Too many fields. Too many questions. Useless when you're writhing in pain.</p>
+
+      <p>I built this during a cycle. Every feature was tested mid-attack. If it wasn't simple enough for me at 3am with a KIP-10, it didn't make the cut.</p>
+
+      <p>The result? One tap to log during hell. Clean reports that get oxygen approved. Charts that actually show your patterns. Privacy that matters.</p>
+    </div>
+  </div>
+</section>
+
+<!-- For Healthcare Providers Section -->
+<section class="py-20 bg-base-100">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4">For healthcare providers</h2>
+    </div>
+
+    <div class="prose prose-lg mx-auto">
+      <p>Your patients struggle to explain their pain. We help them show you. They get timestamped logs, KIP scale ratings, duration tracking, treatment notes. You get clean data, not vague recollections.</p>
+
+      <p>Patients can share their logs via secure link. No app needed on your end. Just click and see their complete history.</p>
+    </div>
+
+    <div class="text-center mt-8">
+      <%= link_to neurologist_path, class: "btn" do %>
+        More Info
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-20 bg-base-100">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4">What people say</h2>
+    </div>
+
+    <div class="space-y-8">
+      <div class="border-l-4 border-primary pl-6">
+        <p class="mb-2">"I use your site for my headache tracking and it was <strong>incredibly helpful with my neuro to get oxygen</strong>. It's easy to use and it tracks the data I need it to track."</p>
+        <p class="text-sm text-base-content/70">— /u/SuprN10doChlmrs (got oxygen approved)</p>
       </div>
 
-      <!-- Detailed Review - Feature Appreciation -->
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <%= heroicon "sparkles", class: "w-8 h-8 text-secondary mb-4" %>
-          <blockquote class="relative mb-4">
-            <p class="text-lg font-medium">
-              "You definitely made a masterpiece. I had a great overview and the charts were my favourite feature. The video also helped me understand how the app works."
-            </p>
-          </blockquote>
-          <div class="flex items-center gap-2">
-            <div class="h-px flex-1 bg-base-content/10"></div>
-            <span class="text-sm font-medium opacity-70">/u/Archaeopteryyx0</span>
-            <div class="h-px flex-1 bg-base-content/10"></div>
-          </div>
-        </div>
+      <div class="border-l-4 border-primary pl-6">
+        <p class="mb-2">"You definitely made a masterpiece. I had a great overview and <strong>the charts were my favourite feature</strong>. The video also helped me understand how the app works."</p>
+        <p class="text-sm text-base-content/70">— /u/Archaeopteryyx0</p>
       </div>
 
-      <!-- Concept Appreciation - Problem Solving -->
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <%= heroicon "heart", class: "w-8 h-8 text-accent mb-4" %>
-          <blockquote class="relative mb-4">
-            <p class="text-lg font-medium">
-              "BRAVO to you for developing the concept [...] This idea seems like it would have prevented many of the problems that led me to ultimately abandon my own pain and trigger tracking efforts."
-            </p>
-          </blockquote>
-          <div class="flex items-center gap-2">
-            <div class="h-px flex-1 bg-base-content/10"></div>
-            <span class="text-sm font-medium opacity-70">/u/ugoddabkiddin</span>
-            <div class="h-px flex-1 bg-base-content/10"></div>
-          </div>
-        </div>
+      <div class="border-l-4 border-primary pl-6">
+        <p class="mb-2">"BRAVO to you for developing the concept. This idea seems like it would have <strong>prevented many of the problems</strong> that led me to ultimately abandon my own tracking efforts."</p>
+        <p class="text-sm text-base-content/70">— /u/ugoddabkiddin</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Features Section -->
-<section id="features" class="bg-accent text-white py-20">
+<section id="features" class="py-20 bg-base-200">
   <div class="container mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4">Built for Real Sufferers, Not Statistics</h2>
-      <p class="text-xl max-w-2xl mx-auto">Every feature exists because someone in pain needed it. Nothing more, nothing less.</p>
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4">What actually matters when you're in pain</h2>
+      <p class="text-xl text-base-content/70 max-w-2xl mx-auto">Real questions. Real answers.</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-base-content">
-      <div class="card bg-base-100 shadow-md">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <!-- Quick Logging -->
+      <div class="card bg-base-200 h-full">
         <div class="card-body">
-          <div class="text-4xl mb-4">📊</div>
-          <h3 class="card-title">Charts That Actually Help</h3>
-          <p>See your cycles. Spot patterns. Know what works. Get the data that helped others get oxygen approved.</p>
+          <h3 class="card-title text-xl mb-3">Can't think. Need to log. Now.</h3>
+          <p class="text-base-content/70">One massive button. Tap it. Done. Add details when you're human again.</p>
         </div>
       </div>
-      <div class="card bg-base-100 shadow-md">
+
+      <!-- Pattern Recognition -->
+      <div class="card bg-base-200 h-full">
         <div class="card-body">
-          <div class="text-4xl mb-4">⚡️</div>
-          <h3 class="card-title">Log in Seconds, Not Minutes</h3>
-          <p>When you're in pain, every second counts. Hit the button, log what matters, done.</p>
+          <h3 class="card-title text-xl mb-3">Where's my pattern hiding?</h3>
+          <p class="text-base-content/70">Visual charts that actually make sense. See cycles, triggers, everything at a glance.</p>
         </div>
       </div>
-      <div class="card bg-base-100 shadow-md">
+
+      <!-- Doctor Reports -->
+      <div class="card bg-base-200 h-full">
         <div class="card-body">
-          <div class="text-4xl mb-4">🩺</div>
-          <h3 class="card-title">Reports Doctors Actually Read</h3>
-          <p>Clean, clear data your neurologist needs. Users tell us these reports helped get oxygen prescribed.</p>
+          <h3 class="card-title text-xl mb-3">Will doctors believe me?</h3>
+          <p class="text-base-content/70">Professional reports that got real people oxygen approved. Print and go.</p>
         </div>
       </div>
-      <div class="card bg-base-100 shadow-md">
+
+      <!-- Mobile Access -->
+      <div class="card bg-base-200 h-full">
         <div class="card-body">
-          <div class="text-4xl mb-4">📱</div>
-          <h3 class="card-title">Cross-Platform Access</h3>
-          <p>Track your headaches from any device. Native apps available for iOS and Android (beta), plus a full-featured web interface.</p>
+          <h3 class="card-title text-xl mb-3">Attack at work?</h3>
+          <p class="text-base-content/70">iOS, Android, web. Your data everywhere. Log from the bathroom stall if needed.</p>
         </div>
       </div>
-      <div class="card bg-base-100 shadow-md">
+
+      <!-- Privacy -->
+      <div class="card bg-base-200 h-full">
         <div class="card-body">
-          <div class="text-4xl mb-4">🔒</div>
-          <h3 class="card-title">Your Data Stays Yours</h3>
-          <p>No email. No tracking. No BS. German servers, encrypted data, username-only signup. Because privacy matters.</p>
+          <h3 class="card-title text-xl mb-3">Who's watching?</h3>
+          <p class="text-base-content/70">Nobody. No email. No ads. No BS. German privacy laws. Your pain stays private.</p>
         </div>
       </div>
-      <div class="card bg-base-100 shadow-md">
+
+      <!-- Trust -->
+      <div class="card bg-base-200 h-full">
         <div class="card-body">
-          <div class="text-4xl mb-4">💪</div>
-          <h3 class="card-title">I Built This Because I Needed It</h3>
-          <p>I'm a cluster headache sufferer. Every feature comes from personal experience with this beast.</p>
+          <h3 class="card-title text-xl mb-3">Why trust you?</h3>
+          <p class="text-base-content/70">I'm not selling anything. I use this daily. Built by a sufferer who gets it.</p>
         </div>
       </div>
     </div>
@@ -173,77 +184,96 @@
 </section>
 
 <!-- Device Compatibility Section -->
-<section class="bg-neutral text-white py-20">
-  <div class="container mx-auto px-4">
+<section class="py-20 bg-base-100">
+  <div class="container mx-auto px-4 max-w-4xl">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4">Use It Anywhere</h2>
-      <p class="text-xl max-w-2xl mx-auto">Access your headache tracker from any device with a seamless, responsive experience.</p>
+      <h2 class="text-3xl font-bold mb-4">Use it anywhere</h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-base-content">
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <div class="text-4xl mb-4">📱</div>
-          <h3 class="card-title text-base-content">Native Apps</h3>
-          <p class="mb-4 text-base-content/80">Get the best experience with our dedicated mobile apps.</p>
-          <div class="card-actions justify-center">
-            <a href="https://testflight.apple.com/join/GJsAQqz2" target="_blank" rel="noopener noreferrer"
-               class="btn btn-outline">
-              <%= icon "ios", class: "w-6 h-6", fill: "currentColor" %>
-              Get iOS App (Beta)
-            </a>
-            <a href="/cluster-headache-tracker.apk" target="_blank" rel="noopener noreferrer"
-               class="btn btn-outline">
-              <%= icon "android", class: "w-6 h-6", fill: "currentColor" %>
-              Get Android App (Beta)
-            </a>
-          </div>
-        </div>
-      </div>
 
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <div class="text-4xl mb-4">💻</div>
-          <h3 class="card-title text-base-content">Web Version</h3>
-          <p class="mb-4 text-base-content/80">Don't want to install an app? Our mobile-friendly website works great on any device:</p>
-          <ul class="list-disc list-inside space-y-2 text-base-content/80 mb-6">
-            <li>Optimized for all screen sizes</li>
-            <li>Fast and responsive</li>
-            <li>Works on any modern browser</li>
-            <li>No installation required</li>
-          </ul>
-        </div>
+    <div class="prose prose-lg mx-auto mb-8">
+      <p>Attack at work? Track on your phone. In bed at 3am? Grab your tablet. At the doctor's office? Pull up the web version.</p>
+      <p>Everything syncs instantly. Start on one device, finish on another. Your data follows you.</p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://testflight.apple.com/join/GJsAQqz2" target="_blank" rel="noopener noreferrer"
+         class="btn btn-lg btn-neutral">
+        <%= icon "ios", class: "w-6 h-6", fill: "currentColor" %>
+        iOS App (Beta)
+      </a>
+      <a href="/cluster-headache-tracker.apk" target="_blank" rel="noopener noreferrer"
+         class="btn btn-lg btn-success">
+        <%= icon "android", class: "w-6 h-6", fill: "currentColor" %>
+        Android App (Beta)
+      </a>
+      <%= link_to new_user_registration_path, class: "btn btn-lg btn-primary" do %>
+        <%= heroicon "globe-alt", variant: "mini", class: "w-6 h-6" %>
+        Web App
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Open Source & Support Section -->
+<section class="py-20 bg-base-200">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="grid md:grid-cols-2 gap-12">
+      <div class="text-center">
+        <h3 class="text-2xl font-bold mb-4">It's open source</h3>
+        <p class="mb-6">This isn't a startup. It's a tool built by a sufferer, for sufferers. The code is public so it can't disappear when some company gets acquired.</p>
+        <a href="https://github.com/crmne/cluster_headache_tracker" target="_blank" rel="noopener noreferrer"
+           class="btn btn-outline">
+          <%= icon "github", class: "w-5 h-5", fill: "currentColor" %>
+          See the Code
+        </a>
+      </div>
+      <div class="text-center">
+        <h3 class="text-2xl font-bold mb-4">Help keep it running</h3>
+        <p class="mb-6">I pay for servers out of pocket. If this helped you, consider chipping in for coffee. No pressure though - the tool stays free either way.</p>
+        <a href="https://buymeacoffee.com/crmne" target="_blank" rel="noopener noreferrer"
+           class="btn btn-outline">
+          ☕️ Buy Me a Coffee
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Open Source Section -->
-<section class="bg-success text-white py-16">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold mb-4">Free Forever. No Catch.</h2>
-    <p class="text-xl mb-8 max-w-2xl mx-auto">This isn't a business. It's a tool I built because we need it. Open source, community-driven, and staying that way.</p>
-    <a href="https://github.com/crmne/cluster_headache_tracker" target="_blank" rel="noopener noreferrer"
-       class="btn btn-outline border-white text-white hover:bg-white hover:text-emerald-600 hover:border-white">
-      <%= icon "github", class: "w-6 h-6", fill: "currentColor" %>
-      View on GitHub
-    </a>
-  </div>
-</section>
+<!-- FAQ Section -->
+<section class="py-20 bg-base-100">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold">Common questions</h2>
+    </div>
 
-<!-- Support Section -->
-<section class="bg-info text-white py-16">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold mb-4">Help Keep the Servers Running</h2>
-    <p class="text-xl mb-8 max-w-2xl mx-auto">I pay for hosting out of pocket. If this tool helps you, consider buying me a coffee. No pressure though - staying free is what matters.</p>
-    <a href="https://buymeacoffee.com/crmne" target="_blank" rel="noopener noreferrer"
-       class="btn btn-outline">
-      ☕️ Buy Me a Coffee
-    </a>
+    <div class="prose prose-lg mx-auto">
+      <p><strong>How long have you been dealing with clusters?</strong><br>
+      Over a decade. Built this in 2024 when I was desperate. I know the 2am scrambles, the oxygen fights, the "just drink water" advice. Every feature comes from personal pain.</p>
+
+      <p><strong>Will this help me get oxygen approved?</strong><br>
+      Multiple users said our reports finally convinced their insurance. Clean data beats "I have bad headaches" every time. No promises, but it's worked for others.</p>
+
+      <p><strong>Is it really free? What's the catch?</strong><br>
+      Zero catch. I pay for servers myself. There's a donate button if you want, but no pressure. This isn't a startup. It's a tool I needed, now we all have it.</p>
+
+      <p><strong>Can I track during an attack when I can barely see?</strong><br>
+      YES. Massive button. One tap. Done. Add details later when you're human. I designed this mid-cycle, so I know what's possible when you can't think.</p>
+
+      <p><strong>What about my privacy?</strong><br>
+      No email needed. No ads. No tracking. German servers with strict privacy laws. Your pain data stays yours. I wouldn't want mine sold, so yours won't be.</p>
+    </div>
+
+    <div class="text-center mt-12">
+      <%= link_to faq_path, class: "btn btn-lg" do %>
+        See All Questions
+        <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
+      <% end %>
+    </div>
   </div>
 </section>
 
 <!-- Final CTA Section -->
-<section class="py-20">
+<section class="py-20 bg-base-200">
   <div class="container mx-auto px-4 text-center">
     <h2 class="text-3xl font-bold mb-4">Stop Tracking on Paper. Start Getting Answers.</h2>
     <p class="text-xl text-base-content/80 max-w-2xl mx-auto mb-8">Join thousands who finally have real data about their attacks. It takes 30 seconds to start.</p>

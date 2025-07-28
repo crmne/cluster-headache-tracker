@@ -2,11 +2,8 @@
   <dialog id="welcomeModal" class="modal" data-controller="welcome" data-welcome-target="modal">
     <div class="modal-box max-w-md">
       <div class="text-center mb-4">
-        <div class="inline-flex items-center justify-center w-14 h-14 bg-primary/10 rounded-full mb-3">
-          <%= heroicon "hand-raised", variant: "solid", class: "w-7 h-7 text-primary" %>
-        </div>
         <h3 class="text-xl font-bold mb-1">Track your headaches in 3 steps</h3>
-        <p class="text-sm text-base-content/70">Built by someone who knows the pain. Here's how it works:</p>
+        <p class="text-sm text-base-content/70">Here's how it works:</p>
       </div>
 
       <div class="space-y-3 mb-4">
@@ -46,6 +43,10 @@
         <div>
           <p class="text-xs"><strong>Write down your password.</strong> No email = real privacy, but also no password resets. That's the trade-off.</p>
         </div>
+      </div>
+
+      <div class="mt-6">
+        <%= render 'shared/personal_note', size: 'compact' %>
       </div>
 
       <div class="modal-action justify-center mt-4">

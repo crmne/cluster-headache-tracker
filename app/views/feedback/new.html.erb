@@ -1,5 +1,23 @@
 <% content_for :title, "Feedback" %>
 <% content_for :navbar, "Feedback" %>
+<% content_for :web_button do %>
+  <%= link_to "https://buymeacoffee.com/crmne", class: "btn", target: "_blank", rel: "noopener noreferrer" do %>
+    <%= heroicon "heart", variant: "mini", class: "w-4 h-4" %>
+    Donate
+  <% end %>
+<% end %>
+<% content_for :hotwire_button do %>
+  <%= link_to "https://buymeacoffee.com/crmne", class: "btn",
+      target: "_blank",
+      rel: "noopener noreferrer",
+      data: {
+        controller: "bridge--button",
+        bridge_title: "Donate"
+      } do %>
+    <%= heroicon "heart", variant: "mini", class: "w-4 h-4" %>
+    Donate
+  <% end %>
+<% end %>
 
 <div class="container mx-auto px-3 sm:px-4 max-w-2xl py-4 sm:py-6">
   <div class="mb-4">
