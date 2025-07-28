@@ -43,7 +43,7 @@
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
   <% if Rails.env.production? %>
-  <script defer data-domain="clusterheadachetracker.com" src="https://stats.paolino.me/js/script.js"></script>
+  <script defer data-domain="clusterheadachetracker.com" src="https://stats.paolino.me/js/script.js" onerror="console.log('Analytics script blocked or failed to load')"></script>
   <% end %>
 </head>
 
