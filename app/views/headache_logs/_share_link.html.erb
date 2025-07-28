@@ -41,15 +41,23 @@
           <%= heroicon "share", variant: "mini", class: "h-4 w-4" %>
           <span>Share</span>
         </button>
+        <%= link_to print_headache_logs_path(params.permit(:start_time, :end_time, :triggers, :medication)), class: "btn btn-outline btn-sm", data: { turbo: false } do %>
+          <%= heroicon "printer", variant: "mini", class: "w-4 h-4" %>
+          <span>Print</span>
+        <% end %>
         <%= button_to expire_share_link_path, method: :delete, class: "btn btn-ghost btn-sm text-error" do %>
           <%= heroicon "x-mark", variant: "mini", class: "h-4 w-4" %>
         <% end %>
       </div>
     <% else %>
-      <div class="mt-3">
-        <%= button_to generate_share_link_path, class: "btn btn-primary btn-sm w-full" do %>
+      <div class="mt-3 flex gap-2">
+        <%= button_to generate_share_link_path, class: "btn btn-primary btn-sm flex-1" do %>
           <%= heroicon "plus-circle", class: "h-4 w-4" %>
           Generate Share Link
+        <% end %>
+        <%= link_to print_headache_logs_path(params.permit(:start_time, :end_time, :triggers, :medication)), class: "btn btn-outline btn-sm", data: { turbo: false } do %>
+          <%= heroicon "printer", variant: "mini", class: "w-4 h-4" %>
+          <span>Print</span>
         <% end %>
       </div>
     <% end %>

@@ -1,6 +1,8 @@
 require "csv"
 
 class HeadacheLogsController < ApplicationController
+  include ChartDataProcessor
+
   before_action :authenticate_user!
   before_action :set_headache_log, only: %i[ show edit update destroy ]
   before_action :set_share_link, only: %i[ index ]
@@ -12,6 +14,17 @@ class HeadacheLogsController < ApplicationController
     respond_to do |format|
       format.html
       format.turbo_stream
+    end
+  end
+
+  # GET /headache_logs/print
+  def print
+    @user = current_user
+    @headache_logs = current_user.headache_logs.filter_by_params(params).order(start_time: :desc)
+    @chart_data = process_chart_data(@headache_logs)
+
+    respond_to do |format|
+      format.html # render print.html.erb
     end
   end
 
