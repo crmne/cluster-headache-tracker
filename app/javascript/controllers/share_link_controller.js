@@ -10,8 +10,10 @@ export default class extends Controller {
     const title = button.dataset.shareTitle
     const text = button.dataset.shareText
 
-    // Check if Web Share API is available (mobile/native)
-    if (navigator.share) {
+    // Check if Web Share API is available and likely to work
+    // Note: navigator.share exists on some desktop browsers but doesn't work properly
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    if (navigator.share && isMobile) {
       try {
         await navigator.share({
           title: title,
@@ -19,13 +21,11 @@ export default class extends Controller {
           url: url
         })
       } catch (err) {
-        // AbortError is thrown when user cancels the share dialog - this is expected behavior
-        if (err.name !== 'AbortError') {
-          console.error('Share failed:', err)
-        }
+        // If share fails for any reason, fallback to copy
+        await this.copyToClipboard()
       }
     } else {
-      // Fallback to copy functionality
+      // Fallback to copy functionality for desktop or unsupported browsers
       await this.copyToClipboard()
     }
   }
