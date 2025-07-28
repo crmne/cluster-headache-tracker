@@ -4,14 +4,8 @@ class Users::SessionsController < Devise::SessionsController
   def create
     super do |resource|
       if resource.persisted? && helpers.native_app_with_tabs?
-        # For Hotwire Native app with tabs, use Turbo Stream to navigate
-        respond_to do |format|
-          format.turbo_stream {
-            render turbo_stream: turbo_stream.action(:visit, "/recede_historical_location", action: "replace")
-          }
-          format.html { redirect_to "/recede_historical_location" }
-        end
-        return
+        # For Hotwire Native app with tabs, redirect to recede_historical_location
+        redirect_to "/recede_historical_location" and return
       end
     end
   end

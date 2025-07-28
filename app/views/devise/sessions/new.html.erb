@@ -33,7 +33,7 @@
           <div class="flex items-center justify-between">
             <% if devise_mapping.rememberable? %>
               <label class="label cursor-pointer gap-2">
-                <%= f.check_box :remember_me, class: "checkbox checkbox-primary" %>
+                <%= f.check_box :remember_me, class: "checkbox checkbox-primary", checked: true %>
                 <span class="label-text">Remember me</span>
               </label>
             <% end %>
