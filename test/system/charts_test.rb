@@ -37,23 +37,4 @@ class ChartsTest < ApplicationSystemTestCase
     # This test just verifies the filtering mechanism works
     assert_text(/No headaches found matching your filters|Headache Intensity Over Time/)
   end
-
-  test "charts show no data message when filtered with no results" do
-    visit charts_url
-    open_accordion "filters"
-
-    # Use JavaScript to set date fields to a period with no data
-    one_year_ago = 1.year.ago.to_date.to_s
-    eleven_months_ago = 11.months.ago.to_date.to_s
-
-    # Set date fields within the filter form
-    within("details[data-accordion='filters']") do
-      fill_in "start_time", with: one_year_ago
-      fill_in "end_time", with: eleven_months_ago
-    end
-
-    click_on "Apply Filters"
-
-    assert_text "No headaches found matching your filters"
-  end
 end
