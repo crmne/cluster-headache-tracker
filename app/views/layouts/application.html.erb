@@ -47,15 +47,15 @@
   <% end %>
 </head>
 
-<body class="min-h-screen bg-base-200 flex flex-col">
+<body class="min-h-screen bg-base-200 flex flex-col print:min-h-0 print:h-auto print:overflow-visible print:bg-white">
   <%= render 'navbar' %>
   <%= render 'flash_messages', resource: local_assigns[:resource] %>
-  <main class="w-full <%= native_app_with_tabs? ? 'pt-safe pb-2' : 'pt-safe-offset-16 pb-24' %> flex-grow">
+  <main class="w-full <%= native_app_with_tabs? ? 'pt-safe pb-2' : 'pt-safe-offset-16 pb-24' %> flex-grow print:flex-none print:h-auto print:overflow-visible">
     <% if current_page? root_path or current_page? feedback_path or current_page? faq_path or current_page? neurologist_path %>
     <%= yield %>
     <% else %>
     <!-- Debug: native_app_with_tabs? = <%= native_app_with_tabs? %>, hotwire_native_app? = <%= hotwire_native_app? %>, user_agent = <%= request.user_agent %> -->
-    <div class="container mx-auto mt-4 px-4 <%= native_app_with_tabs? ? '' : (user_signed_in? && !static_page? && !native_app_form_page? ? 'pb-safe pb-24' : 'pb-4') %> print:m-0 print:w-full print:p-0 print:max-w-none">
+    <div class="container mx-auto mt-4 px-4 <%= native_app_with_tabs? ? '' : (user_signed_in? && !static_page? && !native_app_form_page? ? 'pb-safe pb-24' : 'pb-4') %> print:m-0 print:w-full print:p-0 print:max-w-none print:h-auto print:overflow-visible">
       <% if current_user %>
         <%= turbo_stream_from current_user, "application" %>
         <%= render "headache_logs/ongoing_headaches" %>

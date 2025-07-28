@@ -17,7 +17,7 @@
     </div>
   </div>
 <% else %>
-  <div class="grid gap-4 grid-cols-1 mb-4"
+  <div class="grid gap-4 grid-cols-1 mb-4 print:grid-cols-1 print:gap-2"
        data-controller="charts"
        data-charts-intensity-value="<%= chart_data[:intensity_data].to_json %>"
        data-charts-trigger-value="<%= chart_data[:trigger_data].to_json %>"
@@ -31,7 +31,7 @@
           <%= heroicon "chart-bar", variant: "mini", class: "w-4 h-4 text-primary" %>
           Headache Intensity Over Time
         </h2>
-        <div id="intensityChartContainer" class="h-[300px]">
+        <div id="intensityChartContainer" class="h-[300px] print:h-[200px] print:max-w-full">
           <% if chart_data[:intensity_data].any? %>
             <canvas id="intensityChart"></canvas>
           <% else %>
@@ -48,7 +48,7 @@
           <%= heroicon "calendar", variant: "mini", class: "w-4 h-4 text-secondary" %>
           Number of Attacks per Day
         </h2>
-        <div id="attacksPerDayChartContainer" class="h-[300px]">
+        <div id="attacksPerDayChartContainer" class="h-[300px] print:h-[200px] print:max-w-full">
           <% if chart_data[:attacks_per_day_data].any? %>
             <canvas id="attacksPerDayChart"></canvas>
           <% else %>
@@ -65,7 +65,7 @@
           <%= heroicon "clock", variant: "mini", class: "w-4 h-4 text-info" %>
           Attack Duration Over Time
         </h2>
-        <div id="durationChartContainer" class="h-[300px]">
+        <div id="durationChartContainer" class="h-[300px] print:h-[200px] print:max-w-full">
           <% if chart_data[:duration_data].any? %>
             <canvas id="durationChart"></canvas>
           <% else %>
@@ -82,7 +82,7 @@
           <%= heroicon "sun", variant: "mini", class: "w-4 h-4 text-warning" %>
           Headache Frequency and Intensity by Time of Day
         </h2>
-        <div id="hourlyChartContainer" class="h-[300px]">
+        <div id="hourlyChartContainer" class="h-[300px] print:h-[200px] print:max-w-full">
           <% if chart_data[:hourly_data].any? %>
             <canvas id="hourlyChart"></canvas>
           <% else %>
@@ -94,14 +94,14 @@
     </div>
   </div>
 
-  <div class="grid gap-4 grid-cols-1 md:grid-cols-2 mb-8">
+  <div class="grid gap-4 grid-cols-1 md:grid-cols-2 mb-8 print:grid-cols-2">
     <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 print:shadow-none print:break-inside-avoid">
       <div class="card-body p-3 sm:p-4">
         <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2">
           <%= heroicon "bolt", variant: "mini", class: "w-4 h-4 text-secondary" %>
           Top 5 Triggers
         </h2>
-        <div id="triggerChartContainer" class="h-[300px]">
+        <div id="triggerChartContainer" class="h-[300px] print:max-w-full">
           <% if chart_data[:trigger_data].any? %>
             <canvas id="triggerChart"></canvas>
           <% else %>
@@ -118,7 +118,7 @@
           <%= heroicon "beaker", variant: "mini", class: "w-4 h-4 text-primary" %>
           Top 5 Medications
         </h2>
-        <div id="medicationChartContainer" class="h-[300px]">
+        <div id="medicationChartContainer" class="h-[300px] print:max-w-full">
           <% if chart_data[:medication_data].any? %>
             <canvas id="medicationChart"></canvas>
           <% else %>

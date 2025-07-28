@@ -101,3 +101,95 @@
     }
   }
 }
+
+/* Print styles */
+@media print {
+  /* Override height constraints for printing */
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    position: static !important;
+    width: auto !important;
+  }
+
+  body {
+    min-height: 0 !important;
+    display: block !important;
+    -webkit-overflow-scrolling: auto !important;
+    overscroll-behavior-y: auto !important;
+  }
+
+  main {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .container {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Ensure all elements expand for print */
+  *, *::before, *::after {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* Remove flex constraints */
+  .flex, .flex-col, .flex-grow {
+    height: auto !important;
+  }
+
+  .min-h-screen {
+    min-height: 0 !important;
+  }
+
+  /* Ensure divs expand */
+  div {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Chart specific sizing for print */
+  .h-\[300px\] {
+    height: 150px !important;
+  }
+
+  canvas {
+    max-width: 100% !important;
+    height: 150px !important;
+  }
+
+  /* Let pie charts size naturally */
+  #triggerChartContainer.h-\[300px\],
+  #medicationChartContainer.h-\[300px\] {
+    height: auto !important;
+  }
+
+  #triggerChart,
+  #medicationChart {
+    height: auto !important;
+    max-height: 250px !important;
+  }
+
+  /* Card sizing for print */
+  .card {
+    max-width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .card-body {
+    padding: 0.5rem !important;
+  }
+
+  /* Grid adjustments for print */
+  .grid {
+    gap: 0.5rem !important;
+  }
+
+  /* Maintain grid layout for pie charts */
+  .print\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
