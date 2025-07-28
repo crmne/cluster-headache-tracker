@@ -68,27 +68,27 @@
 
       <%# Intensity Indicator %>
       <div class="text-center ml-4">
-        <div class="relative">
-          <%
-            # Calculate smooth color interpolation
-            intensity_color = if headache_log.intensity <= 3
-              'hsl(142, 71%, 45%)' # Green
-            elsif headache_log.intensity <= 6
-              # Interpolate from green to yellow
-              ratio = (headache_log.intensity - 3) / 3.0
-              hue = (142 - (ratio * (142 - 45))).round
-              saturation = (71 + (ratio * (93 - 71))).round
-              lightness = (45 + (ratio * (47 - 45))).round
-              "hsl(#{hue}, #{saturation}%, #{lightness}%)"
-            else
-              # Interpolate from yellow to red
-              ratio = (headache_log.intensity - 6) / 4.0
-              hue = (45 * (1 - ratio)).round
-              saturation = (93 - (ratio * (93 - 84))).round
-              lightness = (47 + (ratio * (60 - 47))).round
-              "hsl(#{hue}, #{saturation}%, #{lightness}%)"
-            end
-          %>
+        <%
+          # Calculate smooth color interpolation
+          intensity_color = if headache_log.intensity <= 3
+            'hsl(142, 71%, 45%)' # Green
+          elsif headache_log.intensity <= 6
+            # Interpolate from green to yellow
+            ratio = (headache_log.intensity - 3) / 3.0
+            hue = (142 - (ratio * (142 - 45))).round
+            saturation = (71 + (ratio * (93 - 71))).round
+            lightness = (45 + (ratio * (47 - 45))).round
+            "hsl(#{hue}, #{saturation}%, #{lightness}%)"
+          else
+            # Interpolate from yellow to red
+            ratio = (headache_log.intensity - 6) / 4.0
+            hue = (45 * (1 - ratio)).round
+            saturation = (93 - (ratio * (93 - 84))).round
+            lightness = (47 + (ratio * (60 - 47))).round
+            "hsl(#{hue}, #{saturation}%, #{lightness}%)"
+          end
+        %>
+        <div class="relative inline-block">
           <div class="radial-progress shadow-sm"
                style="--value:<%= (headache_log.intensity.to_f / 10 * 100).round %>; --size:2.5rem;
                       color: <%= intensity_color %>;">
@@ -96,8 +96,8 @@
           </div>
           <div class="absolute -inset-1 rounded-full opacity-30 blur-sm"
                style="background-color: <%= intensity_color %>;"></div>
-          <p class="text-xs text-base-content/60 mt-1">Intensity</p>
         </div>
+        <p class="text-xs text-base-content/60 mt-1">Intensity</p>
       </div>
     </div>
 
