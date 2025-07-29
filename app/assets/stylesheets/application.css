@@ -16,6 +16,20 @@
  *= require_self
  */
 
+/* Fix scrolling issues on Firefox */
+html {
+  position: static !important;
+  overflow: visible !important;
+  height: 100% !important;
+}
+
+body {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  height: auto !important;
+  min-height: 100vh !important;
+}
+
 /* Wave animation for personal note emoji */
 @keyframes wave {
   0% { transform: rotate(0deg); }
