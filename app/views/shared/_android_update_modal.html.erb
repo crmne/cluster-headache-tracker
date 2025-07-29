@@ -1,0 +1,81 @@
+<%
+  should_show = hotwire_native_app? &&
+                !native_app_with_tabs? &&
+                request.user_agent.include?("Android")
+%>
+
+<% if should_show %>
+  <dialog id="androidUpdateModal" class="modal" data-controller="android-update">
+    <div class="modal-box max-w-md">
+      <div class="text-center mb-4">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full mb-4">
+          <%= heroicon "arrow-down-tray", variant: "solid", class: "w-8 h-8 text-primary" %>
+        </div>
+        <h3 class="text-xl font-bold mb-1">New Android App Available! 🎉</h3>
+        <p class="text-sm text-base-content/70">Version 2.0</p>
+      </div>
+
+      <div class="space-y-3 mb-4">
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 bg-success/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <%= heroicon "sparkles", variant: "mini", class: "w-4 h-4 text-success" %>
+          </div>
+          <div>
+            <h4 class="font-semibold">Completely Redone</h4>
+            <p class="text-xs text-base-content/70">Built from scratch for better performance.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <%= heroicon "squares-2x2", variant: "mini", class: "w-4 h-4 text-secondary" %>
+          </div>
+          <div>
+            <h4 class="font-semibold">Native Tab Bar</h4>
+            <p class="text-xs text-base-content/70">Quick navigation between sections.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <%= heroicon "share", variant: "mini", class: "w-4 h-4 text-accent" %>
+          </div>
+          <div>
+            <h4 class="font-semibold">Native Sharing</h4>
+            <p class="text-xs text-base-content/70">Share logs directly with other apps.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 bg-info/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <%= heroicon "printer", variant: "mini", class: "w-4 h-4 text-info" %>
+          </div>
+          <div>
+            <h4 class="font-semibold">Native Print</h4>
+            <p class="text-xs text-base-content/70">Print reports using Android's print system.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-warning/10 border border-warning/20 rounded-lg p-3 text-center mb-4">
+        <p class="text-sm font-semibold mb-1">Manual Download Required</p>
+        <p class="text-xs text-base-content/70">The new Android app needs to be downloaded from our website.</p>
+      </div>
+
+      <div class="modal-action flex-col gap-2">
+        <%= link_to root_path, class: "btn btn-primary w-full" do %>
+          <%= heroicon "arrow-down-tray", variant: "mini", class: "w-4 h-4" %>
+          Download New Version
+        <% end %>
+        <form method="dialog" class="w-full">
+          <button class="btn btn-ghost btn-sm w-full" data-action="click->android-update#dismiss">
+            Remind Me Tomorrow
+          </button>
+        </form>
+      </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+<% end %>
