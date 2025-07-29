@@ -33,11 +33,25 @@
             <div class="flex gap-2">
               <%= heroicon "exclamation-triangle", variant: "mini", class: "w-5 h-5 flex-shrink-0" %>
               <div class="flex-1">
-                <h3 class="font-semibold text-sm mb-1">Please fix the following issues:</h3>
+                <h3 class="font-semibold text-sm mb-1">Please complete the following:</h3>
                 <ul class="text-sm space-y-1">
-                  <% @feedback_survey.errors.full_messages.each do |message| %>
-                    <li>• <%= message %></li>
-                  <% end %>
+                  <%
+                    # Group errors by field and create friendly messages
+                    error_messages = {
+                      usage_duration: "How long you've been using the tracker",
+                      ease_of_use: "Rate the ease of use (1-5 stars)",
+                      recommendation_likelihood: "Rate how likely you'd recommend (1-5 stars)",
+                      shared_with_doctor: "Whether you've shared with your doctor"
+                    }
+
+                    @feedback_survey.errors.attribute_names.uniq.each do |attr|
+                      if error_messages[attr]
+                  %>
+                    <li>• <%= error_messages[attr] %></li>
+                  <%
+                      end
+                    end
+                  %>
                 </ul>
               </div>
             </div>

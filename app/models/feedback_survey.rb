@@ -1,10 +1,10 @@
 class FeedbackSurvey < ApplicationRecord
   belongs_to :user
 
-  validates :usage_duration, presence: { message: ": Please select how long you've been using the tracker" }
-  validates :ease_of_use, presence: { message: ": Please rate the ease of use (1-5 stars)" }, inclusion: { in: 1..5, message: ": must be between 1 and 5 stars" }
-  validates :recommendation_likelihood, presence: { message: ": Please rate how likely you are to recommend this tool (1-5 stars)" }, inclusion: { in: 1..5, message: ": must be between 1 and 5 stars" }
-  validates :shared_with_doctor, inclusion: { in: [ true, false, nil ], message: ": Please select if you've shared with your doctor" }
+  validates :usage_duration, presence: { message: "can't be blank" }
+  validates :ease_of_use, presence: { message: "can't be blank" }, inclusion: { in: 1..5, message: "must be between 1 and 5 stars" }
+  validates :recommendation_likelihood, presence: { message: "can't be blank" }, inclusion: { in: 1..5, message: "must be between 1 and 5 stars" }
+  validates :shared_with_doctor, inclusion: { in: [ true, false, nil ], message: "is required" }
 
   serialize :versions, coder: JSON, type: Array
   serialize :most_useful_features, coder: JSON, type: Array
