@@ -4,7 +4,7 @@
 %>
 
 <% if should_show %>
-  <dialog id="changelogModal" class="modal" data-controller="changelog bridge--share" data-changelog-version-value="<%= current_version %>">
+  <dialog id="changelogModal" class="modal" data-controller="changelog share-link bridge--share" data-changelog-version-value="<%= current_version %>">
     <div class="modal-box max-w-md">
       <div class="text-center mb-4">
         <h3 class="text-xl font-bold mb-1">Everything is New! 🎉</h3>
@@ -39,8 +39,22 @@
           <span class="text-base-content/70">It's free and not enough people know this exists - please help spread the word!</span>
         </p>
         <div class="flex flex-col gap-2">
-          <button data-bridge--share-target="shareButton"
-                  data-action="click->bridge--share#shareViaBridge click->changelog#share"
+          <%# Hidden templates for button states %>
+          <template data-share-link-target="shareTemplate">
+            <%= heroicon "share", variant: "mini", class: "w-4 h-4" %>
+            Share with Friends
+          </template>
+          <template data-share-link-target="copiedTemplate">
+            <%= heroicon "check", variant: "mini", class: "w-4 h-4" %>
+            Copied!
+          </template>
+
+          <%# Hidden input for URL copying %>
+          <input type="hidden" data-share-link-target="input" value="https://clusterheadachetracker.com">
+
+          <button data-share-link-target="shareButton"
+                  data-bridge--share-target="shareButton"
+                  data-action="click->bridge--share#shareViaBridge click->share-link#share"
                   data-share-url="https://clusterheadachetracker.com"
                   data-share-title="Cluster Headache Tracker"
                   data-share-text="I use this free app to track my cluster headaches. It just got a huge update!"

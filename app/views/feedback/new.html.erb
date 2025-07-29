@@ -29,13 +29,18 @@
     <div class="card-body p-3 sm:p-4">
       <%= form_with(model: @feedback_survey, url: feedback_path, class: "space-y-4") do |form| %>
         <% if @feedback_survey.errors.any? %>
-          <div class="alert alert-error">
-            <%= heroicon "x-circle", variant: "mini", class: "w-5 h-5" %>
-            <ul class="list-disc list-inside">
-              <% @feedback_survey.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
+          <div class="alert alert-error mb-4">
+            <div class="flex gap-2">
+              <%= heroicon "exclamation-triangle", variant: "mini", class: "w-5 h-5 flex-shrink-0" %>
+              <div class="flex-1">
+                <h3 class="font-semibold text-sm mb-1">Please fix the following issues:</h3>
+                <ul class="text-sm space-y-1">
+                  <% @feedback_survey.errors.full_messages.each do |message| %>
+                    <li>• <%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
           </div>
         <% end %>
 
@@ -44,7 +49,12 @@
           <%= form.select :usage_duration,
               options_for_select(FeedbackSurvey::USAGE_DURATIONS),
               { prompt: "Select duration" },
-              { class: "select select-bordered select-sm w-full", required: true } %>
+              { class: "select select-bordered select-sm w-full #{'select-error' if @feedback_survey.errors[:usage_duration].any?}" } %>
+          <% if @feedback_survey.errors[:usage_duration].any? %>
+            <label class="label">
+              <span class="label-text-alt text-error"><%= @feedback_survey.errors[:usage_duration].first %></span>
+            </label>
+          <% end %>
         </div>
 
         <div class="bg-primary/5 rounded-lg p-3">
@@ -86,11 +96,16 @@
           <div class="flex items-center justify-between">
             <div class="rating rating-md">
               <% (1..5).each do |rating| %>
-                <%= form.radio_button :ease_of_use, rating, class: "mask mask-star-2 bg-accent", required: true %>
+                <%= form.radio_button :ease_of_use, rating, class: "mask mask-star-2 bg-accent #{'input-error' if @feedback_survey.errors[:ease_of_use].any?}" %>
               <% end %>
             </div>
             <span class="text-xs text-base-content/60">1 = Difficult, 5 = Easy</span>
           </div>
+          <% if @feedback_survey.errors[:ease_of_use].any? %>
+            <label class="label pt-0">
+              <span class="label-text-alt text-error"><%= @feedback_survey.errors[:ease_of_use].first %></span>
+            </label>
+          <% end %>
         </div>
 
         <div class="bg-info/5 rounded-lg p-3">
@@ -98,18 +113,23 @@
           <p class="text-xs text-base-content/60 mb-2">Have you shared your data with your doctor?</p>
           <div class="flex flex-wrap gap-3">
             <label class="flex items-center gap-2 cursor-pointer">
-              <%= form.radio_button :shared_with_doctor, true, class: "radio radio-sm radio-info", required: true %>
+              <%= form.radio_button :shared_with_doctor, true, class: "radio radio-sm radio-info #{'input-error' if @feedback_survey.errors[:shared_with_doctor].any?}" %>
               <span class="text-sm">Yes</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-              <%= form.radio_button :shared_with_doctor, false, class: "radio radio-sm radio-info", required: true %>
+              <%= form.radio_button :shared_with_doctor, false, class: "radio radio-sm radio-info #{'input-error' if @feedback_survey.errors[:shared_with_doctor].any?}" %>
               <span class="text-sm">No</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-              <%= form.radio_button :shared_with_doctor, nil, class: "radio radio-sm radio-info", required: true %>
+              <%= form.radio_button :shared_with_doctor, nil, class: "radio radio-sm radio-info #{'input-error' if @feedback_survey.errors[:shared_with_doctor].any?}" %>
               <span class="text-sm">Wasn't aware</span>
             </label>
           </div>
+          <% if @feedback_survey.errors[:shared_with_doctor].any? %>
+            <label class="label pt-0">
+              <span class="label-text-alt text-error"><%= @feedback_survey.errors[:shared_with_doctor].first %></span>
+            </label>
+          <% end %>
         </div>
 
         <div class="bg-base-200/50 rounded-lg p-3">
@@ -133,11 +153,16 @@
           <div class="flex items-center justify-between">
             <div class="rating rating-md">
               <% (1..5).each do |rating| %>
-                <%= form.radio_button :recommendation_likelihood, rating, class: "mask mask-star-2 bg-secondary", required: true %>
+                <%= form.radio_button :recommendation_likelihood, rating, class: "mask mask-star-2 bg-secondary #{'input-error' if @feedback_survey.errors[:recommendation_likelihood].any?}" %>
               <% end %>
             </div>
             <span class="text-xs text-base-content/60">1 = Unlikely, 5 = Very likely</span>
           </div>
+          <% if @feedback_survey.errors[:recommendation_likelihood].any? %>
+            <label class="label pt-0">
+              <span class="label-text-alt text-error"><%= @feedback_survey.errors[:recommendation_likelihood].first %></span>
+            </label>
+          <% end %>
         </div>
 
         <div class="bg-base-200/50 rounded-lg p-3">

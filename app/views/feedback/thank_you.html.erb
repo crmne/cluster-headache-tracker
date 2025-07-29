@@ -19,7 +19,7 @@
   <% end %>
 <% end %>
 
-<div class="container mx-auto px-4 max-w-2xl py-8" data-controller="bridge--share">
+<div class="container mx-auto px-4 max-w-2xl py-8" data-controller="share-link bridge--share">
   <div class="text-center mb-8">
     <div class="inline-flex items-center justify-center w-16 h-16 bg-success/20 rounded-full mb-4">
       <%= heroicon "check-circle", variant: "solid", class: "w-8 h-8 text-success" %>
@@ -34,13 +34,26 @@
       <p class="text-base-content/70 mb-4">Know someone else dealing with cluster headaches? They deserve a better way to track their pain too.</p>
 
       <div class="flex flex-col gap-3">
-        <button data-bridge--share-target="shareButton"
-                data-action="click->bridge--share#shareViaBridge click->changelog#share"
+        <%# Hidden templates for button states %>
+        <template data-share-link-target="shareTemplate">
+          <%= heroicon "share", variant: "mini", class: "w-4 h-4" %>
+          Share with Friends
+        </template>
+        <template data-share-link-target="copiedTemplate">
+          <%= heroicon "check", variant: "mini", class: "w-4 h-4" %>
+          Copied!
+        </template>
+
+        <%# Hidden input for URL copying %>
+        <input type="hidden" data-share-link-target="input" value="https://clusterheadachetracker.com">
+
+        <button data-share-link-target="shareButton"
+                data-bridge--share-target="shareButton"
+                data-action="click->bridge--share#shareViaBridge click->share-link#share"
                 data-share-url="https://clusterheadachetracker.com"
                 data-share-title="Cluster Headache Tracker"
                 data-share-text="I'm using this free app to track my cluster headaches. It's built by someone who gets it."
-                class="btn btn-primary w-full sm:w-auto mx-auto"
-                data-controller="changelog">
+                class="btn btn-primary w-full sm:w-auto mx-auto">
           <%= heroicon "share", variant: "mini", class: "w-4 h-4" %>
           Share with Friends
         </button>
@@ -64,9 +77,9 @@
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
     <div class="card bg-base-100 shadow-md">
       <div class="card-body">
-        <h3 class="card-title text-lg">Mobile Apps Now in Beta!</h3>
-        <p class="text-sm text-base-content/70">Native iOS and Android apps are currently in beta testing. Join the beta or install the web app on your phone's home screen for a native-like experience.</p>
-        <%= link_to "Join the beta →", "mailto:support@clusterheadachetracker.com?subject=Beta%20Access%20Request", class: "link link-primary text-sm" %>
+        <h3 class="card-title text-lg">Brand New Mobile Apps!</h3>
+        <p class="text-sm text-base-content/70">Completely new native iOS and Android apps for version 2.0! The Android app needs to be downloaded manually again.</p>
+        <%= link_to "Download from homepage →", root_path, class: "link link-primary text-sm" %>
       </div>
     </div>
 
@@ -82,10 +95,10 @@
   <div class="card bg-primary/10 border border-primary/20">
     <div class="card-body">
       <h3 class="text-lg font-semibold mb-2">Also from the creator</h3>
-      <p class="text-sm text-base-content/70 mb-3">Looking for a better way to communicate at work? Check out my other project:</p>
+      <p class="text-sm text-base-content/70 mb-3">Stop searching through Slack and Drive. Chat With Work finds everything instantly. Your all-knowing workplace assistant that searches all your work tools at once.</p>
       <div class="flex items-center gap-3">
         <%= link_to "ChatWithWork.com", "https://chatwithwork.com", class: "btn btn-sm btn-primary", target: "_blank" %>
-        <span class="text-sm text-base-content/60">AI-powered workplace communication</span>
+        <span class="text-sm text-base-content/60">Built in Germany • GDPR-compliant</span>
       </div>
     </div>
   </div>
