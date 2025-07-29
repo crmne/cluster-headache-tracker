@@ -29,19 +29,9 @@
   </div>
 
   <div class="card bg-base-100 shadow-md mb-6">
-    <div class="card-body">
-      <div class="alert alert-info mb-4">
-        <%= heroicon "information-circle", variant: "mini", class: "w-5 h-5" %>
-        <div>
-          <h3 class="font-semibold">Want to update your feedback?</h3>
-          <p class="text-sm">You can submit new feedback by deleting your previous response.</p>
-        </div>
-      </div>
-      <%= button_to "Submit New Feedback", feedback_path, method: :delete,
-          data: { turbo_confirm: "This will delete your previous feedback and allow you to submit new feedback. Continue?" },
-          class: "btn btn-sm btn-outline mb-6" %>
-      <h2 class="text-xl font-semibold mb-3 text-center">Help spread the word</h2>
-      <p class="text-base-content/70 mb-4 text-center">Know someone else dealing with cluster headaches? They deserve a better way to track their pain too.</p>
+    <div class="card-body text-center">
+      <h2 class="text-xl font-semibold mb-3">Help spread the word</h2>
+      <p class="text-base-content/70 mb-4">Know someone else dealing with cluster headaches? They deserve a better way to track their pain too.</p>
 
       <div class="flex flex-col gap-3">
         <%# Hidden templates for button states %>
@@ -111,5 +101,12 @@
         <span class="text-sm text-base-content/60">Built in Germany • GDPR-compliant</span>
       </div>
     </div>
+  </div>
+
+  <div class="text-center mt-8 pb-4">
+    <p class="text-sm text-base-content/50 mb-2">Changed your mind about something?</p>
+    <%= button_to "Submit new feedback", feedback_path, method: :delete,
+        data: { turbo_confirm: "This will replace your previous feedback. Continue?" },
+        class: "link link-hover text-sm text-base-content/60" %>
   </div>
 </div>
