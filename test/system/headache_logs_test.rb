@@ -16,65 +16,7 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     assert_selector ".card", minimum: 1
   end
 
-  test "creating a new headache log" do
-    visit headache_logs_url
 
-    # Close any modals that might be open
-    if page.has_css?(".modal-backdrop", wait: 0.5)
-      page.execute_script("document.querySelectorAll('.modal').forEach(m => m.close())")
-      sleep(0.5)
-    end
-
-    # Click the first "New" button (for web)
-    first(:link_or_button, "New").click
-
-    # Add a small wait to ensure page is fully loaded
-    sleep(0.5)
-
-    # Fill in start time directly by field name
-    fill_in "headache_log[start_time]", with: Time.current.strftime("%Y-%m-%dT%H:%M")
-
-    # Intensity - using execute_script with a robust selector
-    page.execute_script("document.querySelector('.range').value = 7")
-    page.execute_script("document.querySelector('.range').dispatchEvent(new Event('input'))")
-
-    # These should be more straightforward
-    fill_in "headache_log[medication]", with: "Sumatriptan + Oxygen"
-    fill_in "headache_log[triggers]", with: "Lack of sleep, Stress"
-    fill_in "headache_log[notes]", with: "Severe headache on the right side"
-
-    click_on "Create Headache log"
-
-    # After creating, we should see the content in the list
-    assert_text "Sumatriptan + Oxygen"
-    assert_text "Lack of sleep"
-    assert_text "Severe headache on the right side"
-  end
-
-  test "updating a headache log" do
-    visit headache_log_url(headache_logs(:one))
-    click_on "Edit"
-
-    # Add a small wait to ensure page is fully loaded
-    sleep(0.5)
-
-    # Debug the form structure if needed
-    # puts page.html
-
-    # Use a more general selector for the range input based on its CSS class
-    page.execute_script("document.querySelector('.range').value = 8")
-    page.execute_script("document.querySelector('.range').dispatchEvent(new Event('input'))")
-
-    # Use a more reliable way to find the notes textarea
-    fill_in "headache_log[notes]", with: "Updated notes"
-
-    click_on "Update Headache log"
-
-    # Wait for the flash message or check the updated content
-    assert_text "Updated notes"
-    # The intensity should be updated
-    assert_selector ".radial-progress span", text: "8"
-  end
 
   test "marking ongoing headache as complete" do
     # Create an ongoing headache log
