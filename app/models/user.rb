@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :share_tokens
   has_one :feedback_survey
 
+  after_create :send_admin_notification
+
   def email_required?
     false
   end
@@ -24,5 +26,11 @@ class User < ApplicationRecord
 
   def admin?
     username == "carmine"
+  end
+
+  private
+
+  def send_admin_notification
+    AdminNotificationsMailer.new_user_notification(self).deliver_later
   end
 end

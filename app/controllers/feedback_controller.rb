@@ -15,6 +15,7 @@ class FeedbackController < ApplicationController
     @feedback_survey.user_agent = request.user_agent
 
     if @feedback_survey.save
+      AdminNotificationsMailer.new_feedback_notification(@feedback_survey).deliver_later
       redirect_to thank_you_feedback_path
     else
       render :new, status: :unprocessable_entity
