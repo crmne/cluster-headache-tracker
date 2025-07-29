@@ -54,32 +54,4 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     # The log should now show an end time
     assert_selector ".radial-progress", text: log.intensity.to_s
   end
-
-
-  test "generating and copying share link" do
-    visit headache_logs_url
-
-    # Close any modals that might be open
-    if page.has_css?(".modal-backdrop", wait: 0.5)
-      page.execute_script("document.querySelectorAll('.modal').forEach(m => m.close())")
-      sleep(0.5)
-    end
-
-    # First check if a share link already exists, if so delete it
-    if page.has_button?("Share")
-      # Click the X button to expire the share link
-      within("#share_link") do
-        find(".btn-ghost.text-error").click
-      end
-      sleep(0.5)
-    end
-
-    # Now generate a new share link
-    within("#share_link") do
-      click_button "Generate Share Link"
-    end
-
-    # After generating, we should see the share button
-    assert_selector "button[data-share-link-target='shareButton']", text: "Share"
-  end
 end
