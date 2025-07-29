@@ -27,7 +27,7 @@
 
   <div class="card bg-base-100 shadow-md">
     <div class="card-body p-3 sm:p-4">
-      <%= form_with(model: @feedback_survey, url: feedback_path, class: "space-y-4") do |form| %>
+      <%= form_with(model: @feedback_survey, url: feedback_path, class: "space-y-4", data: { turbo: false }) do |form| %>
         <% if @feedback_survey.errors.any? %>
           <div class="alert alert-error mb-4">
             <div class="flex gap-2">
