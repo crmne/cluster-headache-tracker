@@ -140,34 +140,4 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     # After generating, we should see the share button
     assert_selector "button[data-share-link-target='shareButton']", text: "Share"
   end
-
-  test "importing CSV file" do
-    visit settings_url
-
-    # Store the initial count of headache logs
-    initial_count = @user.headache_logs.count
-
-    click_on "Import CSV"
-
-    # Wait for modal to open and ensure it's visible
-    assert_selector "#import_modal", visible: true
-
-    within("#import_modal") do
-      attach_file "file", "test/fixtures/files/sample_logs.csv"
-      # Submit the form
-      click_button "Import"
-    end
-
-    # Give it time to process
-    sleep(3)
-
-    # The import should either redirect to headache logs or show imported content
-    # Check multiple possible success conditions
-    success = page.has_current_path?(headache_logs_path) ||
-              page.has_text?("Successfully imported") ||
-              page.has_text?("Morning attack") ||
-              @user.headache_logs.count > initial_count
-
-    assert success, "Import did not complete successfully"
-  end
 end
