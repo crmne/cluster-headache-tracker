@@ -53,7 +53,7 @@ Rails.application.routes.draw do
     post :welcome_acknowledged
   end
 
-  resource :feedback, only: [ :show, :new, :create ], controller: "feedback" do
+  resource :feedback, only: [ :show, :new, :create, :destroy ], controller: "feedback" do
     get :thank_you
   end
 

@@ -23,6 +23,19 @@ class FeedbackController < ApplicationController
   end
 
   def thank_you
+    # Redirect to new if they haven't submitted feedback yet
+    if current_user.feedback_survey.blank?
+      redirect_to new_feedback_path
+    end
+  end
+
+  def destroy
+    @feedback_survey = current_user.feedback_survey
+    if @feedback_survey&.destroy
+      redirect_to new_feedback_path, notice: "Previous feedback deleted. You can now submit new feedback."
+    else
+      redirect_to thank_you_feedback_path, alert: "Unable to delete feedback."
+    end
   end
 
   private

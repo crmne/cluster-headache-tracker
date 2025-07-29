@@ -68,10 +68,10 @@ Rails.application.configure do
     user_name: Rails.application.credentials.dig(:smtp, :user_name),
     password: Rails.application.credentials.dig(:smtp, :password),
     address: "smtp.forwardemail.net",
-    port: 465,
+    port: 587,
     authentication: :plain,
-    ssl: true,
-    enable_starttls_auto: false
+    enable_starttls_auto: true,
+    openssl_verify_mode: "none"
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
