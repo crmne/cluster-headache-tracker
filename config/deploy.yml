@@ -5,6 +5,10 @@ servers:
   web:
     hosts:
       - clusterheadachetracker.com
+  job:
+    hosts:
+      - clusterheadachetracker.com
+    cmd: bin/jobs
 
 proxy:
   ssl: true
