@@ -52,6 +52,15 @@
     },
     {
       "patterns": [
+        "\\.apk$"
+      ],
+      "properties": {
+        "uri": "hotwire://fragment/web",
+        "presentation": "none"
+      }
+    },
+    {
+      "patterns": [
         ".*"
       ],
       "properties": {

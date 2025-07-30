@@ -24,6 +24,15 @@
         "uri": "hotwire://fragment/web/modal/sheet",
         "pull_to_refresh_enabled": false
       }
+    },
+    {
+      "patterns": [
+        "\\.apk$"
+      ],
+      "properties": {
+        "uri": "hotwire://fragment/web",
+        "presentation": "none"
+      }
     }
   ]
 }

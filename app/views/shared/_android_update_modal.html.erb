@@ -1,5 +1,5 @@
 <%
-  should_show = android_app_needs_update?
+  should_show = Rails.env.development? && android_app_needs_update?
 %>
 
 <% if should_show %>
@@ -61,7 +61,7 @@
       </div>
 
       <div class="modal-action flex-col gap-2">
-        <%= link_to android_apk_url, class: "btn btn-primary w-full", target: "_blank", rel: "noopener noreferrer" do %>
+        <%= link_to android_apk_url, class: "btn btn-primary w-full" do %>
           <%= heroicon "arrow-down-tray", variant: "mini", class: "w-4 h-4" %>
           Download New Version
         <% end %>
