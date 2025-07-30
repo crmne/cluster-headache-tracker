@@ -98,7 +98,8 @@ module ApplicationHelper
     return false unless hotwire_native_app? && request.user_agent.include?("Android")
 
     current_parts = native_app_version_parts
-    return false unless current_parts
+    # If no version found (old app), needs update
+    return true unless current_parts
 
     # Compare versions
     latest_parts = AppConstants::ANDROID_APK_VERSION.split(".").map(&:to_i)
