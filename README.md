@@ -27,7 +27,7 @@ We have a beta version of our iOS app available through TestFlight! This native 
 
 ### Android App (Beta)
 The Beta Android app is available for direct download from our website:
-- [Download the Android Beta App](https://clusterheadachetracker.com/cluster-headache-tracker.apk)
+- [Download the Android Beta App](https://clusterheadachetracker.com/cluster-headache-tracker.apk?v=1.0.11)
 - [Contribute to the Android Beta App](https://github.com/crmne/cluster-headache-tracker-android)
 
 Both apps provide the same features as the web application in a native mobile interface:

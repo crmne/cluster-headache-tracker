@@ -70,13 +70,10 @@ module ApplicationHelper
   def native_app_with_tabs?
     return false unless hotwire_native_app?
 
-    # Extract version from user agent
-    match = request.user_agent.match(/ClusterHeadacheTracker\/(\d+)\.(\d+)\.(\d+)/)
-    return false unless match
+    version_parts = native_app_version_parts
+    return false unless version_parts
 
-    major = match[1].to_i
-    minor = match[2].to_i
-    build = match[3].to_i
+    major, minor, build = version_parts
 
     # Return true for version 1.0.8+ or any version higher than 1.0.x
     return true if major > 1
@@ -84,5 +81,45 @@ module ApplicationHelper
     return true if major == 1 && minor == 0 && build >= 8
 
     false
+  end
+
+  def android_apk_url
+    "/cluster-headache-tracker.apk?v=#{AppConstants::ANDROID_APK_VERSION}"
+  end
+
+  def native_app_version
+    parts = native_app_version_parts
+    return nil unless parts
+
+    parts.join(".")
+  end
+
+  def android_app_needs_update?
+    return false unless hotwire_native_app? && request.user_agent.include?("Android")
+
+    current_parts = native_app_version_parts
+    return false unless current_parts
+
+    # Compare versions
+    latest_parts = AppConstants::ANDROID_APK_VERSION.split(".").map(&:to_i)
+
+    # Compare major.minor.patch
+    current_parts.each_with_index do |part, index|
+      return true if part < latest_parts[index]
+      return false if part > latest_parts[index]
+    end
+
+    false
+  end
+
+  private
+
+  def native_app_version_parts
+    return nil unless hotwire_native_app?
+
+    match = request.user_agent.match(/ClusterHeadacheTracker\/(\d+)\.(\d+)\.(\d+)/)
+    return nil unless match
+
+    [ match[1].to_i, match[2].to_i, match[3].to_i ]
   end
 end
