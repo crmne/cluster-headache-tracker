@@ -1,5 +1,5 @@
 <%
-  should_show = Rails.env.development? && android_app_needs_update?
+  should_show = android_app_needs_update?
 %>
 
 <% if should_show %>
