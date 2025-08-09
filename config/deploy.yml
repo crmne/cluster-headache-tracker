@@ -18,6 +18,11 @@ registry:
   password:
     - KAMAL_REGISTRY_PASSWORD
 
+# Configure logging to work with GELF driver
+logging:
+  options:
+    tag: "cluster-headache-tracker"
+
 env:
   clear:
     DB_HOST: cluster-headache-tracker-db
