@@ -1,4 +1,7 @@
 #!/bin/sh
 
-export HONEYBADGER_API_KEY=$(grep -m 1 '^HONEYBADGER_API_KEY=' .env | cut -d '=' -f2)
-curl https://api.honeybadger.io/v1/deploys -H "X-API-Key: $HONEYBADGER_API_KEY" -H "Content-Type: application/json" -H "Accept: application/json" -d "{\"deploy\": {\"environment\": \"production\", \"local_username\": \"$KAMAL_PERFORMER\", \"revision\": \"$KAMAL_VERSION\"}}"
+curl https://api.honeybadger.io/v1/deploys \
+  -H "X-API-Key: $HONEYBADGER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d "{\"deploy\": {\"environment\": \"production\", \"local_username\": \"$KAMAL_PERFORMER\", \"revision\": \"$KAMAL_VERSION\"}}"
