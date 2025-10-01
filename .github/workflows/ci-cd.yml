@@ -66,7 +66,7 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '23'
           cache: 'npm'
