@@ -108,4 +108,4 @@ end
 
 gem "sitemap_generator", "~> 6.3"
 
-gem "rack-attack", "~> 6.7"
+gem "rack-attack", "~> 6.8"
