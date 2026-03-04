@@ -30,6 +30,7 @@ env:
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
+    - HONEYBADGER_API_KEY
 
 aliases:
   console: app exec --interactive --reuse "bin/rails console"
