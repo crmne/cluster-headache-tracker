@@ -71,13 +71,7 @@ Both apps provide the same features as the web application in a native mobile in
    npm install
    ```
 
-3. Set up the database:
-   ```
-   rails db:create
-   rails db:migrate
-   ```
-
-4. Set up environment variables:
+3. Set up environment variables:
    Create a `.env` file in the root directory and add the following variables:
    ```
    RAILS_MASTER_KEY=your_master_key
@@ -85,12 +79,28 @@ Both apps provide the same features as the web application in a native mobile in
    HONEYBADGER_API_KEY=your_honeybadger_api_key
    ```
 
-5. Start the development server:
+4. Provision the local PostgreSQL role:
+   ```
+   bin/rails db:setup_roles
+   ```
+   This creates the `cluster_headache_tracker` role plus the development and test databases using `POSTGRES_PASSWORD` from your environment or `.env`.
+
+   If you prefer a simpler manual fallback, use:
+   ```
+   ./bin/pg_add_user.sh cluster_headache_tracker
+   ```
+
+5. Set up the database:
+   ```
+   bin/rails db:prepare
+   ```
+
+6. Start the development server:
    ```
    bin/dev
    ```
 
-6. Visit `http://localhost:3000` in your browser to see the application running locally.
+7. Visit `http://localhost:3000` in your browser to see the application running locally.
 
 ## 🧪 Running Tests
 
