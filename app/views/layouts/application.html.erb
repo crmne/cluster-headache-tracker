@@ -43,7 +43,13 @@
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
   <% if Rails.env.production? %>
-  <script defer data-domain="clusterheadachetracker.com" src="https://stats.paolino.me/js/script.js" onerror="console.log('Analytics script blocked or failed to load')"></script>
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://stats.paolino.me/js/pa-40UpCdQhZHu9llRgbxoCv.js"></script>
+  <script>
+    window.plausible = window.plausible || function() { (plausible.q = plausible.q || []).push(arguments) };
+    plausible.init = plausible.init || function(i) { plausible.o = i || {} };
+    plausible.init();
+  </script>
   <% end %>
 </head>
 
