@@ -1,0 +1,288 @@
+#!/usr/bin/env ruby
+require "open3"
+require "tempfile"
+require "yaml"
+
+APP_ROOT = File.expand_path("..", __dir__)
+SYSTEM_CADDYFILE = "/etc/caddy/Caddyfile"
+SYSTEM_CONF_DIR = "/etc/caddy/conf.d"
+IMPORT_LINE = "import #{SYSTEM_CONF_DIR}/*.Caddyfile"
+IMPORT_LINE_PATTERN = %r{^\s*import\s+/etc/caddy/conf\.d/\*.*$}
+
+def system!(*args)
+  system(*args.flatten, exception: true)
+end
+
+def capture(*args)
+  Open3.capture2e(*args.flatten)
+end
+
+def quiet_system(*args)
+  system(*args.flatten, out: File::NULL, err: File::NULL)
+end
+
+def sudo_prefix
+  if Process.euid.zero?
+    []
+  else
+    [ "sudo" ]
+  end
+end
+
+def caddy_installed?
+  quiet_system("caddy", "version")
+end
+
+def caddy_running?
+  quiet_system(*sudo_prefix, "systemctl", "is-active", "--quiet", "caddy")
+end
+
+def file_exists?(path)
+  quiet_system(*sudo_prefix, "test", "-f", path)
+end
+
+def name_argument
+  if ARGV.length >= 2
+    ARGV[0]
+  elsif ARGV[0]&.match?(/\A\d+\z/)
+    nil
+  else
+    ARGV[0]
+  end
+end
+
+def port_argument
+  if ARGV.length >= 2
+    ARGV[1]
+  elsif ARGV[0]&.match?(/\A\d+\z/)
+    ARGV[0]
+  end
+end
+
+def app_name
+  @app_name ||= begin
+    candidate = sanitize_name(name_argument || ENV["LOCALHOST_NAME"] || directory_name || rails_module_name || "app")
+
+    if candidate.empty?
+      abort "Could not determine an app name."
+    else
+      candidate
+    end
+  end
+end
+
+def port
+  @port ||= begin
+    candidate = discovered_port.to_s
+
+    if candidate.match?(/\A\d+\z/)
+      candidate
+    else
+      abort "Invalid port: #{candidate.inspect}"
+    end
+  end
+end
+
+def discovered_port
+  port_argument ||
+    ENV["PORT"] ||
+    bin_dev_port ||
+    procfile_port ||
+    jekyll_port ||
+    "3000"
+end
+
+def hostname
+  "#{app_name}.localhost"
+end
+
+def site_caddyfile_path
+  File.join(SYSTEM_CONF_DIR, "#{hostname}.Caddyfile")
+end
+
+def site_caddyfile_contents
+  <<~CADDYFILE
+    #{hostname} {
+    \treverse_proxy 127.0.0.1:#{port}
+    }
+  CADDYFILE
+end
+
+def directory_name
+  File.basename(APP_ROOT)
+end
+
+def rails_module_name
+  application_file = File.join(APP_ROOT, "config/application.rb")
+
+  if File.exist?(application_file)
+    contents = File.read(application_file)
+    contents[/^\s*module\s+([A-Z]\w*)\s*$/, 1]
+  end
+end
+
+def sanitize_name(value)
+  value.to_s
+    .downcase
+    .gsub(/[^a-z0-9]+/, "-")
+    .gsub(/\A-+|-+\z/, "")
+end
+
+def bin_dev_port
+  port_from_file("bin/dev")
+end
+
+def procfile_port
+  port_from_file("Procfile.dev") || port_from_file("Procfile")
+end
+
+def jekyll_port
+  port_from_jekyll_config("_config.yml") || port_from_jekyll_config("_config.yaml")
+end
+
+def port_from_file(relative_path)
+  path = File.join(APP_ROOT, relative_path)
+
+  if File.exist?(path)
+    contents = File.read(path)
+    extract_port(contents)
+  end
+end
+
+def port_from_jekyll_config(relative_path)
+  path = File.join(APP_ROOT, relative_path)
+
+  if File.exist?(path)
+    config = YAML.safe_load(File.read(path), permitted_classes: [], aliases: true)
+
+    if config.is_a?(Hash) && config.key?("port") && !config["port"].nil?
+      config["port"].to_s
+    end
+  end
+rescue Psych::SyntaxError
+  nil
+end
+
+def extract_port(contents)
+  patterns = [
+    /PORT\s*=\s*["']?\$\{PORT:-([0-9]+)\}["']?/,
+    /PORT\s*=\s*["']?([0-9]+)["']?/,
+    /--port(?:=|\s+)([0-9]+)/,
+    /(?:-p|-P)\s+([0-9]+)/
+  ]
+
+  patterns.each do |pattern|
+    if match = contents.match(pattern)
+      return match[1]
+    end
+  end
+
+  nil
+end
+
+def ensure_caddy_installed
+  if caddy_installed?
+    puts "== Caddy is already installed =="
+  elsif File.exist?("/usr/bin/pacman")
+    puts "== Installing Caddy =="
+    system!(*sudo_prefix, "pacman", "-S", "--needed", "caddy")
+  else
+    abort "Caddy is not installed and pacman was not found."
+  end
+end
+
+def ensure_conf_dir
+  puts "== Ensuring #{SYSTEM_CONF_DIR} exists =="
+  system!(*sudo_prefix, "mkdir", "-p", SYSTEM_CONF_DIR)
+end
+
+def ensure_main_caddyfile
+  if file_exists?(SYSTEM_CADDYFILE)
+    puts "== Found #{SYSTEM_CADDYFILE} =="
+  else
+    abort "#{SYSTEM_CADDYFILE} was not found. Install the Arch caddy package first."
+  end
+end
+
+def ensure_import_line
+  caddyfile = read_system_file(SYSTEM_CADDYFILE)
+
+  if caddyfile.match?(IMPORT_LINE_PATTERN)
+    puts "== #{SYSTEM_CADDYFILE} already imports conf.d =="
+    false
+  else
+    puts "== Adding conf.d import to #{SYSTEM_CADDYFILE} =="
+    updated_caddyfile = caddyfile.sub(/\s*\z/, "\n")
+    updated_caddyfile << "\n#{IMPORT_LINE}\n"
+    install_system_file(SYSTEM_CADDYFILE, updated_caddyfile)
+    true
+  end
+end
+
+def ensure_site_config
+  desired_caddyfile = site_caddyfile_contents
+
+  if file_exists?(site_caddyfile_path) && read_system_file(site_caddyfile_path) == desired_caddyfile
+    puts "== #{site_caddyfile_path} is already up to date =="
+    false
+  else
+    puts "== Installing #{site_caddyfile_path} =="
+    install_system_file(site_caddyfile_path, desired_caddyfile)
+    true
+  end
+end
+
+def validate_config
+  puts "== Validating Caddy config =="
+  system!(*sudo_prefix, "caddy", "validate", "--config", SYSTEM_CADDYFILE)
+end
+
+def start_or_reload_caddy(config_changed)
+  if caddy_running?
+    if config_changed
+      puts "== Reloading Caddy =="
+      system!(*sudo_prefix, "caddy", "reload", "--config", SYSTEM_CADDYFILE)
+    else
+      puts "== Caddy is already running =="
+    end
+  else
+    puts "== Enabling and starting Caddy =="
+    system!(*sudo_prefix, "systemctl", "enable", "--now", "caddy")
+  end
+end
+
+def trust_local_ca
+  puts "== Trusting Caddy's local CA =="
+  system!(*sudo_prefix, "caddy", "trust", "--config", SYSTEM_CADDYFILE)
+end
+
+def read_system_file(path)
+  output, status = capture(*sudo_prefix, "cat", path)
+
+  if status.success?
+    output
+  else
+    abort "Could not read #{path}:\n#{output}"
+  end
+end
+
+def install_system_file(path, contents)
+  Tempfile.create(File.basename(path)) do |file|
+    file.write(contents)
+    file.flush
+    system!(*sudo_prefix, "install", "-D", "-m", "644", file.path, path)
+  end
+end
+
+ensure_caddy_installed
+ensure_conf_dir
+ensure_main_caddyfile
+
+config_changed = [ ensure_import_line, ensure_site_config ].any?
+
+validate_config
+start_or_reload_caddy(config_changed)
+trust_local_ca
+
+puts
+puts "Caddy is configured for https://#{hostname} -> 127.0.0.1:#{port}"
