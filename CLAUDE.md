@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Cluster Headache Tracker is a privacy-focused Rails 8.0 web application that helps individuals track and manage cluster headaches. The app emphasizes EU data protection compliance, operates without requiring email addresses, and is deployed in Germany.
+Cluster Headache Tracker is a privacy-focused Rails 8.1 web application that helps individuals track and manage cluster headaches. The app emphasizes EU data protection compliance, operates without requiring email addresses, and is deployed in Germany.
 
 ## Development Commands
 
@@ -20,10 +20,10 @@ Cluster Headache Tracker is a privacy-focused Rails 8.0 web application that hel
 - `rails test test/models/user_test.rb:10` - Run test at specific line
 
 ### Code Quality
-- `rubocop` - Run Ruby linting (auto-corrects on pre-commit)
+- `bin/rubocop` - Run Ruby linting
 - `rubocop -a` - Auto-correct Ruby style issues
-- `erb_lint` - Lint ERB templates
-- `brakeman` - Security analysis (runs on pre-push)
+- `bin/brakeman` - Security analysis
+- `bin/ci` - Run the full local CI pipeline
 
 ### Database
 - `rails db:migrate` - Run pending migrations
@@ -61,12 +61,12 @@ Cluster Headache Tracker is a privacy-focused Rails 8.0 web application that hel
 - **Real-time Attack Tracking**: Stimulus controllers in app/javascript/controllers/
 
 ### Development Environment
-- Uses Overcommit for Git hooks (runs tests, linting automatically)
+- Uses `.githooks/pre-push` to run `bin/ci` before pushes
 - Honeybadger for error tracking
 - PostgreSQL for database
-- Ruby 3.4.2 with Rails 8.0.0
+- Ruby 3.4.2 with Rails 8.1.x
 
 ### Testing Approach
 - Minitest for unit/integration tests
 - System tests use Capybara with headless Chrome
-- Tests run automatically on pre-push via Overcommit
+- Tests run automatically on pre-push via `bin/ci`

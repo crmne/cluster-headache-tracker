@@ -81,13 +81,6 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.22)
     bcrypt_pbkdf (1.1.2)
-    better_html (2.2.0)
-      actionview (>= 7.0)
-      activesupport (>= 7.0)
-      ast (~> 2.0)
-      erubi (~> 1.4)
-      parser (>= 2.4)
-      smart_properties
     bigdecimal (4.1.0)
     bindex (0.8.1)
     bootsnap (1.23.0)
@@ -95,6 +88,9 @@ GEM
     brakeman (8.0.4)
       racc
     builder (3.3.0)
+    bundler-audit (0.9.3)
+      bundler (>= 1.2.0)
+      thor (~> 1.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -104,10 +100,6 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    childprocess (5.1.0)
-      logger (~> 1.5)
-    code_analyzer (0.5.5)
-      sexp_processor
     concurrent-ruby (1.3.6)
     connection_pool (3.0.2)
     crass (1.0.6)
@@ -126,24 +118,14 @@ GEM
     drb (2.2.3)
     ed25519 (1.4.0)
     erb (6.0.2)
-    erb_lint (0.9.0)
-      activesupport
-      better_html (>= 2.0.1)
-      parser (>= 2.7.1.4)
-      rainbow
-      rubocop (>= 1)
-      smart_properties
     erubi (1.13.1)
-    erubis (2.7.0)
     et-orbi (1.4.0)
       tzinfo
-    exifr (1.5.1)
     flay (2.14.3)
       erubi (~> 1.10)
       path_expander (~> 2.0)
       prism (~> 1.7)
       sexp_processor (~> 4.0)
-    fspath (3.1.2)
     fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
@@ -154,35 +136,10 @@ GEM
       ostruct
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
-    image_optim (0.31.4)
-      exifr (~> 1.2, >= 1.2.2)
-      fspath (~> 3.0)
-      image_size (>= 1.5, < 4)
-      in_threads (~> 1.3)
-      progress (~> 3.0, >= 3.0.1)
-    image_optim_pack (0.12.2.20260327)
-      fspath (>= 2.1, < 4)
-      image_optim (~> 0.19)
-    image_optim_pack (0.12.2.20260327-arm64-darwin)
-      fspath (>= 2.1, < 4)
-      image_optim (~> 0.19)
-    image_optim_pack (0.12.2.20260327-x86_64-darwin)
-      fspath (>= 2.1, < 4)
-      image_optim (~> 0.19)
-    image_optim_pack (0.12.2.20260327-x86_64-linux)
-      fspath (>= 2.1, < 4)
-      image_optim (~> 0.19)
-    image_optim_rails (0.5.0)
-      image_optim (~> 0.24)
-      railties
-      sprockets
-    image_size (3.4.0)
     importmap-rails (2.2.3)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
-    in_threads (1.6.0)
-    iniparse (1.5.0)
     io-console (0.8.2)
     irb (1.17.0)
       pp (>= 0.6.0)
@@ -205,14 +162,6 @@ GEM
       thor (~> 1.3)
       zeitwerk (>= 2.6.18, < 3.0)
     language_server-protocol (3.17.0.5)
-    license_finder (7.2.1)
-      bundler
-      csv (~> 3.2)
-      rubyzip (>= 1, < 3)
-      thor (~> 1.2)
-      tomlrb (>= 1.3, < 2.1)
-      with_env (= 1.1.0)
-      xml-simple (~> 1.1.9)
     lint_roller (1.1.0)
     logger (1.7.0)
     loofah (2.25.1)
@@ -262,10 +211,6 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     ostruct (0.6.3)
-    overcommit (0.68.0)
-      childprocess (>= 0.6.3, < 6)
-      iniparse (~> 1.4)
-      rexml (>= 3.3.9)
     parallel (1.27.0)
     parser (3.3.11.1)
       ast (~> 2.4.1)
@@ -280,7 +225,6 @@ GEM
       prettyprint
     prettyprint (0.2.0)
     prism (1.9.0)
-    progress (3.6.0)
     propshaft (1.3.1)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -324,14 +268,6 @@ GEM
     rails-html-sanitizer (1.7.0)
       loofah (~> 2.25)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
-    rails_best_practices (1.23.3)
-      activesupport
-      code_analyzer (~> 0.5.5)
-      erubis
-      i18n
-      json
-      require_all (~> 3.0)
-      ruby-progressbar
     rails_heroicon (2.3.0)
       actionview
       railties
@@ -357,7 +293,6 @@ GEM
     regexp_parser (2.11.3)
     reline (0.6.3)
       io-console (~> 0.5)
-    require_all (3.0.0)
     responders (3.2.0)
       actionpack (>= 7.0)
       railties (>= 7.0)
@@ -402,7 +337,6 @@ GEM
     sexp_processor (4.17.5)
     sitemap_generator (6.3.0)
       builder (~> 3.0)
-    smart_properties (1.17.0)
     solid_cable (3.0.12)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -419,10 +353,6 @@ GEM
       fugit (~> 1.11)
       railties (>= 7.1)
       thor (>= 1.3.1)
-    sprockets (4.2.2)
-      concurrent-ruby (~> 1.0)
-      logger
-      rack (>= 2.2.4, < 4)
     sshkit (1.25.0)
       base64
       logger
@@ -448,7 +378,6 @@ GEM
     thruster (0.1.20-x86_64-darwin)
     thruster (0.1.20-x86_64-linux)
     timeout (0.6.1)
-    tomlrb (2.0.4)
     tsort (0.2.0)
     turbo-rails (2.0.23)
       actionpack (>= 7.1.0)
@@ -471,9 +400,6 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    with_env (1.1.0)
-    xml-simple (1.1.9)
-      rexml
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.7.5)
@@ -489,27 +415,22 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   brakeman
+  bundler-audit
   capybara
   csv
   debug
   devise
   dotenv
-  erb_lint
   flay
   honeybadger
-  image_optim_pack
-  image_optim_rails
   importmap-rails
   jbuilder
   kamal (>= 2.0.0.rc2)
-  license_finder
-  overcommit
   pg (~> 1.1)
   propshaft
   puma (>= 5.0)
   rack-attack (~> 6.7)
   rails (~> 8.1.0)
-  rails_best_practices
   rails_heroicon
   rails_real_favicon
   rubocop-rails-omakase

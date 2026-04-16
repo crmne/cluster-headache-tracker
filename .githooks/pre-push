@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(git rev-parse --show-toplevel)"
+cd "$repo_root"
+
+if ! command -v bundle >/dev/null 2>&1; then
+  echo "bundle not found; skipping bin/ci pre-push hook" >&2
+  exit 0
+fi
+
+if [ ! -x "$repo_root/bin/ci" ]; then
+  echo "bin/ci not found or not executable; skipping pre-push hook" >&2
+  exit 0
+fi
+
+echo "Running bin/ci before push..."
+bundle exec bin/ci

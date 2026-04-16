@@ -1,0 +1,123 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+concurrency:
+  group: release-${{ github.ref_name }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Deploy production and publish release
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate release tag
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ ! "${GITHUB_REF_NAME}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Production releases must use stable semver tags like v1.0.11."
+            exit 1
+          fi
+
+      - name: Resolve release range
+        id: release_range
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git fetch origin main --tags
+
+          tag_commit="$(git rev-list -n 1 "${GITHUB_REF_NAME}")"
+
+          if git merge-base --is-ancestor "$tag_commit" "origin/main"; then
+            echo "Releasing ${GITHUB_REF_NAME} from ${tag_commit}."
+          else
+            echo "Refusing to release ${GITHUB_REF_NAME} because it is not reachable from origin/main."
+            exit 1
+          fi
+
+          previous_tag="$(
+            git tag --list "v*" --sort=-version:refname |
+              grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' |
+              grep -Fxv "${GITHUB_REF_NAME}" |
+              head -n 1 || true
+          )"
+
+          echo "tag_commit=${tag_commit}" >> "$GITHUB_OUTPUT"
+          echo "previous_tag=${previous_tag}" >> "$GITHUB_OUTPUT"
+
+      - name: Build release notes preamble
+        shell: bash
+        env:
+          PREVIOUS_TAG: ${{ steps.release_range.outputs.previous_tag }}
+        run: |
+          set -euo pipefail
+
+          {
+            echo "## Commits"
+            echo
+
+            if [ -n "${PREVIOUS_TAG}" ]; then
+              echo "Changes since \`${PREVIOUS_TAG}\`:"
+              echo
+              git log --reverse --pretty=format:'- %h %s' "${PREVIOUS_TAG}..${GITHUB_REF_NAME}"
+            else
+              echo "Initial release in the GitHub Releases flow."
+              echo
+              git log -1 --pretty=format:'- %h %s' "${GITHUB_REF_NAME}"
+            fi
+          } > release-notes-preamble.md
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+
+      - name: Deploy with Kamal
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
+          HONEYBADGER_API_KEY: ${{ secrets.HONEYBADGER_API_KEY }}
+        run: bundle exec kamal deploy
+
+      - name: Create GitHub release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          notes="$(cat release-notes-preamble.md)"
+
+          if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
+            echo "GitHub Release already exists for ${GITHUB_REF_NAME}; skipping create."
+          else
+            gh release create "${GITHUB_REF_NAME}" \
+              --verify-tag \
+              --title "${GITHUB_REF_NAME}" \
+              --generate-notes \
+              --notes "${notes}"
+          fi

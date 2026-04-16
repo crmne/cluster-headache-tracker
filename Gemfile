@@ -62,31 +62,17 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
+  # Audits gems for known security defects
+  gem "bundler-audit", require: false
+
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  # START: Overcommit git hooks
-  gem "overcommit", require: false
-
-  # Check for optimizable images
-  gem "image_optim_rails", require: false
-  gem "image_optim_pack", require: false
-
-  # Rails Code Analysis tool
-  gem "rails_best_practices", require: false
-
-  # ERBLint
-  gem "erb_lint", require: false
-
-  # License Finder
-  gem "license_finder", require: false
-
   # Flay
   gem "flay", require: false
-  # END: Overcommit git hooks
 
   # Load dotenv
   gem "dotenv"

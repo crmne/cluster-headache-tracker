@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage: script/release VERSION
+
+Create and push an annotated production release tag from origin/main.
+
+Examples:
+  script/release 1.0.11
+  script/release v1.0.11
+EOF
+}
+
+if [ "${1:-}" = "--help" ] || [ "${1:-}" = "-h" ]; then
+  usage
+  exit 0
+fi
+
+if [ "$#" -ne 1 ]; then
+  usage
+  exit 1
+fi
+
+tag="v${1#v}"
+
+if [[ ! "${tag}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+  echo "Release tags must use stable semver, for example v1.0.11."
+  exit 1
+fi
+
+if [ -n "$(git status --porcelain)" ]; then
+  echo "Working tree is dirty. Commit or stash changes before releasing."
+  exit 1
+fi
+
+git fetch origin main --tags
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+if [ "${branch}" != "main" ]; then
+  echo "Check out main before releasing."
+  exit 1
+fi
+
+head_sha="$(git rev-parse HEAD)"
+remote_main_sha="$(git rev-parse origin/main)"
+
+if [ "${head_sha}" != "${remote_main_sha}" ]; then
+  echo "HEAD does not match origin/main. Pull or push main before releasing."
+  exit 1
+fi
+
+if git rev-parse "${tag}" >/dev/null 2>&1 || git ls-remote --tags origin "${tag}" | grep -q .; then
+  echo "Tag ${tag} already exists."
+  exit 1
+fi
+
+git tag -a "${tag}" -m "${tag}"
+git push origin "${tag}"
+
+echo "Pushed ${tag}. GitHub Actions will deploy production and publish the GitHub Release."

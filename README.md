@@ -71,7 +71,12 @@ Both apps provide the same features as the web application in a native mobile in
    npm install
    ```
 
-3. Set up environment variables:
+3. Configure the pre-push hook:
+   ```
+   bin/setup-git-hooks
+   ```
+
+4. Set up environment variables:
    Create a `.env` file in the root directory and add the following variables:
    ```
    RAILS_MASTER_KEY=your_master_key
@@ -79,7 +84,7 @@ Both apps provide the same features as the web application in a native mobile in
    HONEYBADGER_API_KEY=your_honeybadger_api_key
    ```
 
-4. Provision the local PostgreSQL role:
+5. Provision the local PostgreSQL role:
    ```
    bin/rails db:setup_roles
    ```
@@ -90,35 +95,61 @@ Both apps provide the same features as the web application in a native mobile in
    ./bin/pg_add_user.sh cluster_headache_tracker
    ```
 
-5. Set up the database:
+6. Set up the database:
    ```
    bin/rails db:prepare
    ```
 
-6. Start the development server:
+7. Start the development server:
    ```
    bin/dev
    ```
 
-7. Visit `http://localhost:3000` in your browser to see the application running locally.
+8. Visit `http://localhost:3000` in your browser to see the application running locally.
 
 ## 🧪 Running Tests
 
 To run the test suite:
 
 ```
-rails test
-rails test:system
+bin/rails test
+bin/rails test:system
 ```
+
+For the full local CI pipeline, run:
+
+```
+bin/ci
+```
+
+The pre-push hook installed by `bin/setup-git-hooks` runs `bin/ci` automatically.
 
 ## 🚢 Deployment
 
-This project uses Kamal for deployment. To deploy:
+This project uses Kamal for deployment.
+
+Production releases are tag-driven:
+
+```
+script/release 1.0.11
+```
+
+That script creates and pushes an annotated `v1.0.11` tag from `origin/main`. GitHub Actions then deploys that tag to production with Kamal and publishes a GitHub Release with generated notes plus the commit list since the previous release.
+
+Pushes to `main` no longer deploy production automatically.
+
+If you need an emergency manual deploy, you can still run:
+
+```
+dotenv kamal deploy
+```
+
+To deploy manually:
 
 1. Set up your deployment configuration in `config/deploy.yml`.
 2. Run:
    ```
-   kamal deploy
+   bundle exec kamal deploy
    ```
 
 ## 🤝 Contributing

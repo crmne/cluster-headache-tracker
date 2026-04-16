@@ -1,0 +1,10 @@
+name: CI (PR) [disabled]
+
+on:
+  workflow_dispatch:
+
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "PR CI disabled; run tests manually if needed."
