@@ -24,24 +24,24 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
 
   test "should generate share link" do
     assert_difference("ShareToken.count") do
-      post generate_share_link_url
+      post share_link_url
     end
     assert_redirected_to headache_logs_url
     assert_equal "Share link generated successfully.", flash[:notice]
   end
 
   test "should expire share link" do
-    ShareToken.destroy_all  # Clear any existing tokens
+    ShareToken.destroy_all
     @user.generate_share_token
     assert_difference("ShareToken.count", -1) do
-      delete expire_share_link_url
+      delete share_link_url
     end
     assert_redirected_to headache_logs_url
     assert_equal "Share link has been expired.", flash[:notice]
   end
 
   test "should export logs to CSV" do
-    get export_headache_logs_url(format: :csv)
+    get headache_log_export_url(format: :csv)
     assert_response :success
     assert_equal "text/csv", @response.content_type
     assert_match /start_time,end_time,intensity,medication,triggers,notes/, response.body
@@ -49,8 +49,8 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
 
   test "should import logs from CSV" do
     file = fixture_file_upload("test/fixtures/files/sample_logs.csv", "text/csv")
-    assert_difference("HeadacheLog.count", 3) do  # Changed from 1 to 3
-      post import_headache_logs_url, params: { file: file }
+    assert_difference("HeadacheLog.count", 3) do
+      post headache_log_import_url, params: { file: file }
     end
     assert_redirected_to headache_logs_url
     assert_match /Successfully imported/, flash[:notice]

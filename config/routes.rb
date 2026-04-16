@@ -30,21 +30,16 @@ Rails.application.routes.draw do
   # Shared Logs
   get "shared_logs/:token", to: "shared_logs#index", as: :shared_logs
 
-  # Share Link
-  post "generate_share_link", to: "headache_logs#generate_share_link"
-  delete "expire_share_link", to: "headache_logs#expire_share_link"
-
   # Charts
   get "charts/index"
   get "charts", to: "charts#index"
 
-  resources :headache_logs do
-    collection do
-      get :export
-      post :import
-      get :print
-    end
-  end
+  resource :share_link, only: %i[ create destroy ]
+  resource :headache_log_export, only: :show
+  resource :headache_log_import, only: :create
+  resource :headache_log_print, only: :show
+
+  resources :headache_logs
 
   resource :settings, only: [ :show ], controller: "users/settings" do
     patch :update_username

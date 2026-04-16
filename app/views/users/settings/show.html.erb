@@ -24,11 +24,11 @@
           <%= heroicon "arrow-up-tray", variant: "mini", class: "w-4 h-4" %>
           Import CSV
         </button>
-        <%= link_to export_headache_logs_path(format: :csv),
+        <%= link_to headache_log_export_path(format: :csv),
                     class: "btn btn-primary btn-sm",
                     data: {
                       controller: "download",
-                      download_url_value: export_headache_logs_path(format: :csv),
+                      download_url_value: headache_log_export_path(format: :csv),
                       action: "click->download#export"
                     } do %>
           <%= heroicon "arrow-down-tray", variant: "mini", class: "w-4 h-4" %>
@@ -124,7 +124,7 @@
       <p class="text-xs text-base-content/70 mt-2">Any CSV file exported from Cluster Headache Tracker will work.</p>
     </div>
 
-    <%= form_tag import_headache_logs_path, multipart: true do %>
+    <%= form_tag headache_log_import_path, multipart: true do %>
       <div class="bg-base-200/50 rounded-lg p-3">
         <h4 class="text-sm font-semibold mb-2">Select File</h4>
         <%= file_field_tag :file, accept: '.csv', class: "file-input file-input-bordered file-input-sm w-full" %>

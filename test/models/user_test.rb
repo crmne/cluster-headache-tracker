@@ -30,4 +30,14 @@ class UserTest < ActiveSupport::TestCase
       assert_equal @user, token.user
     end
   end
+
+  test "should return current share token" do
+    @user.save
+    expired_token = @user.generate_share_token
+    expired_token.update!(expires_at: 1.day.ago)
+
+    current_token = @user.generate_share_token
+
+    assert_equal current_token, @user.current_share_token
+  end
 end

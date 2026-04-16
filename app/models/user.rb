@@ -16,8 +16,16 @@ class User < ApplicationRecord
     false
   end
 
+  def current_share_token
+    share_tokens.active.order(created_at: :desc).first
+  end
+
   def generate_share_token
-    share_tokens.create
+    share_tokens.create!
+  end
+
+  def expire_share_link
+    share_tokens.destroy_all
   end
 
   def will_save_change_to_email?
