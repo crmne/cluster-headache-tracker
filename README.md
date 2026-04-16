@@ -1,10 +1,24 @@
-# Cluster Headache Tracker
+<div align="center">
+  <img src="app/assets/images/logo_small@2x.png" alt="Cluster Headache Tracker" width="96" height="96">
 
-Cluster Headache Tracker is an open source Rails app for logging cluster headache attacks, reviewing patterns over time, and sharing data with doctors.
+  <h1>Cluster Headache Tracker</h1>
+
+  <p><strong>Fast cluster headache logging, useful charts, and shareable reports.</strong></p>
+
+  <p>Built by someone with cluster headaches who wanted a better tool.</p>
+
+  <p>
+    <a href="https://github.com/crmne/cluster-headache-tracker/actions/workflows/ci-main.yml"><img src="https://github.com/crmne/cluster-headache-tracker/actions/workflows/ci-main.yml/badge.svg?branch=main" alt="CI"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/github/license/crmne/cluster-headache-tracker" alt="License"></a>
+    <a href="https://github.com/sponsors/crmne"><img src="https://img.shields.io/github/sponsors/crmne?label=Sponsor&logo=github" alt="Sponsor"></a>
+  </p>
+</div>
+
+---
+
+Cluster Headache Tracker is an open source Rails app for logging attacks, reviewing patterns over time, and sharing data with doctors.
 
 The public app lives at [clusterheadachetracker.com](https://clusterheadachetracker.com). This repository contains the web application behind it.
-
-It was built by someone with cluster headaches who wanted faster logging and more useful reports than the existing options.
 
 ## Why it exists
 
@@ -20,9 +34,9 @@ The app is privacy-focused, runs in Germany, and is available on the web, as a P
 
 ## Demo
 
-Watch the product demo on YouTube:
+[![Watch the demo](https://img.youtube.com/vi/4HlsqANZdv8/maxresdefault.jpg)](https://youtu.be/4HlsqANZdv8)
 
-[Cluster Headache Tracker Demo](https://youtu.be/4HlsqANZdv8)
+If you want to see the product before running it locally, start there.
 
 ## Mobile apps
 
@@ -135,11 +149,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Support
 
+Bug reports and feature requests are welcome in [GitHub Issues](https://github.com/crmne/cluster-headache-tracker/issues).
+
 If the app is useful to you, you can support development here:
 
-[![Sponsor on GitHub](https://img.shields.io/github/sponsors/crmne?label=Sponsor&logo=github)](https://github.com/sponsors/crmne)
-
-Bug reports and feature requests are welcome in [GitHub Issues](https://github.com/crmne/cluster-headache-tracker/issues).
+[GitHub Sponsors](https://github.com/sponsors/crmne)
 
 ## License
 
