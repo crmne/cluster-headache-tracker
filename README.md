@@ -1,173 +1,146 @@
-# 🧠 Cluster Headache Tracker
+# Cluster Headache Tracker
 
-Cluster Headache Tracker is a free, open-source web application designed to help individuals suffering from cluster headaches track and manage their condition. By providing detailed logging, visual insights, and easy sharing with healthcare providers, this tool aims to improve the understanding and treatment of cluster headaches.
+Cluster Headache Tracker is an open source Rails app for logging cluster headache attacks, reviewing patterns over time, and sharing data with doctors.
 
-## 💝 Support the Project
+The public app lives at [clusterheadachetracker.com](https://clusterheadachetracker.com). This repository contains the web application behind it.
 
-If you find Cluster Headache Tracker helpful in managing your condition, please consider supporting its development:
+It was built by someone with cluster headaches who wanted faster logging and more useful reports than the existing options.
 
-[![Sponsor on GitHub](https://img.shields.io/github/sponsors/crmne?label=Sponsor&logo=github)](https://github.com/sponsors/crmne)
+## Why it exists
 
-Your support helps keep this tool free and continuously improving for the cluster headache community.
+This project was built to make tracking cluster headaches less frustrating:
 
-## 🎥 Demo
+- fast attack logging
+- charts based on the same data you enter day to day
+- CSV import and export
+- expiring share links for doctors or family
+- username-based accounts instead of email-based signup
 
-[![Cluster Headache Tracker Demo](https://img.youtube.com/vi/4HlsqANZdv8/maxresdefault.jpg)](https://youtu.be/4HlsqANZdv8)
+The app is privacy-focused, runs in Germany, and is available on the web, as a PWA, and through native mobile shells.
 
-## 🚀 Getting Started
+## Demo
 
-Visit [https://clusterheadachetracker.com](https://clusterheadachetracker.com) to create a free account and start tracking your cluster headaches.
+Watch the product demo on YouTube:
 
-## 📱 Mobile Apps
+[Cluster Headache Tracker Demo](https://youtu.be/4HlsqANZdv8)
 
-### iOS App (Beta)
-We have a beta version of our iOS app available through TestFlight! This native app provides the best possible experience for iOS users.
-- [Download the iOS Beta App](https://testflight.apple.com/join/GJsAQqz2)
-- [Contribute to the iOS Beta App](https://github.com/crmne/cluster-headache-tracker-ios)
+## Mobile apps
 
-### Android App (Beta)
-The Beta Android app is available for direct download from our website:
-- [Download the Android Beta App](https://clusterheadachetracker.com/cluster-headache-tracker.apk?v=1.0.11)
-- [Contribute to the Android Beta App](https://github.com/crmne/cluster-headache-tracker-android)
+### iOS
 
-Both apps provide the same features as the web application in a native mobile interface:
-- Quick logging during attacks
-- Automatic time filling
-- Real-time attack duration tracking
-- Charts and statistics
-- Easy sharing with doctors
+- [Install the beta on TestFlight](https://testflight.apple.com/join/GJsAQqz2)
+- [iOS source code](https://github.com/crmne/cluster-headache-tracker-ios)
 
-## ✨ Features
+### Android
 
-- 📝 **Smart Logging**: Auto-fills current time, just slide for intensity during attacks
-- ⏱️ **Attack Tracking**: Real-time duration timer for ongoing attacks
-- 📊 **Visual Insights**: Interactive charts showing attack patterns and predicting cluster period endings
-- 🩺 **Doctor's View**: Generate shareable reports that have helped many users get oxygen therapy approved
-- 💾 **Data Import/Export**: Easy CSV import/export for backup or analysis
-- 🔒 **Secure & Private**: Encrypted data stored in Germany, no email required
-- 🇪🇺 **EU-Based**: Full compliance with strict EU data protection regulations
-- 📱 **Native Apps**: Dedicated apps for iOS and Android
-- 🌟 **Open Source**: Free forever, community-driven development
+- [Download the beta APK](https://clusterheadachetracker.com/cluster-headache-tracker.apk?v=1.0.11)
+- [Android source code](https://github.com/crmne/cluster-headache-tracker-android)
 
-## 💻 Development Setup
+## Running locally
 
-### Prerequisites
+Prerequisites:
 
 - Ruby 3.4.2
 - PostgreSQL
 - Node.js
 
-### Setup Instructions
+Clone the repository and install dependencies:
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/crmne/cluster-headache-tracker.git
-   cd cluster-headache-tracker
-   ```
-
-2. Install dependencies:
-   ```
-   bundle install
-   npm install
-   ```
-
-3. Configure the pre-push hook:
-   ```
-   bin/setup-git-hooks
-   ```
-
-4. Set up environment variables:
-   Create a `.env` file in the root directory and add the following variables:
-   ```
-   RAILS_MASTER_KEY=your_master_key
-   POSTGRES_PASSWORD=your_database_password
-   HONEYBADGER_API_KEY=your_honeybadger_api_key
-   ```
-
-5. Provision the local PostgreSQL role:
-   ```
-   bin/rails db:setup_roles
-   ```
-   This creates the `cluster_headache_tracker` role plus the development and test databases using `POSTGRES_PASSWORD` from your environment or `.env`.
-
-   If you prefer a simpler manual fallback, use:
-   ```
-   ./bin/pg_add_user.sh cluster_headache_tracker
-   ```
-
-6. Set up the database:
-   ```
-   bin/rails db:prepare
-   ```
-
-7. Start the development server:
-   ```
-   bin/dev
-   ```
-
-8. Visit `http://localhost:3000` in your browser to see the application running locally.
-
-## 🧪 Running Tests
-
-To run the test suite:
-
+```bash
+git clone https://github.com/crmne/cluster-headache-tracker.git
+cd cluster-headache-tracker
+bundle install
+npm install
 ```
+
+Create a `.env` file with the values you need locally:
+
+```bash
+RAILS_MASTER_KEY=...
+POSTGRES_PASSWORD=...
+HONEYBADGER_API_KEY=...
+```
+
+Set up PostgreSQL:
+
+```bash
+bin/rails db:setup_roles
+```
+
+That creates the `cluster_headache_tracker` role plus the development and test databases using `POSTGRES_PASSWORD` from your environment.
+
+If you prefer the older manual fallback:
+
+```bash
+./bin/pg_add_user.sh cluster_headache_tracker
+```
+
+Install the repo hook and boot the app:
+
+```bash
+bin/setup-git-hooks
+bin/setup
+```
+
+`bin/setup` installs gems if needed, prepares the database, clears old logs and temp files, and then starts `bin/dev`.
+
+The app runs at `http://localhost:3000`.
+
+If you want a local seeded user, set `SEED_USER_USERNAME` and `SEED_USER_PASSWORD` and run:
+
+```bash
+bin/rails db:seed
+```
+
+## Tests and CI
+
+For normal development:
+
+```bash
 bin/rails test
 bin/rails test:system
 ```
 
-For the full local CI pipeline, run:
+For the full local CI pipeline:
 
-```
+```bash
 bin/ci
 ```
 
-The pre-push hook installed by `bin/setup-git-hooks` runs `bin/ci` automatically.
+`bin/ci` runs setup, linting, security checks, migration checks, the test suite, and system tests. The pre-push hook installed by `bin/setup-git-hooks` runs it automatically before pushes.
 
-## 🚢 Deployment
+## Deployment
 
-This project uses Kamal for deployment.
+Deploys are tag-driven.
 
-Production releases are tag-driven:
+Create a release tag from `origin/main` with:
 
-```
+```bash
 script/release 1.0.11
 ```
 
-That script creates and pushes an annotated `v1.0.11` tag from `origin/main`. GitHub Actions then deploys that tag to production with Kamal and publishes a GitHub Release with generated notes plus the commit list since the previous release.
+That pushes an annotated `v1.0.11` tag. GitHub Actions then deploys that tag to production with Kamal and creates a GitHub Release.
 
-Pushes to `main` no longer deploy production automatically.
+Pushes to `main` do not deploy production.
 
-If you need an emergency manual deploy, you can still run:
+If you need to deploy manually:
 
+```bash
+bundle exec kamal deploy
 ```
-dotenv kamal deploy
-```
 
-To deploy manually:
+## Contributing
 
-1. Set up your deployment configuration in `config/deploy.yml`.
-2. Run:
-   ```
-   bundle exec kamal deploy
-   ```
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## 🤝 Contributing
+## Support
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for more details on how to get started.
+If the app is useful to you, you can support development here:
 
-## 📄 License
+[![Sponsor on GitHub](https://img.shields.io/github/sponsors/crmne?label=Sponsor&logo=github)](https://github.com/sponsors/crmne)
 
-Cluster Headache Tracker is released under the [GNU General Public License v3.0 (GPL-3.0)](LICENSE).
+Bug reports and feature requests are welcome in [GitHub Issues](https://github.com/crmne/cluster-headache-tracker/issues).
 
-## 🔒 Privacy
+## License
 
-We take your privacy seriously. Cluster Headache Tracker does not collect or store any personally identifiable information. Users are identified by a username only, not an email address. All data is stored on servers located in Germany, ensuring compliance with strict EU data protection regulations.
-
-## 🆘 Support
-
-If you encounter any issues or have questions, please [open an issue](https://github.com/crmne/cluster_headache_tracker/issues) on GitHub.
-
-## 🙏 Acknowledgements
-
-Thank you to all the contributors and users who help make this project better every day.
+Released under the [GNU General Public License v3.0](LICENSE).
