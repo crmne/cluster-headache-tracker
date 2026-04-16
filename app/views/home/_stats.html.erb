@@ -1,19 +1,39 @@
-<div class="stats stats-vertical md:stats-horizontal shadow my-8 bg-base-100 text-primary">
-  <div class="stat">
-    <div class="stat-figure">
-      <%= heroicon "user-group", class: "w-8 h-8" %>
+<section class="py-16 bg-primary text-primary-content sm:py-20">
+  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold sm:text-4xl xl:text-5xl">
+        Built for sufferers, by a sufferer.
+      </h2>
+      <p class="mt-6 text-lg opacity-80 max-w-2xl mx-auto">
+        Most headache apps are built by people who've never had a cluster
+        headache. I built this during a cycle. Every feature was tested
+        mid-attack. If it wasn't simple enough at 3am with a KIP-10, it didn't
+        make the cut.
+      </p>
     </div>
-    <div class="stat-title">Active Users</div>
-    <div class="stat-value"><%= @users_count %>+</div>
-    <div class="stat-desc">Tracking their headaches</div>
-  </div>
 
-  <div class="stat">
-    <div class="stat-figure">
-      <%= heroicon "document-chart-bar", class: "w-8 h-8" %>
+    <div class="grid grid-cols-1 mt-14 text-center gap-y-10 gap-x-8 sm:grid-cols-3">
+      <div class="px-4">
+        <p class="text-5xl font-bold">1 tap</p>
+        <p class="mt-4 text-lg opacity-80">
+          to log during hell. Add details when you're human again.
+        </p>
+      </div>
+
+      <div class="px-4">
+        <p class="text-5xl font-bold">Real data</p>
+        <p class="mt-4 text-lg opacity-80">
+          Clean reports that got real people oxygen approved.
+        </p>
+      </div>
+
+      <div class="px-4">
+        <p class="text-5xl font-bold">Your patterns</p>
+        <p class="mt-4 text-lg opacity-80">
+          Charts that actually show your cycles, triggers, and treatment
+          effectiveness.
+        </p>
+      </div>
     </div>
-    <div class="stat-title">Headaches Logged</div>
-    <div class="stat-value"><%= @logs_count %>+</div>
-    <div class="stat-desc">And growing every day</div>
   </div>
-</div>
+</section>

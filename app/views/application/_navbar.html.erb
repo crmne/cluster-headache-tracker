@@ -1,12 +1,12 @@
-<nav class="navbar bg-primary text-primary-content drop-shadow z-50 pt-safe-offset-2 fixed top-0 print:hidden <%= 'hidden' if native_app_with_tabs? %>">
+<nav class="navbar bg-base-100 border-b border-base-content/10 z-50 pt-safe-offset-2 fixed top-0 print:hidden <%= 'hidden' if native_app_with_tabs? %>">
   <div class="navbar-start">
     <% unless hotwire_native_app? %>
-      <div class="dropdown">
+      <div class="dropdown lg:hidden">
         <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
           <%= heroicon "bars-3-bottom-left", class: "w-5 h-5" %>
         </div>
         <ul tabindex="0"
-            class="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-primary rounded-box w-52">
+            class="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52">
           <% if user_signed_in? %>
             <li><%= link_to headache_logs_path do %><%= heroicon "calendar-days", variant: "micro" %> Logs<% end %></li>
             <li><%= link_to charts_path do %><%= heroicon "chart-bar", variant: "micro" %> Charts<% end %></li>
@@ -27,8 +27,8 @@
             <% end %>
           </li>
           <li>
-            <%= link_to "https://buymeacoffee.com/crmne", target: "_blank", rel: "noopener noreferrer" do %>
-              <%= heroicon "heart", variant: "micro" %> Support Project
+            <%= link_to "https://github.com/sponsors/crmne", target: "_blank", rel: "noopener noreferrer" do %>
+              <%= heroicon "heart", variant: "micro" %> Sponsor
             <% end %>
           </li>
 
@@ -50,33 +50,57 @@
         </ul>
       </div>
     <% end %>
-    <%= link_to user_signed_in? ? headache_logs_path : root_path, class: "btn btn-ghost" do %>
-      <%= image_tag "logo_small.png", size: 32 %> <span class="hidden md:block">Cluster Headache Tracker</span>
-    <% end %>
+
+    <div class="flex items-center">
+      <%= link_to user_signed_in? ? headache_logs_path : root_path, class: "btn btn-ghost gap-2" do %>
+        <%= image_tag "logo_small.png", size: 32 %>
+        <span class="font-bold text-sm sm:text-base <%= 'hidden sm:inline' if content_for?(:navbar) %>">Cluster Headache Tracker</span>
+      <% end %>
+
+      <% if !hotwire_native_app? && static_page? %>
+        <div class="hidden lg:flex ml-1">
+          <ul class="menu menu-horizontal px-0 text-sm">
+            <li><%= link_to "FAQ", faq_path %></li>
+            <li><%= link_to "For Neurologists", neurologist_path %></li>
+            <li><%= link_to "GitHub", "https://github.com/crmne/cluster_headache_tracker", target: "_blank", rel: "noopener noreferrer" %></li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
   </div>
+
   <div class="navbar-center">
     <span class="font-black text-lg"><%= content_for(:navbar) %></span>
   </div>
+
   <div class="navbar-end">
-      <% if content_for? :force_navbar_button %>
-        <%= yield :force_navbar_button %>
-      <% elsif user_signed_in? and native_app_with_tabs? %>
-        <%= yield :hotwire_button %>
-      <% elsif user_signed_in? and hotwire_native_app? %>
-        <%= yield :hotwire_button %>
-      <% elsif user_signed_in? and not hotwire_native_app? %>
-        <% if content_for? :web_button %>
-          <%= yield :web_button %>
-        <% else %>
-          <div class="flex items-center gap-4 px-2">
-            <%= link_to current_user.username, settings_path, class: "btn btn-primary" %>
-          </div>
-        <% end %>
+    <% if content_for? :force_navbar_button %>
+      <%= yield :force_navbar_button %>
+    <% elsif user_signed_in? and native_app_with_tabs? %>
+      <%= yield :hotwire_button %>
+    <% elsif user_signed_in? and hotwire_native_app? %>
+      <%= yield :hotwire_button %>
+    <% elsif user_signed_in? and not hotwire_native_app? %>
+      <% if content_for? :web_button %>
+        <%= yield :web_button %>
       <% else %>
-        <div class="flex items-center gap-4">
-          <%= link_to "Sign In", new_user_session_path, class: "btn-primary" %>
-          <%= link_to "Sign Up", new_user_registration_path, class: "btn" %>
+        <div class="flex items-center gap-3">
+          <%= link_to settings_path, class: "hidden md:flex items-center gap-2 hover:opacity-80 transition-opacity" do %>
+            <span class="text-sm font-semibold"><%= current_user.username %></span>
+          <% end %>
+          <%= link_to new_headache_log_path, class: "btn btn-primary" do %>
+            New
+            <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
+          <% end %>
         </div>
       <% end %>
+    <% else %>
+      <div class="flex items-center gap-3">
+        <%= link_to "Login", new_user_session_path, class: "hidden sm:inline-flex" %>
+        <%= link_to new_user_registration_path, class: "btn btn-primary" do %>
+          Get Started
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </nav>

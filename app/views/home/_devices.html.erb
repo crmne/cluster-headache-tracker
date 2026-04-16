@@ -1,0 +1,37 @@
+<section class="py-16 bg-base-100 sm:py-20">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold sm:text-4xl xl:text-5xl">
+        Use it anywhere.
+      </h2>
+    </div>
+
+    <div class="prose prose-lg mx-auto mb-10">
+      <p>
+        Attack at work? Track on your phone. In bed at 3am? Grab your tablet.
+        At the doctor's office? Pull up the web version.
+      </p>
+      <p>
+        Everything syncs instantly. Start on one device, finish on another.
+        Your data follows you.
+      </p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://testflight.apple.com/join/GJsAQqz2" target="_blank" rel="noopener noreferrer"
+         class="btn btn-lg btn-neutral">
+        <%= icon "ios", class: "w-6 h-6", fill: "currentColor" %>
+        iOS App (Beta)
+      </a>
+      <a href="<%= android_apk_url %>" target="_blank" rel="noopener noreferrer"
+         class="btn btn-lg btn-success">
+        <%= icon "android", class: "w-6 h-6", fill: "currentColor" %>
+        Android App (Beta)
+      </a>
+      <%= link_to new_user_registration_path, class: "btn btn-lg btn-primary" do %>
+        <%= heroicon "globe-alt", variant: "mini", class: "w-6 h-6" %>
+        Web App
+      <% end %>
+    </div>
+  </div>
+</section>

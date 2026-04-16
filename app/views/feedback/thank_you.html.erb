@@ -1,21 +1,21 @@
 <% content_for :title, "Thank You!" %>
 <% content_for :navbar, "Thank You!" %>
 <% content_for :web_button do %>
-  <%= link_to "https://buymeacoffee.com/crmne", class: "btn", target: "_blank", rel: "noopener noreferrer" do %>
+  <%= link_to "https://github.com/sponsors/crmne", class: "btn btn-primary", target: "_blank", rel: "noopener noreferrer" do %>
+    Sponsor
     <%= heroicon "heart", variant: "mini", class: "w-4 h-4" %>
-    Donate
   <% end %>
 <% end %>
 <% content_for :hotwire_button do %>
-  <%= link_to "https://buymeacoffee.com/crmne", class: "btn",
+  <%= link_to "https://github.com/sponsors/crmne", class: "btn btn-primary",
       target: "_blank",
       rel: "noopener noreferrer",
       data: {
         controller: "bridge--button",
-        bridge_title: "Donate"
+        bridge_title: "Sponsor"
       } do %>
+    Sponsor
     <%= heroicon "heart", variant: "mini", class: "w-4 h-4" %>
-    Donate
   <% end %>
 <% end %>
 
@@ -87,7 +87,7 @@
       <div class="card-body">
         <h3 class="card-title text-lg">Support Development</h3>
         <p class="text-sm text-base-content/70">This tool is free and will always be free. If it's helped you, consider supporting its development.</p>
-        <%= link_to "Donate →", "https://buymeacoffee.com/crmne", class: "btn btn-sm btn-primary mt-2", target: "_blank", rel: "noopener noreferrer" %>
+        <%= link_to "Sponsor →", "https://github.com/sponsors/crmne", class: "btn btn-sm btn-primary mt-2", target: "_blank", rel: "noopener noreferrer" %>
       </div>
     </div>
   </div>

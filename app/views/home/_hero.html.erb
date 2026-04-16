@@ -1,0 +1,96 @@
+<section class="pt-12 pb-16 sm:pb-20 lg:pt-8 xl:pt-16 bg-base-200 overflow-hidden">
+  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="grid max-w-6xl grid-cols-1 mx-auto lg:max-w-full lg:items-center lg:grid-cols-2 gap-y-12 lg:gap-x-16">
+      <div>
+        <div class="text-center lg:text-left">
+          <h1 class="text-2xl font-bold leading-tight sm:text-4xl md:text-5xl lg:text-6xl lg:leading-tight">
+            Wrestling with cluster headaches?
+            <span class="text-primary">Tracking shouldn't add to the pain.</span>
+          </h1>
+
+          <p class="mt-6 text-base sm:text-lg opacity-70 max-w-xl mx-auto lg:mx-0">
+            Most headache apps don't get it. Too complex when you can't see
+            straight. Useless for oxygen approval. We're different.
+          </p>
+
+          <div class="flex gap-8 justify-center lg:justify-start mt-8 text-sm">
+            <div>
+              <span class="text-2xl font-bold text-primary"><%= @users_count %>+</span>
+              <span class="opacity-70">people tracking</span>
+            </div>
+            <div>
+              <span class="text-2xl font-bold text-primary"><%= number_with_delimiter(@logs_count) %></span>
+              <span class="opacity-70">attacks logged</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 justify-center lg:justify-start">
+            <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-lg btn-primary" do %>
+              <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
+              Start Tracking Free
+            <% end %>
+
+            <div class="flex flex-wrap gap-3">
+              <a href="https://testflight.apple.com/join/GJsAQqz2" target="_blank" rel="noopener noreferrer"
+                 class="btn btn-lg btn-outline">
+                <%= icon "ios", class: "w-5 h-5", fill: "currentColor" %>
+                iOS
+              </a>
+              <a href="<%= android_apk_url %>" target="_blank" rel="noopener noreferrer"
+                 class="btn btn-lg btn-outline">
+                <%= icon "android", class: "w-5 h-5", fill: "currentColor" %>
+                Android
+              </a>
+              <a href="https://github.com/crmne/cluster_headache_tracker" target="_blank" rel="noopener noreferrer"
+                 class="btn btn-lg btn-outline gap-2">
+                <%= icon "github", class: "w-5 h-5", fill: "currentColor" %>
+                Star <span class="opacity-60 font-normal"><%= @github_stars %></span>
+              </a>
+              <a href="https://github.com/sponsors/crmne" target="_blank" rel="noopener noreferrer"
+                 class="btn btn-lg btn-outline gap-2">
+                Sponsor
+                <%= heroicon "heart", variant: "mini", class: "w-5 h-5" %>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-3 mt-10 lg:justify-start">
+          <div class="inline-flex items-center gap-2 border border-base-content/10 bg-base-100 px-4 py-2 text-sm font-medium">
+            <%= heroicon "bolt", variant: "mini", class: "w-4 h-4 text-primary" %> One-tap logging
+          </div>
+          <div class="inline-flex items-center gap-2 border border-base-content/10 bg-base-100 px-4 py-2 text-sm font-medium">
+            <%= heroicon "shield-check", variant: "mini", class: "w-4 h-4 text-primary" %> No email needed
+          </div>
+          <div class="inline-flex items-center gap-2 border border-base-content/10 bg-base-100 px-4 py-2 text-sm font-medium">
+            <%= heroicon "lock-closed", variant: "mini", class: "w-4 h-4 text-primary" %> German privacy
+          </div>
+          <div class="inline-flex items-center gap-2 border border-base-content/10 bg-base-100 px-4 py-2 text-sm font-medium">
+            <%= heroicon "heart", variant: "mini", class: "w-4 h-4 text-primary" %> Free forever
+          </div>
+        </div>
+
+      </div>
+
+      <div class="w-full max-w-2xl mx-auto lg:max-w-none lg:mx-0 lg:self-center">
+        <div class="relative overflow-hidden rounded-2xl border border-base-content/10 shadow-2xl">
+          <div class="relative w-full" style="padding-bottom: 56.25%;">
+            <iframe
+              class="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/4HlsqANZdv8?cc_load_policy=1&cc_lang_pref=en"
+              title="Cluster Headache Tracker Demo"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% if user_signed_in? %>
+  <%= turbo_stream_from current_user, "homepage" %>
+<% end %>

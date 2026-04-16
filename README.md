@@ -6,7 +6,7 @@ Cluster Headache Tracker is a free, open-source web application designed to help
 
 If you find Cluster Headache Tracker helpful in managing your condition, please consider supporting its development:
 
-[![Buy me a pizza](app/assets/images/buymeapizza.png)](https://buymeacoffee.com/crmne)
+[![Sponsor on GitHub](https://img.shields.io/github/sponsors/crmne?label=Sponsor&logo=github)](https://github.com/sponsors/crmne)
 
 Your support helps keep this tool free and continuously improving for the cluster headache community.
 

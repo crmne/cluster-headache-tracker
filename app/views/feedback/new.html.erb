@@ -1,21 +1,21 @@
 <% content_for :title, "Feedback" %>
 <% content_for :navbar, "Feedback" %>
 <% content_for :web_button do %>
-  <%= link_to "https://buymeacoffee.com/crmne", class: "btn", target: "_blank", rel: "noopener noreferrer" do %>
+  <%= link_to "https://github.com/sponsors/crmne", class: "btn btn-primary", target: "_blank", rel: "noopener noreferrer" do %>
+    Sponsor
     <%= heroicon "heart", variant: "mini", class: "w-4 h-4" %>
-    Donate
   <% end %>
 <% end %>
 <% content_for :hotwire_button do %>
-  <%= link_to "https://buymeacoffee.com/crmne", class: "btn",
+  <%= link_to "https://github.com/sponsors/crmne", class: "btn btn-primary",
       target: "_blank",
       rel: "noopener noreferrer",
       data: {
         controller: "bridge--button",
-        bridge_title: "Donate"
+        bridge_title: "Sponsor"
       } do %>
+    Sponsor
     <%= heroicon "heart", variant: "mini", class: "w-4 h-4" %>
-    Donate
   <% end %>
 <% end %>
 
