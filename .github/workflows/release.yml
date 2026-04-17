@@ -40,7 +40,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          git fetch origin main --tags
+          git fetch origin main --tags --force
 
           tag_commit="$(git rev-list -n 1 "${GITHUB_REF_NAME}")"
 
