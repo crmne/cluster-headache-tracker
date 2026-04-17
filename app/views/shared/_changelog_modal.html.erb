@@ -1,5 +1,5 @@
 <%
-  current_version = "v2.0.0"
+  current_version = "v2.1.0"
   should_show = user_signed_in? && current_user.last_seen_changelog != current_version
 %>
 
@@ -7,8 +7,8 @@
   <dialog id="changelogModal" class="modal" data-controller="changelog share-link bridge--share" data-changelog-version-value="<%= current_version %>">
     <div class="modal-box max-w-md">
       <div class="text-center mb-4">
-        <h3 class="text-xl font-bold mb-1">Everything is New! 🎉</h3>
-        <p class="text-sm text-base-content/70">Version 2.0</p>
+        <h3 class="text-xl font-bold mb-1">Fresh New Look! ✨</h3>
+        <p class="text-sm text-base-content/70">Version 2.1</p>
       </div>
 
       <div class="space-y-3 mb-4">
@@ -17,18 +17,8 @@
             <%= heroicon "paint-brush", variant: "mini", class: "w-4 h-4 text-primary" %>
           </div>
           <div>
-            <h4 class="font-semibold">Completely Redesigned</h4>
-            <p class="text-xs text-base-content/70">Beautiful new interface.</p>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3">
-          <div class="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center flex-shrink-0">
-            <%= heroicon "device-phone-mobile", variant: "mini", class: "w-4 h-4 text-secondary" %>
-          </div>
-          <div>
-            <h4 class="font-semibold">New iOS & Android Apps</h4>
-            <p class="text-xs text-base-content/70">Completely new native apps.</p>
+            <h4 class="font-semibold">Redesigned Interface</h4>
+            <p class="text-xs text-base-content/70">A cleaner, more polished experience throughout the app.</p>
           </div>
         </div>
       </div>
