@@ -47,7 +47,7 @@ If you want to see the product before running it locally, start there.
 
 ### Android
 
-- [Download the beta APK](https://clusterheadachetracker.com/cluster-headache-tracker.apk?v=1.0.11)
+- [Download the beta APK](https://github.com/crmne/cluster-headache-tracker-android/releases/download/v2.1.0/cluster-headache-tracker.apk)
 - [Android source code](https://github.com/crmne/cluster-headache-tracker-android)
 
 ## Running locally

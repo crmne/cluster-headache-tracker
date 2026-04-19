@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "browserconfig" => "rails/pwa#browserconfig", as: :pwa_browserconfig, defaults: { format: :xml }
 
+  # Redirect old APK download URL to GitHub releases
+  get "cluster-headache-tracker.apk", to: redirect(AppConstants::ANDROID_APK_URL, status: 302)
+
   # Defines the root path route ("/")
   get "home/index"
   root "home#index"

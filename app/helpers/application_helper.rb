@@ -88,7 +88,7 @@ module ApplicationHelper
   end
 
   def android_apk_url
-    "/cluster-headache-tracker.apk?v=#{AppConstants::ANDROID_APK_VERSION}"
+    AppConstants::ANDROID_APK_URL
   end
 
   def native_app_version
