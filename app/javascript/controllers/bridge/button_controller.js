@@ -15,19 +15,17 @@ export default class extends BridgeComponent {
 
   #addButton() {
     const element = this.bridgeElement
-    const title = element.bridgeAttribute("title")
+    const side = element.bridgeAttribute("side") || "right"
     const iosImage = element.bridgeAttribute("ios-image")
     const androidImage = element.bridgeAttribute("android-image")
-    const data = {title, iosImage, androidImage}
+    const color = element.bridgeAttribute("color")
+    const data = {title: element.title, iosImage, androidImage, color}
 
-    this.send("connect", data, () => {
-      // Check if this is a form submit button
+    this.send(side, data, () => {
       const submitButton = this.element.querySelector('[type="submit"]')
       if (submitButton && submitButton.form) {
-        // Submit the form
         submitButton.form.requestSubmit(submitButton)
       } else {
-        // Otherwise, just click the element
         this.element.click()
       }
     })

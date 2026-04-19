@@ -83,6 +83,10 @@ module ApplicationHelper
     false
   end
 
+  def android_native_app?
+    hotwire_native_app? && request.user_agent.include?("Android")
+  end
+
   def android_apk_url
     "/cluster-headache-tracker.apk?v=#{AppConstants::ANDROID_APK_VERSION}"
   end
