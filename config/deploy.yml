@@ -37,6 +37,10 @@ aliases:
   shell: app exec --interactive --reuse "bash"
   logs: app logs -f
   dbc: app exec --interactive --reuse "bin/rails dbconsole"
+  backup: accessory exec backup "kamal-backup backup"
+  backup-check: accessory exec backup "kamal-backup check"
+  backup-evidence: accessory exec backup "kamal-backup evidence"
+  backup-logs: accessory logs backup -f
 
 volumes:
   - "cluster-headache-tracker_storage:/rails/storage"
@@ -59,3 +63,29 @@ accessories:
         - POSTGRES_PASSWORD
     directories:
       - data:/var/lib/postgresql/data
+  backup:
+    image: ghcr.io/crmne/kamal-backup:latest
+    host: clusterheadachetracker.com
+    env:
+      clear:
+        APP_NAME: cluster-headache-tracker
+        DATABASE_ADAPTER: postgres
+        PGHOST: cluster-headache-tracker-db
+        PGPORT: 5432
+        PGUSER: cluster_headache_tracker
+        PGDATABASE: cluster_headache_tracker_production
+        BACKUP_PATHS: /rails/storage
+        RESTIC_COMPRESSION: auto
+        RESTIC_INIT_IF_MISSING: "true"
+        RESTIC_FORGET_AFTER_BACKUP: "false"
+        RESTIC_CHECK_AFTER_BACKUP: "true"
+        RESTIC_CHECK_READ_DATA_SUBSET: "5%"
+        BACKUP_SCHEDULE_SECONDS: "86400"
+      secret:
+        - PGPASSWORD
+        - RESTIC_REPOSITORY
+        - RESTIC_PASSWORD
+    volumes:
+      - "cluster-headache-tracker_storage:/rails/storage:ro"
+    directories:
+      - data:/var/lib/kamal-backup
