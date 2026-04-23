@@ -1,7 +1,0 @@
-# Local targets for restore local and drill local.
-# Keep RESTIC_REPOSITORY, RESTIC_PASSWORD, and POSTGRES_PASSWORD in env.
-# When you pass -d production, kamal-backup reads source paths from the backup accessory.
-database_url: postgres://cluster_headache_tracker@localhost/cluster_headache_tracker_development
-backup_paths:
-  - storage
-state_dir: tmp/kamal-backup
