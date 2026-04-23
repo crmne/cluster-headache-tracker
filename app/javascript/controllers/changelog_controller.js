@@ -1,9 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static values = { version: String }
+  static targets = ['dismissForm']
 
   connect() {
+    this.handleCancel = this.dismiss.bind(this)
+    this.element.addEventListener('cancel', this.handleCancel)
+
     // Show the modal when the controller connects
     // Don't auto-show if welcome modal is present
     const welcomeModal = document.getElementById('welcomeModal')
@@ -12,29 +15,13 @@ export default class extends Controller {
     }
   }
 
-  acknowledge() {
-    // Update the user's last_seen_changelog via an AJAX request
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').content
+  disconnect() {
+    this.element.removeEventListener('cancel', this.handleCancel)
+  }
 
-    fetch('/settings/changelog_acknowledged', {
-      method: 'POST',
-      headers: {
-        'X-CSRF-Token': csrfToken,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        version: this.versionValue
-      })
-    })
-    .then(response => {
-      if (!response.ok) {
-        console.error('Failed to acknowledge changelog')
-      }
-    })
-    .catch(error => {
-      console.error('Error acknowledging changelog:', error)
-    })
+  dismiss(event) {
+    event.preventDefault()
+    this.dismissFormTarget.requestSubmit()
   }
 
   async share(event) {

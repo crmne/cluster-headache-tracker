@@ -84,47 +84,93 @@ module ApplicationHelper
   end
 
   def android_native_app?
-    hotwire_native_app? && request.user_agent.include?("Android")
+    current_mobile_app_platform == "android"
+  end
+
+  def ios_native_app?
+    current_mobile_app_platform == "ios"
   end
 
   def android_apk_url
-    AppConstants::ANDROID_APK_URL
+    if snapshot = MobileReleaseSnapshot.for_platform("android")
+      snapshot.release_url.presence || AppConstants::ANDROID_APK_URL
+    else
+      AppConstants::ANDROID_APK_URL
+    end
+  end
+
+  def current_mobile_app_platform
+    return unless hotwire_native_app?
+
+    request.headers["X-App-Platform"].presence&.downcase || platform_from_user_agent
   end
 
   def native_app_version
-    parts = native_app_version_parts
-    return nil unless parts
-
-    parts.join(".")
+    request.headers["X-App-Version"].presence || version_from_user_agent
   end
 
-  def android_app_needs_update?
-    return false unless hotwire_native_app? && request.user_agent.include?("Android")
+  def current_mobile_release_snapshot
+    MobileReleaseSnapshot.for_platform(current_mobile_app_platform)
+  end
 
-    current_parts = native_app_version_parts
-    # If no version found (old app), needs update
-    return true unless current_parts
-
-    # Compare versions
-    latest_parts = AppConstants::ANDROID_APK_VERSION.split(".").map(&:to_i)
-
-    # Compare major.minor.patch
-    current_parts.each_with_index do |part, index|
-      return true if part < latest_parts[index]
-      return false if part > latest_parts[index]
+  def current_mobile_app_platform_name
+    if current_mobile_app_platform == "android"
+      "Android"
+    elsif current_mobile_app_platform == "ios"
+      "iOS"
     end
+  end
 
-    false
+  def mobile_app_update_available?
+    if snapshot = current_mobile_release_snapshot
+      snapshot.update_available_for?(native_app_version)
+    else
+      false
+    end
+  end
+
+  def mobile_app_update_required?
+    if snapshot = current_mobile_release_snapshot
+      snapshot.update_required_for?(native_app_version)
+    else
+      false
+    end
+  end
+
+  def show_mobile_app_update_modal?
+    if snapshot = current_mobile_release_snapshot
+      snapshot.release_url.present? && (mobile_app_update_required? || mobile_app_update_available?)
+    else
+      false
+    end
   end
 
   private
+    def platform_from_user_agent
+      user_agent = request.user_agent.to_s
 
-  def native_app_version_parts
-    return nil unless hotwire_native_app?
+      if user_agent.include?("Android")
+        "android"
+      elsif user_agent.include?("iPhone") || user_agent.include?("iPad") || user_agent.include?("iOS")
+        "ios"
+      end
+    end
 
-    match = request.user_agent.match(/ClusterHeadacheTracker\/(\d+)\.(\d+)\.(\d+)/)
-    return nil unless match
+    def version_from_user_agent
+      user_agent = request.user_agent.to_s
 
-    [ match[1].to_i, match[2].to_i, match[3].to_i ]
-  end
+      if match = user_agent.match(/ClusterHeadacheTracker;\s*platform=\w+;\s*version=([0-9.]+);\s*build=[^;]+;?/)
+        match[1]
+      elsif match = user_agent.match(/ClusterHeadacheTracker\/([0-9]+\.[0-9]+\.[0-9]+)(?:\.[0-9]+)?;/)
+        match[1]
+      end
+    end
+
+    def native_app_version_parts
+      return nil unless hotwire_native_app?
+
+      if version = native_app_version
+        version.split(".").map(&:to_i)
+      end
+    end
 end

@@ -9,8 +9,8 @@ class Admin::DashboardController < Admin::BaseController
     @recent_users = User.order(created_at: :desc).limit(5)
 
     # Changelog stats
-    current_version = "v2.0.0"
-    @users_seen_changelog = User.where(last_seen_changelog: current_version).count
+    current_entry = ChangelogEntry.current
+    @users_seen_changelog = User.where(last_seen_changelog: current_entry.seen_keys).count
     @changelog_percentage = @total_users > 0 ? ((@users_seen_changelog.to_f / @total_users) * 100).round : 0
 
     # Feedback stats

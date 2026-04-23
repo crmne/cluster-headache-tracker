@@ -53,6 +53,11 @@ export default class extends Controller {
         const changelogModal = document.getElementById("changelogModal")
         if (changelogModal) {
           changelogModal.showModal()
+        } else {
+          const appUpdateModal = document.getElementById("appUpdateModal")
+          if (appUpdateModal) {
+            appUpdateModal.showModal()
+          }
         }
       }
     })

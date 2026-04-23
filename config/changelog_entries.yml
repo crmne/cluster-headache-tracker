@@ -1,0 +1,17 @@
+entries:
+  2026-04-fresh-look:
+    legacy_keys:
+      - v2.1.0
+    title: Fresh New Look! ✨
+    version_label: April 2026 update
+    highlight_icon: paint-brush
+    highlight_title: Redesigned Interface
+    highlight_description: A cleaner, more polished experience throughout the app.
+    note_title: Built by a fellow cluster headache sufferer
+    note_body: It's free and not enough people know this exists - please help spread the word!
+    share_url: https://clusterheadachetracker.com
+    share_title: Cluster Headache Tracker
+    share_text: I use this free app to track my cluster headaches. It just got a huge update!
+    share_label: Share with Friends
+    support_url: https://github.com/sponsors/crmne
+    support_label: Sponsor

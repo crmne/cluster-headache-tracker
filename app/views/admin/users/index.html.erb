@@ -1,5 +1,6 @@
 <% content_for :title, "Admin - Users" %>
 <% content_for :navbar, "Admin - Users" %>
+<% current_changelog_entry = ChangelogEntry.current %>
 
 <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
   <div>
@@ -96,7 +97,7 @@
             <% end %>
           </td>
           <td>
-            <% if user.last_seen_changelog == "v2.0.0" %>
+            <% if current_changelog_entry.seen_by?(user) %>
               <span class="badge badge-success">Seen</span>
             <% else %>
               <span class="badge badge-ghost">Not seen</span>

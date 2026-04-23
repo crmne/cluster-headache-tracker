@@ -1,0 +1,95 @@
+<%
+  should_show = show_mobile_app_update_modal?
+  snapshot = current_mobile_release_snapshot
+  required_update = mobile_app_update_required?
+  platform_name = current_mobile_app_platform_name
+%>
+
+<% if should_show && snapshot %>
+  <dialog id="appUpdateModal"
+          class="modal"
+          data-controller="app-update"
+          data-app-update-latest-version-value="<%= snapshot.latest_version %>"
+          data-app-update-platform-value="<%= snapshot.platform %>"
+          data-app-update-required-value="<%= required_update %>">
+    <div class="modal-box max-w-md">
+      <div class="text-center mb-4">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full mb-4">
+          <%= heroicon "arrow-down-tray", variant: "solid", class: "w-8 h-8 text-primary" %>
+        </div>
+        <h3 class="text-xl font-bold mb-1">
+          <% if required_update %>
+            Update Required
+          <% else %>
+            New <%= platform_name %> App Available!
+          <% end %>
+        </h3>
+        <p class="text-sm text-base-content/70">Version <%= snapshot.latest_version %></p>
+      </div>
+
+      <div class="space-y-3 mb-4">
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 bg-success/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <%= heroicon "device-phone-mobile", variant: "mini", class: "w-4 h-4 text-success" %>
+          </div>
+          <div>
+            <% if required_update %>
+              <h4 class="font-semibold">This version is no longer supported</h4>
+              <p class="text-xs text-base-content/70">Update the <%= platform_name %> app to keep using the latest tracker experience.</p>
+            <% else %>
+              <h4 class="font-semibold">A newer native shell is available</h4>
+              <p class="text-xs text-base-content/70">The web app keeps moving on its own, but this update improves the native wrapper around it.</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-info mb-4">
+        <%= heroicon "information-circle", variant: "outline", class: "stroke-current shrink-0 w-6 h-6" %>
+        <div>
+          <% if required_update %>
+            <p class="font-semibold">Please update before continuing.</p>
+            <p class="text-xs">The installed app version is behind the minimum supported release.</p>
+          <% else %>
+            <p class="font-semibold">This is separate from website changes.</p>
+            <p class="text-xs">Most new features arrive through Rails. This prompt is only for native app updates.</p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="modal-action flex-col gap-2">
+        <% if snapshot.release_url.present? %>
+          <%= link_to snapshot.release_url, class: "btn btn-primary w-full" do %>
+            <%= heroicon "arrow-down-tray", variant: "mini", class: "w-4 h-4" %>
+            <% if required_update %>
+              Update Now
+            <% else %>
+              Open Update
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <% if snapshot.release_notes_url.present? %>
+          <%= link_to snapshot.release_notes_url, class: "btn btn-secondary btn-sm w-full", target: "_blank", rel: "noopener noreferrer" do %>
+            <%= heroicon "newspaper", variant: "mini", class: "w-4 h-4" %>
+            View Release Notes
+          <% end %>
+        <% end %>
+
+        <% unless required_update %>
+          <form method="dialog" class="w-full">
+            <button class="btn btn-ghost btn-sm w-full" data-action="click->app-update#dismiss">
+              Remind Me Later
+            </button>
+          </form>
+        <% end %>
+      </div>
+    </div>
+
+    <% unless required_update %>
+      <form method="dialog" class="modal-backdrop">
+        <button data-action="click->app-update#dismiss">close</button>
+      </form>
+    <% end %>
+  </dialog>
+<% end %>

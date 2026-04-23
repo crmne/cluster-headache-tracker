@@ -79,6 +79,8 @@ group :development, :test do
 end
 
 group :development do
+  gem "kamal-backup", "0.1.0.pre.8"
+
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 

@@ -1,4 +1,4 @@
-<% if user_signed_in? && !current_user.has_seen_welcome %>
+<% if user_signed_in? && !current_user.has_seen_welcome && !mobile_app_update_required? %>
   <dialog id="welcomeModal" class="modal" data-controller="welcome" data-welcome-target="modal">
     <div class="modal-box max-w-md">
       <div class="text-center mb-4">

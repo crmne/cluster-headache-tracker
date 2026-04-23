@@ -1,38 +1,41 @@
 <%
-  current_version = "v2.1.0"
-  should_show = user_signed_in? && current_user.last_seen_changelog != current_version
+  entry = ChangelogEntry.current
+  should_show = user_signed_in? && !mobile_app_update_required? && !entry.seen_by?(current_user)
 %>
 
 <% if should_show %>
-  <dialog id="changelogModal" class="modal" data-controller="changelog share-link bridge--share" data-changelog-version-value="<%= current_version %>">
+  <dialog id="changelogModal"
+          class="modal"
+          data-controller="changelog share-link bridge--share"
+          >
     <div class="modal-box max-w-md">
       <div class="text-center mb-4">
-        <h3 class="text-xl font-bold mb-1">Fresh New Look! ✨</h3>
-        <p class="text-sm text-base-content/70">Version 2.1</p>
+        <h3 class="text-xl font-bold mb-1"><%= entry.title %></h3>
+        <p class="text-sm text-base-content/70"><%= entry.version_label %></p>
       </div>
 
       <div class="space-y-3 mb-4">
         <div class="flex items-start gap-3">
           <div class="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
-            <%= heroicon "paint-brush", variant: "mini", class: "w-4 h-4 text-primary" %>
+            <%= heroicon entry.highlight_icon, variant: "mini", class: "w-4 h-4 text-primary" %>
           </div>
           <div>
-            <h4 class="font-semibold">Redesigned Interface</h4>
-            <p class="text-xs text-base-content/70">A cleaner, more polished experience throughout the app.</p>
+            <h4 class="font-semibold"><%= entry.highlight_title %></h4>
+            <p class="text-xs text-base-content/70"><%= entry.highlight_description %></p>
           </div>
         </div>
       </div>
 
       <div class="bg-primary/5 rounded-lg p-3 text-center">
         <p class="text-xs mb-2 leading-relaxed">
-          <span class="font-semibold">Built by a fellow cluster headache sufferer</span><br>
-          <span class="text-base-content/70">It's free and not enough people know this exists - please help spread the word!</span>
+          <span class="font-semibold"><%= entry.note_title %></span><br>
+          <span class="text-base-content/70"><%= entry.note_body %></span>
         </p>
         <div class="flex flex-col gap-2">
           <%# Hidden templates for button states %>
           <template data-share-link-target="shareTemplate">
             <%= heroicon "share", variant: "mini", class: "w-4 h-4" %>
-            Share with Friends
+            <%= entry.share_label %>
           </template>
           <template data-share-link-target="copiedTemplate">
             <%= heroicon "check", variant: "mini", class: "w-4 h-4" %>
@@ -40,38 +43,47 @@
           </template>
 
           <%# Hidden input for URL copying %>
-          <input type="hidden" data-share-link-target="input" value="https://clusterheadachetracker.com">
+          <input type="hidden" data-share-link-target="input" value="<%= entry.share_url %>">
 
           <button data-share-link-target="shareButton"
                   data-bridge--share-target="shareButton"
                   data-action="click->bridge--share#shareViaBridge click->share-link#share"
-                  data-share-url="https://clusterheadachetracker.com"
-                  data-share-title="Cluster Headache Tracker"
-                  data-share-text="I use this free app to track my cluster headaches. It just got a huge update!"
+                  data-share-url="<%= entry.share_url %>"
+                  data-share-title="<%= entry.share_title %>"
+                  data-share-text="<%= entry.share_text %>"
                   class="btn btn-primary w-full">
             <%= heroicon "share", variant: "mini", class: "w-4 h-4" %>
-            Share with Friends
+            <%= entry.share_label %>
           </button>
-          <a href="https://github.com/sponsors/crmne"
+          <a href="<%= entry.support_url %>"
              target="_blank"
              rel="noopener noreferrer"
              class="btn btn-secondary btn-sm w-full">
-            Sponsor
+            <%= entry.support_label %>
             <%= heroicon "heart", variant: "mini", class: "w-4 h-4" %>
           </a>
         </div>
       </div>
 
       <div class="modal-action justify-center mt-4">
-        <form method="dialog">
-          <button class="btn btn-ghost btn-sm" data-action="click->changelog#acknowledge">
+        <%= form_with url: changelog_acknowledged_settings_path,
+            method: :post,
+            local: true,
+            data: { changelog_target: "dismissForm", turbo: false } do %>
+          <%= hidden_field_tag :key, entry.key %>
+          <button class="btn btn-ghost btn-sm" type="submit">
             Continue to App
           </button>
-        </form>
+        <% end %>
       </div>
     </div>
-    <form method="dialog" class="modal-backdrop">
+    <%= form_with url: changelog_acknowledged_settings_path,
+        method: :post,
+        local: true,
+        class: "modal-backdrop",
+        data: { turbo: false } do %>
+      <%= hidden_field_tag :key, entry.key %>
       <button>close</button>
-    </form>
+    <% end %>
   </dialog>
 <% end %>

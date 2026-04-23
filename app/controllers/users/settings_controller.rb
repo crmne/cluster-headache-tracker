@@ -24,11 +24,17 @@ class Users::SettingsController < ApplicationController
   end
 
   def changelog_acknowledged
-    version = params[:version]
-    if version.present? && current_user.update(last_seen_changelog: version)
-      head :ok
+    changelog_key = params[:key].presence || params[:version].presence
+    if changelog_key.present? && current_user.update(last_seen_changelog: changelog_key)
+      respond_to do |format|
+        format.json { head :ok }
+        format.html { redirect_back fallback_location: headache_logs_path }
+      end
     else
-      head :unprocessable_entity
+      respond_to do |format|
+        format.json { head :unprocessable_entity }
+        format.html { redirect_back fallback_location: headache_logs_path, alert: "Couldn't dismiss changelog." }
+      end
     end
   end
 
