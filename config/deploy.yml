@@ -38,8 +38,13 @@ aliases:
   logs: app logs -f
   dbc: app exec --interactive --reuse "bin/rails dbconsole"
   backup: accessory exec backup "kamal-backup backup"
+  backup-list: accessory exec backup "kamal-backup list"
   backup-check: accessory exec backup "kamal-backup check"
   backup-evidence: accessory exec backup "kamal-backup evidence"
+  backup-version: accessory exec backup "kamal-backup version"
+  backup-restore-db: accessory exec backup "kamal-backup restore-db latest"
+  backup-restore-files: accessory exec backup "kamal-backup restore-files latest /restore/files"
+  backup-schedule: accessory exec backup "kamal-backup schedule"
   backup-logs: accessory logs backup -f
 
 volumes:
