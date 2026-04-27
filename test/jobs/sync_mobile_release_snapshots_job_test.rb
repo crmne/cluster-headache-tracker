@@ -12,6 +12,10 @@ class SyncMobileReleaseSnapshotsJobTest < ActiveJob::TestCase
           "html_url" => "https://github.com/crmne/cluster-headache-tracker-android/releases/tag/v2.1.0",
           "assets" => [
             {
+              "name" => "cluster-headache-tracker-debug.apk",
+              "browser_download_url" => "https://example.com/android-debug.apk"
+            },
+            {
               "name" => "cluster-headache-tracker.apk",
               "browser_download_url" => "https://example.com/android.apk"
             }

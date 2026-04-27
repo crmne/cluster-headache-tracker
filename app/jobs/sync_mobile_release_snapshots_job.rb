@@ -2,6 +2,8 @@ require "json"
 require "net/http"
 
 class SyncMobileReleaseSnapshotsJob < ApplicationJob
+  ANDROID_APK_ASSET_NAME = "cluster-headache-tracker.apk"
+
   queue_as :default
 
   def perform
@@ -61,7 +63,10 @@ class SyncMobileReleaseSnapshotsJob < ApplicationJob
 
     def release_asset_url(release)
       assets = Array(release["assets"])
-      apk_asset = assets.find { |asset| asset["name"].to_s.end_with?(".apk") }
+      apk_asset = assets.find { |asset| asset["name"].to_s == ANDROID_APK_ASSET_NAME }
+      apk_asset ||= assets.find do |asset|
+        asset["name"].to_s.end_with?(".apk") && !asset["name"].to_s.match?(/debug/i)
+      end
 
       if apk_asset
         apk_asset["browser_download_url"]
