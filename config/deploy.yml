@@ -60,7 +60,7 @@ accessories:
     directories:
       - data:/var/lib/postgresql/data
   backup:
-    image: ghcr.io/crmne/kamal-backup:0.2.5
+    image: ghcr.io/crmne/kamal-backup:0.2.6
     host: clusterheadachetracker.com
     files:
       - config/kamal-backup.yml:/app/config/kamal-backup.yml:ro
