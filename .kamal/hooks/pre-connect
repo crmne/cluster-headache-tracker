@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+
+case "${KAMAL_COMMAND:-}:${KAMAL_SUBCOMMAND:-}" in
+  deploy:*|redeploy:*|setup:*|accessory:boot|accessory:reboot)
+    if [ -n "${KAMAL_DESTINATION:-}" ]; then
+      bundle exec kamal-backup -d "$KAMAL_DESTINATION" validate
+    else
+      bundle exec kamal-backup validate
+    fi
+    ;;
+esac
