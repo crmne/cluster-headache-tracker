@@ -1,0 +1,15 @@
+accessory: backup
+app_name: cluster-headache-tracker
+database_adapter: postgres
+pghost: cluster-headache-tracker-db
+pgport: 5432
+pguser: cluster_headache_tracker
+pgdatabase: cluster_headache_tracker_production
+backup_paths:
+  - /rails/storage
+restic_compression: auto
+restic_init_if_missing: true
+restic_forget_after_backup: false
+restic_check_after_backup: true
+restic_check_read_data_subset: 5%
+backup_schedule_seconds: 86400
