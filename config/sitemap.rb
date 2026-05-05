@@ -1,5 +1,7 @@
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "https://clusterheadachetracker.com"
+SitemapGenerator::Sitemap.compress = false
+SitemapGenerator::Sitemap.include_root = false
 
 SitemapGenerator::Sitemap.create do
   # Add static pages

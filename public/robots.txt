@@ -64,5 +64,5 @@ Disallow: /settings
 Disallow: /shared_logs/
 Disallow: /users/
 
-Sitemap: https://clusterheadachetracker.com/sitemap.xml.gz
+Sitemap: https://clusterheadachetracker.com/sitemap.xml
 # AI-readable site guide: https://clusterheadachetracker.com/llms.txt

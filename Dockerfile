@@ -57,8 +57,8 @@ COPY --from=build /rails /rails
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp && \
-    touch public/sitemap.xml.gz && \
-    chown rails:rails public/sitemap.xml.gz
+    touch public/sitemap.xml && \
+    chown rails:rails public/sitemap.xml
 USER 1000:1000
 
 # Entrypoint prepares the database.
