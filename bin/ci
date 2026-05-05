@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+ENV["RAILS_ENV"] ||= "test"
+ENV["SECRET_KEY_BASE"] ||= "local-ci-secret-key-base-for-cluster-headache-tracker"
+
 require_relative "../config/boot"
 require "active_support/continuous_integration"
 

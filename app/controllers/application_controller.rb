@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_robots_tag_header
-    if request.get?
+    if request.get? || request.head?
       response.set_header("X-Robots-Tag", AiVisibleContent.robots_directive_for(request.path))
     end
   end
