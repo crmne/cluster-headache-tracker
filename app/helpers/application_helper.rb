@@ -27,6 +27,10 @@ module ApplicationHelper
     request.base_url + request.path
   end
 
+  def current_ai_visible_page
+    @current_ai_visible_page ||= AiVisibleContent.page_for_path(request.path)
+  end
+
   def app_title
     "Cluster Headache Tracker - Free Tracking by a Fellow Sufferer"
   end
@@ -45,13 +49,58 @@ module ApplicationHelper
       content_for(:title)
     elsif content_for(:title)
       [ content_for(:title), app_title ].compact.join(" | ")
+    elsif current_ai_visible_page && current_ai_visible_page[:path] != "/"
+      [ current_ai_visible_page[:title], "Cluster Headache Tracker" ].uniq.join(" | ")
     else
       [ app_title, app_short_description ].compact.join(" | ")
     end
   end
 
   def page_meta_description
-    content_for?(:meta_description) ? content_for(:meta_description) : app_description
+    if content_for?(:meta_description)
+      content_for(:meta_description)
+    elsif current_ai_visible_page
+      current_ai_visible_page[:description]
+    else
+      app_description
+    end
+  end
+
+  def page_robots_directive
+    AiVisibleContent.robots_directive_for(request.path)
+  end
+
+  def page_og_type
+    "website"
+  end
+
+  def ai_resource_link_tags
+    links = [
+      tag.link(rel: "alternate", type: "text/plain", title: "LLM-readable site summary", href: AiVisibleContent.absolute_url("/llms.txt")),
+      tag.link(rel: "alternate", type: "text/plain", title: "Full LLM-readable site brief", href: AiVisibleContent.absolute_url("/llms-full.txt")),
+      tag.link(rel: "alternate", type: "application/json", title: "Structured AI product profile", href: AiVisibleContent.absolute_url("/llm.json")),
+      tag.link(rel: "alternate", type: "application/json", title: "AI entity map", href: AiVisibleContent.absolute_url("/entity-map.json"))
+    ]
+
+    if current_ai_visible_page
+      links << tag.link(rel: "alternate", type: "text/markdown", title: "#{current_ai_visible_page[:title]} markdown", href: AiVisibleContent.absolute_url("/ai/page/#{current_ai_visible_page[:slug]}.md"))
+
+      current_ai_visible_page[:topics].first(3).each do |topic|
+        links << tag.link(rel: "alternate", type: "application/json", title: "#{topic} AI topic resource", href: AiVisibleContent.absolute_url("/ai/topic/#{AiVisibleContent.topic_slug(topic)}.json"))
+      end
+    end
+
+    safe_join(links, "\n")
+  end
+
+  def ai_visible_json_ld_tag
+    graph = AiVisibleContent.json_ld_for(
+      path: request.path,
+      logo_url: image_url("logo.png"),
+      android_apk_url: android_apk_url
+    )
+
+    content_tag(:script, json_escape(JSON.pretty_generate(graph)).html_safe, type: "application/ld+json")
   end
 
   # New: Add specific meta descriptions for key pages

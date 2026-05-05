@@ -22,6 +22,16 @@ Rails.application.routes.draw do
   get "home/index"
   root "home#index"
 
+  get "llms.txt", to: "ai_visible_content#llms"
+  get "llms-full.txt", to: "ai_visible_content#llms_full"
+  get "llm.json", to: "ai_visible_content#llm"
+  get "entity-map.json", to: "ai_visible_content#entity_map"
+  get "ai/:resource_type/:slug", to: "ai_visible_content#resource",
+    constraints: {
+      resource_type: /entity|topic|page/,
+      slug: /[a-z0-9-]+/
+    }
+
   # Hotwire Native navigation helpers
   get "/recede_historical_location", to: "application#recede_historical_location"
 

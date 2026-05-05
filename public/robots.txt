@@ -1,4 +1,68 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
 User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /charts
+Disallow: /feedback
+Disallow: /headache_logs/
+Disallow: /recede_historical_location
+Disallow: /settings
 Disallow: /shared_logs/
-Sitemap: /sitemap.xml.gz
+Disallow: /users/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /charts
+Disallow: /feedback
+Disallow: /headache_logs/
+Disallow: /recede_historical_location
+Disallow: /settings
+Disallow: /shared_logs/
+Disallow: /users/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /charts
+Disallow: /feedback
+Disallow: /headache_logs/
+Disallow: /recede_historical_location
+Disallow: /settings
+Disallow: /shared_logs/
+Disallow: /users/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+Disallow: /charts
+Disallow: /feedback
+Disallow: /headache_logs/
+Disallow: /recede_historical_location
+Disallow: /settings
+Disallow: /shared_logs/
+Disallow: /users/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /charts
+Disallow: /feedback
+Disallow: /headache_logs/
+Disallow: /recede_historical_location
+Disallow: /settings
+Disallow: /shared_logs/
+Disallow: /users/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /charts
+Disallow: /feedback
+Disallow: /headache_logs/
+Disallow: /recede_historical_location
+Disallow: /settings
+Disallow: /shared_logs/
+Disallow: /users/
+
+Sitemap: https://clusterheadachetracker.com/sitemap.xml.gz
+# AI-readable site guide: https://clusterheadachetracker.com/llms.txt

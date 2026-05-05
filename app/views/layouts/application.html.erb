@@ -10,14 +10,16 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="<%= page_meta_description %>">
   <meta name="keywords" content="cluster headache, headache tracker, headache log, migraine tracker, health app, headache diary">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="<%= page_robots_directive %>">
+  <meta name="author" content="Carmine Paolino">
+  <meta name="ai-content-declaration" content="Public product pages only. Private headache logs, dashboards, charts, settings, feedback forms, and shared reports are excluded from AI-visible resources.">
 
   <!-- OpenGraph Meta Tags -->
   <meta property="og:title" content="<%= page_title %>">
   <meta property="og:description" content="<%= page_meta_description %>">
   <meta property="og:image" content="<%= image_url('logo.png') %>">
   <meta property="og:url" content="<%= canonical_url %>">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="<%= page_og_type %>">
   <meta property="og:site_name" content="Cluster Headache Tracker">
 
   <!-- Twitter Card Meta Tags -->
@@ -27,6 +29,7 @@
   <meta name="twitter:image" content="<%= image_url('logo.png') %>">
 
   <%= tag :link, rel: 'canonical', href: canonical_url %>
+  <%= ai_resource_link_tags %>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,6 +44,7 @@
   <meta name="turbo-refresh-method" content="morph">
   <meta name="turbo-refresh-scroll" content="preserve">
   <%= yield :head %>
+  <%= ai_visible_json_ld_tag %>
   <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
   <%= render 'application/favicon' %>
   <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
@@ -83,23 +87,5 @@
   <% else %>
     <%= render 'bottom_navbar' if user_signed_in? && !native_app_form_page? && !native_app_with_tabs? %>
   <% end %>
-    <script type="application/ld+json">
-      {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "<%= app_title %>",
-  "url": "<%= root_url %>",
-  "logo": "<%= image_url('logo.png') %>",
-  "description": "<%= page_meta_description %>",
-  "sameAs": [
-    <% others = [] %>
-    <% others << "https://testflight.apple.com/join/GJsAQqz2" %>
-    <% others << "https://github.com/crmne/cluster-headache-tracker" %>
-    <% others << "https://github.com/crmne/cluster-headache-tracker-ios" %>
-    <% others << "https://github.com/crmne/cluster-headache-tracker-android" %>
-    <%= others.map { |url| "\"#{url}\"" }.join(", ").html_safe %>
-  ]
-}
-    </script>
 </body>
 </html>

@@ -28,8 +28,8 @@ This section guides you through submitting an enhancement suggestion for Cluster
 
 Unsure where to begin contributing to Cluster Headache Tracker? You can start by looking through these `beginner` and `help-wanted` issues:
 
-- [Beginner issues](https://github.com/crmne/cluster_headache_tracker/labels/beginner) - issues which should only require a few lines of code, and a test or two.
-- [Help wanted issues](https://github.com/crmne/cluster_headache_tracker/labels/help%20wanted) - issues which should be a bit more involved than `beginner` issues.
+- [Beginner issues](https://github.com/crmne/cluster-headache-tracker/labels/beginner) - issues which should only require a few lines of code, and a test or two.
+- [Help wanted issues](https://github.com/crmne/cluster-headache-tracker/labels/help%20wanted) - issues which should be a bit more involved than `beginner` issues.
 
 ### Pull Requests
 

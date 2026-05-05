@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_ongoing_headaches, if: :user_signed_in?
   before_action :set_locale
+  before_action :set_robots_tag_header
   helper_method :hotwire_native_app?
 
   # Hotwire Native navigation endpoint
@@ -26,6 +27,12 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def set_robots_tag_header
+    if request.get?
+      response.set_header("X-Robots-Tag", AiVisibleContent.robots_directive_for(request.path))
+    end
   end
 
   # Devise redirect after sign up
