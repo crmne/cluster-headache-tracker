@@ -14,6 +14,9 @@ class AiVisibleContent
   IOS_BETA_URL = "https://testflight.apple.com/join/GJsAQqz2"
   FOUNDER_URL = "https://paolino.me"
   CONTACT_EMAIL = "hello@clusterheadachetracker.com"
+  DEMO_VIDEO_EMBED_URL = "https://www.youtube.com/embed/4HlsqANZdv8"
+  DEMO_VIDEO_THUMBNAIL_URL = "https://i.ytimg.com/vi/4HlsqANZdv8/maxresdefault.jpg"
+  DEMO_VIDEO_UPLOAD_DATE = "2024-12-21T13:39:46-08:00"
 
   FEATURES = [
     "One-tap cluster headache attack logging",
@@ -404,7 +407,7 @@ class AiVisibleContent
         nodes << breadcrumb_schema(page)
         nodes << faq_schema(page) if page[:faq].present?
         nodes << how_to_schema(page) if page[:how_to].present?
-        nodes << video_schema(logo_url) if page[:slug] == "home"
+        nodes << video_schema if page[:slug] == "home"
       end
 
       {
@@ -707,14 +710,15 @@ class AiVisibleContent
       }
     end
 
-    def video_schema(logo_url)
+    def video_schema
       {
         "@type" => "VideoObject",
         "@id" => "#{SITE_URL}/#demo-video",
         "name" => "Cluster Headache Tracker Demo",
         "description" => "A short demo of the Cluster Headache Tracker web app.",
-        "embedUrl" => "https://www.youtube.com/embed/4HlsqANZdv8",
-        "thumbnailUrl" => logo_url,
+        "embedUrl" => DEMO_VIDEO_EMBED_URL,
+        "thumbnailUrl" => DEMO_VIDEO_THUMBNAIL_URL,
+        "uploadDate" => DEMO_VIDEO_UPLOAD_DATE,
         "publisher" => { "@id" => ENTITY_ID }
       }.compact
     end

@@ -42,4 +42,19 @@ class AiVisibleContentTest < ActiveSupport::TestCase
     assert_includes ids, "https://clusterheadachetracker.com/#carmine-paolino"
     assert_includes ids, "https://clusterheadachetracker.com/faq#faq"
   end
+
+  test "home page video json ld includes required google fields" do
+    graph = AiVisibleContent.json_ld_for(
+      path: "/",
+      logo_url: "https://example.com/logo.png",
+      android_apk_url: "https://example.com/app.apk"
+    )
+
+    video = graph["@graph"].find { |node| node["@type"] == "VideoObject" }
+
+    assert_equal "Cluster Headache Tracker Demo", video["name"]
+    assert_equal "2024-12-21T13:39:46-08:00", video["uploadDate"]
+    assert_equal "https://i.ytimg.com/vi/4HlsqANZdv8/maxresdefault.jpg", video["thumbnailUrl"]
+    assert_equal "https://www.youtube.com/embed/4HlsqANZdv8", video["embedUrl"]
+  end
 end
