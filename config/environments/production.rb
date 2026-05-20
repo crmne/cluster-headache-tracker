@@ -33,12 +33,33 @@ Rails.application.configure do
   # Skip http-to-https redirect for the default health check endpoint.
   # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
 
-  # Log to STDOUT with the current request id as a default log tag.
-  config.log_tags = [ :request_id ]
-  config.logger   = ActiveSupport::TaggedLogging.logger(STDOUT)
+  # Log structured request events to STDOUT. Avoid tag prefixes so JSON remains parseable.
+  config.log_tags = []
+  config.logger = ActiveSupport::Logger.new(STDOUT)
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Json.new
+  config.lograge.keep_original_rails_log = false
+  config.lograge.custom_options = lambda do |event|
+    {
+      time: Time.current.iso8601(6),
+      level: event.payload[:exception] ? "ERROR" : "INFO",
+      msg: "Request",
+      request_id: event.payload[:request_id],
+      host: event.payload[:host],
+      remote_ip: event.payload[:remote_ip],
+      user_id: event.payload[:user_id],
+      exception: event.payload[:exception]&.first,
+      exception_message: event.payload[:exception]&.last
+    }.compact
+  end
 
   # Change to "debug" to log everything (including potentially personally-identifiable information!)
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
+
+  warn_only_logger = ActiveSupport::Logger.new(STDOUT)
+  warn_only_logger.level = Logger::WARN
+  config.action_cable.logger = warn_only_logger
+  config.solid_queue.logger = warn_only_logger
 
   # Prevent health checks from clogging up the logs.
   config.silence_healthcheck_path = "/up"

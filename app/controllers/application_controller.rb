@@ -21,6 +21,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def append_info_to_payload(payload)
+    super
+    payload[:request_id] = request.request_id
+    payload[:host] = request.host
+    payload[:remote_ip] = request.remote_ip
+    payload[:user_id] = current_user&.id if respond_to?(:current_user, true)
+  end
+
   def set_ongoing_headaches
     @ongoing_headaches = current_user.headache_logs.where(end_time: nil).order(start_time: :desc)
   end
