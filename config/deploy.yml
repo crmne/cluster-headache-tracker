@@ -25,6 +25,7 @@ logging:
 
 env:
   clear:
+    THRUSTER_LOG_REQUESTS: "false"
     DB_HOST: cluster-headache-tracker-db
     SOLID_QUEUE_IN_PUMA: true
   secret:

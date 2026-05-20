@@ -36,9 +36,22 @@ Rails.application.configure do
   # Log structured request events to STDOUT. Avoid tag prefixes so JSON remains parseable.
   config.log_tags = []
   config.logger = ActiveSupport::Logger.new(STDOUT)
+  config.action_dispatch.log_rescued_responses = false
   config.lograge.enabled = true
   config.lograge.formatter = Lograge::Formatters::Json.new
   config.lograge.keep_original_rails_log = false
+  config.lograge.ignore_custom = lambda do |event|
+    event.name.to_s.end_with?(".action_cable") && event.payload[:exception].nil?
+  end
+  config.lograge.before_format = lambda do |data, payload|
+    if payload[:channel_class] || payload[:connection_class]
+      data[:method] = "ACTIONCABLE"
+      data[:path] = "#{data[:controller]}##{data[:action]}"
+      data[:msg] = "ActionCable"
+    end
+
+    data
+  end
   config.lograge.custom_options = lambda do |event|
     {
       time: Time.current.iso8601(6),
@@ -59,6 +72,7 @@ Rails.application.configure do
   warn_only_logger = ActiveSupport::Logger.new(STDOUT)
   warn_only_logger.level = Logger::WARN
   config.action_cable.logger = warn_only_logger
+  config.active_job.logger = warn_only_logger
   config.solid_queue.logger = warn_only_logger
 
   # Prevent health checks from clogging up the logs.
