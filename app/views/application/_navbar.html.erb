@@ -98,7 +98,8 @@
       <div class="flex items-center gap-3">
         <%= link_to "Login", new_user_session_path, class: "hidden sm:inline-flex" %>
         <%= link_to new_user_registration_path, class: "btn btn-primary" do %>
-          Get Started
+          <span class="sm:hidden">Start Free</span>
+          <span class="hidden sm:inline">Start Free Tracking</span>
         <% end %>
       </div>
     <% end %>

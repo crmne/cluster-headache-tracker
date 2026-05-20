@@ -125,9 +125,9 @@ en:
       subtitle: "Sign in to continue tracking your headaches"
       button: "Sign in"
     sign_up:
-      title: "Create your account"
-      subtitle: "Start tracking your headaches today"
-      button: "Create account"
+      title: "Start Free Tracking"
+      subtitle: "Create a private username-only account"
+      button: "Start Free Tracking"
     shared:
       username: "Username"
       password: "Password"
@@ -166,7 +166,7 @@ en:
       hero:
         title: "Take Control of Your Cluster Headaches"
         subtitle: "Track your attacks, identify patterns, and share insights with your healthcare provider - all in one intuitive, privacy-focused tool."
-        cta: "Start Tracking Free"
+        cta: "Start Free Tracking"
       demo:
         title: "See How It Works"
         subtitle: "A simple, intuitive interface designed specifically for tracking cluster headaches."

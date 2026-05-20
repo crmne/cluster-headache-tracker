@@ -38,7 +38,7 @@
       <h2>🔒 Privacy & Security</h2>
 
       <p><strong>Is my data really private?</strong><br>
-      Yes. No email required, no tracking pixels, no analytics. Data is encrypted and stored in Germany (strongest privacy laws). I built this for us, not to harvest data.</p>
+      Yes. No email required, no ads, no selling data. Public pages use privacy-friendly aggregate analytics, but your headache logs stay private and stored in Germany. I built this for us, not to harvest data.</p>
 
       <p><strong>Why no email signup?</strong><br>
       Because when you're desperate at 3 AM, you don't need another password reset. Pick a username, start tracking. Lost password? Sorry, that's the price of real privacy.</p>
@@ -72,7 +72,7 @@
     <div class="text-center mt-12">
       <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-lg btn-primary" do %>
         <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
-        <%= user_signed_in? ? "Back to My Logs" : "Start Tracking Free" %>
+        <%= user_signed_in? ? "Back to My Logs" : "Start Free Tracking" %>
       <% end %>
     </div>
   </div>

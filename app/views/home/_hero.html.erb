@@ -9,8 +9,8 @@
           </h1>
 
           <p class="mt-6 text-base sm:text-lg opacity-70 max-w-xl mx-auto lg:mx-0">
-            Most headache apps don't get it. Too complex when you can't see
-            straight. Useless for oxygen approval. We're different.
+            Log an attack in one tap, add details later, and turn your history
+            into charts and doctor-ready reports. No email required.
           </p>
 
           <div class="flex gap-8 justify-center lg:justify-start mt-8 text-sm">
@@ -27,7 +27,7 @@
           <div class="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 justify-center lg:justify-start">
             <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-lg btn-primary" do %>
               <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
-              Start Tracking Free
+              Start Free Tracking
             <% end %>
 
             <div class="flex flex-wrap gap-3">
@@ -40,16 +40,6 @@
                  class="btn btn-lg btn-outline">
                 <%= icon "android", class: "w-5 h-5", fill: "currentColor" %>
                 Android
-              </a>
-              <a href="https://github.com/crmne/cluster-headache-tracker" target="_blank" rel="noopener noreferrer"
-                 class="btn btn-lg btn-outline gap-2">
-                <%= icon "github", class: "w-5 h-5", fill: "currentColor" %>
-                Star <span class="opacity-60 font-normal"><%= @github_stars %></span>
-              </a>
-              <a href="https://github.com/sponsors/crmne" target="_blank" rel="noopener noreferrer"
-                 class="btn btn-lg btn-outline gap-2">
-                Sponsor
-                <%= heroicon "heart", variant: "mini", class: "w-5 h-5" %>
               </a>
             </div>
           </div>
