@@ -1,0 +1,60 @@
+<% content_for :title, "Open Source Headache Tracker" %>
+<% content_for :meta_description, "Open-source, privacy-focused headache tracker for cluster headache attacks. Rails codebase, username-only accounts, CSV export, and doctor-ready reports." %>
+
+<section class="py-16 bg-base-200 sm:py-20">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8 text-center">
+    <p class="font-semibold text-primary mb-3">Open source health software</p>
+    <h1 class="text-4xl font-bold sm:text-5xl">Open-source headache tracker for cluster headaches</h1>
+    <p class="mt-6 text-lg text-base-content/70">
+      Cluster Headache Tracker is a free Rails app with public source code,
+      username-only accounts, CSV export, and privacy-focused reporting.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+      <a href="https://github.com/crmne/cluster-headache-tracker" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+        <%= icon "github", class: "w-5 h-5", fill: "currentColor" %>
+        View Source
+      </a>
+      <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-outline btn-lg" do %>
+        <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
+        Start Tracking
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-base-100">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <div class="prose prose-lg mx-auto">
+      <h2>Why open source matters for a health diary</h2>
+      <p>
+        Health tracking software asks for trust. This project keeps the code
+        public so people can inspect how the tracker works, report bugs, suggest
+        improvements, or self-host if they have the technical skill.
+      </p>
+
+      <h2>Privacy choices</h2>
+      <ul>
+        <li>No email address required for accounts</li>
+        <li>No ads and no sale of personal headache data</li>
+        <li>Temporary read-only share links for reports</li>
+        <li>CSV export for user-owned records</li>
+        <li>Private dashboards and shared reports excluded from public SEO files</li>
+      </ul>
+
+      <h2>Built for the cluster headache community</h2>
+      <p>
+        The app exists because paper diaries, spreadsheets, and generic apps
+        were too slow during attacks. It stays focused on fast logging, useful
+        reports, and practical privacy instead of broad wellness tracking.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-base-200">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <%= render "medical_disclaimer" %>
+  </div>
+</section>
+
+<%= render "seo_cta", headline: "Try the free open-source tracker" %>

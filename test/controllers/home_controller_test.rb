@@ -26,10 +26,43 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "public static pages are reachable" do
-    get faq_url
-    assert_response :success
+    public_urls = [
+      faq_url,
+      neurologist_url,
+      cluster_headache_diary_url,
+      cluster_headache_diary_template_url,
+      headache_diary_for_neurologist_url,
+      cluster_headache_oxygen_documentation_url,
+      sample_report_url,
+      cluster_headache_app_url,
+      open_source_headache_tracker_url
+    ]
 
-    get neurologist_url
+    public_urls.each do |url|
+      get url
+
+      assert_response :success
+      assert_equal "index, follow, max-image-preview:large", response.headers["X-Robots-Tag"]
+    end
+  end
+
+  test "home page uses explicit tracker and diary positioning" do
+    get root_url
+
     assert_response :success
+    assert_select "title", text: "Cluster Headache Tracker & Diary | Free, Private, Doctor-Ready Reports"
+    assert_select "h1", text: /Wrestling with cluster headaches\?/
+    assert_select "a[href='#{cluster_headache_diary_path}']", text: /Cluster Headache Diary|Diary/
+  end
+
+  test "sample report uses real report partials with demo data" do
+    get sample_report_url
+
+    assert_response :success
+    assert_select "h1", text: "Sample Cluster Headache Report"
+    assert_select "h2", text: "Analysis"
+    assert_select "h2", text: "Detailed Log Entries"
+    assert_select "canvas#intensityChart"
+    assert_select "table tbody tr", minimum: 10
   end
 end

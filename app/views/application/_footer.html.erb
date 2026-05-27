@@ -1,4 +1,4 @@
-<footer class="mt-auto bg-neutral text-neutral-content">
+<footer class="mt-auto bg-neutral text-neutral-content print:hidden">
   <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 py-12 sm:py-16">
     <div class="grid gap-10 md:grid-cols-[1fr_auto] md:items-start">
       <div>
@@ -27,6 +27,13 @@
         <div>
           <h6 class="font-bold mb-4 opacity-50 uppercase tracking-wider text-xs">Resources</h6>
           <ul class="space-y-3">
+            <li><%= link_to "Cluster Headache Diary", cluster_headache_diary_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to "Diary Template", cluster_headache_diary_template_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to "Sample Report", sample_report_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to "For Neurology Visits", headache_diary_for_neurologist_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to "Oxygen Documentation", cluster_headache_oxygen_documentation_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to "Cluster Headache App", cluster_headache_app_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to "Open Source Tracker", open_source_headache_tracker_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
             <li><%= link_to "FAQ", faq_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
             <li><%= link_to "For Neurologists", neurologist_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
             <li><%= link_to "View on GitHub", "https://github.com/crmne/cluster-headache-tracker", class: "link link-hover opacity-70 hover:opacity-100", target: "_blank", rel: "noopener noreferrer" %></li>

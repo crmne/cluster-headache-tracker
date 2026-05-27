@@ -46,6 +46,13 @@ Rails.application.routes.draw do
   get "imprint", to: "home#imprint", as: :imprint
   get "privacy-policy", to: "home#privacy_policy", as: :privacy_policy
   get "neurologist", to: "home#neurologist", as: :neurologist
+  get "cluster-headache-diary", to: "home#cluster_headache_diary", as: :cluster_headache_diary
+  get "cluster-headache-diary-template", to: "home#cluster_headache_diary_template", as: :cluster_headache_diary_template
+  get "headache-diary-for-neurologist", to: "home#headache_diary_for_neurologist", as: :headache_diary_for_neurologist
+  get "cluster-headache-oxygen-documentation", to: "home#cluster_headache_oxygen_documentation", as: :cluster_headache_oxygen_documentation
+  get "sample-report", to: "home#sample_report", as: :sample_report
+  get "cluster-headache-app", to: "home#cluster_headache_app", as: :cluster_headache_app
+  get "open-source-headache-tracker", to: "home#open_source_headache_tracker", as: :open_source_headache_tracker
 
   # Shared Logs
   get "shared_logs/:token", to: "shared_logs#index", as: :shared_logs

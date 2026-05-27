@@ -20,7 +20,11 @@
     </div>
 
     <div class="text-center mt-10">
-      <%= link_to neurologist_path, class: "btn btn-primary" do %>
+      <%= link_to headache_diary_for_neurologist_path, class: "btn btn-primary" do %>
+        Prepare for an Appointment
+        <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
+      <% end %>
+      <%= link_to neurologist_path, class: "btn btn-outline ml-0 mt-3 sm:ml-3 sm:mt-0" do %>
         Info for Providers
         <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
       <% end %>

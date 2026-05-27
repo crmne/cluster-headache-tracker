@@ -1,0 +1,15 @@
+<% references = local_assigns.fetch(:references) %>
+
+<section class="py-12 bg-base-100 print:hidden">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold mb-4">References</h2>
+    <ul class="space-y-3">
+      <% references.each do |reference| %>
+        <li>
+          <%= link_to reference[:name], reference[:url], class: "link link-primary", target: "_blank", rel: "noopener noreferrer" %>
+          <span class="text-base-content/60"> - <%= reference[:description] %></span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>

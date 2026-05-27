@@ -1,0 +1,85 @@
+<% content_for :title, "Cluster Headache App" %>
+<% content_for :meta_description, "Free cluster headache app for web, PWA, iOS beta, and Android beta. One-tap attack logging, charts, CSV export, privacy, and doctor-ready reports." %>
+
+<section class="py-16 bg-base-200 sm:py-20">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8 text-center">
+    <p class="font-semibold text-primary mb-3">Web, PWA, iOS, and Android</p>
+    <h1 class="text-4xl font-bold sm:text-5xl">Cluster headache app for fast attack logging</h1>
+    <p class="mt-6 text-lg text-base-content/70">
+      Use Cluster Headache Tracker from the web, install it as a PWA, or use the
+      iOS and Android beta apps. Start the timer during an attack and add
+      details later.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+      <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-primary btn-lg" do %>
+        <%= heroicon "globe-alt", variant: "mini", class: "w-5 h-5" %>
+        Use Web App
+      <% end %>
+      <a href="https://testflight.apple.com/join/GJsAQqz2" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg">
+        <%= icon "ios", class: "w-5 h-5", fill: "currentColor" %>
+        iOS Beta
+      </a>
+      <a href="<%= android_apk_url %>" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg">
+        <%= icon "android", class: "w-5 h-5", fill: "currentColor" %>
+        Android Beta
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-base-100">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div class="border border-base-content/10 bg-base-200 p-6">
+        <%= heroicon "bolt", variant: "mini", class: "w-6 h-6 text-primary mb-4" %>
+        <h2 class="text-xl font-bold mb-2">One-tap logging</h2>
+        <p class="opacity-70">Start with the attack timer first. Details can wait until you can think again.</p>
+      </div>
+      <div class="border border-base-content/10 bg-base-200 p-6">
+        <%= heroicon "chart-bar", variant: "mini", class: "w-6 h-6 text-secondary mb-4" %>
+        <h2 class="text-xl font-bold mb-2">Charts and reports</h2>
+        <p class="opacity-70">See attack timing, duration, intensity, triggers, and treatment notes.</p>
+      </div>
+      <div class="border border-base-content/10 bg-base-200 p-6">
+        <%= heroicon "lock-closed", variant: "mini", class: "w-6 h-6 text-success mb-4" %>
+        <h2 class="text-xl font-bold mb-2">Private by default</h2>
+        <p class="opacity-70">Username-only accounts, no ads, no email requirement, and no selling health data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-base-200">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <div class="prose prose-lg mx-auto">
+      <h2>Why a cluster-specific app matters</h2>
+      <p>
+        Many headache apps are built around migraine workflows. Cluster attacks
+        often need a faster start button, sharper timing data, and reports that
+        make repeated short attacks visible.
+      </p>
+
+      <h2>Works with the rest of your tracking</h2>
+      <p>
+        You can export CSV, print reports, use secure share links, and keep
+        using the web version even if you switch phones.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-base-100">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8 text-center">
+    <h2 class="text-2xl font-bold mb-3">Reports are part of the app</h2>
+    <p class="text-base-content/70">
+      The sample report shows the same stats, charts, and detailed log table
+      generated from private account data.
+    </p>
+    <%= link_to sample_report_path, class: "btn btn-primary mt-6" do %>
+      <%= heroicon "document-chart-bar", variant: "mini", class: "w-5 h-5" %>
+      View Sample Report
+    <% end %>
+  </div>
+</section>
+
+<%= render "seo_cta", headline: "Use the app from the device nearest you" %>

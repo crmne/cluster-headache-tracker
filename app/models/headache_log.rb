@@ -43,8 +43,11 @@ class HeadacheLog < ApplicationRecord
     end
 
     def chart_data
-      headache_logs = chronological
+      chart_data_for(chronological)
+    end
 
+    def chart_data_for(headache_logs)
+      headache_logs = headache_logs.sort_by(&:start_time)
       {
         intensity_data: intensity_data_for(headache_logs),
         trigger_data: trigger_data_for(headache_logs),

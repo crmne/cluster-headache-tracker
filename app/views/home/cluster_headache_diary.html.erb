@@ -1,0 +1,121 @@
+<% content_for :title, "Free Cluster Headache Diary" %>
+<% content_for :meta_description, "Free cluster headache diary and tracker for logging attack time, duration, KIP-style intensity, medication, oxygen response, triggers, and notes." %>
+
+<section class="py-16 bg-base-200 sm:py-20">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8 text-center">
+    <p class="font-semibold text-primary mb-3">Cluster headache diary</p>
+    <h1 class="text-4xl font-bold sm:text-5xl">Free cluster headache diary and tracker</h1>
+    <p class="mt-6 text-lg text-base-content/70">
+      Record the details that are hard to remember later: start time, end time,
+      duration, KIP-style intensity, medication, oxygen response, triggers, and
+      notes.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+      <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-primary btn-lg" do %>
+        <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
+        Start Free Tracking
+      <% end %>
+      <%= link_to cluster_headache_diary_template_path, class: "btn btn-outline btn-lg" do %>
+        <%= heroicon "document-arrow-down", variant: "mini", class: "w-5 h-5" %>
+        Get the Template
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-base-100">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <div class="prose prose-lg mx-auto">
+      <h2>Why a cluster headache diary needs to be fast</h2>
+      <p>
+        A generic headache diary often expects careful typing at the exact
+        moment you are least able to do it. Cluster Headache Tracker starts
+        with one-tap attack logging. The timer captures the event first, then
+        you can add the rest after the attack passes.
+      </p>
+
+      <h2>What the diary records</h2>
+      <ul>
+        <li>Attack start and end times, including automatic duration</li>
+        <li>KIP-style 1-10 intensity</li>
+        <li>Medication, oxygen use, and treatment response notes</li>
+        <li>Triggers or context such as sleep disruption, alcohol, or weather</li>
+        <li>Side, location, symptoms, and free-form notes</li>
+        <li>Charts and printable reports for appointments</li>
+      </ul>
+
+      <h2>Why this helps before appointments</h2>
+      <p>
+        Headache diaries are commonly recommended because they make frequency,
+        duration, intensity, triggers, and treatment response easier to review.
+        For cluster headache, timing can be especially important because attacks
+        often repeat in recognizable patterns.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-base-100">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8 text-center">
+    <h2 class="text-2xl font-bold mb-3">See what the diary becomes</h2>
+    <p class="text-base-content/70">
+      The public sample report uses the same stats, charts, and log table that
+      private reports use.
+    </p>
+    <%= link_to sample_report_path, class: "btn btn-primary mt-6" do %>
+      <%= heroicon "document-chart-bar", variant: "mini", class: "w-5 h-5" %>
+      View Sample Report
+    <% end %>
+  </div>
+</section>
+
+<section class="py-16 bg-base-200">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div class="bg-base-100 border border-base-content/10 p-6">
+        <%= heroicon "document-chart-bar", variant: "mini", class: "w-6 h-6 text-primary mb-4" %>
+        <h2 class="font-bold text-xl mb-2">See a sample report</h2>
+        <p class="opacity-70 mb-6">Preview what your diary can become after a few weeks of tracking.</p>
+        <%= link_to "View Report", sample_report_path, class: "btn btn-sm btn-primary" %>
+      </div>
+      <div class="bg-base-100 border border-base-content/10 p-6">
+        <%= heroicon "user-group", variant: "mini", class: "w-6 h-6 text-secondary mb-4" %>
+        <h2 class="font-bold text-xl mb-2">Prepare for neurology</h2>
+        <p class="opacity-70 mb-6">Bring structured attack history instead of trying to reconstruct a cycle from memory.</p>
+        <%= link_to "Prepare Visit", headache_diary_for_neurologist_path, class: "btn btn-sm btn-primary" %>
+      </div>
+      <div class="bg-base-100 border border-base-content/10 p-6">
+        <%= heroicon "beaker", variant: "mini", class: "w-6 h-6 text-success mb-4" %>
+        <h2 class="font-bold text-xl mb-2">Track oxygen response</h2>
+        <p class="opacity-70 mb-6">Document when oxygen was used, how long it took, and whether relief was recorded.</p>
+        <%= link_to "Track Response", cluster_headache_oxygen_documentation_path, class: "btn btn-sm btn-primary" %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-base-100">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <%= render "medical_disclaimer" %>
+  </div>
+</section>
+
+<%= render "references", references: [
+  {
+    name: "Harvard Health - Keeping a headache diary",
+    url: "https://www.health.harvard.edu/headache-and-migraine/keeping-a-headache-diary",
+    description: "Headache diaries can capture frequency, duration, intensity, triggers, and medication response."
+  },
+  {
+    name: "National Headache Foundation - Tracking Diaries",
+    url: "https://headaches.org/resources/headache-diary-keeping-a-diary-can-help-your-doctor-help-you/",
+    description: "Tracking can help people communicate with healthcare providers and evaluate whether treatments are working."
+  },
+  {
+    name: "National Headache Foundation - Cluster Headache",
+    url: "https://headaches.org/resources/cluster-headache/",
+    description: "Overview of cluster headache attack grouping, duration, and recurrence."
+  }
+] %>
+
+<%= render "seo_cta" %>

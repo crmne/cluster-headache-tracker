@@ -1,0 +1,103 @@
+<% content_for :title, "Headache Diary for Neurologist Visits" %>
+<% content_for :meta_description, "Prepare a headache diary for neurologist appointments with attack timing, duration, intensity, medication response, oxygen notes, triggers, and reports." %>
+
+<section class="py-16 bg-base-200 sm:py-20">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8 text-center">
+    <p class="font-semibold text-primary mb-3">Doctor-ready headache diary</p>
+    <h1 class="text-4xl font-bold sm:text-5xl">Headache diary for neurologist visits</h1>
+    <p class="mt-6 text-lg text-base-content/70">
+      Give your neurologist a structured record of what happened: when attacks
+      started, how long they lasted, how intense they were, what you used, and
+      whether it helped.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+      <%= link_to sample_report_path, class: "btn btn-primary btn-lg" do %>
+        <%= heroicon "document-chart-bar", variant: "mini", class: "w-5 h-5" %>
+        View Sample Report
+      <% end %>
+      <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-outline btn-lg" do %>
+        <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
+        Start Tracking
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-base-100">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <div class="prose prose-lg mx-auto">
+      <h2>What to bring to the appointment</h2>
+      <p>
+        Cluster headache history can be hard to explain from memory, especially
+        after weeks of broken sleep. A useful diary gives your clinician a
+        compact view of attack frequency, duration, intensity, timing, and
+        treatment response.
+      </p>
+
+      <h2>Fields that usually matter</h2>
+      <ul>
+        <li>Attack date, start time, end time, and duration</li>
+        <li>KIP-style intensity and whether the attack woke you from sleep</li>
+        <li>Medication, oxygen, dose or duration, and response</li>
+        <li>Side affected, pain location, autonomic symptoms, and notes</li>
+        <li>Potential triggers or context</li>
+        <li>CSV export or a printable report for the medical record</li>
+      </ul>
+
+      <h2>Why reports beat scattered notes</h2>
+      <p>
+        The app turns logs into a clean report with summary numbers, charts, and
+        detailed entries. You can print it, save it as a PDF from your browser,
+        export CSV, or create a temporary read-only share link.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-base-100">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8 text-center">
+    <h2 class="text-2xl font-bold mb-3">Preview the appointment report</h2>
+    <p class="text-base-content/70">
+      The public sample report renders through the same report components used
+      for private patient reports.
+    </p>
+    <%= link_to sample_report_path, class: "btn btn-primary mt-6" do %>
+      <%= heroicon "document-chart-bar", variant: "mini", class: "w-5 h-5" %>
+      View Sample Report
+    <% end %>
+  </div>
+</section>
+
+<section class="py-16 bg-base-200">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <div class="prose prose-lg mx-auto">
+      <h2>For clinicians reviewing the report</h2>
+      <p>
+        The report is patient-entered data. It is designed to make a history
+        easier to review, not to make a diagnosis. Provider-facing notes are
+        available on the <%= link_to "neurologist page", neurologist_path, class: "link link-primary" %>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-base-100">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <%= render "medical_disclaimer" %>
+  </div>
+</section>
+
+<%= render "references", references: [
+  {
+    name: "Mayo Clinic - Cluster headache diagnosis and treatment",
+    url: "https://www.mayoclinic.org/diseases-conditions/cluster-headache/diagnosis-treatment/drc-20352084",
+    description: "Diagnosis depends on pain description, severity, symptoms, frequency, and duration."
+  },
+  {
+    name: "National Headache Foundation - Tracking Diaries",
+    url: "https://headaches.org/resources/headache-diary-keeping-a-diary-can-help-your-doctor-help-you/",
+    description: "A diary can support clearer communication and treatment review."
+  }
+] %>
+
+<%= render "seo_cta", headline: "Create a report before your next appointment" %>

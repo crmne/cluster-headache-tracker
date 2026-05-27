@@ -1,0 +1,20 @@
+<% headline = local_assigns.fetch(:headline, "Start a private cluster headache diary") %>
+<% body = local_assigns.fetch(:body, "Log attacks fast, keep the details organized, and turn your history into reports you can review with a clinician.") %>
+
+<section class="py-16 bg-neutral text-neutral-content print:hidden">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold sm:text-4xl"><%= headline %></h2>
+    <p class="mt-4 text-lg opacity-70"><%= body %></p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+      <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-primary" do %>
+        <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
+        <%= user_signed_in? ? "Go to My Logs" : "Start Free Tracking" %>
+      <% end %>
+      <%= link_to sample_report_path, class: "btn btn-outline border-neutral-content/40 text-neutral-content hover:bg-neutral-content hover:text-neutral" do %>
+        <%= heroicon "document-chart-bar", variant: "mini", class: "w-5 h-5" %>
+        View Sample Report
+      <% end %>
+    </div>
+  </div>
+</section>

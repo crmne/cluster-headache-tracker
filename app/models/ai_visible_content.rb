@@ -1,8 +1,8 @@
 class AiVisibleContent
   SITE_URL = "https://clusterheadachetracker.com"
   SITE_NAME = "Cluster Headache Tracker"
-  SITE_TITLE = "Cluster Headache Tracker - Free Tracking by a Fellow Sufferer"
-  SITE_DESCRIPTION = "Free, privacy-focused cluster headache tracking built by a fellow sufferer. Log attacks quickly, spot patterns, create doctor-ready reports, and keep health data private."
+  SITE_TITLE = "Cluster Headache Tracker & Diary"
+  SITE_DESCRIPTION = "Free, privacy-focused cluster headache tracker and diary built by a fellow sufferer. Log attacks quickly, spot patterns, create doctor-ready reports, and keep health data private."
   ENTITY_ID = "#{SITE_URL}/#cluster-headache-tracker"
   FOUNDER_ID = "#{SITE_URL}/#carmine-paolino"
   WEBSITE_ID = "#{SITE_URL}/#website"
@@ -34,14 +34,19 @@ class AiVisibleContent
   TOPICS = [
     "Cluster headaches",
     "Headache diary",
+    "Headache diary template",
+    "Headache diary for neurologist visits",
     "Attack logging",
     "KIP scale",
-    "Oxygen approval documentation",
+    "Oxygen treatment documentation",
+    "Oxygen response tracking",
     "Neurology reports",
     "Medication effectiveness",
     "Circadian headache patterns",
     "Privacy-focused health tracking",
     "Open-source health software",
+    "Open-source headache tracker",
+    "Cluster headache app",
     "Progressive web app",
     "Hotwire Native"
   ].freeze
@@ -64,7 +69,7 @@ class AiVisibleContent
         "Cluster headaches",
         "Headache diary",
         "Attack logging",
-        "Oxygen approval documentation",
+        "Oxygen treatment documentation",
         "Privacy-focused health tracking",
         "Open-source health software",
         "Progressive web app",
@@ -83,7 +88,7 @@ class AiVisibleContent
           heading: "Why It Exists",
           body: [
             "The app was built by Carmine Paolino, a cluster headache sufferer, after paper diaries, spreadsheets, and generic headache apps were too slow during attacks.",
-            "Its goal is practical tracking for treatment conversations, including documentation that can support oxygen approval discussions."
+            "Its goal is practical tracking for treatment conversations, including clearer documentation of attack frequency and treatment response."
           ]
         },
         {
@@ -124,6 +129,298 @@ class AiVisibleContent
         ]
       }
     },
+    "/cluster-headache-diary" => {
+      slug: "cluster-headache-diary",
+      path: "/cluster-headache-diary",
+      title: "Free Cluster Headache Diary",
+      description: "Free cluster headache diary and tracker for logging attack time, duration, KIP-style intensity, medication, oxygen response, triggers, and notes.",
+      topics: [
+        "Cluster headaches",
+        "Headache diary",
+        "Attack logging",
+        "KIP scale",
+        "Medication effectiveness",
+        "Oxygen response tracking",
+        "Neurology reports"
+      ],
+      sections: [
+        {
+          heading: "Diary Purpose",
+          body: [
+            "This page explains how to keep a practical cluster headache diary that captures attack timing, duration, intensity, medication, oxygen response, triggers, and notes.",
+            "The product flow emphasizes one-tap attack logging first, then adding details later when the user is able."
+          ]
+        },
+        {
+          heading: "Cluster-Specific Fields",
+          body: [
+            "The diary focuses on start and end times, KIP-style intensity, medication and oxygen notes, possible triggers, and appointment-ready reporting.",
+            "The page links to the printable diary template, sample report, neurologist visit guide, and oxygen documentation page."
+          ]
+        }
+      ],
+      faq: [
+        {
+          question: "What should a cluster headache diary include?",
+          answer: "A useful diary should include attack start and end times, duration, intensity, medication or oxygen notes, treatment response, triggers, and free-form notes."
+        },
+        {
+          question: "Can details be added after the attack?",
+          answer: "Yes. The tracker is designed to capture the attack quickly, then let users add medication, triggers, and notes later."
+        }
+      ],
+      how_to: {
+        name: "How to keep a cluster headache diary",
+        steps: [
+          "Start the attack timer when pain begins.",
+          "Stop the timer when the attack ends.",
+          "Add KIP-style intensity, medication, oxygen use, triggers, and notes.",
+          "Review charts for timing, duration, and frequency patterns.",
+          "Print, export, or share a temporary report for appointments."
+        ]
+      }
+    },
+    "/cluster-headache-diary-template" => {
+      slug: "cluster-headache-diary-template",
+      path: "/cluster-headache-diary-template",
+      title: "Cluster Headache Diary Template",
+      description: "Printable cluster headache diary template for attack time, duration, intensity, medication, oxygen response, triggers, and notes.",
+      topics: [
+        "Headache diary template",
+        "Headache diary",
+        "Cluster headaches",
+        "KIP scale",
+        "Medication effectiveness",
+        "Oxygen response tracking"
+      ],
+      sections: [
+        {
+          heading: "Printable Template",
+          body: [
+            "The template provides a plain printable table for attack date, start time, end time, duration, intensity, medication or oxygen, response, triggers, and notes.",
+            "It is designed for paper use during a cycle and for people who want a low-friction alternative before using the app."
+          ]
+        },
+        {
+          heading: "App Alternative",
+          body: [
+            "The app keeps the same core diary fields while adding one-tap logging, automatic duration, charts, exports, and temporary report links.",
+            "The printable template is intentionally plain because paper is useful only when it stays easy to use."
+          ]
+        }
+      ],
+      faq: [
+        {
+          question: "Can the template be printed?",
+          answer: "Yes. The page includes a print-friendly table for recording cluster headache attacks on paper."
+        },
+        {
+          question: "Can the CSV be imported later?",
+          answer: "Yes. The CSV uses the app's standard headache log columns."
+        }
+      ]
+    },
+    "/headache-diary-for-neurologist" => {
+      slug: "headache-diary-for-neurologist",
+      path: "/headache-diary-for-neurologist",
+      title: "Headache Diary for Neurologist Visits",
+      description: "Prepare a headache diary for neurologist appointments with attack timing, duration, intensity, medication response, oxygen notes, triggers, and reports.",
+      topics: [
+        "Headache diary for neurologist visits",
+        "Neurology reports",
+        "Headache diary",
+        "Cluster headaches",
+        "Medication effectiveness",
+        "Circadian headache patterns",
+        "Oxygen response tracking"
+      ],
+      sections: [
+        {
+          heading: "Appointment Preparation",
+          body: [
+            "This page explains what to bring to a neurology visit: attack timing, duration, intensity, medication response, oxygen notes, triggers, and reports.",
+            "The goal is to help patients bring structured attack history rather than reconstructing a cycle from memory."
+          ]
+        },
+        {
+          heading: "Report Output",
+          body: [
+            "Cluster Headache Tracker can create printable reports, CSV exports, and temporary share links for clinician review.",
+            "The page links to the public sample report and provider-facing neurologist page."
+          ]
+        }
+      ],
+      faq: [
+        {
+          question: "What headache diary data is useful for a neurologist?",
+          answer: "Attack frequency, start time, end time, duration, intensity, medication or oxygen use, treatment response, triggers, and notes can make the history easier to review."
+        },
+        {
+          question: "Can reports be shared without a doctor account?",
+          answer: "Yes. Users can generate temporary read-only share links that do not require the clinician to create an account."
+        }
+      ]
+    },
+    "/cluster-headache-oxygen-documentation" => {
+      slug: "cluster-headache-oxygen-documentation",
+      path: "/cluster-headache-oxygen-documentation",
+      title: "Cluster Headache Oxygen Documentation",
+      description: "Track cluster headache attack frequency, duration, oxygen use, and treatment response for clinician and insurance conversations without making treatment promises.",
+      topics: [
+        "Oxygen treatment documentation",
+        "Oxygen response tracking",
+        "Cluster headaches",
+        "Neurology reports",
+        "Medication effectiveness",
+        "Headache diary"
+      ],
+      sections: [
+        {
+          heading: "Documentation Boundary",
+          body: [
+            "This page explains that oxygen treatment must be discussed with and prescribed by a clinician.",
+            "The tracker cannot make treatment decisions, but it can help users bring clearer documentation of attack frequency, duration, oxygen use, and response history."
+          ]
+        },
+        {
+          heading: "Tracked Response Data",
+          body: [
+            "Users can log whether oxygen or medication was used, how long the attack lasted, and whether relief was noticed.",
+            "Reports summarize timing, duration, intensity, and treatment notes for clinician or insurance conversations."
+          ]
+        }
+      ],
+      faq: [
+        {
+          question: "Does the tracker replace an oxygen prescription?",
+          answer: "No. The tracker does not diagnose, prescribe, or make treatment decisions. It helps organize patient-entered data for clinician and insurance conversations."
+        },
+        {
+          question: "What oxygen-related details can be logged?",
+          answer: "Users can record oxygen use in medication notes, add duration or response notes, and compare attack duration and intensity across logged attacks."
+        }
+      ]
+    },
+    "/sample-report" => {
+      slug: "sample-report",
+      path: "/sample-report",
+      title: "Sample Cluster Headache Report",
+      description: "Public fictional sample cluster headache report showing attack summaries, timing, intensity, treatment response notes, charts, and detailed log entries.",
+      topics: [
+        "Neurology reports",
+        "Headache diary",
+        "Cluster headaches",
+        "Medication effectiveness",
+        "Circadian headache patterns",
+        "Oxygen response tracking"
+      ],
+      sections: [
+        {
+          heading: "Fictional Demo Report",
+          body: [
+            "The sample report is a public fictional demo showing what private user reports can look like.",
+            "It includes summary stats, attack timing, treatment response notes, and detailed log entries."
+          ]
+        },
+        {
+          heading: "Privacy Boundary",
+          body: [
+            "Real reports remain private unless a user creates a temporary share link.",
+            "Public search engines can see the fictional sample report, not personal dashboards, private logs, or shared report URLs."
+          ]
+        }
+      ],
+      faq: [
+        {
+          question: "Is the sample report real patient data?",
+          answer: "No. The sample report is fictional and public for demonstration."
+        },
+        {
+          question: "Can real reports be printed?",
+          answer: "Yes. Real reports can be printed from the browser, saved as PDF, exported as CSV, or shared through a temporary read-only link."
+        }
+      ]
+    },
+    "/cluster-headache-app" => {
+      slug: "cluster-headache-app",
+      path: "/cluster-headache-app",
+      title: "Cluster Headache App",
+      description: "Free cluster headache app for web, PWA, iOS beta, and Android beta. One-tap attack logging, charts, CSV export, privacy, and doctor-ready reports.",
+      topics: [
+        "Cluster headache app",
+        "Progressive web app",
+        "Hotwire Native",
+        "Attack logging",
+        "Headache diary",
+        "Privacy-focused health tracking",
+        "Neurology reports"
+      ],
+      sections: [
+        {
+          heading: "App Access",
+          body: [
+            "Cluster Headache Tracker is available on the web, as a PWA, and through iOS and Android beta shells.",
+            "The page explains one-tap attack logging, charts, reports, CSV export, and privacy defaults."
+          ]
+        },
+        {
+          heading: "Cluster-Specific Workflow",
+          body: [
+            "The app prioritizes fast timer-based logging instead of long forms during attacks.",
+            "Users can add details later and review the same data from another device."
+          ]
+        }
+      ],
+      faq: [
+        {
+          question: "Is Cluster Headache Tracker available as an app?",
+          answer: "Yes. It can be used on the web, installed as a PWA, and accessed through iOS and Android beta apps."
+        },
+        {
+          question: "Does the app work without email signup?",
+          answer: "Yes. Accounts use username and password only."
+        }
+      ]
+    },
+    "/open-source-headache-tracker" => {
+      slug: "open-source-headache-tracker",
+      path: "/open-source-headache-tracker",
+      title: "Open Source Headache Tracker",
+      description: "Open-source, privacy-focused headache tracker for cluster headache attacks. Rails codebase, username-only accounts, CSV export, and doctor-ready reports.",
+      topics: [
+        "Open-source headache tracker",
+        "Open-source health software",
+        "Privacy-focused health tracking",
+        "Headache diary",
+        "Cluster headaches"
+      ],
+      sections: [
+        {
+          heading: "Open Source Trust",
+          body: [
+            "This page explains why public source code matters for a health diary.",
+            "The Rails codebase can be inspected, improved, and self-hosted by technical users."
+          ]
+        },
+        {
+          heading: "Privacy Defaults",
+          body: [
+            "The app uses username-only accounts, avoids ads, does not sell personal headache data, supports CSV export, and keeps private dashboards outside public SEO files.",
+            "The project exists for the cluster headache community rather than broad wellness tracking."
+          ]
+        }
+      ],
+      faq: [
+        {
+          question: "Is the headache tracker open source?",
+          answer: "Yes. The web app source code is public on GitHub under GPL-3.0."
+        },
+        {
+          question: "Can users export their data?",
+          answer: "Yes. Users can export their headache logs as CSV."
+        }
+      ]
+    },
     "/faq" => {
       slug: "faq",
       path: "/faq",
@@ -133,7 +430,7 @@ class AiVisibleContent
         "Cluster headaches",
         "Headache diary",
         "Attack logging",
-        "Oxygen approval documentation",
+        "Oxygen treatment documentation",
         "Privacy-focused health tracking",
         "Medication effectiveness"
       ],
@@ -180,7 +477,7 @@ class AiVisibleContent
       topics: [
         "Cluster headaches",
         "Neurology reports",
-        "Oxygen approval documentation",
+        "Oxygen treatment documentation",
         "Medication effectiveness",
         "Circadian headache patterns",
         "Headache diary"
@@ -439,7 +736,7 @@ class AiVisibleContent
       lines << ""
       lines << "#{SITE_NAME} is a free, privacy-focused app for logging cluster headache attacks, finding patterns, and preparing doctor-ready reports."
       lines << ""
-      lines << "- Founder: Carmine Paolino, a cluster headache sufferer"
+      lines << "- Builder: Carmine Paolino, a cluster headache sufferer"
       lines << "- Platforms: Web, PWA, iOS beta, Android beta"
       lines << "- Price: Free"
       lines << "- Open source: Yes, GPL-3.0"
@@ -536,6 +833,9 @@ class AiVisibleContent
         "ios_source_code" => IOS_REPOSITORY_URL,
         "android_apk" => AppConstants::ANDROID_APK_URL,
         "android_source_code" => ANDROID_REPOSITORY_URL,
+        "cluster_headache_diary" => absolute_url("/cluster-headache-diary"),
+        "diary_template" => absolute_url("/cluster-headache-diary-template"),
+        "sample_report" => absolute_url("/sample-report"),
         "privacy_policy" => absolute_url("/privacy-policy"),
         "neurologist_page" => absolute_url("/neurologist"),
         "contact" => "mailto:#{CONTACT_EMAIL}"
@@ -575,7 +875,7 @@ class AiVisibleContent
         "@id" => FOUNDER_ID,
         "name" => "Carmine Paolino",
         "url" => FOUNDER_URL,
-        "description" => "Founder and maintainer of Cluster Headache Tracker, built from lived experience with cluster headaches.",
+        "description" => "Builder and maintainer of Cluster Headache Tracker, built from lived experience with cluster headaches.",
         "sameAs" => [
           FOUNDER_URL,
           "https://github.com/crmne"
@@ -639,7 +939,11 @@ class AiVisibleContent
     end
 
     def web_page_schema(page)
-      type = page[:slug] == "neurologist" ? [ "WebPage", "MedicalWebPage" ] : "WebPage"
+      type = if medical_page?(page)
+        [ "WebPage", "MedicalWebPage" ]
+      else
+        "WebPage"
+      end
 
       {
         "@type" => type,
@@ -721,6 +1025,12 @@ class AiVisibleContent
         "uploadDate" => DEMO_VIDEO_UPLOAD_DATE,
         "publisher" => { "@id" => ENTITY_ID }
       }.compact
+    end
+
+    def medical_page?(page)
+      page[:topics].include?("Cluster headaches") ||
+        page[:topics].include?("Neurology reports") ||
+        page[:topics].include?("Oxygen treatment documentation")
     end
 
     def entity_resource(slug)

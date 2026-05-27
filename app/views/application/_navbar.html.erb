@@ -19,6 +19,11 @@
           <% end %>
 
           <li class="menu-title">Resources</li>
+          <li><%= link_to cluster_headache_diary_path do %><%= heroicon "clipboard-document-list", variant: "micro" %> Diary<% end %></li>
+          <li><%= link_to cluster_headache_diary_template_path do %><%= heroicon "document-arrow-down", variant: "micro" %> Template<% end %></li>
+          <li><%= link_to sample_report_path do %><%= heroicon "document-chart-bar", variant: "micro" %> Sample Report<% end %></li>
+          <li><%= link_to cluster_headache_app_path do %><%= heroicon "device-phone-mobile", variant: "micro" %> App<% end %></li>
+          <li><%= link_to open_source_headache_tracker_path do %><%= heroicon "code-bracket", variant: "micro" %> Open Source<% end %></li>
           <li><%= link_to faq_path do %><%= heroicon "question-mark-circle", variant: "micro" %> FAQ<% end %></li>
           <li><%= link_to neurologist_path do %><%= heroicon "user-group", variant: "micro" %> For Neurologists<% end %></li>
           <li>
@@ -60,8 +65,12 @@
       <% if !hotwire_native_app? && static_page? %>
         <div class="hidden lg:flex ml-1">
           <ul class="menu menu-horizontal px-0 text-sm">
-            <li><%= link_to "FAQ", faq_path %></li>
+            <li><%= link_to "Diary", cluster_headache_diary_path %></li>
+            <li><%= link_to "Template", cluster_headache_diary_template_path %></li>
+            <li><%= link_to "Sample", sample_report_path %></li>
             <li><%= link_to "For Neurologists", neurologist_path %></li>
+            <li><%= link_to "App", cluster_headache_app_path %></li>
+            <li><%= link_to "FAQ", faq_path %></li>
             <li><%= link_to "GitHub", "https://github.com/crmne/cluster-headache-tracker", target: "_blank", rel: "noopener noreferrer" %></li>
           </ul>
         </div>

@@ -1,0 +1,57 @@
+<section class="py-16 bg-base-100 sm:py-20">
+  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold sm:text-4xl xl:text-5xl">
+        Cluster headache tracking resources
+      </h2>
+      <p class="mt-4 text-lg opacity-60">
+        Guides, templates, and sample reports for turning painful attack
+        history into something easier to review.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 mt-14 md:grid-cols-3">
+      <div class="border border-base-content/10 bg-base-200 p-6">
+        <%= heroicon "clipboard-document-list", variant: "mini", class: "w-6 h-6 text-primary mb-4" %>
+        <h3 class="text-xl font-bold mb-2">Cluster Headache Diary</h3>
+        <p class="opacity-60 mb-6">What to log, why timing matters, and how the tracker turns attacks into useful history.</p>
+        <%= link_to "Read Guide", cluster_headache_diary_path, class: "btn btn-sm btn-primary" %>
+      </div>
+
+      <div class="border border-base-content/10 bg-base-200 p-6">
+        <%= heroicon "document-arrow-down", variant: "mini", class: "w-6 h-6 text-secondary mb-4" %>
+        <h3 class="text-xl font-bold mb-2">Diary Template</h3>
+        <p class="opacity-60 mb-6">Printable cluster headache diary fields for paper tracking.</p>
+        <%= link_to "Open Template", cluster_headache_diary_template_path, class: "btn btn-sm btn-primary" %>
+      </div>
+
+      <div class="border border-base-content/10 bg-base-200 p-6">
+        <%= heroicon "document-chart-bar", variant: "mini", class: "w-6 h-6 text-info mb-4" %>
+        <h3 class="text-xl font-bold mb-2">Sample Report</h3>
+        <p class="opacity-60 mb-6">A fictional public report using the real charts, tables, and appointment-ready summary.</p>
+        <%= link_to "View Report", sample_report_path, class: "btn btn-sm btn-primary" %>
+      </div>
+
+      <div class="border border-base-content/10 bg-base-200 p-6">
+        <%= heroicon "user-group", variant: "mini", class: "w-6 h-6 text-accent mb-4" %>
+        <h3 class="text-xl font-bold mb-2">For Neurology Visits</h3>
+        <p class="opacity-60 mb-6">A patient-focused guide to bringing clear headache diary data to appointments.</p>
+        <%= link_to "Prepare Visit", headache_diary_for_neurologist_path, class: "btn btn-sm btn-primary" %>
+      </div>
+
+      <div class="border border-base-content/10 bg-base-200 p-6">
+        <%= heroicon "beaker", variant: "mini", class: "w-6 h-6 text-success mb-4" %>
+        <h3 class="text-xl font-bold mb-2">Oxygen Documentation</h3>
+        <p class="opacity-60 mb-6">How a log can document attack frequency and treatment response for clinician discussions.</p>
+        <%= link_to "Track Response", cluster_headache_oxygen_documentation_path, class: "btn btn-sm btn-primary" %>
+      </div>
+
+      <div class="border border-base-content/10 bg-base-200 p-6">
+        <%= heroicon "device-phone-mobile", variant: "mini", class: "w-6 h-6 text-warning mb-4" %>
+        <h3 class="text-xl font-bold mb-2">Cluster Headache App</h3>
+        <p class="opacity-60 mb-6">Web, PWA, iOS beta, and Android beta access for attack-time logging.</p>
+        <%= link_to "See App Options", cluster_headache_app_path, class: "btn btn-sm btn-primary" %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,83 @@
+<% content_for :title, "Cluster Headache Diary Template" %>
+<% content_for :meta_description, "Printable cluster headache diary template for attack time, duration, intensity, medication, oxygen response, triggers, and notes." %>
+
+<section class="py-16 bg-base-200 sm:py-20 print:hidden">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8 text-center">
+    <p class="font-semibold text-primary mb-3">Printable template</p>
+    <h1 class="text-4xl font-bold sm:text-5xl">Cluster headache diary template</h1>
+    <p class="mt-6 text-lg text-base-content/70">
+      A simple printable cluster headache diary for paper tracking. Use it on
+      its own if you need something offline, or start in the app when you want
+      charts and shareable reports.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8 print:hidden">
+      <button type="button" class="btn btn-primary btn-lg" onclick="window.print()">
+        <%= heroicon "printer", variant: "mini", class: "w-5 h-5" %>
+        Print Template
+      </button>
+      <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-outline btn-lg" do %>
+        <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
+        Start Free Tracking
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-base-100 print:py-0 print:bg-white">
+  <div class="px-4 mx-auto max-w-6xl sm:px-6 lg:px-8">
+    <div class="hidden print:block print:mb-8">
+      <h1 class="text-2xl font-bold text-black">Cluster Headache Diary Template</h1>
+      <p class="mt-2 text-sm text-black">
+        Date, start time, end time, duration, intensity, treatment, response,
+        triggers, and notes.
+      </p>
+    </div>
+
+    <div class="mb-6 print:hidden">
+      <h2 class="text-2xl font-bold mb-2">Printable diary sheet</h2>
+      <p class="text-base-content/70">
+        The table is intentionally plain so it prints cleanly and leaves room
+        for notes during a difficult cycle.
+      </p>
+    </div>
+
+    <%= render "diary_template_table" %>
+  </div>
+</section>
+
+<section class="py-16 bg-base-200 print:hidden">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <div class="prose prose-lg mx-auto">
+      <h2>When the app is easier than paper</h2>
+      <p>
+        Paper can work when you are starting out, but cluster headache attacks
+        are often too intense for handwriting. The app keeps the same core
+        diary fields while adding one-tap logging, automatic duration, charts,
+        export, and temporary report links for clinicians.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-base-100 print:hidden">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <%= render "medical_disclaimer" %>
+  </div>
+</section>
+
+<div class="print:hidden">
+  <%= render "references", references: [
+    {
+      name: "Harvard Health - Keeping a headache diary",
+      url: "https://www.health.harvard.edu/headache-and-migraine/keeping-a-headache-diary",
+      description: "Example diary fields include onset, resolution, intensity, medication, and response."
+    },
+    {
+      name: "National Headache Foundation - Tracking Diaries",
+      url: "https://headaches.org/resources/headache-diary-keeping-a-diary-can-help-your-doctor-help-you/",
+      description: "Diary templates commonly track frequency, duration, symptoms, medications, and triggers."
+    }
+  ] %>
+</div>
+
+<%= render "seo_cta", headline: "Move from a paper diary to one-tap tracking" %>

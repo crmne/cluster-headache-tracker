@@ -1,0 +1,28 @@
+<div class="border border-base-content/10 bg-base-100 p-6 shadow-sm">
+  <div class="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+    <div class="flex items-start gap-4">
+      <img
+        class="h-12 w-12 shrink-0 rounded-full object-cover"
+        src="https://paolino.me/images/me-04_small.jpg"
+        alt="Carmine Paolino"
+        loading="lazy"
+        decoding="async"
+      >
+      <div>
+        <h2 class="text-xl font-bold">Built by Carmine Paolino</h2>
+        <p class="mt-2 text-base-content/70">
+          I am a cluster headache patient and the maintainer of Cluster Headache
+          Tracker. The medical explanations on this site are informational and
+          link to outside clinical resources where appropriate. Clinician review
+          will be stated only when a real clinician has reviewed a page.
+        </p>
+      </div>
+    </div>
+
+    <%= image_tag "signature.png",
+          class: "h-12 w-auto self-end sm:self-start",
+          alt: "Carmine Paolino signature",
+          loading: "lazy",
+          decoding: "async" %>
+  </div>
+</div>

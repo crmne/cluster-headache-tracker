@@ -22,7 +22,7 @@
       Migraines make you want to lie in a dark room. Clusters make you want to bang your head against a wall. They're shorter but way more intense. You can't lie still - you pace, rock, sometimes scream.</p>
 
       <p><strong>What causes them?</strong><br>
-      Nobody really knows. Doctors talk about the hypothalamus and histamine, but here's what matters: they're not your fault. Not stress, not diet, not lifestyle. Just bad luck with brain chemistry.</p>
+      Cluster headache is a neurological disorder, and the exact mechanisms are still not fully understood. What matters practically: attacks are not a character flaw or a willpower problem. A headache specialist can help confirm the diagnosis and discuss acute and preventive treatment options.</p>
 
       <h2>📱 About This Tracker</h2>
 
@@ -33,7 +33,7 @@
       Sign up with just a username (no email needed). Hit the big "Log Attack" button when one starts. That's it. Add details later when you're not dying.</p>
 
       <p><strong>What makes this different?</strong><br>
-      Built by a sufferer, for sufferers. One-tap logging during attacks. Charts that show real patterns. Reports that get oxygen approved. No ads, no BS.</p>
+      Built by a sufferer, for sufferers. One-tap logging during attacks. Charts that show real patterns. Reports you can print, export, or share with a clinician. No ads and no email requirement.</p>
 
       <h2>🔒 Privacy & Security</h2>
 
@@ -52,7 +52,7 @@
       YES. Massive button. One tap. Done. Add details later when you're human. I designed this mid-cycle, so I know what's possible when you can't think.</p>
 
       <p><strong>How do I share with my doctor?</strong><br>
-      Generate a secure 30-day share link that gives your doctor beautiful, professional reports. They'll see comprehensive tables of every attack, visual charts showing your patterns, and graphs comparing medication effectiveness. No login needed for them. Print the reports directly or save as PDF for your records. Multiple users got oxygen approved with these clean, professional reports instead of messy handwritten notes.</p>
+      Generate a secure 30-day share link that gives your doctor a read-only report. They'll see tables of every attack, visual charts showing your patterns, and medication or oxygen notes. No login needed for them. You can also print the reports directly or save as PDF for your records.</p>
 
       <p><strong>Does it work on my phone?</strong><br>
       Yes. iOS app, Android app, and web version. Everything syncs. Start on your phone during an attack, add notes on your computer later.</p>
@@ -60,13 +60,18 @@
       <h2>🛠️ Support & Development</h2>
 
       <p><strong>Is it really free?</strong><br>
-      Yes. I pay for servers myself. There's a donate button if you want, but no pressure. This isn't a startup. It's a tool I needed, now we all have it.</p>
+      Yes. I pay for servers myself. Donations are optional. This is a tool I needed, now we all have it.</p>
 
       <p><strong>Found a bug?</strong><br>
       Tell me on <a href="https://github.com/crmne/cluster-headache-tracker/issues" class="link">GitHub</a>. I fix things fast because I use this tool too.</p>
 
       <p><strong>Want a new feature?</strong><br>
       Ask on GitHub. If it helps track clusters better, I'll probably build it. Best features come from users who actually understand the pain.</p>
+    </div>
+
+    <div class="mt-12 space-y-6">
+      <%= render "author_box" %>
+      <%= render "medical_disclaimer" %>
     </div>
 
     <div class="text-center mt-12">
@@ -77,3 +82,21 @@
     </div>
   </div>
 </section>
+
+<%= render "references", references: [
+  {
+    name: "World Health Organization - Migraine and other headache disorders",
+    url: "https://www.who.int/news-room/fact-sheets/detail/headache-disorders",
+    description: "Overview of headache disorders, including cluster headache characteristics and prevalence."
+  },
+  {
+    name: "Mayo Clinic - Cluster headache diagnosis and treatment",
+    url: "https://www.mayoclinic.org/diseases-conditions/cluster-headache/diagnosis-treatment/drc-20352084",
+    description: "Clinical overview of diagnosis, symptoms, and treatment options."
+  },
+  {
+    name: "National Headache Foundation - Tracking Diaries",
+    url: "https://headaches.org/resources/headache-diary-keeping-a-diary-can-help-your-doctor-help-you/",
+    description: "Patient resource on why headache diaries can help care conversations."
+  }
+] %>

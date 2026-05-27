@@ -1,6 +1,6 @@
 <%
   # Support both instance variable and local variable
-  headache_logs = @headache_logs || current_user.headache_logs.order(start_time: :desc)
+  headache_logs = local_assigns[:headache_logs] || @headache_logs || current_user.headache_logs.order(start_time: :desc)
 %>
 <%= turbo_frame_tag "headache_stats" do %>
   <div class="grid">

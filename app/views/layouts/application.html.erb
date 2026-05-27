@@ -9,7 +9,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="<%= page_meta_description %>">
-  <meta name="keywords" content="cluster headache, headache tracker, headache log, migraine tracker, health app, headache diary">
   <meta name="robots" content="<%= page_robots_directive %>">
   <meta name="author" content="Carmine Paolino">
   <meta name="ai-content-declaration" content="Public product pages only. Private headache logs, dashboards, charts, settings, feedback forms, and shared reports are excluded from AI-visible resources.">
@@ -74,8 +73,8 @@
         "pt-safe-offset-16 pb-24"
       end
   %>
-  <main class="w-full <%= main_spacing_class %> flex-grow print:flex-none print:h-auto print:overflow-visible">
-    <% if current_page? root_path or current_page? feedback_path or current_page? faq_path or current_page? neurologist_path %>
+  <main class="w-full <%= main_spacing_class %> flex-grow print:flex-none print:h-auto print:overflow-visible print:pt-0 print:pb-0">
+    <% if full_width_static_page? || current_page?(feedback_path) %>
     <%= yield %>
     <% else %>
     <!-- Debug: native_app_with_tabs? = <%= native_app_with_tabs? %>, hotwire_native_app? = <%= hotwire_native_app? %>, user_agent = <%= request.user_agent %> -->

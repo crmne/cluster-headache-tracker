@@ -16,6 +16,8 @@ class AiVisibleContentTest < ActiveSupport::TestCase
 
   test "public pages and ai resources are indexable" do
     assert_equal "index, follow, max-image-preview:large", AiVisibleContent.robots_directive_for("/")
+    assert_equal "index, follow, max-image-preview:large", AiVisibleContent.robots_directive_for("/cluster-headache-diary")
+    assert_equal "index, follow, max-image-preview:large", AiVisibleContent.robots_directive_for("/sample-report")
     assert_equal "index, follow, max-image-preview:large", AiVisibleContent.robots_directive_for("/llms.txt")
     assert_equal "index, follow, max-image-preview:large", AiVisibleContent.robots_directive_for("/ai/page/home.md")
   end
@@ -24,9 +26,23 @@ class AiVisibleContentTest < ActiveSupport::TestCase
     text = AiVisibleContent.llms_txt
 
     assert_includes text, "# Cluster Headache Tracker"
+    assert_includes text, "Free Cluster Headache Diary"
+    assert_includes text, "Sample Cluster Headache Report"
     assert_includes text, "Private user dashboards"
     refute_includes text, "/shared_logs/"
     refute_includes text, "/headache_logs/"
+  end
+
+  test "new landing pages are exposed as ai page resources" do
+    markdown = AiVisibleContent.page_markdown("cluster-headache-diary")
+
+    assert_includes markdown, "# Free Cluster Headache Diary"
+    assert_includes markdown, "KIP-style intensity"
+
+    resource = AiVisibleContent.resource("page", "sample-report")
+
+    assert_equal "Sample Cluster Headache Report", resource["name"]
+    assert_includes resource["text"], "fictional"
   end
 
   test "json ld graph uses stable entity ids" do

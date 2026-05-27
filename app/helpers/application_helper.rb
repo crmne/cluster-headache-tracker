@@ -32,15 +32,15 @@ module ApplicationHelper
   end
 
   def app_title
-    "Cluster Headache Tracker - Free Tracking by a Fellow Sufferer"
+    "Cluster Headache Tracker & Diary"
   end
 
   def app_short_description
-    "Private, Free Cluster Headache Tracking That Actually Helps"
+    "Free, Private, Doctor-Ready Reports"
   end
 
   def app_description
-    "Built by a cluster headache sufferer who needed better tracking. Log attacks in seconds, spot real patterns, get reports that helped others get oxygen approved. Free forever, no email required, your data stays private."
+    "Free cluster headache tracker and diary built by a fellow sufferer. Log attacks in seconds, track KIP-style intensity, medication, triggers, and timing, then create doctor-ready reports. No email required."
   end
 
   def page_title
@@ -105,11 +105,11 @@ module ApplicationHelper
 
   # New: Add specific meta descriptions for key pages
   def home_meta_description
-    "I built this free cluster headache tracker because I needed it. Join 340+ sufferers who finally have data that helps. Log attacks fast, see patterns clearly, share with doctors. No email, no tracking, just help."
+    "Free cluster headache tracker and diary. Log attacks fast, track intensity, medication, triggers, and timing, then share doctor-ready reports. No email required."
   end
 
   def faq_meta_description
-    "Real answers about cluster headaches from someone who gets them. Learn why tracking matters, how this free tool helps, and what actually works for getting treatment approved."
+    "Answers about using Cluster Headache Tracker, privacy, headache diary fields, doctor sharing, app access, and the limits of tracking versus medical advice."
   end
 
   def charts_meta_description
