@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  constraints(host: "www.#{AppConstants::CANONICAL_HOST}") do
+    match "(*path)", to: redirect { |path_params, request|
+      query = request.query_string.present? ? "?#{request.query_string}" : ""
+      "https://#{AppConstants::CANONICAL_HOST}/#{path_params[:path]}#{query}"
+    }, via: :all
+  end
+
   # resources :headache_logs
   devise_for :users, controllers: {
     sessions: "users/sessions",

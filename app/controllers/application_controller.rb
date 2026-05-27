@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery unless: -> { Rails.env.development? && hotwire_native_app? }
 
+  before_action :redirect_canonical_host
   before_action :set_ongoing_headaches, if: :user_signed_in?
   before_action :set_locale
   before_action :set_robots_tag_header
@@ -20,6 +21,12 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def redirect_canonical_host
+    if request.host == "www.#{AppConstants::CANONICAL_HOST}"
+      redirect_to "https://#{AppConstants::CANONICAL_HOST}#{request.fullpath}", status: :moved_permanently, allow_other_host: true
+    end
+  end
 
   def append_info_to_payload(payload)
     super

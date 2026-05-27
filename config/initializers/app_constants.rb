@@ -1,6 +1,7 @@
 # Application constants
 module AppConstants
   CHANGELOG_KEY = "2026-04-fresh-look"
+  CANONICAL_HOST = "clusterheadachetracker.com"
   GITHUB_API_BASE_URL = "https://api.github.com"
   ANDROID_GITHUB_REPOSITORY = "crmne/cluster-headache-tracker-android"
   IOS_GITHUB_REPOSITORY = "crmne/cluster-headache-tracker-ios"

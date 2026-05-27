@@ -24,7 +24,7 @@ module ApplicationHelper
   end
 
   def canonical_url
-    request.base_url + request.path
+    "https://#{AppConstants::CANONICAL_HOST}#{request.path}"
   end
 
   def current_ai_visible_page
