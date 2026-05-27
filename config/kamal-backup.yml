@@ -1,15 +1,40 @@
+app: cluster-headache-tracker
 accessory: backup
-app_name: cluster-headache-tracker
-database_adapter: postgres
-pghost: cluster-headache-tracker-db
-pgport: 5432
-pguser: cluster_headache_tracker
-pgdatabase: cluster_headache_tracker_production
-backup_paths:
+databases:
+  - name: app
+    adapter: postgres
+    url: postgres://cluster_headache_tracker@cluster-headache-tracker-db:5432/cluster_headache_tracker_production
+    password:
+      secret: POSTGRES_PASSWORD
+  - name: cache
+    adapter: postgres
+    url: postgres://cluster_headache_tracker@cluster-headache-tracker-db:5432/cluster_headache_tracker_production_cache
+    password:
+      secret: POSTGRES_PASSWORD
+  - name: queue
+    adapter: postgres
+    url: postgres://cluster_headache_tracker@cluster-headache-tracker-db:5432/cluster_headache_tracker_production_queue
+    password:
+      secret: POSTGRES_PASSWORD
+  - name: cable
+    adapter: postgres
+    url: postgres://cluster_headache_tracker@cluster-headache-tracker-db:5432/cluster_headache_tracker_production_cable
+    password:
+      secret: POSTGRES_PASSWORD
+paths:
   - /rails/storage
-restic_compression: auto
-restic_init_if_missing: true
-restic_forget_after_backup: false
-restic_check_after_backup: true
-restic_check_read_data_subset: 5%
-backup_schedule_seconds: 86400
+restic:
+  repository: rest:https://backup.paolino.me/cluster-headache-tracker
+  password:
+    secret: RESTIC_PASSWORD
+  rest:
+    username:
+      secret: RESTIC_REST_USER
+    password:
+      secret: RESTIC_REST_PASSWORD
+  init_if_missing: true
+  forget_after_backup: false
+  check_after_backup: true
+  check_read_data_subset: 5%
+backup:
+  schedule: 1d

@@ -61,14 +61,15 @@ accessories:
     directories:
       - data:/var/lib/postgresql/data
   backup:
-    image: ghcr.io/crmne/kamal-backup:0.2.6
+    image: ghcr.io/crmne/kamal-backup:0.3.0.beta3
     host: clusterheadachetracker.com
     files:
       - config/kamal-backup.yml:/app/config/kamal-backup.yml:ro
     env:
       secret:
-        - PGPASSWORD
-        - RESTIC_REPOSITORY
+        - POSTGRES_PASSWORD
+        - RESTIC_REST_USER
+        - RESTIC_REST_PASSWORD
         - RESTIC_PASSWORD
     volumes:
       - "cluster-headache-tracker_storage:/rails/storage:ro"
