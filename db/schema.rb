@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_10_075104) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_10_075235) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -30,7 +30,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_10_075104) do
     t.string "user_agent"
     t.bigint "user_id", null: false
     t.text "versions"
-    t.index ["user_id"], name: "index_feedback_surveys_on_user_id"
+    t.index ["user_id"], name: "index_feedback_surveys_on_user_id", unique: true
   end
 
   create_table "headache_logs", force: :cascade do |t|
