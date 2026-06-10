@@ -59,7 +59,7 @@ class HeadacheLogsController < ApplicationController
     end
 
     def headache_log_params
-      params.require(:headache_log).permit(:start_time, :end_time, :intensity, :notes, :medication, :triggers)
+      params.expect(headache_log: [ :start_time, :end_time, :intensity, :notes, :medication, :triggers ])
     end
 
     def set_headache_log
