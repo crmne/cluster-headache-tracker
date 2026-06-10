@@ -14,8 +14,6 @@ class Admin::DashboardController < Admin::BaseController
     @changelog_percentage = @total_users > 0 ? ((@users_seen_changelog.to_f / @total_users) * 100).round : 0
 
     # Feedback stats
-    @total_feedback = FeedbackSurvey.count
-    @average_ease_rating = FeedbackSurvey.average(:ease_of_use)&.round(2)
-    @average_recommendation = FeedbackSurvey.average(:recommendation_likelihood)&.round(2)
+    @feedback_stats = FeedbackSurvey.stats
   end
 end

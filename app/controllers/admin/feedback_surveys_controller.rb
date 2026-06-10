@@ -1,14 +1,7 @@
 class Admin::FeedbackSurveysController < Admin::BaseController
   def index
     @feedback_surveys = FeedbackSurvey.includes(:user).order(created_at: :desc)
-    @stats = {
-      total_responses: @feedback_surveys.count,
-      average_ease: @feedback_surveys.average(:ease_of_use)&.round(2),
-      average_recommendation: @feedback_surveys.average(:recommendation_likelihood)&.round(2),
-      shared_with_doctor: @feedback_surveys.where(shared_with_doctor: true).count,
-      platforms: @feedback_surveys.map(&:versions).flatten.tally,
-      features: @feedback_surveys.map(&:most_useful_features).flatten.tally
-    }
+    @stats = FeedbackSurvey.stats
   end
 
   def show

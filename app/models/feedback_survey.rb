@@ -30,6 +30,17 @@ class FeedbackSurvey < ApplicationRecord
   ].freeze
 
   class << self
+    def stats
+      {
+        total_responses: count,
+        average_ease: average(:ease_of_use)&.round(2),
+        average_recommendation: average(:recommendation_likelihood)&.round(2),
+        shared_with_doctor: where(shared_with_doctor: true).count,
+        platforms: all.flat_map(&:versions).tally,
+        features: all.flat_map(&:most_useful_features).tally
+      }
+    end
+
     def import_tally_csv(file)
       stats = { imported: 0, skipped_existing: 0, failed: 0 }
       # Read the file with more lenient parsing options

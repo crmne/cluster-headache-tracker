@@ -57,16 +57,16 @@
       <div class="grid grid-cols-1 gap-4">
         <div class="stat bg-base-200 rounded-lg p-3">
           <div class="stat-title text-xs">Total Responses</div>
-          <div class="stat-value text-2xl"><%= @total_feedback %></div>
+          <div class="stat-value text-2xl"><%= @feedback_stats[:total_responses] %></div>
         </div>
         <div class="grid grid-cols-2 gap-4">
           <div class="stat bg-primary/10 rounded-lg p-3">
             <div class="stat-title text-xs">Ease of Use</div>
-            <div class="stat-value text-xl text-primary"><%= @average_ease_rating || "N/A" %>/5</div>
+            <div class="stat-value text-xl text-primary"><%= @feedback_stats[:average_ease] || "N/A" %>/5</div>
           </div>
           <div class="stat bg-secondary/10 rounded-lg p-3">
             <div class="stat-title text-xs">Recommendation</div>
-            <div class="stat-value text-xl text-secondary"><%= @average_recommendation || "N/A" %>/5</div>
+            <div class="stat-value text-xl text-secondary"><%= @feedback_stats[:average_recommendation] || "N/A" %>/5</div>
           </div>
         </div>
       </div>
