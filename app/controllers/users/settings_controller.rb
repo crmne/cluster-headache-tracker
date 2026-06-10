@@ -1,13 +1,12 @@
 class Users::SettingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user
 
   def show
   end
 
   def update_username
-    if @user.update_with_password(username_params)
-      bypass_sign_in(@user)
+    if current_user.update_with_password(username_params)
+      bypass_sign_in(current_user)
       redirect_to settings_path, notice: "Username was successfully updated."
     else
       render :show, status: :unprocessable_entity
@@ -15,8 +14,8 @@ class Users::SettingsController < ApplicationController
   end
 
   def update_password
-    if @user.update_with_password(password_params)
-      bypass_sign_in(@user)
+    if current_user.update_with_password(password_params)
+      bypass_sign_in(current_user)
       redirect_to settings_path, notice: "Password was successfully updated."
     else
       render :show, status: :unprocessable_entity
@@ -47,10 +46,6 @@ class Users::SettingsController < ApplicationController
   end
 
   private
-
-  def set_user
-    @user = current_user
-  end
 
   def username_params
     params.require(:user).permit(:username, :current_password)
