@@ -37,10 +37,6 @@
                 <span class="label-text">Remember me</span>
               </label>
             <% end %>
-
-            <% if devise_mapping.recoverable? %>
-              <%= link_to "Forgot password?", new_password_path(resource_name), class: "link link-hover link-primary text-sm" %>
-            <% end %>
           </div>
 
           <%= f.submit "Sign in", class: "btn btn-primary w-full mt-4" %>
