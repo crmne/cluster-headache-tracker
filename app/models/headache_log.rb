@@ -64,7 +64,7 @@ class HeadacheLog < ApplicationRecord
 
         recent_first.each do |log|
           csv << [
-            log.start_time&.strftime("%Y-%m-%d %H:%M:%S"),
+            log.start_time.strftime("%Y-%m-%d %H:%M:%S"),
             log.end_time&.strftime("%Y-%m-%d %H:%M:%S"),
             log.intensity.to_s,
             log.medication.to_s,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_10_075235) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_10_075315) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -36,14 +36,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_10_075235) do
   create_table "headache_logs", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "end_time"
-    t.integer "intensity"
+    t.integer "intensity", null: false
     t.string "medication"
     t.text "notes"
-    t.datetime "start_time"
+    t.datetime "start_time", null: false
     t.text "triggers"
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_headache_logs_on_user_id"
+    t.check_constraint "intensity >= 1 AND intensity <= 10", name: "headache_logs_intensity_range"
   end
 
   create_table "mobile_release_snapshots", force: :cascade do |t|
