@@ -4,7 +4,6 @@ class FeedbackSurvey < ApplicationRecord
   validates :usage_duration, presence: { message: "can't be blank" }
   validates :ease_of_use, presence: { message: "can't be blank" }, inclusion: { in: 1..5, message: "must be between 1 and 5 stars" }
   validates :recommendation_likelihood, presence: { message: "can't be blank" }, inclusion: { in: 1..5, message: "must be between 1 and 5 stars" }
-  validates :shared_with_doctor, inclusion: { in: [ true, false, nil ], message: "is required" }
 
   serialize :versions, coder: JSON, type: Array
   serialize :most_useful_features, coder: JSON, type: Array
