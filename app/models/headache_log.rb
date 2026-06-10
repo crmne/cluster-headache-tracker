@@ -11,9 +11,9 @@ class HeadacheLog < ApplicationRecord
   normalizes :medication, with: ->(value) { value.downcase.split(",").map(&:strip).reject(&:blank?).join(", ") }
   normalizes :triggers, with: ->(value) { value.split(",").map(&:strip).reject(&:blank?).join(", ") }
 
-  after_create_commit -> { broadcast_create }
-  after_update_commit -> { broadcast_update }
-  after_destroy_commit -> { broadcast_destroy }
+  after_create_commit :broadcast_create
+  after_update_commit :broadcast_update
+  after_destroy_commit :broadcast_destroy
 
   scope :chronological, -> { order(:start_time) }
   scope :recent_first, -> { order(start_time: :desc) }
