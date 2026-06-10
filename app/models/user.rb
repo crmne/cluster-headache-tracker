@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :share_tokens, dependent: :destroy
   has_one :feedback_survey, dependent: :destroy
 
-  after_create :send_admin_notification
+  after_create_commit :send_admin_notification
 
   def email_required?
     false
