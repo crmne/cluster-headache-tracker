@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     }
 
   # Hotwire Native navigation helpers
-  get "/recede_historical_location", to: "application#recede_historical_location"
+  get "/recede_historical_location", to: "recede_historical_locations#show"
 
   get "faq", to: "home#faq", as: :faq
   get "imprint", to: "home#imprint", as: :imprint

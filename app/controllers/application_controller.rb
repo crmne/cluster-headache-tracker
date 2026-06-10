@@ -7,19 +7,6 @@ class ApplicationController < ActionController::Base
   before_action :set_robots_tag_header
   helper_method :hotwire_native_app?
 
-  # Hotwire Native navigation endpoint
-  def recede_historical_location
-    Rails.logger.info "🎯 Rails: recede_historical_location called by #{request.user_agent}"
-
-    if helpers.native_app_with_tabs?
-      Rails.logger.info "📱 Rails: Native app detected, rendering navigation page"
-      render html: "<html><body><script>console.log('Navigating for native app'); window.location.href = '/headache_logs';</script></body></html>".html_safe
-    else
-      Rails.logger.info "🌐 Rails: Web app, redirecting normally"
-      redirect_to headache_logs_path
-    end
-  end
-
   private
 
   def redirect_canonical_host
