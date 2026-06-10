@@ -19,8 +19,8 @@ class HeadacheLog < ApplicationRecord
   scope :recent_first, -> { order(start_time: :desc) }
   scope :started_after, ->(start_time) { where("start_time >= ?", Date.parse(start_time).beginning_of_day) }
   scope :ended_before, ->(end_time) { where("end_time <= ? OR end_time IS NULL", Date.parse(end_time).end_of_day) }
-  scope :with_triggers, ->(triggers) { where("triggers ILIKE ?", "%#{triggers}%") }
-  scope :with_medication, ->(medication) { where("medication ILIKE ?", "%#{medication}%") }
+  scope :with_triggers, ->(triggers) { where("triggers ILIKE ?", "%#{sanitize_sql_like(triggers)}%") }
+  scope :with_medication, ->(medication) { where("medication ILIKE ?", "%#{sanitize_sql_like(medication)}%") }
 
   class << self
     def filtered_by(params)
