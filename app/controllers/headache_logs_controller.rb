@@ -54,10 +54,6 @@ class HeadacheLogsController < ApplicationController
       current_user.headache_logs.filtered_by(params)
     end
 
-    def current_share_token
-      @current_share_token ||= current_user.current_share_token
-    end
-
     def headache_log_params
       params.expect(headache_log: [ :start_time, :end_time, :intensity, :notes, :medication, :triggers ])
     end
@@ -67,7 +63,7 @@ class HeadacheLogsController < ApplicationController
     end
 
     def set_share_link
-      @share_token = current_share_token
+      @share_token = current_user.current_share_token
 
       if @share_token
         @share_link = shared_logs_url(token: @share_token.token)
