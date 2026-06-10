@@ -36,7 +36,7 @@
     </div>
   <% end %>
 
-  <p>Unhappy? <span><%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></span></p>
+  <p>Unhappy? <span><%= button_to "Delete my account", registration_path(resource_name), method: :delete, data: { turbo_confirm: "Are you sure?" } %></span></p>
 
   <%= link_to "Back", :back %>
 </div>
