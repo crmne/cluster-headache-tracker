@@ -2,7 +2,7 @@ class ShareLinksController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @share_token = current_user.generate_share_token
+    @share_token = current_user.share_tokens.create!
     @share_link = shared_logs_url(token: @share_token.token)
 
     respond_to do |format|
@@ -15,7 +15,7 @@ class ShareLinksController < ApplicationController
   end
 
   def destroy
-    current_user.expire_share_link
+    current_user.share_tokens.destroy_all
 
     respond_to do |format|
       format.html { redirect_to headache_logs_path, notice: "Share link has been expired." }

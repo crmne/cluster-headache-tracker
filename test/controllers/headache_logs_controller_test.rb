@@ -32,7 +32,7 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
 
   test "should expire share link" do
     ShareToken.destroy_all
-    @user.generate_share_token
+    @user.share_tokens.create!
     assert_difference("ShareToken.count", -1) do
       delete share_link_url
     end
