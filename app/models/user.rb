@@ -6,9 +6,9 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
 
-  has_many :headache_logs
-  has_many :share_tokens
-  has_one :feedback_survey
+  has_many :headache_logs, dependent: :destroy
+  has_many :share_tokens, dependent: :destroy
+  has_one :feedback_survey, dependent: :destroy
 
   after_create :send_admin_notification
 
