@@ -8,7 +8,7 @@ class HeadacheLogsController < ApplicationController
   end
 
   def new
-    @headache_log = HeadacheLog.new
+    @headache_log = current_user.headache_logs.new
   end
 
   def edit
