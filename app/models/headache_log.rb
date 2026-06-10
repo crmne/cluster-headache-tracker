@@ -8,6 +8,9 @@ class HeadacheLog < ApplicationRecord
   validates :start_time, :intensity, presence: true
   validates :intensity, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 10 }
 
+  normalizes :medication, with: ->(value) { value.downcase.split(",").map(&:strip).reject(&:blank?).join(", ") }
+  normalizes :triggers, with: ->(value) { value.split(",").map(&:strip).reject(&:blank?).join(", ") }
+
   after_create_commit -> { broadcast_create }
   after_update_commit -> { broadcast_update }
   after_destroy_commit -> { broadcast_destroy }
