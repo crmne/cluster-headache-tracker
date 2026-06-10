@@ -3,7 +3,7 @@ require "csv"
 class HeadacheLog < ApplicationRecord
   CSV_HEADERS = %w[ start_time end_time intensity medication triggers notes ].freeze
 
-  belongs_to :user
+  belongs_to :user, counter_cache: true
 
   validates :start_time, :intensity, presence: true
   validates :intensity, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 10 }

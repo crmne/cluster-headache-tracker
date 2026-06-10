@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::BaseController
   before_action :set_user, only: [ :destroy, :reset_password, :reset_changelog, :reset_welcome ]
 
   def index
-    @users = User.includes(:headache_logs)
+    @users = User.all
 
     if params[:search].present?
       @users = @users.where("username ILIKE ?", "%#{params[:search]}%")

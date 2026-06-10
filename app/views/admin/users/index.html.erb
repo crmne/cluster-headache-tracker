@@ -78,8 +78,8 @@
             <% end %>
           </td>
           <td>
-            <div class="text-lg font-semibold"><%= user.headache_logs.count %></div>
-            <% if user.headache_logs.any? %>
+            <div class="text-lg font-semibold"><%= user.headache_logs_count %></div>
+            <% if user.headache_logs_count > 0 %>
               <div class="text-xs text-base-content/70">
                 Last: <%= time_ago_in_words(user.headache_logs.maximum(:created_at)) %> ago
               </div>
