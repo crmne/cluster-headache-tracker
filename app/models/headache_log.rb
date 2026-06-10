@@ -91,6 +91,23 @@ class HeadacheLog < ApplicationRecord
       imported_logs
     end
 
+    def sample_logs
+      base_date = Date.current - 18.days
+
+      [
+        sample_log(base_date, "02:10", "02:55", 8, "oxygen 15 min", "sleep disruption", "Right eye pain, paced during attack, relief after oxygen."),
+        sample_log(base_date + 1.day, "01:42", "02:34", 9, "oxygen 20 min", "sleep disruption", "Woke from sleep, tearing, restless, shadow remained after relief."),
+        sample_log(base_date + 3.days, "22:18", "22:56", 7, "sumatriptan", "alcohol", "Late evening attack after alcohol exposure, relief after medication."),
+        sample_log(base_date + 5.days, "03:05", "04:12", 10, "oxygen 25 min", "sleep disruption", "Severe right-sided attack, oxygen helped but relief was slower."),
+        sample_log(base_date + 6.days, "13:24", "13:58", 6, "oxygen 12 min", "none noted", "Shorter daytime attack, returned to work after relief."),
+        sample_log(base_date + 8.days, "00:38", "01:29", 8, "oxygen 18 min", "sleep disruption", "Woke from sleep, nasal congestion, relief after oxygen."),
+        sample_log(base_date + 10.days, "02:48", "03:31", 9, "oxygen 20 min", "sleep disruption", "Pacing and tearing, no medication side effects noted."),
+        sample_log(base_date + 12.days, "21:16", "22:04", 7, "sumatriptan", "weather change", "Evening attack, medication helped within the hour."),
+        sample_log(base_date + 13.days, "04:12", "04:49", 8, "oxygen 15 min", "sleep disruption", "Oxygen relief, mild shadow afterward."),
+        sample_log(base_date + 15.days, "01:08", "02:02", 9, "oxygen 20 min", "sleep disruption", "Typical overnight pattern, attack ended after oxygen.")
+      ]
+    end
+
     private
       def attacks_per_day_data_for(logs)
         attacks_per_day = logs.group_by { |log| log.start_time.to_date }
@@ -166,6 +183,17 @@ class HeadacheLog < ApplicationRecord
         if time_string.present?
           Time.zone.parse(time_string)
         end
+      end
+
+      def sample_log(date, start_time, end_time, intensity, medication, triggers, notes)
+        new(
+          start_time: Time.zone.parse("#{date} #{start_time}"),
+          end_time: Time.zone.parse("#{date} #{end_time}"),
+          intensity: intensity,
+          medication: medication,
+          triggers: triggers,
+          notes: notes
+        )
       end
 
       def trigger_data_for(logs)
