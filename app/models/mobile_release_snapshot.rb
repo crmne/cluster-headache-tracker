@@ -34,8 +34,6 @@ class MobileReleaseSnapshot < ApplicationRecord
           fetched_at: Time.current
         )
       end
-    rescue StandardError => error
-      Rails.logger.error("Failed to sync #{platform} release metadata: #{error.class} #{error.message}")
     end
 
     private
