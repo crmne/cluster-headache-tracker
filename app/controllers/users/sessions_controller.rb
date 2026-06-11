@@ -1,6 +1,4 @@
 class Users::SessionsController < Devise::SessionsController
-  include ApplicationHelper
-
   def create
     super do |resource|
       if resource.persisted? && helpers.native_app_with_tabs?

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  include ApplicationHelper
-
   def create
     super do |resource|
       if resource.persisted? && helpers.native_app_with_tabs?
