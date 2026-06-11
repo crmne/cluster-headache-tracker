@@ -29,8 +29,6 @@ topics:
 - Hotwire Native
 pages:
   "/":
-    slug: home
-    path: "/"
     title: Cluster Headache Tracker & Diary
     description: Free, privacy-focused cluster headache tracker and diary built by a fellow sufferer. Log attacks quickly, spot patterns, create doctor-ready reports, and keep health data private.
     topics:
@@ -75,8 +73,6 @@ pages:
       - Add intensity, medication, triggers, and notes when able.
       - Review charts or share a temporary report link with a healthcare provider.
   "/cluster-headache-diary":
-    slug: cluster-headache-diary
-    path: "/cluster-headache-diary"
     title: Free Cluster Headache Diary
     description: Free cluster headache diary and tracker for logging attack time, duration, KIP-style intensity, medication, oxygen response, triggers, and notes.
     topics:
@@ -110,8 +106,6 @@ pages:
       - Review charts for timing, duration, and frequency patterns.
       - Print, export, or share a temporary report for appointments.
   "/cluster-headache-diary-template":
-    slug: cluster-headache-diary-template
-    path: "/cluster-headache-diary-template"
     title: Cluster Headache Diary Template
     description: Printable cluster headache diary template for attack time, duration, intensity, medication, oxygen response, triggers, and notes.
     topics:
@@ -136,8 +130,6 @@ pages:
     - question: Can the CSV be imported later?
       answer: Yes. The CSV uses the app's standard headache log columns.
   "/headache-diary-for-neurologist":
-    slug: headache-diary-for-neurologist
-    path: "/headache-diary-for-neurologist"
     title: Headache Diary for Neurologist Visits
     description: Prepare a headache diary for neurologist appointments with attack timing, duration, intensity, medication response, oxygen notes, triggers, and reports.
     topics:
@@ -163,8 +155,6 @@ pages:
     - question: Can reports be shared without a doctor account?
       answer: Yes. Users can generate temporary read-only share links that do not require the clinician to create an account.
   "/cluster-headache-oxygen-documentation":
-    slug: cluster-headache-oxygen-documentation
-    path: "/cluster-headache-oxygen-documentation"
     title: Cluster Headache Oxygen Documentation
     description: Track cluster headache attack frequency, duration, oxygen use, and treatment response for clinician and insurance conversations without making treatment promises.
     topics:
@@ -189,8 +179,6 @@ pages:
     - question: What oxygen-related details can be logged?
       answer: Users can record oxygen use in medication notes, add duration or response notes, and compare attack duration and intensity across logged attacks.
   "/sample-report":
-    slug: sample-report
-    path: "/sample-report"
     title: Sample Cluster Headache Report
     description: Public fictional sample cluster headache report showing attack summaries, timing, intensity, treatment response notes, charts, and detailed log entries.
     topics:
@@ -215,8 +203,6 @@ pages:
     - question: Can real reports be printed?
       answer: Yes. Real reports can be printed from the browser, saved as PDF, exported as CSV, or shared through a temporary read-only link.
   "/cluster-headache-app":
-    slug: cluster-headache-app
-    path: "/cluster-headache-app"
     title: Cluster Headache App
     description: Free cluster headache app for web, PWA, iOS beta, and Android beta. One-tap attack logging, charts, CSV export, privacy, and doctor-ready reports.
     topics:
@@ -242,8 +228,6 @@ pages:
     - question: Does the app work without email signup?
       answer: Yes. Accounts use username and password only.
   "/open-source-headache-tracker":
-    slug: open-source-headache-tracker
-    path: "/open-source-headache-tracker"
     title: Open Source Headache Tracker
     description: Open-source, privacy-focused headache tracker for cluster headache attacks. Rails codebase, username-only accounts, CSV export, and doctor-ready reports.
     topics:
@@ -267,8 +251,6 @@ pages:
     - question: Can users export their data?
       answer: Yes. Users can export their headache logs as CSV.
   "/faq":
-    slug: faq
-    path: "/faq"
     title: Cluster Headache Tracker FAQ
     description: Real answers about cluster headaches, attack tracking, privacy, doctor sharing, and why this free tracker exists.
     topics:
@@ -297,8 +279,6 @@ pages:
     - question: Is personal headache data exposed to AI crawlers?
       answer: No. AI-visible resources describe only public product pages and public product facts, not private headache logs or shared reports.
   "/neurologist":
-    slug: neurologist
-    path: "/neurologist"
     title: Cluster Headache Tracker for Neurologists
     description: A free cluster headache tracking tool for patients that produces clean reports, clear patterns, and documentation for clinical conversations.
     topics:
@@ -324,8 +304,6 @@ pages:
     - question: What data appears in a shared report?
       answer: Shared reports include logged attacks, timestamps, duration, intensity, medication notes, trigger notes, charts, and printable tables.
   "/privacy-policy":
-    slug: privacy-policy
-    path: "/privacy-policy"
     title: Privacy Policy for Cluster Headache Tracker
     description: Privacy policy for Cluster Headache Tracker, including username-only accounts, health log storage, sharing controls, export rights, and data handling.
     topics:
@@ -343,8 +321,6 @@ pages:
       - Data is used to provide headache tracking, charts, reports, and product improvements.
       - Personal logs are not sold and are not included in AI-visible content files.
   "/imprint":
-    slug: imprint
-    path: "/imprint"
     title: Cluster Headache Tracker Imprint
     description: Legal imprint and contact details for Cluster Headache Tracker, a non-commercial tool maintained by Carmine Paolino.
     topics:

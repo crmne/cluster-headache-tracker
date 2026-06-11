@@ -22,7 +22,13 @@ class AiVisibleContent
 
   FEATURES = config.fetch("features").freeze
   TOPICS = config.fetch("topics").freeze
-  PUBLIC_PAGES = config.fetch("pages").transform_values { |page| page.deep_symbolize_keys.freeze }.freeze
+  PUBLIC_PAGES = config.fetch("pages").to_h do |path, page|
+    page = page.deep_symbolize_keys
+    page[:path] = path
+    page[:slug] = path == "/" ? "home" : path.delete_prefix("/")
+    [ path, page.freeze ]
+  end.freeze
+  PAGES_BY_SLUG = PUBLIC_PAGES.values.index_by { |page| page[:slug] }.freeze
 
   SAME_AS = [
     SOURCE_REPOSITORY_URL,
@@ -38,7 +44,7 @@ class AiVisibleContent
     end
 
     def page_for_slug(slug)
-      PUBLIC_PAGES.values.find { |page| page[:slug] == slug }
+      PAGES_BY_SLUG[slug]
     end
 
     def public_indexable_path?(path)
