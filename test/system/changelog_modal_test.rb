@@ -1,8 +1,6 @@
 require "application_system_test_case"
 
 class ChangelogModalTest < ApplicationSystemTestCase
-  include Devise::Test::IntegrationHelpers
-
   setup do
     @user = users(:one)
     @user.update!(welcome_seen_at: Time.current, last_seen_changelog: nil)
