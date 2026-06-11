@@ -2,14 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["field", "ongoingBadge"]
+  static values = { setNowOnConnect: Boolean }
 
   connect() {
-    // Only set initial time if this is a new record
-    if (!this.fieldTarget.value && window.location.pathname.match(/\/new$/)) {
-      // Only set initial time for start_time field, not end_time
-      if (this.fieldTarget.name === "headache_log[start_time]") {
-        this.setNow();
-      }
+    if (this.setNowOnConnectValue && !this.fieldTarget.value) {
+      this.setNow();
     }
 
     // Show/hide ongoing badge based on initial end time value
