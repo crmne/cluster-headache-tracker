@@ -15,19 +15,3 @@ import("@hotwired/hotwire-native-bridge").then(({ Bridge }) => {
 if (typeof window.initializeCharts == "undefined") {
   window.initializeCharts = initializeCharts;
 }
-
-// Reinitialize charts after Turbo frame updates
-document.addEventListener('turbo:frame-render', function(event) {
-  const frame = event.target;
-  if (frame.id === 'charts') {
-    console.log('Charts frame updated, reinitializing...');
-    // Give Stimulus time to connect controllers
-    setTimeout(() => {
-      const chartsElement = frame.querySelector('[data-controller="charts"]');
-      if (chartsElement) {
-        // Trigger a reconnect by updating a data attribute
-        chartsElement.setAttribute('data-charts-reinitialized', Date.now());
-      }
-    }, 100);
-  }
-});
