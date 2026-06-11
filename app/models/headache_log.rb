@@ -17,6 +17,7 @@ class HeadacheLog < ApplicationRecord
 
   scope :chronological, -> { order(:start_time) }
   scope :recent_first, -> { order(start_time: :desc) }
+  scope :today, -> { where(start_time: Time.current.all_day) }
   scope :started_after, ->(start_time) { where("start_time >= ?", Date.parse(start_time).beginning_of_day) }
   scope :ended_before, ->(end_time) { where("end_time <= ? OR end_time IS NULL", Date.parse(end_time).end_of_day) }
   scope :with_triggers, ->(triggers) { where("triggers ILIKE ?", "%#{sanitize_sql_like(triggers)}%") }
@@ -105,7 +106,12 @@ class HeadacheLog < ApplicationRecord
         sample_log(base_date + 12.days, "21:16", "22:04", 7, "sumatriptan", "weather change", "Evening attack, medication helped within the hour."),
         sample_log(base_date + 13.days, "04:12", "04:49", 8, "oxygen 15 min", "sleep disruption", "Oxygen relief, mild shadow afterward."),
         sample_log(base_date + 15.days, "01:08", "02:02", 9, "oxygen 20 min", "sleep disruption", "Typical overnight pattern, attack ended after oxygen.")
-      ]
+      ].tap do |logs|
+        # The marketing sample report feeds these unsaved logs through the
+        # same stats partial as real reports, so quack like a relation.
+        def logs.today = select { |log| log.start_time.today? }
+        def logs.average(attribute) = sum(&attribute) / size.to_f
+      end
     end
 
     private

@@ -11,7 +11,7 @@
         <% if headache_logs.any? %>
           <div data-controller="timer"
                data-timer-format-value="short"
-               data-timer-start-value="<%= headache_logs.max_by(&:start_time).start_time.strftime('%Y-%m-%dT%H:%M:%S') %>">
+               data-timer-start-value="<%= headache_logs.maximum(:start_time).strftime('%Y-%m-%dT%H:%M:%S') %>">
             <span data-timer-target="timeAgo">...</span>
           </div>
         <% else %>
@@ -22,7 +22,7 @@
     </div>
     <div class="stat">
       <%
-        headaches_today = headache_logs.select { |log| log.start_time.to_date == Date.today }.count
+        headaches_today = headache_logs.today.count
 
         # Calculate color for headaches today (0-8+ scale)
         today_color = if headaches_today == 0
@@ -60,11 +60,7 @@
     </div>
     <div class="stat">
       <%
-        avg_intensity = if headache_logs.any?
-          (headache_logs.sum(&:intensity).to_f / headache_logs.size).round(1)
-        else
-          0
-        end
+        avg_intensity = headache_logs.average(:intensity)&.to_f&.round(1) || 0
 
         # Calculate color for average intensity - same as cards
         avg_color = avg_intensity == 0 ? 'text-base-content/60' : intensity_color(avg_intensity)
