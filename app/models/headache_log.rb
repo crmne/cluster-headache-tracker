@@ -175,7 +175,7 @@ class HeadacheLog < ApplicationRecord
         medication_counts = Hash.new(0)
 
         logs.each do |log|
-          medications = log.medication.to_s.split(",").map(&:strip).map(&:downcase)
+          medications = log.medication_list.map(&:downcase)
 
           medications.each do |medication|
             medication_counts[medication] += 1 unless medication.blank?
@@ -206,7 +206,7 @@ class HeadacheLog < ApplicationRecord
         trigger_counts = Hash.new(0)
 
         logs.each do |log|
-          triggers = log.triggers.to_s.split(",").map(&:strip)
+          triggers = log.trigger_list
 
           triggers.each do |trigger|
             trigger_counts[trigger] += 1 unless trigger.blank?
@@ -216,6 +216,9 @@ class HeadacheLog < ApplicationRecord
         trigger_counts.sort_by { |_, count| -count }.first(5).to_h
       end
   end
+
+  def medication_list = medication.to_s.split(",").map(&:strip)
+  def trigger_list = triggers.to_s.split(",").map(&:strip)
 
   private
     def broadcast_create
