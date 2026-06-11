@@ -62,7 +62,7 @@
 
 <body class="min-h-screen bg-base-200 flex flex-col print:min-h-0 print:h-auto print:overflow-visible print:bg-white">
   <%= render 'navbar' %>
-  <%= render 'flash_messages', resource: local_assigns[:resource] %>
+  <%= render "flash_messages" %>
   <%
     main_spacing_class =
       if native_app_with_tabs?
