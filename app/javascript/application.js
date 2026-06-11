@@ -2,7 +2,6 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import { initializeCharts } from "headache_charts"
-import { Turbo } from "@hotwired/turbo-rails"
 
 // Initialize Hotwire Native Bridge if available
 import("@hotwired/hotwire-native-bridge").then(({ Bridge }) => {
@@ -12,12 +11,6 @@ import("@hotwired/hotwire-native-bridge").then(({ Bridge }) => {
 }).catch(() => {
   // Bridge not available in web browser, that's ok
 })
-
-// Add redirect action for Turbo Streams
-Turbo.StreamActions.redirect = function() {
-  const url = this.templateContent.textContent.trim()
-  Turbo.visit(url)
-}
 
 if (typeof window.initializeCharts == "undefined") {
   window.initializeCharts = initializeCharts;
