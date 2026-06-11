@@ -10,4 +10,14 @@ class Rack::Attack
       req.ip
     end
   end
+
+  throttle("logins/username", limit: 10, period: 5.minutes) do |req|
+    if req.path == "/users/sign_in" && req.post?
+      req.params.dig("user", "username").to_s.downcase.presence
+    end
+  end
+
+  throttle("signups/ip", limit: 5, period: 1.hour) do |req|
+    req.ip if req.path == "/users" && req.post?
+  end
 end
