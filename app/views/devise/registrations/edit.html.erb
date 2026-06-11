@@ -1,41 +1,68 @@
-<% content_for :title, "Edit #{resource_name.to_s.humanize}" %>
-<div class="w-full max-w-xs">
-  <h1 class="font-hairline mb-6 text-center">Edit <%= resource_name.to_s.humanize %></h1>
+<% content_for :title, "Edit Account" %>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "bg-white mb-4 px-8 pt-6 pb-8 rounded shadow-md" }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+<div class="flex items-center justify-center min-h-[70vh]">
+  <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 w-full max-w-md mx-4">
+    <div class="card-body">
+      <div class="text-center mb-6">
+        <h2 class="text-2xl font-bold">Edit Account</h2>
+        <p class="text-base-content/60">Update your username or password</p>
+      </div>
 
-    <div class="mb-4">
-      <%= f.label :username, class: "block font-bold mb-2 text-gray-700 text-sm" %><br>
-      <%= f.email_field :username, autofocus: true, autocomplete: "email", class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none shadow focus:shadow-outline" %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="space-y-4">
+          <div class="form-control">
+            <%= f.label :username, class: "label" do %>
+              <span class="label-text font-semibold flex items-center gap-2">
+                <%= heroicon "user", variant: "mini", class: "w-4 h-4" %>
+                Username
+              </span>
+            <% end %>
+            <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "input input-bordered w-full" %>
+          </div>
+
+          <div class="form-control">
+            <%= f.label :password, class: "label" do %>
+              <span class="label-text font-semibold flex items-center gap-2">
+                <%= heroicon "key", variant: "mini", class: "w-4 h-4" %>
+                Password
+              </span>
+              <span class="label-text-alt opacity-70">leave blank to keep it</span>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "input input-bordered w-full" %>
+          </div>
+
+          <div class="form-control">
+            <%= f.label :password_confirmation, class: "label" do %>
+              <span class="label-text font-semibold flex items-center gap-2">
+                <%= heroicon "key", variant: "mini", class: "w-4 h-4" %>
+                Confirm Password
+              </span>
+            <% end %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input input-bordered w-full" %>
+          </div>
+
+          <div class="form-control">
+            <%= f.label :current_password, class: "label" do %>
+              <span class="label-text font-semibold flex items-center gap-2">
+                <%= heroicon "lock-closed", variant: "mini", class: "w-4 h-4" %>
+                Current Password
+              </span>
+            <% end %>
+            <%= f.password_field :current_password, autocomplete: "current-password", class: "input input-bordered w-full" %>
+          </div>
+
+          <%= f.submit "Update", class: "btn btn-primary w-full mt-6" %>
+        </div>
+      <% end %>
+
+      <div class="divider mt-6">Unhappy?</div>
+
+      <div class="text-center">
+        <%= button_to "Delete my account", registration_path(resource_name), method: :delete,
+              data: { turbo_confirm: "Are you sure?" }, class: "btn btn-outline btn-error btn-wide" %>
+      </div>
     </div>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-
-    <div class="mb-4">
-      <%= f.label :password, class: "block font-bold mb-2 text-gray-700 text-sm" %> <i>(leave blank if you don't want to change it)</i><br>
-      <%= f.password_field :password, autocomplete: "new-password", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" %>
-
-    </div>
-
-    <div class="mb-4">
-      <%= f.label :password_confirmation, class: "block font-bold mb-2 text-gray-700 text-sm" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" %>
-    </div>
-
-    <div class="mb-4">
-      <%= f.label :current_password, class: "block font-bold mb-2 text-gray-700 text-sm" %>
-      <%= f.password_field :current_password, autocomplete: "current-password", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Update", class: "button bg-indigo-500 hover:bg-indigo-700 font-bold text-white focus:outline-none py-2 px-4 rounded focus:shadow-outline w-full" %>
-    </div>
-  <% end %>
-
-  <p>Unhappy? <span><%= button_to "Delete my account", registration_path(resource_name), method: :delete, data: { turbo_confirm: "Are you sure?" } %></span></p>
-
-  <%= link_to "Back", :back %>
+  </div>
 </div>
