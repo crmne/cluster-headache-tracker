@@ -5,7 +5,7 @@ class ChangelogModalTest < ApplicationSystemTestCase
 
   setup do
     @user = users(:one)
-    @user.update!(has_seen_welcome: true, last_seen_changelog: nil)
+    @user.update!(welcome_seen_at: Time.current, last_seen_changelog: nil)
     sign_in @user
   end
 

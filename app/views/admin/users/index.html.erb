@@ -90,7 +90,7 @@
             <div class="text-xs text-base-content/70"><%= time_ago_in_words(user.created_at) %> ago</div>
           </td>
           <td>
-            <% if user.has_seen_welcome %>
+            <% if user.welcome_seen_at? %>
               <span class="badge badge-success">Seen</span>
             <% else %>
               <span class="badge badge-ghost">Not seen</span>
