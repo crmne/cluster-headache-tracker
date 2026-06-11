@@ -54,6 +54,8 @@
           <span data-welcome-target="buttonText">Start Tracking</span>
           <span data-welcome-target="countdown" class="hidden"></span>
         </button>
+        <%= button_to "Start Tracking", settings_welcome_acknowledgement_path,
+            form: { class: "hidden", data: { welcome_target: "dismissForm", turbo: false } } %>
       </div>
     </div>
     <form method="dialog" class="modal-backdrop">

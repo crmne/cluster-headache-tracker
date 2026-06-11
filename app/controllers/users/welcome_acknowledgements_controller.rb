@@ -3,6 +3,6 @@ class Users::WelcomeAcknowledgementsController < ApplicationController
 
   def create
     current_user.touch(:welcome_seen_at)
-    head :ok
+    redirect_back fallback_location: headache_logs_path
   end
 end
