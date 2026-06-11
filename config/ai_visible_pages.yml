@@ -31,6 +31,7 @@ pages:
   "/":
     title: Cluster Headache Tracker & Diary
     description: Free, privacy-focused cluster headache tracker and diary built by a fellow sufferer. Log attacks quickly, spot patterns, create doctor-ready reports, and keep health data private.
+    medical: true
     topics:
     - Cluster headaches
     - Headache diary
@@ -75,6 +76,7 @@ pages:
   "/cluster-headache-diary":
     title: Free Cluster Headache Diary
     description: Free cluster headache diary and tracker for logging attack time, duration, KIP-style intensity, medication, oxygen response, triggers, and notes.
+    medical: true
     topics:
     - Cluster headaches
     - Headache diary
@@ -108,6 +110,7 @@ pages:
   "/cluster-headache-diary-template":
     title: Cluster Headache Diary Template
     description: Printable cluster headache diary template for attack time, duration, intensity, medication, oxygen response, triggers, and notes.
+    medical: true
     topics:
     - Headache diary template
     - Headache diary
@@ -132,6 +135,7 @@ pages:
   "/headache-diary-for-neurologist":
     title: Headache Diary for Neurologist Visits
     description: Prepare a headache diary for neurologist appointments with attack timing, duration, intensity, medication response, oxygen notes, triggers, and reports.
+    medical: true
     topics:
     - Headache diary for neurologist visits
     - Neurology reports
@@ -157,6 +161,7 @@ pages:
   "/cluster-headache-oxygen-documentation":
     title: Cluster Headache Oxygen Documentation
     description: Track cluster headache attack frequency, duration, oxygen use, and treatment response for clinician and insurance conversations without making treatment promises.
+    medical: true
     topics:
     - Oxygen treatment documentation
     - Oxygen response tracking
@@ -181,6 +186,7 @@ pages:
   "/sample-report":
     title: Sample Cluster Headache Report
     description: Public fictional sample cluster headache report showing attack summaries, timing, intensity, treatment response notes, charts, and detailed log entries.
+    medical: true
     topics:
     - Neurology reports
     - Headache diary
@@ -205,6 +211,7 @@ pages:
   "/cluster-headache-app":
     title: Cluster Headache App
     description: Free cluster headache app for web, PWA, iOS beta, and Android beta. One-tap attack logging, charts, CSV export, privacy, and doctor-ready reports.
+    medical: true
     topics:
     - Cluster headache app
     - Progressive web app
@@ -230,6 +237,7 @@ pages:
   "/open-source-headache-tracker":
     title: Open Source Headache Tracker
     description: Open-source, privacy-focused headache tracker for cluster headache attacks. Rails codebase, username-only accounts, CSV export, and doctor-ready reports.
+    medical: true
     topics:
     - Open-source headache tracker
     - Open-source health software
@@ -253,6 +261,7 @@ pages:
   "/faq":
     title: Cluster Headache Tracker FAQ
     description: Real answers about cluster headaches, attack tracking, privacy, doctor sharing, and why this free tracker exists.
+    medical: true
     topics:
     - Cluster headaches
     - Headache diary
@@ -281,6 +290,7 @@ pages:
   "/neurologist":
     title: Cluster Headache Tracker for Neurologists
     description: A free cluster headache tracking tool for patients that produces clean reports, clear patterns, and documentation for clinical conversations.
+    medical: true
     topics:
     - Cluster headaches
     - Neurology reports

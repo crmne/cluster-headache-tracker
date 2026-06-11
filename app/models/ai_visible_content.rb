@@ -413,9 +413,7 @@ class AiVisibleContent
     end
 
     def medical_page?(page)
-      page[:topics].include?("Cluster headaches") ||
-        page[:topics].include?("Neurology reports") ||
-        page[:topics].include?("Oxygen treatment documentation")
+      page[:medical]
     end
 
     def entity_resource(slug)
