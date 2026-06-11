@@ -28,16 +28,16 @@
         <div class="stats">
           <h2>Current Platform Stats</h2>
           <div class="stat-item">
-            <strong>Total Users:</strong> <%= @total_users %>
+            <strong>Total Users:</strong> <%= @stats[:total_users] %>
           </div>
           <div class="stat-item">
-            <strong>Total Headache Logs:</strong> <%= @total_headache_logs %>
+            <strong>Total Headache Logs:</strong> <%= @stats[:total_headache_logs] %>
           </div>
           <div class="stat-item">
-            <strong>Average Logs per User:</strong> <%= @average_logs_per_user %>
+            <strong>Average Logs per User:</strong> <%= @stats[:average_logs_per_user] %>
           </div>
           <div class="stat-item">
-            <strong>Changelog Seen:</strong> <%= @changelog_percentage %>% (<%= @users_seen_changelog %> of <%= @total_users %> users)
+            <strong>Changelog Seen:</strong> <%= @stats[:changelog_seen_percentage] %>% (<%= @stats[:users_seen_changelog] %> of <%= @stats[:total_users] %> users)
           </div>
         </div>
 
