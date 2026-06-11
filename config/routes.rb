@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     }, via: :all
   end
 
-  # resources :headache_logs
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations"
@@ -26,7 +25,6 @@ Rails.application.routes.draw do
   get "cluster-headache-tracker.apk", to: redirect(AppConstants::ANDROID_APK_URL, status: 302)
 
   # Defines the root path route ("/")
-  get "home/index"
   root "home#index"
 
   get "llms.txt", to: "ai_visible_content#llms"
@@ -58,7 +56,6 @@ Rails.application.routes.draw do
   get "shared_logs/:token", to: "shared_logs#index", as: :shared_logs
 
   # Charts
-  get "charts/index"
   get "charts", to: "charts#index"
 
   resource :share_link, only: %i[ create destroy ]
@@ -81,7 +78,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "dashboard#index"
-    get "dashboard", to: "dashboard#index"
 
     resources :users, only: [ :index, :destroy ] do
       member do

@@ -14,7 +14,7 @@
             <li><%= link_to settings_path do %><%= heroicon "user", variant: "micro" %> Account Settings<% end %></li>
             <li><%= link_to feedback_path do %><%= heroicon "chat-bubble-left-ellipsis", variant: "micro" %> Feedback<% end %></li>
             <% if current_user.admin? %>
-              <li><%= link_to admin_dashboard_path do %><%= heroicon "shield-check", variant: "micro" %> Admin<% end %></li>
+              <li><%= link_to admin_root_path do %><%= heroicon "shield-check", variant: "micro" %> Admin<% end %></li>
             <% end %>
           <% end %>
 
