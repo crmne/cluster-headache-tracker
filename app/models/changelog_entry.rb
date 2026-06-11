@@ -49,7 +49,7 @@ class ChangelogEntry
   class << self
     private
       def entries
-        YAML.safe_load(Rails.root.join("config/changelog_entries.yml").read, aliases: true).fetch("entries")
+        @entries ||= YAML.safe_load(Rails.root.join("config/changelog_entries.yml").read, aliases: true).fetch("entries")
       end
   end
 end
