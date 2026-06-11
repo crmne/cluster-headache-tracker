@@ -1,0 +1,45 @@
+# <%== AiVisibleContent::SITE_NAME %>
+
+> <%== AiVisibleContent::SITE_DESCRIPTION %>
+
+## About
+
+<%== AiVisibleContent::SITE_NAME %> is a free, privacy-focused app for logging cluster headache attacks, finding patterns, and preparing doctor-ready reports.
+
+- Builder: Carmine Paolino, a cluster headache sufferer
+- Platforms: Web, PWA, iOS beta, Android beta
+- Price: Free
+- Open source: Yes, GPL-3.0
+- Account model: Username and password, no email required
+- Medical boundary: Tracking and reporting only, not medical advice
+
+## Key Use Cases
+
+- One-tap attack logging when the user is in severe pain
+- Pattern review across timing, frequency, triggers, medications, and intensity
+- Temporary read-only reports for neurologists and other healthcare providers
+- CSV export for personal records
+- Privacy-preserving headache diary without email-based identity
+
+## Key Topics
+
+<% AiVisibleContent::TOPICS.each do |topic| %>
+- <%== topic %>
+<% end %>
+
+## Public Pages
+
+<% AiVisibleContent::PUBLIC_PAGES.each_value do |page| %>
+- [<%== page[:title] %>](<%== AiVisibleContent.absolute_url(page[:path]) %>): <%== page[:description] %>
+<% end %>
+
+Private user dashboards, headache logs, charts, settings, feedback forms, and shared log URLs are intentionally excluded.
+
+## Links
+
+<% AiVisibleContent.link_catalog.each do |name, url| %>
+- <%== name.titleize %>: <%== url %>
+<% end %>
+- Full LLM brief: <%== AiVisibleContent.absolute_url("/llms-full.txt") %>
+- Structured product profile: <%== AiVisibleContent.absolute_url("/llm.json") %>
+- Entity map: <%== AiVisibleContent.absolute_url("/entity-map.json") %>

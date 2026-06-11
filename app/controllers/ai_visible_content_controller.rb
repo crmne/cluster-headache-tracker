@@ -2,11 +2,11 @@ class AiVisibleContentController < ApplicationController
   before_action :set_public_cache_headers
 
   def llms
-    render plain: AiVisibleContent.llms_txt, content_type: "text/plain; charset=utf-8"
+    render formats: :text
   end
 
   def llms_full
-    render plain: AiVisibleContent.llms_full_txt, content_type: "text/plain; charset=utf-8"
+    render formats: :text
   end
 
   def llm

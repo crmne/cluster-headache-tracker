@@ -22,17 +22,6 @@ class AiVisibleContentTest < ActiveSupport::TestCase
     assert_equal "index, follow, max-image-preview:large", AiVisibleContent.robots_directive_for("/ai/page/home.md")
   end
 
-  test "llms text excludes private routes" do
-    text = AiVisibleContent.llms_txt
-
-    assert_includes text, "# Cluster Headache Tracker"
-    assert_includes text, "Free Cluster Headache Diary"
-    assert_includes text, "Sample Cluster Headache Report"
-    assert_includes text, "Private user dashboards"
-    refute_includes text, "/shared_logs/"
-    refute_includes text, "/headache_logs/"
-  end
-
   test "new landing pages are exposed as ai page resources" do
     markdown = AiVisibleContent.page_markdown("cluster-headache-diary")
 

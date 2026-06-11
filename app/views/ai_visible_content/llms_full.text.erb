@@ -1,0 +1,8 @@
+<%== render template: "ai_visible_content/llms", formats: :text %>
+## Public Page Details
+<% AiVisibleContent::PUBLIC_PAGES.each_value do |page| %>
+
+<%== AiVisibleContent.page_markdown(page[:slug]).chomp %>
+
+---
+<% end %>

@@ -7,8 +7,12 @@ class AiVisibleContentControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_includes @response.media_type, "text/plain"
     assert_includes @response.body, "# Cluster Headache Tracker"
+    assert_includes @response.body, "Free Cluster Headache Diary"
+    assert_includes @response.body, "Sample Cluster Headache Report"
+    assert_includes @response.body, "Private user dashboards"
     assert_includes @response.body, "Structured product profile"
     refute_includes @response.body, "/shared_logs/"
+    refute_includes @response.body, "/headache_logs/"
   end
 
   test "serves full llms text" do

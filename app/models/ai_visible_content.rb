@@ -63,36 +63,6 @@ class AiVisibleContent
       end
     end
 
-    def llms_txt
-      lines = []
-      lines << "# #{SITE_NAME}"
-      lines << ""
-      lines << "> #{SITE_DESCRIPTION}"
-      lines << ""
-      append_about_section(lines)
-      append_use_cases_section(lines)
-      append_topics_section(lines)
-      append_public_pages_section(lines)
-      append_links_section(lines)
-      lines.join("\n")
-    end
-
-    def llms_full_txt
-      lines = []
-      lines << llms_txt
-      lines << "## Public Page Details"
-      lines << ""
-
-      PUBLIC_PAGES.each_value do |page|
-        lines << page_markdown_content(page, include_url: true)
-        lines << ""
-        lines << "---"
-        lines << ""
-      end
-
-      lines.join("\n").gsub(/\n{3,}/, "\n\n")
-    end
-
     def llm_json
       {
         "name" => SITE_NAME,
@@ -183,6 +153,23 @@ class AiVisibleContent
       topic.to_s.parameterize
     end
 
+    def link_catalog
+      {
+        "website" => SITE_URL,
+        "source_code" => SOURCE_REPOSITORY_URL,
+        "ios_beta" => IOS_BETA_URL,
+        "ios_source_code" => IOS_REPOSITORY_URL,
+        "android_apk" => AppConstants::ANDROID_APK_URL,
+        "android_source_code" => ANDROID_REPOSITORY_URL,
+        "cluster_headache_diary" => absolute_url("/cluster-headache-diary"),
+        "diary_template" => absolute_url("/cluster-headache-diary-template"),
+        "sample_report" => absolute_url("/sample-report"),
+        "privacy_policy" => absolute_url("/privacy-policy"),
+        "neurologist_page" => absolute_url("/neurologist"),
+        "contact" => "mailto:#{CONTACT_EMAIL}"
+      }
+    end
+
     private
 
     def normalize_path(path)
@@ -195,63 +182,6 @@ class AiVisibleContent
       normalized = normalize_path(path)
       normalized.match?(%r{\A/(llms\.txt|llms-full\.txt|llm\.json|entity-map\.json)\z}) ||
         normalized.match?(%r{\A/ai/(entity|topic|page)/[a-z0-9-]+\.(json|ya?ml|md|txt)\z})
-    end
-
-    def append_about_section(lines)
-      lines << "## About"
-      lines << ""
-      lines << "#{SITE_NAME} is a free, privacy-focused app for logging cluster headache attacks, finding patterns, and preparing doctor-ready reports."
-      lines << ""
-      lines << "- Builder: Carmine Paolino, a cluster headache sufferer"
-      lines << "- Platforms: Web, PWA, iOS beta, Android beta"
-      lines << "- Price: Free"
-      lines << "- Open source: Yes, GPL-3.0"
-      lines << "- Account model: Username and password, no email required"
-      lines << "- Medical boundary: Tracking and reporting only, not medical advice"
-      lines << ""
-    end
-
-    def append_use_cases_section(lines)
-      lines << "## Key Use Cases"
-      lines << ""
-      lines << "- One-tap attack logging when the user is in severe pain"
-      lines << "- Pattern review across timing, frequency, triggers, medications, and intensity"
-      lines << "- Temporary read-only reports for neurologists and other healthcare providers"
-      lines << "- CSV export for personal records"
-      lines << "- Privacy-preserving headache diary without email-based identity"
-      lines << ""
-    end
-
-    def append_topics_section(lines)
-      lines << "## Key Topics"
-      lines << ""
-      TOPICS.each { |topic| lines << "- #{topic}" }
-      lines << ""
-    end
-
-    def append_public_pages_section(lines)
-      lines << "## Public Pages"
-      lines << ""
-
-      PUBLIC_PAGES.each_value do |page|
-        lines << "- [#{page[:title]}](#{absolute_url(page[:path])}): #{page[:description]}"
-      end
-
-      lines << ""
-      lines << "Private user dashboards, headache logs, charts, settings, feedback forms, and shared log URLs are intentionally excluded."
-      lines << ""
-    end
-
-    def append_links_section(lines)
-      lines << "## Links"
-      lines << ""
-      link_catalog.each do |name, url|
-        lines << "- #{name.titleize}: #{url}"
-      end
-      lines << "- Full LLM brief: #{absolute_url('/llms-full.txt')}"
-      lines << "- Structured product profile: #{absolute_url('/llm.json')}"
-      lines << "- Entity map: #{absolute_url('/entity-map.json')}"
-      lines << ""
     end
 
     def page_markdown_content(page, include_url:)
@@ -289,23 +219,6 @@ class AiVisibleContent
       end
 
       lines.join("\n").gsub(/\n{3,}/, "\n\n").strip + "\n"
-    end
-
-    def link_catalog
-      {
-        "website" => SITE_URL,
-        "source_code" => SOURCE_REPOSITORY_URL,
-        "ios_beta" => IOS_BETA_URL,
-        "ios_source_code" => IOS_REPOSITORY_URL,
-        "android_apk" => AppConstants::ANDROID_APK_URL,
-        "android_source_code" => ANDROID_REPOSITORY_URL,
-        "cluster_headache_diary" => absolute_url("/cluster-headache-diary"),
-        "diary_template" => absolute_url("/cluster-headache-diary-template"),
-        "sample_report" => absolute_url("/sample-report"),
-        "privacy_policy" => absolute_url("/privacy-policy"),
-        "neurologist_page" => absolute_url("/neurologist"),
-        "contact" => "mailto:#{CONTACT_EMAIL}"
-      }
     end
 
     def organization_schema(logo_url: nil)
