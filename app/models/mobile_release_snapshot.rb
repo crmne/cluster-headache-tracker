@@ -8,12 +8,6 @@ class MobileReleaseSnapshot < ApplicationRecord
   validates :platform, presence: true, inclusion: { in: PLATFORMS }, uniqueness: true
 
   class << self
-    def for_platform(platform)
-      if platform.present?
-        find_by(platform:)
-      end
-    end
-
     def sync_all
       sync(platform: "android", repository: AppConstants::ANDROID_GITHUB_REPOSITORY)
       sync(

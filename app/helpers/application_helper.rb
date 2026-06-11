@@ -117,7 +117,7 @@ module ApplicationHelper
   end
 
   def android_apk_url
-    if snapshot = MobileReleaseSnapshot.for_platform("android")
+    if snapshot = MobileReleaseSnapshot.find_by(platform: "android")
       snapshot.release_url.presence || AppConstants::ANDROID_APK_URL
     else
       AppConstants::ANDROID_APK_URL
@@ -135,7 +135,7 @@ module ApplicationHelper
   end
 
   def current_mobile_release_snapshot
-    MobileReleaseSnapshot.for_platform(current_mobile_app_platform)
+    MobileReleaseSnapshot.find_by(platform: current_mobile_app_platform)
   end
 
   def current_mobile_app_platform_name
