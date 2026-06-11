@@ -362,43 +362,18 @@ export function initializeCharts(intensityData, triggerData, medicationData, hou
 
   // Use requestAnimationFrame to ensure DOM is ready and loading states are visible
   requestAnimationFrame(() => {
-    // Initialize each chart independently
-    Promise.all([
-      new Promise(resolve => {
-        initializeIntensityChart(intensityData);
-        hideLoading('intensity');
-        resolve();
-      }),
-      new Promise(resolve => {
-        initializePieChart('triggerChart', 'Top 5 Triggers', triggerData);
-        hideLoading('trigger');
-        resolve();
-      }),
-      new Promise(resolve => {
-        initializePieChart('medicationChart', 'Top 5 Medications', medicationData);
-        hideLoading('medication');
-        resolve();
-      }),
-      new Promise(resolve => {
-        initializeHourlyChart(hourlyData);
-        hideLoading('hourly');
-        resolve();
-      }),
-      new Promise(resolve => {
-        initializeAttacksPerDayChart(attacksPerDayData);
-        hideLoading('attacksPerDay');
-        resolve();
-      }),
-      new Promise(resolve => {
-        initializeDurationChart(durationData);
-        hideLoading('duration');
-        resolve();
-      })
-    ]).catch(error => {
-        console.error('Error initializing charts:', error);
-        // Hide all loading indicators in case of error
-        containers.forEach(id => hideLoading(id));
-      });
+    try {
+      initializeIntensityChart(intensityData);
+      initializePieChart('triggerChart', 'Top 5 Triggers', triggerData);
+      initializePieChart('medicationChart', 'Top 5 Medications', medicationData);
+      initializeHourlyChart(hourlyData);
+      initializeAttacksPerDayChart(attacksPerDayData);
+      initializeDurationChart(durationData);
+    } catch (error) {
+      console.error('Error initializing charts:', error);
+    } finally {
+      containers.forEach(id => hideLoading(id));
+    }
   });
 }
 
