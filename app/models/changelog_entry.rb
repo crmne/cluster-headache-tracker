@@ -9,11 +9,7 @@ class ChangelogEntry
   end
 
   def self.find(key)
-    if attributes = entries[key]
-      new(key:, attributes:)
-    else
-      raise KeyError, "Unknown changelog entry: #{key}"
-    end
+    new(key:, attributes: entries.fetch(key))
   end
 
   def initialize(key:, attributes:)
