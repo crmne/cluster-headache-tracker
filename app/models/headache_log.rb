@@ -281,12 +281,15 @@ class HeadacheLog < ApplicationRecord
     end
 
     def broadcast_update_stats
-      broadcast_replace_to [ user, "headache_logs" ], target: "headache_stats",
-                                                     partial: "headache_logs/stats",
-                                                     locals: { current_user: user }
+      headache_logs = user.headache_logs.order(start_time: :desc)
 
-      broadcast_replace_to [ user, "charts" ], target: "headache_stats",
-                                              partial: "headache_logs/stats",
-                                              locals: { current_user: user }
+      [ [ user, "headache_logs" ], [ user, "charts" ] ].each do |stream|
+        # The channel-level API passes only these locals, satisfying the
+        # partial's strict locals (instance-level broadcasts would merge
+        # in a headache_log local).
+        Turbo::StreamsChannel.broadcast_replace_to stream, target: "headache_stats",
+                                                           partial: "headache_logs/stats",
+                                                           locals: { headache_logs: headache_logs }
+      end
     end
 end

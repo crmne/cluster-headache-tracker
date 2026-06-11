@@ -23,7 +23,7 @@
   <%= render "shared/filter_form" %>
 </div>
 
-<%= render "stats" %>
+<%= render "stats", headache_logs: @headache_logs %>
 
 <%= turbo_stream_from current_user, "headache_logs" %>
 <%= render "logs_grid", headache_logs: @headache_logs %>
