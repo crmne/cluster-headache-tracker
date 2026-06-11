@@ -1,6 +1,5 @@
 class AdminNotificationsMailer < ApplicationMailer
-  default from: "hello@clusterheadachetracker.com",
-          to: "carmine@paolino.me"
+  default to: "carmine@paolino.me"
 
   def new_user_notification(user)
     @user = user
