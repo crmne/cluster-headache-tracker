@@ -16,6 +16,11 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     assert_select ".navbar", /Headache Logs/  # Check navbar title instead
   end
 
+  test "should not find another user's headache log" do
+    get edit_headache_log_url(headache_logs(:two))
+    assert_response :not_found
+  end
+
   test "should show ongoing headaches alert" do
     @headache_log.update(end_time: nil)
     get headache_logs_url
