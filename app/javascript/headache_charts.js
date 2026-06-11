@@ -99,15 +99,15 @@ function initializeIntensityChart(intensityData) {
   return null;
 }
 
-function initializeTriggerChart(triggerData) {
-  const ctx = getChartContext('triggerChart');
-  if (ctx && triggerData && Object.keys(triggerData).length > 0) {
+function initializePieChart(chartId, title, data) {
+  const ctx = getChartContext(chartId);
+  if (ctx && data && Object.keys(data).length > 0) {
     return createChart(ctx, {
       type: 'pie',
       data: {
-        labels: Object.keys(triggerData),
+        labels: Object.keys(data),
         datasets: [{
-          data: Object.values(triggerData),
+          data: Object.values(data),
           backgroundColor: [
             'rgb(255, 99, 132)',
             'rgb(54, 162, 235)',
@@ -124,41 +124,7 @@ function initializeTriggerChart(triggerData) {
           },
           title: {
             display: true,
-            text: 'Top 5 Triggers'
-          }
-        }
-      }
-    });
-  }
-  return null;
-}
-
-function initializeMedicationChart(medicationData) {
-  const ctx = getChartContext('medicationChart');
-  if (ctx && medicationData && Object.keys(medicationData).length > 0) {
-    return createChart(ctx, {
-      type: 'pie',
-      data: {
-        labels: Object.keys(medicationData),
-        datasets: [{
-          data: Object.values(medicationData),
-          backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)',
-            'rgb(75, 192, 192)',
-            'rgb(153, 102, 255)'
-          ]
-        }]
-      },
-      options: {
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: 'Top 5 Medications'
+            text: title
           }
         }
       }
@@ -404,12 +370,12 @@ export function initializeCharts(intensityData, triggerData, medicationData, hou
         resolve();
       }),
       new Promise(resolve => {
-        initializeTriggerChart(triggerData);
+        initializePieChart('triggerChart', 'Top 5 Triggers', triggerData);
         hideLoading('trigger');
         resolve();
       }),
       new Promise(resolve => {
-        initializeMedicationChart(medicationData);
+        initializePieChart('medicationChart', 'Top 5 Medications', medicationData);
         hideLoading('medication');
         resolve();
       }),
