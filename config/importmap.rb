@@ -11,6 +11,3 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "chart.js" # @4.4.6
 pin "chartjs-adapter-date-fns" # @3.0.0
 pin "date-fns" # @2.30.0
-
-# Charts
-pin "headache_charts", to: "headache_charts.js"
