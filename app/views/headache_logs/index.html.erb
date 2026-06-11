@@ -19,7 +19,7 @@
 <% end %>
 
 <div class="join join-vertical w-full mb-4">
-  <%= render "share_link" %>
+  <%= render "share_link", share_token: @share_token, share_link: @share_link %>
   <%= render "shared/filter_form" %>
 </div>
 

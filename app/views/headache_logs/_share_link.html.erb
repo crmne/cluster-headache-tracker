@@ -1,5 +1,5 @@
+<%# locals: (share_token: nil, share_link: nil) %>
 <%= turbo_frame_tag "share_link" do %>
-<% share_token = @share_token %>
 <% print_params = request.query_parameters.slice("start_time", "end_time", "triggers", "medication") %>
 <div class="card bg-base-100 shadow join-item" data-controller="share-link bridge--share">
   <%# Hidden templates for button states %>
@@ -18,25 +18,25 @@
         <%= heroicon "share", class: "w-5 h-5" %>
         Share with Doctor
       </h3>
-      <% if @share_link && share_token %>
+      <% if share_token %>
         <span class="text-xs text-base-content/60">
           Expires in <%= distance_of_time_in_words_to_now(share_token.expires_at) %>
         </span>
       <% end %>
     </div>
 
-    <% if @share_link && share_token %>
+    <% if share_token %>
       <div class="flex gap-2 mt-3">
         <input type="text"
                readonly
                data-share-link-target="input"
                autocomplete="off"
-               value="<%= @share_link %>"
+               value="<%= share_link %>"
                class="input input-bordered input-sm flex-1 text-xs">
         <button data-share-link-target="shareButton"
                 data-bridge--share-target="shareButton"
                 data-action="click->bridge--share#shareViaBridge click->share-link#share"
-                data-share-url="<%= @share_link %>"
+                data-share-url="<%= share_link %>"
                 data-share-title="My Headache Logs"
                 data-share-text="View my headache tracking history"
                 class="btn btn-primary btn-sm">
