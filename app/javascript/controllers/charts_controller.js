@@ -12,38 +12,7 @@ export default class extends Controller {
     duration: Array
   }
 
-  connect() {
-    // Initialize charts when the controller connects
-    this.initializeAllCharts()
-
-    // Also reinitialize when any value changes
-    this.observer = new MutationObserver((mutations) => {
-      this.initializeAllCharts()
-    })
-
-    // Observe attribute changes on this element
-    this.observer.observe(this.element, {
-      attributes: true,
-      attributeFilter: [
-        'data-charts-intensity-value',
-        'data-charts-trigger-value',
-        'data-charts-medication-value',
-        'data-charts-hourly-value',
-        'data-charts-attacks-per-day-value',
-        'data-charts-duration-value'
-      ]
-    })
-  }
-
-  disconnect() {
-    // Clean up observer
-    if (this.observer) {
-      this.observer.disconnect()
-    }
-    // Charts are automatically cleaned up by the initializeCharts function
-  }
-
-  // Also reinitialize when values change
+  // Stimulus fires these once on connect and again whenever a value changes
   intensityValueChanged() {
     this.initializeAllCharts()
   }
