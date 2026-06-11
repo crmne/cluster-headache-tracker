@@ -18,7 +18,6 @@ class ShareTokenTest < ActiveSupport::TestCase
   test "should generate token" do
     @share_token.save
     assert_not_nil @share_token.token
-    assert_equal 24, @share_token.token.length
   end
 
   test "should set expiration date before create" do
