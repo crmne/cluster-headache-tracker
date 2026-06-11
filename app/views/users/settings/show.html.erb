@@ -47,7 +47,7 @@
       User Management
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-      <%= form_for(current_user, url: update_username_settings_path, method: :patch) do |f| %>
+      <%= form_for(current_user, url: settings_username_path, method: :patch) do |f| %>
         <div class="bg-base-200/50 rounded-lg p-3">
           <h3 class="text-sm font-semibold mb-3">Update Username</h3>
 
@@ -69,7 +69,7 @@
         </div>
       <% end %>
 
-      <%= form_for(current_user, url: update_password_settings_path, method: :patch) do |f| %>
+      <%= form_for(current_user, url: settings_password_path, method: :patch) do |f| %>
         <div class="bg-base-200/50 rounded-lg p-3">
           <h3 class="text-sm font-semibold mb-3">Update Password</h3>
 

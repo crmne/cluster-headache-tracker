@@ -65,11 +65,12 @@ Rails.application.routes.draw do
 
   resources :headache_logs
 
-  resource :settings, only: [ :show ], controller: "users/settings" do
-    patch :update_username
-    patch :update_password
-    post :changelog_acknowledged
-    post :welcome_acknowledged
+  resource :settings, only: :show, controller: "users/settings"
+  namespace :settings, module: :users do
+    resource :username, only: :update
+    resource :password, only: :update
+    resource :changelog_acknowledgement, only: :create
+    resource :welcome_acknowledgement, only: :create
   end
 
   resource :feedback, only: [ :show, :new, :create, :destroy ], controller: "feedback" do

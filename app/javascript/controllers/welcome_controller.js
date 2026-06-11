@@ -39,7 +39,7 @@ export default class extends Controller {
     this.startButtonTarget.disabled = true
 
     // Send request to mark welcome as seen
-    fetch("/settings/welcome_acknowledged", {
+    fetch("/settings/welcome_acknowledgement", {
       method: "POST",
       headers: {
         "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
