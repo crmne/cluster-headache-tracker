@@ -65,4 +65,67 @@ class HeadacheLogTest < ActiveSupport::TestCase
     filtered_logs = HeadacheLog.filtered_by({ medication: "Sumatriptan" })
     assert filtered_logs.all? { |log| log.medication&.include?("Sumatriptan") }
   end
+
+  test "chart_data buckets attacks into two-hour windows with average intensity" do
+    logs = [
+      chart_log(start_time: "2024-03-01 03:30", intensity: 6),
+      chart_log(start_time: "2024-03-02 02:10", intensity: 8)
+    ]
+
+    bucket = HeadacheLog.chart_data_for(logs)[:hourly_data][1]
+
+    assert_equal "2:00 - 3:59", bucket[:label]
+    assert_equal 2, bucket[:frequency]
+    assert_equal 7.0, bucket[:avg_intensity]
+  end
+
+  test "chart_data rounds durations to hundredths and skips ongoing attacks" do
+    logs = [
+      chart_log(start_time: "2024-03-01 01:00", end_time: "2024-03-01 02:40", intensity: 7),
+      chart_log(start_time: "2024-03-02 01:00", intensity: 5)
+    ]
+
+    duration_data = HeadacheLog.chart_data_for(logs)[:duration_data]
+
+    assert_equal 1, duration_data.size
+    assert_equal 1.67, duration_data.first[:y]
+    assert_equal 7, duration_data.first[:intensity]
+  end
+
+  test "chart_data counts attacks per day" do
+    logs = [
+      chart_log(start_time: "2024-03-01 01:00"),
+      chart_log(start_time: "2024-03-01 22:00"),
+      chart_log(start_time: "2024-03-02 01:00")
+    ]
+
+    attacks_per_day = HeadacheLog.chart_data_for(logs)[:attacks_per_day_data]
+
+    assert_equal [ { x: "2024-03-01", y: 2 }, { x: "2024-03-02", y: 1 } ], attacks_per_day
+  end
+
+  test "chart_data splits medications on commas and keeps the top five" do
+    logs = [
+      chart_log(medication: "oxygen, sumatriptan"),
+      chart_log(medication: "oxygen"),
+      chart_log(medication: "verapamil, prednisone, lithium, melatonin")
+    ]
+
+    medication_data = HeadacheLog.chart_data_for(logs)[:medication_data]
+
+    assert_equal 5, medication_data.size
+    assert_equal 2, medication_data["oxygen"]
+    assert_equal 1, medication_data["sumatriptan"]
+  end
+
+  private
+    def chart_log(start_time: "2024-03-01 12:00", end_time: nil, intensity: 5, medication: nil)
+      HeadacheLog.new(
+        user: @user,
+        start_time: Time.zone.parse(start_time),
+        end_time: end_time && Time.zone.parse(end_time),
+        intensity: intensity,
+        medication: medication
+      )
+    end
 end
