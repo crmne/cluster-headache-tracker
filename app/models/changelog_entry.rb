@@ -31,11 +31,7 @@ class ChangelogEntry
   end
 
   def seen_by?(user)
-    if user.last_seen_changelog.present?
-      seen_keys.include?(user.last_seen_changelog)
-    else
-      false
-    end
+    user.last_seen_changelog.in?(seen_keys)
   end
 
   def seen_keys
