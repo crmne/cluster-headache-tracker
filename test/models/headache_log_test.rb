@@ -58,12 +58,14 @@ class HeadacheLogTest < ActiveSupport::TestCase
 
   test "should filter by triggers" do
     filtered_logs = HeadacheLog.filtered_by({ triggers: "Sleeping" })
-    assert filtered_logs.all? { |log| log.triggers&.include?("Sleeping") }
+    assert_includes filtered_logs, headache_logs(:one)
+    assert_not_includes filtered_logs, headache_logs(:two)
   end
 
   test "should filter by medication" do
     filtered_logs = HeadacheLog.filtered_by({ medication: "Sumatriptan" })
-    assert filtered_logs.all? { |log| log.medication&.include?("Sumatriptan") }
+    assert_includes filtered_logs, headache_logs(:two)
+    assert_not_includes filtered_logs, headache_logs(:one)
   end
 
   test "chart_data buckets attacks into two-hour windows with average intensity" do
