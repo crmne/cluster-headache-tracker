@@ -77,7 +77,6 @@
     <% if full_width_static_page? || current_page?(feedback_path) %>
     <%= yield %>
     <% else %>
-    <!-- Debug: native_app_with_tabs? = <%= native_app_with_tabs? %>, hotwire_native_app? = <%= hotwire_native_app? %>, user_agent = <%= request.user_agent %> -->
     <div class="container mx-auto mt-4 px-4 <%= native_app_with_tabs? ? '' : (user_signed_in? && !static_page? && !native_app_form_page? ? 'pb-safe pb-24' : 'pb-4') %> print:m-0 print:w-full print:p-0 print:max-w-none print:h-auto print:overflow-visible">
       <% if current_user %>
         <%= turbo_stream_from current_user, "application" %>
