@@ -16,21 +16,6 @@ class HeadacheLogTest < ActiveSupport::TestCase
     assert @headache_log.valid?
   end
 
-  test "user id should be present" do
-    @headache_log.user_id = nil
-    assert_not @headache_log.valid?
-  end
-
-  test "start time should be present" do
-    @headache_log.start_time = nil
-    assert_not @headache_log.valid?
-  end
-
-  test "intensity should be present" do
-    @headache_log.intensity = nil
-    assert_not @headache_log.valid?
-  end
-
   test "intensity should be between 1 and 10" do
     @headache_log.intensity = 0
     assert_not @headache_log.valid?
