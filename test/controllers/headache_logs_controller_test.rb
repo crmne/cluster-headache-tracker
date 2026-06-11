@@ -59,6 +59,47 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to headache_logs_url
     assert_match /Successfully imported/, flash[:notice]
+
+    log = @user.headache_logs.find_by!(notes: "Morning attack")
+    assert_equal Time.zone.parse("2024-03-01 08:00:00"), log.start_time
+    assert_equal Time.zone.parse("2024-03-01 10:30:00"), log.end_time
+    assert_equal 7, log.intensity
+    assert_equal "sumatriptan", log.medication
+    assert_equal "Lack of sleep", log.triggers
+  end
+
+  test "should round-trip logs through export and import unchanged" do
+    @user.headache_logs.destroy_all
+    @user.headache_logs.create!(
+      start_time: Time.zone.parse("2024-03-01 08:00:00"),
+      end_time: Time.zone.parse("2024-03-01 10:30:00"),
+      intensity: 7,
+      medication: "Sumatriptan",
+      triggers: "Lack of sleep",
+      notes: "Morning attack"
+    )
+    @user.headache_logs.create!(
+      start_time: Time.zone.parse("2024-03-02 23:00:00"),
+      intensity: 9,
+      medication: "Oxygen, Verapamil",
+      triggers: "Alcohol"
+    )
+
+    get headache_log_export_url(format: :csv)
+    exported_csv = response.body
+
+    @user.headache_logs.destroy_all
+    Tempfile.create([ "exported_logs", ".csv" ]) do |file|
+      file.write(exported_csv)
+      file.rewind
+
+      assert_difference("HeadacheLog.count", 2) do
+        post headache_log_import_url, params: { file: Rack::Test::UploadedFile.new(file.path, "text/csv") }
+      end
+    end
+
+    get headache_log_export_url(format: :csv)
+    assert_equal exported_csv, response.body
   end
 
   test "should filter logs by date range" do
