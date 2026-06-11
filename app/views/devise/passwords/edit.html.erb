@@ -4,9 +4,8 @@
 
   <%= form_for(resource, as: resource_name, url: user_password_path(resource_name), html: { method: :put, class: "bg-white mb-4 px-8 pt-6 pb-8 rounded shadow-md" }) do |f| %>
 
-    <%#= render "devise/shared/error_messages", resource: resource %>
 
-    <%= devise_error_messages! %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
     <%= f.hidden_field :reset_password_token %>
 

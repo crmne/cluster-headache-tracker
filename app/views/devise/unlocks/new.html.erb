@@ -4,7 +4,7 @@
 
   <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: "bg-white mb-4 px-8 pt-6 pb-8 rounded shadow-md" }) do |f| %>
 
-    <%= devise_error_messages! %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="mb-4">
       <%= f.label :username, class: "block font-bold mb-2 text-gray-700 text-sm" %>
