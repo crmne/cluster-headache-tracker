@@ -80,18 +80,15 @@ Rails.application.routes.draw do
   namespace :admin do
     root "dashboard#index"
 
-    resources :users, only: [ :index, :destroy ] do
-      member do
-        post :reset_password
-        post :reset_changelog
-        post :reset_welcome
-      end
-
-      collection do
-        post :reset_all_changelogs
-        post :reset_all_welcomes
+    resources :users, only: %i[ index destroy ] do
+      scope module: :users do
+        resource :password_reset, only: :create
+        resource :changelog_acknowledgement, only: :destroy
+        resource :welcome_acknowledgement, only: :destroy
       end
     end
+    resource :changelog_acknowledgements, only: :destroy
+    resource :welcome_acknowledgements, only: :destroy
 
     resources :feedback_surveys, only: [ :index, :show, :destroy ] do
       collection do
