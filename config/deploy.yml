@@ -51,7 +51,9 @@ accessories:
   db:
     image: postgres:16
     host: clusterheadachetracker.com
-    port: 172.17.0.1:5432:5432
+    # No published port: the app reaches Postgres over the `kamal` Docker network by
+    # container name. Publishing to 172.17.0.1 exposed it on the Docker bridge to every
+    # container on the host, which is unnecessary and widens the blast radius.
     env:
       clear:
         POSTGRES_USER: cluster_headache_tracker
