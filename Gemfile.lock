@@ -288,10 +288,6 @@ GEM
     rails_heroicon (2.3.0)
       actionview
       railties
-    rails_real_favicon (0.1.1)
-      json (>= 1.7, < 3)
-      rails
-      rubyzip (~> 2)
     railties (8.1.3.1)
       actionpack (= 8.1.3.1)
       activesupport (= 8.1.3.1)
@@ -350,7 +346,7 @@ GEM
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
     ruby-progressbar (1.13.0)
-    rubyzip (2.4.1)
+    rubyzip (3.6.0)
     securerandom (0.4.1)
     selenium-webdriver (4.46.0)
       base64 (~> 0.2)
@@ -458,7 +454,6 @@ DEPENDENCIES
   rack-attack (~> 6.7)
   rails (~> 8.1.0)
   rails_heroicon
-  rails_real_favicon
   rubocop-rails-omakase
   selenium-webdriver
   sitemap_generator (~> 6.3)

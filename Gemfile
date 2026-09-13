@@ -86,9 +86,6 @@ group :development do
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-
-  # Create favicons
-  gem "rails_real_favicon"
 end
 
 group :test do
