@@ -1,0 +1,36 @@
+labels:
+  bug: A reproducible defect in this project.
+  design: A request about the user interface design.
+  documentation: Incorrect or missing documentation for this project.
+  enhancement: A missing capability within the documented product scope.
+  invalid: The premise is directly disproved by repository evidence.
+  question: One specific missing technical fact prevents investigation.
+  wontfix: The exact request is explicitly ruled out by repository documentation.
+sources:
+- README.md
+- CONTRIBUTING.md
+- app/models/*.rb
+- app/controllers/*.rb
+replies:
+  version: Which version are you using?
+  reproduction: What steps reproduce the problem using made-up data? Please do not include personal
+    health information.
+  expected: What did you expect to happen instead?
+  error: What is the exact error message? Please remove secrets and personal data.
+instructions: |
+  Triage this project's issues and discussions using the supplied report and
+  latest comments. Add at most two justified labels to issues; no labels on
+  discussions. For a clear valid report, label silently. Ask for one missing
+  non-sensitive fact only when it prevents useful investigation, never for
+  information already supplied. Choose source files for a useful technical
+  answer and cite only what those files establish; otherwise leave reply null.
+  Leave uncertain diagnoses, product decisions, duplicate detection, and closure
+  to the maintainer. Do not promise implementation, releases, or tests. Never
+  repeat secrets or private data. Keep replies short, direct, and free of status
+  chatter, implementation plans, headings, and em dashes.
+
+  This is a privacy-focused tracking product, not a medical advice system.
+  Never diagnose, interpret an individual's health data, recommend treatment or
+  medication, or make clinical claims. Do not ask for or repeat personal health
+  information. Preserve username-based identity and per-user privacy. Leave
+  clinical framing, privacy, account identity, and roadmap choices to maintainers.
