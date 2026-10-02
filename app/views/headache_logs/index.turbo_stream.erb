@@ -1,7 +1,0 @@
-<%= turbo_stream.replace "headache_stats" do %>
-  <%= render "stats", headache_logs: @headache_logs %>
-<% end %>
-
-<%= turbo_stream.replace "headache_logs" do %>
-  <%= render "logs_grid", headache_logs: @headache_logs %>
-<% end %>

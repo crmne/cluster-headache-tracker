@@ -1,0 +1,19 @@
+it:
+  headache_log_imports:
+    formats:
+      cluster_headache_tracker: "file CSV di Cluster Headache Tracker"
+      migraine_buddy: "esportazione di Migraine Buddy"
+    create:
+      detected: "Rilevato: %{source}."
+      imported:
+        zero: "Nessun nuovo attacco importato."
+        one: "Importato 1 attacco."
+        other: "Importati %{count} attacchi."
+      skipped_duplicates:
+        one: "Saltato 1 attacco già registrato."
+        other: "Saltati %{count} attacchi già registrati."
+      skipped_invalid:
+        one: "Saltata 1 riga illeggibile."
+        other: "Saltate %{count} righe illeggibili."
+    modal:
+      migraine_buddy: "Le esportazioni CSV di Migraine Buddy vengono riconosciute automaticamente. Inizio, durata, intensità del dolore, fattori scatenanti e farmaci vengono convertiti, tutto il resto finisce nelle note. Gli attacchi già registrati vengono saltati."

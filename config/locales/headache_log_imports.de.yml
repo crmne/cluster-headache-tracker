@@ -1,0 +1,19 @@
+de:
+  headache_log_imports:
+    formats:
+      cluster_headache_tracker: "Cluster Headache Tracker CSV-Datei"
+      migraine_buddy: "Migraine Buddy-Export"
+    create:
+      detected: "Erkannt: %{source}."
+      imported:
+        zero: "Es wurden keine neuen Einträge importiert."
+        one: "1 Eintrag importiert."
+        other: "%{count} Einträge importiert."
+      skipped_duplicates:
+        one: "1 bereits erfasste Attacke übersprungen."
+        other: "%{count} bereits erfasste Attacken übersprungen."
+      skipped_invalid:
+        one: "1 Zeile übersprungen, die nicht gelesen werden konnte."
+        other: "%{count} Zeilen übersprungen, die nicht gelesen werden konnten."
+    modal:
+      migraine_buddy: "CSV-Exporte aus Migraine Buddy werden automatisch erkannt. Beginn, Dauer, Schmerzstärke, Auslöser und Medikamente werden übernommen, alles Weitere landet in den Notizen. Bereits erfasste Attacken werden übersprungen."

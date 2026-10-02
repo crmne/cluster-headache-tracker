@@ -79,17 +79,13 @@ class HeadacheLog < ApplicationRecord
     end
 
     def import_csv(file:, user:)
-      imported_logs = 0
+      contents = File.read(file.path, encoding: "bom|utf-8")
 
-      CSV.foreach(file.path, headers: true, header_converters: :symbol) do |row|
-        headache_log = user.headache_logs.create(import_attributes_from(row))
-
-        if headache_log.persisted?
-          imported_logs += 1
-        end
+      if migraine_buddy_export = MigraineBuddyExport.parse(contents)
+        import_logs migraine_buddy_export.log_attributes, format: :migraine_buddy, user: user
+      else
+        import_logs native_log_attributes_from(contents), format: :cluster_headache_tracker, user: user
       end
-
-      imported_logs
     end
 
     def sample_logs
@@ -156,6 +152,26 @@ class HeadacheLog < ApplicationRecord
         end
       end
 
+      def import_logs(logs_attributes, format:, user:)
+        ImportResult.new(format: format).tap do |result|
+          logs_attributes.each do |attributes|
+            result.record import_log(attributes, user)
+          end
+        end
+      end
+
+      def import_log(attributes, user)
+        if attributes.nil?
+          :invalid
+        elsif user.headache_logs.exists?(start_time: attributes[:start_time])
+          :duplicate
+        elsif user.headache_logs.create(attributes).persisted?
+          :imported
+        else
+          :invalid
+        end
+      end
+
       def import_attributes_from(row)
         {
           start_time: parse_time(row[:start_time]),
@@ -183,6 +199,14 @@ class HeadacheLog < ApplicationRecord
         end
 
         medication_counts.sort_by { |_, count| -count }.first(5).to_h
+      end
+
+      def native_log_attributes_from(contents)
+        CSV.parse(contents, headers: true, header_converters: :symbol).map do |row|
+          import_attributes_from(row)
+        rescue ArgumentError
+          nil
+        end
       end
 
       def parse_time(time_string)

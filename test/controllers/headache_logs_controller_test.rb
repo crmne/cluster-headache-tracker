@@ -56,7 +56,7 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
       post headache_log_import_url, params: { file: file }
     end
     assert_redirected_to headache_logs_url
-    assert_match /Successfully imported/, flash[:notice]
+    assert_equal "Detected a Cluster Headache Tracker CSV. Imported 3 headache logs.", flash[:notice]
 
     log = @user.headache_logs.find_by!(notes: "Morning attack")
     assert_equal Time.zone.parse("2024-03-01 08:00:00"), log.start_time

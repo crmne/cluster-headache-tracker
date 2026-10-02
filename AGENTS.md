@@ -112,7 +112,7 @@ This app is user-scoped and intentionally simple:
 ### Sharing, Import, and Export
 
 - CSV export is handled by `HeadacheLog.to_csv` and `HeadacheLogExportsController`
-- CSV import is handled by `HeadacheLog.import_csv` and `HeadacheLogImportsController`
+- CSV import is handled by `HeadacheLog.import_csv` and `HeadacheLogImportsController`. It detects Migraine Buddy exports (`HeadacheLog::MigraineBuddyExport`), skips attacks already logged at the same start time, and returns a `HeadacheLog::ImportResult` with the detected format and imported/skipped counts
 - Share links are modeled as a separate resource (`resource :share_link`) instead of custom actions on logs
 
 ### Background Work and Notifications

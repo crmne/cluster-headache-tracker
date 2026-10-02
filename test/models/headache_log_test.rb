@@ -105,7 +105,83 @@ class HeadacheLogTest < ActiveSupport::TestCase
     assert_equal 1, medication_data["sumatriptan"]
   end
 
+  test "import_csv imports the contributed Migraine Buddy sample" do
+    result = nil
+
+    assert_difference -> { @user.headache_logs.count }, 1 do
+      result = HeadacheLog.import_csv(file: csv_fixture("migraine_buddy_sample.csv"), user: @user)
+    end
+
+    assert_equal :migraine_buddy, result.format
+    assert_equal 1, result.imported
+    assert_equal 0, result.skipped
+
+    log = @user.headache_logs.find_by!(start_time: Time.zone.parse("2024-11-16 13:12 UTC"))
+    assert_equal Time.zone.parse("2024-11-16 14:12 UTC"), log.end_time
+    assert_equal 4, log.intensity
+    assert_equal "", log.medication
+    assert_equal "Stress", log.triggers
+    assert_match "Symptoms: Sensitivity to light, Throbbing pain", log.notes
+  end
+
+  test "import_csv imports readable Migraine Buddy rows and skips malformed ones" do
+    result = HeadacheLog.import_csv(file: csv_fixture("migraine_buddy_mixed.csv"), user: @user)
+
+    assert_equal :migraine_buddy, result.format
+    assert_equal 4, result.imported
+    assert_equal 0, result.duplicates
+    assert_equal 3, result.invalid
+
+    log = @user.headache_logs.find_by!(start_time: Time.zone.parse("2024-11-16 12:12 UTC"))
+    assert_equal "oxygen, sumatriptan, ibuprofen", log.medication
+    assert_equal "Alcohol, Sleep", log.triggers
+  end
+
+  test "import_csv skips Migraine Buddy attacks that were already imported" do
+    HeadacheLog.import_csv(file: csv_fixture("migraine_buddy_mixed.csv"), user: @user)
+    result = nil
+
+    assert_no_difference -> { @user.headache_logs.count } do
+      result = HeadacheLog.import_csv(file: csv_fixture("migraine_buddy_mixed.csv"), user: @user)
+    end
+
+    assert_equal 0, result.imported
+    assert_equal 4, result.duplicates
+    assert_equal 3, result.invalid
+  end
+
+  test "import_csv only skips attacks the same user already logged" do
+    HeadacheLog.import_csv(file: csv_fixture("migraine_buddy_sample.csv"), user: users(:two))
+
+    assert_difference -> { @user.headache_logs.count }, 1 do
+      HeadacheLog.import_csv(file: csv_fixture("migraine_buddy_sample.csv"), user: @user)
+    end
+  end
+
+  test "import_csv reads the app's own export and skips unreadable rows" do
+    result = Tempfile.create([ "logs", ".csv" ]) do |file|
+      file.write(<<~CSV)
+        start_time,end_time,intensity,medication,triggers,notes
+        2024-03-01 08:00:00,2024-03-01 10:30:00,7,Sumatriptan,Lack of sleep,Morning attack
+        2024-13-45 08:00:00,,7,,,Impossible date
+        not a date,,7,,,Garbage
+        2024-03-02 08:00:00,,15,,,Too intense
+      CSV
+      file.rewind
+
+      HeadacheLog.import_csv(file: file, user: @user)
+    end
+
+    assert_equal :cluster_headache_tracker, result.format
+    assert_equal 1, result.imported
+    assert_equal 3, result.invalid
+  end
+
   private
+    def csv_fixture(name)
+      Rack::Test::UploadedFile.new(file_fixture(name), "text/csv")
+    end
+
     def chart_log(start_time: "2024-03-01 12:00", end_time: nil, intensity: 5, medication: nil)
       HeadacheLog.new(
         user: @user,
