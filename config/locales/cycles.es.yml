@@ -1,0 +1,47 @@
+es:
+  cycles:
+    title: "Ciclos"
+    rule:
+      one: "Un ciclo (período activo o brote) termina tras %{count} día sin ataques. Las pausas de tres meses o más cumplen la definición de remisión de la ICHD-3."
+      other: "Un ciclo (período activo o brote) termina tras %{count} días seguidos sin ataques. Las pausas de tres meses o más cumplen la definición de remisión de la ICHD-3."
+    days:
+      one: "%{count} día"
+      other: "%{count} días"
+    streaks:
+      current: "Racha sin ataques"
+      attack_ongoing: "Ataque en curso"
+      since: "Último día con ataques: %{date}"
+      longest: "Racha más larga"
+      attack_days: "Días con ataques"
+      in_cycles:
+        one: "en %{count} ciclo"
+        other: "en %{count} ciclos"
+    summary:
+      count: "Ciclos"
+      current_since: "Ciclo actual desde el %{date}"
+      not_in_cycle: "Ningún ciclo activo ahora"
+      average_length: "Duración media del ciclo"
+      average_between: "Tiempo medio entre ciclos"
+      needs_two_cycles: "Se necesitan al menos dos ciclos"
+    heatmap:
+      title: "Calendario de ataques"
+      label:
+        one: "Calendario del último año con %{count} día con ataques"
+        other: "Calendario del último año con %{count} días con ataques"
+      day:
+        zero: "%{date}: sin ataques"
+        one: "%{date}: %{count} ataque"
+        other: "%{date}: %{count} ataques"
+      fewer: "Menos"
+      more: "Más"
+    table:
+      title: "Historial de ciclos"
+      start: "Inicio"
+      end: "Fin"
+      length: "Duración"
+      attacks: "Ataques"
+      average_intensity: "Intensidad media"
+      since_previous: "Desde el ciclo anterior"
+      ongoing: "En curso"
+      ichd_remission: "Remisión (ICHD-3)"
+      ichd_remission_hint: "Al menos tres meses sin ataques, la definición de remisión de la ICHD-3"

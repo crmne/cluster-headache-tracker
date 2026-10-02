@@ -1,0 +1,47 @@
+de:
+  cycles:
+    title: "Episoden"
+    rule:
+      one: "Eine Episode (Clusterperiode) endet nach %{count} attackenfreien Tag. Pausen von drei Monaten oder mehr erfüllen die ICHD-3-Definition einer Remission."
+      other: "Eine Episode (Clusterperiode) endet nach %{count} attackenfreien Tagen in Folge. Pausen von drei Monaten oder mehr erfüllen die ICHD-3-Definition einer Remission."
+    days:
+      one: "%{count} Tag"
+      other: "%{count} Tage"
+    streaks:
+      current: "Attackenfreie Tage in Folge"
+      attack_ongoing: "Attacke läuft"
+      since: "Letzter Attackentag: %{date}"
+      longest: "Längste attackenfreie Serie"
+      attack_days: "Attackentage"
+      in_cycles:
+        one: "in %{count} Episode"
+        other: "in %{count} Episoden"
+    summary:
+      count: "Episoden"
+      current_since: "Aktuelle Episode seit %{date}"
+      not_in_cycle: "Derzeit keine aktive Episode"
+      average_length: "Durchschnittliche Episodendauer"
+      average_between: "Durchschnittlicher Abstand zwischen Episoden"
+      needs_two_cycles: "Erfordert mindestens zwei Episoden"
+    heatmap:
+      title: "Attackenkalender"
+      label:
+        one: "Kalender des letzten Jahres mit %{count} Attackentag"
+        other: "Kalender des letzten Jahres mit %{count} Attackentagen"
+      day:
+        zero: "%{date}: keine Attacken"
+        one: "%{date}: %{count} Attacke"
+        other: "%{date}: %{count} Attacken"
+      fewer: "Weniger"
+      more: "Mehr"
+    table:
+      title: "Episodenverlauf"
+      start: "Beginn"
+      end: "Ende"
+      length: "Dauer"
+      attacks: "Attacken"
+      average_intensity: "Ø Intensität"
+      since_previous: "Seit vorheriger Episode"
+      ongoing: "Aktiv"
+      ichd_remission: "Remission (ICHD-3)"
+      ichd_remission_hint: "Mindestens drei Monate ohne Attacken – die ICHD-3-Definition einer Remission"

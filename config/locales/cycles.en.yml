@@ -1,0 +1,47 @@
+en:
+  cycles:
+    title: "Cycles"
+    rule:
+      one: "A cycle (cluster period) ends after %{count} attack-free day in a row. Gaps of three months or more meet the ICHD-3 definition of remission."
+      other: "A cycle (cluster period) ends after %{count} attack-free days in a row. Gaps of three months or more meet the ICHD-3 definition of remission."
+    days:
+      one: "%{count} day"
+      other: "%{count} days"
+    streaks:
+      current: "Attack-free streak"
+      attack_ongoing: "Attack ongoing"
+      since: "Last attack day: %{date}"
+      longest: "Longest streak"
+      attack_days: "Attack days"
+      in_cycles:
+        one: "in %{count} cycle"
+        other: "in %{count} cycles"
+    summary:
+      count: "Cycles"
+      current_since: "Current cycle since %{date}"
+      not_in_cycle: "Not in a cycle right now"
+      average_length: "Average cycle length"
+      average_between: "Average time between cycles"
+      needs_two_cycles: "Needs at least two cycles"
+    heatmap:
+      title: "Attack calendar"
+      label:
+        one: "Calendar of the last year with %{count} attack day"
+        other: "Calendar of the last year with %{count} attack days"
+      day:
+        zero: "%{date}: no attacks"
+        one: "%{date}: %{count} attack"
+        other: "%{date}: %{count} attacks"
+      fewer: "Fewer"
+      more: "More"
+    table:
+      title: "Cycle history"
+      start: "Start"
+      end: "End"
+      length: "Length"
+      attacks: "Attacks"
+      average_intensity: "Avg. intensity"
+      since_previous: "Since previous cycle"
+      ongoing: "Ongoing"
+      ichd_remission: "Remission (ICHD-3)"
+      ichd_remission_hint: "At least three months without attacks, the ICHD-3 definition of remission"

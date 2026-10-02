@@ -61,6 +61,10 @@ class HeadacheLog < ApplicationRecord
       }
     end
 
+    def cycles(today: Current.today)
+      Cycles.new(all, today: today)
+    end
+
     def to_csv
       CSV.generate(headers: true) do |csv|
         csv << CSV_HEADERS
@@ -111,6 +115,7 @@ class HeadacheLog < ApplicationRecord
         # same stats partial as real reports, so quack like a relation.
         def logs.today = select { |log| log.start_time.today? }
         def logs.average(attribute) = sum(&attribute) / size.to_f
+        def logs.cycles = HeadacheLog::Cycles.new(self)
       end
     end
 

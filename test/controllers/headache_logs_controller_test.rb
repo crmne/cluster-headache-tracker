@@ -14,6 +14,48 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     assert_select ".navbar", /Headache Logs/  # Check navbar title instead
   end
 
+  test "shows attack-free streaks on the dashboard" do
+    sign_in users(:carmine)
+    log_attack_for users(:carmine), "2026-06-01 02:00"
+    log_attack_for users(:carmine), "2026-06-03 02:00"
+    log_attack_for users(:carmine), "2026-09-28 02:00"
+
+    travel_to Time.utc(2026, 10, 2, 12, 0) do
+      get headache_logs_url
+    end
+
+    assert_select "#current_streak .stat-value", text: "4 days"
+    assert_select "#longest_streak .stat-value", text: "116 days"
+    assert_select "#attack_days .stat-value", text: "3"
+    assert_select "#attack_days .stat-desc", text: "in 2 cycles"
+  end
+
+  test "shows an ongoing attack instead of a streak" do
+    @headache_log.update!(end_time: nil)
+
+    get headache_logs_url
+
+    assert_select "#current_streak .stat-value", text: "Attack ongoing"
+  end
+
+  test "counts streak days in the time zone the browser reports" do
+    sign_in users(:carmine)
+    log_attack_for users(:carmine), "2026-10-02 01:00"
+
+    travel_to Time.utc(2026, 10, 2, 20, 0) do
+      get headache_logs_url
+      assert_select "#current_streak .stat-value", text: "0 days"
+
+      cookies[:time_zone] = "Pacific/Auckland"
+      get headache_logs_url
+      assert_select "#current_streak .stat-value", text: "1 day"
+
+      cookies[:time_zone] = "Not/AZone"
+      get headache_logs_url
+      assert_select "#current_streak .stat-value", text: "0 days"
+    end
+  end
+
   test "should not find another user's headache log" do
     get edit_headache_log_url(headache_logs(:two))
     assert_response :not_found
@@ -117,4 +159,9 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     get headache_logs_url, params: { medication: "Sumatriptan" }
     assert_response :success
   end
+
+  private
+    def log_attack_for(user, start_time)
+      user.headache_logs.create!(start_time: Time.zone.parse(start_time), end_time: Time.zone.parse(start_time) + 1.hour, intensity: 7)
+    end
 end

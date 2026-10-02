@@ -12,6 +12,24 @@ class ChartsControllerTest < ActionDispatch::IntegrationTest
     assert_select "h2", "Headache Intensity Over Time"
   end
 
+  test "shows cycles with the attack calendar and cycle history" do
+    get charts_url
+
+    assert_select "#cycles h2", text: /Cycles/
+    assert_select "#cycle_count .stat-value", text: "1"
+    assert_select "#attack_calendar [data-date='#{Date.current.iso8601}'][data-attacks='1']"
+    assert_select "#cycles_table tbody tr", count: 1
+    assert_select "#cycles_table tbody tr td", text: "Ongoing"
+  end
+
+  test "shows attack-free streaks in the stats" do
+    get charts_url
+
+    assert_select "#current_streak .stat-value", text: "0 days"
+    assert_select "#longest_streak"
+    assert_select "#attack_days"
+  end
+
   test "should require authentication" do
     sign_out @user
     get charts_url
