@@ -12,10 +12,14 @@ module ClusterHeadacheTracker
     config.load_defaults 8.1
     config.active_support.isolation_level = :fiber
 
+    # Photos are only served by authenticated controllers, never by Active Storage's
+    # public blob routes, whose signed URLs work for anyone who gets hold of them.
+    config.active_storage.draw_routes = false
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w[assets tasks])
+    config.autoload_lib(ignore: %w[active_storage assets tasks])
 
     # Configuration for the application, engines, and railties goes here.
     #

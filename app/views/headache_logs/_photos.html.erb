@@ -1,0 +1,17 @@
+<%# locals: (headache_log:) %>
+<% if headache_log.photos.attached? %>
+  <section class="card bg-base-100 shadow-md mt-4">
+    <div class="card-body p-3 sm:p-4">
+      <h2 class="text-sm font-semibold flex items-center gap-2">
+        <%= heroicon "camera", variant: "mini", class: "w-4 h-4" %>
+        <%= t("photos.title") %>
+      </h2>
+
+      <div class="grid grid-cols-3 sm:grid-cols-5 gap-3">
+        <% headache_log.photos.each.with_index(1) do |photo, number| %>
+          <%= render "headache_logs/photo_thumbnail", headache_log: headache_log, photo: photo, number: number %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

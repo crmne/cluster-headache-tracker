@@ -1,6 +1,8 @@
 require "csv"
 
 class HeadacheLog < ApplicationRecord
+  include Photographed
+
   CSV_HEADERS = %w[ start_time end_time intensity medication triggers notes barometric_pressure ].freeze
   BAROMETRIC_PRESSURE_RANGE = 870..1085
   PRESSURE_BAND_WIDTH = 5

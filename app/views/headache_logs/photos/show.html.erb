@@ -1,0 +1,24 @@
+<% content_for :title, t("photos.show.title") %>
+<% content_for :navbar, t("photos.show.title") %>
+
+<% unless hotwire_native_app? %>
+  <%= render "shared/back", back_path: headache_log_path(@headache_log) %>
+<% end %>
+
+<figure class="card bg-base-100 shadow-md overflow-hidden mt-2">
+  <%= image_tag headache_log_photo_variant_path(@headache_log, @photo, :large),
+        alt: t("photos.show.alt", date: l(@headache_log.start_time, format: :long)),
+        class: "w-full h-auto max-h-[80vh] object-contain bg-base-300" %>
+  <figcaption class="p-3 text-sm text-base-content/70">
+    <%= l(@headache_log.start_time, format: :long) %>
+  </figcaption>
+</figure>
+
+<%= button_to headache_log_photo_path(@headache_log, @photo),
+      method: :delete,
+      form_class: "mt-4",
+      class: "btn btn-outline btn-error w-full",
+      data: { turbo_confirm: t("photos.form.remove_confirm") } do %>
+  <%= heroicon "trash", variant: "mini", class: "w-4 h-4" %>
+  <%= t("photos.show.remove") %>
+<% end %>

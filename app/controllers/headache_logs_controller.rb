@@ -3,7 +3,7 @@ class HeadacheLogsController < ApplicationController
   before_action :set_headache_log, only: %i[ show edit update destroy ]
 
   def index
-    @headache_logs = filtered_headache_logs.recent_first
+    @headache_logs = filtered_headache_logs.preloading_photos.recent_first
     set_share_link
   end
 
@@ -48,7 +48,7 @@ class HeadacheLogsController < ApplicationController
     end
 
     def headache_log_params
-      params.expect(headache_log: [ :start_time, :end_time, :intensity, :notes, :medication, :triggers, :barometric_pressure ])
+      params.expect(headache_log: [ :start_time, :end_time, :intensity, :notes, :medication, :triggers, :barometric_pressure, photos: [] ])
     end
 
     def set_headache_log

@@ -1,0 +1,20 @@
+<%# locals: (headache_logs:) %>
+<% headache_logs_with_photos = headache_logs.select { |headache_log| headache_log.photos.attached? } %>
+
+<% if headache_logs_with_photos.any? %>
+  <h2 class="text-2xl font-bold mb-4 mt-8"><%= t("photos.report.title") %></h2>
+
+  <% headache_logs_with_photos.each do |headache_log| %>
+    <section class="mb-6 break-inside-avoid">
+      <h3 class="font-semibold mb-2"><%= l(headache_log.start_time, format: :long) %></h3>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <% headache_log.photos.each.with_index(1) do |photo, number| %>
+          <%= image_tag headache_log_photo_variant_path(headache_log, photo, :large),
+                alt: t("photos.thumbnail_alt", number: number, date: l(headache_log.start_time, format: :long)),
+                class: "w-full max-h-72 object-contain rounded-lg bg-base-200 print:bg-transparent break-inside-avoid" %>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+<% end %>

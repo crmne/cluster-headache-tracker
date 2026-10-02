@@ -1,0 +1,38 @@
+en:
+  photos:
+    title: "Photos"
+    count:
+      one: "%{count} photo"
+      other: "%{count} photos"
+    removed: "Photo removed."
+    thumbnail_alt: "Photo %{number} from the attack on %{date}"
+    form:
+      take_photo: "Take photo"
+      choose: "Choose photos"
+      remove: "Remove photo"
+      remove_confirm: "Remove this photo?"
+      limits: "Up to %{limit} photos per attack, %{size} MB each (JPEG, PNG, HEIC or WebP)."
+      full: "This attack already has %{limit} photos. Remove one to add another."
+      privacy: "Photos are encrypted and only you can see them. They are never included in share links."
+    show:
+      title: "Photo"
+      alt: "Photo from the attack on %{date}"
+      remove: "Remove photo"
+    report:
+      title: "Photos"
+    privacy_policy:
+      collected: "Photos you choose to attach to a headache log"
+      storage: "Photos are stored encrypted, shown only to you with location and other metadata removed, and never included in share links. They are deleted together with their headache log or your account."
+
+  activerecord:
+    attributes:
+      headache_log:
+        photos: "Photos"
+    errors:
+      models:
+        headache_log:
+          attributes:
+            photos:
+              too_many: "can't be more than %{count} per attack"
+              invalid_content_type: "must be JPEG, PNG, HEIC or WebP images (%{filename} isn't)"
+              too_large: "must be %{size} MB or smaller each (%{filename} is too large)"
