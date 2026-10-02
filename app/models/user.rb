@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include ReviewPrompting
   include Attacks
 
   # Include default devise modules. Others available are:

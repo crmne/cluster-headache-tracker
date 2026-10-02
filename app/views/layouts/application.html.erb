@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)">
   <meta name="description" content="<%= page_meta_description %>">
   <meta name="robots" content="<%= page_robots_directive %>">
   <meta name="author" content="Carmine Paolino">
@@ -60,9 +61,9 @@
   <% end %>
 </head>
 
-<body class="min-h-screen bg-base-200 flex flex-col print:min-h-0 print:h-auto print:overflow-visible print:bg-white">
+<body class="min-h-screen bg-base-200 flex flex-col print:min-h-0 print:h-auto print:overflow-visible print:bg-white" <%= bridge_body_attributes %>>
   <%= render 'navbar' %>
-  <%= render "flash_messages" %>
+  <%= render bridge_component_supported?("toast") ? "bridge/flash_messages" : "flash_messages" %>
   <%
     main_spacing_class =
       if native_app_with_tabs?

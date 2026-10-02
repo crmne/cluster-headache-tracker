@@ -1,6 +1,9 @@
 <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200">
   <div class="card-body p-3 sm:p-4">
-    <%= form_with(model: headache_log, class: "space-y-4", id: "headache_log") do |form| %>
+    <%= form_with(model: headache_log, class: "space-y-4", id: "headache_log", data: {
+          controller: "bridge--form",
+          action: "turbo:submit-start->bridge--form#submitStart turbo:submit-end->bridge--form#submitEnd"
+        }) do |form| %>
       <% if headache_log.errors.any? %>
         <div class="alert alert-error">
           <%= heroicon "x-circle", variant: "mini", class: "w-5 h-5" %>
@@ -165,15 +168,18 @@
 
       <%# Submit Button %>
       <div class="form-control mt-4">
-        <%= form.submit class: "btn btn-primary w-full" %>
+        <%= form.submit class: "btn btn-primary w-full",
+              data: { bridge__form_target: "submit", bridge_title: form.send(:submit_default_value).split.first } %>
       </div>
 
-      <% content_for :hotwire_button do %>
-        <div class="flex items-center gap-4"
-             data-controller="bridge--button"
-             data-bridge-title="<%= form.send(:submit_default_value).split.first %>">
-          <%= form.submit form.send(:submit_default_value).split.first, class: "btn", form: form.object_name %>
-        </div>
+      <% unless bridge_component_supported?("form") %>
+        <% content_for :hotwire_button do %>
+          <div class="flex items-center gap-4"
+               data-controller="bridge--button"
+               data-bridge-title="<%= form.send(:submit_default_value).split.first %>">
+            <%= form.submit form.send(:submit_default_value).split.first, class: "btn", form: form.object_name %>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
 

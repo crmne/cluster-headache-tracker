@@ -1,0 +1,8 @@
+<div id="flash-messages" hidden>
+  <% flash.each do |type, message| %>
+    <% if message.is_a?(String) && feedback = flash_haptic_feedback(type) %>
+      <%= tag.div data: { controller: "bridge--toast", bridge__toast_show_on_connect_value: true, bridge_message: message } %>
+      <%= render "bridge/haptic", feedback: feedback %>
+    <% end %>
+  <% end %>
+</div>

@@ -296,6 +296,16 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     assert_select "img[src=?]", headache_log_photo_variant_path(@headache_log, @headache_log.photos.first, :large)
   end
 
+  test "Turbo form submissions land on the logs page instead of streaming into the form" do
+    turbo_headers = { "Accept" => "text/vnd.turbo-stream.html, text/html, application/xhtml+xml" }
+
+    patch headache_log_url(@headache_log), params: { headache_log: { intensity: 6 } }, headers: turbo_headers
+    follow_redirect! headers: turbo_headers
+
+    assert_equal "text/html", response.media_type
+    assert_select "title", /Headache Logs/
+  end
+
   private
     def import_csv(contents)
       Tempfile.create([ "headache_logs", ".csv" ]) do |file|

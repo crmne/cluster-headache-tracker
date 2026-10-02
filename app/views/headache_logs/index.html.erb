@@ -11,7 +11,9 @@
   <%= link_to new_headache_log_path, class: "btn btn-primary",
       data: {
         controller: "bridge--button",
-        bridge_title: "New"
+        bridge_title: "New",
+        bridge_ios_image: "plus",
+        bridge_android_image: "add"
       } do %>
     New
     <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
@@ -30,3 +32,5 @@
 <%= render 'shared/welcome_modal' %>
 <%= render 'shared/changelog_modal' %>
 <%= render 'shared/app_update_modal' %>
+<%= render "bridge/widget_status" %>
+<%= render "bridge/review_prompt" %>

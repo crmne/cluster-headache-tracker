@@ -8,9 +8,9 @@
   <%# Header Bar %>
   <div class="px-4 py-2 <%= header_bg_class %> <%= header_text_class %> flex items-center justify-between">
     <div class="flex items-center gap-2">
-      <span class="text-sm font-semibold">
+      <%= link_to headache_log_path(headache_log), class: "text-sm font-semibold hover:underline", data: { turbo_frame: "_top" } do %>
         <%= headache_log.start_time.strftime("%b %d, %Y · %I:%M %p") %>
-      </span>
+      <% end %>
     </div>
     <% if is_ongoing %>
       <span class="text-xs font-medium bg-white/20 px-2 py-0.5 rounded">ONGOING</span>
