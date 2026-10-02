@@ -44,6 +44,12 @@ class HomeController < ApplicationController
 
   private
 
+  # Public pages have one indexable URL per language (/faq, /de/faq, ...),
+  # so the URL alone decides the language, never the visitor's headers.
+  def requested_locale
+    params_locale || I18n.default_locale
+  end
+
   def fetch_github_stars
     Rails.cache.fetch("github_stars", expires_in: 1.hour) do
       response = Net::HTTP.get(URI("https://api.github.com/repos/crmne/cluster-headache-tracker"))

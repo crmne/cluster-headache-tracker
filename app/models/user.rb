@@ -4,7 +4,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable
 
+  TIME_FORMATS = %w[ 12h 24h ].freeze
+
   validates :username, presence: true, uniqueness: true
+  validates :locale, inclusion: { in: -> { I18n.available_locales.map(&:to_s) } }, allow_nil: true
+  validates :time_format, inclusion: { in: TIME_FORMATS }, allow_nil: true
+
+  normalizes :locale, :time_format, with: ->(value) { value.presence }, apply_to_nil: true
+
+  def self.default_time_format_for(locale)
+    locale.to_s == "en" ? "12h" : "24h"
+  end
 
   def self.signup_stats
     total_users = count
@@ -40,6 +50,10 @@ class User < ApplicationRecord
 
   def admin?
     username == "carmine"
+  end
+
+  def time_format_or_default
+    time_format || self.class.default_time_format_for(locale || I18n.locale)
   end
 
   private

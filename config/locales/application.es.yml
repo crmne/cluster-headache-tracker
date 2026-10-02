@@ -1,0 +1,11 @@
+es:
+  app:
+    description: Diario y registro gratuito de la cefalea en racimos, creado por alguien que la padece. Registra las crisis en segundos, anota la intensidad (escala KIP), la medicación, los desencadenantes y los horarios, y genera informes listos para tu médico. Sin correo electrónico.
+    short_description: Gratis, privado, informes para tu médico
+    title: Cluster Headache Tracker – Diario de cefalea en racimos
+  languages:
+    de: Deutsch
+    en: English
+    es: Español
+    it: Italiano
+  open_graph_locale: es_ES

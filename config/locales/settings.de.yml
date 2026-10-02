@@ -1,0 +1,53 @@
+de:
+  users:
+    changelog_acknowledgements:
+      create:
+        failed: Die Neuigkeiten konnten nicht ausgeblendet werden.
+    passwords:
+      update:
+        updated: Ihr Passwort wurde geändert.
+    preferences:
+      update:
+        updated: Ihre Sprach- und Zeiteinstellungen wurden gespeichert.
+    settings:
+      show:
+        account:
+          confirm_new_password: Neues Passwort bestätigen
+          current_password: Aktuelles Passwort
+          minimum_password_length:
+            one: "(mindestens %{count} Zeichen)"
+            other: "(mindestens %{count} Zeichen)"
+          new_password: Neues Passwort
+          new_username: Neuer Benutzername
+          required: "(erforderlich)"
+          title: Benutzerkonto
+          update_password: Passwort ändern
+          update_username: Benutzernamen ändern
+        data_management:
+          export: CSV exportieren
+          import: CSV importieren
+          title: Datenverwaltung
+        import:
+          cancel: Abbrechen
+          close: schließen
+          exported_files_work: Jede aus Cluster Headache Tracker exportierte CSV-Datei funktioniert.
+          format_description: 'Die CSV-Datei muss folgendes Format haben:'
+          format_title: CSV-Format
+          select_file: Datei auswählen
+          submit: Importieren
+          title: Kopfschmerz-Einträge importieren
+        preferences:
+          automatic_language: Automatisch (Gerätesprache)
+          automatic_language_hint: Bei „Automatisch“ wird die Sprache Ihres Smartphones oder Browsers verwendet.
+          automatic_time_format: Automatisch (je nach Sprache)
+          language: Sprache
+          save: Speichern
+          time_format: Uhrzeitformat
+          title: Sprache & Uhrzeit
+          twelve_hour: 12 Stunden (%{example})
+          twenty_four_hour: 24 Stunden (%{example})
+        sign_out: Abmelden
+        title: Kontoeinstellungen
+    usernames:
+      update:
+        updated: Ihr Benutzername wurde geändert.

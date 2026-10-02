@@ -1,15 +1,57 @@
-<% content_for :title, "Account Settings" %>
-<% content_for :navbar, "Account Settings" %>
+<% content_for :title, t(".title") %>
+<% content_for :navbar, t(".title") %>
 <% content_for :web_button do %>
-  <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn" %>
+  <%= button_to t(".sign_out"), destroy_user_session_path, method: :delete, class: "btn" %>
 <% end %>
 <% content_for :hotwire_button do %>
-  <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn",
+  <%= button_to t(".sign_out"), destroy_user_session_path, method: :delete, class: "btn",
       data: {
         controller: "bridge--button",
-        bridge_title: "Sign Out"
+        bridge_title: t(".sign_out")
       } %>
 <% end %>
+
+<!-- Language and Time Section -->
+<div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 mb-4" id="preferences">
+  <div class="card-body p-3 sm:p-4">
+    <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2 mb-3">
+      <%= heroicon "language", variant: "mini", class: "w-4 h-4 text-secondary" %>
+      <%= t(".preferences.title") %>
+    </h2>
+    <%= form_with model: current_user, url: settings_preferences_path, method: :patch, class: "grid grid-cols-1 md:grid-cols-2 gap-3" do |form| %>
+      <div class="bg-base-200/50 rounded-lg p-3">
+        <%= form.label :locale, t(".preferences.language"), class: "text-sm font-semibold mb-2 block" %>
+        <%= form.select :locale,
+              [ [ t(".preferences.automatic_language"), "" ] ] + I18n.available_locales.map { |locale| [ language_name(locale), locale ] },
+              {},
+              class: "select select-bordered w-full" %>
+        <p class="text-xs text-base-content/60 mt-2"><%= t(".preferences.automatic_language_hint") %></p>
+      </div>
+
+      <fieldset class="bg-base-200/50 rounded-lg p-3">
+        <legend class="text-sm font-semibold mb-2 float-left w-full"><%= t(".preferences.time_format") %></legend>
+        <div class="flex flex-col gap-1 clear-both">
+          <label class="label cursor-pointer justify-start gap-3 py-2">
+            <%= form.radio_button :time_format, "", checked: current_user.time_format.nil?, class: "radio radio-sm" %>
+            <span><%= t(".preferences.automatic_time_format") %></span>
+          </label>
+          <label class="label cursor-pointer justify-start gap-3 py-2">
+            <%= form.radio_button :time_format, "12h", class: "radio radio-sm" %>
+            <span><%= t(".preferences.twelve_hour", example: l(Time.zone.parse("19:05"), format: :time_12h)) %></span>
+          </label>
+          <label class="label cursor-pointer justify-start gap-3 py-2">
+            <%= form.radio_button :time_format, "24h", class: "radio radio-sm" %>
+            <span><%= t(".preferences.twenty_four_hour", example: l(Time.zone.parse("19:05"), format: :time_24h)) %></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="md:col-span-2">
+        <%= form.submit t(".preferences.save"), class: "btn btn-primary btn-sm w-full md:w-auto" %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <!-- Data Management Section -->
 <% unless native_app_with_tabs? %>
@@ -17,12 +59,12 @@
     <div class="card-body p-3 sm:p-4">
       <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2 mb-3">
         <%= heroicon "circle-stack", variant: "mini", class: "w-4 h-4 text-primary" %>
-        Data Management
+        <%= t(".data_management.title") %>
       </h2>
       <div class="flex flex-col sm:flex-row gap-2">
         <button onclick="import_modal.showModal()" class="btn btn-outline btn-sm">
           <%= heroicon "arrow-up-tray", variant: "mini", class: "w-4 h-4" %>
-          Import CSV
+          <%= t(".data_management.import") %>
         </button>
         <%= link_to headache_log_export_path(format: :csv),
                     class: "btn btn-primary btn-sm",
@@ -32,7 +74,7 @@
                       action: "click->download#export"
                     } do %>
           <%= heroicon "arrow-down-tray", variant: "mini", class: "w-4 h-4" %>
-          Export CSV
+          <%= t(".data_management.export") %>
         <% end %>
       </div>
     </div>
@@ -44,26 +86,36 @@
   <div class="card-body p-3 sm:p-4">
     <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2 mb-3">
       <%= heroicon "user-circle", variant: "mini", class: "w-4 h-4 text-accent" %>
-      User Management
+      <%= t(".account.title") %>
     </h2>
+    <% if current_user.errors.any? %>
+      <div class="alert alert-error mb-3">
+        <%= heroicon "x-circle", variant: "mini", class: "w-5 h-5" %>
+        <ul class="list-disc list-inside">
+          <% current_user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
       <%= form_for(current_user, url: settings_username_path, method: :patch) do |f| %>
         <div class="bg-base-200/50 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-3">Update Username</h3>
+          <h3 class="text-sm font-semibold mb-3"><%= t(".account.update_username") %></h3>
 
           <div class="space-y-3">
             <div>
-              <label class="text-xs text-base-content/60 mb-1 block">New Username</label>
+              <label class="text-xs text-base-content/60 mb-1 block"><%= t(".account.new_username") %></label>
               <%= f.text_field :username, class: "input input-bordered input-sm w-full" %>
             </div>
 
             <div>
-              <label class="text-xs text-base-content/60 mb-1 block">Current Password <span class="text-error">(required)</span></label>
+              <label class="text-xs text-base-content/60 mb-1 block"><%= t(".account.current_password") %> <span class="text-error"><%= t(".account.required") %></span></label>
               <%= f.password_field :current_password, class: "input input-bordered input-sm w-full" %>
             </div>
 
             <div class="mt-3">
-              <%= f.submit "Update Username", class: "btn btn-primary btn-sm w-full" %>
+              <%= f.submit t(".account.update_username"), class: "btn btn-primary btn-sm w-full" %>
             </div>
           </div>
         </div>
@@ -71,31 +123,31 @@
 
       <%= form_for(current_user, url: settings_password_path, method: :patch) do |f| %>
         <div class="bg-base-200/50 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-3">Update Password</h3>
+          <h3 class="text-sm font-semibold mb-3"><%= t(".account.update_password") %></h3>
 
           <div class="space-y-3">
             <div>
-              <label class="text-xs text-base-content/60 mb-1 block">Current Password <span class="text-error">(required)</span></label>
+              <label class="text-xs text-base-content/60 mb-1 block"><%= t(".account.current_password") %> <span class="text-error"><%= t(".account.required") %></span></label>
               <%= f.password_field :current_password, class: "input input-bordered input-sm w-full" %>
             </div>
 
             <div>
               <label class="text-xs text-base-content/60 mb-1 block">
-                New Password
+                <%= t(".account.new_password") %>
                 <% if @minimum_password_length %>
-                  <span class="text-info">(<%= @minimum_password_length %> characters minimum)</span>
+                  <span class="text-info"><%= t(".account.minimum_password_length", count: @minimum_password_length) %></span>
                 <% end %>
               </label>
               <%= f.password_field :password, class: "input input-bordered input-sm w-full" %>
             </div>
 
             <div>
-              <label class="text-xs text-base-content/60 mb-1 block">Confirm New Password</label>
+              <label class="text-xs text-base-content/60 mb-1 block"><%= t(".account.confirm_new_password") %></label>
               <%= f.password_field :password_confirmation, class: "input input-bordered input-sm w-full" %>
             </div>
 
             <div class="mt-3">
-              <%= f.submit "Update Password", class: "btn btn-primary btn-sm w-full" %>
+              <%= f.submit t(".account.update_password"), class: "btn btn-primary btn-sm w-full" %>
             </div>
           </div>
         </div>
@@ -109,34 +161,34 @@
   <div class="modal-box">
     <h3 class="text-base font-semibold mb-4 flex items-center gap-2">
       <%= heroicon "arrow-up-tray", variant: "mini", class: "w-5 h-5 text-primary" %>
-      Import Headache Logs
+      <%= t(".import.title") %>
     </h3>
 
     <div class="bg-info/10 rounded-lg p-3 mb-4">
       <h4 class="text-sm font-semibold mb-2 flex items-center gap-2">
         <%= heroicon "information-circle", variant: "mini", class: "w-4 h-4 text-info" %>
-        CSV Format
+        <%= t(".import.format_title") %>
       </h4>
-      <p class="text-xs text-base-content/70 mb-2">The CSV file needs to have the following format:</p>
+      <p class="text-xs text-base-content/70 mb-2"><%= t(".import.format_description") %></p>
       <div class="bg-base-300 p-2 rounded text-xs font-mono">
         start_time, end_time, intensity, medication, triggers, notes
       </div>
-      <p class="text-xs text-base-content/70 mt-2">Any CSV file exported from Cluster Headache Tracker will work.</p>
+      <p class="text-xs text-base-content/70 mt-2"><%= t(".import.exported_files_work") %></p>
     </div>
 
     <%= form_tag headache_log_import_path, multipart: true do %>
       <div class="bg-base-200/50 rounded-lg p-3">
-        <h4 class="text-sm font-semibold mb-2">Select File</h4>
+        <h4 class="text-sm font-semibold mb-2"><%= t(".import.select_file") %></h4>
         <%= file_field_tag :file, accept: '.csv', class: "file-input file-input-bordered file-input-sm w-full" %>
       </div>
 
       <div class="modal-action">
-        <%= submit_tag "Import", class: "btn btn-primary btn-sm" %>
-        <button type="button" class="btn btn-ghost btn-sm" onclick="import_modal.close()">Cancel</button>
+        <%= submit_tag t(".import.submit"), class: "btn btn-primary btn-sm" %>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="import_modal.close()"><%= t(".import.cancel") %></button>
       </div>
     <% end %>
   </div>
   <form method="dialog" class="modal-backdrop">
-    <button>close</button>
+    <button><%= t(".import.close") %></button>
   </form>
 </dialog>

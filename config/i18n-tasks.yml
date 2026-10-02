@@ -1,0 +1,39 @@
+# Checked by test/i18n_test.rb. Run `bundle exec i18n-tasks missing` or
+# `bundle exec i18n-tasks unused` to see details.
+base_locale: en
+locales: [ en, de, it, es ]
+
+data:
+  # One file per area and language, e.g. config/locales/headache_logs.de.yml
+  read:
+    - config/locales/%{locale}.yml
+    - config/locales/**/*.%{locale}.yml
+  yaml:
+    write:
+      line_width: -1
+
+search:
+  paths:
+    - app/
+  exclude:
+    - app/assets/images
+    - app/assets/builds
+    - app/javascript
+
+# Keys that are looked up dynamically or read by JavaScript
+ignore_unused:
+  - "date.*"
+  - "time.*"
+  - "languages.*"
+  - "open_graph_locale"
+  - "js.*"
+  - "seo.*"
+  - "activerecord.*"
+  - "activemodel.*"
+  - "helpers.*"
+  - "errors.*"
+
+ignore_missing:
+  # Translated public page titles and descriptions only exist for de, it and es:
+  # English ones live in config/ai_visible_pages.yml (test/i18n_test.rb checks them)
+  - "seo.*"

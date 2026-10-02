@@ -30,6 +30,10 @@ class AiVisibleContent
   end.freeze
   PAGES_BY_SLUG = PUBLIC_PAGES.values.index_by { |page| page[:slug] }.freeze
 
+  # Translated public pages live under /de, /it and /es and share their English page's entry
+  TRANSLATED_LOCALES = Rails.configuration.i18n.available_locales.map(&:to_s).excluding(Rails.configuration.i18n.default_locale.to_s).freeze
+  LOCALE_PREFIX = %r{\A/(?:#{TRANSLATED_LOCALES.join("|")})(?=/|\z)}
+
   SAME_AS = [
     SOURCE_REPOSITORY_URL,
     IOS_REPOSITORY_URL,
@@ -56,6 +60,16 @@ class AiVisibleContent
         "index, follow, max-image-preview:large"
       else
         "noindex, nofollow"
+      end
+    end
+
+    def localized_path(path, locale)
+      if TRANSLATED_LOCALES.exclude?(locale.to_s)
+        path
+      elsif path == "/"
+        "/#{locale}"
+      else
+        "/#{locale}#{path}"
       end
     end
 
@@ -132,7 +146,10 @@ class AiVisibleContent
       end
     end
 
-    def json_ld_for(path:, logo_url:, android_apk_url:)
+    # Pass a translation ({ locale:, title:, description: }) for the /de, /it and /es
+    # versions of a page. FAQ and HowTo data is English-only, so it's left out there
+    # rather than describing content the page doesn't show.
+    def json_ld_for(path:, logo_url:, android_apk_url:, translation: nil)
       page = page_for_path(path)
       nodes = [
         organization_schema(logo_url: logo_url),
@@ -141,7 +158,10 @@ class AiVisibleContent
         software_schema(logo_url: logo_url, android_apk_url: android_apk_url)
       ]
 
-      if page
+      if page && translation
+        nodes << translated_web_page_schema(page, **translation)
+        nodes << video_schema if page[:slug] == "home"
+      elsif page
         nodes << web_page_schema(page)
         nodes << breadcrumb_schema(page)
         nodes << faq_schema(page) if page[:faq].present?
@@ -180,6 +200,7 @@ class AiVisibleContent
 
     def normalize_path(path)
       normalized = path.to_s.split("?").first.presence || "/"
+      normalized = normalized.sub(LOCALE_PREFIX, "").presence || "/"
       normalized = normalized.chomp("/") unless normalized == "/"
       normalized
     end
@@ -342,6 +363,19 @@ class AiVisibleContent
         "inLanguage" => "en",
         "isAccessibleForFree" => true
       }
+    end
+
+    def translated_web_page_schema(page, locale:, title:, description:)
+      url = absolute_url(localized_path(page[:path], locale))
+
+      web_page_schema(page).merge(
+        "@id" => "#{url}#webpage",
+        "url" => url,
+        "name" => title,
+        "description" => description,
+        "inLanguage" => locale.to_s,
+        "translationOfWork" => { "@id" => "#{absolute_url(page[:path])}#webpage" }
+      )
     end
 
     def breadcrumb_schema(page)

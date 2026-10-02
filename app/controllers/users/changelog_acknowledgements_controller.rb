@@ -11,7 +11,7 @@ class Users::ChangelogAcknowledgementsController < ApplicationController
     else
       respond_to do |format|
         format.json { head :unprocessable_entity }
-        format.html { redirect_back fallback_location: headache_logs_path, alert: "Couldn't dismiss changelog." }
+        format.html { redirect_back fallback_location: headache_logs_path, alert: t(".failed") }
       end
     end
   end

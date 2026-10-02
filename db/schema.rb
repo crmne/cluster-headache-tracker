@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_11_112008) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_02_113603) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -75,7 +75,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_11_112008) do
     t.string "encrypted_password", default: "", null: false
     t.integer "headache_logs_count", default: 0, null: false
     t.string "last_seen_changelog"
+    t.string "locale"
     t.datetime "remember_created_at"
+    t.string "time_format"
     t.datetime "updated_at", null: false
     t.string "username", null: false
     t.datetime "welcome_seen_at"

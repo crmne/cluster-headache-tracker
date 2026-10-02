@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
+  include Localization
+
   protect_from_forgery unless: -> { Rails.env.development? && hotwire_native_app? }
 
   before_action :redirect_canonical_host
   before_action :set_ongoing_headaches, if: :user_signed_in?
-  before_action :set_locale
   before_action :set_robots_tag_header
   helper_method :hotwire_native_app?
 
@@ -25,10 +26,6 @@ class ApplicationController < ActionController::Base
 
   def set_ongoing_headaches
     @ongoing_headaches = current_user.headache_logs.where(end_time: nil).order(start_time: :desc)
-  end
-
-  def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
   end
 
   def set_robots_tag_header
