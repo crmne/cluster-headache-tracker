@@ -2,7 +2,9 @@ class ApplicationController < ActionController::Base
   include CurrentTimeZone
   include Localization
 
-  protect_from_forgery unless: -> { Rails.env.development? && hotwire_native_app? }
+  # Prepended so the CSRF check runs before any callback that touches current_user:
+  # signing in rotates the token, which would otherwise fail the check and drop the new session.
+  protect_from_forgery prepend: true, unless: -> { Rails.env.development? && hotwire_native_app? }
 
   before_action :redirect_canonical_host
   before_action :set_ongoing_headaches, if: :user_signed_in?
