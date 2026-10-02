@@ -17,6 +17,7 @@ class HeadacheLog < ApplicationRecord
 
   scope :chronological, -> { order(:start_time) }
   scope :recent_first, -> { order(start_time: :desc) }
+  scope :ongoing, -> { where(end_time: nil) }
   scope :today, -> { where(start_time: Time.current.all_day) }
   scope :started_after, ->(start_time) { where("start_time >= ?", Date.parse(start_time).beginning_of_day) }
   scope :ended_before, ->(end_time) { where("end_time <= ? OR end_time IS NULL", Date.parse(end_time).end_of_day) }

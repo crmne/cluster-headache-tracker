@@ -20,11 +20,18 @@
   ],
   "shortcuts": [
     {
-      "name": "New Log",
-      "short_name": "Add Log",
-      "description": "Create a new headache log",
-      "url": "/headache_logs/new",
-      "icons": [{ "src": "<%= asset_path 'favicon/android-chrome-192x192.png' %>", "sizes": "192x192" }]
+      "name": <%== t("pwa.shortcuts.quick_log.name").to_json %>,
+      "short_name": <%== t("pwa.shortcuts.quick_log.short_name").to_json %>,
+      "description": <%== t("pwa.shortcuts.quick_log.description").to_json %>,
+      "url": "<%= new_headache_log_path(quick: 1) %>",
+      "icons": [{ "src": "<%= asset_path 'shortcuts/quick-log.png' %>", "sizes": "192x192", "type": "image/png", "purpose": "any" }]
+    },
+    {
+      "name": <%== t("pwa.shortcuts.current_attack.name").to_json %>,
+      "short_name": <%== t("pwa.shortcuts.current_attack.short_name").to_json %>,
+      "description": <%== t("pwa.shortcuts.current_attack.description").to_json %>,
+      "url": "<%= current_attack_path %>",
+      "icons": [{ "src": "<%= asset_path 'shortcuts/current-attack.png' %>", "sizes": "192x192", "type": "image/png", "purpose": "any" }]
     },
     {
       "name": "View Charts",

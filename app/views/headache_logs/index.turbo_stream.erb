@@ -1,3 +1,7 @@
+<%= turbo_stream.replace "ongoing_headaches" do %>
+  <%= render "ongoing_headaches" %>
+<% end %>
+
 <%= turbo_stream.replace "headache_stats" do %>
   <%= render "stats", headache_logs: @headache_logs %>
 <% end %>

@@ -1,0 +1,57 @@
+it:
+  time:
+    formats:
+      attack_start: "%H:%M"
+
+  current_attacks:
+    show:
+      title: "Attacco attuale"
+    create:
+      invalid_intensity: "Scegli un'intensità del dolore da 1 a 10."
+    destroy:
+      ended: "Attacco terminato."
+      nothing_ongoing: "Nessun attacco in corso."
+    start:
+      heading: "Inizia attacco ora"
+      instructions: "Tocca l'intensità del dolore"
+      intensity: "Intensità del dolore"
+      start_with_intensity: "Inizia attacco ora con intensità %{intensity} su 10"
+      mild: "Lieve"
+      unbearable: "Insopportabile"
+    ongoing:
+      badge: "In corso"
+      heading: "Attacco in corso"
+      started_at: "Iniziato alle %{time}"
+      intensity: "Dolore %{intensity}/10"
+      elapsed: "Tempo trascorso"
+      days: "giorni"
+      hours: "ore"
+      minutes: "min"
+      seconds: "sec"
+      end: "Termina attacco ora"
+      add_details: "Aggiungi dettagli"
+
+  headache_logs:
+    quick:
+      title: "Registrazione rapida"
+      full_form: "Usa il modulo completo"
+
+  application:
+    keyboard_shortcuts:
+      heading: "Scorciatoie da tastiera"
+      new_log: "Nuova registrazione"
+      current_attack: "Attacco attuale"
+      help: "Mostra le scorciatoie da tastiera"
+      enable: "Scorciatoie a tasto singolo"
+      close: "Chiudi"
+
+  pwa:
+    shortcuts:
+      quick_log:
+        name: "Registra attacco"
+        short_name: "Registra"
+        description: "Registra un attacco ora con un tocco"
+      current_attack:
+        name: "Attacco attuale"
+        short_name: "Attacco"
+        description: "Vedi o termina l'attacco in corso"

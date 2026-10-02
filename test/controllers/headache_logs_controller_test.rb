@@ -14,6 +14,24 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     assert_select ".navbar", /Headache Logs/  # Check navbar title instead
   end
 
+  test "quick log shows the one-tap intensity pad" do
+    get new_headache_log_url(quick: 1)
+
+    assert_response :success
+    assert_select ".navbar", /Quick log/
+    assert_select "form#start_attack[action=?] button[name=intensity]", current_attack_path, count: 10
+  end
+
+  test "quick log shows the ongoing attack instead of starting another" do
+    @headache_log.update!(end_time: nil)
+
+    get new_headache_log_url(quick: 1)
+
+    assert_response :success
+    assert_select "#end_attack"
+    assert_select "#start_attack", count: 0
+  end
+
   test "should not find another user's headache log" do
     get edit_headache_log_url(headache_logs(:two))
     assert_response :not_found
