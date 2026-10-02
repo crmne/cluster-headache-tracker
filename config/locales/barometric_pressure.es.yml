@@ -1,0 +1,39 @@
+es:
+  barometric_pressure:
+    unit: "hPa"
+    reading: "%{pressure} hPa"
+    table_header: "Presión"
+    not_recorded: "No registrada"
+    form:
+      label: "Presión atmosférica"
+      hint: "Opcional. En hPa (equivale a mbar), de un barómetro o una app del tiempo."
+      placeholder: "p. ej., 1013"
+    charts:
+      by_pressure:
+        title: "Crisis según la presión atmosférica"
+        x_axis: "Presión (hPa)"
+        frequency: "Crisis"
+        avg_intensity: "Intensidad media"
+      change:
+        title: "Cambio de presión antes de las crisis"
+        x_axis: "Fecha"
+        y_axis: "Cambio desde la medición anterior (hPa)"
+        dataset: "Cambio de presión"
+        empty: "Registra la presión en crisis separadas por menos de 24 horas para ver cómo cambió entre ellas."
+        tooltip:
+          change: "Cambio: %{value} hPa"
+          pressure: "Presión: %{value} hPa"
+          hours: "Desde la medición anterior: %{value} h"
+          intensity: "Intensidad: %{value}/10"
+
+  activerecord:
+    attributes:
+      headache_log:
+        barometric_pressure: "Presión atmosférica"
+    errors:
+      models:
+        headache_log:
+          attributes:
+            barometric_pressure:
+              in: "debe estar entre 870 y 1085 hPa"
+              not_a_number: "debe ser un número en hPa"

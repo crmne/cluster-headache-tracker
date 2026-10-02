@@ -133,6 +133,24 @@
         </div>
       </div>
 
+      <div class="bg-info/5 rounded-lg p-3">
+        <h3 class="text-sm font-semibold mb-2 flex items-center gap-2">
+          <%= heroicon "cloud", variant: "mini", class: "w-4 h-4 text-info" %>
+          <%= form.label :barometric_pressure, t("barometric_pressure.form.label") %>
+        </h3>
+        <span class="text-xs text-base-content/60 mb-2 block"><%= t("barometric_pressure.form.hint") %></span>
+        <label class="input input-bordered input-sm w-full flex items-center gap-2">
+          <%= form.number_field :barometric_pressure,
+                class: "grow",
+                min: HeadacheLog::BAROMETRIC_PRESSURE_RANGE.min,
+                max: HeadacheLog::BAROMETRIC_PRESSURE_RANGE.max,
+                step: 0.1,
+                inputmode: "decimal",
+                placeholder: t("barometric_pressure.form.placeholder") %>
+          <span class="text-base-content/60"><%= t("barometric_pressure.unit") %></span>
+        </label>
+      </div>
+
       <%# Notes Field %>
       <div class="bg-base-200 rounded-lg p-3">
         <h3 class="text-sm font-semibold mb-2 flex items-center gap-2">

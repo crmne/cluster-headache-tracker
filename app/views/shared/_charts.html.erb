@@ -23,7 +23,10 @@
        data-charts-medication-value="<%= chart_data[:medication_data].to_json %>"
        data-charts-hourly-value="<%= chart_data[:hourly_data].to_json %>"
        data-charts-attacks-per-day-value="<%= chart_data[:attacks_per_day_data].to_json %>"
-       data-charts-duration-value="<%= chart_data[:duration_data].to_json %>">
+       data-charts-duration-value="<%= chart_data[:duration_data].to_json %>"
+       data-charts-pressure-value="<%= chart_data[:pressure_data].to_json %>"
+       data-charts-pressure-change-value="<%= chart_data[:pressure_change_data].to_json %>"
+       data-charts-pressure-labels-value="<%= pressure_chart_labels.to_json %>">
   <div class="grid gap-4 grid-cols-1 mb-4 print:grid-cols-1 print:gap-2">
     <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 print:shadow-none print:break-inside-avoid">
       <div class="card-body p-3 sm:p-4">
@@ -129,5 +132,39 @@
       </div>
     </div>
   </div>
+
+  <% if chart_data[:pressure_data].any? %>
+    <div class="grid gap-4 grid-cols-1 md:grid-cols-2 mb-8 print:grid-cols-2">
+      <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 print:shadow-none print:break-inside-avoid">
+        <div class="card-body p-3 sm:p-4">
+          <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2">
+            <%= heroicon "cloud", variant: "mini", class: "w-4 h-4 text-info" %>
+            <%= t("barometric_pressure.charts.by_pressure.title") %>
+          </h2>
+          <div id="pressureChartContainer" class="h-[300px] print:h-[200px] print:max-w-full" data-charts-target="container">
+            <canvas id="pressureChart" data-charts-target="pressureCanvas"></canvas>
+            <div class="loading-spinner hidden"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 print:shadow-none print:break-inside-avoid">
+        <div class="card-body p-3 sm:p-4">
+          <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2">
+            <%= heroicon "arrows-up-down", variant: "mini", class: "w-4 h-4 text-info" %>
+            <%= t("barometric_pressure.charts.change.title") %>
+          </h2>
+          <div id="pressureChangeChartContainer" class="h-[300px] print:h-[200px] print:max-w-full" data-charts-target="container">
+            <% if chart_data[:pressure_change_data].any? %>
+              <canvas id="pressureChangeChart" data-charts-target="pressureChangeCanvas"></canvas>
+            <% else %>
+              <p class="text-sm text-base-content/60"><%= t("barometric_pressure.charts.change.empty") %></p>
+            <% end %>
+            <div class="loading-spinner hidden"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
   </div>
 <% end %>

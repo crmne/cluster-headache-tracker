@@ -1,4 +1,5 @@
 <%# app/views/headache_logs/_table.html.erb %>
+<% show_pressure = headache_logs.any?(&:barometric_pressure) %>
 <div class="overflow-x-auto print:overflow-visible">
   <table class="table print:table-sm print:text-xs">
     <thead>
@@ -23,6 +24,12 @@
           <%= heroicon "bolt", variant: "mini", class: "w-4 h-4 inline-block" %>
           Triggers
         </th>
+        <% if show_pressure %>
+          <th>
+            <%= heroicon "cloud", variant: "mini", class: "w-4 h-4 inline-block" %>
+            <%= t("barometric_pressure.table_header") %>
+          </th>
+        <% end %>
         <th>
           <%= heroicon "document-text", variant: "mini", class: "w-4 h-4 inline-block" %>
           Notes
@@ -104,6 +111,16 @@
               <span class="opacity-50">None recorded</span>
             <% end %>
           </td>
+
+          <% if show_pressure %>
+            <td class="whitespace-nowrap">
+              <% if log.barometric_pressure %>
+                <%= barometric_pressure_reading(log) %>
+              <% else %>
+                <span class="opacity-50"><%= t("barometric_pressure.not_recorded") %></span>
+              <% end %>
+            </td>
+          <% end %>
 
           <%# Notes %>
           <td>

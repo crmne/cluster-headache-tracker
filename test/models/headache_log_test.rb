@@ -105,14 +105,104 @@ class HeadacheLogTest < ActiveSupport::TestCase
     assert_equal 1, medication_data["sumatriptan"]
   end
 
+  test "barometric pressure is optional" do
+    @headache_log.barometric_pressure = nil
+    assert @headache_log.valid?
+
+    @headache_log.barometric_pressure = ""
+    assert @headache_log.valid?
+    assert_nil @headache_log.barometric_pressure
+  end
+
+  test "barometric pressure must be within the plausible range" do
+    @headache_log.barometric_pressure = 869.9
+    assert_not @headache_log.valid?
+    assert_includes @headache_log.errors[:barometric_pressure], "must be between 870 and 1085 hPa"
+
+    @headache_log.barometric_pressure = 1085.1
+    assert_not @headache_log.valid?
+
+    @headache_log.barometric_pressure = 870
+    assert @headache_log.valid?
+
+    @headache_log.barometric_pressure = 1085
+    assert @headache_log.valid?
+  end
+
+  test "barometric pressure must be a number" do
+    @headache_log.barometric_pressure = "high"
+    assert_not @headache_log.valid?
+    assert_includes @headache_log.errors[:barometric_pressure], "must be a number in hPa"
+  end
+
+  test "barometric pressure is stored to one decimal place" do
+    @headache_log.update!(barometric_pressure: "1013.25")
+    assert_equal BigDecimal("1013.3"), @headache_log.reload.barometric_pressure
+  end
+
+  test "database rejects implausible barometric pressure" do
+    @headache_log.save!
+
+    assert_raises ActiveRecord::StatementInvalid do
+      @headache_log.update_column(:barometric_pressure, 500)
+    end
+  end
+
+  test "chart_data buckets attacks by barometric pressure and fills empty bands" do
+    logs = [
+      chart_log(intensity: 6, barometric_pressure: 1001.4),
+      chart_log(intensity: 8, barometric_pressure: 1004.9),
+      chart_log(intensity: 9, barometric_pressure: 1012.0),
+      chart_log(intensity: 3)
+    ]
+
+    pressure_data = HeadacheLog.chart_data_for(logs)[:pressure_data]
+
+    assert_equal [ "1000–1005", "1005–1010", "1010–1015" ], pressure_data.map { |band| band[:label] }
+    assert_equal [ 2, 0, 1 ], pressure_data.map { |band| band[:frequency] }
+    assert_equal [ 7.0, 0, 9.0 ], pressure_data.map { |band| band[:avg_intensity] }
+  end
+
+  test "chart_data has no pressure data without readings" do
+    chart_data = HeadacheLog.chart_data_for([ chart_log, chart_log ])
+
+    assert_empty chart_data[:pressure_data]
+    assert_empty chart_data[:pressure_change_data]
+  end
+
+  test "chart_data tracks pressure change between readings within a day" do
+    logs = [
+      chart_log(start_time: "2024-03-02 20:00", intensity: 9, barometric_pressure: 1004.5),
+      chart_log(start_time: "2024-03-01 08:00", barometric_pressure: 1015.0),
+      chart_log(start_time: "2024-03-02 02:00", barometric_pressure: 1010.0),
+      chart_log(start_time: "2024-03-02 10:00"),
+      chart_log(start_time: "2024-03-05 02:00", barometric_pressure: 1020.0)
+    ]
+
+    pressure_change_data = HeadacheLog.chart_data_for(logs)[:pressure_change_data]
+
+    assert_equal 2, pressure_change_data.size
+    assert_equal({ x: Time.zone.parse("2024-03-02 02:00").iso8601, y: -5.0, pressure: 1010.0, hours: 18.0, intensity: 5 }, pressure_change_data.first)
+    assert_equal({ x: Time.zone.parse("2024-03-02 20:00").iso8601, y: -5.5, pressure: 1004.5, hours: 18.0, intensity: 9 }, pressure_change_data.second)
+  end
+
+  test "to_csv exports barometric pressure" do
+    @headache_log.update!(start_time: Time.zone.parse("2024-03-01 08:00"), barometric_pressure: 1013.2)
+
+    csv = CSV.parse(@user.headache_logs.where(id: @headache_log).to_csv, headers: true)
+
+    assert_equal "1013.2", csv.first["barometric_pressure"]
+  end
+
   private
-    def chart_log(start_time: "2024-03-01 12:00", end_time: nil, intensity: 5, medication: nil)
+    def chart_log(start_time: "2024-03-01 12:00", end_time: nil, intensity: 5, medication: nil, barometric_pressure: nil)
       HeadacheLog.new(
         user: @user,
         start_time: Time.zone.parse(start_time),
         end_time: end_time && Time.zone.parse(end_time),
         intensity: intensity,
-        medication: medication
+        medication: medication,
+        barometric_pressure: barometric_pressure
       )
     end
 end

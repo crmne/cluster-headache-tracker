@@ -18,6 +18,19 @@ class HeadacheLogsTest < ApplicationSystemTestCase
 
 
 
+  test "logging barometric pressure" do
+    visit new_headache_log_url
+    fill_in "Barometric pressure", with: "1004.6"
+    click_button "Create Headache log"
+
+    page.document.synchronize do
+      raise Capybara::ExpectationNotMet unless @user.headache_logs.exists?(barometric_pressure: 1004.6)
+    end
+
+    visit headache_logs_url
+    assert_text "1004.6 hPa"
+  end
+
   test "marking ongoing headache as complete" do
     # Create an ongoing headache log
     log = headache_logs(:one)

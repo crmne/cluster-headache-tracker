@@ -1,0 +1,39 @@
+de:
+  barometric_pressure:
+    unit: "hPa"
+    reading: "%{pressure} hPa"
+    table_header: "Luftdruck"
+    not_recorded: "Nicht erfasst"
+    form:
+      label: "Luftdruck"
+      hint: "Optional. In hPa (entspricht mbar), von einem Barometer oder einer Wetter-App."
+      placeholder: "z. B. 1013"
+    charts:
+      by_pressure:
+        title: "Attacken nach Luftdruck"
+        x_axis: "Luftdruck (hPa)"
+        frequency: "Attacken"
+        avg_intensity: "Ø Intensität"
+      change:
+        title: "Luftdruckänderung vor Attacken"
+        x_axis: "Datum"
+        y_axis: "Änderung seit der letzten Messung (hPa)"
+        dataset: "Luftdruckänderung"
+        empty: "Erfasse den Luftdruck bei Attacken, die weniger als 24 Stunden auseinanderliegen, um zu sehen, wie er sich dazwischen verändert hat."
+        tooltip:
+          change: "Änderung: %{value} hPa"
+          pressure: "Luftdruck: %{value} hPa"
+          hours: "Seit der letzten Messung: %{value} h"
+          intensity: "Intensität: %{value}/10"
+
+  activerecord:
+    attributes:
+      headache_log:
+        barometric_pressure: "Luftdruck"
+    errors:
+      models:
+        headache_log:
+          attributes:
+            barometric_pressure:
+              in: "muss zwischen 870 und 1085 hPa liegen"
+              not_a_number: "muss eine Zahl in hPa sein"
