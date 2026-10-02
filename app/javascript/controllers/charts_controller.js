@@ -18,6 +18,7 @@ import {
   CategoryScale
 } from "chart.js"
 import "chartjs-adapter-date-fns"
+import { t, formatDate, formatNumber, formatTime } from "i18n"
 
 Chart.register(
   TimeScale,
@@ -37,27 +38,42 @@ Chart.register(
   CategoryScale
 )
 
-function formatDuration(value) {
+function formatDuration(value, unitDisplay = 'narrow') {
   if (value < 1) {
-    return `${(value * 60).toFixed(0)}m`
-  } else if (value === 1) {
-    return '1h'
+    return formatNumber(Math.round(value * 60), { style: 'unit', unit: 'minute', unitDisplay })
   } else if (value < 24) {
-    return `${value}h`
+    return formatNumber(value, { style: 'unit', unit: 'hour', unitDisplay, maximumFractionDigits: 1 })
   } else {
-    return `${(value / 24).toFixed(1)}d`
+    return formatNumber(value / 24, { style: 'unit', unit: 'day', unitDisplay, maximumFractionDigits: 1 })
   }
 }
 
 function formatDurationLong(hours) {
-  if (hours < 1) {
-    return `${Math.round(hours * 60)} minutes`
-  } else if (hours < 24) {
-    return `${hours.toFixed(1)} hours`
-  } else {
-    return `${(hours / 24).toFixed(1)} days`
-  }
+  return formatDuration(hours, 'long')
 }
+
+function formatDay(value) {
+  return formatDate(new Date(value), { day: 'numeric', month: 'short' })
+}
+
+function formatFullDay(value) {
+  return formatDate(new Date(value))
+}
+
+function formatHourRange(startHour) {
+  const start = new Date(2000, 0, 1, startHour, 0)
+  const end = new Date(2000, 0, 1, startHour + 1, 59)
+  return `${formatTime(start)} – ${formatTime(end)}`
+}
+
+// Localized day ticks and tooltip titles for the date-based charts
+const timeAxis = {
+  type: 'time',
+  time: { unit: 'day' },
+  ticks: { callback: formatDay }
+}
+
+const dayTooltipTitle = items => items.length ? formatFullDay(items[0].parsed.x) : ''
 
 // Connects to data-controller="charts"
 export default class extends Controller {
@@ -143,7 +159,7 @@ export default class extends Controller {
       type: 'line',
       data: {
         datasets: [{
-          label: 'Headache Intensity',
+          label: t('charts.intensity.label'),
           data: this.intensityValue,
           borderColor: 'rgb(75, 192, 192)',
           tension: 0.1
@@ -151,15 +167,15 @@ export default class extends Controller {
       },
       options: {
         scales: {
-          x: {
-            type: 'time',
-            time: {
-              unit: 'day'
-            }
-          },
+          x: timeAxis,
           y: {
             beginAtZero: true,
             max: 10
+          }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: { title: dayTooltipTitle }
           }
         }
       }
@@ -169,13 +185,13 @@ export default class extends Controller {
   initializeTriggerChart() {
     if (!this.hasTriggerCanvasTarget) return
 
-    this.drawPieChart('trigger', this.triggerCanvasTarget, 'Top 5 Triggers', this.triggerValue)
+    this.drawPieChart('trigger', this.triggerCanvasTarget, t('charts.triggers.title'), this.triggerValue)
   }
 
   initializeMedicationChart() {
     if (!this.hasMedicationCanvasTarget) return
 
-    this.drawPieChart('medication', this.medicationCanvasTarget, 'Top 5 Medications', this.medicationValue)
+    this.drawPieChart('medication', this.medicationCanvasTarget, t('charts.medications.title'), this.medicationValue)
   }
 
   drawPieChart(key, canvas, title, data) {
@@ -217,16 +233,16 @@ export default class extends Controller {
     this.drawChart('hourly', this.hourlyCanvasTarget, {
       type: 'bar',
       data: {
-        labels: hourlyData.map(d => d.label),
+        labels: hourlyData.map(d => formatHourRange(d.start_hour)),
         datasets: [
           {
-            label: 'Frequency',
+            label: t('charts.hourly.frequency'),
             data: hourlyData.map(d => d.frequency),
             backgroundColor: 'rgba(75, 192, 192, 0.6)',
             yAxisID: 'y-frequency',
           },
           {
-            label: 'Avg Intensity',
+            label: t('charts.hourly.average_intensity_short'),
             data: hourlyData.map(d => d.avg_intensity),
             backgroundColor: 'rgba(255, 99, 132, 0.6)',
             yAxisID: 'y-intensity',
@@ -239,7 +255,7 @@ export default class extends Controller {
             type: 'category',
             title: {
               display: true,
-              text: 'Time of Day'
+              text: t('charts.hourly.time_of_day')
             }
           },
           'y-frequency': {
@@ -247,7 +263,7 @@ export default class extends Controller {
             position: 'left',
             title: {
               display: true,
-              text: 'Frequency'
+              text: t('charts.hourly.frequency')
             },
             beginAtZero: true
           },
@@ -256,7 +272,7 @@ export default class extends Controller {
             position: 'right',
             title: {
               display: true,
-              text: 'Average Intensity'
+              text: t('charts.hourly.average_intensity')
             },
             beginAtZero: true,
             max: 10
@@ -265,7 +281,7 @@ export default class extends Controller {
         plugins: {
           title: {
             display: true,
-            text: 'Headache Frequency and Intensity by Time of Day'
+            text: t('charts.hourly.title')
           }
         }
       }
@@ -279,7 +295,7 @@ export default class extends Controller {
       type: 'bar',
       data: {
         datasets: [{
-          label: 'Number of Attacks',
+          label: t('charts.attacks_per_day.label'),
           data: this.attacksPerDayValue,
           backgroundColor: 'rgba(54, 162, 235, 0.6)',
           borderColor: 'rgb(54, 162, 235)',
@@ -289,20 +305,17 @@ export default class extends Controller {
       options: {
         scales: {
           x: {
-            type: 'time',
-            time: {
-              unit: 'day'
-            },
+            ...timeAxis,
             title: {
               display: true,
-              text: 'Date'
+              text: t('charts.date')
             }
           },
           y: {
             beginAtZero: true,
             title: {
               display: true,
-              text: 'Number of Attacks'
+              text: t('charts.attacks_per_day.label')
             },
             ticks: {
               stepSize: 1
@@ -315,7 +328,10 @@ export default class extends Controller {
           },
           title: {
             display: true,
-            text: 'Number of Attacks per Day'
+            text: t('charts.attacks_per_day.title')
+          },
+          tooltip: {
+            callbacks: { title: dayTooltipTitle }
           }
         }
       }
@@ -337,7 +353,7 @@ export default class extends Controller {
       type: 'scatter',
       data: {
         datasets: [{
-          label: 'Attack Duration',
+          label: t('charts.duration.label'),
           data: validData,
           borderColor: 'rgb(147, 51, 234)',
           backgroundColor: 'rgba(147, 51, 234, 0.5)',
@@ -348,28 +364,23 @@ export default class extends Controller {
       options: {
         scales: {
           x: {
-            type: 'time',
-            time: {
-              unit: 'day',
-              displayFormats: {
-                day: 'MMM d, yyyy'
-              }
-            },
+            ...timeAxis,
+            ticks: { callback: formatFullDay },
             title: {
               display: true,
-              text: 'Date'
+              text: t('charts.date')
             }
           },
           y: {
             type: maxDuration > 1 ? 'logarithmic' : 'linear',  // Use linear for small durations
             title: {
               display: true,
-              text: 'Duration (hours)'
+              text: t('charts.duration.axis')
             },
             min: 0,  // Allow 0 on the scale
             suggestedMax: maxDuration > 0 ? maxDuration * 1.1 : 1,
             ticks: {
-              callback: formatDuration,
+              callback: value => formatDuration(value),
               autoSkip: true,
               maxTicksLimit: 8
             },
@@ -384,11 +395,10 @@ export default class extends Controller {
               label: function(context) {
                 const duration = context.raw.y
                 const intensity = context.raw.intensity
-                const date = new Date(context.raw.x).toLocaleDateString()
                 return [
-                  `Date: ${date}`,
-                  `Duration: ${formatDurationLong(duration)}`,
-                  `Intensity: ${intensity}/10`
+                  t('charts.duration.tooltip.date', { date: formatFullDay(context.raw.x) }),
+                  t('charts.duration.tooltip.duration', { duration: formatDurationLong(duration) }),
+                  t('charts.duration.tooltip.intensity', { intensity })
                 ]
               }
             }

@@ -1,6 +1,8 @@
 require "test_helper"
 
 class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
+  include ActionView::RecordIdentifier
+
   setup do
     @user = users(:one)
     @headache_log = headache_logs(:one)
@@ -116,5 +118,62 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
   test "should filter logs by medication" do
     get headache_logs_url, params: { medication: "Sumatriptan" }
     assert_response :success
+  end
+
+  test "index and form in German with a 24-hour clock" do
+    @user.update!(locale: "de", time_format: "24h")
+    @user.headache_logs.create!(start_time: Time.zone.parse("2026-03-14 19:05"), end_time: Time.zone.parse("2026-03-14 19:50"), intensity: 8)
+
+    get headache_logs_url
+    assert_response :success
+    assert_select "html[lang=de]"
+    assert_select ".navbar", /Kopfschmerz-Tagebuch/
+    assert_select "##{dom_id(@user.headache_logs.find_by!(intensity: 8))}", /14\. Mär 2026 · 19:05/
+    assert_select "##{dom_id(@user.headache_logs.find_by!(intensity: 8))}", text: /PM/, count: 0
+    assert_select "body[data-hour-cycle=h23]"
+
+    get new_headache_log_url
+    assert_response :success
+    assert_select "h3", /Beginn/
+    assert_select "h3", /Schmerzintensität/
+    assert_select "#common-medications option[value=Sauerstoff]"
+    assert_select "input[type=submit][value='Eintrag erstellen']"
+  end
+
+  test "times honor a 12-hour preference regardless of language" do
+    @user.update!(locale: "de", time_format: "12h")
+    log = @user.headache_logs.create!(start_time: Time.zone.parse("2026-03-14 19:05"), intensity: 8)
+
+    get headache_logs_url
+    assert_response :success
+    assert_select "##{dom_id(log)}", /14\. Mär 2026 · 7:05 PM/
+    assert_select ".alert", /Laufende Attacke/
+    assert_select "body[data-hour-cycle=h12]"
+  end
+
+  test "English defaults to a 12-hour clock" do
+    log = @user.headache_logs.create!(start_time: Time.zone.parse("2026-03-14 19:05"), end_time: Time.zone.parse("2026-03-14 19:50"), intensity: 8)
+
+    get headache_logs_url
+    assert_select "##{dom_id(log)}", /Mar 14, 2026 · 7:05 PM/
+  end
+
+  test "flashes and validation errors follow the user's language" do
+    @user.update!(locale: "it")
+
+    post headache_logs_url, params: { headache_log: { start_time: "", intensity: 5 } }
+    assert_response :unprocessable_entity
+    assert_select ".alert-error li", /Ora di inizio/
+
+    post headache_logs_url, params: { headache_log: { start_time: "2026-03-14T19:05", intensity: 5 } }
+    assert_equal "Registrazione salvata.", flash[:notice]
+  end
+
+  test "import notice pluralizes the count" do
+    @user.update!(locale: "es")
+    file = fixture_file_upload("test/fixtures/files/sample_logs.csv", "text/csv")
+
+    post headache_log_import_url, params: { file: file }
+    assert_equal "Se importaron 3 registros.", flash[:notice]
   end
 end

@@ -1,0 +1,46 @@
+it:
+  headache_log_prints:
+    show:
+      print: Stampa
+      title: Stampa report
+  shared:
+    back:
+      back: Indietro
+    filter_form:
+      active:
+        one: "%{count} attivo"
+        other: "%{count} attivi"
+      apply: Applica filtri
+      clear: Azzera filtri
+      date_range: Periodo
+      end: Fine
+      keywords: Cerca per parole chiave
+      medication: Farmaci
+      medication_placeholder: es. ossigeno, sumatriptan
+      start: Inizio
+      title: Filtri
+      triggers: Fattori scatenanti
+      triggers_placeholder: es. sonno, stress
+    headache_report:
+      analysis: Analisi
+      entries: Elenco dettagliato degli attacchi
+      generated_html: Generato con %{site} il %{date}
+      title: Report sulla cefalea a grappolo di %{username}
+    personal_note:
+      hope: L'ho creato perché ne avevo bisogno. Spero che aiuti anche te.
+      role: Sviluppatore
+      signature_alt: Firma di Carmine Paolino
+      why: Per registrare gli attacchi quando riesci a malapena a vedere. Per le battaglie con l'assicurazione. Per mostrare ai medici dati reali. Per scoprire schemi alle 3 di notte.
+    print_instructions_modal:
+      close: Chiudi
+      print_now: Stampa ora
+      step_1: 1. Clicca sul pulsante "Stampa ora" qui sotto
+      step_2: 2. Scegli "Salva come PDF" o "Stampa su file" come stampante
+      step_3: 3. Clicca su "Stampa" per salvare il PDF
+      title: Come salvare in PDF
+  shared_logs:
+    index:
+      doctors_view: Vista per il medico
+      invalid: Questo link di condivisione non è valido o è scaduto.
+      print: Stampa
+      title: Registrazioni della cefalea di %{username}

@@ -1,7 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
+import { formatDate, formatTime } from "i18n"
 
 export default class extends Controller {
-  static targets = ["field", "ongoingBadge"]
+  static targets = ["field", "ongoingBadge", "readout"]
   static values = { setNowOnConnect: Boolean }
 
   connect() {
@@ -13,6 +14,8 @@ export default class extends Controller {
     if (this.hasOngoingBadgeTarget) {
       this.toggleOngoingBadge(this.fieldTarget.value)
     }
+
+    this.updateReadout(this.fieldTarget.value)
   }
 
   setNow(event) {
@@ -38,16 +41,35 @@ export default class extends Controller {
     if (this.hasOngoingBadgeTarget) {
       this.toggleOngoingBadge(formattedDate)
     }
+
+    this.updateReadout(formattedDate)
   }
 
-  // Called when end time changes
+  // Called when the time changes
   timeChanged(event) {
     if (this.hasOngoingBadgeTarget) {
       this.toggleOngoingBadge(event.target.value)
     }
+
+    this.updateReadout(event.target.value)
   }
 
   toggleOngoingBadge(value) {
     this.ongoingBadgeTarget.classList.toggle('hidden', value !== '')
+  }
+
+  // Shows the chosen time in the user's language and 12h/24h preference,
+  // since native datetime pickers follow the device's own settings
+  updateReadout(value) {
+    if (!this.hasReadoutTarget) return
+
+    const date = value ? new Date(value) : null
+
+    if (date && !isNaN(date)) {
+      const day = formatDate(date, { weekday: "short", day: "numeric", month: "short" })
+      this.readoutTarget.textContent = `${day} · ${formatTime(date)}`
+    } else {
+      this.readoutTarget.textContent = ""
+    }
   }
 }

@@ -4,30 +4,29 @@
       <div>
         <div class="text-center lg:text-left">
           <h1 class="text-2xl font-bold leading-tight sm:text-4xl md:text-5xl lg:text-6xl lg:leading-tight">
-            Wrestling with cluster headaches?
-            <span class="text-primary">Tracking shouldn't add to the pain.</span>
+            <%= t(".title") %>
+            <span class="text-primary"><%= t(".title_highlight") %></span>
           </h1>
 
           <p class="mt-6 text-base sm:text-lg opacity-70 max-w-xl mx-auto lg:mx-0">
-            Log an attack in one tap, add details later, and turn your history
-            into charts and doctor-ready reports. No email required.
+            <%= t(".subtitle") %>
           </p>
 
           <div class="flex gap-8 justify-center lg:justify-start mt-8 text-sm">
             <div>
               <span class="text-2xl font-bold text-primary"><%= @users_count %>+</span>
-              <span class="opacity-70">people tracking</span>
+              <span class="opacity-70"><%= t(".people_tracking") %></span>
             </div>
             <div>
               <span class="text-2xl font-bold text-primary"><%= number_with_delimiter(@logs_count) %></span>
-              <span class="opacity-70">attacks logged</span>
+              <span class="opacity-70"><%= t(".attacks_logged") %></span>
             </div>
           </div>
 
           <div class="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 justify-center lg:justify-start">
             <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-lg btn-primary" do %>
               <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
-              Start Free Tracking
+              <%= t(".start_tracking") %>
             <% end %>
 
             <div class="flex flex-wrap gap-3">
@@ -47,16 +46,16 @@
 
         <div class="flex flex-wrap items-center justify-center gap-3 mt-10 lg:justify-start">
           <div class="inline-flex items-center gap-2 border border-base-content/10 bg-base-100 px-4 py-2 text-sm font-medium">
-            <%= heroicon "bolt", variant: "mini", class: "w-4 h-4 text-primary" %> One-tap logging
+            <%= heroicon "bolt", variant: "mini", class: "w-4 h-4 text-primary" %> <%= t(".badges.one_tap") %>
           </div>
           <div class="inline-flex items-center gap-2 border border-base-content/10 bg-base-100 px-4 py-2 text-sm font-medium">
-            <%= heroicon "shield-check", variant: "mini", class: "w-4 h-4 text-primary" %> No email needed
+            <%= heroicon "shield-check", variant: "mini", class: "w-4 h-4 text-primary" %> <%= t(".badges.no_email") %>
           </div>
           <div class="inline-flex items-center gap-2 border border-base-content/10 bg-base-100 px-4 py-2 text-sm font-medium">
-            <%= heroicon "lock-closed", variant: "mini", class: "w-4 h-4 text-primary" %> German privacy
+            <%= heroicon "lock-closed", variant: "mini", class: "w-4 h-4 text-primary" %> <%= t(".badges.german_privacy") %>
           </div>
           <div class="inline-flex items-center gap-2 border border-base-content/10 bg-base-100 px-4 py-2 text-sm font-medium">
-            <%= heroicon "heart", variant: "mini", class: "w-4 h-4 text-primary" %> Free forever
+            <%= heroicon "heart", variant: "mini", class: "w-4 h-4 text-primary" %> <%= t(".badges.free_forever") %>
           </div>
         </div>
 
@@ -67,8 +66,8 @@
           <div class="relative w-full" style="padding-bottom: 56.25%;">
             <iframe
               class="absolute top-0 left-0 w-full h-full"
-              src="https://www.youtube.com/embed/4HlsqANZdv8?cc_load_policy=1&cc_lang_pref=en"
-              title="Cluster Headache Tracker Demo"
+              src="https://www.youtube.com/embed/4HlsqANZdv8?cc_load_policy=1&cc_lang_pref=<%= I18n.locale %>&hl=<%= I18n.locale %>"
+              title="<%= t(".video_title") %>"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               loading="lazy"

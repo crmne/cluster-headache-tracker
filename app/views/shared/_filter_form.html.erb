@@ -1,10 +1,10 @@
 <details class="collapse bg-base-100 collapse-arrow shadow join-item print:hidden" data-accordion="filters">
   <summary class="collapse-title text-sm sm:text-base font-medium py-3 sm:py-4">
     <%= heroicon "funnel", class: "w-5 h-5 mr-2 inline-block" %>
-    Filters
+    <%= t(".title") %>
     <% active_filters = [params[:start_time], params[:end_time], params[:triggers], params[:medication]].compact.count { |p| p.present? } %>
     <% if active_filters > 0 %>
-      <span class="badge badge-primary badge-sm ml-2"><%= active_filters %> active</span>
+      <span class="badge badge-primary badge-sm ml-2"><%= t(".active", count: active_filters) %></span>
     <% end %>
   </summary>
   <div class="collapse-content pt-2">
@@ -13,17 +13,17 @@
         <div class="bg-base-200/50 rounded-lg p-3">
           <h3 class="text-sm font-semibold mb-2 flex items-center gap-2">
             <%= heroicon "calendar", variant: "mini", class: "w-4 h-4" %>
-            Date Range
+            <%= t(".date_range") %>
           </h3>
 
           <div class="grid grid-cols-2 gap-2">
             <div>
-              <label class="text-xs text-base-content/60 mb-1 block">Start</label>
+              <label class="text-xs text-base-content/60 mb-1 block"><%= t(".start") %></label>
               <%= form.date_field :start_time, value: params[:start_time], class: "input input-bordered input-sm w-full" %>
             </div>
 
             <div>
-              <label class="text-xs text-base-content/60 mb-1 block">End</label>
+              <label class="text-xs text-base-content/60 mb-1 block"><%= t(".end") %></label>
               <%= form.date_field :end_time, value: params[:end_time], class: "input input-bordered input-sm w-full" %>
             </div>
           </div>
@@ -32,26 +32,26 @@
         <div class="bg-base-200/50 rounded-lg p-3">
           <h3 class="text-sm font-semibold mb-2 flex items-center gap-2">
             <%= heroicon "magnifying-glass", variant: "mini", class: "w-4 h-4" %>
-            Search Keywords
+            <%= t(".keywords") %>
           </h3>
 
           <div class="space-y-2">
             <div>
-              <label class="text-xs text-base-content/60 mb-1 block">Triggers</label>
-              <%= form.text_field :triggers, value: params[:triggers], class: "input input-bordered input-sm w-full", placeholder: "e.g., Sleep, Stress" %>
+              <label class="text-xs text-base-content/60 mb-1 block"><%= t(".triggers") %></label>
+              <%= form.text_field :triggers, value: params[:triggers], class: "input input-bordered input-sm w-full", placeholder: t(".triggers_placeholder") %>
             </div>
 
             <div>
-              <label class="text-xs text-base-content/60 mb-1 block">Medication</label>
-              <%= form.text_field :medication, value: params[:medication], class: "input input-bordered input-sm w-full", placeholder: "e.g., Oxygen, Sumatriptan" %>
+              <label class="text-xs text-base-content/60 mb-1 block"><%= t(".medication") %></label>
+              <%= form.text_field :medication, value: params[:medication], class: "input input-bordered input-sm w-full", placeholder: t(".medication_placeholder") %>
             </div>
           </div>
         </div>
       </div>
 
       <div class="flex items-center justify-between gap-2">
-        <%= link_to "Clear Filters", local_assigns[:url], class: "btn btn-ghost btn-sm" %>
-        <%= form.submit "Apply Filters", class: "btn btn-primary btn-sm" %>
+        <%= link_to t(".clear"), local_assigns[:url], class: "btn btn-ghost btn-sm" %>
+        <%= form.submit t(".apply"), class: "btn btn-primary btn-sm" %>
       </div>
     <% end %>
   </div>

@@ -94,18 +94,21 @@ class HeadacheLog < ApplicationRecord
 
     def sample_logs
       base_date = Date.current - 18.days
+      oxygen = ->(minutes) { I18n.t("headache_log_samples.medications.oxygen", minutes: minutes) }
+      sumatriptan = I18n.t("headache_log_samples.medications.sumatriptan")
+      sleep_disruption = I18n.t("headache_log_samples.triggers.sleep_disruption")
 
       [
-        sample_log(base_date, "02:10", "02:55", 8, "oxygen 15 min", "sleep disruption", "Right eye pain, paced during attack, relief after oxygen."),
-        sample_log(base_date + 1.day, "01:42", "02:34", 9, "oxygen 20 min", "sleep disruption", "Woke from sleep, tearing, restless, shadow remained after relief."),
-        sample_log(base_date + 3.days, "22:18", "22:56", 7, "sumatriptan", "alcohol", "Late evening attack after alcohol exposure, relief after medication."),
-        sample_log(base_date + 5.days, "03:05", "04:12", 10, "oxygen 25 min", "sleep disruption", "Severe right-sided attack, oxygen helped but relief was slower."),
-        sample_log(base_date + 6.days, "13:24", "13:58", 6, "oxygen 12 min", "none noted", "Shorter daytime attack, returned to work after relief."),
-        sample_log(base_date + 8.days, "00:38", "01:29", 8, "oxygen 18 min", "sleep disruption", "Woke from sleep, nasal congestion, relief after oxygen."),
-        sample_log(base_date + 10.days, "02:48", "03:31", 9, "oxygen 20 min", "sleep disruption", "Pacing and tearing, no medication side effects noted."),
-        sample_log(base_date + 12.days, "21:16", "22:04", 7, "sumatriptan", "weather change", "Evening attack, medication helped within the hour."),
-        sample_log(base_date + 13.days, "04:12", "04:49", 8, "oxygen 15 min", "sleep disruption", "Oxygen relief, mild shadow afterward."),
-        sample_log(base_date + 15.days, "01:08", "02:02", 9, "oxygen 20 min", "sleep disruption", "Typical overnight pattern, attack ended after oxygen.")
+        sample_log(base_date, "02:10", "02:55", 8, oxygen.(15), sleep_disruption, I18n.t("headache_log_samples.notes.right_eye_pain")),
+        sample_log(base_date + 1.day, "01:42", "02:34", 9, oxygen.(20), sleep_disruption, I18n.t("headache_log_samples.notes.woke_tearing_restless")),
+        sample_log(base_date + 3.days, "22:18", "22:56", 7, sumatriptan, I18n.t("headache_log_samples.triggers.alcohol"), I18n.t("headache_log_samples.notes.after_alcohol")),
+        sample_log(base_date + 5.days, "03:05", "04:12", 10, oxygen.(25), sleep_disruption, I18n.t("headache_log_samples.notes.severe_slower_relief")),
+        sample_log(base_date + 6.days, "13:24", "13:58", 6, oxygen.(12), I18n.t("headache_log_samples.triggers.none_noted"), I18n.t("headache_log_samples.notes.shorter_daytime")),
+        sample_log(base_date + 8.days, "00:38", "01:29", 8, oxygen.(18), sleep_disruption, I18n.t("headache_log_samples.notes.woke_nasal_congestion")),
+        sample_log(base_date + 10.days, "02:48", "03:31", 9, oxygen.(20), sleep_disruption, I18n.t("headache_log_samples.notes.pacing_tearing")),
+        sample_log(base_date + 12.days, "21:16", "22:04", 7, sumatriptan, I18n.t("headache_log_samples.triggers.weather_change"), I18n.t("headache_log_samples.notes.evening_within_hour")),
+        sample_log(base_date + 13.days, "04:12", "04:49", 8, oxygen.(15), sleep_disruption, I18n.t("headache_log_samples.notes.mild_shadow")),
+        sample_log(base_date + 15.days, "01:08", "02:02", 9, oxygen.(20), sleep_disruption, I18n.t("headache_log_samples.notes.typical_overnight"))
       ].tap do |logs|
         # The marketing sample report feeds these unsaved logs through the
         # same stats partial as real reports, so quack like a relation.
@@ -146,10 +149,8 @@ class HeadacheLog < ApplicationRecord
         end
 
         hourly_data.map.with_index do |data, index|
-          start_hour = index * 2
-
           {
-            label: "#{start_hour}:00 - #{start_hour + 1}:59",
+            start_hour: index * 2,
             frequency: data[:count],
             avg_intensity: data[:count].positive? ? (data[:total_intensity].to_f / data[:count]).round(2) : 0
           }

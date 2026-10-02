@@ -1,22 +1,22 @@
 <%# app/views/devise/registrations/new.html.erb %>
-<% content_for :title, "Start Free Tracking" %>
+<% content_for :title, t("auth.registrations.new.title") %>
 
 <div class="flex items-center justify-center min-h-[70vh]">
   <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 w-full max-w-md mx-4">
     <div class="card-body">
       <div class="text-center mb-6">
-        <h2 class="text-2xl font-bold">Start Free Tracking</h2>
-        <p class="text-base-content/60">Create a private username-only account</p>
+        <h2 class="text-2xl font-bold"><%= t("auth.registrations.new.title") %></h2>
+        <p class="text-base-content/60"><%= t("auth.registrations.new.subtitle") %></p>
       </div>
 
       <div class="alert alert-warning shadow-lg mb-6">
         <div>
           <%= heroicon "shield-check", class: "h-6 w-6 shrink-0 stroke-current" %>
           <div>
-            <h3 class="font-bold">Privacy-First Design</h3>
+            <h3 class="font-bold"><%= t("auth.registrations.new.privacy_title") %></h3>
             <div class="text-sm">
-              <strong>No email required</strong> - just choose a username to get started.<br>
-              <strong>Remember your password</strong> - if you lose it, it's gone forever. We can't recover it because we don't store your email.
+              <%= t("auth.registrations.new.no_email_html") %><br>
+              <%= t("auth.registrations.new.remember_password_html") %>
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@
             <%= f.label :username, class: "label" do %>
               <span class="label-text font-semibold flex items-center gap-2">
                 <%= heroicon "user", variant: "mini", class: "w-4 h-4" %>
-                Username
+                <%= t("auth.shared.username") %>
               </span>
             <% end %>
             <%= f.text_field :username, class: "input input-bordered w-full", required: true %>
@@ -40,10 +40,10 @@
             <%= f.label :password, class: "label" do %>
               <span class="label-text font-semibold flex items-center gap-2">
                 <%= heroicon "key", variant: "mini", class: "w-4 h-4" %>
-                Password
+                <%= t("auth.shared.password") %>
               </span>
               <% if @minimum_password_length %>
-                <span class="label-text-alt opacity-70"><%= @minimum_password_length %> characters minimum</span>
+                <span class="label-text-alt opacity-70"><%= t("auth.shared.minimum_password_length", count: @minimum_password_length) %></span>
               <% end %>
             <% end %>
             <%= f.password_field :password, class: "input input-bordered w-full", required: true %>
@@ -53,20 +53,20 @@
             <%= f.label :password_confirmation, class: "label" do %>
               <span class="label-text font-semibold flex items-center gap-2">
                 <%= heroicon "key", variant: "mini", class: "w-4 h-4" %>
-                Confirm Password
+                <%= t("auth.shared.password_confirmation") %>
               </span>
             <% end %>
             <%= f.password_field :password_confirmation, class: "input input-bordered w-full", required: true %>
           </div>
 
-          <%= f.submit "Start Free Tracking", class: "btn btn-primary w-full mt-6" %>
+          <%= f.submit t("auth.registrations.new.submit"), class: "btn btn-primary w-full mt-6" %>
         </div>
       <% end %>
 
-      <div class="divider mt-6">Already have an account?</div>
+      <div class="divider mt-6"><%= t("auth.registrations.new.already_have_account") %></div>
 
       <div class="text-center">
-        <%= link_to "Sign in", new_session_path(resource_name), class: "btn btn-outline btn-wide" %>
+        <%= link_to t("auth.shared.sign_in"), new_session_path(resource_name), class: "btn btn-outline btn-wide" %>
       </div>
     </div>
   </div>

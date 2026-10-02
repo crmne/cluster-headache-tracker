@@ -1,0 +1,206 @@
+de:
+  home:
+    cluster_headache_diary:
+      appointments:
+        body: Kopfschmerztagebücher werden häufig empfohlen, weil sich damit Häufigkeit, Dauer, Intensität, Auslöser und das Ansprechen auf die Behandlung leichter nachvollziehen lassen. Beim Clusterkopfschmerz ist vor allem der zeitliche Ablauf wichtig, denn die Attacken wiederholen sich oft nach erkennbaren Mustern.
+        heading: Warum das vor Arztterminen hilft
+      cards:
+        neurology:
+          body: Bringen Sie eine strukturierte Attackenübersicht mit, statt eine ganze Episode aus dem Gedächtnis rekonstruieren zu müssen.
+          heading: Neurologentermin vorbereiten
+          link: Termin vorbereiten
+        oxygen:
+          body: Dokumentieren Sie, wann Sie Sauerstoff eingesetzt haben, wie lange es gedauert hat und ob eine Linderung eingetreten ist.
+          heading: Wirkung von Sauerstoff festhalten
+          link: Wirkung erfassen
+        sample_report:
+          body: Sehen Sie, was nach ein paar Wochen Dokumentation aus Ihrem Tagebuch werden kann.
+          heading: Beispielbericht ansehen
+          link: Bericht ansehen
+      eyebrow: Clusterkopfschmerz-Tagebuch
+      fast:
+        body: Ein gewöhnliches Kopfschmerztagebuch verlangt sorgfältiges Tippen genau in dem Moment, in dem Sie am wenigsten dazu in der Lage sind. Cluster Headache Tracker beginnt deshalb mit dem Erfassen einer Attacke per Fingertipp. Der Timer hält das Ereignis zuerst fest – alles Weitere können Sie ergänzen, wenn die Attacke vorüber ist.
+        heading: Warum ein Clusterkopfschmerz-Tagebuch schnell sein muss
+      get_template: Vorlage herunterladen
+      heading: Kostenloses Clusterkopfschmerz-Tagebuch
+      intro: 'Halten Sie die Details fest, an die man sich später kaum erinnert: Beginn, Ende, Dauer, Intensität nach KIP-Skala, Medikamente, Wirkung von Sauerstoff, Auslöser und Notizen.'
+      records:
+        heading: Was das Tagebuch erfasst
+        intensity: Intensität von 1 bis 10 nach KIP-Skala
+        medication: Medikamente, Sauerstoffgabe und Notizen zur Wirkung der Behandlung
+        reports: Diagramme und druckbare Berichte für Arzttermine
+        symptoms: Seite, Lokalisation, Symptome und freie Notizen
+        times: Beginn und Ende jeder Attacke, inklusive automatisch berechneter Dauer
+        triggers: Auslöser oder Umstände wie unterbrochener Schlaf, Alkohol oder Wetter
+      references:
+        cluster_headache: Überblick über das gehäufte Auftreten, die Dauer und das Wiederkehren von Clusterkopfschmerz-Attacken (englisch).
+        harvard_health: Kopfschmerztagebücher können Häufigkeit, Dauer, Intensität, Auslöser und das Ansprechen auf Medikamente erfassen (englisch).
+        tracking_diaries: Ein Tagebuch kann die Kommunikation mit Ärztinnen und Ärzten erleichtern und zeigen, ob eine Behandlung wirkt (englisch).
+      sample:
+        body: Der öffentliche Beispielbericht nutzt dieselben Kennzahlen, Diagramme und Tabellen wie private Berichte.
+        heading: Was aus Ihrem Tagebuch wird
+        view_sample_report: Beispielbericht ansehen
+      start_tracking: Kostenlos starten
+    cluster_headache_diary_template:
+      app_vs_paper:
+        body: Für den Anfang kann Papier genügen, doch Clusterkopfschmerz-Attacken sind oft zu heftig, um dabei etwas aufzuschreiben. Die App bietet dieselben Tagebuchfelder und dazu Erfassung per Fingertipp, automatische Dauerberechnung, Diagramme, Export und zeitlich begrenzte Berichtslinks für Ihre Ärztin oder Ihren Arzt.
+        heading: Wann die App einfacher ist als Papier
+      cta_headline: Vom Papiertagebuch zur Erfassung per Fingertipp
+      eyebrow: Vorlage zum Ausdrucken
+      heading: Vorlage für ein Clusterkopfschmerz-Tagebuch
+      intro: Ein einfaches Clusterkopfschmerz-Tagebuch zum Ausdrucken. Nutzen Sie es für sich allein, wenn Sie etwas ohne Internet brauchen, oder starten Sie mit der App, wenn Sie Diagramme und teilbare Berichte möchten.
+      print_fields: Datum, Beginn, Ende, Dauer, Intensität, Behandlung, Wirkung, Auslöser und Notizen.
+      print_heading: Vorlage Clusterkopfschmerz-Tagebuch
+      print_template: Vorlage drucken
+      references:
+        harvard_health: Typische Tagebuchfelder sind Beginn, Ende, Intensität, Medikamente und deren Wirkung (englisch).
+        tracking_diaries: Tagebuchvorlagen erfassen meist Häufigkeit, Dauer, Symptome, Medikamente und Auslöser (englisch).
+      sheet:
+        body: Die Tabelle ist bewusst schlicht gehalten, damit sie sauber druckt und auch in einer schweren Episode Platz für Notizen lässt.
+        heading: Tagebuchblatt zum Ausdrucken
+      start_tracking: Kostenlos starten
+    faq:
+      about:
+        causes:
+          answer: 'Clusterkopfschmerz ist eine neurologische Erkrankung, deren genaue Mechanismen noch nicht vollständig verstanden sind. Für den Alltag zählt: Die Attacken sind weder eine Charakterschwäche noch eine Frage der Willenskraft. Eine Kopfschmerzspezialistin oder ein Kopfschmerzspezialist kann die Diagnose bestätigen und mit Ihnen über Akuttherapie und Prophylaxe sprechen.'
+          question: Was ist die Ursache?
+        heading: "🧠 Über Clusterkopfschmerzen"
+        migraines:
+          answer: Bei Migräne möchte man sich in einen dunklen Raum legen. Bei Clusterkopfschmerz möchte man den Kopf gegen die Wand schlagen. Die Attacken sind kürzer, aber viel heftiger. Stillliegen ist unmöglich – man läuft umher, wiegt sich hin und her, schreit manchmal.
+          question: Wie unterscheiden sie sich von Migräne?
+        what_are:
+          answer: Stellen Sie sich vor, jemand bohrt Ihnen 15 Minuten bis 3 Stunden lang einen glühenden Schürhaken durch die Augenhöhle. Die Attacken kommen in Episoden, oft jeden Tag zur exakt gleichen Uhrzeit. Manche nennen sie „Suizidkopfschmerz“ – wer einmal eine Attacke hatte, versteht, warum.
+          question: Was sind Clusterkopfschmerzen?
+      back_to_logs: Zurück zu meinen Einträgen
+      heading: "Häufige Fragen 🤔"
+      privacy:
+        export:
+          answer: Ja. Sie können jederzeit alles als CSV herunterladen. Ihre Daten gehören Ihnen.
+          question: Kann ich meine Daten exportieren?
+        heading: "🔒 Datenschutz & Sicherheit"
+        no_email:
+          answer: Weil Sie um 3 Uhr nachts in größter Not nicht noch ein Passwort zurücksetzen wollen. Benutzernamen wählen, loslegen. Passwort vergessen? Tut mir leid – das ist der Preis für echten Datenschutz.
+          question: Warum keine Anmeldung per E-Mail?
+        private:
+          answer: Ja. Keine E-Mail-Adresse nötig, keine Werbung, kein Verkauf von Daten. Die öffentlichen Seiten nutzen datenschutzfreundliche, zusammengefasste Statistiken, aber Ihre Kopfschmerzeinträge bleiben privat und werden in Deutschland gespeichert. Ich habe das für uns gebaut, nicht um Daten zu sammeln.
+          question: Sind meine Daten wirklich privat?
+      references:
+        mayo_clinic: Klinischer Überblick über Diagnose, Symptome und Behandlungsmöglichkeiten (englisch).
+        tracking_diaries: Informationen für Betroffene, warum ein Kopfschmerztagebuch das Arztgespräch erleichtert (englisch).
+        who: Überblick über Kopfschmerzerkrankungen, einschließlich Merkmalen und Häufigkeit des Clusterkopfschmerzes (englisch).
+      start_tracking: Kostenlos starten
+      subheading: Ehrliche Antworten von jemandem, der weiß, wie es ist
+      support:
+        bug:
+          answer_html: Melden Sie ihn mir auf %{github_link}. Ich behebe Fehler schnell, weil ich die App selbst nutze.
+          question: Einen Fehler gefunden?
+        feature:
+          answer: Fragen Sie auf GitHub. Wenn es hilft, Clusterkopfschmerzen besser zu dokumentieren, baue ich es wahrscheinlich ein. Die besten Funktionen kommen von Menschen, die den Schmerz wirklich kennen.
+          question: Wünschen Sie sich eine neue Funktion?
+        free:
+          answer: Ja. Die Server bezahle ich selbst. Spenden sind freiwillig. Ich brauchte dieses Werkzeug – jetzt haben wir es alle.
+          question: Ist es wirklich kostenlos?
+        heading: "🛠️ Support & Entwicklung"
+      tracker:
+        different:
+          answer: Von einem Betroffenen für Betroffene gebaut. Erfassung per Fingertipp während der Attacke. Diagramme, die echte Muster zeigen. Berichte, die Sie drucken, exportieren oder mit Ihrer Ärztin oder Ihrem Arzt teilen können. Keine Werbung und keine E-Mail-Adresse nötig.
+          question: Was ist hier anders?
+        heading: "📱 Über diesen Tracker"
+        how_to_start:
+          answer: Registrieren Sie sich nur mit einem Benutzernamen (keine E-Mail nötig). Tippen Sie auf den großen Knopf „Attacke erfassen“, sobald eine beginnt. Das war’s. Details können Sie später ergänzen, wenn es Ihnen besser geht.
+          question: Wie fange ich an?
+        why_built:
+          answer: 'Ich habe alles ausprobiert – Papiertagebücher, Tabellen, andere Apps. Nichts funktionierte, wenn ich Schmerzen hatte. Also habe ich gebaut, was ich brauchte: etwas Schnelles, Einfaches, das wirklich hilft, eine Behandlung genehmigt zu bekommen.'
+          question: Warum haben Sie das gebaut?
+      using:
+        during_attack:
+          answer: JA. Riesiger Knopf. Einmal tippen. Fertig. Details ergänzen Sie später, wenn Sie wieder klar denken können. Ich habe die App mitten in einer Episode entworfen – ich weiß, was möglich ist, wenn man nicht denken kann.
+          question: Kann ich während einer Attacke etwas eintragen?
+        heading: "🎯 Den Tracker nutzen"
+        phone:
+          answer: Ja. Es gibt eine iOS-App, eine Android-App und eine Webversion. Alles wird synchronisiert. Erfassen Sie die Attacke am Smartphone und ergänzen Sie Notizen später am Computer.
+          question: Funktioniert es auf meinem Smartphone?
+        share:
+          answer: Erstellen Sie einen sicheren, 30 Tage gültigen Link, über den Ihre Ärztin oder Ihr Arzt einen schreibgeschützten Bericht sieht – mit Tabellen aller Attacken, Diagrammen Ihrer Muster und Notizen zu Medikamenten oder Sauerstoff. Eine Anmeldung ist dafür nicht nötig. Sie können die Berichte auch direkt drucken oder als PDF für Ihre Unterlagen speichern.
+          question: Wie teile ich meine Daten mit meiner Ärztin oder meinem Arzt?
+    headache_diary_for_neurologist:
+      clinicians:
+        body_html: Der Bericht enthält von Patientinnen und Patienten selbst eingetragene Daten. Er soll die Anamnese übersichtlicher machen, nicht eine Diagnose stellen. Hinweise für Fachpersonal finden Sie auf der %{neurologist_page_link}.
+        heading: Für Ärztinnen und Ärzte, die den Bericht lesen
+        neurologist_page: Seite für Neurologen
+      cta_headline: Erstellen Sie vor Ihrem nächsten Termin einen Bericht
+      eyebrow: Kopfschmerztagebuch für den Arzttermin
+      fields:
+        export: CSV-Export oder druckbarer Bericht für die Patientenakte
+        heading: Welche Angaben meist wichtig sind
+        intensity: Intensität nach KIP-Skala und ob die Attacke Sie aus dem Schlaf geweckt hat
+        symptoms: Betroffene Seite, Schmerzlokalisation, autonome Begleitsymptome und Notizen
+        timing: Datum, Beginn, Ende und Dauer der Attacke
+        treatment: Medikamente, Sauerstoff, Dosis oder Dauer und Wirkung
+        triggers: Mögliche Auslöser oder Umstände
+      heading: Kopfschmerztagebuch für den Termin beim Neurologen
+      intro: 'Geben Sie Ihrer Neurologin oder Ihrem Neurologen eine strukturierte Übersicht: wann die Attacken begannen, wie lange sie dauerten, wie stark sie waren, was Sie genommen haben und ob es geholfen hat.'
+      preview:
+        body: Der öffentliche Beispielbericht verwendet dieselben Bausteine wie private Patientenberichte.
+        heading: Vorschau auf den Bericht für Ihren Termin
+      references:
+        mayo_clinic: Die Diagnose stützt sich auf Schmerzbeschreibung, Schwere, Symptome, Häufigkeit und Dauer (englisch).
+        tracking_diaries: Ein Tagebuch kann die Kommunikation und die Überprüfung der Behandlung erleichtern (englisch).
+      reports:
+        body: Die App macht aus Ihren Einträgen einen übersichtlichen Bericht mit Kennzahlen, Diagrammen und allen Details. Sie können ihn drucken, im Browser als PDF speichern, als CSV exportieren oder einen zeitlich begrenzten, schreibgeschützten Link teilen.
+        heading: Warum Berichte besser sind als verstreute Notizen
+      start_tracking: Jetzt starten
+      view_sample_report: Beispielbericht ansehen
+      what_to_bring:
+        body: Den Verlauf von Clusterkopfschmerzen aus dem Gedächtnis zu schildern, ist schwer – erst recht nach Wochen mit zerrissenem Schlaf. Ein gutes Tagebuch zeigt Ihrer Ärztin oder Ihrem Arzt kompakt, wie häufig, wie lange, wie stark und zu welchen Zeiten die Attacken auftraten und wie die Behandlung angeschlagen hat.
+        heading: Was Sie zum Termin mitbringen sollten
+    neurologist:
+      contact:
+        built_by: Mit Liebe (und Schmerz) entwickelt von Carmine Paolino, der selbst an Clusterkopfschmerz leidet und bessere Werkzeuge brauchte.
+        questions: 'Fragen? Ich beantworte jede E-Mail persönlich:'
+      data:
+        attack:
+          intensity: Schmerzintensität auf der üblichen Skala von 1 bis 10
+          medications: Eingenommene Medikamente und deren Wirkung
+          side: Betroffene Seite und Schmerzlokalisation
+          times: Genaue Anfangs- und Endzeiten mit automatisch berechneter Dauer
+          triggers: Auslöser und Begleitsymptome
+        attack_includes: 'Jede Attacke enthält:'
+        heading: "📊 Die Daten, die Sie wirklich brauchen"
+        reports:
+          circadian: Analyse des zirkadianen Rhythmus
+          cluster_periods: Erkennung und Dauer von Clusterperioden
+          frequency: Muster der Attackenhäufigkeit (täglich/wöchentlich/monatlich)
+          medication_history: Vollständige Medikamentenhistorie
+          treatment_response: Ansprechraten auf die Behandlung
+        reports_show: 'Berichte zeigen:'
+      friction:
+        for_patients: Registrierung nur mit Benutzernamen. Keine E-Mail. Sofort loslegen.
+        for_patients_label: 'Für Patientinnen und Patienten:'
+        for_you: Auf den geteilten Link klicken. Daten ansehen. Kein Konto nötig.
+        for_you_label: 'Für Sie:'
+        heading: "⚡ Ohne Hürden"
+        thats_it: Das ist alles. Keine aufwendige Einrichtung. Keine Verträge mit Anbietern. Keine IT-Abteilung.
+      heading: "Für Neurologen 👨‍⚕️"
+      intro: Ein Dokumentationswerkzeug, entwickelt von einem Clusterkopfschmerz-Patienten, der genug hatte von Papiertagebüchern, die niemand liest.
+      privacy:
+        heading: "🔒 Datenschutz zuerst"
+        no_tracking: Keine E-Mail-Adressen. Keine Tracking-Pixel. Keine Werbung. Daten verschlüsselt und in Deutschland gespeichert. Ich habe das für Mitbetroffene gebaut, nicht um Daten zu sammeln.
+        ownership: Die Daten gehören den Patientinnen und Patienten. Sie können jederzeit alles als CSV exportieren. Wenn sie Daten mit Ihnen teilen, geschieht das zeitlich begrenzt (30 Tage) und schreibgeschützt.
+      sharing:
+        charts: Diagramme zu Attackenmustern, Häufigkeitstrends und zirkadianem Rhythmus
+        feedback: Mehrere Patientinnen und Patienten haben mir erzählt, dass diese Berichte ihre Gespräche über die Behandlung erleichtert haben, weil die Dokumentation klarer war als verstreute handschriftliche Notizen.
+        heading: "🔗 Wie Ihre Patienten Daten mit Ihnen teilen"
+        intro_html: 'Beim Termin erstellen Patientinnen und Patienten einen sicheren Link. Sie klicken darauf – ohne Anmeldung – und sehen sofort <strong>übersichtliche, professionelle Berichte</strong> mit:'
+        medication_graphs: Diagrammen zur Wirksamkeit der Medikamente, die Behandlungen direkt vergleichen
+        print: Klar geordneten Daten, die Sie direkt drucken oder als PDF speichern können
+        tables: Vollständigen Tabellen aller Attacken mit Uhrzeit, Dauer und Intensität
+      subheading: Endlich gute Daten von Ihren Patienten
+      tell_patients:
+        heading: "📢 Sagen Sie es Ihren Patienten"
+        just_say_html: 'Sagen Sie einfach: <strong>„Dokumentieren Sie Ihre Attacken auf clusterheadachetracker.com“</strong>'
+        result: Das ist alles. Beim nächsten Termin bringen sie echte Daten mit statt vager Erinnerungen.
+      why:
+        during_attack: Patientinnen und Patienten dokumentieren ihre Attacken hier, weil es auch während einer Attacke funktioniert. Ein riesiger Knopf. Antippen. Fertig. Details können sie später ergänzen, wenn sie sich nicht mehr vor Schmerzen winden.
+        heading: "🎯 Warum Ihre Patienten diese App nutzen"
+        simple: Keine komplizierten Formulare. Keine winzigen Knöpfe. Keine Pflichtfelder, über die man um 3 Uhr nachts nicht nachdenken kann. Nur schnelle, einfache Dokumentation dessen, was zählt.

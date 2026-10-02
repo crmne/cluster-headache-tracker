@@ -1,0 +1,211 @@
+es:
+  headache_log_samples:
+    medications:
+      oxygen: oxígeno %{minutes} min
+      sumatriptan: sumatriptán
+    notes:
+      after_alcohol: Crisis a última hora de la noche tras tomar alcohol, alivio después de la medicación.
+      evening_within_hour: Crisis por la tarde, la medicación hizo efecto en menos de una hora.
+      mild_shadow: Alivio con oxígeno, después una sombra leve.
+      pacing_tearing: Inquietud y lagrimeo, sin efectos secundarios de la medicación.
+      right_eye_pain: Dolor en el ojo derecho, caminé de un lado a otro durante la crisis, alivio con oxígeno.
+      severe_slower_relief: Crisis intensa en el lado derecho, el oxígeno ayudó pero el alivio tardó más.
+      shorter_daytime: Crisis diurna más corta, volví al trabajo después del alivio.
+      typical_overnight: Patrón nocturno típico, la crisis terminó tras el oxígeno.
+      woke_nasal_congestion: Me despertó el dolor, congestión nasal, alivio con oxígeno.
+      woke_tearing_restless: Me despertó el dolor, lagrimeo, inquietud, quedó una sombra tras el alivio.
+    triggers:
+      alcohol: alcohol
+      none_noted: ninguno identificado
+      sleep_disruption: sueño interrumpido
+      weather_change: cambio de tiempo
+  home:
+    cluster_headache_app:
+      android_beta: Beta de Android
+      cta_headline: Usa la app desde el dispositivo que tengas más a mano
+      eyebrow: Web, PWA, iOS y Android
+      features:
+        charts:
+          body: Consulta el horario, la duración, la intensidad, los desencadenantes y las notas de tratamiento de tus crisis.
+          heading: Gráficos e informes
+        one_tap:
+          body: Primero inicia el temporizador de la crisis. Los detalles pueden esperar hasta que puedas volver a pensar.
+          heading: Registro con un toque
+        private:
+          body: Cuentas solo con nombre de usuario, sin anuncios, sin correo electrónico y sin venta de datos de salud.
+          heading: Privado por defecto
+      heading: App para la cefalea en racimos que registra las crisis al instante
+      intro: Usa Cluster Headache Tracker desde el navegador, instálalo como PWA o usa las apps beta para iOS y Android. Inicia el temporizador durante la crisis y añade los detalles más tarde.
+      ios_beta: Beta de iOS
+      reports:
+        body: El informe de ejemplo muestra las mismas estadísticas, gráficos y tabla detallada que se generan con los datos de una cuenta privada.
+        heading: Los informes forman parte de la app
+        view_sample_report: Ver informe de ejemplo
+      use_web_app: Usar la app web
+      why:
+        body: Muchas apps de dolor de cabeza están pensadas para la migraña. Las crisis de cefalea en racimos necesitan un botón de inicio más rápido, horarios más precisos e informes que hagan visibles las crisis cortas y repetidas.
+        heading: Por qué importa una app específica para la cefalea en racimos
+      works_with:
+        body: Puedes exportar a CSV, imprimir informes, usar enlaces seguros para compartir y seguir usando la versión web aunque cambies de teléfono.
+        heading: Encaja con el resto de tu seguimiento
+    cluster_headache_oxygen_documentation:
+      cta_headline: Documenta tus crisis antes de la próxima consulta sobre el oxígeno
+      examples:
+        attack: Crisis
+        duration: Duración
+        first_response: Alivio con oxígeno, sin nueva crisis hasta la mañana.
+        heading: Ejemplos de registros de respuesta al oxígeno
+        intensity: Intensidad
+        logged_treatment: Tratamiento registrado
+        minutes: "%{count} min"
+        oxygen_minutes: Oxígeno %{count} min
+        response_note: Nota sobre la respuesta
+        second_response: Alivio a los 18 min, quedó una sombra.
+        sumatriptan: Sumatriptán
+        third_response: Alivio con medicación, no había oxígeno disponible.
+      eyebrow: Seguimiento de la respuesta al oxígeno
+      heading: Documentar la oxigenoterapia en la cefalea en racimos
+      how_it_helps:
+        body: Cada crisis puede incluir notas de medicación, como la duración del oxígeno o el uso de un triptán, además de notas libres sobre la respuesta. El informe resume frecuencia, horarios, intensidad, duración e historial de tratamiento en un formato que puedes imprimir o compartir.
+        heading: Cómo te ayuda Cluster Headache Tracker
+      intro: Registra la frecuencia y la duración de las crisis, el uso de oxígeno y la respuesta, para llevar una documentación más clara a las consultas médicas y a las gestiones con tu aseguradora o sistema de salud.
+      references:
+        american_migraine_foundation: Resumen de los tratamientos agudos y preventivos de la cefalea en racimos, incluido el oxígeno.
+        mayo_clinic: La Mayo Clinic describe el oxígeno como uno de los tratamientos de acción rápida para la cefalea en racimos bajo supervisión médica.
+        medical_news_today: Resume la evidencia sobre la oxigenoterapia, los requisitos de prescripción y las barreras de acceso.
+      start_tracking: Empezar a registrar
+      view_sample_report: Ver informe de ejemplo
+      what_to_document:
+        attack_length: Cuánto duran las crisis con y sin oxígeno o medicación
+        attacks_per_period: Cuántas crisis hay al día, a la semana o por periodo activo
+        attacks_return: Si las crisis vuelven tras un alivio aparente
+        body: El tratamiento con oxígeno debe hablarse con un médico y ser prescrito por él. Un registro no puede tomar decisiones de tratamiento, pero puede ayudarte a presentar un historial más claro de la carga de crisis y de la respuesta al tratamiento.
+        clinician_notes: Cualquier dato que tu médico te haya pedido registrar
+        heading: Qué documentar
+        oxygen_timing: Cuándo usaste oxígeno y en cuánto tiempo notaste alivio
+    imprint:
+      about:
+        body: Este sitio web, Cluster Headache Tracker (clusterheadachetracker.com), es una plataforma sin fines comerciales ofrecida con fines informativos y como herramienta para personas que conviven con la cefalea en racimos. Lo diseña y mantiene Carmine Paolino a título particular.
+        heading: Sobre este sitio web
+      contact:
+        email: 'Correo electrónico:'
+        heading: Contacto
+      disclaimer:
+        body: La información de este sitio web tiene únicamente fines informativos generales. Aunque nos esforzamos por mantenerla actualizada y correcta, no ofrecemos ninguna declaración ni garantía, expresa o implícita, sobre la integridad, exactitud, fiabilidad, idoneidad o disponibilidad del sitio web o de la información, productos, servicios o gráficos que contiene, para ningún fin.
+        heading: Exención de responsabilidad
+      english_version: versión en inglés
+      heading: Aviso legal (Impressum)
+      information:
+        country: Alemania
+        heading: Información según el § 5 TMG (ley alemana de telemedios)
+      privacy:
+        body_html: Para saber cómo tratamos tus datos personales, consulta nuestra %{privacy_policy}.
+        heading: Privacidad
+        link: política de privacidad
+      purpose:
+        heading: Finalidad y funciones
+        intro: 'Cluster Headache Tracker ofrece los siguientes servicios:'
+        not_medical_advice: Esta herramienta no sustituye el consejo, el diagnóstico ni el tratamiento de un profesional médico. Consulta siempre a profesionales sanitarios cualificados ante cualquier duda sobre tu salud.
+        sharing: Posibilidad de compartir los datos registrados con profesionales sanitarios o personas de confianza
+        tracking: Seguimiento y registro personal de las crisis de cefalea en racimos
+        visualization: Herramientas de visualización de datos para gestionar tu salud
+      responsibility:
+        body: Como proveedores del servicio, somos responsables de nuestros propios contenidos en estas páginas conforme al § 7, apartado 1, de la TMG (ley alemana de telemedios). Sin embargo, según los §§ 8 a 10 de la TMG, no estamos obligados a supervisar la información de terceros transmitida o almacenada ni a investigar circunstancias que indiquen una actividad ilícita.
+        heading: Responsabilidad por los contenidos
+      translation_notice_html: Esta es una traducción. En caso de discrepancia, prevalece la %{english_version}.
+    open_source_headache_tracker:
+      community:
+        body: La app existe porque los diarios en papel, las hojas de cálculo y las apps genéricas eran demasiado lentos durante una crisis. Se centra en un registro rápido, informes útiles y una privacidad práctica, no en el seguimiento genérico del bienestar.
+        heading: Hecho para la comunidad de la cefalea en racimos
+      cta_headline: Prueba el registro gratuito y de código abierto
+      eyebrow: Software de salud de código abierto
+      heading: Diario de código abierto para la cefalea en racimos
+      intro: Cluster Headache Tracker es una app Rails gratuita con código fuente público, cuentas solo con nombre de usuario, exportación CSV e informes que respetan tu privacidad.
+      privacy:
+        csv_export: Exportación CSV de tus propios datos
+        excluded_from_seo: Paneles privados e informes compartidos excluidos de los archivos SEO públicos
+        heading: Decisiones de privacidad
+        no_ads: Sin anuncios y sin venta de datos personales sobre tus cefaleas
+        no_email: No hace falta correo electrónico para crear una cuenta
+        share_links: Enlaces temporales de solo lectura para compartir informes
+      start_tracking: Empezar a registrar
+      view_source: Ver el código
+      why:
+        body: El software de salud exige confianza. Por eso el código es público, así cualquiera puede revisar cómo funciona, informar de errores, sugerir mejoras o alojarlo por su cuenta si tiene los conocimientos técnicos.
+        heading: Por qué el código abierto importa en un diario de salud
+    privacy_policy:
+      agreement: Al usar Cluster Headache Tracker, aceptas la recogida y el uso de la información conforme a esta política de privacidad.
+      changes:
+        body: Podemos actualizar esta política de privacidad de vez en cuando. Te informaremos de cualquier cambio publicando la nueva política en esta página y actualizando la fecha de "Última actualización".
+        heading: 8. Cambios en esta política de privacidad
+      contact:
+        body: 'Si tienes cualquier pregunta sobre esta política de privacidad, escríbenos a:'
+        heading: 9. Contacto
+      cookies:
+        body: Solo usamos cookies esenciales para el correcto funcionamiento de la aplicación. No usamos cookies de seguimiento ni publicitarias.
+        heading: 7. Cookies y tecnologías similares
+      english_version: versión en inglés
+      heading: Política de privacidad de Cluster Headache Tracker
+      how_we_use:
+        heading: 3. Cómo usamos tu información
+        improve: Para mejorar y optimizar nuestra aplicación
+        insights: Para generar análisis y gráficos sobre los patrones de tus cefaleas
+        intro: 'Usamos la información recogida para los siguientes fines:'
+        provide_service: Para prestar y mantener el servicio Cluster Headache Tracker
+      information_we_collect:
+        automatic:
+          device: Información del dispositivo y del navegador
+          heading: 2.2 Información recogida automáticamente
+          usage: Datos de uso y estadísticas
+        heading: 2. Información que recogemos
+        no_personal_information: No recogemos ni almacenamos datos personales identificativos más allá del nombre de usuario que elijas.
+        user_provided:
+          headache_logs: Datos de tus registros (intensidad, duración, desencadenantes, medicación, notas)
+          heading: 2.1 Información que nos proporcionas
+          username: Nombre de usuario (no se necesita correo electrónico)
+      introduction:
+        body: Te damos la bienvenida a Cluster Headache Tracker. Nos comprometemos a proteger tu privacidad y la seguridad de tus datos personales. Esta política de privacidad explica cómo recogemos, usamos, comunicamos y protegemos tus datos cuando usas nuestra aplicación web.
+        heading: 1. Introducción
+      last_updated: 'Última actualización: %{date}'
+      open_source:
+        heading: 10. Código abierto
+      rights:
+        access: Acceder a tus datos, corregirlos o eliminarlos
+        export: Exportar tus datos en formato CSV
+        heading: 6. Tus derechos y opciones
+        intro: 'Tienes derecho a:'
+        share_links: Crear y revocar enlaces para compartir tus registros
+      sharing:
+        full_control: Tienes control total sobre si compartes tus registros. Puedes generar informes para compartir con tus profesionales sanitarios.
+        heading: 5. Compartición y comunicación de datos
+        legal: Podemos comunicar información si la ley lo exige o para proteger nuestros derechos, bienes o seguridad.
+        no_sale: No vendemos, intercambiamos ni alquilamos tus datos personales a terceros.
+      storage:
+        encryption: Tus datos de salud se cifran durante la transmisión y en el almacenamiento.
+        germany: Todos los datos se almacenan en servidores ubicados en Alemania, conforme a la normativa de protección de datos de la UE.
+        heading: 4. Almacenamiento y seguridad de los datos
+        security_measures: Aplicamos medidas de seguridad estándar del sector para proteger tus datos frente a accesos no autorizados, alteración, divulgación o destrucción.
+      translation_notice_html: Esta es una traducción. En caso de discrepancia, prevalece la %{english_version}.
+    sample_report:
+      cta_headline: Convierte tu próximo periodo activo en un informe claro
+      demo_notice:
+        body: Esta página usa los mismos componentes que los informes privados, pero el paciente y los registros son ejemplos.
+        heading: Datos de ejemplo ficticios
+      demo_patient: Paciente de ejemplo
+      eyebrow: Informe de demostración público
+      heading: Informe de ejemplo de cefalea en racimos
+      intro: Este informe ficticio muestra el tipo de resumen, gráficos, notas de tratamiento y registros detallados que una cuenta privada puede generar para tus consultas.
+      print_sample: Imprimir ejemplo
+      privacy:
+        body: Los informes reales son privados. Los buscadores solo ven este ejemplo ficticio, nunca registros personales ni enlaces a informes compartidos.
+        heading: El límite de la privacidad
+      report_contents:
+        attack_table: Todas las crisis registradas en una tabla cronológica
+        csv_export: Exportación CSV para tus propios archivos
+        frequency: Frecuencia de las crisis por día y hora del día
+        heading: Qué puede incluir un informe real
+        notes: Notas sobre medicación, oxígeno, desencadenantes y respuesta
+        share_links: Enlaces temporales de solo lectura que caducan a los 30 días
+        trends: Evolución de la intensidad y la duración
+      report_title: Informe de ejemplo de cefalea en racimos
+      start_my_report: Crear mi informe

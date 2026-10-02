@@ -55,6 +55,41 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_select "a[href='#{cluster_headache_diary_path}']", text: /Cluster Headache Diary|Diary/
   end
 
+  test "home page is translated under language prefixes" do
+    {
+      "de" => "Sie kämpfen mit Clusterkopfschmerzen?",
+      "it" => "Combatti con la cefalea a grappolo?",
+      "es" => "¿Luchas contra la cefalea en racimos?"
+    }.each do |locale, headline|
+      get root_url(locale: locale)
+
+      assert_response :success
+      assert_select "html[lang='#{locale}']"
+      assert_select "h1", text: /#{Regexp.escape(headline)}/
+      assert_select "link[rel='canonical'][href='https://clusterheadachetracker.com/#{locale}']"
+      assert_select "a[href='#{cluster_headache_diary_path(locale: locale)}']"
+    end
+  end
+
+  test "home page links every language version with hreflang" do
+    [ root_url, root_url(locale: "de") ].each do |url|
+      get url
+
+      assert_select "link[rel='alternate'][hreflang='en'][href='https://clusterheadachetracker.com/']"
+      assert_select "link[rel='alternate'][hreflang='de'][href='https://clusterheadachetracker.com/de']"
+      assert_select "link[rel='alternate'][hreflang='it'][href='https://clusterheadachetracker.com/it']"
+      assert_select "link[rel='alternate'][hreflang='es'][href='https://clusterheadachetracker.com/es']"
+      assert_select "link[rel='alternate'][hreflang='x-default'][href='https://clusterheadachetracker.com/']"
+    end
+  end
+
+  test "home page language follows the url, not the browser" do
+    get root_url, headers: { "Accept-Language" => "de-DE,de;q=0.9" }
+
+    assert_select "html[lang='en']"
+    assert_select "h1", text: /Wrestling with cluster headaches\?/
+  end
+
   test "sample report uses real report partials with demo data" do
     get sample_report_url
 

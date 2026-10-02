@@ -1,0 +1,150 @@
+en:
+  activerecord:
+    attributes:
+      headache_log:
+        end_time: End time
+        intensity: Intensity
+        medication: Medication
+        notes: Notes
+        start_time: Start time
+        triggers: Triggers
+    models:
+      headache_log:
+        one: Headache log
+        other: Headache logs
+  headache_log_imports:
+    create:
+      failed: An error occurred while importing the CSV file.
+      imported:
+        one: Successfully imported %{count} headache log.
+        other: Successfully imported %{count} headache logs.
+      invalid_file: Invalid CSV file format.
+      missing_file: Please select a CSV file to import.
+  headache_logs:
+    create:
+      created: Headache log was successfully created.
+    delete_confirmation: Are you sure you want to delete this headache log?
+    destroy:
+      deleted: Headache log was successfully deleted.
+    edit:
+      title: Edit Headache Log
+    form:
+      create: Create
+      delete: Delete
+      end_time: End Time
+      intensity: Pain Intensity
+      medication: Medication
+      medication_placeholder: e.g., Oxygen, Sumatriptan
+      medication_suggestions:
+        - Oxygen
+        - Zolmitriptan
+        - Ibuprofen
+        - Paracetamol
+        - Sumatriptan
+      notes: Notes
+      notes_placeholder: Any additional observations or details...
+      now: Now
+      ongoing: ONGOING
+      separate_with_commas: Separate multiple with commas
+      start_time: Start Time
+      trigger_suggestions:
+        - Sleep
+        - Unknown
+        - Tired
+        - Woke up
+        - Laying down
+      triggers: Triggers
+      triggers_placeholder: e.g., Sleep, Tired
+      update: Update
+    headache_log:
+      delete: Delete
+      edit: Edit
+      intensity: Intensity
+      ongoing: ONGOING
+    index:
+      new: New
+      title: Headache Logs
+    logs_grid:
+      clear_filters: Clear Filters
+      empty: No headaches logged yet
+      empty_hint_html: Tap the %{new} button to log your first headache
+      new: New
+      no_matches: No headaches found matching your filters
+    new:
+      title: New Headache Log
+    ongoing_headaches:
+      days: days
+      edit: Edit
+      hours: hours
+      minutes: min
+      multiple_description:
+        one: 'You have %{count} unfinished headache log. Consider updating:'
+        other: 'You have %{count} unfinished headache logs. Consider updating:'
+      multiple_title: Multiple Ongoing Headaches Detected
+      seconds: sec
+      title: Ongoing Headache
+    share_link:
+      copied: Copied!
+      expire: Expire share link
+      expires_in: Expires in %{time}
+      generate: Generate Share Link
+      print: Print
+      share: Share
+      share_text: View my headache tracking history
+      share_title: My Headache Logs
+      title: Share with Doctor
+    show:
+      title: Headache Log
+    stats:
+      average_intensity: Average Intensity
+      none_yet: None yet
+      time_since_last: Time Since Last
+      today: Headaches Today
+    table:
+      actions: Actions
+      calculating: calculating...
+      date_time: Date/Time
+      delete: Delete
+      duration: Duration
+      edit: Edit
+      intensity: Intensity
+      medication: Medication
+      no_notes: No notes
+      none_recorded: None recorded
+      notes: Notes
+      ongoing: Ongoing
+      started_at: Started at %{time}
+      triggers: Triggers
+    update:
+      updated: Headache log was successfully updated.
+  js:
+    intensity:
+      level_1: Mild eye pressure, barely noticeable.
+      level_10: Unbearable torture-like pain, completely incapacitating.
+      level_2: Light throbbing on one side, slight eye discomfort.
+      level_3: Persistent pressure with occasional sharp pains.
+      level_4: Sharp eye pain with throbbing, mild tearing.
+      level_5: Strong burning sensation, tender temple area, affects focus.
+      level_6: Severe piercing waves, eye tearing, nasal congestion.
+      level_7: Intense burning/stabbing, drooping eyelid, disrupts activities.
+      level_8: Like a hot poker through eye, forces pacing for relief.
+      level_9: Excruciating pressure/stabbing, feels like eye might explode.
+    share:
+      text: View my headache tracking history
+      title: My Headache Logs
+    timer:
+      days:
+        one: "%{count} day"
+        other: "%{count} days"
+      hours:
+        one: "%{count} hour"
+        other: "%{count} hours"
+      just_now: just now
+      minutes:
+        one: "%{count} min"
+        other: "%{count} min"
+  share_links:
+    create:
+      generated: Share link generated successfully.
+    destroy:
+      expired: Share link has been expired.

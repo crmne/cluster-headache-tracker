@@ -1,0 +1,206 @@
+it:
+  home:
+    cluster_headache_diary:
+      appointments:
+        body: Il diario della cefalea è spesso consigliato perché rende più facile valutare frequenza, durata, intensità, fattori scatenanti e risposta alla terapia. Nella cefalea a grappolo gli orari contano particolarmente, perché gli attacchi tendono a ripetersi secondo schemi riconoscibili.
+        heading: Perché aiuta prima delle visite
+      cards:
+        neurology:
+          body: Porta uno storico strutturato degli attacchi invece di ricostruire un intero grappolo a memoria.
+          heading: Preparati alla visita neurologica
+          link: Prepara la visita
+        oxygen:
+          body: Annota quando hai usato l'ossigeno, quanto tempo è servito e se hai avuto sollievo.
+          heading: Registra la risposta all'ossigeno
+          link: Registra la risposta
+        sample_report:
+          body: Guarda cosa può diventare il tuo diario dopo qualche settimana di registrazioni.
+          heading: Guarda un report di esempio
+          link: Vedi il report
+      eyebrow: Diario della cefalea a grappolo
+      fast:
+        body: Un diario della cefalea generico ti chiede di scrivere con calma proprio nel momento in cui ne sei meno capace. Cluster Headache Tracker parte invece da un solo tocco per registrare l'attacco. Il timer fissa subito l'evento; tutto il resto puoi aggiungerlo quando l'attacco è passato.
+        heading: Perché un diario della cefalea a grappolo deve essere veloce
+      get_template: Scarica il modello
+      heading: Diario gratuito per la cefalea a grappolo
+      intro: 'Registra i dettagli difficili da ricordare dopo: inizio, fine, durata, intensità secondo la scala KIP, farmaci, risposta all''ossigeno, fattori scatenanti e note.'
+      records:
+        heading: Cosa registra il diario
+        intensity: Intensità da 1 a 10 secondo la scala KIP
+        medication: Farmaci, uso dell'ossigeno e note sulla risposta alla terapia
+        reports: Grafici e report stampabili per le visite
+        symptoms: Lato, sede del dolore, sintomi e note libere
+        times: Inizio e fine di ogni attacco, con calcolo automatico della durata
+        triggers: Fattori scatenanti o contesto, come sonno interrotto, alcol o meteo
+      references:
+        cluster_headache: Panoramica su come gli attacchi di cefalea a grappolo si raggruppano, quanto durano e come si ripresentano (in inglese).
+        harvard_health: Il diario della cefalea può registrare frequenza, durata, intensità, fattori scatenanti e risposta ai farmaci (in inglese).
+        tracking_diaries: Tenere un diario aiuta a comunicare con i medici e a capire se una terapia funziona (in inglese).
+      sample:
+        body: Il report di esempio pubblico usa le stesse statistiche, gli stessi grafici e la stessa tabella dei report privati.
+        heading: Guarda cosa diventa il tuo diario
+        view_sample_report: Vedi il report di esempio
+      start_tracking: Inizia gratis
+    cluster_headache_diary_template:
+      app_vs_paper:
+        body: All'inizio la carta può bastare, ma gli attacchi di cefalea a grappolo sono spesso troppo intensi per scrivere a mano. L'app mantiene gli stessi campi del diario e aggiunge la registrazione con un tocco, il calcolo automatico della durata, grafici, esportazione e link temporanei al report per il medico.
+        heading: Quando l'app è più comoda della carta
+      cta_headline: Dal diario cartaceo alla registrazione con un tocco
+      eyebrow: Modello stampabile
+      heading: Modello di diario per la cefalea a grappolo
+      intro: Un semplice diario stampabile per tenere traccia della cefalea a grappolo su carta. Usalo da solo se ti serve qualcosa offline, oppure inizia con l'app quando vuoi grafici e report da condividere.
+      print_fields: Data, ora di inizio, ora di fine, durata, intensità, terapia, risposta, fattori scatenanti e note.
+      print_heading: Modello di diario per la cefalea a grappolo
+      print_template: Stampa il modello
+      references:
+        harvard_health: Esempi di campi del diario sono inizio, fine, intensità, farmaci e risposta (in inglese).
+        tracking_diaries: I modelli di diario registrano di solito frequenza, durata, sintomi, farmaci e fattori scatenanti (in inglese).
+      sheet:
+        body: La tabella è volutamente essenziale, così si stampa bene e lascia spazio per le note anche durante un grappolo difficile.
+        heading: Scheda del diario da stampare
+      start_tracking: Inizia gratis
+    faq:
+      about:
+        causes:
+          answer: 'La cefalea a grappolo è una malattia neurologica e i suoi meccanismi non sono ancora del tutto chiari. In pratica conta questo: gli attacchi non sono un difetto di carattere né una questione di forza di volontà. Uno specialista delle cefalee può confermare la diagnosi e valutare con te le opzioni di terapia sintomatica e di profilassi.'
+          question: Quali sono le cause?
+        heading: "🧠 La cefalea a grappolo"
+        migraines:
+          answer: 'Con l''emicrania vuoi sdraiarti in una stanza buia. Con la cefalea a grappolo vuoi sbattere la testa contro il muro. Gli attacchi sono più brevi ma molto più intensi. Non riesci a stare fermo: cammini avanti e indietro, ti dondoli, a volte urli.'
+          question: In cosa è diversa dall'emicrania?
+        what_are:
+          answer: 'Immagina qualcuno che ti conficca un ferro rovente nell''orbita dell''occhio per un tempo che va da 15 minuti a 3 ore. Gli attacchi arrivano a cicli, spesso alla stessa ora ogni giorno. Qualcuno la chiama "cefalea da suicidio": chi ha avuto un attacco capisce perché.'
+          question: Cos'è la cefalea a grappolo?
+      back_to_logs: Torna alle mie registrazioni
+      heading: "Domande frequenti 🤔"
+      privacy:
+        export:
+          answer: Sì. Puoi scaricare tutto in CSV in qualsiasi momento. I tuoi dati sono tuoi.
+          question: Posso esportare i miei dati?
+        heading: "🔒 Privacy e sicurezza"
+        no_email:
+          answer: Perché quando alle 3 di notte sei disperato non ti serve un altro reset della password. Scegli un nome utente e inizia. Password dimenticata? Mi dispiace, è il prezzo di una privacy vera.
+          question: Perché non serve l'email per registrarsi?
+        private:
+          answer: Sì. Nessuna email richiesta, nessuna pubblicità, nessuna vendita di dati. Le pagine pubbliche usano statistiche aggregate rispettose della privacy, ma le tue registrazioni restano private e sono conservate in Germania. L'ho creato per noi, non per raccogliere dati.
+          question: I miei dati sono davvero privati?
+      references:
+        mayo_clinic: Panoramica clinica su diagnosi, sintomi e opzioni di trattamento (in inglese).
+        tracking_diaries: Risorsa per i pazienti su come il diario della cefalea aiuta il dialogo con il medico (in inglese).
+        who: Panoramica sulle cefalee, incluse caratteristiche e diffusione della cefalea a grappolo (in inglese).
+      start_tracking: Inizia gratis
+      subheading: Risposte vere da chi sa cosa si prova
+      support:
+        bug:
+          answer_html: Segnalalo su %{github_link}. Correggo in fretta, perché uso anch'io questo strumento.
+          question: Hai trovato un bug?
+        feature:
+          answer: Chiedila su GitHub. Se aiuta a monitorare meglio la cefalea a grappolo, probabilmente la realizzerò. Le funzioni migliori nascono da chi conosce davvero il dolore.
+          question: Vorresti una nuova funzione?
+        free:
+          answer: Sì. I server li pago io. Le donazioni sono facoltative. Era uno strumento di cui avevo bisogno, ora ce l'abbiamo tutti.
+          question: È davvero gratuito?
+        heading: "🛠️ Supporto e sviluppo"
+      tracker:
+        different:
+          answer: Creato da chi soffre, per chi soffre. Registrazione con un tocco durante gli attacchi. Grafici che mostrano schemi reali. Report da stampare, esportare o condividere con il medico. Niente pubblicità e nessuna email richiesta.
+          question: Cosa lo rende diverso?
+        heading: "📱 Questo tracker"
+        how_to_start:
+          answer: Registrati con un semplice nome utente (niente email). Quando inizia un attacco, premi il grande pulsante per registrarlo. Tutto qui. I dettagli li aggiungi dopo, quando stai meglio.
+          question: Come inizio?
+        why_built:
+          answer: 'Le ho provate tutte: diari di carta, fogli di calcolo, altre app. Niente funzionava quando avevo dolore. Così ho creato quello che mi serviva: qualcosa di veloce, semplice e davvero utile per farsi approvare una terapia.'
+          question: Perché l'hai creato?
+      using:
+        during_attack:
+          answer: SÌ. Pulsante enorme. Un tocco. Fatto. I dettagli li aggiungi dopo, quando torni in te. L'ho progettato in pieno grappolo, quindi so cosa si riesce a fare quando non si riesce a pensare.
+          question: Posso registrare durante un attacco?
+        heading: "🎯 Usare il tracker"
+        phone:
+          answer: Sì. C'è un'app per iOS, una per Android e la versione web. Tutto è sincronizzato. Registra l'attacco dal telefono e aggiungi le note dal computer più tardi.
+          question: Funziona sul mio telefono?
+        share:
+          answer: Genera un link sicuro valido 30 giorni che mostra al tuo medico un report in sola lettura, con le tabelle di ogni attacco, i grafici dei tuoi schemi e le note su farmaci o ossigeno. Al medico non serve alcun accesso. Puoi anche stampare i report o salvarli in PDF per la tua documentazione.
+          question: Come condivido i dati con il mio medico?
+    headache_diary_for_neurologist:
+      clinicians:
+        body_html: Il report contiene dati inseriti dal paziente. Serve a rendere l'anamnesi più facile da consultare, non a formulare una diagnosi. Le note per i professionisti sanitari sono nella %{neurologist_page_link}.
+        heading: Per i medici che leggono il report
+        neurologist_page: pagina per i neurologi
+      cta_headline: Crea un report prima della prossima visita
+      eyebrow: Diario della cefalea pronto per il medico
+      fields:
+        export: Esportazione CSV o report stampabile per la cartella clinica
+        heading: I dati che di solito contano
+        intensity: Intensità secondo la scala KIP e se l'attacco ti ha svegliato
+        symptoms: Lato colpito, sede del dolore, sintomi autonomici e note
+        timing: Data, ora di inizio, ora di fine e durata dell'attacco
+        treatment: Farmaci, ossigeno, dose o durata e risposta
+        triggers: Possibili fattori scatenanti o contesto
+      heading: Diario della cefalea per la visita neurologica
+      intro: 'Dai al tuo neurologo un quadro strutturato di quanto è successo: quando sono iniziati gli attacchi, quanto sono durati, quanto erano intensi, cosa hai usato e se ha funzionato.'
+      preview:
+        body: Il report di esempio pubblico usa gli stessi componenti dei report privati dei pazienti.
+        heading: Anteprima del report per la visita
+      references:
+        mayo_clinic: La diagnosi si basa su descrizione del dolore, gravità, sintomi, frequenza e durata (in inglese).
+        tracking_diaries: Un diario può favorire una comunicazione più chiara e la valutazione della terapia (in inglese).
+      reports:
+        body: L'app trasforma le registrazioni in un report ordinato con dati di sintesi, grafici e voci dettagliate. Puoi stamparlo, salvarlo in PDF dal browser, esportarlo in CSV o creare un link temporaneo in sola lettura.
+        heading: Perché un report è meglio di appunti sparsi
+      start_tracking: Inizia ora
+      view_sample_report: Vedi il report di esempio
+      what_to_bring:
+        body: Raccontare a memoria la storia della propria cefalea a grappolo è difficile, soprattutto dopo settimane di sonno interrotto. Un buon diario offre al medico una visione compatta di frequenza, durata, intensità e orari degli attacchi, oltre alla risposta alla terapia.
+        heading: Cosa portare alla visita
+    neurologist:
+      contact:
+        built_by: Creato con amore (e dolore) da Carmine Paolino, che soffre di cefalea a grappolo e aveva bisogno di strumenti migliori.
+        questions: 'Domande? Rispondo personalmente a ogni email:'
+      data:
+        attack:
+          intensity: Intensità del dolore sulla consueta scala da 1 a 10
+          medications: Farmaci assunti ed efficacia
+          side: Lato colpito e sede del dolore
+          times: Orari precisi di inizio e fine con calcolo automatico della durata
+          triggers: Fattori scatenanti e sintomi associati
+        attack_includes: 'Ogni attacco comprende:'
+        heading: "📊 I dati che ti servono davvero"
+        reports:
+          circadian: Analisi del ritmo circadiano
+          cluster_periods: Individuazione e durata dei periodi attivi
+          frequency: Andamento della frequenza degli attacchi (giornaliero/settimanale/mensile)
+          medication_history: Storico completo dei farmaci
+          treatment_response: Tassi di risposta alla terapia
+        reports_show: 'I report mostrano:'
+      friction:
+        for_patients: Registrazione con il solo nome utente. Niente email. Si inizia subito.
+        for_patients_label: 'Per i pazienti:'
+        for_you: Apri il link condiviso. Consulti i dati. Nessun account necessario.
+        for_you_label: 'Per te:'
+        heading: "⚡ Zero complicazioni"
+        thats_it: Tutto qui. Nessuna procedura di attivazione complessa. Nessun contratto con fornitori. Nessun coinvolgimento del reparto IT.
+      heading: "Per i neurologi 👨‍⚕️"
+      intro: Uno strumento di monitoraggio creato da un paziente con cefalea a grappolo stanco di diari di carta che nessuno legge.
+      privacy:
+        heading: "🔒 Privacy prima di tutto"
+        no_tracking: Nessuna email raccolta. Nessun pixel di tracciamento. Nessuna pubblicità. Dati cifrati e conservati in Germania. L'ho creato per chi soffre come me, non per raccogliere dati.
+        ownership: I dati appartengono ai pazienti, che possono esportare tutto in CSV in qualsiasi momento. Quando li condividono con te, l'accesso è temporaneo (30 giorni) e in sola lettura.
+      sharing:
+        charts: Grafici che mostrano schemi degli attacchi, andamento della frequenza e ritmo circadiano
+        feedback: Diversi pazienti mi hanno detto che questi report hanno facilitato il confronto sulla terapia, perché la documentazione era più chiara di appunti scritti a mano e sparsi.
+        heading: "🔗 Come i pazienti condividono i dati con te"
+        intro_html: 'Durante la visita il paziente genera un link sicuro. Lo apri, senza alcun accesso, e vedi subito <strong>report chiari e professionali</strong> con:'
+        medication_graphs: Grafici sull'efficacia dei farmaci che mettono a confronto le terapie
+        print: Dati ordinati che puoi stampare direttamente o salvare in PDF
+        tables: Tabelle complete di ogni attacco con orari, durata e intensità
+      subheading: Finalmente i tuoi pazienti hanno dati affidabili
+      tell_patients:
+        heading: "📢 Dillo ai tuoi pazienti"
+        just_say_html: 'Basta dire: <strong>"Registra i tuoi attacchi su clusterheadachetracker.com"</strong>'
+        result: Tutto qui. Alla visita successiva avranno dati reali invece di ricordi vaghi.
+      why:
+        during_attack: I pazienti registrano qui i loro attacchi perché funziona davvero anche durante un attacco. Un pulsante enorme. Un tocco. Fatto. I dettagli possono aggiungerli dopo, quando non si contorcono più dal dolore.
+        heading: "🎯 Perché i tuoi pazienti la usano"
+        simple: Niente moduli complicati. Niente pulsanti minuscoli. Nessun campo obbligatorio a cui non si riesce a pensare alle 3 di notte. Solo un monitoraggio rapido e semplice di ciò che conta.

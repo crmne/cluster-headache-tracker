@@ -1,0 +1,99 @@
+it:
+  layout:
+    app_update_modal:
+      available_title: Nuova app %{platform} disponibile!
+      behind_minimum: La versione installata è precedente alla versione minima supportata.
+      newer_shell_body: La web app si aggiorna da sola, ma questo aggiornamento migliora l'app nativa che la contiene.
+      newer_shell_title: È disponibile una nuova versione dell'app
+      open_update: Apri aggiornamento
+      release_notes: Note di rilascio
+      remind_later: Ricordamelo più tardi
+      required_title: Aggiornamento necessario
+      separate_body: La maggior parte delle novità arriva direttamente dalla web app. Questo avviso riguarda solo gli aggiornamenti dell'app nativa.
+      separate_title: Non dipende dalle modifiche al sito.
+      unsupported_body: Aggiorna l'app %{platform} per continuare a usare il tracker nella versione più recente.
+      unsupported_title: Questa versione non è più supportata
+      update_before_continuing: Aggiorna l'app prima di continuare.
+      update_now: Aggiorna ora
+      version: Versione %{version}
+    bottom_navbar:
+      account: Account
+      charts: Grafici
+      feedback: Feedback
+      logs: Registro
+      new: Nuovo
+    changelog_modal:
+      continue: Continua nell'app
+      copied: Copiato!
+    flash:
+      close: Chiudi
+    footer:
+      android_beta: Android Beta
+      app: App per la cefalea a grappolo
+      apps: App
+      diary: Diario della cefalea a grappolo
+      diary_template: Modello di diario
+      faq: Domande frequenti
+      for_neurologists: Per i neurologi
+      github: Vedi su GitHub
+      imprint: Note legali
+      ios_beta: iOS Beta
+      legal: Note legali
+      neurology_visits: Per la visita neurologica
+      newsletter_placeholder: email@esempio.it
+      newsletter_title: Resta aggiornato sulle novità
+      open_source: Tracker open source
+      open_source_and_free: Open source e gratuito
+      oxygen_documentation: Documentazione dell'ossigenoterapia
+      privacy_policy: Informativa sulla privacy
+      resources: Risorse
+      sample_report: Report di esempio
+      sponsor: Sostieni
+      subscribe: Iscriviti
+      tagline: Diario della cefalea gratuito e open source, creato da chi ne soffre. I tuoi dati restano privati. Sempre.
+    language_hint:
+      message: Questa pagina è disponibile anche in italiano
+    language_switcher:
+      title: Lingua
+    logo_alt: Logo di Cluster Headache Tracker
+    modal:
+      close: chiudi
+    navbar:
+      account_settings: Impostazioni account
+      admin: Admin
+      android_beta: Android Beta
+      app: App
+      charts: Grafici
+      diary: Diario
+      faq: Domande frequenti
+      feedback: Feedback
+      for_neurologists: Per i neurologi
+      imprint: Note legali
+      ios_beta: iOS Beta
+      legal: Note legali
+      login: Accedi
+      logs: Registro
+      mobile_apps: App mobili
+      new: Nuovo
+      new_log: Nuovo attacco
+      open_source: Open source
+      privacy_policy: Privacy
+      resources: Risorse
+      sample: Esempio
+      sample_report: Report di esempio
+      source_code: Codice sorgente
+      sponsor: Sostieni
+      start_free: Inizia gratis
+      start_free_tracking: Inizia gratis
+      template: Modello
+    welcome_modal:
+      password_warning_html: "<strong>Annota la tua password.</strong> Niente email significa vera privacy, ma anche nessun recupero della password. È questo il compromesso."
+      start: Inizia
+      step_1_body: Un tocco appena arriva l'attacco.
+      step_1_title: Tocca "Nuovo" quando inizia l'attacco
+      step_2_body: Quando è passato, aggiungi cosa ha aiutato (o no).
+      step_2_title: Completa i dettagli quando stai meglio
+      step_3_body: Grafici e report per parlare della terapia
+      step_3_title: Condividi dati reali con il tuo medico
+      subtitle: 'Ecco come funziona:'
+      title: Registra i tuoi attacchi in 3 passi

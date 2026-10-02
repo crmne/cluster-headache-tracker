@@ -1,0 +1,55 @@
+de:
+  charts:
+    index:
+      new: Neu
+      title: Diagramme
+  js:
+    charts:
+      attacks_per_day:
+        label: Anzahl der Attacken
+        title: Attacken pro Tag
+      date: Datum
+      duration:
+        axis: Dauer (Stunden)
+        label: Attackendauer
+        tooltip:
+          date: 'Datum: %{date}'
+          duration: 'Dauer: %{duration}'
+          intensity: 'Intensität: %{intensity}/10'
+      hourly:
+        average_intensity: Durchschnittliche Intensität
+        average_intensity_short: Ø Intensität
+        frequency: Häufigkeit
+        time_of_day: Uhrzeit
+        title: Häufigkeit und Intensität nach Tageszeit
+      intensity:
+        label: Schmerzintensität
+      medications:
+        title: Die 5 häufigsten Medikamente
+      triggers:
+        title: Die 5 häufigsten Auslöser
+  shared:
+    charts:
+      attacks_per_day:
+        no_data: Keine Attackendaten vorhanden
+        title: Attacken pro Tag
+      clear_filters: Filter zurücksetzen
+      duration:
+        no_data: Keine Daten zur Dauer vorhanden
+        title: Attackendauer im Verlauf
+      first_log_hint_html: Tippen Sie auf %{new}, um Ihre erste Attacke einzutragen
+      hourly:
+        no_data: Keine Daten zur Tageszeit vorhanden
+        title: Häufigkeit und Intensität nach Tageszeit
+      intensity:
+        no_data: Keine Daten zur Intensität vorhanden
+        title: Schmerzintensität im Verlauf
+      medications:
+        no_data: Keine Daten zu Medikamenten vorhanden
+        title: Die 5 häufigsten Medikamente
+      new: Neu
+      no_data: Noch keine Daten für Diagramme vorhanden
+      no_matches: Keine Einträge passen zu Ihren Filtern
+      triggers:
+        no_data: Keine Daten zu Auslösern vorhanden
+        title: Die 5 häufigsten Auslöser

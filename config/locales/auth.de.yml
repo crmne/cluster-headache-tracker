@@ -1,0 +1,66 @@
+de:
+  activerecord:
+    attributes:
+      user:
+        current_password: Aktuelles Passwort
+        locale: Sprache
+        password: Passwort
+        password_confirmation: Passwortbestätigung
+        time_format: Uhrzeitformat
+        username: Benutzername
+  auth:
+    mailer:
+      reset_password_instructions:
+        action: Mein Passwort ändern
+        greeting: Hallo %{username}!
+        ignore: Falls Sie das nicht angefordert haben, ignorieren Sie diese E-Mail bitte.
+        requested: Jemand hat einen Link zum Ändern Ihres Passworts angefordert. Über den folgenden Link können Sie es ändern.
+        unchanged: Ihr Passwort bleibt unverändert, bis Sie den Link oben öffnen und ein neues festlegen.
+    passwords:
+      edit:
+        confirm_new_password: Neues Passwort bestätigen
+        new_password: Neues Passwort
+        submit: Passwort ändern
+        title: Passwort ändern
+      new:
+        heading: Passwort vergessen?
+        notice_body: Zum Schutz Ihrer Gesundheitsdaten speichern wir keine E-Mail-Adressen. Wenn Sie keinen Zugriff mehr auf Ihr Konto haben, legen Sie bitte ein neues an.
+        notice_title: Wichtiger Hinweis zum Datenschutz
+        subtitle: Wir speichern Ihre E-Mail-Adresse nicht.
+        title: Passwort vergessen?
+    registrations:
+      edit:
+        current_password: Aktuelles Passwort
+        delete_account: Mein Konto löschen
+        delete_confirmation: Sind Sie sicher?
+        leave_blank: leer lassen, um es beizubehalten
+        submit: Speichern
+        subtitle: Benutzernamen oder Passwort ändern
+        title: Konto bearbeiten
+        unhappy: Nicht zufrieden?
+      new:
+        already_have_account: Sie haben bereits ein Konto?
+        no_email_html: "<strong>Keine E-Mail-Adresse nötig</strong> – wählen Sie einfach einen Benutzernamen."
+        privacy_title: Datenschutz von Anfang an
+        remember_password_html: "<strong>Merken Sie sich Ihr Passwort</strong> – wenn Sie es verlieren, ist es für immer weg. Wir können es nicht wiederherstellen, weil wir Ihre E-Mail-Adresse nicht speichern."
+        submit: Kostenlos starten
+        subtitle: Erstellen Sie ein privates Konto – nur mit Benutzernamen
+        title: Kostenlos starten
+    sessions:
+      new:
+        heading: Willkommen zurück
+        no_account: Noch kein Konto?
+        remember_me: Angemeldet bleiben
+        subtitle: Melden Sie sich an, um Ihre Kopfschmerzen weiter zu erfassen
+        title: In Ihrem Konto anmelden
+    shared:
+      create_account: Neues Konto erstellen
+      form_footer: "©%{year} Carmine Paolino. Alle Rechte vorbehalten."
+      minimum_password_length:
+        one: mindestens %{count} Zeichen
+        other: mindestens %{count} Zeichen
+      password: Passwort
+      password_confirmation: Passwort bestätigen
+      sign_in: Anmelden
+      sign_up: Registrieren
+      username: Benutzername

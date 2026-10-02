@@ -14,11 +14,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
 
+  # Someone signing up from a translated page (/de, /it, /es) chose that language explicitly
+  def build_resource(hash = {})
+    super
+    resource.locale ||= params_locale
+  end
+
   def after_sign_up_path_for(resource)
-    headache_logs_path
+    headache_logs_path(locale: nil)
   end
 
   def after_inactive_sign_up_path_for(resource)
-    headache_logs_path
+    headache_logs_path(locale: nil)
   end
 end

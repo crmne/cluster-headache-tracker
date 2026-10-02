@@ -2,36 +2,32 @@
   <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-3xl font-bold sm:text-4xl xl:text-5xl">
-        Built for sufferers, by a sufferer.
+        <%= t(".title") %>
       </h2>
       <p class="mt-6 text-lg opacity-80 max-w-2xl mx-auto">
-        Most headache apps are built by people who've never had a cluster
-        headache. I built this during a cycle. Every feature was tested
-        mid-attack. If it wasn't simple enough at 3am with a KIP-10, it didn't
-        make the cut.
+        <%= t(".body") %>
       </p>
     </div>
 
     <div class="grid grid-cols-1 mt-14 text-center gap-y-10 gap-x-8 sm:grid-cols-3">
       <div class="px-4">
-        <p class="text-5xl font-bold">1 tap</p>
+        <p class="text-5xl font-bold"><%= t(".one_tap.title") %></p>
         <p class="mt-4 text-lg opacity-80">
-          to log during hell. Add details when you're human again.
+          <%= t(".one_tap.body") %>
         </p>
       </div>
 
       <div class="px-4">
-        <p class="text-5xl font-bold">Real data</p>
+        <p class="text-5xl font-bold"><%= t(".real_data.title") %></p>
         <p class="mt-4 text-lg opacity-80">
-          Clean reports for doctor and treatment conversations.
+          <%= t(".real_data.body") %>
         </p>
       </div>
 
       <div class="px-4">
-        <p class="text-5xl font-bold">Your patterns</p>
+        <p class="text-5xl font-bold"><%= t(".patterns.title") %></p>
         <p class="mt-4 text-lg opacity-80">
-          Charts that actually show your cycles, triggers, and treatment
-          effectiveness.
+          <%= t(".patterns.body") %>
         </p>
       </div>
     </div>

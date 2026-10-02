@@ -1,0 +1,99 @@
+de:
+  layout:
+    app_update_modal:
+      available_title: Neue %{platform}-App verfügbar!
+      behind_minimum: Die installierte App-Version ist älter als die mindestens unterstützte Version.
+      newer_shell_body: Die Web-App wird laufend von selbst aktualisiert – dieses Update verbessert die native App, in der sie läuft.
+      newer_shell_title: Eine neuere Version der App ist verfügbar
+      open_update: Update öffnen
+      release_notes: Versionshinweise ansehen
+      remind_later: Später erinnern
+      required_title: Update erforderlich
+      separate_body: Die meisten neuen Funktionen kommen direkt über die Web-App. Dieser Hinweis betrifft nur Updates der nativen App.
+      separate_title: Das ist unabhängig von Änderungen an der Website.
+      unsupported_body: Aktualisieren Sie die %{platform}-App, um den Tracker weiterhin in der neuesten Version zu nutzen.
+      unsupported_title: Diese Version wird nicht mehr unterstützt
+      update_before_continuing: Bitte aktualisieren Sie die App, bevor Sie fortfahren.
+      update_now: Jetzt aktualisieren
+      version: Version %{version}
+    bottom_navbar:
+      account: Konto
+      charts: Diagramme
+      feedback: Feedback
+      logs: Einträge
+      new: Neu
+    changelog_modal:
+      continue: Weiter zur App
+      copied: Kopiert!
+    flash:
+      close: Schließen
+    footer:
+      android_beta: Android-Beta
+      app: Clusterkopfschmerz-App
+      apps: Apps
+      diary: Clusterkopfschmerz-Tagebuch
+      diary_template: Tagebuch-Vorlage
+      faq: Häufige Fragen
+      for_neurologists: Für Neurologen
+      github: Auf GitHub ansehen
+      imprint: Impressum
+      ios_beta: iOS-Beta
+      legal: Rechtliches
+      neurology_visits: Für den Neurologentermin
+      newsletter_placeholder: email@beispiel.de
+      newsletter_title: Über neue Funktionen informiert bleiben
+      open_source: Open-Source-Tracker
+      open_source_and_free: Open Source und kostenlos
+      oxygen_documentation: Sauerstoff-Dokumentation
+      privacy_policy: Datenschutzerklärung
+      resources: Ressourcen
+      sample_report: Beispielbericht
+      sponsor: Unterstützen
+      subscribe: Abonnieren
+      tagline: Kostenloses Open-Source-Kopfschmerztagebuch, entwickelt von einem Betroffenen. Ihre Daten bleiben privat. Immer.
+    language_hint:
+      message: Diese Seite gibt es auch auf Deutsch
+    language_switcher:
+      title: Sprache
+    logo_alt: Logo von Cluster Headache Tracker
+    modal:
+      close: schließen
+    navbar:
+      account_settings: Kontoeinstellungen
+      admin: Admin
+      android_beta: Android-Beta
+      app: App
+      charts: Diagramme
+      diary: Tagebuch
+      faq: Häufige Fragen
+      feedback: Feedback
+      for_neurologists: Für Neurologen
+      imprint: Impressum
+      ios_beta: iOS-Beta
+      legal: Rechtliches
+      login: Anmelden
+      logs: Einträge
+      mobile_apps: Mobile Apps
+      new: Neu
+      new_log: Neuer Eintrag
+      open_source: Open Source
+      privacy_policy: Datenschutz
+      resources: Ressourcen
+      sample: Beispiel
+      sample_report: Beispielbericht
+      source_code: Quellcode
+      sponsor: Unterstützen
+      start_free: Kostenlos starten
+      start_free_tracking: Kostenlos starten
+      template: Vorlage
+    welcome_modal:
+      password_warning_html: "<strong>Notieren Sie sich Ihr Passwort.</strong> Keine E-Mail-Adresse bedeutet echte Privatsphäre – aber auch, dass sich das Passwort nicht zurücksetzen lässt."
+      start: Loslegen
+      step_1_body: Ein Tipp, sobald die Attacke beginnt.
+      step_1_title: Bei einer Attacke auf „Neu“ tippen
+      step_2_body: Wenn sie vorbei ist, ergänzen Sie, was geholfen hat (oder nicht).
+      step_2_title: Details nachtragen, wenn es Ihnen besser geht
+      step_3_body: Diagramme und Berichte für das Gespräch über die Behandlung
+      step_3_title: Echte Daten mit Ihrer Ärztin oder Ihrem Arzt teilen
+      subtitle: 'So funktioniert es:'
+      title: Kopfschmerzen in 3 Schritten erfassen

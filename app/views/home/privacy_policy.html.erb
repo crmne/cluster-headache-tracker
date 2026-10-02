@@ -1,68 +1,72 @@
 <% content_for :title, "Privacy Policy for Cluster Headache Tracker" %>
 <article class="prose">
-  <h1>Privacy Policy for Cluster Headache Tracker</h1>
+  <h1><%= t(".heading") %></h1>
 
-  <p>Last updated: August 25th, 2024</p>
+  <p><%= t(".last_updated", date: l(Date.new(2024, 8, 25), format: :long_date)) %></p>
 
-  <h2>1. Introduction</h2>
-  <p>Welcome to Cluster Headache Tracker. We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you use our web application.</p>
+  <% if I18n.locale != I18n.default_locale %>
+    <p><em><%= t(".translation_notice_html", english_version: link_to(t(".english_version"), privacy_policy_path(locale: nil))) %></em></p>
+  <% end %>
 
-  <h2>2. Information We Collect</h2>
-  <h3>2.1 User-Provided Information</h3>
+  <h2><%= t(".introduction.heading") %></h2>
+  <p><%= t(".introduction.body") %></p>
+
+  <h2><%= t(".information_we_collect.heading") %></h2>
+  <h3><%= t(".information_we_collect.user_provided.heading") %></h3>
   <ul>
-    <li>Username (no email address required)</li>
-    <li>Headache log data (intensity, duration, triggers, medications, notes)</li>
+    <li><%= t(".information_we_collect.user_provided.username") %></li>
+    <li><%= t(".information_we_collect.user_provided.headache_logs") %></li>
   </ul>
 
-  <h3>2.2 Automatically Collected Information</h3>
+  <h3><%= t(".information_we_collect.automatic.heading") %></h3>
   <ul>
-    <li>Usage data and analytics</li>
-    <li>Device and browser information</li>
+    <li><%= t(".information_we_collect.automatic.usage") %></li>
+    <li><%= t(".information_we_collect.automatic.device") %></li>
   </ul>
-  <p>We do not collect or store any personally identifiable information beyond your chosen username.</p>
+  <p><%= t(".information_we_collect.no_personal_information") %></p>
 
-  <h2>3. How We Use Your Information</h2>
-  <p>We use the collected information for the following purposes:</p>
+  <h2><%= t(".how_we_use.heading") %></h2>
+  <p><%= t(".how_we_use.intro") %></p>
   <ul>
-    <li>To provide and maintain the Cluster Headache Tracker service</li>
-    <li>To generate insights and visualizations about your headache patterns</li>
-    <li>To improve and optimize our application</li>
-  </ul>
-
-  <h2>4. Data Storage and Security</h2>
-  <ul>
-    <li>All data is stored on servers located in Germany, ensuring compliance with EU data protection regulations.</li>
-    <li>We implement industry-standard security measures to protect your data from unauthorized access, alteration, disclosure, or destruction.</li>
-    <li>Your health data is encrypted in transit and at rest.</li>
+    <li><%= t(".how_we_use.provide_service") %></li>
+    <li><%= t(".how_we_use.insights") %></li>
+    <li><%= t(".how_we_use.improve") %></li>
   </ul>
 
-  <h2>5. Data Sharing and Disclosure</h2>
+  <h2><%= t(".storage.heading") %></h2>
   <ul>
-    <li>We do not sell, trade, or rent your personal information to third parties.</li>
-    <li>You have full control over sharing your headache logs. You can generate shareable reports to provide to your healthcare providers.</li>
-    <li>We may disclose information if required by law or to protect our rights, property, or safety.</li>
+    <li><%= t(".storage.germany") %></li>
+    <li><%= t(".storage.security_measures") %></li>
+    <li><%= t(".storage.encryption") %></li>
   </ul>
 
-  <h2>6. Your Rights and Choices</h2>
-  <p>You have the right to:</p>
+  <h2><%= t(".sharing.heading") %></h2>
   <ul>
-    <li>Access, correct, or delete your data</li>
-    <li>Export your data in CSV format</li>
-    <li>Generate and revoke sharing links for your headache logs</li>
+    <li><%= t(".sharing.no_sale") %></li>
+    <li><%= t(".sharing.full_control") %></li>
+    <li><%= t(".sharing.legal") %></li>
   </ul>
 
-  <h2>7. Cookies and Similar Technologies</h2>
-  <p>We use essential cookies to ensure the proper functioning of our application. We do not use tracking or advertising cookies.</p>
+  <h2><%= t(".rights.heading") %></h2>
+  <p><%= t(".rights.intro") %></p>
+  <ul>
+    <li><%= t(".rights.access") %></li>
+    <li><%= t(".rights.export") %></li>
+    <li><%= t(".rights.share_links") %></li>
+  </ul>
 
-  <h2>8. Changes to This Privacy Policy</h2>
-  <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+  <h2><%= t(".cookies.heading") %></h2>
+  <p><%= t(".cookies.body") %></p>
 
-  <h2>9. Contact Us</h2>
-  <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+  <h2><%= t(".changes.heading") %></h2>
+  <p><%= t(".changes.body") %></p>
+
+  <h2><%= t(".contact.heading") %></h2>
+  <p><%= t(".contact.body") %></p>
   <p><a href="mailto:hello@clusterheadachetracker.com">hello@clusterheadachetracker.com</a></p>
 
-  <h2>10. Open Source</h2>
+  <h2><%= t(".open_source.heading") %></h2>
   <p><a href="https://github.com/crmne/cluster-headache-tracker">https://github.com/crmne/cluster-headache-tracker</a></p>
 
-  <p>By using Cluster Headache Tracker, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
+  <p><%= t(".agreement") %></p>
 </article>

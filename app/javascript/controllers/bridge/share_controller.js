@@ -1,4 +1,5 @@
 import { BridgeComponent } from "@hotwired/hotwire-native-bridge"
+import { t } from "i18n"
 
 export default class extends BridgeComponent {
   static component = "share"
@@ -14,8 +15,8 @@ export default class extends BridgeComponent {
 
     const button = this.shareButtonTarget
     const url = button.dataset.shareUrl
-    const title = button.dataset.shareTitle || "My Headache Logs"
-    const text = button.dataset.shareText || "View my headache tracking history"
+    const title = button.dataset.shareTitle || t("share.title")
+    const text = button.dataset.shareText || t("share.text")
 
     console.log("Sending share to native:", { url, title, text })
 

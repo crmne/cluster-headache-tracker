@@ -62,4 +62,33 @@ class AiVisibleContentTest < ActiveSupport::TestCase
     assert_equal "https://i.ytimg.com/vi/4HlsqANZdv8/maxresdefault.jpg", video["thumbnailUrl"]
     assert_equal "https://www.youtube.com/embed/4HlsqANZdv8", video["embedUrl"]
   end
+
+  test "translated pages share their English page's entry" do
+    assert_equal AiVisibleContent.page_for_path("/faq"), AiVisibleContent.page_for_path("/de/faq")
+    assert_equal AiVisibleContent.page_for_path("/"), AiVisibleContent.page_for_path("/es")
+    assert_nil AiVisibleContent.page_for_path("/design")
+    assert_equal "index, follow, max-image-preview:large", AiVisibleContent.robots_directive_for("/it/sample-report")
+  end
+
+  test "localized paths" do
+    assert_equal "/faq", AiVisibleContent.localized_path("/faq", :en)
+    assert_equal "/de/faq", AiVisibleContent.localized_path("/faq", :de)
+    assert_equal "/it", AiVisibleContent.localized_path("/", :it)
+  end
+
+  test "translated json ld describes the translated page without English-only FAQ data" do
+    graph = AiVisibleContent.json_ld_for(
+      path: "/de/faq",
+      logo_url: "https://example.com/logo.png",
+      android_apk_url: "https://example.com/app.apk",
+      translation: { locale: :de, title: "Häufige Fragen", description: "Antworten" }
+    )
+
+    web_page = graph["@graph"].find { |node| node["@id"] == "https://clusterheadachetracker.com/de/faq#webpage" }
+
+    assert_equal "de", web_page["inLanguage"]
+    assert_equal "Häufige Fragen", web_page["name"]
+    assert_equal({ "@id" => "https://clusterheadachetracker.com/faq#webpage" }, web_page["translationOfWork"])
+    assert_nil graph["@graph"].find { |node| node["@type"] == "FAQPage" }
+  end
 end

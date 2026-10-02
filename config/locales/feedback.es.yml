@@ -1,0 +1,110 @@
+es:
+  activerecord:
+    attributes:
+      feedback_survey:
+        additional_features: Otras funciones
+        change_suggestion: Un cambio
+        ease_of_use: Facilidad de uso
+        impact: Impacto
+        mobile_interest: Apps móviles
+        most_useful_features: Funciones útiles
+        promotion_suggestions: Sugerencias
+        recommendation_likelihood: Recomendación
+        shared_with_doctor: Compartido con el médico
+        usage_duration: Tiempo de uso
+        versions: Plataformas usadas
+    errors:
+      models:
+        feedback_survey:
+          attributes:
+            ease_of_use:
+              inclusion: debe estar entre 1 y 5 estrellas
+            recommendation_likelihood:
+              inclusion: debe estar entre 1 y 5 estrellas
+  feedback:
+    already_submitted: Ya enviaste tu opinión. ¡Gracias!
+    destroy:
+      deleted: Se eliminó tu opinión anterior. Ya puedes enviar una nueva.
+      failed: No se pudo eliminar tu opinión.
+    new:
+      additional_features: Otras funciones
+      additional_features_placeholder: "¿Qué haría que esta herramienta te resultara más útil?"
+      check_all: Marca todas las que correspondan
+      doctor_sharing: Compartir con tu médico
+      doctor_sharing_question: "¿Has compartido tus datos con tu médico?"
+      ease_of_use: Facilidad de uso
+      ease_of_use_scale: 1 = difícil, 5 = fácil
+      errors_title: 'Completa lo siguiente:'
+      features:
+        export: Exportar los datos
+        logging: Registrar las crisis
+        medication: Llevar el control de la medicación
+        patterns: Visualizar los patrones de las crisis
+        reports: Generar informes para el médico
+        triggers: Identificar desencadenantes
+      heading: Ayúdanos a mejorar
+      impact: Impacto y experiencia
+      impact_placeholder: "¿Cómo te ha ayudado el registro a manejar tus cefaleas?"
+      missing:
+        ease_of_use: Valora la facilidad de uso (1-5 estrellas)
+        recommendation_likelihood: Valora la probabilidad de que lo recomiendes (1-5 estrellas)
+        shared_with_doctor: Si has compartido los datos con tu médico
+        usage_duration: Cuánto tiempo llevas usando el registro
+      mobile_apps: Apps móviles
+      mobile_apps_hint: "¡Las apps nativas están en desarrollo!"
+      mobile_interests:
+        android: Sí, para Android
+        both: Sí, para ambos
+        ios: Sí, para iOS
+        none: No, la versión web me va genial
+        pwa: Uso la PWA
+      one_change: Un cambio
+      one_change_placeholder: Si pudieras cambiar una sola cosa, ¿cuál sería?
+      platform_usage: Plataformas que usas
+      recommendation: Recomendación
+      recommendation_scale: 1 = poco probable, 5 = muy probable
+      select_duration: Selecciona el tiempo
+      select_preference: Selecciona tu preferencia
+      shared_no: 'No'
+      shared_unaware: No lo sabía
+      shared_yes: Sí
+      sponsor: Apoyar
+      submit: Enviar opinión
+      subtitle: Tu opinión define el futuro de esta herramienta.
+      suggestions: Sugerencias
+      suggestions_placeholder: "¿Cómo podemos mejorar o llegar a más personas que lo necesitan?"
+      title: Opinión
+      usage_duration: Tiempo de uso
+      usage_durations:
+        less_than_a_week: Menos de una semana
+        never: "¡Nunca lo he usado!"
+        one_to_two_months: 1-2 meses
+        one_to_two_weeks: 1-2 semanas
+        since_launch: Desde el lanzamiento (mediados de agosto)
+        two_to_four_weeks: 2-4 semanas
+      useful_features: Funciones útiles
+    thank_you:
+      also_from_creator: También del mismo creador
+      changed_mind: "¿Has cambiado de opinión sobre algo?"
+      chat_with_work_body: Deja de buscar en Slack y Drive. Chat With Work lo encuentra todo al instante. Tu asistente de trabajo que lo sabe todo y busca en todas tus herramientas a la vez.
+      chat_with_work_note: Hecho en Alemania • Cumple el RGPD
+      copied: "¡Copiado!"
+      heading: "¡Gracias!"
+      mobile_apps_body: "¡Apps nativas completamente nuevas para iOS y Android! La app de Android hay que volver a descargarla manualmente."
+      mobile_apps_link: Descárgala desde la página de inicio →
+      mobile_apps_title: "¡Nuevas apps móviles!"
+      resubmit: Enviar una nueva opinión
+      resubmit_confirmation: Esto sustituirá tu opinión anterior. ¿Continuar?
+      share: Compartir con amigos
+      share_on_facebook: Compartir en Facebook
+      share_on_twitter: Compartir en Twitter
+      share_text: Uso esta app gratuita para registrar mi cefalea en racimos. La ha creado alguien que sabe lo que es.
+      sponsor: Apoyar
+      spread_body: "¿Conoces a alguien más con cefalea en racimos? También merece una forma mejor de registrar su dolor."
+      spread_title: Ayúdanos a darlo a conocer
+      subtitle: Tu opinión ayuda a mejorar esta herramienta para toda la comunidad de personas con cefalea en racimos.
+      support_body: Esta herramienta es gratuita y siempre lo será. Si te ha ayudado, plantéate apoyar su desarrollo.
+      support_link: Apoyar →
+      support_title: Apoya el desarrollo
+      title: "¡Gracias!"
+      tweet_text: "Uso Cluster Headache Tracker para controlar mi cefalea en racimos. Es gratis, privado y lo ha creado alguien que sabe lo que es. Échale un vistazo: %{url}"

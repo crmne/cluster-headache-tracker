@@ -1,0 +1,17 @@
+<%# locals: (item_tag: :span, link_class: nil) %>
+<% if user_signed_in? && !localized_public_page? %>
+  <%= content_tag item_tag do %>
+    <%= link_to settings_path(anchor: "preferences"), class: link_class do %>
+      <%= heroicon "language", variant: "micro" %> <%= language_name(I18n.locale) %>
+    <% end %>
+  <% end %>
+<% else %>
+  <% I18n.available_locales.each do |locale| %>
+    <%= content_tag item_tag do %>
+      <%= link_to language_name(locale), language_switcher_url(locale),
+            hreflang: locale, lang: locale,
+            class: [ link_class, ("font-bold" if locale == I18n.locale) ],
+            aria: { current: ("true" if locale == I18n.locale) } %>
+    <% end %>
+  <% end %>
+<% end %>

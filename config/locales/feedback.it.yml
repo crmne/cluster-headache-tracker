@@ -1,0 +1,110 @@
+it:
+  activerecord:
+    attributes:
+      feedback_survey:
+        additional_features: Altre funzionalità
+        change_suggestion: Una modifica
+        ease_of_use: Facilità d'uso
+        impact: Impatto
+        mobile_interest: App mobili
+        most_useful_features: Funzionalità utili
+        promotion_suggestions: Suggerimenti
+        recommendation_likelihood: Consiglieresti l'app
+        shared_with_doctor: Condiviso con il medico
+        usage_duration: Durata d'uso
+        versions: Piattaforme usate
+    errors:
+      models:
+        feedback_survey:
+          attributes:
+            ease_of_use:
+              inclusion: deve essere tra 1 e 5 stelle
+            recommendation_likelihood:
+              inclusion: deve essere tra 1 e 5 stelle
+  feedback:
+    already_submitted: Hai già inviato il tuo feedback. Grazie!
+    destroy:
+      deleted: Il feedback precedente è stato eliminato. Ora puoi inviarne uno nuovo.
+      failed: Impossibile eliminare il feedback.
+    new:
+      additional_features: Altre funzionalità
+      additional_features_placeholder: Cosa renderebbe questo strumento più utile per te?
+      check_all: Seleziona tutte le opzioni pertinenti
+      doctor_sharing: Condivisione con il medico
+      doctor_sharing_question: Hai condiviso i tuoi dati con il tuo medico?
+      ease_of_use: Facilità d'uso
+      ease_of_use_scale: 1 = difficile, 5 = facile
+      errors_title: 'Completa i seguenti campi:'
+      features:
+        export: Esportare i dati
+        logging: Registrare gli attacchi
+        medication: Tenere traccia dei farmaci
+        patterns: Visualizzare l'andamento degli attacchi
+        reports: Creare report per il medico
+        triggers: Individuare i fattori scatenanti
+      heading: Aiutaci a migliorare
+      impact: Impatto ed esperienza
+      impact_placeholder: In che modo il tracker ti ha aiutato a gestire la cefalea?
+      missing:
+        ease_of_use: Valuta la facilità d'uso (1-5 stelle)
+        recommendation_likelihood: Valuta quanto consiglieresti l'app (1-5 stelle)
+        shared_with_doctor: Se hai condiviso i dati con il tuo medico
+        usage_duration: Da quanto tempo usi il tracker
+      mobile_apps: App mobili
+      mobile_apps_hint: Le app native sono in sviluppo!
+      mobile_interests:
+        android: Sì, per Android
+        both: Sì, per entrambi
+        ios: Sì, per iOS
+        none: No, la versione web va benissimo
+        pwa: Uso la PWA
+      one_change: Una modifica
+      one_change_placeholder: Se potessi cambiare una cosa, quale sarebbe?
+      platform_usage: Piattaforme usate
+      recommendation: Lo consiglieresti?
+      recommendation_scale: 1 = improbabile, 5 = molto probabile
+      select_duration: Seleziona la durata
+      select_preference: Seleziona una preferenza
+      shared_no: 'No'
+      shared_unaware: Non lo sapevo
+      shared_yes: Sì
+      sponsor: Sostieni
+      submit: Invia feedback
+      subtitle: Il tuo feedback definisce il futuro di questo strumento.
+      suggestions: Suggerimenti
+      suggestions_placeholder: Come possiamo migliorare o raggiungere più persone che ne hanno bisogno?
+      title: Feedback
+      usage_duration: Durata d'uso
+      usage_durations:
+        less_than_a_week: Meno di una settimana
+        never: Mai usato!
+        one_to_two_months: 1-2 mesi
+        one_to_two_weeks: 1-2 settimane
+        since_launch: Dal lancio (metà agosto)
+        two_to_four_weeks: 2-4 settimane
+      useful_features: Funzionalità utili
+    thank_you:
+      also_from_creator: Dallo stesso autore
+      changed_mind: Hai cambiato idea su qualcosa?
+      chat_with_work_body: Basta cercare tra Slack e Drive. Chat With Work trova tutto all'istante. Il tuo assistente di lavoro onnisciente che cerca in tutti i tuoi strumenti in una volta sola.
+      chat_with_work_note: Sviluppato in Germania • Conforme al GDPR
+      copied: Copiato!
+      heading: Grazie!
+      mobile_apps_body: App native completamente nuove per iOS e Android! L'app Android va scaricata di nuovo manualmente.
+      mobile_apps_link: Scarica dalla homepage →
+      mobile_apps_title: Nuove app mobili!
+      resubmit: Invia un nuovo feedback
+      resubmit_confirmation: Il feedback precedente verrà sostituito. Continuare?
+      share: Condividi con gli amici
+      share_on_facebook: Condividi su Facebook
+      share_on_twitter: Condividi su Twitter
+      share_text: Uso questa app gratuita per registrare i miei attacchi di cefalea a grappolo. L'ha creata qualcuno che sa cosa vuol dire.
+      sponsor: Sostieni
+      spread_body: Conosci qualcun altro che soffre di cefalea a grappolo? Anche lui merita un modo migliore per tenere traccia del dolore.
+      spread_title: Aiutaci a farlo conoscere
+      subtitle: Il tuo feedback aiuta a migliorare questo strumento per tutta la comunità di chi soffre di cefalea a grappolo.
+      support_body: Questo strumento è gratuito e lo sarà sempre. Se ti è stato utile, valuta di sostenerne lo sviluppo.
+      support_link: Sostieni →
+      support_title: Sostieni lo sviluppo
+      title: Grazie!
+      tweet_text: "Uso Cluster Headache Tracker per gestire la mia cefalea a grappolo. È gratuito, privato e creato da qualcuno che sa cosa vuol dire. Provalo: %{url}"

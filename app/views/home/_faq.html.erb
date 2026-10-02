@@ -2,41 +2,35 @@
   <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
     <div class="text-center mb-12">
       <h2 class="text-3xl font-bold sm:text-4xl xl:text-5xl">
-        Common questions.
+        <%= t("home.faq_section.title") %>
       </h2>
     </div>
 
     <div class="prose prose-lg mx-auto">
       <p>
-        <strong>Will this help with oxygen conversations?</strong><br>
-        It can help you bring clearer documentation of attack frequency,
-        duration, and treatment response. It cannot promise a prescription or
-        insurance decision.
+        <strong><%= t("home.faq_section.oxygen.question") %></strong><br>
+        <%= t("home.faq_section.oxygen.answer") %>
       </p>
 
       <p>
-        <strong>Is it really free? What's the catch?</strong><br>
-        Zero catch. I pay for servers myself. Donations are optional, and the
-        tracker stays free either way.
+        <strong><%= t("home.faq_section.free.question") %></strong><br>
+        <%= t("home.faq_section.free.answer") %>
       </p>
 
       <p>
-        <strong>Can I track during an attack when I can barely see?</strong><br>
-        YES. Massive button. One tap. Done. Add details later when you're human.
-        I designed this mid-cycle, so I know what's possible when you can't think.
+        <strong><%= t("home.faq_section.during_attack.question") %></strong><br>
+        <%= t("home.faq_section.during_attack.answer") %>
       </p>
 
       <p>
-        <strong>What about my privacy?</strong><br>
-        No email needed. No ads. No selling data. Public pages use
-        privacy-friendly aggregate analytics, but your headache logs stay
-        private.
+        <strong><%= t("home.faq_section.privacy.question") %></strong><br>
+        <%= t("home.faq_section.privacy.answer") %>
       </p>
     </div>
 
     <div class="text-center mt-12">
       <%= link_to faq_path, class: "btn btn-lg btn-outline" do %>
-        See All Questions
+        <%= t("home.faq_section.see_all") %>
         <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
       <% end %>
     </div>

@@ -1,0 +1,99 @@
+es:
+  layout:
+    app_update_modal:
+      available_title: "¡Nueva app de %{platform} disponible!"
+      behind_minimum: La versión instalada es anterior a la versión mínima compatible.
+      newer_shell_body: La web app se actualiza sola, pero esta actualización mejora la app nativa que la contiene.
+      newer_shell_title: Hay una nueva versión de la app
+      open_update: Abrir actualización
+      release_notes: Ver notas de la versión
+      remind_later: Recordármelo más tarde
+      required_title: Actualización necesaria
+      separate_body: La mayoría de las novedades llegan directamente a través de la web app. Este aviso es solo para actualizaciones de la app nativa.
+      separate_title: Esto es independiente de los cambios en la web.
+      unsupported_body: Actualiza la app de %{platform} para seguir usando el registro en su versión más reciente.
+      unsupported_title: Esta versión ya no es compatible
+      update_before_continuing: Actualiza la app antes de continuar.
+      update_now: Actualizar ahora
+      version: Versión %{version}
+    bottom_navbar:
+      account: Cuenta
+      charts: Gráficos
+      feedback: Opinión
+      logs: Registros
+      new: Nueva
+    changelog_modal:
+      continue: Continuar a la app
+      copied: "¡Copiado!"
+    flash:
+      close: Cerrar
+    footer:
+      android_beta: Android Beta
+      app: App para la cefalea en racimos
+      apps: Apps
+      diary: Diario de cefalea en racimos
+      diary_template: Plantilla de diario
+      faq: Preguntas frecuentes
+      for_neurologists: Para neurólogos
+      github: Ver en GitHub
+      imprint: Aviso legal
+      ios_beta: iOS Beta
+      legal: Legal
+      neurology_visits: Para la consulta de neurología
+      newsletter_placeholder: correo@ejemplo.com
+      newsletter_title: Recibe novedades sobre nuevas funciones
+      open_source: Registro de código abierto
+      open_source_and_free: Código abierto y gratuito
+      oxygen_documentation: Documentación de la oxigenoterapia
+      privacy_policy: Política de privacidad
+      resources: Recursos
+      sample_report: Informe de ejemplo
+      sponsor: Apoyar
+      subscribe: Suscribirse
+      tagline: Registro de cefaleas gratuito y de código abierto, creado por alguien que también las padece. Tus datos siguen siendo privados. Siempre.
+    language_hint:
+      message: Esta página también está disponible en español
+    language_switcher:
+      title: Idioma
+    logo_alt: Logotipo de Cluster Headache Tracker
+    modal:
+      close: cerrar
+    navbar:
+      account_settings: Configuración de la cuenta
+      admin: Admin
+      android_beta: Android Beta
+      app: App
+      charts: Gráficos
+      diary: Diario
+      faq: Preguntas frecuentes
+      feedback: Opinión
+      for_neurologists: Para neurólogos
+      imprint: Aviso legal
+      ios_beta: iOS Beta
+      legal: Legal
+      login: Iniciar sesión
+      logs: Registros
+      mobile_apps: Apps móviles
+      new: Nueva
+      new_log: Nueva crisis
+      open_source: Código abierto
+      privacy_policy: Privacidad
+      resources: Recursos
+      sample: Ejemplo
+      sample_report: Informe de ejemplo
+      source_code: Código fuente
+      sponsor: Apoyar
+      start_free: Empieza gratis
+      start_free_tracking: Empieza gratis
+      template: Plantilla
+    welcome_modal:
+      password_warning_html: "<strong>Anota tu contraseña.</strong> Sin correo electrónico hay privacidad real, pero tampoco se puede restablecer la contraseña. Ese es el precio."
+      start: Empezar
+      step_1_body: Un toque en cuanto llegue la crisis.
+      step_1_title: Pulsa «Nueva» cuando empiece
+      step_2_body: Cuando pase, añade qué te ayudó (o qué no).
+      step_2_title: Completa los detalles cuando puedas respirar
+      step_3_body: Gráficos e informes para hablar del tratamiento
+      step_3_title: Comparte datos reales con tu médico
+      subtitle: 'Así funciona:'
+      title: Registra tus cefaleas en 3 pasos

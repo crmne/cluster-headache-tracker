@@ -1,0 +1,211 @@
+de:
+  headache_log_samples:
+    medications:
+      oxygen: Sauerstoff %{minutes} Min.
+      sumatriptan: Sumatriptan
+    notes:
+      after_alcohol: Attacke spät am Abend nach Alkohol, Linderung nach Medikament.
+      evening_within_hour: Abendliche Attacke, Medikament half innerhalb einer Stunde.
+      mild_shadow: Linderung durch Sauerstoff, danach leichter Schatten.
+      pacing_tearing: Unruhiges Umhergehen und Augentränen, keine Nebenwirkungen bemerkt.
+      right_eye_pain: Schmerz am rechten Auge, während der Attacke umhergelaufen, Linderung durch Sauerstoff.
+      severe_slower_relief: Schwere rechtsseitige Attacke, Sauerstoff half, aber die Linderung kam langsamer.
+      shorter_daytime: Kürzere Attacke tagsüber, danach wieder zur Arbeit.
+      typical_overnight: Typisches nächtliches Muster, Attacke endete nach Sauerstoff.
+      woke_nasal_congestion: Aus dem Schlaf aufgewacht, verstopfte Nase, Linderung durch Sauerstoff.
+      woke_tearing_restless: Aus dem Schlaf aufgewacht, Augentränen, unruhig, nach der Linderung blieb ein Schatten.
+    triggers:
+      alcohol: Alkohol
+      none_noted: keiner bemerkt
+      sleep_disruption: gestörter Schlaf
+      weather_change: Wetterwechsel
+  home:
+    cluster_headache_app:
+      android_beta: Android-Beta
+      cta_headline: Nutzen Sie die App auf dem Gerät, das Sie gerade zur Hand haben
+      eyebrow: Web, PWA, iOS und Android
+      features:
+        charts:
+          body: Sehen Sie Uhrzeit, Dauer, Intensität, Auslöser und Behandlungsnotizen Ihrer Attacken.
+          heading: Diagramme und Berichte
+        one_tap:
+          body: Starten Sie zuerst den Attacken-Timer. Details können warten, bis Sie wieder klar denken können.
+          heading: Erfassen mit einem Tipp
+        private:
+          body: Konten nur mit Benutzernamen, keine Werbung, keine E-Mail-Adresse nötig und kein Verkauf von Gesundheitsdaten.
+          heading: Standardmäßig privat
+      heading: Die Clusterkopfschmerz-App zum schnellen Erfassen von Attacken
+      intro: Nutzen Sie Cluster Headache Tracker im Browser, installieren Sie ihn als PWA oder verwenden Sie die Beta-Apps für iOS und Android. Starten Sie den Timer während einer Attacke und ergänzen Sie die Details später.
+      ios_beta: iOS-Beta
+      reports:
+        body: Der Beispielbericht zeigt dieselben Statistiken, Diagramme und die ausführliche Eintragstabelle, die aus den Daten eines privaten Kontos entstehen.
+        heading: Berichte sind Teil der App
+        view_sample_report: Beispielbericht ansehen
+      use_web_app: Web-App nutzen
+      why:
+        body: Viele Kopfschmerz-Apps sind auf Migräne ausgelegt. Bei Clusterattacken braucht es einen schnelleren Startknopf, genauere Zeitangaben und Berichte, in denen wiederholte kurze Attacken sichtbar werden.
+        heading: Warum eine eigene App für Clusterkopfschmerz?
+      works_with:
+        body: Sie können Ihre Daten als CSV exportieren, Berichte drucken, sichere Freigabelinks nutzen und die Web-Version weiterverwenden, auch wenn Sie das Smartphone wechseln.
+        heading: Passt zu Ihrer bisherigen Dokumentation
+    cluster_headache_oxygen_documentation:
+      cta_headline: Dokumentieren Sie Ihre Attacken vor dem nächsten Gespräch über Sauerstoff
+      examples:
+        attack: Attacke
+        duration: Dauer
+        first_response: Linderung durch Sauerstoff, bis zum Morgen keine neue Attacke.
+        heading: Beispieleinträge zur Wirkung von Sauerstoff
+        intensity: Intensität
+        logged_treatment: Erfasste Behandlung
+        minutes: "%{count} Min."
+        oxygen_minutes: Sauerstoff %{count} Min.
+        response_note: Notiz zur Wirkung
+        second_response: Linderung nach 18 Min., ein Schatten blieb.
+        sumatriptan: Sumatriptan
+        third_response: Linderung durch Medikament, kein Sauerstoff verfügbar.
+      eyebrow: Wirkung von Sauerstoff dokumentieren
+      heading: Sauerstofftherapie bei Clusterkopfschmerz dokumentieren
+      how_it_helps:
+        body: Zu jeder Attacke lassen sich Medikamente notieren, etwa die Dauer der Sauerstoffgabe oder die Einnahme eines Triptans, dazu freie Notizen zur Wirkung. Der Bericht fasst Häufigkeit, Uhrzeiten, Intensität, Dauer und Behandlungsverlauf so zusammen, dass Sie ihn ausdrucken oder teilen können.
+        heading: So hilft Cluster Headache Tracker
+      intro: Erfassen Sie Häufigkeit und Dauer Ihrer Attacken, die Sauerstoffanwendung und ihre Wirkung, damit Sie in Gesprächen mit Ärztinnen, Ärzten und der Krankenkasse eine klarere Dokumentation vorlegen können.
+      references:
+        american_migraine_foundation: Überblick über Akuttherapie und Prophylaxe bei Clusterkopfschmerz, einschließlich Sauerstoff.
+        mayo_clinic: Die Mayo Clinic beschreibt Sauerstoff als eine schnell wirkende Behandlung bei Clusterkopfschmerz unter ärztlicher Betreuung.
+        medical_news_today: Fasst die Studienlage zur Sauerstofftherapie, die Verordnung und Hürden beim Zugang zusammen.
+      start_tracking: Jetzt erfassen
+      view_sample_report: Beispielbericht ansehen
+      what_to_document:
+        attack_length: Wie lange Attacken mit und ohne Sauerstoff oder Medikamente dauern
+        attacks_per_period: Wie viele Attacken pro Tag, Woche oder Episode auftreten
+        attacks_return: Ob Attacken nach scheinbarer Linderung zurückkehren
+        body: Eine Sauerstofftherapie muss ärztlich besprochen und verordnet werden. Ein Tracker kann keine Behandlungsentscheidungen treffen, aber er hilft Ihnen, Ihre Attackenlast und den bisherigen Behandlungserfolg klarer zu belegen.
+        clinician_notes: Alles, was Ihre Ärztin oder Ihr Arzt Sie zu notieren gebeten hat
+        heading: Was Sie dokumentieren sollten
+        oxygen_timing: Wann Sauerstoff angewendet wurde und wie schnell die Linderung einsetzte
+    imprint:
+      about:
+        body: Diese Website, Cluster Headache Tracker (clusterheadachetracker.com), ist ein nicht kommerzielles Angebot, das zu Informationszwecken und als Werkzeug für Menschen mit Clusterkopfschmerz bereitgestellt wird. Sie wird von Carmine Paolino als Privatperson entwickelt und betrieben.
+        heading: Über diese Website
+      contact:
+        email: 'E-Mail:'
+        heading: Kontakt
+      disclaimer:
+        body: Die Informationen auf dieser Website dienen ausschließlich allgemeinen Informationszwecken. Obwohl wir uns bemühen, die Informationen aktuell und korrekt zu halten, übernehmen wir keinerlei ausdrückliche oder stillschweigende Gewähr für die Vollständigkeit, Richtigkeit, Zuverlässigkeit, Eignung oder Verfügbarkeit der Website oder der darauf enthaltenen Informationen, Produkte, Dienste oder Grafiken für irgendeinen Zweck.
+        heading: Haftungsausschluss
+      english_version: englische Fassung
+      heading: Impressum
+      information:
+        country: Deutschland
+        heading: Angaben gemäß § 5 TMG
+      privacy:
+        body_html: Informationen zum Umgang mit Ihren personenbezogenen Daten finden Sie in unserer %{privacy_policy}.
+        heading: Datenschutz
+        link: Datenschutzerklärung
+      purpose:
+        heading: Zweck und Funktionen
+        intro: 'Cluster Headache Tracker bietet folgende Funktionen:'
+        not_medical_advice: Dieses Werkzeug ersetzt keine professionelle ärztliche Beratung, Diagnose oder Behandlung. Wenden Sie sich bei allen Fragen zu Ihrer Erkrankung stets an qualifiziertes medizinisches Fachpersonal.
+        sharing: Optionale Freigabe der erfassten Daten an Ärztinnen, Ärzte oder andere ausgewählte Personen
+        tracking: Persönliche Erfassung und Dokumentation von Clusterkopfschmerz-Attacken
+        visualization: Datenvisualisierung für das persönliche Gesundheitsmanagement
+      responsibility:
+        body: Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten verantwortlich. Nach §§ 8 bis 10 TMG sind wir jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+        heading: Haftung für Inhalte
+      translation_notice_html: Dies ist eine Übersetzung. Bei Abweichungen gilt die %{english_version}.
+    open_source_headache_tracker:
+      community:
+        body: Die App ist entstanden, weil Papiertagebücher, Tabellen und allgemeine Apps während einer Attacke zu langsam waren. Sie konzentriert sich auf schnelles Erfassen, nützliche Berichte und praktischen Datenschutz statt auf allgemeines Wellness-Tracking.
+        heading: Gemacht für Menschen mit Clusterkopfschmerz
+      cta_headline: Probieren Sie den kostenlosen Open-Source-Tracker aus
+      eyebrow: Open-Source-Gesundheitssoftware
+      heading: Open-Source-Kopfschmerztagebuch für Clusterkopfschmerz
+      intro: Cluster Headache Tracker ist eine kostenlose Rails-App mit öffentlichem Quellcode, Konten nur mit Benutzernamen, CSV-Export und datenschutzfreundlichen Berichten.
+      privacy:
+        csv_export: CSV-Export – Ihre Daten gehören Ihnen
+        excluded_from_seo: Private Übersichten und geteilte Berichte sind von öffentlichen SEO-Dateien ausgeschlossen
+        heading: Entscheidungen für den Datenschutz
+        no_ads: Keine Werbung und kein Verkauf persönlicher Kopfschmerzdaten
+        no_email: Keine E-Mail-Adresse für ein Konto nötig
+        share_links: Befristete Freigabelinks mit reinem Lesezugriff für Berichte
+      start_tracking: Jetzt erfassen
+      view_source: Quellcode ansehen
+      why:
+        body: Software für Gesundheitsdaten verlangt Vertrauen. Deshalb ist der Code öffentlich – so kann jeder nachvollziehen, wie der Tracker funktioniert, Fehler melden, Verbesserungen vorschlagen oder ihn mit dem nötigen technischen Wissen selbst betreiben.
+        heading: Warum Open Source bei einem Gesundheitstagebuch wichtig ist
+    privacy_policy:
+      agreement: Mit der Nutzung von Cluster Headache Tracker stimmen Sie der Erhebung und Verwendung von Informationen gemäß dieser Datenschutzerklärung zu.
+      changes:
+        body: Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Über Änderungen informieren wir, indem wir die neue Datenschutzerklärung auf dieser Seite veröffentlichen und das Datum „Zuletzt aktualisiert“ anpassen.
+        heading: 8. Änderungen dieser Datenschutzerklärung
+      contact:
+        body: 'Wenn Sie Fragen zu dieser Datenschutzerklärung haben, erreichen Sie uns unter:'
+        heading: 9. Kontakt
+      cookies:
+        body: Wir verwenden nur technisch notwendige Cookies, damit die Anwendung richtig funktioniert. Tracking- oder Werbe-Cookies setzen wir nicht ein.
+        heading: 7. Cookies und ähnliche Technologien
+      english_version: englische Fassung
+      heading: Datenschutzerklärung für Cluster Headache Tracker
+      how_we_use:
+        heading: 3. Wie wir Ihre Daten verwenden
+        improve: Um unsere Anwendung zu verbessern und zu optimieren
+        insights: Um Auswertungen und Visualisierungen Ihrer Kopfschmerzmuster zu erstellen
+        intro: 'Wir verwenden die erhobenen Daten für folgende Zwecke:'
+        provide_service: Um den Dienst Cluster Headache Tracker bereitzustellen und zu betreiben
+      information_we_collect:
+        automatic:
+          device: Informationen zu Gerät und Browser
+          heading: 2.2 Automatisch erhobene Daten
+          usage: Nutzungsdaten und Statistiken
+        heading: 2. Welche Daten wir erheben
+        no_personal_information: Über den von Ihnen gewählten Benutzernamen hinaus erheben oder speichern wir keine personenbezogenen Daten, die Sie identifizieren.
+        user_provided:
+          headache_logs: Kopfschmerzeinträge (Intensität, Dauer, Auslöser, Medikamente, Notizen)
+          heading: 2.1 Von Ihnen angegebene Daten
+          username: Benutzername (keine E-Mail-Adresse erforderlich)
+      introduction:
+        body: Willkommen bei Cluster Headache Tracker. Der Schutz Ihrer Privatsphäre und die Sicherheit Ihrer persönlichen Daten sind uns wichtig. Diese Datenschutzerklärung erläutert, wie wir Ihre Daten bei der Nutzung unserer Webanwendung erheben, verwenden, weitergeben und schützen.
+        heading: 1. Einleitung
+      last_updated: 'Zuletzt aktualisiert: %{date}'
+      open_source:
+        heading: 10. Open Source
+      rights:
+        access: Ihre Daten einzusehen, zu berichtigen oder zu löschen
+        export: Ihre Daten im CSV-Format zu exportieren
+        heading: 6. Ihre Rechte und Wahlmöglichkeiten
+        intro: 'Sie haben das Recht:'
+        share_links: Freigabelinks für Ihre Kopfschmerzeinträge zu erstellen und zu widerrufen
+      sharing:
+        full_control: Sie behalten die volle Kontrolle darüber, ob Sie Ihre Einträge teilen. Sie können Berichte zum Teilen erstellen und an Ihre Ärztinnen und Ärzte weitergeben.
+        heading: 5. Weitergabe und Offenlegung von Daten
+        legal: Wir können Daten offenlegen, wenn dies gesetzlich vorgeschrieben ist oder zum Schutz unserer Rechte, unseres Eigentums oder unserer Sicherheit erforderlich ist.
+        no_sale: Wir verkaufen, tauschen oder vermieten Ihre persönlichen Daten nicht an Dritte.
+      storage:
+        encryption: Ihre Gesundheitsdaten werden bei der Übertragung und bei der Speicherung verschlüsselt.
+        germany: Alle Daten werden auf Servern in Deutschland gespeichert und unterliegen damit den Datenschutzvorschriften der EU.
+        heading: 4. Datenspeicherung und Sicherheit
+        security_measures: Wir setzen branchenübliche Sicherheitsmaßnahmen ein, um Ihre Daten vor unbefugtem Zugriff, Veränderung, Offenlegung oder Vernichtung zu schützen.
+      translation_notice_html: Dies ist eine Übersetzung. Bei Abweichungen gilt die %{english_version}.
+    sample_report:
+      cta_headline: Machen Sie aus Ihrer nächsten Episode einen klaren Bericht
+      demo_notice:
+        body: Diese Seite verwendet dieselben Bausteine wie private Berichte, aber Patient und Einträge sind nur Beispiele.
+        heading: Fiktive Beispieldaten
+      demo_patient: Beispielpatient
+      eyebrow: Öffentlicher Beispielbericht
+      heading: Beispielbericht bei Clusterkopfschmerz
+      intro: Dieser fiktive Bericht zeigt, welche Zusammenfassung, Diagramme, Behandlungsnotizen und ausführlichen Einträge ein privates Konto für Arzttermine erstellen kann.
+      print_sample: Beispiel drucken
+      privacy:
+        body: Echte Berichte sind privat. Suchmaschinen sehen nur dieses fiktive Beispiel, keine persönlichen Einträge und keine Links zu geteilten Berichten.
+        heading: Klare Grenze beim Datenschutz
+      report_contents:
+        attack_table: Alle erfassten Attacken in einer chronologischen Tabelle
+        csv_export: CSV-Export für Ihre eigenen Unterlagen
+        frequency: Häufigkeit der Attacken nach Tag und Tageszeit
+        heading: Was ein echter Bericht enthalten kann
+        notes: Notizen zu Medikamenten, Sauerstoff, Auslösern und Wirkung
+        share_links: Befristete Freigabelinks mit reinem Lesezugriff, die nach 30 Tagen ablaufen
+        trends: Verlauf von Intensität und Dauer
+      report_title: Beispielbericht bei Clusterkopfschmerz
+      start_my_report: Meinen Bericht beginnen

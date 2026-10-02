@@ -1,28 +1,28 @@
 <%# app/views/devise/passwords/new.html.erb %>
-<% content_for :title, "Forgot your password?" %>
+<% content_for :title, t("auth.passwords.new.title") %>
 
 <div class="flex items-center justify-center min-h-[70vh] px-4">
   <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 w-full max-w-md">
     <div class="card-body">
       <div class="text-center mb-6">
-        <h2 class="text-2xl font-bold">Forgot password?</h2>
-        <p class="text-base-content/60">We don't store your email address.</p>
+        <h2 class="text-2xl font-bold"><%= t("auth.passwords.new.heading") %></h2>
+        <p class="text-base-content/60"><%= t("auth.passwords.new.subtitle") %></p>
       </div>
 
       <div class="alert alert-warning shadow-lg mb-6">
         <div>
           <%= heroicon "exclamation-triangle", class: "h-6 w-6 shrink-0 stroke-current" %>
           <div>
-            <h3 class="font-bold">Important Privacy Notice</h3>
+            <h3 class="font-bold"><%= t("auth.passwords.new.notice_title") %></h3>
             <div class="text-sm">
-              To protect your medical data privacy, we don't store email addresses. Please create a new account if you can't access your existing one.
+              <%= t("auth.passwords.new.notice_body") %>
             </div>
           </div>
         </div>
       </div>
       <div class="text-center space-y-4">
-        <%= link_to "Sign in", new_session_path(resource_name), class: "btn btn-primary w-full" %>
-        <%= link_to "Create new account", new_registration_path(resource_name), class: "btn btn-outline w-full" %>
+        <%= link_to t("auth.shared.sign_in"), new_session_path(resource_name), class: "btn btn-primary w-full" %>
+        <%= link_to t("auth.shared.create_account"), new_registration_path(resource_name), class: "btn btn-outline w-full" %>
       </div>
     </div>
   </div>

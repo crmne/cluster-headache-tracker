@@ -1,0 +1,39 @@
+de:
+  seo:
+    pages:
+      cluster-headache-app:
+        description: 'Kostenlose Clusterkopfschmerz-App für Web, iOS und Android: Attacken mit einem Tipp erfassen, Diagramme, CSV-Export und Berichte für den Arzt. Ohne E-Mail.'
+        title: Clusterkopfschmerz-App, kostenlos | Cluster Headache Tracker
+      cluster-headache-diary:
+        description: 'Kostenloses Clusterkopfschmerz-Tagebuch: Uhrzeit, Dauer, Intensität (KIP), Medikamente, Sauerstoff, Auslöser und Notizen jeder Attacke in Sekunden festhalten.'
+        title: Clusterkopfschmerz-Tagebuch, kostenlos | Cluster Headache Tracker
+      cluster-headache-diary-template:
+        description: 'Clusterkopfschmerz-Tagebuch als Vorlage zum Ausdrucken: Uhrzeit, Dauer, Intensität, Medikamente, Wirkung von Sauerstoff, Auslöser und Notizen jeder Attacke.'
+        title: Clusterkopfschmerz-Tagebuch Vorlage | Cluster Headache Tracker
+      cluster-headache-oxygen-documentation:
+        description: Häufigkeit, Dauer, Sauerstoffgabe und Wirkung bei Clusterkopfschmerz dokumentieren – für Gespräche mit Arzt und Krankenkasse, ohne Heilversprechen.
+        title: Sauerstofftherapie dokumentieren | Cluster Headache Tracker
+      faq:
+        description: 'Antworten auf häufige Fragen zu Clusterkopfschmerz, Attacken-Tagebuch, Datenschutz, Berichten für den Arzt und warum es diesen kostenlosen Tracker gibt.'
+        title: Häufige Fragen (FAQ) | Cluster Headache Tracker
+      headache-diary-for-neurologist:
+        description: 'Kopfschmerztagebuch für den Termin beim Neurologen: Uhrzeiten, Dauer, Intensität, Wirkung der Medikamente, Sauerstoff und Auslöser als übersichtlicher Bericht.'
+        title: Kopfschmerztagebuch für den Neurologen | Cluster Headache Tracker
+      home:
+        description: Kostenloses Clusterkopfschmerz-Tagebuch, entwickelt von einem Betroffenen. Attacken schnell erfassen, Muster erkennen, Berichte für den Arzt erstellen. Ohne E-Mail.
+        title: Cluster Headache Tracker – Clusterkopfschmerz-Tagebuch & App
+      imprint:
+        description: Impressum und Kontaktdaten von Cluster Headache Tracker, einem nicht kommerziellen Angebot von Carmine Paolino.
+        title: Impressum | Cluster Headache Tracker
+      neurologist:
+        description: 'Für Neurologinnen und Neurologen: ein kostenloser Tracker, mit dem Patienten Clusterkopfschmerz-Attacken sauber dokumentieren – mit klaren Mustern und Berichten.'
+        title: Für Neurologen | Cluster Headache Tracker
+      open-source-headache-tracker:
+        description: 'Open-Source-Kopfschmerztagebuch für Clusterkopfschmerz: öffentlicher Quellcode, Konten nur mit Benutzernamen, CSV-Export und Berichte für den Arzt.'
+        title: Open-Source-Kopfschmerztagebuch | Cluster Headache Tracker
+      privacy-policy:
+        description: 'Datenschutzerklärung von Cluster Headache Tracker: Konten ohne E-Mail, Speicherung der Kopfschmerzdaten in Deutschland, Freigaben, Export und Ihre Rechte.'
+        title: Datenschutzerklärung | Cluster Headache Tracker
+      sample-report:
+        description: 'Fiktiver Beispielbericht bei Clusterkopfschmerz: Zusammenfassung der Attacken, Uhrzeiten, Intensität, Wirkung der Behandlung, Diagramme und alle Einträge.'
+        title: Beispielbericht Clusterkopfschmerz | Cluster Headache Tracker

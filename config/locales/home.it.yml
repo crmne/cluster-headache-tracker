@@ -1,0 +1,163 @@
+it:
+  home:
+    author_box:
+      body: Soffro di cefalea a grappolo e sono il creatore di Cluster Headache Tracker. Le spiegazioni mediche su questo sito hanno scopo informativo e rimandano a fonti cliniche esterne quando opportuno. Una revisione medica verrà indicata solo quando un medico avrà davvero revisionato la pagina.
+      signature_alt: Firma di Carmine Paolino
+      title: Creato da Carmine Paolino
+    cta:
+      body: Unisciti a oltre %{users} persone che finalmente hanno dati concreti sui propri attacchi. Per iniziare bastano 30 secondi.
+      go_to_logs: Vai alle mie registrazioni
+      learn_more: Scopri di più
+      start_tracking: Inizia gratis
+      title: Basta appunti su carta. È ora di avere risposte.
+    devices:
+      android: App Android (beta)
+      compare: Confronta le versioni dell'app
+      everywhere: Un attacco al lavoro? Registralo sul telefono. A letto alle 3 di notte? Prendi il tablet. Dal medico? Apri la versione web.
+      ios: App iOS (beta)
+      sync: Tutto si sincronizza all'istante, così puoi registrare in fretta durante un attacco e completare i dettagli più tardi dal dispositivo che ti è più comodo.
+      title: Usalo ovunque.
+      web: App web
+    diary_template_table:
+      date: Data
+      duration: Durata
+      end: Fine
+      intensity: Intensità
+      medication: Farmaco o ossigeno
+      notes: Note
+      response: Risposta
+      start: Inizio
+      triggers: Fattori scatenanti
+    faq_section:
+      during_attack:
+        answer: SÌ. Un pulsante enorme. Un tocco. Fatto. I dettagli li aggiungi dopo, quando torni lucido. L'ho progettato nel pieno di un periodo attivo, quindi so cosa si riesce a fare quando non si riesce a pensare.
+        question: Posso registrare durante un attacco, anche se ci vedo a malapena?
+      free:
+        answer: Nessuna fregatura. I server li pago io. Le donazioni sono facoltative e il tracker resta gratuito in ogni caso.
+        question: È davvero gratis? Dov'è la fregatura?
+      oxygen:
+        answer: Può aiutarti a documentare in modo più chiaro frequenza, durata degli attacchi e risposta alla terapia. Non può garantire una prescrizione né il rimborso da parte del servizio sanitario o dell'assicurazione.
+        question: Mi aiuta a ottenere l'ossigenoterapia?
+      privacy:
+        answer: Nessuna email. Nessuna pubblicità. Nessuna vendita di dati. Le pagine pubbliche usano statistiche aggregate rispettose della privacy, ma le tue registrazioni restano private.
+        question: E la mia privacy?
+      see_all: Vedi tutte le domande
+      title: Domande frequenti.
+    features:
+      devices:
+        body: Beta per iOS, beta per Android e web. Inizia su un dispositivo e aggiungi le note più tardi da un altro.
+        title: Attacco al lavoro?
+      fast:
+        body: Un pulsante enorme. Lo tocchi. Fatto. I dettagli li aggiungi quando torni in te.
+        title: Non riesco a pensare. Devo registrarlo. Subito.
+      patterns:
+        body: Grafici che hanno davvero senso. Periodi attivi, fattori scatenanti e tutto il resto a colpo d'occhio.
+        title: Dove si nasconde il mio schema?
+      privacy:
+        body: Nessuna email. Nessuna pubblicità. Nessuna vendita di dati. Le tue registrazioni restano private, su server ospitati in Germania.
+        title: Chi mi sta guardando?
+      reports:
+        body: Report professionali da stampare, salvare in PDF o condividere tramite un link sicuro, con grafici e tabelle chiari.
+        title: Il medico mi crederà?
+      subtitle: Registrazione rapida, schemi chiari, report utili e privacy di serie.
+      title: Ciò che conta davvero quando sei nel dolore.
+      trust:
+        body: Non ti vendo niente. Lo uso ogni giorno. È open source. Creato da chi soffre e sa cosa vuol dire.
+        title: Perché fidarmi?
+    founder:
+      body: Convivo con la cefalea a grappolo da oltre dieci anni. Ho creato questo strumento nel 2024, quando ero disperato. Conosco le corse alle 2 di notte, le battaglie per l'ossigeno e i consigli inutili. Ogni funzione deve essere così semplice da poterla usare durante un vero attacco.
+      title: Non è una startup. È uno strumento di cui avevo bisogno.
+    hero:
+      attacks_logged: attacchi registrati
+      badges:
+        free_forever: Gratis per sempre
+        german_privacy: Privacy tedesca
+        no_email: Nessuna email
+        one_tap: Registrazione con un tocco
+      people_tracking: persone lo usano
+      start_tracking: Inizia gratis
+      subtitle: Registra un attacco con un tocco, aggiungi i dettagli dopo e trasforma il tuo storico in grafici e report pronti per il medico. Nessuna email richiesta.
+      title: Combatti con la cefalea a grappolo?
+      title_highlight: Tenere il diario non dovrebbe aggiungere altro dolore.
+      video_title: Demo di Cluster Headache Tracker
+    medical_disclaimer:
+      body: Cluster Headache Tracker ti aiuta a registrare gli attacchi e a preparare report per il confronto con il medico. Non fa diagnosi, non cura, non prescrive e non sostituisce l'assistenza di un medico qualificato.
+      title: Uno strumento di monitoraggio, non un consiglio medico
+    open_source:
+      open_source:
+        body: Il codice è pubblico, così la community può verificarlo, migliorarlo e mantenerlo in vita.
+        github: Vedi su GitHub
+        title: È open source.
+        why: Perché open source?
+      sponsor:
+        body: "I server li pago di tasca mia. Se ti è stato utile, valuta di offrirmi un caffè. Nessuna pressione, però: lo strumento resta gratuito in ogni caso."
+        button: Sostieni
+        title: Aiutami a tenerlo attivo.
+    providers:
+      info_for_providers: Info per i medici
+      memory: La cefalea a grappolo è difficile da descrivere a memoria. Il tracker trasforma gli attacchi in registrazioni con data e ora, punteggio KIP, durata, farmaci, fattori scatenanti e note.
+      prepare_appointment: Prepara la visita
+      sharing: I pazienti possono condividere un link sicuro al report, valido 30 giorni, con tabelle, grafici e storico delle terapie. Il medico non ha bisogno di un account.
+      title: Dati chiari per la visita.
+    references:
+      title: Fonti
+    seo_cta:
+      body: Registra gli attacchi in un attimo, tieni in ordine tutti i dettagli e trasforma il tuo storico in report da rivedere con il medico.
+      go_to_logs: Vai alle mie registrazioni
+      headline: Inizia un diario privato della cefalea a grappolo
+      start_tracking: Inizia gratis
+      view_sample_report: Vedi un report di esempio
+    seo_resources:
+      app:
+        body: Web, PWA, beta per iOS e beta per Android, per registrare anche durante l'attacco.
+        link: Vedi le versioni dell'app
+        title: App per la cefalea a grappolo
+      diary:
+        body: Cosa annotare, perché gli orari contano e come il tracker trasforma gli attacchi in uno storico utile.
+        link: Leggi la guida
+        title: Diario della cefalea a grappolo
+      neurology_visits:
+        body: Una guida pensata per i pazienti su come portare alla visita dati chiari dal diario della cefalea.
+        link: Prepara la visita
+        title: Per la visita dal neurologo
+      oxygen:
+        body: Come un diario può documentare la frequenza degli attacchi e la risposta alla terapia per il confronto con il medico.
+        link: Monitora la risposta
+        title: Documentare l'ossigenoterapia
+      sample_report:
+        body: Un report pubblico e fittizio con i veri grafici, le tabelle e un riepilogo pronto per la visita.
+        link: Vedi il report
+        title: Report di esempio
+      subtitle: Guide, modelli e report di esempio per trasformare uno storico di attacchi dolorosi in qualcosa di più facile da analizzare.
+      template:
+        body: Un modello stampabile con tutti i campi per il diario della cefalea a grappolo su carta.
+        link: Apri il modello
+        title: Modello di diario
+      title: Risorse per monitorare la cefalea a grappolo
+    stats:
+      body: La maggior parte delle app per il mal di testa è creata da persone che non hanno mai avuto una cefalea a grappolo. Io ho creato questa durante un periodo attivo. Ogni funzione è stata testata nel pieno di un attacco. Se alle 3 di notte, con un KIP 10, non era abbastanza semplice, è stata scartata.
+      one_tap:
+        body: per registrare quando sei all'inferno. I dettagli li aggiungi quando torni in te.
+        title: 1 tocco
+      patterns:
+        body: Grafici che mostrano davvero i tuoi periodi attivi, i fattori scatenanti e l'efficacia delle terapie.
+        title: I tuoi schemi
+      real_data:
+        body: Report chiari per parlare con il medico e decidere la terapia.
+        title: Dati reali
+      title: Creato da chi soffre, per chi soffre.
+    testimonials:
+      charts:
+        author: Utente del tracker
+        context: Ha trovato utili i grafici
+        quote_html: "«Hai davvero creato un capolavoro. Avevo un'ottima visione d'insieme e <strong>i grafici erano la mia funzione preferita</strong>. Anche il video mi ha aiutato a capire come funziona l'app.»"
+      manual_tracker:
+        author: Teneva un diario a mano
+        context: Cercava un modo più semplice per tenere traccia
+        quote_html: "«BRAVO per aver sviluppato questa idea. Sembra che avrebbe <strong>evitato molti dei problemi</strong> che alla fine mi hanno portato ad abbandonare i miei tentativi di tenere un diario.»"
+      oxygen:
+        author: Paziente con cefalea a grappolo
+        context: Ha usato i report con il proprio neurologo
+        quote_html: "«Uso il tuo sito come diario della cefalea ed è stato <strong>incredibilmente utile per ottenere l'ossigeno dal mio neurologo</strong>. È facile da usare e registra esattamente i dati che mi servono.»"
+      subtitle: "Il tracker è pensato per i momenti più dolorosi: registrare in fretta, scoprire gli schemi e mostrare dati chiari quando bisogna decidere la terapia."
+      title: Lo dice chi ne aveva bisogno.

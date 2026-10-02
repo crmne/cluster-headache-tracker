@@ -2,55 +2,42 @@
   <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
     <div class="max-w-3xl mx-auto text-center mb-14">
       <h2 class="text-3xl font-bold sm:text-4xl xl:text-5xl">
-        Proof from people who needed it.
+        <%= t(".title") %>
       </h2>
       <p class="mt-4 text-lg opacity-60">
-        The tracker is built for the painful parts: logging fast, finding
-        patterns, and showing clean data when treatment decisions matter.
+        <%= t(".subtitle") %>
       </p>
     </div>
 
     <div class="max-w-4xl mx-auto space-y-8">
       <div class="rounded-2xl bg-base-100 p-8 sm:p-10">
         <blockquote class="text-xl leading-relaxed sm:text-2xl">
-          <p>
-            "I use your site for my headache tracking and it was <strong>incredibly
-            helpful with my neuro to get oxygen</strong>. It's easy to use and it
-            tracks the data I need it to track."
-          </p>
+          <p><%= t(".oxygen.quote_html") %></p>
         </blockquote>
         <div class="mt-6">
-          <p class="font-bold">Cluster headache patient</p>
-          <p class="text-sm opacity-60">Used reports with their neurologist</p>
+          <p class="font-bold"><%= t(".oxygen.author") %></p>
+          <p class="text-sm opacity-60"><%= t(".oxygen.context") %></p>
         </div>
       </div>
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div class="rounded-2xl bg-base-100 p-8">
           <blockquote class="leading-relaxed">
-            <p>
-              "You definitely made a masterpiece. I had a great overview and
-              <strong>the charts were my favourite feature</strong>. The video
-              also helped me understand how the app works."
-            </p>
+            <p><%= t(".charts.quote_html") %></p>
           </blockquote>
           <div class="mt-6">
-            <p class="font-bold">Tracker user</p>
-            <p class="text-sm opacity-60">Found the charts useful</p>
+            <p class="font-bold"><%= t(".charts.author") %></p>
+            <p class="text-sm opacity-60"><%= t(".charts.context") %></p>
           </div>
         </div>
 
         <div class="rounded-2xl bg-base-100 p-8">
           <blockquote class="leading-relaxed">
-            <p>
-              "BRAVO to you for developing the concept. This idea seems like it
-              would have <strong>prevented many of the problems</strong> that led
-              me to ultimately abandon my own tracking efforts."
-            </p>
+            <p><%= t(".manual_tracker.quote_html") %></p>
           </blockquote>
           <div class="mt-6">
-            <p class="font-bold">Former manual tracker</p>
-            <p class="text-sm opacity-60">Needed a simpler way to keep records</p>
+            <p class="font-bold"><%= t(".manual_tracker.author") %></p>
+            <p class="text-sm opacity-60"><%= t(".manual_tracker.context") %></p>
           </div>
         </div>
       </div>

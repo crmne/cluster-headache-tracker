@@ -9,15 +9,16 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def after_sign_in_path_for(resource)
-    headache_logs_path
+    headache_logs_path(locale: nil)
   end
 
   def after_sign_out_path_for(scope)
     # For Hotwire Native app with tabs, go to headache_logs to trigger auth flow
     if helpers.native_app_with_tabs?
-      headache_logs_path
+      headache_logs_path(locale: nil)
     else
-      root_path
+      # Back to the home page in the language they were using
+      root_path(locale: I18n.locale.to_s.presence_in(AiVisibleContent::TRANSLATED_LOCALES))
     end
   end
 end

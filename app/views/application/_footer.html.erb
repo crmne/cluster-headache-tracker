@@ -3,19 +3,18 @@
     <div class="grid gap-10 md:grid-cols-[1fr_auto] md:items-start">
       <div>
         <div class="flex items-center gap-3 mb-6">
-          <%= image_tag "logo_small.png", size: 32, alt: "Cluster Headache Tracker Logo" %>
+          <%= image_tag "logo_small.png", size: 32, alt: t("layout.logo_alt") %>
           <span class="text-lg font-bold">Cluster Headache Tracker</span>
         </div>
         <p class="max-w-md opacity-70">
-          Free, open-source headache tracking built by a fellow sufferer.
-          Your data stays private. Always.
+          <%= t("layout.footer.tagline") %>
         </p>
 
         <form method="post" action="https://sendfox.com/form/mnn6xq/1wj8v6" class="sendfox-form mt-8 max-w-sm" id="1wj8v6" data-async="true" data-recaptcha="true">
-          <p class="text-sm font-medium mb-2">Stay updated on new features</p>
+          <p class="text-sm font-medium mb-2"><%= t("layout.footer.newsletter_title") %></p>
           <div class="join w-full">
-            <input type="email" name="email" id="sendfox_form_email" autocomplete="off" placeholder="email@example.com" required class="input input-bordered join-item flex-1 bg-neutral-content/10 border-neutral-content/20">
-            <button type="submit" class="btn btn-primary join-item rounded-r-full">Subscribe</button>
+            <input type="email" name="email" id="sendfox_form_email" autocomplete="off" placeholder="<%= t("layout.footer.newsletter_placeholder") %>" required class="input input-bordered join-item flex-1 bg-neutral-content/10 border-neutral-content/20">
+            <button type="submit" class="btn btn-primary join-item rounded-r-full"><%= t("layout.footer.subscribe") %></button>
           </div>
           <div style="position: absolute; left: -5000px;" aria-hidden="true">
             <input type="text" name="a_password" tabindex="-1" value="" autocomplete="off">
@@ -25,40 +24,40 @@
 
       <div class="grid grid-cols-2 gap-8 sm:gap-12 text-sm">
         <div>
-          <h6 class="font-bold mb-4 opacity-50 uppercase tracking-wider text-xs">Resources</h6>
+          <h6 class="font-bold mb-4 opacity-50 uppercase tracking-wider text-xs"><%= t("layout.footer.resources") %></h6>
           <ul class="space-y-3">
-            <li><%= link_to "Cluster Headache Diary", cluster_headache_diary_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
-            <li><%= link_to "Diary Template", cluster_headache_diary_template_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
-            <li><%= link_to "Sample Report", sample_report_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
-            <li><%= link_to "For Neurology Visits", headache_diary_for_neurologist_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
-            <li><%= link_to "Oxygen Documentation", cluster_headache_oxygen_documentation_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
-            <li><%= link_to "Cluster Headache App", cluster_headache_app_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
-            <li><%= link_to "Open Source Tracker", open_source_headache_tracker_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
-            <li><%= link_to "FAQ", faq_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
-            <li><%= link_to "For Neurologists", neurologist_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
-            <li><%= link_to "View on GitHub", "https://github.com/crmne/cluster-headache-tracker", class: "link link-hover opacity-70 hover:opacity-100", target: "_blank", rel: "noopener noreferrer" %></li>
-            <li><%= link_to "Sponsor", "https://github.com/sponsors/crmne", class: "link link-hover opacity-70 hover:opacity-100", target: "_blank", rel: "noopener noreferrer" %></li>
+            <li><%= link_to t("layout.footer.diary"), cluster_headache_diary_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to t("layout.footer.diary_template"), cluster_headache_diary_template_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to t("layout.footer.sample_report"), sample_report_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to t("layout.footer.neurology_visits"), headache_diary_for_neurologist_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to t("layout.footer.oxygen_documentation"), cluster_headache_oxygen_documentation_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to t("layout.footer.app"), cluster_headache_app_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to t("layout.footer.open_source"), open_source_headache_tracker_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to t("layout.footer.faq"), faq_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to t("layout.footer.for_neurologists"), neurologist_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to t("layout.footer.github"), "https://github.com/crmne/cluster-headache-tracker", class: "link link-hover opacity-70 hover:opacity-100", target: "_blank", rel: "noopener noreferrer" %></li>
+            <li><%= link_to t("layout.footer.sponsor"), "https://github.com/sponsors/crmne", class: "link link-hover opacity-70 hover:opacity-100", target: "_blank", rel: "noopener noreferrer" %></li>
           </ul>
         </div>
         <div>
-          <h6 class="font-bold mb-4 opacity-50 uppercase tracking-wider text-xs">Apps</h6>
+          <h6 class="font-bold mb-4 opacity-50 uppercase tracking-wider text-xs"><%= t("layout.footer.apps") %></h6>
           <ul class="space-y-3">
             <li>
               <%= link_to "https://testflight.apple.com/join/GJsAQqz2", class: "link link-hover opacity-70 hover:opacity-100", target: "_blank", rel: "noopener noreferrer" do %>
-                iOS Beta
+                <%= t("layout.footer.ios_beta") %>
               <% end %>
             </li>
             <li>
               <%= link_to android_apk_url, class: "link link-hover opacity-70 hover:opacity-100", target: "_blank", rel: "noopener noreferrer" do %>
-                Android Beta
+                <%= t("layout.footer.android_beta") %>
               <% end %>
             </li>
           </ul>
 
-          <h6 class="font-bold mt-8 mb-4 opacity-50 uppercase tracking-wider text-xs">Legal</h6>
+          <h6 class="font-bold mt-8 mb-4 opacity-50 uppercase tracking-wider text-xs"><%= t("layout.footer.legal") %></h6>
           <ul class="space-y-3">
-            <li><%= link_to "Privacy Policy", privacy_policy_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
-            <li><%= link_to "Imprint", imprint_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to t("layout.footer.privacy_policy"), privacy_policy_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
+            <li><%= link_to t("layout.footer.imprint"), imprint_path, class: "link link-hover opacity-70 hover:opacity-100" %></li>
           </ul>
         </div>
       </div>
@@ -66,8 +65,12 @@
 
     <div class="flex flex-col sm:flex-row items-center justify-between mt-12 pt-8 border-t border-neutral-content/10 gap-4 text-sm opacity-60">
       <p>
-        © <%= Date.today.year %> <%= link_to "Carmine Paolino", "https://paolino.me", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %> · Open Source and Free
+        © <%= Date.current.year %> <%= link_to "Carmine Paolino", "https://paolino.me", class: "link link-hover", target: "_blank", rel: "noopener noreferrer" %> · <%= t("layout.footer.open_source_and_free") %>
       </p>
+      <nav class="flex flex-wrap items-center gap-3" aria-label="<%= t("layout.language_switcher.title") %>" id="language_switcher">
+        <%= heroicon "language", variant: "mini", class: "w-4 h-4" %>
+        <%= render "language_switcher", link_class: "link link-hover" %>
+      </nav>
       <div class="flex items-center gap-4">
         <%= link_to "https://github.com/crmne/cluster-headache-tracker", target: "_blank", rel: "noopener noreferrer", class: "hover:opacity-100 transition-opacity" do %>
           <%= icon "github", class: "fill-current", width: 20, height: 20 %>

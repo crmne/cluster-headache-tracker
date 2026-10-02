@@ -1,0 +1,163 @@
+es:
+  home:
+    author_box:
+      body: Padezco cefalea en racimos y mantengo Cluster Headache Tracker. Las explicaciones médicas de este sitio son informativas y enlazan a fuentes clínicas externas cuando corresponde. Solo indicaremos una revisión médica cuando un profesional sanitario haya revisado realmente la página.
+      signature_alt: Firma de Carmine Paolino
+      title: Creado por Carmine Paolino
+    cta:
+      body: Únete a más de %{users} personas que por fin tienen datos reales sobre sus crisis. Empezar lleva 30 segundos.
+      go_to_logs: Ir a mis registros
+      learn_more: Más información
+      start_tracking: Empieza gratis
+      title: Deja el papel. Empieza a encontrar respuestas.
+    devices:
+      android: App para Android (beta)
+      compare: Comparar las opciones de la app
+      everywhere: ¿Una crisis en el trabajo? Regístrala en el móvil. ¿En la cama a las 3 de la madrugada? Usa la tableta. ¿En la consulta del médico? Abre la versión web.
+      ios: App para iOS (beta)
+      sync: Todo se sincroniza al instante, así que puedes registrar rápido durante una crisis y completar los detalles después desde el dispositivo que te resulte más cómodo.
+      title: Úsalo en cualquier lugar.
+      web: App web
+    diary_template_table:
+      date: Fecha
+      duration: Duración
+      end: Fin
+      intensity: Intensidad
+      medication: Medicación u oxígeno
+      notes: Notas
+      response: Respuesta
+      start: Inicio
+      triggers: Desencadenantes
+    faq_section:
+      during_attack:
+        answer: SÍ. Un botón enorme. Un toque. Listo. Los detalles los añades después, cuando vuelvas a pensar con claridad. Lo diseñé en pleno periodo activo, así que sé lo que se puede hacer cuando no puedes pensar.
+        question: ¿Puedo registrar una crisis cuando casi no veo?
+      free:
+        answer: No hay trampa. Los servidores los pago yo. Las donaciones son opcionales y la herramienta seguirá siendo gratis de todos modos.
+        question: ¿De verdad es gratis? ¿Dónde está la trampa?
+      oxygen:
+        answer: Puede ayudarte a documentar con más claridad la frecuencia y la duración de las crisis y la respuesta al tratamiento. No puede garantizar una receta ni la cobertura de tu seguro.
+        question: ¿Me ayudará a conseguir oxigenoterapia?
+      privacy:
+        answer: Sin correo electrónico. Sin anuncios. Sin venta de datos. Las páginas públicas usan estadísticas agregadas que respetan la privacidad, pero tus registros de cefalea son privados.
+        question: ¿Y mi privacidad?
+      see_all: Ver todas las preguntas
+      title: Preguntas frecuentes.
+    features:
+      devices:
+        body: Beta para iOS, beta para Android y web. Empieza en un dispositivo y añade notas más tarde desde otro.
+        title: ¿Una crisis en el trabajo?
+      fast:
+        body: Un botón enorme. Lo tocas. Listo. Añade los detalles cuando vuelvas a ser tú.
+        title: No puedo pensar. Tengo que registrarlo. Ya.
+      patterns:
+        body: Gráficos que de verdad se entienden. Periodos activos, desencadenantes y todo lo demás de un vistazo.
+        title: ¿Dónde se esconde mi patrón?
+      privacy:
+        body: Sin correo. Sin anuncios. Sin venta de datos. Tus registros de cefalea son privados y se alojan en servidores en Alemania.
+        title: ¿Quién está mirando?
+      reports:
+        body: Informes profesionales que puedes imprimir, guardar en PDF o compartir mediante un enlace seguro, con gráficos y tablas claros.
+        title: ¿Me creerá el médico?
+      subtitle: Registro rápido, patrones claros, informes útiles y privacidad por defecto.
+      title: Lo que de verdad importa cuando el dolor aprieta.
+      trust:
+        body: No te vendo nada. Lo uso a diario. Es de código abierto. Creado por alguien que la padece y sabe lo que es.
+        title: ¿Por qué confiar en ti?
+    founder:
+      body: Llevo más de diez años lidiando con la cefalea en racimos. Creé esta herramienta en 2024, cuando estaba desesperado. Conozco las carreras a las 2 de la madrugada, las peleas por el oxígeno y los consejos inútiles. Cada función tiene que ser tan sencilla que se pueda usar durante una crisis real.
+      title: Esto no es una startup. Es una herramienta que yo necesitaba.
+    hero:
+      attacks_logged: crisis registradas
+      badges:
+        free_forever: Gratis para siempre
+        german_privacy: Privacidad alemana
+        no_email: Sin correo electrónico
+        one_tap: Registro con un toque
+      people_tracking: personas lo usan
+      start_tracking: Empieza gratis
+      subtitle: Registra una crisis con un solo toque, añade los detalles después y convierte tu historial en gráficos e informes listos para tu médico. Sin correo electrónico.
+      title: ¿Luchas contra la cefalea en racimos?
+      title_highlight: Llevar el registro no debería doler más.
+      video_title: Demostración de Cluster Headache Tracker
+    medical_disclaimer:
+      body: Cluster Headache Tracker te ayuda a registrar las crisis y a preparar informes para hablar con tu médico. No diagnostica, no trata, no receta ni sustituye la atención de un profesional sanitario cualificado.
+      title: Una herramienta de registro, no consejo médico
+    open_source:
+      open_source:
+        body: El código es público para que la comunidad pueda revisarlo, mejorarlo y mantenerlo vivo.
+        github: Ver en GitHub
+        title: Es de código abierto.
+        why: ¿Por qué código abierto?
+      sponsor:
+        body: "Pago los servidores de mi bolsillo. Si te ha servido, plantéate invitarme a un café. Sin presión: la herramienta sigue siendo gratis de todos modos."
+        button: Patrocinar
+        title: Ayuda a mantenerlo en marcha.
+    providers:
+      info_for_providers: Información para profesionales
+      memory: La cefalea en racimos es difícil de explicar de memoria. El tracker convierte cada crisis en un registro con fecha y hora, puntuación KIP, duración, medicación, desencadenantes y notas.
+      prepare_appointment: Preparar la consulta
+      sharing: Los pacientes pueden compartir un enlace seguro al informe, válido durante 30 días, con tablas, gráficos e historial de tratamiento. El profesional no necesita cuenta.
+      title: Datos claros para la consulta.
+    references:
+      title: Referencias
+    seo_cta:
+      body: Registra las crisis en segundos, mantén ordenados todos los detalles y convierte tu historial en informes para revisar con tu médico.
+      go_to_logs: Ir a mis registros
+      headline: Empieza un diario privado de cefalea en racimos
+      start_tracking: Empieza gratis
+      view_sample_report: Ver informe de ejemplo
+    seo_resources:
+      app:
+        body: Web, PWA, beta para iOS y beta para Android para registrar en plena crisis.
+        link: Ver opciones de la app
+        title: App para la cefalea en racimos
+      diary:
+        body: Qué anotar, por qué importan los horarios y cómo el tracker convierte las crisis en un historial útil.
+        link: Leer la guía
+        title: Diario de cefalea en racimos
+      neurology_visits:
+        body: Una guía para pacientes sobre cómo llevar a la consulta datos claros de tu diario de cefalea.
+        link: Preparar la visita
+        title: Para la consulta de neurología
+      oxygen:
+        body: Cómo un registro puede documentar la frecuencia de las crisis y la respuesta al tratamiento para hablar con tu médico.
+        link: Registrar la respuesta
+        title: Documentar la oxigenoterapia
+      sample_report:
+        body: Un informe público y ficticio con los gráficos, las tablas y el resumen reales, listo para la consulta.
+        link: Ver el informe
+        title: Informe de ejemplo
+      subtitle: Guías, plantillas e informes de ejemplo para convertir un historial de crisis dolorosas en algo más fácil de revisar.
+      template:
+        body: Plantilla imprimible con los campos de un diario de cefalea en racimos en papel.
+        link: Abrir la plantilla
+        title: Plantilla de diario
+      title: Recursos para registrar la cefalea en racimos
+    stats:
+      body: La mayoría de las apps para el dolor de cabeza las crean personas que nunca han tenido una cefalea en racimos. Yo creé esta durante un periodo activo. Cada función se probó en plena crisis. Si a las 3 de la madrugada con un KIP 10 no era lo bastante sencilla, se descartaba.
+      one_tap:
+        body: para registrar en pleno infierno. Añade los detalles cuando vuelvas a ser tú.
+        title: 1 toque
+      patterns:
+        body: Gráficos que muestran de verdad tus periodos activos, tus desencadenantes y la eficacia del tratamiento.
+        title: Tus patrones
+      real_data:
+        body: Informes claros para hablar con tu médico sobre el tratamiento.
+        title: Datos reales
+      title: Creado por alguien que la padece, para quienes la padecen.
+    testimonials:
+      charts:
+        author: Usuario del tracker
+        context: Le resultaron útiles los gráficos
+        quote_html: "«Has creado una auténtica obra maestra. Tenía una visión general estupenda y <strong>los gráficos eran mi función favorita</strong>. El vídeo también me ayudó a entender cómo funciona la app.»"
+      manual_tracker:
+        author: Antes llevaba el registro a mano
+        context: Necesitaba una forma más sencilla de llevar el registro
+        quote_html: "«BRAVO por desarrollar la idea. Parece que habría <strong>evitado muchos de los problemas</strong> que al final me hicieron abandonar mis propios intentos de llevar un registro.»"
+      oxygen:
+        author: Paciente con cefalea en racimos
+        context: Usó los informes con su neurólogo
+        quote_html: "«Uso tu web para registrar mis cefaleas y me ha sido <strong>increíblemente útil para que mi neurólogo me recetara oxígeno</strong>. Es fácil de usar y registra exactamente los datos que necesito.»"
+      subtitle: "El tracker está pensado para los momentos más duros: registrar rápido, encontrar patrones y mostrar datos claros cuando hay que decidir el tratamiento."
+      title: Lo dicen quienes lo necesitaban.

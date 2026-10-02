@@ -1,0 +1,163 @@
+de:
+  home:
+    author_box:
+      body: Ich bin selbst Clusterkopfschmerz-Patient und entwickle Cluster Headache Tracker. Die medizinischen Erklärungen auf dieser Website dienen der Information und verweisen, wo sinnvoll, auf externe klinische Quellen. Eine ärztliche Prüfung wird nur dann angegeben, wenn eine Ärztin oder ein Arzt die Seite tatsächlich geprüft hat.
+      signature_alt: Unterschrift von Carmine Paolino
+      title: Entwickelt von Carmine Paolino
+    cta:
+      body: Über %{users} Menschen haben mit dem Tracker endlich belastbare Daten zu ihren Attacken. Der Einstieg dauert 30 Sekunden.
+      go_to_logs: Zu meinen Einträgen
+      learn_more: Mehr erfahren
+      start_tracking: Kostenlos starten
+      title: Schluss mit Zettelwirtschaft. Zeit für Antworten.
+    devices:
+      android: Android-App (Beta)
+      compare: App-Optionen vergleichen
+      everywhere: Attacke bei der Arbeit? Erfassen Sie sie auf dem Smartphone. Um 3 Uhr nachts im Bett? Nehmen Sie das Tablet. In der Arztpraxis? Öffnen Sie einfach die Web-Version.
+      ios: iOS-App (Beta)
+      sync: Alles wird sofort synchronisiert. So erfassen Sie eine Attacke blitzschnell und ergänzen die Details später an dem Gerät, das gerade am bequemsten ist.
+      title: Überall nutzbar.
+      web: Web-App
+    diary_template_table:
+      date: Datum
+      duration: Dauer
+      end: Ende
+      intensity: Intensität
+      medication: Medikament oder Sauerstoff
+      notes: Notizen
+      response: Wirkung
+      start: Beginn
+      triggers: Auslöser
+    faq_section:
+      during_attack:
+        answer: JA. Ein riesiger Button. Einmal tippen. Fertig. Details tragen Sie nach, wenn Sie wieder klar denken können. Ich habe den Tracker mitten in einer Clusterperiode entwickelt und weiß, was geht, wenn gar nichts mehr geht.
+        question: Kann ich während einer Attacke erfassen, obwohl ich kaum etwas sehe?
+      free:
+        answer: Es gibt keinen Haken. Die Server bezahle ich selbst. Spenden sind freiwillig, der Tracker bleibt so oder so kostenlos.
+        question: Ist das wirklich kostenlos? Wo ist der Haken?
+      oxygen:
+        answer: Der Tracker hilft Ihnen, Häufigkeit, Dauer und Behandlungserfolg Ihrer Attacken klarer zu dokumentieren. Ein Rezept oder eine Kostenübernahme durch die Krankenkasse kann er nicht versprechen.
+        question: Hilft das beim Gespräch über eine Sauerstofftherapie?
+      privacy:
+        answer: Keine E-Mail-Adresse nötig. Keine Werbung. Kein Verkauf von Daten. Die öffentlichen Seiten nutzen datenschutzfreundliche, anonyme Statistiken, Ihre Kopfschmerz-Einträge bleiben privat.
+        question: Was ist mit meinem Datenschutz?
+      see_all: Alle Fragen ansehen
+      title: Häufige Fragen.
+    features:
+      devices:
+        body: iOS-Beta, Android-Beta und Web. Auf einem Gerät starten, Notizen später auf einem anderen ergänzen.
+        title: Attacke bei der Arbeit?
+      fast:
+        body: Ein riesiger Button. Antippen. Fertig. Details ergänzen Sie, wenn Sie wieder klar denken können.
+        title: Kein klarer Gedanke. Muss trotzdem erfassen. Sofort.
+      patterns:
+        body: Diagramme, die wirklich verständlich sind. Clusterperioden, Auslöser und alles Weitere auf einen Blick.
+        title: Wo versteckt sich mein Muster?
+      privacy:
+        body: Keine E-Mail. Keine Werbung. Kein Datenverkauf. Ihre Kopfschmerz-Einträge bleiben privat, gehostet in Deutschland.
+        title: Wer schaut mit?
+      reports:
+        body: Professionelle Berichte zum Ausdrucken, als PDF oder per sicherem Link teilbar, mit übersichtlichen Diagrammen und Tabellen.
+        title: Wird mir in der Praxis geglaubt?
+      subtitle: Schnelles Erfassen, klare Muster, hilfreiche Berichte und Datenschutz von Anfang an.
+      title: Worauf es ankommt, wenn der Schmerz zuschlägt.
+      trust:
+        body: Ich verkaufe nichts. Ich nutze den Tracker selbst jeden Tag. Open Source. Gebaut von einem Betroffenen, der weiß, wie es sich anfühlt.
+        title: Warum sollte ich Ihnen vertrauen?
+    founder:
+      body: Ich lebe seit über zehn Jahren mit Clusterkopfschmerzen. 2024 habe ich diesen Tracker aus purer Verzweiflung gebaut. Ich kenne das hektische Suchen um 2 Uhr nachts, den Kampf um Sauerstoff und die nutzlosen Ratschläge. Jede Funktion muss so einfach sein, dass man sie mitten in einer echten Attacke bedienen kann.
+      title: Das ist kein Start-up. Es ist ein Werkzeug, das ich selbst gebraucht habe.
+    hero:
+      attacks_logged: erfasste Attacken
+      badges:
+        free_forever: Für immer kostenlos
+        german_privacy: Deutscher Datenschutz
+        no_email: Keine E-Mail nötig
+        one_tap: Erfassen mit einem Tipp
+      people_tracking: Nutzerinnen und Nutzer
+      start_tracking: Kostenlos starten
+      subtitle: Erfassen Sie eine Attacke mit einem Tipp, ergänzen Sie Details später und machen Sie aus Ihrem Verlauf Diagramme und Berichte für Ihre Ärztin oder Ihren Arzt. Ohne E-Mail-Adresse.
+      title: Sie kämpfen mit Clusterkopfschmerzen?
+      title_highlight: Das Tagebuchführen sollte nicht zusätzlich quälen.
+      video_title: Cluster Headache Tracker – Demo
+    medical_disclaimer:
+      body: Cluster Headache Tracker hilft Ihnen, Attacken festzuhalten und Berichte für das Arztgespräch vorzubereiten. Er stellt keine Diagnosen, behandelt nicht, verschreibt nichts und ersetzt keine Versorgung durch qualifiziertes medizinisches Fachpersonal.
+      title: Ein Dokumentationswerkzeug, keine medizinische Beratung
+    open_source:
+      open_source:
+        body: Der Code ist öffentlich, damit die Community den Tracker prüfen, verbessern und am Leben halten kann.
+        github: Auf GitHub ansehen
+        title: Es ist Open Source.
+        why: Warum Open Source?
+      sponsor:
+        body: Die Server bezahle ich aus eigener Tasche. Wenn Ihnen der Tracker geholfen hat, freue ich mich über einen Kaffee. Aber ganz ohne Druck – das Tool bleibt so oder so kostenlos.
+        button: Unterstützen
+        title: Helfen Sie, den Betrieb zu sichern.
+    providers:
+      info_for_providers: Infos für Fachpersonal
+      memory: Clusterkopfschmerzen lassen sich aus dem Gedächtnis kaum beschreiben. Der Tracker macht aus Attacken Einträge mit Uhrzeit, KIP-Wert, Dauer, Medikamenten, Auslösern und Notizen.
+      prepare_appointment: Arzttermin vorbereiten
+      sharing: Patientinnen und Patienten können einen sicheren Berichtslink für 30 Tage teilen – mit Tabellen, Diagrammen und Behandlungsverlauf. Die Praxis braucht dafür kein Konto.
+      title: Saubere Daten für den Arzttermin.
+    references:
+      title: Quellen
+    seo_cta:
+      body: Erfassen Sie Attacken in Sekunden, halten Sie alle Details geordnet fest und machen Sie aus Ihrem Verlauf Berichte, die Sie mit Ihrer Ärztin oder Ihrem Arzt besprechen können.
+      go_to_logs: Zu meinen Einträgen
+      headline: Starten Sie Ihr privates Clusterkopfschmerz-Tagebuch
+      start_tracking: Kostenlos starten
+      view_sample_report: Beispielbericht ansehen
+    seo_resources:
+      app:
+        body: Web, PWA, iOS-Beta und Android-Beta – zum Erfassen direkt während der Attacke.
+        link: App-Optionen ansehen
+        title: Clusterkopfschmerz-App
+      diary:
+        body: Was Sie festhalten sollten, warum die Uhrzeit so wichtig ist und wie der Tracker aus Attacken einen aussagekräftigen Verlauf macht.
+        link: Ratgeber lesen
+        title: Clusterkopfschmerz-Tagebuch
+      neurology_visits:
+        body: Ein Ratgeber für Patientinnen und Patienten, wie Sie aussagekräftige Kopfschmerztagebuch-Daten zum Termin mitbringen.
+        link: Termin vorbereiten
+        title: Für den Neurologie-Termin
+      oxygen:
+        body: Wie ein Tagebuch Attackenhäufigkeit und Wirkung der Behandlung für das Arztgespräch dokumentiert.
+        link: Wirkung dokumentieren
+        title: Sauerstofftherapie dokumentieren
+      sample_report:
+        body: Ein fiktiver, öffentlicher Bericht mit den echten Diagrammen, Tabellen und einer Zusammenfassung für den Arzttermin.
+        link: Bericht ansehen
+        title: Beispielbericht
+      subtitle: Ratgeber, Vorlagen und Beispielberichte, die aus einem schmerzhaften Attackenverlauf etwas machen, das sich leichter auswerten lässt.
+      template:
+        body: Druckbare Vorlage mit allen Feldern für ein Clusterkopfschmerz-Tagebuch auf Papier.
+        link: Vorlage öffnen
+        title: Tagebuch-Vorlage
+      title: Hilfen zur Dokumentation von Clusterkopfschmerzen
+    stats:
+      body: Die meisten Kopfschmerz-Apps stammen von Menschen, die nie einen Clusterkopfschmerz hatten. Ich habe diese hier während einer Clusterperiode gebaut. Jede Funktion wurde mitten in einer Attacke getestet. Was um 3 Uhr nachts bei KIP 10 nicht einfach genug war, ist rausgeflogen.
+      one_tap:
+        body: genügt, um mitten in der Hölle zu erfassen. Details ergänzen Sie, wenn Sie wieder klar denken können.
+        title: 1 Tipp
+      patterns:
+        body: Diagramme, die Ihre Clusterperioden, Auslöser und die Wirksamkeit der Behandlung wirklich zeigen.
+        title: Ihre Muster
+      real_data:
+        body: Saubere Berichte für Gespräche über Diagnose und Behandlung.
+        title: Echte Daten
+      title: Von einem Betroffenen, für Betroffene.
+    testimonials:
+      charts:
+        author: Nutzer des Trackers
+        context: Fand die Diagramme besonders hilfreich
+        quote_html: "„Da ist dir wirklich ein Meisterwerk gelungen. Ich hatte einen tollen Überblick, und <strong>die Diagramme waren meine Lieblingsfunktion</strong>. Das Video hat mir auch geholfen zu verstehen, wie die App funktioniert.“"
+      manual_tracker:
+        author: Hat früher von Hand Buch geführt
+        context: Brauchte eine einfachere Art, Aufzeichnungen zu führen
+        quote_html: "„BRAVO für dieses Konzept. Diese Idee hätte wohl <strong>viele der Probleme verhindert</strong>, wegen derer ich meine eigenen Aufzeichnungen am Ende aufgegeben habe.“"
+      oxygen:
+        author: Clusterkopfschmerz-Patient
+        context: Hat die Berichte mit dem Neurologen genutzt
+        quote_html: "„Ich nutze deine Seite als Kopfschmerztagebuch, und sie war <strong>unglaublich hilfreich, um bei meinem Neurologen Sauerstoff verschrieben zu bekommen</strong>. Sie ist einfach zu bedienen und erfasst genau die Daten, die ich brauche.“"
+      subtitle: "Der Tracker ist für die schmerzhaften Momente gemacht: schnell erfassen, Muster erkennen und saubere Daten vorlegen, wenn es um Behandlungsentscheidungen geht."
+      title: Erfahrungen von Menschen, die ihn gebraucht haben.

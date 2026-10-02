@@ -1,0 +1,66 @@
+es:
+  activerecord:
+    attributes:
+      user:
+        current_password: Contraseña actual
+        locale: Idioma
+        password: Contraseña
+        password_confirmation: Confirmación de contraseña
+        time_format: Formato de hora
+        username: Nombre de usuario
+  auth:
+    mailer:
+      reset_password_instructions:
+        action: Cambiar mi contraseña
+        greeting: "¡Hola, %{username}!"
+        ignore: Si no lo has solicitado, ignora este correo.
+        requested: Alguien ha solicitado un enlace para cambiar tu contraseña. Puedes hacerlo con el siguiente enlace.
+        unchanged: Tu contraseña no cambiará hasta que abras el enlace de arriba y crees una nueva.
+    passwords:
+      edit:
+        confirm_new_password: Confirmar nueva contraseña
+        new_password: Nueva contraseña
+        submit: Cambiar contraseña
+        title: Cambia tu contraseña
+      new:
+        heading: "¿Olvidaste tu contraseña?"
+        notice_body: Para proteger la privacidad de tus datos médicos, no guardamos direcciones de correo electrónico. Si no puedes acceder a tu cuenta, crea una nueva.
+        notice_title: Aviso importante de privacidad
+        subtitle: No guardamos tu dirección de correo electrónico.
+        title: "¿Olvidaste tu contraseña?"
+    registrations:
+      edit:
+        current_password: Contraseña actual
+        delete_account: Eliminar mi cuenta
+        delete_confirmation: "¿Estás seguro?"
+        leave_blank: déjala en blanco para no cambiarla
+        submit: Guardar
+        subtitle: Actualiza tu nombre de usuario o tu contraseña
+        title: Editar cuenta
+        unhappy: "¿No estás contento?"
+      new:
+        already_have_account: "¿Ya tienes una cuenta?"
+        no_email_html: "<strong>Sin correo electrónico</strong>: solo elige un nombre de usuario para empezar."
+        privacy_title: Privacidad desde el diseño
+        remember_password_html: "<strong>Recuerda tu contraseña</strong>: si la pierdes, se pierde para siempre. No podemos recuperarla porque no guardamos tu correo."
+        submit: Empieza gratis
+        subtitle: Crea una cuenta privada, solo con nombre de usuario
+        title: Empieza gratis
+    sessions:
+      new:
+        heading: Bienvenido de nuevo
+        no_account: "¿No tienes una cuenta?"
+        remember_me: Recordarme
+        subtitle: Inicia sesión para seguir registrando tus cefaleas
+        title: Inicia sesión en tu cuenta
+    shared:
+      create_account: Crear una cuenta nueva
+      form_footer: "©%{year} Carmine Paolino. Todos los derechos reservados."
+      minimum_password_length:
+        one: mínimo %{count} carácter
+        other: mínimo %{count} caracteres
+      password: Contraseña
+      password_confirmation: Confirmar contraseña
+      sign_in: Iniciar sesión
+      sign_up: Registrarse
+      username: Nombre de usuario

@@ -1,0 +1,206 @@
+es:
+  home:
+    cluster_headache_diary:
+      appointments:
+        body: Los diarios de cefalea se recomiendan a menudo porque facilitan revisar la frecuencia, la duración, la intensidad, los desencadenantes y la respuesta al tratamiento. En la cefalea en racimos, los horarios son especialmente importantes, ya que las crisis suelen repetirse siguiendo patrones reconocibles.
+        heading: Por qué ayuda antes de las consultas
+      cards:
+        neurology:
+          body: Lleva un historial estructurado de tus crisis en lugar de intentar reconstruir un brote de memoria.
+          heading: Prepara la consulta de neurología
+          link: Preparar consulta
+        oxygen:
+          body: Documenta cuándo usaste oxígeno, cuánto tardó y si notaste alivio.
+          heading: Registra la respuesta al oxígeno
+          link: Registrar respuesta
+        sample_report:
+          body: Mira en qué puede convertirse tu diario tras unas semanas de registro.
+          heading: Ver un informe de ejemplo
+          link: Ver informe
+      eyebrow: Diario de cefalea en racimos
+      fast:
+        body: Un diario de cefalea genérico espera que escribas con calma justo cuando menos puedes hacerlo. Cluster Headache Tracker empieza con el registro de la crisis con un solo toque. El temporizador captura primero el episodio y después, cuando la crisis haya pasado, puedes añadir el resto.
+        heading: Por qué un diario de cefalea en racimos tiene que ser rápido
+      get_template: Descargar la plantilla
+      heading: Diario gratuito de cefalea en racimos
+      intro: 'Anota los detalles que luego cuesta recordar: hora de inicio, hora de fin, duración, intensidad según la escala KIP, medicación, respuesta al oxígeno, desencadenantes y notas.'
+      records:
+        heading: Qué registra el diario
+        intensity: Intensidad del 1 al 10 según la escala KIP
+        medication: Medicación, uso de oxígeno y notas sobre la respuesta al tratamiento
+        reports: Gráficos e informes imprimibles para tus consultas
+        symptoms: Lado, localización, síntomas y notas libres
+        times: Hora de inicio y fin de cada crisis, con cálculo automático de la duración
+        triggers: Desencadenantes o contexto, como interrupción del sueño, alcohol o cambios de tiempo
+      references:
+        cluster_headache: Información general sobre cómo se agrupan, cuánto duran y cómo reaparecen las crisis de cefalea en racimos (en inglés).
+        harvard_health: Un diario de cefalea puede recoger frecuencia, duración, intensidad, desencadenantes y respuesta a la medicación (en inglés).
+        tracking_diaries: Llevar un registro ayuda a comunicarse con los profesionales sanitarios y a valorar si un tratamiento funciona (en inglés).
+      sample:
+        body: El informe de ejemplo público usa las mismas estadísticas, gráficos y tabla de registros que los informes privados.
+        heading: Mira en qué se convierte tu diario
+        view_sample_report: Ver informe de ejemplo
+      start_tracking: Empieza gratis
+    cluster_headache_diary_template:
+      app_vs_paper:
+        body: Al principio el papel puede servir, pero las crisis de cefalea en racimos suelen ser demasiado intensas para escribir a mano. La aplicación mantiene los mismos campos del diario y añade el registro con un toque, el cálculo automático de la duración, gráficos, exportación y enlaces temporales al informe para tu médico.
+        heading: Cuándo la aplicación es más cómoda que el papel
+      cta_headline: Pasa del diario en papel al registro con un toque
+      eyebrow: Plantilla imprimible
+      heading: Plantilla de diario de cefalea en racimos
+      intro: Un diario de cefalea en racimos sencillo para imprimir y rellenar en papel. Úsalo por sí solo si necesitas algo sin conexión, o empieza en la aplicación cuando quieras gráficos e informes para compartir.
+      print_fields: Fecha, hora de inicio, hora de fin, duración, intensidad, tratamiento, respuesta, desencadenantes y notas.
+      print_heading: Plantilla de diario de cefalea en racimos
+      print_template: Imprimir plantilla
+      references:
+        harvard_health: Algunos campos habituales son inicio, fin, intensidad, medicación y respuesta (en inglés).
+        tracking_diaries: Las plantillas de diario suelen recoger frecuencia, duración, síntomas, medicación y desencadenantes (en inglés).
+      sheet:
+        body: La tabla es deliberadamente sencilla para que se imprima bien y deje espacio para notas durante un brote difícil.
+        heading: Hoja de diario imprimible
+      start_tracking: Empieza gratis
+    faq:
+      about:
+        causes:
+          answer: 'La cefalea en racimos es un trastorno neurológico y sus mecanismos exactos aún no se conocen del todo. Lo que importa en la práctica: las crisis no son un defecto de carácter ni una cuestión de fuerza de voluntad. Un especialista en cefaleas puede confirmar el diagnóstico y hablar contigo de las opciones de tratamiento agudo y preventivo.'
+          question: "¿Qué la causa?"
+        heading: "🧠 Sobre la cefalea en racimos"
+        migraines:
+          answer: Con la migraña quieres tumbarte en una habitación a oscuras. Con la cefalea en racimos quieres darte cabezazos contra la pared. Las crisis son más cortas, pero muchísimo más intensas. No puedes quedarte quieto; caminas de un lado a otro, te balanceas y a veces gritas.
+          question: "¿En qué se diferencia de la migraña?"
+        what_are:
+          answer: Imagina que alguien te clava un hierro al rojo vivo en la cuenca del ojo durante entre 15 minutos y 3 horas. Las crisis llegan por ciclos, a menudo a la misma hora cada día. Hay quien la llama "cefalea suicida"; quien ha tenido una crisis entiende por qué.
+          question: "¿Qué es la cefalea en racimos?"
+      back_to_logs: Volver a mis registros
+      heading: "Preguntas frecuentes 🤔"
+      privacy:
+        export:
+          answer: Sí. Descarga todo en CSV cuando quieras. Tus datos son tuyos.
+          question: "¿Puedo exportar mis datos?"
+        heading: "🔒 Privacidad y seguridad"
+        no_email:
+          answer: Porque a las 3 de la madrugada, desesperado, no necesitas otro restablecimiento de contraseña. Elige un nombre de usuario y empieza. ¿Olvidaste la contraseña? Lo siento, es el precio de una privacidad real.
+          question: "¿Por qué no hace falta correo electrónico?"
+        private:
+          answer: Sí. Sin correo electrónico, sin anuncios y sin venta de datos. Las páginas públicas usan estadísticas agregadas que respetan la privacidad, pero tus registros de cefalea son privados y se almacenan en Alemania. Lo creé para nosotros, no para recopilar datos.
+          question: "¿Mis datos son realmente privados?"
+      references:
+        mayo_clinic: Resumen clínico del diagnóstico, los síntomas y las opciones de tratamiento (en inglés).
+        tracking_diaries: Recurso para pacientes sobre por qué un diario de cefalea ayuda en las consultas (en inglés).
+        who: Panorama de los trastornos de cefalea, incluidas las características y la prevalencia de la cefalea en racimos (en inglés).
+      start_tracking: Empieza gratis
+      subheading: Respuestas sinceras de alguien que lo entiende
+      support:
+        bug:
+          answer_html: Cuéntamelo en %{github_link}. Lo arreglo rápido porque yo también uso esta herramienta.
+          question: "¿Encontraste un error?"
+        feature:
+          answer: Pídela en GitHub. Si ayuda a registrar mejor la cefalea en racimos, probablemente la haré. Las mejores funciones vienen de quienes entienden de verdad el dolor.
+          question: "¿Quieres una nueva función?"
+        free:
+          answer: Sí. Yo pago los servidores. Las donaciones son opcionales. Es una herramienta que yo necesitaba; ahora la tenemos todos.
+          question: "¿De verdad es gratis?"
+        heading: "🛠️ Soporte y desarrollo"
+      tracker:
+        different:
+          answer: Hecho por alguien que la padece, para quienes la padecen. Registro con un toque durante las crisis. Gráficos que muestran patrones reales. Informes que puedes imprimir, exportar o compartir con tu médico. Sin anuncios y sin correo electrónico.
+          question: "¿Qué lo hace diferente?"
+        heading: "📱 Sobre esta aplicación"
+        how_to_start:
+          answer: Regístrate solo con un nombre de usuario (sin correo electrónico). Cuando empiece una crisis, pulsa el botón grande para registrarla. Eso es todo. Añade los detalles después, cuando te encuentres mejor.
+          question: "¿Cómo empiezo?"
+        why_built:
+          answer: 'Lo probé todo: diarios en papel, hojas de cálculo, otras aplicaciones. Nada funcionaba cuando tenía dolor. Así que creé lo que necesitaba: algo rápido, sencillo y realmente útil para conseguir que me aprobaran un tratamiento.'
+          question: "¿Por qué lo creaste?"
+      using:
+        during_attack:
+          answer: SÍ. Botón enorme. Un toque. Listo. Añade los detalles después, cuando vuelvas a ser tú. Lo diseñé en pleno brote, así que sé lo que se puede hacer cuando no puedes pensar.
+          question: "¿Puedo registrar durante una crisis?"
+        heading: "🎯 Usar la aplicación"
+        phone:
+          answer: Sí. Hay app para iOS, app para Android y versión web. Todo se sincroniza. Empieza en el móvil durante una crisis y añade notas después desde el ordenador.
+          question: "¿Funciona en mi móvil?"
+        share:
+          answer: Genera un enlace seguro válido durante 30 días que muestra a tu médico un informe de solo lectura, con tablas de cada crisis, gráficos de tus patrones y notas sobre medicación u oxígeno. No necesita iniciar sesión. También puedes imprimir los informes o guardarlos como PDF.
+          question: "¿Cómo lo comparto con mi médico?"
+    headache_diary_for_neurologist:
+      clinicians:
+        body_html: El informe contiene datos introducidos por el paciente. Su objetivo es facilitar la revisión de la historia clínica, no establecer un diagnóstico. Hay información para profesionales en la %{neurologist_page_link}.
+        heading: Para profesionales que revisan el informe
+        neurologist_page: página para neurólogos
+      cta_headline: Crea un informe antes de tu próxima consulta
+      eyebrow: Diario de cefalea listo para el médico
+      fields:
+        export: Exportación CSV o informe imprimible para la historia clínica
+        heading: Los datos que suelen importar
+        intensity: Intensidad según la escala KIP y si la crisis te despertó
+        symptoms: Lado afectado, localización del dolor, síntomas autonómicos y notas
+        timing: Fecha, hora de inicio, hora de fin y duración de la crisis
+        treatment: Medicación, oxígeno, dosis o duración y respuesta
+        triggers: Posibles desencadenantes o contexto
+      heading: Diario de cefalea para la consulta de neurología
+      intro: 'Dale a tu neurólogo un registro estructurado de lo ocurrido: cuándo empezaron las crisis, cuánto duraron, qué intensidad tuvieron, qué usaste y si te ayudó.'
+      preview:
+        body: El informe de ejemplo público se genera con los mismos componentes que los informes privados de los pacientes.
+        heading: Vista previa del informe para la consulta
+      references:
+        mayo_clinic: El diagnóstico se basa en la descripción del dolor, su gravedad, los síntomas, la frecuencia y la duración (en inglés).
+        tracking_diaries: Un diario puede facilitar una comunicación más clara y la revisión del tratamiento (en inglés).
+      reports:
+        body: La aplicación convierte tus registros en un informe claro con cifras resumidas, gráficos y entradas detalladas. Puedes imprimirlo, guardarlo como PDF desde el navegador, exportarlo en CSV o crear un enlace temporal de solo lectura.
+        heading: Por qué un informe es mejor que notas sueltas
+      start_tracking: Empezar ahora
+      view_sample_report: Ver informe de ejemplo
+      what_to_bring:
+        body: Explicar de memoria el historial de la cefalea en racimos es difícil, sobre todo tras semanas de sueño interrumpido. Un buen diario ofrece a tu médico una visión compacta de la frecuencia, la duración, la intensidad y los horarios de las crisis, y de la respuesta al tratamiento.
+        heading: Qué llevar a la consulta
+    neurologist:
+      contact:
+        built_by: Hecho con cariño (y dolor) por Carmine Paolino, que padece cefalea en racimos y necesitaba mejores herramientas.
+        questions: "¿Preguntas? Respondo personalmente a cada correo:"
+      data:
+        attack:
+          intensity: Intensidad del dolor en la escala habitual del 1 al 10
+          medications: Medicación tomada y su eficacia
+          side: Lado afectado y localización del dolor
+          times: Horas exactas de inicio y fin con cálculo automático de la duración
+          triggers: Desencadenantes y síntomas asociados
+        attack_includes: 'Cada crisis incluye:'
+        heading: "📊 Los datos que de verdad necesitas"
+        reports:
+          circadian: Análisis del ritmo circadiano
+          cluster_periods: Identificación y duración de los periodos activos
+          frequency: Patrones de frecuencia de las crisis (diaria/semanal/mensual)
+          medication_history: Historial completo de medicación
+          treatment_response: Tasas de respuesta al tratamiento
+        reports_show: 'Los informes muestran:'
+      friction:
+        for_patients: Registro solo con nombre de usuario. Sin correo. Empiezan a registrar al momento.
+        for_patients_label: 'Para los pacientes:'
+        for_you: Abre su enlace. Consulta los datos. Sin necesidad de cuenta.
+        for_you_label: 'Para ti:'
+        heading: "⚡ Cero complicaciones"
+        thats_it: Eso es todo. Sin procesos de alta complejos. Sin contratos con proveedores. Sin depender del departamento de informática.
+      heading: "Para neurólogos 👨‍⚕️"
+      intro: Una herramienta de registro creada por un paciente con cefalea en racimos, cansado de diarios en papel que nadie lee.
+      privacy:
+        heading: "🔒 La privacidad, primero"
+        no_tracking: No recopilamos correos. Sin píxeles de seguimiento. Sin anuncios. Datos cifrados y almacenados en Alemania. Lo creé para otras personas que la padecen, no para recopilar datos.
+        ownership: Los datos son de los pacientes, que pueden exportarlo todo en CSV cuando quieran. Cuando los comparten contigo, el acceso es temporal (30 días) y de solo lectura.
+      sharing:
+        charts: Gráficos con los patrones de las crisis, la evolución de la frecuencia y el ritmo circadiano
+        feedback: Varios pacientes me han contado que estos informes les ayudaron a hablar de su tratamiento, porque la documentación era más clara que unas notas manuscritas sueltas.
+        heading: "🔗 Cómo comparten los datos tus pacientes"
+        intro_html: 'Durante la consulta, el paciente genera un enlace seguro. Lo abres, sin iniciar sesión, y ves al instante <strong>informes claros y profesionales</strong> con:'
+        medication_graphs: Gráficos de eficacia de la medicación que comparan los tratamientos
+        print: Datos ordenados que puedes imprimir directamente o guardar como PDF
+        tables: Tablas completas de cada crisis con hora, duración e intensidad
+      subheading: Por fin tus pacientes tienen buenos datos
+      tell_patients:
+        heading: "📢 Díselo a tus pacientes"
+        just_say_html: 'Basta con decir: <strong>"Registra tus crisis en clusterheadachetracker.com"</strong>'
+        result: Eso es todo. Cuando vuelvan, traerán datos reales en lugar de recuerdos vagos.
+      why:
+        during_attack: Los pacientes registran aquí sus crisis porque funciona de verdad en plena crisis. Un botón enorme. Un toque. Listo. Pueden añadir los detalles después, cuando ya no se retuercen de dolor.
+        heading: "🎯 Por qué tus pacientes la usan"
+        simple: Sin formularios complicados. Sin botones diminutos. Sin campos obligatorios en los que no se puede pensar a las 3 de la madrugada. Solo un registro rápido y sencillo de lo que importa.

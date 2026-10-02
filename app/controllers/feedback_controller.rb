@@ -32,9 +32,9 @@ class FeedbackController < ApplicationController
   def destroy
     @feedback_survey = current_user.feedback_survey
     if @feedback_survey&.destroy
-      redirect_to new_feedback_path, notice: "Previous feedback deleted. You can now submit new feedback."
+      redirect_to new_feedback_path, notice: t(".deleted")
     else
-      redirect_to thank_you_feedback_path, alert: "Unable to delete feedback."
+      redirect_to thank_you_feedback_path, alert: t(".failed")
     end
   end
 
@@ -58,7 +58,7 @@ class FeedbackController < ApplicationController
 
   def check_existing_survey
     if current_user.feedback_survey.present?
-      redirect_to thank_you_feedback_path, notice: "You've already submitted your feedback. Thank you!"
+      redirect_to thank_you_feedback_path, notice: t("feedback.already_submitted")
     end
   end
 end

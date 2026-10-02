@@ -4,6 +4,7 @@ module Localization
   included do
     around_action :switch_locale
     before_action :set_current_user
+    helper_method :accept_language_locale
   end
 
   private

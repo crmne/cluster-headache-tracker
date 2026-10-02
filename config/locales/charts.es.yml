@@ -1,0 +1,55 @@
+es:
+  charts:
+    index:
+      new: Nuevo
+      title: Gráficos
+  js:
+    charts:
+      attacks_per_day:
+        label: Número de crisis
+        title: Crisis por día
+      date: Fecha
+      duration:
+        axis: Duración (horas)
+        label: Duración de la crisis
+        tooltip:
+          date: 'Fecha: %{date}'
+          duration: 'Duración: %{duration}'
+          intensity: 'Intensidad: %{intensity}/10'
+      hourly:
+        average_intensity: Intensidad media
+        average_intensity_short: Intensidad media
+        frequency: Frecuencia
+        time_of_day: Hora del día
+        title: Frecuencia e intensidad según la hora del día
+      intensity:
+        label: Intensidad del dolor
+      medications:
+        title: Los 5 medicamentos más usados
+      triggers:
+        title: Los 5 desencadenantes más frecuentes
+  shared:
+    charts:
+      attacks_per_day:
+        no_data: No hay datos de crisis
+        title: Crisis por día
+      clear_filters: Quitar filtros
+      duration:
+        no_data: No hay datos de duración
+        title: Duración de las crisis a lo largo del tiempo
+      first_log_hint_html: Toca %{new} para registrar tu primera crisis
+      hourly:
+        no_data: No hay datos por hora
+        title: Frecuencia e intensidad según la hora del día
+      intensity:
+        no_data: No hay datos de intensidad
+        title: Intensidad del dolor a lo largo del tiempo
+      medications:
+        no_data: No hay datos de medicación
+        title: Los 5 medicamentos más usados
+      new: Nuevo
+      no_data: Todavía no hay datos para los gráficos
+      no_matches: Ninguna crisis coincide con tus filtros
+      triggers:
+        no_data: No hay datos de desencadenantes
+        title: Los 5 desencadenantes más frecuentes

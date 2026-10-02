@@ -4,6 +4,7 @@ en:
       long_date: "%B %-d, %Y"
       short_date: "%b %-d, %Y"
   time:
+    am: AM
     formats:
       date_and_time_12h: "%b %-d, %Y · %-I:%M %p"
       date_and_time_24h: "%b %-d, %Y · %H:%M"
@@ -15,3 +16,4 @@ en:
       short_date: "%b %-d, %Y"
       time_12h: "%-I:%M %p"
       time_24h: "%H:%M"
+    pm: PM

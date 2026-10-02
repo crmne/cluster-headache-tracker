@@ -1,0 +1,206 @@
+en:
+  home:
+    cluster_headache_diary:
+      appointments:
+        body: Headache diaries are commonly recommended because they make frequency, duration, intensity, triggers, and treatment response easier to review. For cluster headache, timing can be especially important because attacks often repeat in recognizable patterns.
+        heading: Why this helps before appointments
+      cards:
+        neurology:
+          body: Bring structured attack history instead of trying to reconstruct a cycle from memory.
+          heading: Prepare for neurology
+          link: Prepare Visit
+        oxygen:
+          body: Document when oxygen was used, how long it took, and whether relief was recorded.
+          heading: Track oxygen response
+          link: Track Response
+        sample_report:
+          body: Preview what your diary can become after a few weeks of tracking.
+          heading: See a sample report
+          link: View Report
+      eyebrow: Cluster headache diary
+      fast:
+        body: A generic headache diary often expects careful typing at the exact moment you are least able to do it. Cluster Headache Tracker starts with one-tap attack logging. The timer captures the event first, then you can add the rest after the attack passes.
+        heading: Why a cluster headache diary needs to be fast
+      get_template: Get the Template
+      heading: Free cluster headache diary and tracker
+      intro: 'Record the details that are hard to remember later: start time, end time, duration, KIP-style intensity, medication, oxygen response, triggers, and notes.'
+      records:
+        heading: What the diary records
+        intensity: KIP-style 1-10 intensity
+        medication: Medication, oxygen use, and treatment response notes
+        reports: Charts and printable reports for appointments
+        symptoms: Side, location, symptoms, and free-form notes
+        times: Attack start and end times, including automatic duration
+        triggers: Triggers or context such as sleep disruption, alcohol, or weather
+      references:
+        cluster_headache: Overview of cluster headache attack grouping, duration, and recurrence.
+        harvard_health: Headache diaries can capture frequency, duration, intensity, triggers, and medication response.
+        tracking_diaries: Tracking can help people communicate with healthcare providers and evaluate whether treatments are working.
+      sample:
+        body: The public sample report uses the same stats, charts, and log table that private reports use.
+        heading: See what the diary becomes
+        view_sample_report: View Sample Report
+      start_tracking: Start Free Tracking
+    cluster_headache_diary_template:
+      app_vs_paper:
+        body: Paper can work when you are starting out, but cluster headache attacks are often too intense for handwriting. The app keeps the same core diary fields while adding one-tap logging, automatic duration, charts, export, and temporary report links for clinicians.
+        heading: When the app is easier than paper
+      cta_headline: Move from a paper diary to one-tap tracking
+      eyebrow: Printable template
+      heading: Cluster headache diary template
+      intro: A simple printable cluster headache diary for paper tracking. Use it on its own if you need something offline, or start in the app when you want charts and shareable reports.
+      print_fields: Date, start time, end time, duration, intensity, treatment, response, triggers, and notes.
+      print_heading: Cluster Headache Diary Template
+      print_template: Print Template
+      references:
+        harvard_health: Example diary fields include onset, resolution, intensity, medication, and response.
+        tracking_diaries: Diary templates commonly track frequency, duration, symptoms, medications, and triggers.
+      sheet:
+        body: The table is intentionally plain so it prints cleanly and leaves room for notes during a difficult cycle.
+        heading: Printable diary sheet
+      start_tracking: Start Free Tracking
+    faq:
+      about:
+        causes:
+          answer: 'Cluster headache is a neurological disorder, and the exact mechanisms are still not fully understood. What matters practically: attacks are not a character flaw or a willpower problem. A headache specialist can help confirm the diagnosis and discuss acute and preventive treatment options.'
+          question: What causes them?
+        heading: "🧠 About Cluster Headaches"
+        migraines:
+          answer: Migraines make you want to lie in a dark room. Clusters make you want to bang your head against a wall. They're shorter but way more intense. You can't lie still - you pace, rock, sometimes scream.
+          question: How are they different from migraines?
+        what_are:
+          answer: Imagine someone stabbing a hot poker through your eye socket for 15 minutes to 3 hours. They come in cycles, often at the exact same time each day. Some call them "suicide headaches" - once you've had one, you understand why.
+          question: What are cluster headaches?
+      back_to_logs: Back to My Logs
+      heading: "Frequently Asked Questions 🤔"
+      privacy:
+        export:
+          answer: Yes. Download everything as CSV anytime. Your data is yours.
+          question: Can I export my data?
+        heading: "🔒 Privacy & Security"
+        no_email:
+          answer: Because when you're desperate at 3 AM, you don't need another password reset. Pick a username, start tracking. Lost password? Sorry, that's the price of real privacy.
+          question: Why no email signup?
+        private:
+          answer: Yes. No email required, no ads, no selling data. Public pages use privacy-friendly aggregate analytics, but your headache logs stay private and stored in Germany. I built this for us, not to harvest data.
+          question: Is my data really private?
+      references:
+        mayo_clinic: Clinical overview of diagnosis, symptoms, and treatment options.
+        tracking_diaries: Patient resource on why headache diaries can help care conversations.
+        who: Overview of headache disorders, including cluster headache characteristics and prevalence.
+      start_tracking: Start Free Tracking
+      subheading: Real answers from someone who gets it
+      support:
+        bug:
+          answer_html: Tell me on %{github_link}. I fix things fast because I use this tool too.
+          question: Found a bug?
+        feature:
+          answer: Ask on GitHub. If it helps track clusters better, I'll probably build it. Best features come from users who actually understand the pain.
+          question: Want a new feature?
+        free:
+          answer: Yes. I pay for servers myself. Donations are optional. This is a tool I needed, now we all have it.
+          question: Is it really free?
+        heading: "🛠️ Support & Development"
+      tracker:
+        different:
+          answer: Built by a sufferer, for sufferers. One-tap logging during attacks. Charts that show real patterns. Reports you can print, export, or share with a clinician. No ads and no email requirement.
+          question: What makes this different?
+        heading: "📱 About This Tracker"
+        how_to_start:
+          answer: Sign up with just a username (no email needed). Hit the big "Log Attack" button when one starts. That's it. Add details later when you're not dying.
+          question: How do I start tracking?
+        why_built:
+          answer: 'I tried everything - paper diaries, spreadsheets, other apps. Nothing worked when I was in pain. So I built what I needed: something fast, simple, and actually useful for getting treatment approved.'
+          question: Why did you build this?
+      using:
+        during_attack:
+          answer: YES. Massive button. One tap. Done. Add details later when you're human. I designed this mid-cycle, so I know what's possible when you can't think.
+          question: Can I track during an attack?
+        heading: "🎯 Using the Tracker"
+        phone:
+          answer: Yes. iOS app, Android app, and web version. Everything syncs. Start on your phone during an attack, add notes on your computer later.
+          question: Does it work on my phone?
+        share:
+          answer: Generate a secure 30-day share link that gives your doctor a read-only report. They'll see tables of every attack, visual charts showing your patterns, and medication or oxygen notes. No login needed for them. You can also print the reports directly or save as PDF for your records.
+          question: How do I share with my doctor?
+    headache_diary_for_neurologist:
+      clinicians:
+        body_html: The report is patient-entered data. It is designed to make a history easier to review, not to make a diagnosis. Provider-facing notes are available on the %{neurologist_page_link}.
+        heading: For clinicians reviewing the report
+        neurologist_page: neurologist page
+      cta_headline: Create a report before your next appointment
+      eyebrow: Doctor-ready headache diary
+      fields:
+        export: CSV export or a printable report for the medical record
+        heading: Fields that usually matter
+        intensity: KIP-style intensity and whether the attack woke you from sleep
+        symptoms: Side affected, pain location, autonomic symptoms, and notes
+        timing: Attack date, start time, end time, and duration
+        treatment: Medication, oxygen, dose or duration, and response
+        triggers: Potential triggers or context
+      heading: Headache diary for neurologist visits
+      intro: 'Give your neurologist a structured record of what happened: when attacks started, how long they lasted, how intense they were, what you used, and whether it helped.'
+      preview:
+        body: The public sample report renders through the same report components used for private patient reports.
+        heading: Preview the appointment report
+      references:
+        mayo_clinic: Diagnosis depends on pain description, severity, symptoms, frequency, and duration.
+        tracking_diaries: A diary can support clearer communication and treatment review.
+      reports:
+        body: The app turns logs into a clean report with summary numbers, charts, and detailed entries. You can print it, save it as a PDF from your browser, export CSV, or create a temporary read-only share link.
+        heading: Why reports beat scattered notes
+      start_tracking: Start Tracking
+      view_sample_report: View Sample Report
+      what_to_bring:
+        body: Cluster headache history can be hard to explain from memory, especially after weeks of broken sleep. A useful diary gives your clinician a compact view of attack frequency, duration, intensity, timing, and treatment response.
+        heading: What to bring to the appointment
+    neurologist:
+      contact:
+        built_by: Built with love (and pain) by Carmine Paolino, a cluster headache sufferer who needed better tools.
+        questions: 'Questions? I personally respond to every email:'
+      data:
+        attack:
+          intensity: Pain intensity on standard 1-10 scale
+          medications: Medications taken and effectiveness
+          side: Side affected and pain location
+          times: Precise start/end times with automatic duration calculation
+          triggers: Triggers and associated symptoms
+        attack_includes: 'Every attack includes:'
+        heading: "📊 Data You Actually Need"
+        reports:
+          circadian: Circadian rhythm analysis
+          cluster_periods: Cluster period identification and duration
+          frequency: Attack frequency patterns (daily/weekly/monthly)
+          medication_history: Complete medication history
+          treatment_response: Treatment response rates
+        reports_show: 'Reports show:'
+      friction:
+        for_patients: Sign up with just a username. No email. Start tracking immediately.
+        for_patients_label: 'For patients:'
+        for_you: Click their share link. View data. No account needed.
+        for_you_label: 'For you:'
+        heading: "⚡ Zero Friction"
+        thats_it: That's it. No complex onboarding. No vendor relationships. No IT department involvement.
+      heading: "For Neurologists 👨‍⚕️"
+      intro: A tracking tool built by a cluster headache patient who was tired of paper diaries nobody reads.
+      privacy:
+        heading: "🔒 Privacy First"
+        no_tracking: No emails collected. No tracking pixels. No ads. Data encrypted and stored in Germany. I built this for fellow sufferers, not to harvest data.
+        ownership: Patients own their data. They can export everything as CSV anytime. When they share with you, it's temporary (30 days) and read-only.
+      sharing:
+        charts: Visual charts showing attack patterns, frequency trends, and circadian rhythms
+        feedback: Several patients have told me these reports helped their treatment conversations because the documentation was clearer than scattered handwritten notes.
+        heading: "🔗 How Patients Share With You"
+        intro_html: 'During appointments, patients generate a secure share link. You click it. No login needed. You instantly see <strong>beautiful, professional reports</strong> featuring:'
+        medication_graphs: Medication effectiveness graphs comparing treatments side-by-side
+        print: Clean, organized data you can print directly or save as PDF
+        tables: Comprehensive tables listing every attack with timestamps, duration, and intensity
+      subheading: Your patients finally have good data
+      tell_patients:
+        heading: "📢 Tell Your Patients"
+        just_say_html: 'Just say: <strong>"Track your clusters at clusterheadachetracker.com"</strong>'
+        result: That's all. When they come back, they'll have real data instead of vague recollections.
+      why:
+        during_attack: Patients track their clusters here because it actually works during an attack. One massive button. Tap it. Done. They can add details later when they're not writhing in pain.
+        heading: "🎯 Why Your Patients Use This"
+        simple: No complex forms. No tiny buttons. No required fields they can't think about at 3am. Just fast, simple tracking that captures what matters.

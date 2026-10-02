@@ -1,0 +1,150 @@
+it:
+  activerecord:
+    attributes:
+      headache_log:
+        end_time: Ora di fine
+        intensity: Intensità
+        medication: Farmaci
+        notes: Note
+        start_time: Ora di inizio
+        triggers: Fattori scatenanti
+    models:
+      headache_log:
+        one: registrazione
+        other: registrazioni
+  headache_log_imports:
+    create:
+      failed: Si è verificato un errore durante l'importazione del file CSV.
+      imported:
+        one: Importata %{count} registrazione.
+        other: Importate %{count} registrazioni.
+      invalid_file: Formato del file CSV non valido.
+      missing_file: Seleziona un file CSV da importare.
+  headache_logs:
+    create:
+      created: Registrazione salvata.
+    delete_confirmation: Vuoi davvero eliminare questa registrazione?
+    destroy:
+      deleted: Registrazione eliminata.
+    edit:
+      title: Modifica registrazione
+    form:
+      create: Salva
+      delete: Elimina
+      end_time: Fine
+      intensity: Intensità del dolore
+      medication: Farmaci
+      medication_placeholder: es. ossigeno, sumatriptan
+      medication_suggestions:
+        - Ossigeno
+        - Zolmitriptan
+        - Ibuprofene
+        - Paracetamolo
+        - Sumatriptan
+      notes: Note
+      notes_placeholder: Altre osservazioni o dettagli…
+      now: Ora
+      ongoing: IN CORSO
+      separate_with_commas: Separa più voci con una virgola
+      start_time: Inizio
+      trigger_suggestions:
+        - Sonno
+        - Sconosciuto
+        - Stanchezza
+        - Risveglio
+        - Sdraiato
+      triggers: Fattori scatenanti
+      triggers_placeholder: es. sonno, stanchezza
+      update: Salva
+    headache_log:
+      delete: Elimina
+      edit: Modifica
+      intensity: Intensità
+      ongoing: IN CORSO
+    index:
+      new: Nuovo
+      title: Diario degli attacchi
+    logs_grid:
+      clear_filters: Azzera filtri
+      empty: Nessun attacco registrato
+      empty_hint_html: Tocca %{new} per registrare il tuo primo attacco
+      new: Nuovo
+      no_matches: Nessun attacco corrisponde ai filtri
+    new:
+      title: Nuovo attacco
+    ongoing_headaches:
+      days: giorni
+      edit: Modifica
+      hours: ore
+      minutes: min
+      multiple_description:
+        one: 'Hai %{count} registrazione non conclusa. Aggiornala:'
+        other: 'Hai %{count} registrazioni non concluse. Aggiornale:'
+      multiple_title: Più attacchi in corso
+      seconds: sec
+      title: Attacco in corso
+    share_link:
+      copied: Copiato!
+      expire: Disattiva link di condivisione
+      expires_in: Scade tra %{time}
+      generate: Crea link di condivisione
+      print: Stampa
+      share: Condividi
+      share_text: Guarda lo storico dei miei attacchi
+      share_title: Il mio diario della cefalea
+      title: Condividi con il medico
+    show:
+      title: Registrazione
+    stats:
+      average_intensity: Intensità media
+      none_yet: Nessuno
+      time_since_last: Dall'ultimo attacco
+      today: Attacchi oggi
+    table:
+      actions: Azioni
+      calculating: calcolo…
+      date_time: Data/ora
+      delete: Elimina
+      duration: Durata
+      edit: Modifica
+      intensity: Intensità
+      medication: Farmaci
+      no_notes: Nessuna nota
+      none_recorded: Nessuno
+      notes: Note
+      ongoing: In corso
+      started_at: Iniziato alle %{time}
+      triggers: Fattori scatenanti
+    update:
+      updated: Registrazione aggiornata.
+  js:
+    intensity:
+      level_1: Lieve pressione all'occhio, appena percettibile.
+      level_10: Dolore insopportabile, come una tortura, totalmente invalidante.
+      level_2: Leggero pulsare su un lato, lieve fastidio all'occhio.
+      level_3: Pressione persistente con fitte occasionali.
+      level_4: Dolore acuto e pulsante all'occhio, lieve lacrimazione.
+      level_5: Forte bruciore, tempia dolente, difficoltà a concentrarsi.
+      level_6: Ondate di dolore lancinante, lacrimazione, naso chiuso.
+      level_7: Bruciore o dolore trafittivo intenso, palpebra cadente, impedisce le attività.
+      level_8: Come un ferro rovente nell'occhio, costringe a camminare avanti e indietro.
+      level_9: Pressione o dolore trafittivo atroce, come se l'occhio stesse per esplodere.
+    share:
+      text: Guarda lo storico dei miei attacchi
+      title: Il mio diario della cefalea
+    timer:
+      days:
+        one: "%{count} giorno"
+        other: "%{count} giorni"
+      hours:
+        one: "%{count} ora"
+        other: "%{count} ore"
+      just_now: proprio ora
+      minutes:
+        one: "%{count} min"
+        other: "%{count} min"
+  share_links:
+    create:
+      generated: Link di condivisione creato.
+    destroy:
+      expired: Link di condivisione disattivato.

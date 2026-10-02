@@ -77,6 +77,7 @@
       end
   %>
   <main class="w-full <%= main_spacing_class %> flex-grow print:flex-none print:h-auto print:overflow-visible print:pt-0 print:pb-0">
+    <%= render "language_hint" %>
     <% if full_width_static_page? || current_page?(feedback_path) %>
     <%= yield %>
     <% else %>

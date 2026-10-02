@@ -1,0 +1,150 @@
+es:
+  activerecord:
+    attributes:
+      headache_log:
+        end_time: Hora de fin
+        intensity: Intensidad
+        medication: Medicación
+        notes: Notas
+        start_time: Hora de inicio
+        triggers: Desencadenantes
+    models:
+      headache_log:
+        one: registro
+        other: registros
+  headache_log_imports:
+    create:
+      failed: Se produjo un error al importar el archivo CSV.
+      imported:
+        one: Se importó %{count} registro.
+        other: Se importaron %{count} registros.
+      invalid_file: El formato del archivo CSV no es válido.
+      missing_file: Selecciona un archivo CSV para importar.
+  headache_logs:
+    create:
+      created: El registro se guardó correctamente.
+    delete_confirmation: "¿Seguro que quieres eliminar este registro?"
+    destroy:
+      deleted: El registro se eliminó correctamente.
+    edit:
+      title: Editar registro
+    form:
+      create: Guardar
+      delete: Eliminar
+      end_time: Fin
+      intensity: Intensidad del dolor
+      medication: Medicación
+      medication_placeholder: p. ej., oxígeno, sumatriptán
+      medication_suggestions:
+        - Oxígeno
+        - Zolmitriptán
+        - Ibuprofeno
+        - Paracetamol
+        - Sumatriptán
+      notes: Notas
+      notes_placeholder: Otras observaciones o detalles…
+      now: Ahora
+      ongoing: EN CURSO
+      separate_with_commas: Separa varios con comas
+      start_time: Inicio
+      trigger_suggestions:
+        - Sueño
+        - Desconocido
+        - Cansancio
+        - Al despertar
+        - Al acostarme
+      triggers: Desencadenantes
+      triggers_placeholder: p. ej., sueño, cansancio
+      update: Guardar
+    headache_log:
+      delete: Eliminar
+      edit: Editar
+      intensity: Intensidad
+      ongoing: EN CURSO
+    index:
+      new: Nuevo
+      title: Registro de crisis
+    logs_grid:
+      clear_filters: Quitar filtros
+      empty: Todavía no hay crisis registradas
+      empty_hint_html: Toca %{new} para registrar tu primera crisis
+      new: Nuevo
+      no_matches: No hay crisis que coincidan con tus filtros
+    new:
+      title: Nueva crisis
+    ongoing_headaches:
+      days: días
+      edit: Editar
+      hours: horas
+      minutes: min
+      multiple_description:
+        one: 'Tienes %{count} registro sin terminar. Te conviene actualizarlo:'
+        other: 'Tienes %{count} registros sin terminar. Te conviene actualizarlos:'
+      multiple_title: Varias crisis en curso
+      seconds: s
+      title: Crisis en curso
+    share_link:
+      copied: "¡Copiado!"
+      expire: Desactivar enlace para compartir
+      expires_in: Caduca en %{time}
+      generate: Crear enlace para compartir
+      print: Imprimir
+      share: Compartir
+      share_text: Consulta mi historial de cefalea
+      share_title: Mi diario de cefalea
+      title: Compartir con tu médico
+    show:
+      title: Registro
+    stats:
+      average_intensity: Intensidad media
+      none_yet: Ninguna aún
+      time_since_last: Desde la última
+      today: Crisis hoy
+    table:
+      actions: Acciones
+      calculating: calculando…
+      date_time: Fecha/hora
+      delete: Eliminar
+      duration: Duración
+      edit: Editar
+      intensity: Intensidad
+      medication: Medicación
+      no_notes: Sin notas
+      none_recorded: Nada registrado
+      notes: Notas
+      ongoing: En curso
+      started_at: Empezó a las %{time}
+      triggers: Desencadenantes
+    update:
+      updated: El registro se actualizó correctamente.
+  js:
+    intensity:
+      level_1: Leve presión en el ojo, apenas perceptible.
+      level_10: Dolor insoportable, como una tortura, totalmente incapacitante.
+      level_2: Ligero latido en un lado, leve molestia en el ojo.
+      level_3: Presión persistente con punzadas ocasionales.
+      level_4: Dolor agudo y pulsátil en el ojo, lagrimeo leve.
+      level_5: Ardor intenso, sien sensible, cuesta concentrarse.
+      level_6: Oleadas de dolor penetrante, lagrimeo, congestión nasal.
+      level_7: Ardor o puñaladas intensas, párpado caído, impide hacer cosas.
+      level_8: Como un hierro candente en el ojo, obliga a caminar sin parar para aliviarlo.
+      level_9: Presión o puñaladas atroces, como si el ojo fuera a estallar.
+    share:
+      text: Consulta mi historial de cefalea
+      title: Mi diario de cefalea
+    timer:
+      days:
+        one: "%{count} día"
+        other: "%{count} días"
+      hours:
+        one: "%{count} hora"
+        other: "%{count} horas"
+      just_now: justo ahora
+      minutes:
+        one: "%{count} min"
+        other: "%{count} min"
+  share_links:
+    create:
+      generated: Se creó el enlace para compartir.
+    destroy:
+      expired: Se desactivó el enlace para compartir.

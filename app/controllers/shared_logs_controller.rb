@@ -7,7 +7,7 @@ class SharedLogsController < ApplicationController
       @headache_logs = @user.headache_logs.filtered_by(params).recent_first
       @chart_data = @headache_logs.chart_data
     else
-      render plain: "This share link is invalid or has expired.", status: :unauthorized
+      render plain: t(".invalid"), status: :unauthorized
     end
   end
 end

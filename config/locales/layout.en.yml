@@ -1,0 +1,99 @@
+en:
+  layout:
+    app_update_modal:
+      available_title: New %{platform} App Available!
+      behind_minimum: The installed app version is behind the minimum supported release.
+      newer_shell_body: The web app keeps moving on its own, but this update improves the native wrapper around it.
+      newer_shell_title: A newer native shell is available
+      open_update: Open Update
+      release_notes: View Release Notes
+      remind_later: Remind Me Later
+      required_title: Update Required
+      separate_body: Most new features arrive through Rails. This prompt is only for native app updates.
+      separate_title: This is separate from website changes.
+      unsupported_body: Update the %{platform} app to keep using the latest tracker experience.
+      unsupported_title: This version is no longer supported
+      update_before_continuing: Please update before continuing.
+      update_now: Update Now
+      version: Version %{version}
+    bottom_navbar:
+      account: Account
+      charts: Charts
+      feedback: Feedback
+      logs: Logs
+      new: New
+    changelog_modal:
+      continue: Continue to App
+      copied: Copied!
+    flash:
+      close: Close
+    footer:
+      android_beta: Android Beta
+      app: Cluster Headache App
+      apps: Apps
+      diary: Cluster Headache Diary
+      diary_template: Diary Template
+      faq: FAQ
+      for_neurologists: For Neurologists
+      github: View on GitHub
+      imprint: Imprint
+      ios_beta: iOS Beta
+      legal: Legal
+      neurology_visits: For Neurology Visits
+      newsletter_placeholder: email@example.com
+      newsletter_title: Stay updated on new features
+      open_source: Open Source Tracker
+      open_source_and_free: Open Source and Free
+      oxygen_documentation: Oxygen Documentation
+      privacy_policy: Privacy Policy
+      resources: Resources
+      sample_report: Sample Report
+      sponsor: Sponsor
+      subscribe: Subscribe
+      tagline: Free, open-source headache tracking built by a fellow sufferer. Your data stays private. Always.
+    language_hint:
+      message: This page is also available in English
+    language_switcher:
+      title: Language
+    logo_alt: Cluster Headache Tracker Logo
+    modal:
+      close: close
+    navbar:
+      account_settings: Account Settings
+      admin: Admin
+      android_beta: Android Beta
+      app: App
+      charts: Charts
+      diary: Diary
+      faq: FAQ
+      feedback: Feedback
+      for_neurologists: For Neurologists
+      imprint: Imprint
+      ios_beta: iOS Beta
+      legal: Legal
+      login: Login
+      logs: Logs
+      mobile_apps: Mobile Apps
+      new: New
+      new_log: New Log
+      open_source: Open Source
+      privacy_policy: Privacy Policy
+      resources: Resources
+      sample: Sample
+      sample_report: Sample Report
+      source_code: Source Code
+      sponsor: Sponsor
+      start_free: Start Free
+      start_free_tracking: Start Free Tracking
+      template: Template
+    welcome_modal:
+      password_warning_html: "<strong>Write down your password.</strong> No email = real privacy, but also no password resets. That's the trade-off."
+      start: Start Tracking
+      step_1_body: One tap when the beast arrives.
+      step_1_title: Hit the New button when it hits
+      step_2_body: After it passes, add what helped (or didn't)
+      step_2_title: Edit details when you can breathe
+      step_3_body: Charts and reports for treatment conversations
+      step_3_title: Share real data with your doctor
+      subtitle: "Here's how it works:"
+      title: Track your headaches in 3 steps

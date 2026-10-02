@@ -1,0 +1,55 @@
+en:
+  charts:
+    index:
+      new: New
+      title: Charts
+  js:
+    charts:
+      attacks_per_day:
+        label: Number of Attacks
+        title: Number of Attacks per Day
+      date: Date
+      duration:
+        axis: Duration (hours)
+        label: Attack Duration
+        tooltip:
+          date: 'Date: %{date}'
+          duration: 'Duration: %{duration}'
+          intensity: 'Intensity: %{intensity}/10'
+      hourly:
+        average_intensity: Average Intensity
+        average_intensity_short: Avg Intensity
+        frequency: Frequency
+        time_of_day: Time of Day
+        title: Headache Frequency and Intensity by Time of Day
+      intensity:
+        label: Headache Intensity
+      medications:
+        title: Top 5 Medications
+      triggers:
+        title: Top 5 Triggers
+  shared:
+    charts:
+      attacks_per_day:
+        no_data: No attack data available
+        title: Number of Attacks per Day
+      clear_filters: Clear Filters
+      duration:
+        no_data: No duration data available
+        title: Attack Duration Over Time
+      first_log_hint_html: Tap the %{new} button to log your first headache
+      hourly:
+        no_data: No hourly data available
+        title: Headache Frequency and Intensity by Time of Day
+      intensity:
+        no_data: No intensity data available
+        title: Headache Intensity Over Time
+      medications:
+        no_data: No medication data available
+        title: Top 5 Medications
+      new: New
+      no_data: No headache data available for charts
+      no_matches: No headaches found matching your filters
+      triggers:
+        no_data: No trigger data available
+        title: Top 5 Triggers

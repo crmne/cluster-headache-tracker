@@ -1,5 +1,6 @@
 // app/javascript/controllers/intensity_controller.js
 import { Controller } from "@hotwired/stimulus"
+import { t } from "i18n"
 
 export default class extends Controller {
   static targets = [ "slider", "value", "badge", "preview", "glow" ]
@@ -42,19 +43,7 @@ export default class extends Controller {
 
   // Map intensity values to meaningful descriptions
   getIntensityDescription(value) {
-    const descriptions = {
-      1: "Mild eye pressure, barely noticeable.",
-      2: "Light throbbing on one side, slight eye discomfort.",
-      3: "Persistent pressure with occasional sharp pains.",
-      4: "Sharp eye pain with throbbing, mild tearing.",
-      5: "Strong burning sensation, tender temple area, affects focus.",
-      6: "Severe piercing waves, eye tearing, nasal congestion.",
-      7: "Intense burning/stabbing, drooping eyelid, disrupts activities.",
-      8: "Like a hot poker through eye, forces pacing for relief.",
-      9: "Excruciating pressure/stabbing, feels like eye might explode.",
-      10: "Unbearable torture-like pain, completely incapacitating."
-    }
-    return descriptions[value] || ""
+    return value >= this.minValue && value <= this.maxValue ? t(`intensity.level_${value}`) : ""
   }
 
   calculateColor(value) {

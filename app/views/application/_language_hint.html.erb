@@ -1,0 +1,8 @@
+<% if hint_locale = language_hint_locale %>
+  <div class="bg-primary/10 text-sm text-center px-4 py-2 print:hidden" lang="<%= hint_locale %>" id="language_hint">
+    <%= link_to localized_public_page_url(hint_locale), hreflang: hint_locale, class: "link link-hover inline-flex items-center gap-2" do %>
+      <%= heroicon "language", variant: "mini", class: "w-4 h-4" %>
+      <%= t("layout.language_hint.message", locale: hint_locale) %>
+    <% end %>
+  </div>
+<% end %>

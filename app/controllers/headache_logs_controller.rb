@@ -18,7 +18,7 @@ class HeadacheLogsController < ApplicationController
     @headache_log = current_user.headache_logs.build(headache_log_params)
 
     if @headache_log.save
-      redirect_to headache_logs_url, notice: "Headache log was successfully created.", status: :see_other
+      redirect_to headache_logs_url, notice: t(".created"), status: :see_other
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class HeadacheLogsController < ApplicationController
 
   def update
     if @headache_log.update(headache_log_params)
-      redirect_to headache_logs_url, notice: "Headache log was successfully updated.", status: :see_other
+      redirect_to headache_logs_url, notice: t(".updated"), status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class HeadacheLogsController < ApplicationController
   def destroy
     @headache_log.destroy!
 
-    redirect_to headache_logs_url, notice: "Headache log was successfully destroyed.", status: :see_other
+    redirect_to headache_logs_url, notice: t(".deleted"), status: :see_other
   end
 
   private

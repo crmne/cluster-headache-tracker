@@ -3,20 +3,19 @@
 
 <section class="py-16 bg-base-200 sm:py-20 print:hidden">
   <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8 text-center">
-    <p class="font-semibold text-primary mb-3">Public demo report</p>
-    <h1 class="text-4xl font-bold sm:text-5xl">Sample cluster headache report</h1>
+    <p class="font-semibold text-primary mb-3"><%= t(".eyebrow") %></p>
+    <h1 class="text-4xl font-bold sm:text-5xl"><%= t(".heading") %></h1>
     <p class="mt-6 text-lg text-base-content/70">
-      This fictional report shows the kind of summary, charts, treatment notes,
-      and detailed entries a private account can generate for appointments.
+      <%= t(".intro") %>
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
       <button type="button" class="btn btn-primary btn-lg" onclick="window.print()">
         <%= heroicon "printer", variant: "mini", class: "w-5 h-5" %>
-        Print Sample
+        <%= t(".print_sample") %>
       </button>
       <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-outline btn-lg" do %>
         <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
-        Start My Report
+        <%= t(".start_my_report") %>
       <% end %>
     </div>
   </div>
@@ -27,10 +26,9 @@
     <div class="alert border border-info/20 bg-info/10 text-base-content mb-6 print:hidden">
       <%= heroicon "information-circle", variant: "mini", class: "w-5 h-5 text-info" %>
       <div>
-        <h2 class="font-bold">Fictional demo data</h2>
+        <h2 class="font-bold"><%= t(".demo_notice.heading") %></h2>
         <p class="text-sm opacity-80">
-          This page uses the same report components as private reports, but the
-          patient and log entries are examples.
+          <%= t(".demo_notice.body") %>
         </p>
       </div>
     </div>
@@ -42,27 +40,26 @@
           show_filters: false,
           show_print_instructions: false,
           live_updates: false,
-          report_title: "Sample Cluster Headache Report" %>
+          report_title: t(".report_title") %>
   </div>
 </section>
 
 <section class="py-16 bg-base-200 print:hidden">
   <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
     <div class="prose prose-lg mx-auto">
-      <h2>What a real report can include</h2>
+      <h2><%= t(".report_contents.heading") %></h2>
       <ul>
-        <li>All logged attacks in a chronological table</li>
-        <li>Attack frequency by day and time of day</li>
-        <li>Intensity and duration trends</li>
-        <li>Medication, oxygen, trigger, and response notes</li>
-        <li>CSV export for your own records</li>
-        <li>Temporary read-only share links that expire after 30 days</li>
+        <li><%= t(".report_contents.attack_table") %></li>
+        <li><%= t(".report_contents.frequency") %></li>
+        <li><%= t(".report_contents.trends") %></li>
+        <li><%= t(".report_contents.notes") %></li>
+        <li><%= t(".report_contents.csv_export") %></li>
+        <li><%= t(".report_contents.share_links") %></li>
       </ul>
 
-      <h2>Privacy boundary</h2>
+      <h2><%= t(".privacy.heading") %></h2>
       <p>
-        Real reports are private. Public search engines only see this fictional
-        sample, not personal logs or shared report URLs.
+        <%= t(".privacy.body") %>
       </p>
     </div>
   </div>
@@ -75,5 +72,5 @@
 </section>
 
 <div class="print:hidden">
-  <%= render "seo_cta", headline: "Turn your next cluster period into a clear report" %>
+  <%= render "seo_cta", headline: t(".cta_headline") %>
 </div>

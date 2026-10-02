@@ -1,0 +1,66 @@
+it:
+  activerecord:
+    attributes:
+      user:
+        current_password: Password attuale
+        locale: Lingua
+        password: Password
+        password_confirmation: Conferma password
+        time_format: Formato orario
+        username: Nome utente
+  auth:
+    mailer:
+      reset_password_instructions:
+        action: Cambia la mia password
+        greeting: Ciao %{username}!
+        ignore: Se non l'hai richiesto tu, ignora questa email.
+        requested: Qualcuno ha richiesto un link per cambiare la tua password. Puoi farlo tramite il link qui sotto.
+        unchanged: La tua password non cambierà finché non apri il link qui sopra e ne crei una nuova.
+    passwords:
+      edit:
+        confirm_new_password: Conferma nuova password
+        new_password: Nuova password
+        submit: Cambia password
+        title: Cambia la tua password
+      new:
+        heading: Password dimenticata?
+        notice_body: Per proteggere la privacy dei tuoi dati sanitari non conserviamo indirizzi email. Se non riesci più ad accedere al tuo account, creane uno nuovo.
+        notice_title: Avviso importante sulla privacy
+        subtitle: Non conserviamo il tuo indirizzo email.
+        title: Hai dimenticato la password?
+    registrations:
+      edit:
+        current_password: Password attuale
+        delete_account: Elimina il mio account
+        delete_confirmation: Sei sicuro?
+        leave_blank: lascia vuoto per non cambiarla
+        submit: Salva
+        subtitle: Aggiorna il nome utente o la password
+        title: Modifica account
+        unhappy: Non sei soddisfatto?
+      new:
+        already_have_account: Hai già un account?
+        no_email_html: "<strong>Nessuna email richiesta</strong>: scegli un nome utente e inizia."
+        privacy_title: La privacy prima di tutto
+        remember_password_html: "<strong>Ricorda la tua password</strong>: se la perdi, è persa per sempre. Non possiamo recuperarla perché non conserviamo la tua email."
+        submit: Inizia gratis
+        subtitle: Crea un account privato, solo con nome utente
+        title: Inizia gratis
+    sessions:
+      new:
+        heading: Bentornato
+        no_account: Non hai un account?
+        remember_me: Ricordami
+        subtitle: Accedi per continuare a registrare i tuoi attacchi
+        title: Accedi al tuo account
+    shared:
+      create_account: Crea un nuovo account
+      form_footer: "©%{year} Carmine Paolino. Tutti i diritti riservati."
+      minimum_password_length:
+        one: almeno %{count} carattere
+        other: almeno %{count} caratteri
+      password: Password
+      password_confirmation: Conferma password
+      sign_in: Accedi
+      sign_up: Registrati
+      username: Nome utente

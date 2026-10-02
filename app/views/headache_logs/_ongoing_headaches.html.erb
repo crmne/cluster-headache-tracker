@@ -9,14 +9,14 @@
     <div>
       <%= heroicon "exclamation-triangle", class: "h-6 w-6 shrink-0 stroke-current" %>
       <div>
-        <h3 class="font-bold">Multiple Ongoing Headaches Detected</h3>
+        <h3 class="font-bold"><%= t(".multiple_title") %></h3>
         <div class="text-sm">
-          You have <%= ongoing_headaches.size %> unfinished headache logs. Consider updating:
+          <%= t(".multiple_description", count: ongoing_headaches.size) %>
           <div class="mt-2 flex flex-wrap gap-2">
             <% ongoing_headaches.each do |log| %>
               <%= link_to edit_headache_log_path(log), class: "btn btn-sm", data: { turbo_frame: "_top" } do %>
                 <%= heroicon "pencil-square", variant: "mini", class: "w-4 h-4 mr-1" %>
-                <%= log.start_time.strftime("%B %d, %I:%M %p") %>
+                <%= format_time(log.start_time, :day_and_time) %>
               <% end %>
             <% end %>
           </div>
@@ -32,7 +32,7 @@
   <div role="alert" class="alert alert-warning shadow-lg mb-4 flex-col sm:flex-row print:hidden">
     <div class="flex items-center gap-2 w-full sm:w-auto">
       <%= heroicon "clock", class: "h-6 w-6 shrink-0" %>
-      <h3 class="font-bold">Ongoing Headache</h3>
+      <h3 class="font-bold"><%= t(".title") %></h3>
     </div>
     <div data-controller="timer"
          data-timer-start-value="<%= ongoing_log.start_time.strftime('%Y-%m-%dT%H:%M:%S') %>"
@@ -42,32 +42,32 @@
           <span class="countdown font-mono text-lg sm:text-xl">
             <span data-timer-target="days" style="--value:0;"></span>
           </span>
-          <span class="text-xs">days</span>
+          <span class="text-xs"><%= t(".days") %></span>
         </div>
         <div class="flex flex-col" data-timer-target="hoursContainer">
           <span class="countdown font-mono text-lg sm:text-xl">
             <span data-timer-target="hours" style="--value:0;"></span>
           </span>
-          <span class="text-xs">hours</span>
+          <span class="text-xs"><%= t(".hours") %></span>
         </div>
         <div class="flex flex-col" data-timer-target="minutesContainer">
           <span class="countdown font-mono text-lg sm:text-xl">
             <span data-timer-target="minutes" style="--value:0;"></span>
           </span>
-          <span class="text-xs">min</span>
+          <span class="text-xs"><%= t(".minutes") %></span>
         </div>
         <div class="flex flex-col" data-timer-target="secondsContainer">
           <span class="countdown font-mono text-lg sm:text-xl">
             <span data-timer-target="seconds" style="--value:0;"></span>
           </span>
-          <span class="text-xs">sec</span>
+          <span class="text-xs"><%= t(".seconds") %></span>
         </div>
       </div>
     </div>
     <div class="w-full sm:w-auto mt-2 sm:mt-0">
       <%= link_to edit_headache_log_path(ongoing_log), class: "btn btn-sm sm:btn-md w-full sm:w-auto", data: { turbo_frame: "_top" } do %>
         <%= heroicon "pencil-square", variant: "mini", class: "w-4 h-4" %>
-        Edit
+        <%= t(".edit") %>
       <% end %>
     </div>
   </div>

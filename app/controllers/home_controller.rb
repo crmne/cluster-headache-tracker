@@ -31,7 +31,7 @@ class HomeController < ApplicationController
   end
 
   def sample_report
-    @sample_user = Struct.new(:username).new("Demo Patient")
+    @sample_user = Struct.new(:username).new(t(".demo_patient"))
     @sample_headache_logs = HeadacheLog.sample_logs
     @sample_chart_data = HeadacheLog.chart_data_for(@sample_headache_logs)
   end

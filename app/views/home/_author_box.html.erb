@@ -9,19 +9,16 @@
         decoding="async"
       >
       <div>
-        <h2 class="text-xl font-bold">Built by Carmine Paolino</h2>
+        <h2 class="text-xl font-bold"><%= t(".title") %></h2>
         <p class="mt-2 text-base-content/70">
-          I am a cluster headache patient and the maintainer of Cluster Headache
-          Tracker. The medical explanations on this site are informational and
-          link to outside clinical resources where appropriate. Clinician review
-          will be stated only when a real clinician has reviewed a page.
+          <%= t(".body") %>
         </p>
       </div>
     </div>
 
     <%= image_tag "signature.png",
           class: "h-12 w-auto self-end sm:self-start",
-          alt: "Carmine Paolino signature",
+          alt: t(".signature_alt"),
           loading: "lazy",
           decoding: "async" %>
   </div>

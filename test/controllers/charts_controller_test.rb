@@ -26,4 +26,12 @@ class ChartsControllerTest < ActionDispatch::IntegrationTest
     }
     assert_response :success
   end
+
+  test "charts follow the browser language" do
+    get charts_url, headers: { "Accept-Language" => "de-DE,de;q=0.9,en;q=0.8" }
+
+    assert_response :success
+    assert_select "h2", "Schmerzintensität im Verlauf"
+    assert_select "script#translations", text: /Attacken pro Tag/
+  end
 end
