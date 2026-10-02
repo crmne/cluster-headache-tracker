@@ -45,7 +45,7 @@ module Medication::Schedule
   end
 
   def doses_taken_today
-    doses.where(taken_at: Time.current.all_day).count
+    doses.where(taken_at: Current.today.all_day).count
   end
 
   # Whether to nudge on the dashboard: a daily preventive with doses still
@@ -56,7 +56,7 @@ module Medication::Schedule
     elsif daily?
       doses_taken_today < doses_per_day
     elsif next_due = next_due_at
-      next_due <= DUE_SOON_WINDOW.from_now
+      next_due <= Current.wall_clock_now + DUE_SOON_WINDOW
     else
       false
     end

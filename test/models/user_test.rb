@@ -55,6 +55,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "widget status counts attack-free days since the last attack ended" do
+    travel_to Time.zone.parse("2026-10-02 12:00")
     @user.save!
     last_attack = @user.headache_logs.create!(start_time: 3.days.ago, end_time: 3.days.ago + 1.hour, intensity: 7)
 

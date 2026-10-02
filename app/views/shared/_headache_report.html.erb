@@ -4,7 +4,7 @@
 <%# Photos are for the owner's own report only: share links never include them. %>
 <% show_photos = local_assigns.fetch(:show_photos, false) %>
 <% report_title = local_assigns.fetch(:report_title) { t(".title", username: user.username) } %>
-<% generated_on = local_assigns.fetch(:generated_on, Date.today) %>
+<% generated_on = local_assigns.fetch(:generated_on) { Current.today } %>
 
 <% if show_filters %>
   <div class="print:hidden join join-vertical w-full mb-4">

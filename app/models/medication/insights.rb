@@ -23,7 +23,7 @@ class Medication::Insights
   def initialize(user:, headache_logs:, from: nil, to: nil)
     @user = user
     @headache_logs = headache_logs
-    @to = to || Date.current
+    @to = to || Current.today
     @from = [ from || first_dose_date || @to, @to - MAX_WEEKS.weeks ].max
   end
 

@@ -10,7 +10,7 @@ class MedicationDose < ApplicationRecord
 
   enum :effectiveness, EFFECTIVENESS.index_by(&:itself), validate: { allow_nil: true }
 
-  attribute :taken_at, default: -> { Time.current }
+  attribute :taken_at, default: -> { Current.wall_clock_now }
 
   # Set when the headache log is already taken care of: it is saving its
   # own doses, or the legacy backfill must leave its text untouched.

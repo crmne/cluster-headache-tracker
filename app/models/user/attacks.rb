@@ -10,12 +10,12 @@ module User::Attacks
   end
 
   def start_attack(intensity:)
-    current_attack || headache_logs.create(start_time: wall_clock_now, intensity: intensity)
+    current_attack || headache_logs.create(start_time: Current.wall_clock_now, intensity: intensity)
   end
 
   def end_current_attack
     if attack = current_attack
-      attack.update!(end_time: wall_clock_now)
+      attack.update!(end_time: Current.wall_clock_now)
       attack
     end
   end
@@ -23,7 +23,7 @@ module User::Attacks
   # The payload the native shells keep for home screen widgets and quick actions.
   # startedAt and lastAttackAt are ISO 8601 instants with the patient's offset:
   # an attack logged at 11:44 in Berlin is "…T11:44:00+02:00".
-  def widget_status(time_zone: patient_time_zone)
+  def widget_status(time_zone: Current.patient_time_zone)
     ongoing_attack = current_attack
     last_attack = headache_logs.recent_first.first
     today = time_zone.today
@@ -39,15 +39,6 @@ module User::Attacks
   end
 
   private
-    def patient_time_zone
-      Current.time_zone || Time.zone
-    end
-
-    def wall_clock_now
-      now = patient_time_zone.now
-      Time.zone.local(now.year, now.month, now.day, now.hour, now.min, now.sec)
-    end
-
     def instant_in(time_zone, wall_clock)
       if wall_clock
         time_zone.local(wall_clock.year, wall_clock.month, wall_clock.day, wall_clock.hour, wall_clock.min, wall_clock.sec)
