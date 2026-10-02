@@ -1,0 +1,225 @@
+en:
+  time:
+    formats:
+      medication_dose: "%b %-d, %Y · %-I:%M %p"
+      medication_dose_time: "%-I:%M %p"
+  date:
+    formats:
+      timeline_day: "%A, %B %-d, %Y"
+      medication_date: "%b %-d"
+
+  activerecord:
+    models:
+      medication:
+        one: "Medication"
+        other: "Medications"
+      medication_dose:
+        one: "Dose"
+        other: "Doses"
+    attributes:
+      medication:
+        name: "Name"
+        kind: "Type"
+        default_dose: "Usual dose"
+        unit: "Unit"
+        frequency: "How often"
+        schedule_note: "Schedule note"
+        color: "Color"
+      medication_dose:
+        medication: "Medication"
+        taken_at: "Taken at"
+        amount: "Dose"
+        unit: "Unit"
+        duration_minutes: "Duration"
+        effectiveness: "Effect"
+        minutes_to_relief: "Time to relief"
+        headache_log: "Attack"
+
+  medications:
+    archived: "Stopped"
+    last_taken: "Last taken %{time}"
+    actions:
+      edit: "Edit"
+    kinds:
+      abortive: "Abortive"
+      oxygen: "Oxygen"
+      preventive: "Preventive"
+      other: "Other"
+    kind_hints:
+      abortive: "Stops an attack, e.g. sumatriptan"
+      oxygen: "High-flow oxygen, logged with flow rate and duration"
+      preventive: "Taken on a schedule, e.g. verapamil, lithium, Emgality"
+      other: "Anything else"
+    frequencies:
+      as_needed: "As needed"
+      once_daily: "Once a day"
+      twice_daily: "Twice a day"
+      three_times_daily: "Three times a day"
+      weekly: "Once a week"
+      monthly: "Once a month"
+      quarterly: "Every three months"
+    status:
+      taken_today: "%{taken} of %{expected} today"
+      due_in:
+        zero: "Due today"
+        one: "Due tomorrow"
+        other: "Due in %{count} days"
+      overdue:
+        one: "Overdue by 1 day"
+        other: "Overdue by %{count} days"
+    due:
+      title: "Preventives due"
+    navigation:
+      label: "Medication"
+      log_dose: "Log dose"
+      medications: "Medications"
+      timeline: "Timeline"
+    index:
+      title: "Medications"
+      new: "New"
+      took_it_hint: "Tap a medication to log a dose taken now."
+      empty: "No medications yet. Add the ones you take, or pick them while logging an attack."
+      details: "Details"
+      archived:
+        one: "1 stopped medication"
+        other: "%{count} stopped medications"
+    show:
+      status: "Next dose"
+      history: "Doses"
+      no_doses: "No doses logged yet."
+      during_attack: "During attack · %{intensity}/10"
+    new:
+      title: "New Medication"
+    edit:
+      title: "Edit %{name}"
+    form:
+      name: "Name"
+      name_placeholder: "e.g. Oxygen, Sumatriptan, Verapamil"
+      kind: "Type"
+      default_dose: "Usual dose"
+      default_dose_hint: "Filled in when you log a dose, so a tap is enough. For oxygen, enter the flow rate."
+      unit: "Unit"
+      unit_placeholder: "mg, L/min, …"
+      frequency: "How often"
+      frequency_hint: "Scheduled preventives show up on your dashboard when a dose is due, and in the adherence chart."
+      schedule_note: "Schedule note"
+      schedule_note_placeholder: "e.g. morning and evening, with food"
+      color: "Tag color"
+      archived: "I stopped taking this"
+      archived_hint: "Hides it from the picker. Its doses stay in your history and reports."
+      save: "Save"
+    merge:
+      title: "Merge duplicates"
+      hint: "Typed the same medication twice? Move all doses of %{name} into another medication and delete %{name}."
+      target: "Merge into"
+      submit: "Merge"
+      confirm: "Move all doses of %{name} and delete it?"
+    destroy:
+      button: "Delete medication"
+      confirm: "Delete %{name} and all its doses? To keep its history, mark it as stopped instead."
+    notices:
+      created: "%{name} was added."
+      updated: "%{name} was updated."
+      destroyed: "%{name} was deleted."
+      merged: "%{name} was merged into %{target}."
+    insights:
+      title: "Medication"
+      effectiveness_title: "How well each treatment worked"
+      effectiveness_hint: "From your ratings of the doses taken during these attacks."
+      success_rate: "Helped"
+      average_relief: "Average time to relief"
+      adherence: "Taken as scheduled"
+      percentage: "%{value}%"
+      not_rated: "Not rated yet"
+      breakdown: "Helped %{helped}%, no effect %{no_effect}%, made worse %{made_worse}%"
+      rated:
+        one: "1 rating"
+        other: "%{count} ratings"
+      columns:
+        medication: "Medication"
+        doses: "Doses"
+        effectiveness: "Effect"
+        severe: "Helped at 8+/10"
+        relief: "Avg. relief"
+        adherence: "Taken as scheduled"
+      adherence_chart:
+        title: "Preventives taken vs. attacks per week"
+        hint: "The share of days each scheduled preventive was taken as planned, next to the number of attacks that week."
+        attacks: "Attacks"
+        adherence: "Preventives taken as scheduled"
+        week: "Week"
+
+  medication_doses:
+    effectiveness:
+      helped: "Helped"
+      no_effect: "No effect"
+      made_worse: "Made worse"
+      unrated: "Not rated"
+    units:
+      minutes: "min"
+    picker:
+      title: "Medication"
+      hint: "Tap to add a dose taken now"
+      new_medication: "New"
+      add_new: "Add"
+      remove: "Remove %{name}"
+      previously_recorded: "Previously recorded: %{medication}"
+    fields:
+      medication: "Medication"
+      taken_at: "Taken at"
+      now: "Now"
+      amount: "Dose"
+      flow_rate: "Flow rate (L/min)"
+      amount_or_flow_rate: "Dose or flow rate"
+      duration_minutes: "Duration (minutes)"
+      oxygen_hint: "For oxygen, enter the flow rate in L/min and how long you breathed it."
+      effectiveness: "How did it work?"
+      minutes_to_relief: "Minutes until relief"
+      relief_placeholder: "Relief after"
+      save: "Save"
+    quick:
+      took_it: "Took it"
+      took_it_aria: "Log a dose of %{name} taken now"
+    review:
+      title: "How did it work?"
+      attack: "Attack on %{time} · %{intensity}/10"
+      question: "How did %{name} work?"
+      how_did_it_work_html: "How did %{medication} work?"
+      how_long_html: "How long until %{medication} brought relief?"
+      minutes:
+        one: "1 min"
+        other: "%{count} min"
+      thanks: "Thanks, saved."
+      later: "Later"
+    new:
+      title: "Log Dose"
+      one_tap: "Tap what you took. It's logged at the current time."
+      details: "Different time or dose?"
+    edit:
+      title: "Edit %{name} dose"
+    destroy:
+      button: "Delete dose"
+      confirm: "Delete this dose?"
+    export:
+      button: "Export medication doses"
+      import_hint: "To restore medication doses with their ratings, import the headache logs first, then the medication doses file."
+    notices:
+      created: "%{name} dose logged."
+      updated: "%{name} dose updated."
+      destroyed: "%{name} dose deleted."
+      imported:
+        one: "Successfully imported 1 medication dose."
+        other: "Successfully imported %{count} medication doses."
+
+  timelines:
+    show:
+      title: "Timeline"
+      empty: "Nothing logged yet. Attacks and medication doses will appear here."
+      earlier: "Earlier"
+    attack:
+      title: "Attack · %{intensity}/10"
+      range: "%{from} – %{to}"
+      ongoing_since: "Ongoing since %{from}"
+      doses_during:
+        one: "1 dose during this attack"
+        other: "%{count} doses during this attack"

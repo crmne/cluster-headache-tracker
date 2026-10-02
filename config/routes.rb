@@ -64,6 +64,15 @@ Rails.application.routes.draw do
 
   resources :headache_logs
 
+  resources :medications do
+    scope module: :medications do
+      resource :merge, only: :create
+    end
+  end
+  resources :medication_doses, only: %i[ new create edit update destroy ]
+  resource :medication_dose_export, only: :show
+  resource :timeline, only: :show
+
   resource :settings, only: :show, controller: "users/settings"
   namespace :settings, module: :users do
     resource :username, only: :update

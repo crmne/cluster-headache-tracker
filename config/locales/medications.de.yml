@@ -1,0 +1,225 @@
+de:
+  time:
+    formats:
+      medication_dose: "%d.%m.%Y · %H:%M"
+      medication_dose_time: "%H:%M"
+  date:
+    formats:
+      timeline_day: "%d.%m.%Y"
+      medication_date: "%d.%m."
+
+  activerecord:
+    models:
+      medication:
+        one: "Medikament"
+        other: "Medikamente"
+      medication_dose:
+        one: "Einnahme"
+        other: "Einnahmen"
+    attributes:
+      medication:
+        name: "Name"
+        kind: "Art"
+        default_dose: "Übliche Dosis"
+        unit: "Einheit"
+        frequency: "Wie oft"
+        schedule_note: "Hinweis zum Einnahmeplan"
+        color: "Farbe"
+      medication_dose:
+        medication: "Medikament"
+        taken_at: "Eingenommen um"
+        amount: "Dosis"
+        unit: "Einheit"
+        duration_minutes: "Dauer"
+        effectiveness: "Wirkung"
+        minutes_to_relief: "Zeit bis zur Linderung"
+        headache_log: "Attacke"
+
+  medications:
+    archived: "Abgesetzt"
+    last_taken: "Zuletzt eingenommen: %{time}"
+    actions:
+      edit: "Bearbeiten"
+    kinds:
+      abortive: "Akutmedikation"
+      oxygen: "Sauerstoff"
+      preventive: "Prophylaxe"
+      other: "Sonstiges"
+    kind_hints:
+      abortive: "Beendet eine Attacke, z. B. Sumatriptan"
+      oxygen: "High-Flow-Sauerstoff, mit Flussrate und Dauer erfasst"
+      preventive: "Nach Plan eingenommen, z. B. Verapamil, Lithium, Emgality"
+      other: "Alles andere"
+    frequencies:
+      as_needed: "Bei Bedarf"
+      once_daily: "Einmal täglich"
+      twice_daily: "Zweimal täglich"
+      three_times_daily: "Dreimal täglich"
+      weekly: "Einmal pro Woche"
+      monthly: "Einmal im Monat"
+      quarterly: "Alle drei Monate"
+    status:
+      taken_today: "Heute %{taken} von %{expected}"
+      due_in:
+        zero: "Heute fällig"
+        one: "Morgen fällig"
+        other: "Fällig in %{count} Tagen"
+      overdue:
+        one: "Seit 1 Tag überfällig"
+        other: "Seit %{count} Tagen überfällig"
+    due:
+      title: "Fällige Prophylaxe"
+    navigation:
+      label: "Medikation"
+      log_dose: "Einnahme erfassen"
+      medications: "Medikamente"
+      timeline: "Verlauf"
+    index:
+      title: "Medikamente"
+      new: "Neu"
+      took_it_hint: "Tippe auf ein Medikament, um eine Einnahme zum aktuellen Zeitpunkt zu erfassen."
+      empty: "Noch keine Medikamente. Füge hinzu, was du nimmst, oder wähle es beim Erfassen einer Attacke aus."
+      details: "Details"
+      archived:
+        one: "1 abgesetztes Medikament"
+        other: "%{count} abgesetzte Medikamente"
+    show:
+      status: "Nächste Einnahme"
+      history: "Einnahmen"
+      no_doses: "Noch keine Einnahmen erfasst."
+      during_attack: "Während einer Attacke · %{intensity}/10"
+    new:
+      title: "Neues Medikament"
+    edit:
+      title: "%{name} bearbeiten"
+    form:
+      name: "Name"
+      name_placeholder: "z. B. Sauerstoff, Sumatriptan, Verapamil"
+      kind: "Art"
+      default_dose: "Übliche Dosis"
+      default_dose_hint: "Wird beim Erfassen einer Einnahme vorausgefüllt, sodass ein Tippen genügt. Bei Sauerstoff die Flussrate eintragen."
+      unit: "Einheit"
+      unit_placeholder: "mg, L/min, …"
+      frequency: "Wie oft"
+      frequency_hint: "Geplante Prophylaxe erscheint auf deiner Übersicht, wenn eine Einnahme fällig ist, und im Diagramm zur Therapietreue."
+      schedule_note: "Hinweis zum Einnahmeplan"
+      schedule_note_placeholder: "z. B. morgens und abends, zum Essen"
+      color: "Farbe des Etiketts"
+      archived: "Ich nehme das nicht mehr"
+      archived_hint: "Blendet es in der Auswahl aus. Die Einnahmen bleiben in deinem Verlauf und deinen Berichten."
+      save: "Speichern"
+    merge:
+      title: "Doppelte Einträge zusammenführen"
+      hint: "Dasselbe Medikament doppelt angelegt? Verschiebe alle Einnahmen von %{name} zu einem anderen Medikament und lösche %{name}."
+      target: "Zusammenführen mit"
+      submit: "Zusammenführen"
+      confirm: "Alle Einnahmen von %{name} verschieben und %{name} löschen?"
+    destroy:
+      button: "Medikament löschen"
+      confirm: "%{name} mit allen Einnahmen löschen? Um den Verlauf zu behalten, markiere es stattdessen als abgesetzt."
+    notices:
+      created: "%{name} wurde hinzugefügt."
+      updated: "%{name} wurde aktualisiert."
+      destroyed: "%{name} wurde gelöscht."
+      merged: "%{name} wurde mit %{target} zusammengeführt."
+    insights:
+      title: "Medikation"
+      effectiveness_title: "Wie gut jede Behandlung gewirkt hat"
+      effectiveness_hint: "Aus deinen Bewertungen der Einnahmen während dieser Attacken."
+      success_rate: "Geholfen"
+      average_relief: "Durchschnittliche Zeit bis zur Linderung"
+      adherence: "Wie geplant eingenommen"
+      percentage: "%{value} %"
+      not_rated: "Noch nicht bewertet"
+      breakdown: "Geholfen %{helped} %, keine Wirkung %{no_effect} %, verschlechtert %{made_worse} %"
+      rated:
+        one: "1 Bewertung"
+        other: "%{count} Bewertungen"
+      columns:
+        medication: "Medikament"
+        doses: "Einnahmen"
+        effectiveness: "Wirkung"
+        severe: "Geholfen bei 8+/10"
+        relief: "Ø Linderung"
+        adherence: "Wie geplant eingenommen"
+      adherence_chart:
+        title: "Prophylaxe-Einnahme und Attacken pro Woche"
+        hint: "Der Anteil der Tage, an denen jede geplante Prophylaxe wie vorgesehen eingenommen wurde, neben der Zahl der Attacken in dieser Woche."
+        attacks: "Attacken"
+        adherence: "Prophylaxe wie geplant eingenommen"
+        week: "Woche"
+
+  medication_doses:
+    effectiveness:
+      helped: "Geholfen"
+      no_effect: "Keine Wirkung"
+      made_worse: "Verschlechtert"
+      unrated: "Nicht bewertet"
+    units:
+      minutes: "Min."
+    picker:
+      title: "Medikation"
+      hint: "Tippen, um eine Einnahme von jetzt hinzuzufügen"
+      new_medication: "Neu"
+      add_new: "Hinzufügen"
+      remove: "%{name} entfernen"
+      previously_recorded: "Bisher erfasst: %{medication}"
+    fields:
+      medication: "Medikament"
+      taken_at: "Eingenommen um"
+      now: "Jetzt"
+      amount: "Dosis"
+      flow_rate: "Flussrate (L/min)"
+      amount_or_flow_rate: "Dosis oder Flussrate"
+      duration_minutes: "Dauer (Minuten)"
+      oxygen_hint: "Bei Sauerstoff die Flussrate in L/min und die Dauer der Inhalation eintragen."
+      effectiveness: "Wie hat es gewirkt?"
+      minutes_to_relief: "Minuten bis zur Linderung"
+      relief_placeholder: "Linderung nach"
+      save: "Speichern"
+    quick:
+      took_it: "Eingenommen"
+      took_it_aria: "Einnahme von %{name} jetzt erfassen"
+    review:
+      title: "Wie hat es gewirkt?"
+      attack: "Attacke am %{time} · %{intensity}/10"
+      question: "Wie hat %{name} gewirkt?"
+      how_did_it_work_html: "Wie hat %{medication} gewirkt?"
+      how_long_html: "Wie lange hat es gedauert, bis %{medication} geholfen hat?"
+      minutes:
+        one: "1 Min."
+        other: "%{count} Min."
+      thanks: "Danke, gespeichert."
+      later: "Später"
+    new:
+      title: "Einnahme erfassen"
+      one_tap: "Tippe auf das, was du genommen hast. Es wird mit der aktuellen Uhrzeit erfasst."
+      details: "Andere Uhrzeit oder Dosis?"
+    edit:
+      title: "Einnahme von %{name} bearbeiten"
+    destroy:
+      button: "Einnahme löschen"
+      confirm: "Diese Einnahme löschen?"
+    export:
+      button: "Medikamenten-Einnahmen exportieren"
+      import_hint: "Um Einnahmen samt Bewertungen wiederherzustellen, zuerst die Kopfschmerz-Einträge und danach die Datei mit den Einnahmen importieren."
+    notices:
+      created: "Einnahme von %{name} erfasst."
+      updated: "Einnahme von %{name} aktualisiert."
+      destroyed: "Einnahme von %{name} gelöscht."
+      imported:
+        one: "1 Einnahme erfolgreich importiert."
+        other: "%{count} Einnahmen erfolgreich importiert."
+
+  timelines:
+    show:
+      title: "Verlauf"
+      empty: "Noch nichts erfasst. Attacken und Einnahmen erscheinen hier."
+      earlier: "Früher"
+    attack:
+      title: "Attacke · %{intensity}/10"
+      range: "%{from} – %{to}"
+      ongoing_since: "Andauernd seit %{from}"
+      doses_during:
+        one: "1 Einnahme während dieser Attacke"
+        other: "%{count} Einnahmen während dieser Attacke"

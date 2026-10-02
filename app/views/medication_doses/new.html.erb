@@ -1,0 +1,22 @@
+<% content_for :title, t("medication_doses.new.title") %>
+<% content_for :navbar, t("medication_doses.new.title") %>
+
+<% unless hotwire_native_app? %>
+  <%= render "shared/back", back_path: headache_logs_path %>
+<% end %>
+
+<% if @medications.any? %>
+  <p class="text-sm text-base-content/70 mb-3"><%= t("medication_doses.new.one_tap") %></p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+    <% @medications.each do |medication| %>
+      <%= render "medication_doses/quick_button", medication: medication, large: true %>
+    <% end %>
+  </div>
+<% end %>
+
+<details class="collapse collapse-arrow bg-base-100 shadow-md" <%= "open" if @medications.none? || @medication_dose.errors.any? || @medication_dose.medication %>>
+  <summary class="collapse-title text-sm font-semibold"><%= t("medication_doses.new.details") %></summary>
+  <div class="collapse-content">
+    <%= render "form", medication_dose: @medication_dose, medications: @medications %>
+  </div>
+</details>

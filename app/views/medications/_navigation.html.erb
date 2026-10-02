@@ -1,0 +1,14 @@
+<nav class="grid grid-cols-3 gap-2 mb-4 print:hidden" aria-label="<%= t("medications.navigation.label") %>">
+  <%= link_to new_medication_dose_path, class: "btn btn-sm min-h-11 h-auto py-2 flex-col sm:flex-row gap-1" do %>
+    <%= heroicon "plus-circle", variant: "mini", class: "w-4 h-4" %>
+    <span><%= t("medications.navigation.log_dose") %></span>
+  <% end %>
+  <%= link_to medications_path, class: "btn btn-sm min-h-11 h-auto py-2 flex-col sm:flex-row gap-1" do %>
+    <%= heroicon "beaker", variant: "mini", class: "w-4 h-4" %>
+    <span><%= t("medications.navigation.medications") %></span>
+  <% end %>
+  <%= link_to timeline_path, class: "btn btn-sm min-h-11 h-auto py-2 flex-col sm:flex-row gap-1" do %>
+    <%= heroicon "queue-list", variant: "mini", class: "w-4 h-4" %>
+    <span><%= t("medications.navigation.timeline") %></span>
+  <% end %>
+</nav>

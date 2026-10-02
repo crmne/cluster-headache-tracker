@@ -1,0 +1,20 @@
+<%# locals: (medication:, label: t("medication_doses.quick.took_it"), form_class: nil, large: false) %>
+<%= form_with model: MedicationDose.new, url: medication_doses_path,
+      class: form_class,
+      data: { controller: "taken-now", action: "submit->taken-now#stamp" } do |form| %>
+  <%= form.hidden_field :medication_id, value: medication.id, id: nil %>
+  <%= form.hidden_field :taken_at, value: nil, id: nil, data: { taken_now_target: "field" } %>
+  <%= form.hidden_field :amount, value: medication.default_dose, id: nil %>
+  <%= form.button type: "submit",
+        class: large ? "btn btn-lg h-auto min-h-16 w-full justify-start gap-3 py-3" : "btn btn-sm btn-primary min-h-11",
+        aria: { label: t("medication_doses.quick.took_it_aria", name: medication.name) } do %>
+    <% if large %>
+      <%= medication_tag medication, size: :lg %>
+      <span class="text-sm font-normal text-base-content/70"><%= [ medication.default_dose_label, medication_status(medication) ].compact.join(" · ") %></span>
+      <%= heroicon "plus-circle", variant: "mini", class: "w-6 h-6 ml-auto" %>
+    <% else %>
+      <%= heroicon "check", variant: "mini", class: "w-4 h-4" %>
+      <%= label %>
+    <% end %>
+  <% end %>
+<% end %>

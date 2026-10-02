@@ -1,0 +1,9 @@
+<%= turbo_stream.replace dom_id(@medication_dose, :review) do %>
+  <%= render "medication_doses/review", dose: @medication_dose %>
+<% end %>
+
+<% if headache_log = @medication_dose.headache_log %>
+  <%= turbo_stream.replace headache_log do %>
+    <%= render "headache_logs/headache_log", headache_log: headache_log %>
+  <% end %>
+<% end %>

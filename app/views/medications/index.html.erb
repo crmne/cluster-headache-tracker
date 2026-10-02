@@ -1,0 +1,48 @@
+<% content_for :title, t("medications.index.title") %>
+<% content_for :navbar, t("medications.index.title") %>
+<% content_for :web_button do %>
+  <%= link_to new_medication_path, class: "btn btn-primary" do %>
+    <%= t("medications.index.new") %>
+    <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
+  <% end %>
+<% end %>
+<% content_for :hotwire_button do %>
+  <%= link_to new_medication_path, class: "btn btn-primary",
+      data: { controller: "bridge--button", bridge_title: t("medications.index.new") } do %>
+    <%= t("medications.index.new") %>
+    <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
+  <% end %>
+<% end %>
+
+<% unless hotwire_native_app? %>
+  <%= render "shared/back", back_path: headache_logs_path %>
+<% end %>
+
+<% if @medications.any? %>
+  <p class="text-sm text-base-content/70 mb-3"><%= t("medications.index.took_it_hint") %></p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="medications">
+    <% @medications.each do |medication| %>
+      <%= render "medications/medication", medication: medication %>
+    <% end %>
+  </div>
+<% else %>
+  <div class="card bg-base-100 shadow-md">
+    <div class="card-body items-center text-center">
+      <p class="text-base-content/70"><%= t("medications.index.empty") %></p>
+      <%= link_to t("medications.index.new"), new_medication_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
+<% if @archived_medications.any? %>
+  <details class="collapse collapse-arrow bg-base-100 shadow mt-6">
+    <summary class="collapse-title text-sm font-medium"><%= t("medications.index.archived", count: @archived_medications.size) %></summary>
+    <div class="collapse-content flex flex-wrap gap-2">
+      <% @archived_medications.each do |medication| %>
+        <%= link_to medication_path(medication) do %>
+          <%= medication_tag medication %>
+        <% end %>
+      <% end %>
+    </div>
+  </details>
+<% end %>

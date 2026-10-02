@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include MedicationBackfill
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -20,7 +22,9 @@ class User < ApplicationRecord
     }
   end
 
+  has_many :medication_doses, dependent: :delete_all
   has_many :headache_logs, dependent: :destroy
+  has_many :medications, dependent: :destroy
   has_many :share_tokens, dependent: :destroy
   has_one :feedback_survey, dependent: :destroy
 
@@ -42,7 +46,18 @@ class User < ApplicationRecord
     username == "carmine"
   end
 
+  def medication_insights_for(headache_logs, filters = {})
+    Medication::Insights.new(user: self, headache_logs: headache_logs,
+      from: filter_date(filters[:start_time]), to: filter_date(filters[:end_time]))
+  end
+
   private
+
+  def filter_date(value)
+    Date.parse(value.to_s) if value.present?
+  rescue Date::Error
+    nil
+  end
 
   def send_admin_notification
     AdminNotificationsMailer.new_user_notification(self).deliver_later

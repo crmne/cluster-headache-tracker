@@ -1,6 +1,6 @@
 <%# app/views/headache_logs/_table.html.erb %>
 <div class="overflow-x-auto print:overflow-visible">
-  <table class="table print:table-sm print:text-xs">
+  <table class="table print:table-sm print:text-xs" id="headache_log_entries">
     <thead>
       <tr class="bg-base-200">
         <th>
@@ -81,12 +81,8 @@
 
           <%# Medication %>
           <td>
-            <% if log.medication.present? %>
-              <div class="flex flex-wrap gap-1">
-                <% log.medication_list.each do |med| %>
-                  <span class="badge badge-primary badge-sm h-auto min-h-[1.5rem] whitespace-normal"><%= med %></span>
-                <% end %>
-              </div>
+            <% if log.medicated? %>
+              <%= render "headache_logs/medication_list", headache_log: log, show_times: true %>
             <% else %>
               <span class="opacity-50">None recorded</span>
             <% end %>

@@ -1,3 +1,4 @@
+<% medication_insights = local_assigns[:medication_insights] %>
 <% unless headache_logs.any? %>
   <div class="text-center py-12">
     <div class="max-w-md mx-auto">
@@ -23,7 +24,10 @@
        data-charts-medication-value="<%= chart_data[:medication_data].to_json %>"
        data-charts-hourly-value="<%= chart_data[:hourly_data].to_json %>"
        data-charts-attacks-per-day-value="<%= chart_data[:attacks_per_day_data].to_json %>"
-       data-charts-duration-value="<%= chart_data[:duration_data].to_json %>">
+       data-charts-duration-value="<%= chart_data[:duration_data].to_json %>"
+       data-charts-medication-colors-value="<%= chart_data[:medication_colors].to_json %>"
+       data-charts-adherence-value="<%= (medication_insights&.adherence_by_week? ? medication_insights.adherence_by_week : []).to_json %>"
+       data-charts-adherence-labels-value="<%= medication_adherence_chart_labels.to_json %>">
   <div class="grid gap-4 grid-cols-1 mb-4 print:grid-cols-1 print:gap-2">
     <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 print:shadow-none print:break-inside-avoid">
       <div class="card-body p-3 sm:p-4">
@@ -129,5 +133,6 @@
       </div>
     </div>
   </div>
+  <%= render "medications/insights", insights: medication_insights if medication_insights&.any? %>
   </div>
 <% end %>

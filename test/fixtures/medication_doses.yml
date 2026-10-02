@@ -1,0 +1,38 @@
+zolmitriptan_for_one:
+  user: one
+  medication: zolmitriptan
+  headache_log: one
+  taken_at: <%= Time.current + 10.minutes %>
+
+sumatriptan_for_three:
+  user: one
+  medication: sumatriptan
+  headache_log: three
+  taken_at: <%= Time.current - 2.days + 5.minutes %>
+  amount: 6
+  unit: mg
+  effectiveness: no_effect
+
+oxygen_for_three:
+  user: one
+  medication: oxygen
+  headache_log: three
+  taken_at: <%= Time.current - 2.days + 20.minutes %>
+  amount: 15
+  unit: L/min
+  duration_minutes: 15
+  effectiveness: helped
+  minutes_to_relief: 12
+
+lithium_yesterday:
+  user: one
+  medication: lithium
+  taken_at: <%= 1.day.ago.change(hour: 8) %>
+  amount: 300
+  unit: mg
+
+sumatriptan_for_two:
+  user: two
+  medication: sumatriptan_two
+  headache_log: two
+  taken_at: <%= Time.current - 1.day + 5.minutes %>

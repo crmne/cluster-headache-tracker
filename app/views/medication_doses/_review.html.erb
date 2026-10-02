@@ -1,0 +1,36 @@
+<%# locals: (dose:) %>
+<%= tag.div id: dom_id(dose, :review), class: "space-y-2" do %>
+  <% if dose.effectiveness.nil? %>
+    <p class="text-sm font-medium leading-relaxed">
+      <%= t("medication_doses.review.how_did_it_work_html", medication: medication_tag(dose.medication)) %>
+    </p>
+    <div class="grid grid-cols-3 gap-2">
+      <% MedicationDose::EFFECTIVENESS.each do |effectiveness| %>
+        <%= button_to medication_dose_path(dose), method: :patch,
+              params: { medication_dose: { effectiveness: effectiveness } },
+              form_class: "contents",
+              class: "btn btn-lg h-auto min-h-14 flex-col gap-0 py-2 #{effectiveness == "helped" ? "btn-success" : (effectiveness == "made_worse" ? "btn-error" : "")}" do %>
+          <span class="text-2xl leading-none" aria-hidden="true"><%= effectiveness_emoji(effectiveness) %></span>
+          <span class="text-xs"><%= t("medication_doses.effectiveness.#{effectiveness}") %></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% elsif dose.helped? && dose.minutes_to_relief.nil? %>
+    <p class="text-sm font-medium leading-relaxed">
+      <%= t("medication_doses.review.how_long_html", medication: medication_tag(dose.medication)) %>
+    </p>
+    <div class="flex flex-wrap gap-2">
+      <% medication_relief_choices(dose).each do |minutes| %>
+        <%= button_to t("medication_doses.review.minutes", count: minutes), medication_dose_path(dose), method: :patch,
+              params: { medication_dose: { minutes_to_relief: minutes } },
+              form_class: "contents", class: "btn btn-sm min-h-11" %>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-sm leading-relaxed">
+      <%= medication_tag dose.medication %>
+      <%= effectiveness_badge dose %>
+      <span class="text-base-content/70"><%= t("medication_doses.review.thanks") %></span>
+    </p>
+  <% end %>
+<% end %>

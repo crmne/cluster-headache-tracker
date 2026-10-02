@@ -90,47 +90,26 @@
         <div class="mt-2 text-xs text-base-content/60" data-intensity-target="preview"></div>
       </div>
 
-      <%# Medication and Triggers Fields with Autocomplete %>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <div class="bg-primary/5 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-2 flex items-center gap-2">
-            <%= heroicon "beaker", variant: "mini", class: "w-4 h-4 text-primary" %>
-            Medication
-          </h3>
-          <span class="text-xs text-base-content/60 mb-2 block">Separate multiple with commas</span>
-          <%= form.text_field :medication,
-            class: "input input-bordered input-sm w-full",
-            placeholder: "e.g., Oxygen, Sumatriptan",
-            list: "common-medications" %>
+      <%= render "headache_logs/medication_picker", form: form, headache_log: headache_log %>
 
-          <datalist id="common-medications">
-            <option value="Oxygen">
-            <option value="Zolmitriptan">
-            <option value="Ibuprofen">
-            <option value="Paracetamol">
-            <option value="Sumatriptan">
-          </datalist>
-        </div>
+      <div class="bg-secondary/5 rounded-lg p-3">
+        <h3 class="text-sm font-semibold mb-2 flex items-center gap-2">
+          <%= heroicon "bolt", variant: "mini", class: "w-4 h-4 text-secondary" %>
+          Triggers
+        </h3>
+        <span class="text-xs text-base-content/60 mb-2 block">Separate multiple with commas</span>
+        <%= form.text_field :triggers,
+          class: "input input-bordered input-sm w-full",
+          placeholder: "e.g., Sleep, Tired",
+          list: "common-triggers" %>
 
-        <div class="bg-secondary/5 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-2 flex items-center gap-2">
-            <%= heroicon "bolt", variant: "mini", class: "w-4 h-4 text-secondary" %>
-            Triggers
-          </h3>
-          <span class="text-xs text-base-content/60 mb-2 block">Separate multiple with commas</span>
-          <%= form.text_field :triggers,
-            class: "input input-bordered input-sm w-full",
-            placeholder: "e.g., Sleep, Tired",
-            list: "common-triggers" %>
-
-          <datalist id="common-triggers">
-            <option value="Sleep">
-            <option value="Unknown">
-            <option value="Tired">
-            <option value="Woke up">
-            <option value="Laying down">
-          </datalist>
-        </div>
+        <datalist id="common-triggers">
+          <option value="Sleep">
+          <option value="Unknown">
+          <option value="Tired">
+          <option value="Woke up">
+          <option value="Laying down">
+        </datalist>
       </div>
 
       <%# Notes Field %>

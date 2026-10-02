@@ -25,4 +25,11 @@ class SharedLogsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unauthorized
     assert_match /invalid or has expired/, response.body
   end
+
+  test "shows the medication summary to the doctor" do
+    get shared_logs_url(token: @share_token.token)
+
+    assert_select "#medication_insights tr", text: /Sumatriptan/
+    assert_select "#headache_log_entries .medication-tag", text: /Oxygen/
+  end
 end

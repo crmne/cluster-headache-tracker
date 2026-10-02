@@ -25,5 +25,5 @@
 
 <%= render "headache_logs/stats", headache_logs: @headache_logs %>
 <%= turbo_frame_tag "charts" do %>
-  <%= render 'shared/charts', { headache_logs: @headache_logs, chart_data: @chart_data } %>
+  <%= render 'shared/charts', { headache_logs: @headache_logs, chart_data: @chart_data, medication_insights: @medication_insights } %>
 <% end %>

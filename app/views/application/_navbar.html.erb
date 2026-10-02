@@ -11,6 +11,8 @@
             <li><%= link_to headache_logs_path do %><%= heroicon "calendar-days", variant: "micro" %> Logs<% end %></li>
             <li><%= link_to charts_path do %><%= heroicon "chart-bar", variant: "micro" %> Charts<% end %></li>
             <li><%= link_to new_headache_log_path do %><%= heroicon "plus-circle", variant: "micro" %> New Log<% end %></li>
+            <li><%= link_to medications_path do %><%= heroicon "beaker", variant: "micro" %> <%= t("medications.navigation.medications") %><% end %></li>
+            <li><%= link_to timeline_path do %><%= heroicon "queue-list", variant: "micro" %> <%= t("medications.navigation.timeline") %><% end %></li>
             <li><%= link_to settings_path do %><%= heroicon "user", variant: "micro" %> Account Settings<% end %></li>
             <li><%= link_to feedback_path do %><%= heroicon "chat-bubble-left-ellipsis", variant: "micro" %> Feedback<% end %></li>
             <% if current_user.admin? %>

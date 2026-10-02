@@ -9,7 +9,8 @@ module LayoutHelper
 
   def form_page?
     current_page?(new_headache_log_path) ||
-    (controller_name == "headache_logs" && action_name == "edit")
+    (controller_name == "headache_logs" && action_name == "edit") ||
+    (controller_name.in?(%w[ medications medication_doses ]) && action_name.in?(%w[ new edit create update ]))
   end
 
   def native_app_form_page?

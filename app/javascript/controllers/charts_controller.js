@@ -68,6 +68,7 @@ export default class extends Controller {
     "hourlyCanvas",
     "attacksPerDayCanvas",
     "durationCanvas",
+    "adherenceCanvas",
     "container"
   ]
 
@@ -77,7 +78,10 @@ export default class extends Controller {
     medication: Object,
     hourly: Array,
     attacksPerDay: Array,
-    duration: Array
+    duration: Array,
+    medicationColors: Object,
+    adherence: Array,
+    adherenceLabels: Object
   }
 
   initialize() {
@@ -115,6 +119,10 @@ export default class extends Controller {
     this.initializeAllCharts()
   }
 
+  adherenceValueChanged() {
+    this.initializeAllCharts()
+  }
+
   initializeAllCharts() {
     this.containerTargets.forEach(container => container.classList.add('loading'))
 
@@ -128,6 +136,7 @@ export default class extends Controller {
         this.initializeHourlyChart()
         this.initializeAttacksPerDayChart()
         this.initializeDurationChart()
+        this.initializeAdherenceChart()
       } catch (error) {
         console.error('Error initializing charts:', error)
       } finally {
@@ -175,11 +184,19 @@ export default class extends Controller {
   initializeMedicationChart() {
     if (!this.hasMedicationCanvasTarget) return
 
-    this.drawPieChart('medication', this.medicationCanvasTarget, 'Top 5 Medications', this.medicationValue)
+    this.drawPieChart('medication', this.medicationCanvasTarget, 'Top 5 Medications', this.medicationValue, this.medicationColorsValue)
   }
 
-  drawPieChart(key, canvas, title, data) {
+  drawPieChart(key, canvas, title, data, colors = {}) {
     if (Object.keys(data).length === 0) return
+
+    const palette = [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(153, 102, 255)'
+    ]
 
     this.drawChart(key, canvas, {
       type: 'pie',
@@ -187,13 +204,7 @@ export default class extends Controller {
         labels: Object.keys(data),
         datasets: [{
           data: Object.values(data),
-          backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)',
-            'rgb(75, 192, 192)',
-            'rgb(153, 102, 255)'
-          ]
+          backgroundColor: Object.keys(data).map((label, index) => colors[label] || palette[index % palette.length])
         }]
       },
       options: {
@@ -392,6 +403,65 @@ export default class extends Controller {
                 ]
               }
             }
+          }
+        }
+      }
+    })
+  }
+
+  // Weekly attacks (bars) next to how consistently scheduled preventives
+  // were taken that week (line, 0-100%)
+  initializeAdherenceChart() {
+    if (!this.hasAdherenceCanvasTarget || this.adherenceValue.length === 0) return
+
+    const labels = this.adherenceLabelsValue
+
+    this.drawChart('adherence', this.adherenceCanvasTarget, {
+      type: 'bar',
+      data: {
+        labels: this.adherenceValue.map(week => week.x),
+        datasets: [
+          {
+            type: 'bar',
+            label: labels.attacks,
+            data: this.adherenceValue.map(week => week.attacks),
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            yAxisID: 'y-attacks'
+          },
+          {
+            type: 'line',
+            label: labels.adherence,
+            data: this.adherenceValue.map(week => week.adherence),
+            borderColor: 'rgb(14, 165, 233)',
+            backgroundColor: 'rgb(14, 165, 233)',
+            spanGaps: true,
+            tension: 0.2,
+            yAxisID: 'y-adherence'
+          }
+        ]
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'time',
+            time: { unit: 'week' },
+            title: { display: true, text: labels.week }
+          },
+          'y-attacks': {
+            type: 'linear',
+            position: 'left',
+            beginAtZero: true,
+            ticks: { stepSize: 1 },
+            title: { display: true, text: labels.attacks }
+          },
+          'y-adherence': {
+            type: 'linear',
+            position: 'right',
+            min: 0,
+            max: 100,
+            grid: { drawOnChartArea: false },
+            ticks: { callback: value => `${value}%` },
+            title: { display: true, text: labels.adherence }
           }
         }
       }

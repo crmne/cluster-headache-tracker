@@ -1,0 +1,50 @@
+oxygen:
+  user: one
+  name: Oxygen
+  kind: oxygen
+  default_dose: 15
+  unit: L/min
+  frequency: as_needed
+  color: "#0ea5e9"
+
+sumatriptan:
+  user: one
+  name: Sumatriptan
+  kind: abortive
+  default_dose: 6
+  unit: mg
+  frequency: as_needed
+  color: "#8b5cf6"
+
+zolmitriptan:
+  user: one
+  name: Zolmitriptan
+  kind: abortive
+  frequency: as_needed
+  color: "#f59e0b"
+
+lithium:
+  user: one
+  name: Lithium
+  kind: preventive
+  default_dose: 300
+  unit: mg
+  frequency: twice_daily
+  schedule_note: morning and evening
+  color: "#10b981"
+
+emgality:
+  user: one
+  name: Emgality
+  kind: preventive
+  default_dose: 120
+  unit: mg
+  frequency: monthly
+  color: "#ec4899"
+
+sumatriptan_two:
+  user: two
+  name: Sumatriptan
+  kind: abortive
+  frequency: as_needed
+  color: "#8b5cf6"

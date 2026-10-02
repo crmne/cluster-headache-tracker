@@ -18,6 +18,14 @@
   <% end %>
 <% end %>
 
+<% @headache_logs_awaiting_review.each do |headache_log| %>
+  <%= render "dose_review", headache_log: headache_log %>
+<% end %>
+
+<%= render "due_medications", medications: @due_medications if @due_medications.any? %>
+
+<%= render "medications/navigation" %>
+
 <div class="join join-vertical w-full mb-4">
   <%= render "share_link", share_token: @share_token, share_link: @share_link %>
   <%= render "shared/filter_form" %>

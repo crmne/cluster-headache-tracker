@@ -117,4 +117,80 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     get headache_logs_url, params: { medication: "Sumatriptan" }
     assert_response :success
   end
+
+  test "new log offers recent attack medications before preventives in the picker" do
+    get new_headache_log_url
+
+    assert_response :success
+    options = css_select("button.medication-option").map { |button| button.text.squish }
+    assert_equal "Zolmitriptan", options.first
+    assert options.index("Oxygen") < options.index("Lithium")
+    assert_select "template#dose_template_medication_#{medications(:oxygen).id} input[name=?][value=?]",
+      "headache_log[medication_doses_attributes][NEW_DOSE][amount]", "15"
+  end
+
+  test "someone without medications is offered the usual abortives" do
+    sign_in users(:carmine)
+
+    get new_headache_log_url
+
+    assert_equal %w[ Oxygen Sumatriptan Zolmitriptan ], css_select("button.medication-option").map { |button| button.text.squish }
+  end
+
+  test "creates a log with doses picked in the form, including a new medication" do
+    assert_difference -> { @user.medication_doses.count }, 2 do
+      post headache_logs_url, params: { headache_log: { start_time: "2026-03-01T02:00", intensity: 8, medication_doses_attributes: {
+        "1" => { medication_id: medications(:oxygen).id, taken_at: "2026-03-01T02:05", amount: "15", unit: "L/min", duration_minutes: "20" },
+        "2" => { medication_name: "Lidocaine nasal spray", medication_kind: "abortive", taken_at: "2026-03-01T02:10" }
+      } } }
+    end
+
+    assert_redirected_to headache_logs_url
+    log = @user.headache_logs.find_by!(start_time: Time.zone.parse("2026-03-01 02:00"))
+    assert_equal "oxygen 15 l/min 20 min, lidocaine nasal spray", log.medication
+    assert @user.medications.named("Lidocaine nasal spray").abortive?
+  end
+
+  test "can't attach another user's medication to a log" do
+    assert_no_difference -> { HeadacheLog.count } do
+      post headache_logs_url, params: { headache_log: { start_time: "2026-03-01T02:00", intensity: 8, medication_doses_attributes: {
+        "1" => { medication_id: medications(:sumatriptan_two).id, taken_at: "2026-03-01T02:05" }
+      } } }
+    end
+
+    assert_response :unprocessable_entity
+  end
+
+  test "edit shows existing doses with a rating" do
+    get edit_headache_log_url(headache_logs(:three))
+
+    assert_select "[data-medication-picker-target=doses] [data-medication-picker-target=dose]", 2
+    assert_select "input[type=radio][name=?][value=helped][checked]", "headache_log[medication_doses_attributes][1][effectiveness]"
+  end
+
+  test "index asks how the medication worked after an attack ended" do
+    @headache_log.update!(start_time: 2.hours.ago, end_time: 30.minutes.ago)
+
+    get headache_logs_url
+
+    assert_select "#dose_review_headache_log_#{@headache_log.id}" do
+      assert_select "button", text: /Helped/
+      assert_select "button", text: /No effect/
+      assert_select "button", text: /Made worse/
+    end
+  end
+
+  test "index nudges preventives that are due" do
+    get headache_logs_url
+
+    assert_select "#due_medications", text: /Lithium/
+    assert_select "#due_medications", text: /0 of 2 today/
+  end
+
+  test "cards show doses as tags with their rating" do
+    get headache_logs_url
+
+    assert_select "#headache_log_#{headache_logs(:three).id} .medication-tag", text: "Oxygen · 15 L/min · 15 min"
+    assert_select "#headache_log_#{headache_logs(:three).id} [aria-label=Helped]"
+  end
 end

@@ -33,6 +33,19 @@
         "uri": "hotwire://fragment/web",
         "presentation": "none"
       }
+    },
+    {
+      "patterns": [
+        "/medications/new$",
+        "/medications/.*/edit$",
+        "/medication_doses/new$",
+        "/medication_doses/.*/edit$"
+      ],
+      "properties": {
+        "context": "modal",
+        "uri": "hotwire://fragment/web/modal/sheet",
+        "pull_to_refresh_enabled": false
+      }
     }
   ]
 }
