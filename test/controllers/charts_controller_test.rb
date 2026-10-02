@@ -62,4 +62,16 @@ class ChartsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_select "[data-charts-medication-colors-value*=?]", "#0ea5e9"
   end
+
+  test "time charts get the remission periods between cycles" do
+    @user.headache_logs.destroy_all
+    [ "2026-01-01 02:00", "2026-03-01 02:00" ].each do |start|
+      @user.headache_logs.create!(start_time: Time.zone.parse(start), end_time: Time.zone.parse(start) + 1.hour, intensity: 7)
+    end
+
+    get charts_url
+
+    remissions = JSON.parse(css_select("[data-controller=charts]").first["data-charts-remissions-value"])
+    assert_equal [ { "from" => "2026-01-02", "to" => "2026-02-28", "days" => 58 } ], remissions
+  end
 end

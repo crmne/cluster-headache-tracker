@@ -18,7 +18,8 @@
     </div>
   </div>
 <% else %>
-  <%= render "shared/cycles", cycles: headache_logs.cycles %>
+  <% cycles = headache_logs.cycles %>
+  <%= render "shared/cycles", cycles: cycles %>
 
   <div data-controller="charts"
        data-charts-intensity-value="<%= chart_data[:intensity_data].to_json %>"
@@ -27,6 +28,7 @@
        data-charts-hourly-value="<%= chart_data[:hourly_data].to_json %>"
        data-charts-attacks-per-day-value="<%= chart_data[:attacks_per_day_data].to_json %>"
        data-charts-duration-value="<%= chart_data[:duration_data].to_json %>"
+       data-charts-remissions-value="<%= cycles.remissions.map { |remission| { from: remission.start_on.iso8601, to: remission.end_on.iso8601, days: remission.length_in_days } }.to_json %>"
        data-charts-pressure-value="<%= chart_data[:pressure_data].to_json %>"
        data-charts-pressure-change-value="<%= chart_data[:pressure_change_data].to_json %>"
        data-charts-pressure-labels-value="<%= pressure_chart_labels.to_json %>"

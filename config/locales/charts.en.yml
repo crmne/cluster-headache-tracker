@@ -5,6 +5,7 @@ en:
       title: Charts
   js:
     charts:
+      remission: "Remission · %{days} days"
       attacks_per_day:
         label: Number of Attacks
         title: Number of Attacks per Day

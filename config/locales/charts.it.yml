@@ -5,6 +5,7 @@ it:
       title: Grafici
   js:
     charts:
+      remission: "Remissione · %{days} giorni"
       attacks_per_day:
         label: Numero di attacchi
         title: Attacchi al giorno

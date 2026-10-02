@@ -5,6 +5,7 @@ es:
       title: Gráficos
   js:
     charts:
+      remission: "Remisión · %{days} días"
       attacks_per_day:
         label: Número de crisis
         title: Crisis por día

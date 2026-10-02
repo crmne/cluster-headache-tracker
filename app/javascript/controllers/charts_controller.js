@@ -70,7 +70,43 @@ function formatHourRange(startHour) {
 const timeAxis = {
   type: 'time',
   time: { unit: 'day' },
-  ticks: { callback: formatDay }
+  ticks: { callback: formatDay, autoSkip: true, maxTicksLimit: 12, maxRotation: 0 }
+}
+
+// Shades the remission periods between cycles on time charts and labels their length,
+// so the empty stretches read as remission rather than missing data.
+const remissionBands = remissions => ({
+  id: 'remissionBands',
+  beforeDatasetsDraw(chart) {
+    const { ctx, chartArea, scales: { x } } = chart
+    if (!x || remissions.length === 0) return
+
+    ctx.save()
+    remissions.forEach(({ from, to, days }) => {
+      const left = Math.max(x.getPixelForValue(startOfDay(from)), chartArea.left)
+      const right = Math.min(x.getPixelForValue(startOfDay(to) + DAY), chartArea.right)
+      if (right <= left) return
+
+      ctx.fillStyle = 'rgba(127, 127, 127, 0.12)'
+      ctx.fillRect(left, chartArea.top, right - left, chartArea.bottom - chartArea.top)
+
+      const label = t('charts.remission', { days })
+      ctx.font = `12px ${Chart.defaults.font.family}`
+      if (ctx.measureText(label).width + 12 <= right - left) {
+        ctx.fillStyle = Chart.defaults.color
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'top'
+        ctx.fillText(label, (left + right) / 2, chartArea.top + 6)
+      }
+    })
+    ctx.restore()
+  }
+})
+
+const DAY = 24 * 60 * 60 * 1000
+const startOfDay = isoDate => {
+  const [ year, month, day ] = isoDate.split('-').map(Number)
+  return new Date(year, month - 1, day).getTime()
 }
 
 const dayTooltipTitle = items => items.length ? formatFullDay(items[0].parsed.x) : ''
@@ -97,6 +133,7 @@ export default class extends Controller {
     hourly: Array,
     attacksPerDay: Array,
     duration: Array,
+    remissions: Array,
     pressure: Array,
     pressureChange: Array,
     pressureLabels: Object,
@@ -183,6 +220,7 @@ export default class extends Controller {
     // pain levels for weeks with no attacks at all.
     this.drawChart('intensity', this.intensityCanvasTarget, {
       type: 'scatter',
+      plugins: [ remissionBands(this.remissionsValue) ],
       data: {
         datasets: [{
           label: t('charts.intensity.label'),
@@ -329,6 +367,7 @@ export default class extends Controller {
 
     this.drawChart('attacksPerDay', this.attacksPerDayCanvasTarget, {
       type: 'bar',
+      plugins: [ remissionBands(this.remissionsValue) ],
       data: {
         datasets: [{
           label: t('charts.attacks_per_day.label'),
@@ -387,6 +426,7 @@ export default class extends Controller {
 
     this.drawChart('duration', this.durationCanvasTarget, {
       type: 'scatter',
+      plugins: [ remissionBands(this.remissionsValue) ],
       data: {
         datasets: [{
           label: t('charts.duration.label'),
@@ -401,7 +441,7 @@ export default class extends Controller {
         scales: {
           x: {
             ...timeAxis,
-            ticks: { callback: formatFullDay },
+            ticks: { ...timeAxis.ticks, callback: formatFullDay },
             title: {
               display: true,
               text: t('charts.date')
