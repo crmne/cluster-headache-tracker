@@ -9,6 +9,10 @@ class HeadacheLogsController < ApplicationController
 
   def new
     @headache_log = current_user.headache_logs.new
+
+    if params[:quick].present?
+      render :quick
+    end
   end
 
   def edit

@@ -63,6 +63,7 @@ Rails.application.routes.draw do
   resource :headache_log_print, only: :show
 
   resources :headache_logs
+  resource :current_attack, only: %i[ show create destroy ]
 
   resource :settings, only: :show, controller: "users/settings"
   namespace :settings, module: :users do

@@ -1,0 +1,27 @@
+<section class="flex flex-col gap-5" aria-labelledby="start_attack_heading">
+  <header class="text-center">
+    <h1 id="start_attack_heading" class="text-3xl sm:text-4xl font-black"><%= t(".heading") %></h1>
+    <p class="mt-1 text-lg text-base-content/70"><%= t(".instructions") %></p>
+  </header>
+
+  <%= form_with url: current_attack_path, method: :post, id: "start_attack" do |form| %>
+    <fieldset>
+      <legend class="sr-only"><%= t(".intensity") %></legend>
+
+      <div class="grid grid-cols-5 gap-2 sm:gap-3">
+        <% 1.upto(10) do |intensity| %>
+          <%= form.button intensity,
+                name: "intensity",
+                value: intensity,
+                class: "btn #{intensity_button_class(intensity)} h-24 sm:h-28 text-3xl sm:text-4xl font-black rounded-box shadow-md",
+                aria: { label: t(".start_with_intensity", intensity: intensity) } %>
+        <% end %>
+      </div>
+
+      <div class="mt-2 flex justify-between text-sm font-semibold text-base-content/70" aria-hidden="true">
+        <span><%= t(".mild") %></span>
+        <span><%= t(".unbearable") %></span>
+      </div>
+    </fieldset>
+  <% end %>
+</section>

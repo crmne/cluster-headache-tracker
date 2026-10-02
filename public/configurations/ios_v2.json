@@ -17,7 +17,8 @@
     },
     {
       "patterns": [
-        "/headache_logs/new$",
+        "/headache_logs/new(\\?.*)?$",
+        "/current_attack$",
         "/headache_logs/.*/edit$"
       ],
       "properties": {

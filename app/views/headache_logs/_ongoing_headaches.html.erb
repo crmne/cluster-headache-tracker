@@ -29,14 +29,14 @@
 <%# Info for single ongoing headache %>
 <% if ongoing_headaches.size == 1 %>
   <% ongoing_log = ongoing_headaches.first %>
-  <div role="alert" class="alert alert-warning shadow-lg mb-4 flex-col sm:flex-row print:hidden">
-    <div class="flex items-center gap-2 w-full sm:w-auto">
+  <div role="alert" id="ongoing_headache_alert" class="alert alert-warning alert-vertical lg:alert-horizontal lg:grid-cols-[auto_1fr_auto] shadow-lg mb-4 print:hidden">
+    <div class="flex items-center justify-center lg:justify-start gap-2 w-full lg:w-auto">
       <%= heroicon "clock", class: "h-6 w-6 shrink-0" %>
       <h3 class="font-bold">Ongoing Headache</h3>
     </div>
     <div data-controller="timer"
          data-timer-start-value="<%= ongoing_log.start_time.strftime('%Y-%m-%dT%H:%M:%S') %>"
-         class="flex-1">
+         class="w-full">
       <div class="grid auto-cols-max grid-flow-col gap-2 sm:gap-5 text-center justify-center">
         <div class="flex flex-col" data-timer-target="daysContainer">
           <span class="countdown font-mono text-lg sm:text-xl">
@@ -64,10 +64,16 @@
         </div>
       </div>
     </div>
-    <div class="w-full sm:w-auto mt-2 sm:mt-0">
-      <%= link_to edit_headache_log_path(ongoing_log), class: "btn btn-sm sm:btn-md w-full sm:w-auto", data: { turbo_frame: "_top" } do %>
+    <div class="grid grid-cols-2 gap-2 w-full lg:w-auto">
+      <%= link_to edit_headache_log_path(ongoing_log), class: "btn btn-lg lg:btn-md w-full h-auto min-h-14 lg:min-h-10", data: { turbo_frame: "_top" } do %>
         <%= heroicon "pencil-square", variant: "mini", class: "w-4 h-4" %>
         Edit
+      <% end %>
+      <%= button_to current_attack_path, method: :delete,
+            form: { class: "w-full", data: { turbo_frame: "_top" } },
+            class: "btn btn-lg lg:btn-md btn-error w-full h-auto min-h-14 lg:min-h-10 px-3 py-2 leading-tight whitespace-normal lg:whitespace-nowrap", id: "end_ongoing_headache" do %>
+        <%= heroicon "stop-circle", variant: "mini", class: "w-4 h-4" %>
+        <%= t("current_attacks.ongoing.end") %>
       <% end %>
     </div>
   </div>

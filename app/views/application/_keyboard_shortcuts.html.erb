@@ -1,0 +1,36 @@
+<div class="print:hidden"
+     data-controller="keyboard-shortcuts"
+     data-action="keydown@document->keyboard-shortcuts#handle"
+     data-keyboard-shortcuts-new-log-url-value="<%= new_headache_log_path %>"
+     data-keyboard-shortcuts-current-attack-url-value="<%= current_attack_path %>">
+  <dialog id="keyboard_shortcuts" class="modal" aria-labelledby="keyboard_shortcuts_heading" data-keyboard-shortcuts-target="dialog">
+    <div class="modal-box">
+      <h2 id="keyboard_shortcuts_heading" class="text-lg font-bold"><%= t(".heading") %></h2>
+
+      <dl class="mt-4 space-y-3">
+        <% { "n" => t(".new_log"), "e" => t(".current_attack"), "?" => t(".help") }.each do |key, action| %>
+          <div class="flex items-center justify-between gap-4">
+            <dt><%= action %></dt>
+            <dd><kbd class="kbd"><%= key %></kbd></dd>
+          </div>
+        <% end %>
+      </dl>
+
+      <label class="label mt-6 cursor-pointer gap-3 text-base-content">
+        <input type="checkbox" class="toggle toggle-primary" checked
+               data-keyboard-shortcuts-target="toggle"
+               data-action="keyboard-shortcuts#toggle">
+        <%= t(".enable") %>
+      </label>
+
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn"><%= t(".close") %></button>
+        </form>
+      </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button tabindex="-1" aria-hidden="true"></button>
+    </form>
+  </dialog>
+</div>

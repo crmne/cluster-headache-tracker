@@ -80,7 +80,9 @@
     <div class="container mx-auto mt-4 px-4 <%= native_app_with_tabs? ? '' : (user_signed_in? && !static_page? && !native_app_form_page? ? 'pb-safe pb-24' : 'pb-4') %> print:m-0 print:w-full print:p-0 print:max-w-none print:h-auto print:overflow-visible">
       <% if current_user %>
         <%= turbo_stream_from current_user, "application" %>
-        <%= render "headache_logs/ongoing_headaches" %>
+        <%= render "headache_logs/ongoing_headaches" unless content_for?(:hide_ongoing_headaches) %>
+        <%# Every page lands the app's widgets on the latest status, including right after an attack starts or ends. %>
+        <%= render "bridge/widget_status", status: current_user.widget_status if hotwire_native_app? %>
       <% end %>
       <%= yield %>
     </div>
@@ -95,5 +97,6 @@
   <% else %>
     <%= render 'bottom_navbar' if user_signed_in? && !native_app_form_page? && !native_app_with_tabs? %>
   <% end %>
+  <%= render "keyboard_shortcuts" if user_signed_in? && !hotwire_native_app? %>
 </body>
 </html>

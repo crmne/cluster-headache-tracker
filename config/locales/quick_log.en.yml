@@ -1,0 +1,57 @@
+en:
+  time:
+    formats:
+      attack_start: "%-I:%M %p"
+
+  current_attacks:
+    show:
+      title: "Current attack"
+    create:
+      invalid_intensity: "Choose a pain level from 1 to 10."
+    destroy:
+      ended: "Attack ended."
+      nothing_ongoing: "No attack in progress."
+    start:
+      heading: "Start attack now"
+      instructions: "Tap your pain level"
+      intensity: "Pain level"
+      start_with_intensity: "Start attack now with pain level %{intensity} of 10"
+      mild: "Mild"
+      unbearable: "Unbearable"
+    ongoing:
+      badge: "Ongoing"
+      heading: "Attack in progress"
+      started_at: "Started at %{time}"
+      intensity: "Pain %{intensity}/10"
+      elapsed: "Elapsed time"
+      days: "days"
+      hours: "hours"
+      minutes: "min"
+      seconds: "sec"
+      end: "End attack now"
+      add_details: "Add details"
+
+  headache_logs:
+    quick:
+      title: "Quick log"
+      full_form: "Use the full form"
+
+  application:
+    keyboard_shortcuts:
+      heading: "Keyboard shortcuts"
+      new_log: "New log"
+      current_attack: "Current attack"
+      help: "Show keyboard shortcuts"
+      enable: "Single-key shortcuts"
+      close: "Close"
+
+  pwa:
+    shortcuts:
+      quick_log:
+        name: "Log attack"
+        short_name: "Log"
+        description: "Log an attack now with one tap"
+      current_attack:
+        name: "Current attack"
+        short_name: "Attack"
+        description: "See or end the ongoing attack"

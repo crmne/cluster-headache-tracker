@@ -2,7 +2,7 @@
 <% content_for :title, "Headache Logs" %>
 <% content_for :navbar, "Headache Logs" %>
 <% content_for :web_button do %>
-  <%= link_to new_headache_log_path, class: "btn btn-primary" do %>
+  <%= link_to new_headache_log_path, class: "btn btn-primary", aria: { keyshortcuts: "n" } do %>
     New
     <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
   <% end %>

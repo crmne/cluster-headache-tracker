@@ -1,0 +1,57 @@
+de:
+  time:
+    formats:
+      attack_start: "%H:%M Uhr"
+
+  current_attacks:
+    show:
+      title: "Aktuelle Attacke"
+    create:
+      invalid_intensity: "Wähle eine Schmerzstärke von 1 bis 10."
+    destroy:
+      ended: "Attacke beendet."
+      nothing_ongoing: "Keine laufende Attacke."
+    start:
+      heading: "Attacke jetzt starten"
+      instructions: "Tippe auf deine Schmerzstärke"
+      intensity: "Schmerzstärke"
+      start_with_intensity: "Attacke jetzt mit Schmerzstärke %{intensity} von 10 starten"
+      mild: "Leicht"
+      unbearable: "Unerträglich"
+    ongoing:
+      badge: "Läuft"
+      heading: "Attacke läuft"
+      started_at: "Begonnen um %{time}"
+      intensity: "Schmerz %{intensity}/10"
+      elapsed: "Vergangene Zeit"
+      days: "Tage"
+      hours: "Std."
+      minutes: "Min."
+      seconds: "Sek."
+      end: "Attacke jetzt beenden"
+      add_details: "Details ergänzen"
+
+  headache_logs:
+    quick:
+      title: "Schnelleintrag"
+      full_form: "Vollständiges Formular verwenden"
+
+  application:
+    keyboard_shortcuts:
+      heading: "Tastenkürzel"
+      new_log: "Neuer Eintrag"
+      current_attack: "Aktuelle Attacke"
+      help: "Tastenkürzel anzeigen"
+      enable: "Einzeltasten-Kürzel"
+      close: "Schließen"
+
+  pwa:
+    shortcuts:
+      quick_log:
+        name: "Attacke erfassen"
+        short_name: "Erfassen"
+        description: "Eine Attacke jetzt mit einem Tippen erfassen"
+      current_attack:
+        name: "Aktuelle Attacke"
+        short_name: "Attacke"
+        description: "Laufende Attacke ansehen oder beenden"

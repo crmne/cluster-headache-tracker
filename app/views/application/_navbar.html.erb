@@ -97,7 +97,7 @@
           <%= link_to settings_path, class: "hidden md:flex items-center gap-2 hover:opacity-80 transition-opacity" do %>
             <span class="text-sm font-semibold"><%= current_user.username %></span>
           <% end %>
-          <%= link_to new_headache_log_path, class: "btn btn-primary" do %>
+          <%= link_to new_headache_log_path, class: "btn btn-primary", aria: { keyshortcuts: "n" } do %>
             New
             <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
           <% end %>

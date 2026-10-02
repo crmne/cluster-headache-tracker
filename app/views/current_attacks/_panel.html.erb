@@ -1,0 +1,8 @@
+<%# locals: (attack:) %>
+<div class="max-w-xl mx-auto py-4" id="current_attack_panel">
+  <% if attack %>
+    <%= render "current_attacks/ongoing", attack: attack %>
+  <% else %>
+    <%= render "current_attacks/start" %>
+  <% end %>
+</div>

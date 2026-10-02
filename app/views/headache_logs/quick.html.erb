@@ -1,0 +1,13 @@
+<% content_for :title, t(".title") %>
+<% content_for :navbar, t(".title") %>
+<% content_for :hide_ongoing_headaches, true %>
+
+<% unless hotwire_native_app? %>
+  <%= render "shared/back", back_path: headache_logs_path %>
+<% end %>
+
+<%= render "current_attacks/panel", attack: current_user.current_attack %>
+
+<p class="text-center">
+  <%= link_to t(".full_form"), new_headache_log_path, class: "btn btn-ghost" %>
+</p>

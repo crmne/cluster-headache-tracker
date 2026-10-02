@@ -1,0 +1,37 @@
+<%# locals: (attack:) %>
+<section class="flex flex-col items-center gap-6 text-center" aria-labelledby="ongoing_attack_heading">
+  <header>
+    <span class="badge badge-warning badge-lg font-bold uppercase"><%= t(".badge") %></span>
+    <h1 id="ongoing_attack_heading" class="mt-3 text-3xl sm:text-4xl font-black"><%= t(".heading") %></h1>
+    <p class="mt-1 text-lg text-base-content/70">
+      <%= t(".started_at", time: l(attack.start_time, format: :attack_start)) %>
+      · <%= t(".intensity", intensity: attack.intensity) %>
+    </p>
+  </header>
+
+  <div role="timer" aria-label="<%= t(".elapsed") %>"
+       class="grid auto-cols-max grid-flow-col gap-3 sm:gap-5 justify-center"
+       data-controller="timer"
+       data-timer-start-value="<%= attack.start_time.strftime("%Y-%m-%dT%H:%M:%S") %>">
+    <% { days: t(".days"), hours: t(".hours"), minutes: t(".minutes"), seconds: t(".seconds") }.each do |unit, label| %>
+      <div class="flex flex-col items-center" data-timer-target="<%= unit %>Container">
+        <span class="countdown font-mono text-5xl sm:text-6xl font-bold">
+          <span data-timer-target="<%= unit %>" style="--value:0;"></span>
+        </span>
+        <span class="text-sm text-base-content/70"><%= label %></span>
+      </div>
+    <% end %>
+  </div>
+
+  <%= button_to current_attack_path, method: :delete,
+        form: { class: "w-full", id: "end_attack" },
+        class: "btn btn-error w-full h-32 sm:h-36 text-3xl sm:text-4xl font-black rounded-box shadow-lg gap-3" do %>
+    <%= heroicon "stop-circle", variant: "solid", class: "size-10 sm:size-12" %>
+    <%= t(".end") %>
+  <% end %>
+
+  <%= link_to edit_headache_log_path(attack), class: "btn btn-ghost btn-lg" do %>
+    <%= heroicon "pencil-square", variant: "mini", class: "size-5" %>
+    <%= t(".add_details") %>
+  <% end %>
+</section>
