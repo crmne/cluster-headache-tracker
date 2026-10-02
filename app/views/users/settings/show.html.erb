@@ -122,6 +122,7 @@
         start_time, end_time, intensity, medication, triggers, notes
       </div>
       <p class="text-xs text-base-content/70 mt-2">Any CSV file exported from Cluster Headache Tracker will work.</p>
+      <p class="text-xs text-base-content/70 mt-2"><%= t("headache_log_imports.modal.migraine_buddy") %></p>
     </div>
 
     <%= form_tag headache_log_import_path, multipart: true do %>

@@ -1,0 +1,19 @@
+es:
+  headache_log_imports:
+    formats:
+      cluster_headache_tracker: "archivo CSV de Cluster Headache Tracker"
+      migraine_buddy: "exportación de Migraine Buddy"
+    create:
+      detected: "Detectado: %{source}."
+      imported:
+        zero: "No se importó ninguna crisis nueva."
+        one: "Se importó 1 crisis."
+        other: "Se importaron %{count} crisis."
+      skipped_duplicates:
+        one: "Se omitió 1 crisis que ya estaba registrada."
+        other: "Se omitieron %{count} crisis que ya estaban registradas."
+      skipped_invalid:
+        one: "Se omitió 1 fila que no se pudo leer."
+        other: "Se omitieron %{count} filas que no se pudieron leer."
+    modal:
+      migraine_buddy: "Las exportaciones CSV de Migraine Buddy se reconocen automáticamente. Se convierten el inicio, la duración, la intensidad del dolor, los desencadenantes y la medicación, y todo lo demás pasa a las notas. Las crisis ya registradas se omiten."
