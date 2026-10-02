@@ -7,10 +7,12 @@
   </button>
 <% end %>
 <% content_for :hotwire_button do %>
-  <button onclick="window.print()" class="btn"
+  <%# The app prints natively when its "Print" button is tapped. %>
+  <button type="button" class="btn"
           data-controller="bridge--button"
           data-bridge-title="Print"
-          data-action="click->bridge--button#print">
+          data-bridge-ios-image="printer"
+          data-bridge-android-image="print">
     <%= heroicon "printer", variant: "mini", class: "w-4 h-4" %>
     Print
   </button>

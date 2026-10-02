@@ -1,0 +1,4 @@
+<%# locals: (feedback: "success") %>
+<% if bridge_component_supported?("haptic") %>
+  <%= tag.div hidden: true, data: { controller: "bridge--haptic", bridge__haptic_vibrate_on_connect_value: true, bridge_feedback: feedback } %>
+<% end %>

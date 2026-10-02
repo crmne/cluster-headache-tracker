@@ -1,0 +1,6 @@
+es:
+  bridge:
+    alert:
+      confirm: "Aceptar"
+      destructive_confirm: "Eliminar"
+      dismiss: "Cancelar"

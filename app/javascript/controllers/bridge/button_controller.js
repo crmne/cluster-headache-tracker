@@ -1,5 +1,8 @@
 import { BridgeComponent } from "@hotwired/hotwire-native-bridge"
 
+// Adds a native navigation bar button that clicks this element, or submits the form
+// of the submit button it wraps.
+// https://github.com/joemasilotti/bridge-components/blob/main/docs/components/button.md
 export default class extends BridgeComponent {
   static component = "button"
 
@@ -19,16 +22,18 @@ export default class extends BridgeComponent {
     const iosImage = element.bridgeAttribute("ios-image")
     const androidImage = element.bridgeAttribute("android-image")
     const color = element.bridgeAttribute("color")
-    const data = {title: element.title, iosImage, androidImage, color}
 
-    this.send(side, data, () => {
-      const submitButton = this.element.querySelector('[type="submit"]')
-      if (submitButton && submitButton.form) {
-        submitButton.form.requestSubmit(submitButton)
-      } else {
-        this.element.click()
-      }
-    })
+    this.send(side, { title: element.title, iosImage, androidImage, color }, () => this.#activate())
+  }
+
+  #activate() {
+    const submitter = this.element.matches("[type=submit]") ? this.element : this.element.querySelector("[type=submit]")
+
+    if (submitter?.form) {
+      submitter.form.requestSubmit(submitter)
+    } else {
+      this.bridgeElement.click()
+    }
   }
 
   #removeButton() {

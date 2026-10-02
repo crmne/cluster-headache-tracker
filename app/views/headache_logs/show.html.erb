@@ -3,4 +3,19 @@
 
 <%= render 'shared/back', back_path: headache_logs_path %>
 
-<%= render @headache_log %>
+<% if bridge_component_supported?("menu") %>
+  <div data-controller="bridge--menu" hidden>
+    <%= link_to t("shared.actions.edit"), edit_headache_log_path(@headache_log),
+          data: { bridge__menu_target: "item", bridge_ios_image: "pencil", bridge_android_image: "edit" } %>
+    <%= button_to t("shared.actions.delete"), headache_log_path(@headache_log), method: :delete,
+          data: {
+            bridge__menu_target: "item",
+            bridge_ios_image: "trash",
+            bridge_android_image: "delete",
+            bridge_destructive: true,
+            turbo_confirm: "Are you sure you want to delete this headache log?"
+          } %>
+  </div>
+<% end %>
+
+<%= render @headache_log, hide_actions: bridge_component_supported?("menu") %>

@@ -1,8 +1,11 @@
-<div class="flex items-center justify-between">
-  <div class="flex items-center gap-2">
-    <%= link_to back_path, class: "btn btn-ghost" do %>
-      <%= heroicon "arrow-left", variant: "mini", class: "w-4 h-4" %>
-      Back
-    <% end %>
+<%# Native apps provide their own back button. %>
+<% unless hotwire_native_app? %>
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <%= link_to back_path, class: "btn btn-ghost" do %>
+        <%= heroicon "arrow-left", variant: "mini", class: "w-4 h-4" %>
+        Back
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
