@@ -4,20 +4,13 @@ require "test_helper"
 # rules override earlier ones. These tests resolve paths the same way.
 class PathConfigurationTest < ActionDispatch::IntegrationTest
   %w[ ios_v2 android_v2 ].each do |configuration|
-    test "#{configuration} opens log forms as modals without pull to refresh" do
-      [ "/headache_logs/new", "/headache_logs/12/edit" ].each do |path|
+    test "#{configuration} opens log forms and the current attack as modals without pull to refresh" do
+      [ "/headache_logs/new", "/headache_logs/12/edit", "/current_attack" ].each do |path|
         properties = resolve(configuration, path)
 
         assert_equal "modal", properties["context"], path
         assert_equal false, properties["pull_to_refresh_enabled"], path
       end
-    end
-
-    test "#{configuration} pushes the current attack screen with pull to refresh" do
-      properties = resolve(configuration, "/current_attack")
-
-      assert_equal "default", properties["context"]
-      assert_equal true, properties["pull_to_refresh_enabled"]
     end
 
     test "#{configuration} handles refresh and resume historical locations" do
@@ -40,11 +33,13 @@ class PathConfigurationTest < ActionDispatch::IntegrationTest
 
   test "android_v2 renders modals in the modal fragment" do
     assert_equal "hotwire://fragment/web/modal", resolve("android_v2", "/headache_logs/new")["uri"]
-    assert_equal "hotwire://fragment/web", resolve("android_v2", "/current_attack")["uri"]
+    assert_equal "hotwire://fragment/web/modal", resolve("android_v2", "/current_attack")["uri"]
+    assert_equal "hotwire://fragment/web", resolve("android_v2", "/charts")["uri"]
   end
 
-  test "ios_v2 presents log forms as page sheets" do
+  test "ios_v2 presents log forms and the current attack as page sheets" do
     assert_equal "page_sheet", resolve("ios_v2", "/headache_logs/new")["modal_style"]
+    assert_equal "page_sheet", resolve("ios_v2", "/current_attack")["modal_style"]
   end
 
   private

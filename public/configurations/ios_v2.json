@@ -15,8 +15,9 @@
         "/current_attack$"
       ],
       "properties": {
-        "context": "default",
-        "pull_to_refresh_enabled": true
+        "context": "modal",
+        "modal_style": "page_sheet",
+        "pull_to_refresh_enabled": false
       }
     },
     {
