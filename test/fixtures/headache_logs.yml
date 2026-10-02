@@ -5,6 +5,7 @@ one:
   medication: Zolmitriptan
   triggers: Sleeping
   intensity: 5
+  barometric_pressure: 1008.5
 
 two:
   user: two
@@ -21,3 +22,4 @@ three:
   medication: Sumatriptan + Oxygen
   triggers: Sleeping
   intensity: 5
+  barometric_pressure: 1016.0

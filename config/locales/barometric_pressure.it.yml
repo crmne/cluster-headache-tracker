@@ -1,0 +1,39 @@
+it:
+  barometric_pressure:
+    unit: "hPa"
+    reading: "%{pressure} hPa"
+    table_header: "Pressione"
+    not_recorded: "Non registrata"
+    form:
+      label: "Pressione atmosferica"
+      hint: "Facoltativa. In hPa (equivalenti ai mbar), da un barometro o da un'app meteo."
+      placeholder: "es. 1013"
+    charts:
+      by_pressure:
+        title: "Attacchi per pressione atmosferica"
+        x_axis: "Pressione (hPa)"
+        frequency: "Attacchi"
+        avg_intensity: "Intensità media"
+      change:
+        title: "Variazione di pressione prima degli attacchi"
+        x_axis: "Data"
+        y_axis: "Variazione dalla misurazione precedente (hPa)"
+        dataset: "Variazione di pressione"
+        empty: "Registra la pressione per attacchi a meno di 24 ore di distanza per vedere come è cambiata tra l'uno e l'altro."
+        tooltip:
+          change: "Variazione: %{value} hPa"
+          pressure: "Pressione: %{value} hPa"
+          hours: "Dalla misurazione precedente: %{value} h"
+          intensity: "Intensità: %{value}/10"
+
+  activerecord:
+    attributes:
+      headache_log:
+        barometric_pressure: "Pressione atmosferica"
+    errors:
+      models:
+        headache_log:
+          attributes:
+            barometric_pressure:
+              in: "deve essere compresa tra 870 e 1085 hPa"
+              not_a_number: "deve essere un numero in hPa"

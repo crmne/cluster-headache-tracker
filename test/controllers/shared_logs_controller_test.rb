@@ -13,6 +13,12 @@ class SharedLogsControllerTest < ActionDispatch::IntegrationTest
     assert_select ".grid", minimum: 1
   end
 
+  test "should show barometric pressure in shared logs" do
+    get shared_logs_url(token: @share_token.token)
+    assert_select "td", /1008.5 hPa/
+    assert_select "canvas#pressureChart"
+  end
+
   test "should not show shared logs with invalid token" do
     get shared_logs_url(token: "invalid_token")
     assert_response :unauthorized

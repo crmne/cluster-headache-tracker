@@ -1,6 +1,8 @@
 require "test_helper"
 
 class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
+  include ActionView::RecordIdentifier
+
   setup do
     @user = users(:one)
     @headache_log = headache_logs(:one)
@@ -49,6 +51,54 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Share link has been expired.", flash[:notice]
   end
 
+  test "should create a log with barometric pressure" do
+    assert_difference("HeadacheLog.count") do
+      post headache_logs_url, params: { headache_log: { start_time: "2024-03-01T08:00", intensity: 6, barometric_pressure: "1009.4" } }
+    end
+
+    assert_redirected_to headache_logs_url
+    assert_equal BigDecimal("1009.4"), @user.headache_logs.recent_first.find_by!(start_time: Time.zone.parse("2024-03-01 08:00")).barometric_pressure
+  end
+
+  test "should create a log without barometric pressure" do
+    assert_difference("HeadacheLog.count") do
+      post headache_logs_url, params: { headache_log: { start_time: "2024-03-01T08:00", intensity: 6, barometric_pressure: "" } }
+    end
+
+    assert_nil @user.headache_logs.find_by!(start_time: Time.zone.parse("2024-03-01 08:00")).barometric_pressure
+  end
+
+  test "should reject implausible barometric pressure" do
+    assert_no_difference("HeadacheLog.count") do
+      post headache_logs_url, params: { headache_log: { start_time: "2024-03-01T08:00", intensity: 6, barometric_pressure: "29.92" } }
+    end
+
+    assert_response :unprocessable_entity
+    assert_select ".alert-error", /Barometric pressure must be between 870 and 1085 hPa/
+  end
+
+  test "should update barometric pressure" do
+    patch headache_log_url(@headache_log), params: { headache_log: { barometric_pressure: "998.7" } }
+
+    assert_redirected_to headache_logs_url
+    assert_equal BigDecimal("998.7"), @headache_log.reload.barometric_pressure
+  end
+
+  test "should show barometric pressure on the log and in the form" do
+    get headache_log_url(@headache_log)
+    assert_select "##{dom_id(@headache_log)}", /1008.5 hPa/
+
+    get edit_headache_log_url(@headache_log)
+    assert_select "input[name='headache_log[barometric_pressure]'][value='1008.5'][min='870'][max='1085']"
+  end
+
+  test "should show barometric pressure in the print report" do
+    get headache_log_print_url
+    assert_select "th", /Pressure/
+    assert_select "td", /1008.5 hPa/
+    assert_select "canvas#pressureChart"
+  end
+
   test "should export logs to CSV" do
     get headache_log_export_url(format: :csv)
     assert_response :success
@@ -72,6 +122,20 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Lack of sleep", log.triggers
   end
 
+  test "should import barometric pressure from CSV and skip implausible readings" do
+    assert_difference("HeadacheLog.count", 2) do
+      import_csv <<~CSV
+        start_time,end_time,intensity,medication,triggers,notes,barometric_pressure
+        2024-03-01 08:00:00,2024-03-01 09:00:00,7,Oxygen,,Low pressure,998.3
+        2024-03-02 08:00:00,2024-03-02 09:00:00,7,Oxygen,,Inches of mercury,29.92
+        2024-03-03 08:00:00,2024-03-03 09:00:00,7,Oxygen,,No reading,
+      CSV
+    end
+
+    assert_equal BigDecimal("998.3"), @user.headache_logs.find_by!(notes: "Low pressure").barometric_pressure
+    assert_nil @user.headache_logs.find_by!(notes: "No reading").barometric_pressure
+  end
+
   test "should round-trip logs through export and import unchanged" do
     @user.headache_logs.destroy_all
     @user.headache_logs.create!(
@@ -86,20 +150,16 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
       start_time: Time.zone.parse("2024-03-02 23:00:00"),
       intensity: 9,
       medication: "Oxygen, Verapamil",
-      triggers: "Alcohol"
+      triggers: "Alcohol",
+      barometric_pressure: 1002.4
     )
 
     get headache_log_export_url(format: :csv)
     exported_csv = response.body
 
     @user.headache_logs.destroy_all
-    Tempfile.create([ "exported_logs", ".csv" ]) do |file|
-      file.write(exported_csv)
-      file.rewind
-
-      assert_difference("HeadacheLog.count", 2) do
-        post headache_log_import_url, params: { file: Rack::Test::UploadedFile.new(file.path, "text/csv") }
-      end
+    assert_difference("HeadacheLog.count", 2) do
+      import_csv exported_csv
     end
 
     get headache_log_export_url(format: :csv)
@@ -123,4 +183,14 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     get headache_logs_url, params: { medication: "Sumatriptan" }
     assert_response :success
   end
+
+  private
+    def import_csv(contents)
+      Tempfile.create([ "headache_logs", ".csv" ]) do |file|
+        file.write(contents)
+        file.rewind
+
+        post headache_log_import_url, params: { file: Rack::Test::UploadedFile.new(file.path, "text/csv") }
+      end
+    end
 end

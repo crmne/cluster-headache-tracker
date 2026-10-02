@@ -55,6 +55,15 @@
             </div>
           <% end %>
 
+          <% if headache_log.barometric_pressure %>
+            <div class="bg-info/5 rounded-lg p-2">
+              <div class="flex items-center gap-2">
+                <%= heroicon "cloud", variant: "mini", class: "w-4 h-4 text-info flex-shrink-0" %>
+                <span class="text-xs" title="<%= t("barometric_pressure.form.label") %>"><%= barometric_pressure_reading(headache_log) %></span>
+              </div>
+            </div>
+          <% end %>
+
           <% if headache_log.notes.present? %>
             <div class="bg-base-200 rounded-lg p-2">
               <div class="flex items-start gap-2">

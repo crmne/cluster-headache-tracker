@@ -68,6 +68,8 @@ export default class extends Controller {
     "hourlyCanvas",
     "attacksPerDayCanvas",
     "durationCanvas",
+    "pressureCanvas",
+    "pressureChangeCanvas",
     "container"
   ]
 
@@ -77,7 +79,10 @@ export default class extends Controller {
     medication: Object,
     hourly: Array,
     attacksPerDay: Array,
-    duration: Array
+    duration: Array,
+    pressure: Array,
+    pressureChange: Array,
+    pressureLabels: Object
   }
 
   initialize() {
@@ -115,6 +120,14 @@ export default class extends Controller {
     this.initializeAllCharts()
   }
 
+  pressureValueChanged() {
+    this.initializeAllCharts()
+  }
+
+  pressureChangeValueChanged() {
+    this.initializeAllCharts()
+  }
+
   initializeAllCharts() {
     this.containerTargets.forEach(container => container.classList.add('loading'))
 
@@ -128,6 +141,8 @@ export default class extends Controller {
         this.initializeHourlyChart()
         this.initializeAttacksPerDayChart()
         this.initializeDurationChart()
+        this.initializePressureChart()
+        this.initializePressureChangeChart()
       } catch (error) {
         console.error('Error initializing charts:', error)
       } finally {
@@ -389,6 +404,132 @@ export default class extends Controller {
                   `Date: ${date}`,
                   `Duration: ${formatDurationLong(duration)}`,
                   `Intensity: ${intensity}/10`
+                ]
+              }
+            }
+          }
+        }
+      }
+    })
+  }
+
+  initializePressureChart() {
+    const pressureData = this.pressureValue
+    if (!this.hasPressureCanvasTarget || pressureData.length === 0) return
+
+    const labels = this.pressureLabelsValue
+
+    this.drawChart('pressure', this.pressureCanvasTarget, {
+      type: 'bar',
+      data: {
+        labels: pressureData.map(d => d.label),
+        datasets: [
+          {
+            label: labels.frequency,
+            data: pressureData.map(d => d.frequency),
+            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+            yAxisID: 'y-frequency'
+          },
+          {
+            label: labels.averageIntensity,
+            data: pressureData.map(d => d.avg_intensity),
+            backgroundColor: 'rgba(255, 99, 132, 0.6)',
+            yAxisID: 'y-intensity'
+          }
+        ]
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'category',
+            title: {
+              display: true,
+              text: labels.pressureAxis
+            }
+          },
+          'y-frequency': {
+            type: 'linear',
+            position: 'left',
+            title: {
+              display: true,
+              text: labels.frequency
+            },
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1
+            }
+          },
+          'y-intensity': {
+            type: 'linear',
+            position: 'right',
+            title: {
+              display: true,
+              text: labels.averageIntensity
+            },
+            beginAtZero: true,
+            max: 10
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: labels.byPressureTitle
+          }
+        }
+      }
+    })
+  }
+
+  initializePressureChangeChart() {
+    if (!this.hasPressureChangeCanvasTarget || this.pressureChangeValue.length === 0) return
+
+    const labels = this.pressureLabelsValue
+    const fill = (template, value) => template.replace('%{value}', value)
+
+    this.drawChart('pressureChange', this.pressureChangeCanvasTarget, {
+      type: 'bar',
+      data: {
+        datasets: [{
+          label: labels.changeDataset,
+          data: this.pressureChangeValue,
+          backgroundColor: this.pressureChangeValue.map(d => d.y < 0 ? 'rgba(54, 162, 235, 0.7)' : 'rgba(255, 159, 64, 0.7)'),
+          barThickness: 8
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'time',
+            time: {
+              unit: 'day'
+            },
+            title: {
+              display: true,
+              text: labels.dateAxis
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: labels.changeAxis
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const reading = context.raw
+                const change = reading.y > 0 ? `+${reading.y}` : `${reading.y}`
+
+                return [
+                  fill(labels.changeTooltip, change),
+                  fill(labels.pressureTooltip, reading.pressure),
+                  fill(labels.hoursTooltip, reading.hours),
+                  fill(labels.intensityTooltip, reading.intensity)
                 ]
               }
             }

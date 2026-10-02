@@ -11,4 +11,9 @@ module HeadacheLogsHelper
       "hsl(#{(45 * (1 - ratio)).round}, #{(93 - ratio * 9).round}%, #{(47 + ratio * 13).round}%)"
     end
   end
+
+  def barometric_pressure_reading(headache_log)
+    t "barometric_pressure.reading",
+      pressure: number_with_precision(headache_log.barometric_pressure, precision: 1, strip_insignificant_zeros: true)
+  end
 end

@@ -1,12 +1,16 @@
 require "csv"
 
 class HeadacheLog < ApplicationRecord
-  CSV_HEADERS = %w[ start_time end_time intensity medication triggers notes ].freeze
+  CSV_HEADERS = %w[ start_time end_time intensity medication triggers notes barometric_pressure ].freeze
+  BAROMETRIC_PRESSURE_RANGE = 870..1085
+  PRESSURE_BAND_WIDTH = 5
+  PRESSURE_CHANGE_WINDOW = 24.hours
 
   belongs_to :user, counter_cache: true
 
   validates :start_time, :intensity, presence: true
   validates :intensity, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 10 }
+  validates :barometric_pressure, numericality: { in: BAROMETRIC_PRESSURE_RANGE }, allow_nil: true
 
   normalizes :medication, with: ->(value) { value.downcase.split(",").map(&:strip).reject(&:blank?).join(", ") }
   normalizes :triggers, with: ->(value) { value.split(",").map(&:strip).reject(&:blank?).join(", ") }
@@ -57,7 +61,9 @@ class HeadacheLog < ApplicationRecord
         medication_data: medication_data_for(headache_logs),
         hourly_data: hourly_data_for(headache_logs),
         attacks_per_day_data: attacks_per_day_data_for(headache_logs),
-        duration_data: duration_data_for(headache_logs)
+        duration_data: duration_data_for(headache_logs),
+        pressure_data: pressure_data_for(headache_logs),
+        pressure_change_data: pressure_change_data_for(headache_logs)
       }
     end
 
@@ -72,7 +78,8 @@ class HeadacheLog < ApplicationRecord
             log.intensity.to_s,
             log.medication.to_s,
             log.triggers.to_s,
-            log.notes.to_s
+            log.notes.to_s,
+            log.barometric_pressure&.to_s("F")
           ]
         end
       end
@@ -163,7 +170,8 @@ class HeadacheLog < ApplicationRecord
           intensity: row[:intensity],
           medication: row[:medication],
           triggers: row[:triggers],
-          notes: row[:notes]
+          notes: row[:notes],
+          barometric_pressure: row[:barometric_pressure]
         }
       end
 
@@ -188,6 +196,46 @@ class HeadacheLog < ApplicationRecord
       def parse_time(time_string)
         if time_string.present?
           Time.zone.parse(time_string)
+        end
+      end
+
+      def pressure_data_for(logs)
+        bands = logs.select(&:barometric_pressure).group_by { |log| pressure_band_for(log.barometric_pressure) }
+
+        if bands.any?
+          (bands.keys.min..bands.keys.max).step(PRESSURE_BAND_WIDTH).map do |band|
+            band_logs = bands.fetch(band, [])
+
+            {
+              label: "#{band}–#{band + PRESSURE_BAND_WIDTH}",
+              frequency: band_logs.size,
+              avg_intensity: band_logs.any? ? (band_logs.sum(&:intensity).to_f / band_logs.size).round(2) : 0
+            }
+          end
+        else
+          []
+        end
+      end
+
+      def pressure_band_for(pressure)
+        (pressure / PRESSURE_BAND_WIDTH).floor * PRESSURE_BAND_WIDTH
+      end
+
+      def pressure_change_data_for(logs)
+        readings = logs.select(&:barometric_pressure).sort_by(&:start_time)
+
+        readings.each_cons(2).filter_map do |previous, log|
+          elapsed = log.start_time - previous.start_time
+
+          if elapsed <= PRESSURE_CHANGE_WINDOW
+            {
+              x: log.start_time.iso8601,
+              y: (log.barometric_pressure - previous.barometric_pressure).to_f.round(1),
+              pressure: log.barometric_pressure.to_f,
+              hours: (elapsed / 1.hour).round(1),
+              intensity: log.intensity
+            }
+          end
         end
       end
 

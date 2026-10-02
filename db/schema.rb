@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_11_112008) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_02_113526) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -34,6 +34,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_11_112008) do
   end
 
   create_table "headache_logs", force: :cascade do |t|
+    t.decimal "barometric_pressure", precision: 5, scale: 1
     t.datetime "created_at", null: false
     t.datetime "end_time"
     t.integer "intensity", null: false
@@ -44,6 +45,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_11_112008) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_headache_logs_on_user_id"
+    t.check_constraint "barometric_pressure >= 870::numeric AND barometric_pressure <= 1085::numeric", name: "headache_logs_barometric_pressure_range"
     t.check_constraint "intensity >= 1 AND intensity <= 10", name: "headache_logs_intensity_range"
   end
 

@@ -1,0 +1,39 @@
+en:
+  barometric_pressure:
+    unit: "hPa"
+    reading: "%{pressure} hPa"
+    table_header: "Pressure"
+    not_recorded: "Not recorded"
+    form:
+      label: "Barometric pressure"
+      hint: "Optional. In hPa (same as mbar), from a barometer or weather app."
+      placeholder: "e.g., 1013"
+    charts:
+      by_pressure:
+        title: "Attacks by Barometric Pressure"
+        x_axis: "Pressure (hPa)"
+        frequency: "Attacks"
+        avg_intensity: "Avg Intensity"
+      change:
+        title: "Pressure Change Before Attacks"
+        x_axis: "Date"
+        y_axis: "Change since previous reading (hPa)"
+        dataset: "Pressure change"
+        empty: "Log the pressure for attacks less than 24 hours apart to see how it changed between them."
+        tooltip:
+          change: "Change: %{value} hPa"
+          pressure: "Pressure: %{value} hPa"
+          hours: "Since previous reading: %{value} h"
+          intensity: "Intensity: %{value}/10"
+
+  activerecord:
+    attributes:
+      headache_log:
+        barometric_pressure: "Barometric pressure"
+    errors:
+      models:
+        headache_log:
+          attributes:
+            barometric_pressure:
+              in: "must be between 870 and 1085 hPa"
+              not_a_number: "must be a number in hPa"
