@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include CurrentTimeZone
+
   protect_from_forgery unless: -> { Rails.env.development? && hotwire_native_app? }
 
   before_action :redirect_canonical_host

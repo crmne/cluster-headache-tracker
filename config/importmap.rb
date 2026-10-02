@@ -6,6 +6,7 @@ pin "@hotwired/stimulus", to: "@hotwired--stimulus.js" # @3.2.2
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin "@hotwired/hotwire-native-bridge", to: "@hotwired--hotwire-native-bridge.js" # @1.0.0
 pin_all_from "app/javascript/controllers", under: "controllers"
+pin_all_from "app/javascript/lib", under: "lib"
 
 # Chart.js and dependencies, vendored as self-contained ESM bundles
 pin "chart.js" # @4.4.6

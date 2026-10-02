@@ -1,0 +1,47 @@
+it:
+  cycles:
+    title: "Cicli"
+    rule:
+      one: "Un ciclo (periodo attivo) termina dopo %{count} giorno senza attacchi. Pause di tre mesi o più soddisfano la definizione ICHD-3 di remissione."
+      other: "Un ciclo (periodo attivo) termina dopo %{count} giorni consecutivi senza attacchi. Pause di tre mesi o più soddisfano la definizione ICHD-3 di remissione."
+    days:
+      one: "%{count} giorno"
+      other: "%{count} giorni"
+    streaks:
+      current: "Giorni consecutivi senza attacchi"
+      attack_ongoing: "Attacco in corso"
+      since: "Ultimo giorno con attacchi: %{date}"
+      longest: "Serie più lunga senza attacchi"
+      attack_days: "Giorni con attacchi"
+      in_cycles:
+        one: "in %{count} ciclo"
+        other: "in %{count} cicli"
+    summary:
+      count: "Cicli"
+      current_since: "Ciclo in corso dal %{date}"
+      not_in_cycle: "Nessun ciclo in corso"
+      average_length: "Durata media di un ciclo"
+      average_between: "Intervallo medio tra i cicli"
+      needs_two_cycles: "Servono almeno due cicli"
+    heatmap:
+      title: "Calendario degli attacchi"
+      label:
+        one: "Calendario dell'ultimo anno con %{count} giorno con attacchi"
+        other: "Calendario dell'ultimo anno con %{count} giorni con attacchi"
+      day:
+        zero: "%{date}: nessun attacco"
+        one: "%{date}: %{count} attacco"
+        other: "%{date}: %{count} attacchi"
+      fewer: "Meno"
+      more: "Più"
+    table:
+      title: "Storico dei cicli"
+      start: "Inizio"
+      end: "Fine"
+      length: "Durata"
+      attacks: "Attacchi"
+      average_intensity: "Intensità media"
+      since_previous: "Dal ciclo precedente"
+      ongoing: "In corso"
+      ichd_remission: "Remissione (ICHD-3)"
+      ichd_remission_hint: "Almeno tre mesi senza attacchi, la definizione ICHD-3 di remissione"

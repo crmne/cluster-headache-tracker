@@ -1,0 +1,137 @@
+<%# locals: (cycles:) %>
+<section id="cycles" class="mb-8 print:mb-6">
+  <h2 class="text-xl sm:text-2xl font-bold mb-1 flex items-center gap-2">
+    <%= heroicon "arrow-path", variant: "mini", class: "w-5 h-5 text-primary print:hidden" %>
+    <%= t("cycles.title") %>
+  </h2>
+  <p class="text-sm text-base-content/70 mb-4 print:text-black">
+    <%= t("cycles.rule", count: cycles.remission_threshold) %>
+  </p>
+
+  <div class="stats stats-vertical md:stats-horizontal print:stats-horizontal shadow print:shadow-none mb-4 bg-base-100 w-full [&_.stat]:py-3 [&_.stat]:px-4">
+    <div class="stat" id="cycle_count">
+      <div class="stat-title text-xs sm:text-sm"><%= t("cycles.summary.count") %></div>
+      <div class="stat-value text-lg sm:text-2xl"><%= cycles.size %></div>
+      <div class="stat-desc">
+        <% if current_cycle = cycles.current_cycle %>
+          <%= t("cycles.summary.current_since", date: l(current_cycle.start_on, format: :long)) %>
+        <% else %>
+          <%= t("cycles.summary.not_in_cycle") %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="stat" id="average_cycle_length">
+      <div class="stat-title text-xs sm:text-sm"><%= t("cycles.summary.average_length") %></div>
+      <div class="stat-value text-lg sm:text-2xl"><%= days_count cycles.average_cycle_length %></div>
+      <div class="stat-desc"></div>
+    </div>
+
+    <div class="stat" id="average_remission_length">
+      <div class="stat-title text-xs sm:text-sm"><%= t("cycles.summary.average_between") %></div>
+      <div class="stat-value text-lg sm:text-2xl"><%= days_count cycles.average_remission_length %></div>
+      <div class="stat-desc">
+        <% if cycles.size < 2 %>
+          <%= t("cycles.summary.needs_two_cycles") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card bg-base-100 shadow-md print:shadow-none print:break-inside-avoid mb-4">
+    <div class="card-body p-3 sm:p-4">
+      <h3 class="text-sm sm:text-base font-semibold flex items-center gap-2">
+        <%= heroicon "calendar", variant: "mini", class: "w-4 h-4 text-error print:hidden" %>
+        <%= t("cycles.heatmap.title") %>
+      </h3>
+
+      <%# rtl on the scroller starts it scrolled to the most recent weeks on narrow screens %>
+      <div class="overflow-x-auto" dir="rtl">
+        <div id="attack_calendar" dir="ltr" role="img"
+             aria-label="<%= t("cycles.heatmap.label", count: cycles.total_attack_days) %>"
+             class="inline-flex gap-[3px] py-1 [print-color-adjust:exact]">
+          <% attack_calendar_weeks(cycles).each do |week| %>
+            <div class="flex flex-col gap-[3px]">
+              <div class="h-4 w-3 text-[10px] leading-4 text-base-content/60 whitespace-nowrap print:text-black"><%= attack_calendar_month_label(week) %></div>
+              <% week.each do |day| %>
+                <% if day %>
+                  <% count = cycles.attack_counts_by_day[day] %>
+                  <div class="size-3 rounded-sm <%= attack_calendar_cell_class(count) %>"
+                       title="<%= attack_calendar_cell_title(day, count) %>"
+                       data-date="<%= day.iso8601 %>" data-attacks="<%= count %>"></div>
+                <% else %>
+                  <div class="size-3"></div>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end gap-1 text-xs text-base-content/60 print:text-black [print-color-adjust:exact]">
+        <span class="mr-1"><%= t("cycles.heatmap.fewer") %></span>
+        <% [ 0, 1, 2, 3, 5 ].each do |count| %>
+          <span class="size-3 rounded-sm <%= attack_calendar_cell_class(count) %>"></span>
+        <% end %>
+        <span class="ml-1"><%= t("cycles.heatmap.more") %></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card bg-base-100 shadow-md print:shadow-none print:break-inside-avoid">
+    <div class="card-body p-3 sm:p-4">
+      <h3 class="text-sm sm:text-base font-semibold flex items-center gap-2">
+        <%= heroicon "queue-list", variant: "mini", class: "w-4 h-4 text-primary print:hidden" %>
+        <%= t("cycles.table.title") %>
+      </h3>
+
+      <div class="overflow-x-auto">
+        <table id="cycles_table" class="table table-sm">
+          <thead>
+            <tr>
+              <th><%= t("cycles.table.start") %></th>
+              <th><%= t("cycles.table.end") %></th>
+              <th class="text-right"><%= t("cycles.table.length") %></th>
+              <th class="text-right"><%= t("cycles.table.attacks") %></th>
+              <th class="text-right"><%= t("cycles.table.average_intensity") %></th>
+              <th><%= t("cycles.table.since_previous") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% cycles.reverse_each do |cycle| %>
+              <tr>
+                <td class="whitespace-nowrap"><%= l cycle.start_on, format: :long %></td>
+                <td class="whitespace-nowrap">
+                  <% if cycle.ongoing? %>
+                    <span class="badge badge-sm badge-error badge-soft"><%= t("cycles.table.ongoing") %></span>
+                  <% else %>
+                    <%= l cycle.end_on, format: :long %>
+                  <% end %>
+                </td>
+                <td class="text-right whitespace-nowrap"><%= days_count cycle.length_in_days %></td>
+                <td class="text-right"><%= cycle.attack_count %></td>
+                <td class="text-right">
+                  <% if average_intensity = cycle.average_intensity %>
+                    <span class="font-semibold" style="color: <%= intensity_color(average_intensity) %>;"><%= average_intensity %></span>
+                  <% else %>
+                    —
+                  <% end %>
+                </td>
+                <td class="whitespace-nowrap">
+                  <% if remission = cycles.remission_before(cycle) %>
+                    <%= days_count remission.length_in_days %>
+                    <% if remission.ichd_remission? %>
+                      <span class="badge badge-sm badge-success badge-soft" title="<%= t("cycles.table.ichd_remission_hint") %>"><%= t("cycles.table.ichd_remission") %></span>
+                    <% end %>
+                  <% else %>
+                    —
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

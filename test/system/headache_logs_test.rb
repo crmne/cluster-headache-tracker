@@ -12,7 +12,8 @@ class HeadacheLogsTest < ApplicationSystemTestCase
   test "visiting the index" do
     visit headache_logs_url
     assert_selector "div.navbar-center", text: "Headache Logs"
-    assert_selector ".stats", count: 1
+    assert_selector "#headache_stats .stats", count: 2
+    assert_selector "#attack_streaks"
     assert_selector ".card", minimum: 1
   end
 

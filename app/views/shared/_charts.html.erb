@@ -17,6 +17,8 @@
     </div>
   </div>
 <% else %>
+  <%= render "shared/cycles", cycles: headache_logs.cycles %>
+
   <div data-controller="charts"
        data-charts-intensity-value="<%= chart_data[:intensity_data].to_json %>"
        data-charts-trigger-value="<%= chart_data[:trigger_data].to_json %>"

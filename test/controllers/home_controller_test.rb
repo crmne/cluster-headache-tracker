@@ -64,5 +64,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_select "h2", text: "Detailed Log Entries"
     assert_select "canvas#intensityChart"
     assert_select "table tbody tr", minimum: 10
+    assert_select "#cycles_table tbody tr", count: 1
+    assert_select "#attack_days .stat-value", text: "10"
   end
 end

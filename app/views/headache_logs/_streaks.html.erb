@@ -1,0 +1,43 @@
+<%# locals: (cycles:) %>
+<div id="attack_streaks" class="stats stats-vertical md:stats-horizontal print:stats-horizontal shadow print:shadow-none mb-3 print:mb-8 bg-base-100 [&_.stat]:py-3 [&_.stat]:px-4">
+  <div class="stat" id="current_streak">
+    <div class="stat-figure text-success">
+      <%= heroicon "shield-check", class: "inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current" %>
+    </div>
+    <div class="stat-title text-xs sm:text-sm"><%= t("cycles.streaks.current") %></div>
+    <div class="stat-value text-success text-lg sm:text-2xl">
+      <% if cycles.ongoing_attack? %>
+        <span class="text-error"><%= t("cycles.streaks.attack_ongoing") %></span>
+      <% else %>
+        <%= days_count cycles.current_streak %>
+      <% end %>
+    </div>
+    <div class="stat-desc">
+      <% if cycles.last_attack_day %>
+        <%= t("cycles.streaks.since", date: l(cycles.last_attack_day, format: :long)) %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="stat" id="longest_streak">
+    <div class="stat-figure text-primary">
+      <%= heroicon "trophy", class: "inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current" %>
+    </div>
+    <div class="stat-title text-xs sm:text-sm"><%= t("cycles.streaks.longest") %></div>
+    <div class="stat-value text-primary text-lg sm:text-2xl"><%= days_count cycles.longest_streak %></div>
+    <div class="stat-desc"></div>
+  </div>
+
+  <div class="stat" id="attack_days">
+    <div class="stat-figure text-secondary">
+      <%= heroicon "calendar-days", class: "inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current" %>
+    </div>
+    <div class="stat-title text-xs sm:text-sm"><%= t("cycles.streaks.attack_days") %></div>
+    <div class="stat-value text-secondary text-lg sm:text-2xl"><%= cycles.total_attack_days %></div>
+    <div class="stat-desc">
+      <% if cycles.any? %>
+        <%= t("cycles.streaks.in_cycles", count: cycles.size) %>
+      <% end %>
+    </div>
+  </div>
+</div>

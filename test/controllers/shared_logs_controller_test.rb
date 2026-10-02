@@ -19,6 +19,14 @@ class SharedLogsControllerTest < ActionDispatch::IntegrationTest
     assert_select "canvas#pressureChart"
   end
 
+  test "shared logs show cycles for the doctor" do
+    get shared_logs_url(token: @share_token.token)
+
+    assert_select "#attack_streaks"
+    assert_select "#cycles #cycles_table tbody tr", count: 1
+    assert_select "#attack_calendar"
+  end
+
   test "should not show shared logs with invalid token" do
     get shared_logs_url(token: "invalid_token")
     assert_response :unauthorized
