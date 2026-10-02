@@ -3,7 +3,7 @@ require "test_helper"
 class HeadacheLog::ReportTest < ActiveSupport::TestCase
   setup do
     @user = users(:one)
-    @user.headache_logs.delete_all
+    @user.headache_logs.destroy_all
 
     @first = log_attack at: "2026-09-01 02:10", minutes: 45, intensity: 8, medication: "Oxygen", triggers: "Alcohol"
     @second = log_attack at: "2026-09-01 22:30", minutes: 90, intensity: 10, medication: "Oxygen, Sumatriptan", triggers: "Alcohol, Sleep"

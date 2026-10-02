@@ -1,5 +1,9 @@
 {
-  "settings": {},
+  "settings": {
+    "navigation": {
+      "version": 3
+    }
+  },
   "rules": [
     {
       "patterns": [
@@ -8,33 +12,6 @@
       "properties": {
         "context": "default",
         "pull_to_refresh_enabled": true
-      }
-    },
-    {
-      "patterns": [
-        "/current_attack$"
-      ],
-      "properties": {
-        "context": "modal",
-        "modal_style": "page_sheet",
-        "pull_to_refresh_enabled": false
-      }
-    },
-    {
-      "patterns": [
-        "/headache_logs/new(\\?.*)?$",
-        "/current_attack$",
-        "/headache_logs/.*/edit$",
-        "/medications/new$",
-        "/medications/.*/edit$",
-        "/medication_doses/new$",
-        "/medication_doses/.*/edit$"
-      ],
-      "properties": {
-        "context": "modal",
-        "pull_to_refresh_enabled": false,
-        "modal_style": "page_sheet",
-        "modal_dismiss_gesture_enabled": true
       }
     },
     {
@@ -53,6 +30,35 @@
         "pull_to_refresh_enabled": false,
         "modal_style": "large",
         "modal_dismiss_gesture_enabled": true
+      }
+    },
+    {
+      "patterns": [
+        "/headache_logs/new(\\?.*)?$",
+        "/headache_logs/.*/edit$",
+        "/current_attack$",
+        "/medications/new$",
+        "/medications/.*/edit$",
+        "/medication_doses/new$",
+        "/medication_doses/.*/edit$"
+      ],
+      "properties": {
+        "context": "modal",
+        "pull_to_refresh_enabled": false,
+        "modal_style": "page_sheet",
+        "modal_dismiss_gesture_enabled": true
+      }
+    },
+    {
+      "patterns": [
+        "/headache_logs$",
+        "/charts$",
+        "/settings$",
+        "/feedback$",
+        "/feedback/thank_you$"
+      ],
+      "properties": {
+        "context": "default"
       }
     },
     {

@@ -15,9 +15,6 @@ de:
   headache_log_imports:
     create:
       failed: Beim Importieren der CSV-Datei ist ein Fehler aufgetreten.
-      imported:
-        one: "%{count} Eintrag wurde importiert."
-        other: "%{count} Einträge wurden importiert."
       invalid_file: Ungültiges CSV-Dateiformat.
       missing_file: Bitte wählen Sie eine CSV-Datei zum Importieren aus.
   headache_logs:
@@ -33,14 +30,6 @@ de:
       delete: Löschen
       end_time: Ende
       intensity: Schmerzintensität
-      medication: Medikamente
-      medication_placeholder: z. B. Sauerstoff, Sumatriptan
-      medication_suggestions:
-        - Sauerstoff
-        - Zolmitriptan
-        - Ibuprofen
-        - Paracetamol
-        - Sumatriptan
       notes: Notizen
       notes_placeholder: Weitere Beobachtungen oder Details …
       now: Jetzt
@@ -94,6 +83,8 @@ de:
       share_title: Mein Kopfschmerz-Tagebuch
       title: Mit Ärztin oder Arzt teilen
     show:
+      delete: Löschen
+      edit: Bearbeiten
       title: Eintrag
     stats:
       average_intensity: Durchschnittliche Intensität

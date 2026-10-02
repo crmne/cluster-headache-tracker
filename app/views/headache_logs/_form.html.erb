@@ -147,7 +147,7 @@
 
       <%# Submit Button %>
       <div class="form-control mt-4">
-        <%= form.submit headache_log.new_record? ? t(".create") : t(".update"), class: "btn btn-primary w-full",
+        <%= form.submit class: "btn btn-primary w-full",
               data: { bridge__form_target: "submit", bridge_title: headache_log.new_record? ? t(".create") : t(".update") } %>
       </div>
 

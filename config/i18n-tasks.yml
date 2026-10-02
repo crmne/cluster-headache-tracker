@@ -32,6 +32,12 @@ ignore_unused:
   - "activemodel.*"
   - "helpers.*"
   - "errors.*"
+  # Read by HeadacheLog::Report::Pdf#report_t, which scopes keys under pdf_reports.
+  - "pdf_reports.*"
+  # Looked up dynamically by import format in HeadacheLogImportsController#summary_of.
+  - "headache_log_imports.formats.*"
+  # Default label in the strict locals of medication_doses/_quick_button.
+  - "medication_doses.quick.took_it"
 
 ignore_missing:
   # Translated public page titles and descriptions only exist for de, it and es:

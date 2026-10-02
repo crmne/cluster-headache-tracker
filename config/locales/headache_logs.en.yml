@@ -15,9 +15,6 @@ en:
   headache_log_imports:
     create:
       failed: An error occurred while importing the CSV file.
-      imported:
-        one: Successfully imported %{count} headache log.
-        other: Successfully imported %{count} headache logs.
       invalid_file: Invalid CSV file format.
       missing_file: Please select a CSV file to import.
   headache_logs:
@@ -33,14 +30,6 @@ en:
       delete: Delete
       end_time: End Time
       intensity: Pain Intensity
-      medication: Medication
-      medication_placeholder: e.g., Oxygen, Sumatriptan
-      medication_suggestions:
-        - Oxygen
-        - Zolmitriptan
-        - Ibuprofen
-        - Paracetamol
-        - Sumatriptan
       notes: Notes
       notes_placeholder: Any additional observations or details...
       now: Now
@@ -94,6 +83,8 @@ en:
       share_title: My Headache Logs
       title: Share with Doctor
     show:
+      delete: Delete
+      edit: Edit
       title: Headache Log
     stats:
       average_intensity: Average Intensity

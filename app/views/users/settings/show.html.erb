@@ -7,7 +7,8 @@
   <%= button_to t(".sign_out"), destroy_user_session_path, method: :delete, class: "btn",
       data: {
         controller: "bridge--button",
-        bridge_title: t(".sign_out")
+        bridge_title: t(".sign_out"),
+        bridge_native_action: "sign-out"
       } %>
 <% end %>
 

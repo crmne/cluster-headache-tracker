@@ -21,7 +21,7 @@ class HeadacheLog::Report::Pdf
   end
 
   def document
-    @document ||= Prawn::Document.new(page_size: "A4", margin: [ 40, 40, 56, 40 ], info: { Title: t("title"), Creator: "Cluster Headache Tracker" })
+    @document ||= Prawn::Document.new(page_size: "A4", margin: [ 40, 40, 56, 40 ], info: { Title: report_t("title"), Creator: "Cluster Headache Tracker" })
   end
 
   def render
@@ -35,7 +35,7 @@ class HeadacheLog::Report::Pdf
       triggers
       attack_log
     else
-      text t("attacks.none"), size: 10, color: MUTED
+      text report_t("attacks.none"), size: 10, color: MUTED
     end
 
     footer
@@ -50,7 +50,7 @@ class HeadacheLog::Report::Pdf
     end
 
     def header
-      text t("title"), size: 20, style: :bold
+      text report_t("title"), size: 20, style: :bold
       move_down 6
 
       header_details.each do |label, value|
@@ -58,34 +58,34 @@ class HeadacheLog::Report::Pdf
       end
 
       move_down 6
-      text t("disclaimer"), size: 7.5, color: MUTED
+      text report_t("disclaimer"), size: 7.5, color: MUTED
       move_down 10
       horizontal_rule_with_space
     end
 
     def header_details
       [
-        [ t("patient"), printable(report.patient_name).presence ],
-        [ t("prepared_for"), printable(report.prepared_for).presence ],
-        [ t("period"), period_description ],
-        [ t("filters.label"), filter_description ],
-        [ t("generated"), I18n.l(Time.current, format: :pdf_report_generated) ]
+        [ report_t("patient"), printable(report.patient_name).presence ],
+        [ report_t("prepared_for"), printable(report.prepared_for).presence ],
+        [ report_t("period"), period_description ],
+        [ report_t("filters.label"), filter_description ],
+        [ report_t("generated"), I18n.l(Time.current, format: :pdf_report_generated) ]
       ].select(&:last)
     end
 
     def period_description
       if period = report.period
-        t("period_range", from: l(period.first), to: l(period.last))
+        report_t("period_range", from: l(period.first), to: l(period.last))
       end
     end
 
     def filter_description
-      descriptions = report.filters.slice(:triggers, :medication).map { |key, value| t("filters.#{key}", value: value) }
+      descriptions = report.filters.slice(:triggers, :medication).map { |key, value| report_t("filters.#{key}", value: value) }
       descriptions.join(", ").presence
     end
 
     def summary
-      section t("summary.heading")
+      section report_t("summary.heading")
       boxes = summary_figures
       box_width = (bounds.width - GUTTER / 2 * (boxes.size - 1)) / boxes.size
       top = cursor
@@ -107,28 +107,28 @@ class HeadacheLog::Report::Pdf
 
     def summary_figures
       [
-        [ t("summary.attacks"), report.attack_count.to_s ],
-        [ t("summary.attack_days"), report.attack_days.to_s ],
-        [ t("summary.average_intensity"), intensity(report.average_intensity) ],
-        [ t("summary.max_intensity"), intensity(report.max_intensity) ],
-        [ t("summary.average_duration"), duration(report.average_duration) ]
+        [ report_t("summary.attacks"), report.attack_count.to_s ],
+        [ report_t("summary.attack_days"), report.attack_days.to_s ],
+        [ report_t("summary.average_intensity"), intensity(report.average_intensity) ],
+        [ report_t("summary.max_intensity"), intensity(report.max_intensity) ],
+        [ report_t("summary.average_duration"), duration(report.average_duration) ]
       ]
     end
 
     def patterns
-      section t("charts.heading"), keep_with: CHART_HEIGHT * 2 + GUTTER
+      section report_t("charts.heading"), keep_with: CHART_HEIGHT * 2 + GUTTER
 
       attacks_per_day = report.attacks_per_day
-      Chart.new(document, at: [ 0, cursor ], width: bounds.width, height: CHART_HEIGHT, title: t("charts.attacks_per_day"))
+      Chart.new(document, at: [ 0, cursor ], width: bounds.width, height: CHART_HEIGHT, title: report_t("charts.attacks_per_day"))
         .bars(attacks_per_day.values, labels: date_labels(attacks_per_day.keys))
       move_down GUTTER
 
       top = cursor
       half = (bounds.width - GUTTER) / 2
 
-      Chart.new(document, at: [ 0, top ], width: half, height: CHART_HEIGHT, title: t("charts.time_of_day"))
+      Chart.new(document, at: [ 0, top ], width: half, height: CHART_HEIGHT, title: report_t("charts.time_of_day"))
         .bars(report.attacks_by_time_of_day, labels: time_of_day_labels)
-      Chart.new(document, at: [ half + GUTTER, top ], width: half, height: CHART_HEIGHT, title: t("charts.intensity_over_time"))
+      Chart.new(document, at: [ half + GUTTER, top ], width: half, height: CHART_HEIGHT, title: report_t("charts.intensity_over_time"))
         .dots(intensity_points, labels: date_labels(report.period.to_a, count: 4))
 
       move_cursor_to top - CHART_HEIGHT
@@ -155,30 +155,30 @@ class HeadacheLog::Report::Pdf
     end
 
     def medication_usage
-      section t("medication.heading"), keep_with: 60
+      section report_t("medication.heading"), keep_with: 60
 
       if (usages = report.medication_usage).any?
         rows = usages.map do |usage|
           [ printable(usage.name), usage.attacks.to_s, percentage(usage.attacks), duration(usage.average_duration) ]
         end
 
-        summary_table [ [ t("medication.name"), t("medication.attacks"), t("medication.share"), t("medication.average_duration") ], *rows ]
+        summary_table [ [ report_t("medication.name"), report_t("medication.attacks"), report_t("medication.share"), report_t("medication.average_duration") ], *rows ]
       else
-        text t("medication.none"), size: 9, color: MUTED
+        text report_t("medication.none"), size: 9, color: MUTED
       end
 
       move_down 18
     end
 
     def triggers
-      section t("triggers.heading"), keep_with: 60
+      section report_t("triggers.heading"), keep_with: 60
 
       if (trigger_counts = report.trigger_counts).any?
         rows = trigger_counts.map { |trigger, count| [ printable(trigger), count.to_s, percentage(count) ] }
 
-        summary_table [ [ t("triggers.name"), t("triggers.attacks"), t("medication.share") ], *rows ]
+        summary_table [ [ report_t("triggers.name"), report_t("triggers.attacks"), report_t("medication.share") ], *rows ]
       else
-        text t("triggers.none"), size: 9, color: MUTED
+        text report_t("triggers.none"), size: 9, color: MUTED
       end
 
       move_down 18
@@ -193,13 +193,13 @@ class HeadacheLog::Report::Pdf
     end
 
     def attack_log
-      section t("attacks.heading"), keep_with: 60
+      section report_t("attacks.heading"), keep_with: 60
 
       rows = report.headache_logs.map do |log|
         [ l(log.start_time.to_date), attack_time(log), duration(log.duration), "#{log.intensity}/10", printable(log.medication), printable(log.triggers), printable(log.notes) ]
       end
 
-      headings = %w[ date time duration intensity medication triggers notes ].map { |column| t("attacks.#{column}") }
+      headings = %w[ date time duration intensity medication triggers notes ].map { |column| report_t("attacks.#{column}") }
 
       table [ headings, *rows ], header: true, width: bounds.width, column_widths: { 0 => 56, 1 => 80, 2 => 50, 3 => 54, 4 => 72, 5 => 66 },
         cell_style: table_cell_style.merge(size: 7.5) do |table|
@@ -209,7 +209,7 @@ class HeadacheLog::Report::Pdf
     end
 
     def attack_time(log)
-      ending = log.end_time ? I18n.l(log.end_time, format: :pdf_report_time) : t("attacks.ongoing")
+      ending = log.end_time ? I18n.l(log.end_time, format: :pdf_report_time) : report_t("attacks.ongoing")
 
       "#{I18n.l(log.start_time, format: :pdf_report_time)} – #{ending}"
     end
@@ -219,12 +219,12 @@ class HeadacheLog::Report::Pdf
     end
 
     def footer
-      number_pages t("page_number"), at: [ bounds.right - 120, -18 ], width: 120, align: :right, size: 7.5, color: MUTED
+      number_pages report_t("page_number"), at: [ bounds.right - 120, -18 ], width: 120, align: :right, size: 7.5, color: MUTED
       number_pages footer_label, at: [ 0, -18 ], width: bounds.width - 130, size: 7.5, color: MUTED
     end
 
     def footer_label
-      [ t("title"), printable(report.patient_name).presence, "clusterheadachetracker.com" ].compact.join(" · ")
+      [ report_t("title"), printable(report.patient_name).presence, "clusterheadachetracker.com" ].compact.join(" · ")
     end
 
     def section(title, keep_with: 0)
@@ -248,9 +248,9 @@ class HeadacheLog::Report::Pdf
 
     def intensity(value)
       if value
-        t("summary.out_of_ten", value: ActiveSupport::NumberHelper.number_to_rounded(value, precision: 1, strip_insignificant_zeros: true))
+        report_t("summary.out_of_ten", value: ActiveSupport::NumberHelper.number_to_rounded(value, precision: 1, strip_insignificant_zeros: true))
       else
-        t("not_available")
+        report_t("not_available")
       end
     end
 
@@ -259,9 +259,9 @@ class HeadacheLog::Report::Pdf
         minutes = (seconds / 60).round
         hours, minutes = minutes.divmod(60)
 
-        hours.positive? ? t("duration.hours_minutes", hours: hours, minutes: minutes) : t("duration.minutes", minutes: minutes)
+        hours.positive? ? report_t("duration.hours_minutes", hours: hours, minutes: minutes) : report_t("duration.minutes", minutes: minutes)
       else
-        t("not_available")
+        report_t("not_available")
       end
     end
 
@@ -273,7 +273,7 @@ class HeadacheLog::Report::Pdf
       I18n.l(date, format: format)
     end
 
-    def t(key, **options)
+    def report_t(key, **options)
       I18n.t(key, scope: :pdf_reports, **options)
     end
 end

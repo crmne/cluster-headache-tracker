@@ -21,10 +21,10 @@ class HeadacheLogImportsController < ApplicationController
   private
     def summary_of(result)
       [
-        t(".detected", source: t(result.format, scope: "headache_log_imports.formats")),
-        t(".imported", count: result.imported),
-        (t(".skipped_duplicates", count: result.duplicates) if result.duplicates.positive?),
-        (t(".skipped_invalid", count: result.invalid) if result.invalid.positive?)
+        t("headache_log_imports.create.detected", source: t(result.format, scope: "headache_log_imports.formats")),
+        t("headache_log_imports.create.imported", count: result.imported),
+        (t("headache_log_imports.create.skipped_duplicates", count: result.duplicates) if result.duplicates.positive?),
+        (t("headache_log_imports.create.skipped_invalid", count: result.invalid) if result.invalid.positive?)
       ].compact.join(" ")
     end
 end

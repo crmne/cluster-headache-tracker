@@ -1,7 +1,7 @@
 require "application_system_test_case"
 
 class OngoingAttackBannerTest < ApplicationSystemTestCase
-  driven_by :selenium, using: :headless_chrome, screen_size: [ 390, 844 ]
+  driven_by :selenium, using: :headless_chrome, screen_size: [ 390, 844 ], options: { name: :phone_headless_chrome }
 
   setup do
     @user = users(:one)

@@ -322,7 +322,7 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "h3", /Beginn/
     assert_select "h3", /Schmerzintensität/
-    assert_select "#common-medications option[value=Sauerstoff]"
+    assert_select "h3", /Medikation/
     assert_select "input[type=submit][value='Eintrag erstellen']"
   end
 
@@ -360,7 +360,7 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     file = fixture_file_upload("test/fixtures/files/sample_logs.csv", "text/csv")
 
     post headache_log_import_url, params: { file: file }
-    assert_equal "Se importaron 3 registros.", flash[:notice]
+    assert_includes flash[:notice], "Se importaron 3 crisis."
   end
 
   test "new log offers recent attack medications before preventives in the picker" do

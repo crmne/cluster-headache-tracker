@@ -15,9 +15,6 @@ es:
   headache_log_imports:
     create:
       failed: Se produjo un error al importar el archivo CSV.
-      imported:
-        one: Se importó %{count} registro.
-        other: Se importaron %{count} registros.
       invalid_file: El formato del archivo CSV no es válido.
       missing_file: Selecciona un archivo CSV para importar.
   headache_logs:
@@ -33,14 +30,6 @@ es:
       delete: Eliminar
       end_time: Fin
       intensity: Intensidad del dolor
-      medication: Medicación
-      medication_placeholder: p. ej., oxígeno, sumatriptán
-      medication_suggestions:
-        - Oxígeno
-        - Zolmitriptán
-        - Ibuprofeno
-        - Paracetamol
-        - Sumatriptán
       notes: Notas
       notes_placeholder: Otras observaciones o detalles…
       now: Ahora
@@ -94,6 +83,8 @@ es:
       share_title: Mi diario de cefalea
       title: Compartir con tu médico
     show:
+      delete: Eliminar
+      edit: Editar
       title: Registro
     stats:
       average_intensity: Intensidad media

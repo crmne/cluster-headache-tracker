@@ -66,7 +66,7 @@ class NativeBridgeTest < ApplicationSystemTestCase
     reply_to alert
     wait_for_message "toast"
 
-    assert_equal "Headache log was successfully destroyed.", message_for("toast")["data"]["message"]
+    assert_equal "Headache log was successfully deleted.", message_for("toast")["data"]["message"]
     assert_not HeadacheLog.exists?(@headache_log.id)
   end
 

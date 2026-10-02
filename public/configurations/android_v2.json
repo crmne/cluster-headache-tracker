@@ -5,40 +5,12 @@
   "rules": [
     {
       "patterns": [
-        "/users/sign_in$",
-        "/users/sign_up$",
-        "/users/password/new$",
-        "/users/password/edit$",
-        "/login$",
-        "/signup$",
-        "/register$",
-        "/sessions/new$",
-        "/session$"
+        ".*"
       ],
       "properties": {
-        "context": "modal",
-        "uri": "hotwire://fragment/web/modal",
-        "presentation": "modal",
-        "pull_to_refresh_enabled": false
-      }
-    },
-    {
-      "patterns": [
-        "/headache_logs/new(\\?.*)?$",
-        "/current_attack$",
-        "/headache_logs/.*/edit$",
-        "/settings/devices/new$",
-        "/settings/devices/.*/edit$",
-        "/medications/new$",
-        "/medications/.*/edit$",
-        "/medication_doses/new$",
-        "/medication_doses/.*/edit$"
-      ],
-      "properties": {
-        "context": "modal",
-        "uri": "hotwire://fragment/web/modal",
-        "presentation": "modal",
-        "pull_to_refresh_enabled": false
+        "context": "default",
+        "uri": "hotwire://fragment/web",
+        "pull_to_refresh_enabled": true
       }
     },
     {
@@ -57,20 +29,65 @@
     },
     {
       "patterns": [
+        "/headache_logs/new(\\?.*)?$",
+        "/current_attack$",
+        "/headache_logs/.*/edit$",
+        "/medications/new$",
+        "/medications/.*/edit$",
+        "/medication_doses/new$",
+        "/medication_doses/.*/edit$"
+      ],
+      "properties": {
+        "context": "modal",
+        "uri": "hotwire://fragment/web/modal",
+        "presentation": "default",
+        "pull_to_refresh_enabled": false
+      }
+    },
+    {
+      "patterns": [
+        "/users/sign_in$",
+        "/users/sign_up$",
+        "/users/password/new$",
+        "/users/password/edit$",
+        "/login$",
+        "/signup$",
+        "/register$",
+        "/sessions/new$",
+        "/session$"
+      ],
+      "properties": {
+        "context": "modal",
+        "uri": "hotwire://fragment/web/modal",
+        "presentation": "default",
+        "pull_to_refresh_enabled": false
+      }
+    },
+    {
+      "patterns": [
+        "/refresh_historical_location$"
+      ],
+      "properties": {
+        "presentation": "refresh",
+        "historical_location": true
+      }
+    },
+    {
+      "patterns": [
+        "/resume_historical_location$"
+      ],
+      "properties": {
+        "presentation": "none",
+        "historical_location": true
+      }
+    },
+    {
+      "patterns": [
         "\\.apk$"
       ],
       "properties": {
         "uri": "hotwire://fragment/web",
         "presentation": "none"
-      }
-    },
-    {
-      "patterns": [
-        ".*"
-      ],
-      "properties": {
-        "uri": "hotwire://fragment/web",
-        "pull_to_refresh_enabled": true
       }
     }
   ]

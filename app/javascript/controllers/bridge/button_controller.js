@@ -22,8 +22,11 @@ export default class extends BridgeComponent {
     const iosImage = element.bridgeAttribute("ios-image")
     const androidImage = element.bridgeAttribute("android-image")
     const color = element.bridgeAttribute("color")
+    // A language-independent name for buttons the app handles natively (print, sign-out, sponsor),
+    // since the title is translated.
+    const nativeAction = element.bridgeAttribute("native-action")
 
-    this.send(side, { title: element.title, iosImage, androidImage, color }, () => this.#activate())
+    this.send(side, { title: element.title, iosImage, androidImage, color, nativeAction }, () => this.#activate())
   }
 
   #activate() {
