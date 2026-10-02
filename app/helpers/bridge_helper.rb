@@ -29,21 +29,6 @@ module BridgeHelper
       current_user.review_prompt_due?
   end
 
-  # TODO: Switch to current_user.widget_status once the quick-log branch lands.
-  def widget_status_payload(user = current_user)
-    ongoing_attack = user.headache_logs.where(end_time: nil).recent_first.first
-    last_attack = user.headache_logs.recent_first.first
-
-    {
-      ongoing: ongoing_attack.present?,
-      startedAt: ongoing_attack&.start_time&.iso8601,
-      lastAttackAt: last_attack&.start_time&.iso8601,
-      attackFreeDays: last_attack&.end_time ? (Date.current - last_attack.end_time.to_date).to_i : 0,
-      attacksToday: user.headache_logs.today.count,
-      locale: I18n.locale.to_s
-    }
-  end
-
   private
     def native_bridge_components
       @native_bridge_components ||= request.user_agent.to_s[/bridge-components: \[(.*?)\]/, 1].to_s.split

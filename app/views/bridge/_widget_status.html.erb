@@ -1,4 +1,4 @@
-<%# locals: (status: widget_status_payload) %>
+<%# locals: (status: current_user.widget_status) %>
 <% if hotwire_native_app? %>
   <%= tag.div id: "bridge_widget_status", hidden: true, data: { controller: "bridge--widget-status", bridge__widget_status_payload_value: status.to_json } %>
 <% end %>

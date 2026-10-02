@@ -24,36 +24,4 @@ class BridgeHelperTest < ActionView::TestCase
     assert_equal "error", flash_haptic_feedback(:error)
     assert_nil flash_haptic_feedback(:generate_link)
   end
-
-  test "widget status while an attack is ongoing" do
-    user = users(:two)
-    ongoing = user.headache_logs.create!(start_time: 20.minutes.ago.change(usec: 0), intensity: 7)
-
-    status = widget_status_payload(user)
-
-    assert status[:ongoing]
-    assert_equal ongoing.start_time.iso8601, status[:startedAt]
-    assert_equal ongoing.start_time.iso8601, status[:lastAttackAt]
-    assert_equal 0, status[:attackFreeDays]
-    assert_equal user.headache_logs.today.count, status[:attacksToday]
-    assert_equal "en", status[:locale]
-  end
-
-  test "widget status counts attack-free days since the last attack ended" do
-    user = users(:two)
-    user.headache_logs.update_all(start_time: 3.days.ago.beginning_of_day + 1.hour, end_time: 3.days.ago.beginning_of_day + 2.hours)
-
-    status = widget_status_payload(user)
-
-    assert_not status[:ongoing]
-    assert_nil status[:startedAt]
-    assert_equal 3, status[:attackFreeDays]
-    assert_equal 0, status[:attacksToday]
-  end
-
-  test "widget status without any attacks" do
-    user = User.create!(username: "newcomer", password: "password123")
-
-    assert_equal({ ongoing: false, startedAt: nil, lastAttackAt: nil, attackFreeDays: 0, attacksToday: 0, locale: "en" }, widget_status_payload(user))
-  end
 end
