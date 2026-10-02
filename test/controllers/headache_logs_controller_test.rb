@@ -117,4 +117,14 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     get headache_logs_url, params: { medication: "Sumatriptan" }
     assert_response :success
   end
+
+  test "Turbo form submissions land on the logs page instead of streaming into the form" do
+    turbo_headers = { "Accept" => "text/vnd.turbo-stream.html, text/html, application/xhtml+xml" }
+
+    patch headache_log_url(@headache_log), params: { headache_log: { intensity: 6 } }, headers: turbo_headers
+    follow_redirect! headers: turbo_headers
+
+    assert_equal "text/html", response.media_type
+    assert_select "title", /Headache Logs/
+  end
 end
