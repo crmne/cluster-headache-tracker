@@ -4,8 +4,8 @@
 <!-- Hero Section -->
 <section class="py-20">
   <div class="container mx-auto px-4 max-w-4xl text-center">
-    <h1 class="text-4xl font-bold mb-4">For Neurologists 👨‍⚕️</h1>
-    <p class="text-xl text-base-content/70">Your patients finally have good data</p>
+    <h1 class="text-4xl font-bold mb-4"><%= t(".heading") %></h1>
+    <p class="text-xl text-base-content/70"><%= t(".subheading") %></p>
   </div>
 </section>
 
@@ -13,73 +13,73 @@
 <section class="py-20 bg-base-100">
   <div class="container mx-auto px-4 max-w-4xl">
     <div class="prose prose-lg mx-auto">
-      <p class="text-xl">A tracking tool built by a cluster headache patient who was tired of paper diaries nobody reads.</p>
+      <p class="text-xl"><%= t(".intro") %></p>
 
-      <h2>🎯 Why Your Patients Use This</h2>
+      <h2><%= t(".why.heading") %></h2>
 
-      <p>Patients track their clusters here because it actually works during an attack. One massive button. Tap it. Done. They can add details later when they're not writhing in pain.</p>
+      <p><%= t(".why.during_attack") %></p>
 
-      <p>No complex forms. No tiny buttons. No required fields they can't think about at 3am. Just fast, simple tracking that captures what matters.</p>
+      <p><%= t(".why.simple") %></p>
 
-      <h2>📊 Data You Actually Need</h2>
+      <h2><%= t(".data.heading") %></h2>
 
-      <p><strong>Every attack includes:</strong></p>
+      <p><strong><%= t(".data.attack_includes") %></strong></p>
       <ul>
-        <li>Precise start/end times with automatic duration calculation</li>
-        <li>Pain intensity on standard 1-10 scale</li>
-        <li>Medications taken and effectiveness</li>
-        <li>Triggers and associated symptoms</li>
-        <li>Side affected and pain location</li>
+        <li><%= t(".data.attack.times") %></li>
+        <li><%= t(".data.attack.intensity") %></li>
+        <li><%= t(".data.attack.medications") %></li>
+        <li><%= t(".data.attack.triggers") %></li>
+        <li><%= t(".data.attack.side") %></li>
       </ul>
 
-      <p><strong>Reports show:</strong></p>
+      <p><strong><%= t(".data.reports_show") %></strong></p>
       <ul>
-        <li>Attack frequency patterns (daily/weekly/monthly)</li>
-        <li>Cluster period identification and duration</li>
-        <li>Circadian rhythm analysis</li>
-        <li>Treatment response rates</li>
-        <li>Complete medication history</li>
+        <li><%= t(".data.reports.frequency") %></li>
+        <li><%= t(".data.reports.cluster_periods") %></li>
+        <li><%= t(".data.reports.circadian") %></li>
+        <li><%= t(".data.reports.treatment_response") %></li>
+        <li><%= t(".data.reports.medication_history") %></li>
       </ul>
 
-      <h2>🔗 How Patients Share With You</h2>
+      <h2><%= t(".sharing.heading") %></h2>
 
-      <p>During appointments, patients generate a secure share link. You click it. No login needed. You instantly see <strong>beautiful, professional reports</strong> featuring:</p>
+      <p><%= t(".sharing.intro_html") %></p>
       <ul>
-        <li>Comprehensive tables listing every attack with timestamps, duration, and intensity</li>
-        <li>Visual charts showing attack patterns, frequency trends, and circadian rhythms</li>
-        <li>Medication effectiveness graphs comparing treatments side-by-side</li>
-        <li>Clean, organized data you can print directly or save as PDF</li>
+        <li><%= t(".sharing.tables") %></li>
+        <li><%= t(".sharing.charts") %></li>
+        <li><%= t(".sharing.medication_graphs") %></li>
+        <li><%= t(".sharing.print") %></li>
       </ul>
 
-      <p>Several patients have told me these reports helped their treatment conversations because the documentation was clearer than scattered handwritten notes.</p>
+      <p><%= t(".sharing.feedback") %></p>
 
-      <h2>⚡ Zero Friction</h2>
+      <h2><%= t(".friction.heading") %></h2>
 
-      <p><strong>For patients:</strong> Sign up with just a username. No email. Start tracking immediately.</p>
+      <p><strong><%= t(".friction.for_patients_label") %></strong> <%= t(".friction.for_patients") %></p>
 
-      <p><strong>For you:</strong> Click their share link. View data. No account needed.</p>
+      <p><strong><%= t(".friction.for_you_label") %></strong> <%= t(".friction.for_you") %></p>
 
-      <p>That's it. No complex onboarding. No vendor relationships. No IT department involvement.</p>
+      <p><%= t(".friction.thats_it") %></p>
 
-      <h2>🔒 Privacy First</h2>
+      <h2><%= t(".privacy.heading") %></h2>
 
-      <p>No emails collected. No tracking pixels. No ads. Data encrypted and stored in Germany. I built this for fellow sufferers, not to harvest data.</p>
+      <p><%= t(".privacy.no_tracking") %></p>
 
-      <p>Patients own their data. They can export everything as CSV anytime. When they share with you, it's temporary (30 days) and read-only.</p>
+      <p><%= t(".privacy.ownership") %></p>
 
-      <h2>📢 Tell Your Patients</h2>
+      <h2><%= t(".tell_patients.heading") %></h2>
 
-      <p class="text-xl">Just say: <strong>"Track your clusters at clusterheadachetracker.com"</strong></p>
+      <p class="text-xl"><%= t(".tell_patients.just_say_html") %></p>
 
-      <p>That's all. When they come back, they'll have real data instead of vague recollections.</p>
+      <p><%= t(".tell_patients.result") %></p>
     </div>
 
     <div class="text-center mt-12">
-      <p class="text-lg mb-4">Questions? I personally respond to every email:</p>
+      <p class="text-lg mb-4"><%= t(".contact.questions") %></p>
       <a href="mailto:hello@clusterheadachetracker.com" class="text-xl link">hello@clusterheadachetracker.com</a>
 
       <p class="mt-8 text-sm text-base-content/60">
-        Built with love (and pain) by Carmine Paolino, a cluster headache sufferer who needed better tools.
+        <%= t(".contact.built_by") %>
       </p>
     </div>
   </div>

@@ -1,8 +1,8 @@
-<% content_for :title, "Thank You!" %>
-<% content_for :navbar, "Thank You!" %>
+<% content_for :title, t(".title") %>
+<% content_for :navbar, t(".title") %>
 <% content_for :web_button do %>
   <%= link_to "https://github.com/sponsors/crmne", class: "btn btn-primary", target: "_blank", rel: "noopener noreferrer" do %>
-    Sponsor
+    <%= t(".sponsor") %>
     <%= heroicon "heart", variant: "mini", class: "w-4 h-4" %>
   <% end %>
 <% end %>
@@ -12,9 +12,9 @@
       rel: "noopener noreferrer",
       data: {
         controller: "bridge--button",
-        bridge_title: "Sponsor"
+        bridge_title: t(".sponsor")
       } do %>
-    Sponsor
+    <%= t(".sponsor") %>
     <%= heroicon "heart", variant: "mini", class: "w-4 h-4" %>
   <% end %>
 <% end %>
@@ -24,24 +24,24 @@
     <div class="inline-flex items-center justify-center w-16 h-16 bg-success/20 rounded-full mb-4">
       <%= heroicon "check-circle", variant: "solid", class: "w-8 h-8 text-success" %>
     </div>
-    <h1 class="text-3xl font-bold mb-2">Thank you!</h1>
-    <p class="text-lg text-base-content/70">Your feedback helps make this tool better for everyone in the cluster headache community.</p>
+    <h1 class="text-3xl font-bold mb-2"><%= t(".heading") %></h1>
+    <p class="text-lg text-base-content/70"><%= t(".subtitle") %></p>
   </div>
 
   <div class="card bg-base-100 shadow-md mb-6">
     <div class="card-body text-center">
-      <h2 class="text-xl font-semibold mb-3">Help spread the word</h2>
-      <p class="text-base-content/70 mb-4">Know someone else dealing with cluster headaches? They deserve a better way to track their pain too.</p>
+      <h2 class="text-xl font-semibold mb-3"><%= t(".spread_title") %></h2>
+      <p class="text-base-content/70 mb-4"><%= t(".spread_body") %></p>
 
       <div class="flex flex-col gap-3">
         <%# Hidden templates for button states %>
         <template data-share-link-target="shareTemplate">
           <%= heroicon "share", variant: "mini", class: "w-4 h-4" %>
-          Share with Friends
+          <%= t(".share") %>
         </template>
         <template data-share-link-target="copiedTemplate">
           <%= heroicon "check", variant: "mini", class: "w-4 h-4" %>
-          Copied!
+          <%= t(".copied") %>
         </template>
 
         <%# Hidden input for URL copying %>
@@ -52,22 +52,22 @@
                 data-action="click->bridge--share#shareViaBridge click->share-link#share"
                 data-share-url="https://clusterheadachetracker.com"
                 data-share-title="Cluster Headache Tracker"
-                data-share-text="I'm using this free app to track my cluster headaches. It's built by someone who gets it."
+                data-share-text="<%= t(".share_text") %>"
                 class="btn btn-primary w-full sm:w-auto mx-auto">
           <%= heroicon "share", variant: "mini", class: "w-4 h-4" %>
-          Share with Friends
+          <%= t(".share") %>
         </button>
 
         <div class="flex flex-col sm:flex-row gap-2 justify-center">
-          <a href="https://twitter.com/intent/tweet?text=I'm%20using%20Cluster%20Headache%20Tracker%20to%20manage%20my%20headaches.%20It's%20free,%20private,%20and%20built%20by%20someone%20who%20gets%20it.%20Check%20it%20out:%20https://clusterheadachetracker.com"
+          <a href="https://twitter.com/intent/tweet?<%= { text: t(".tweet_text", url: "https://clusterheadachetracker.com") }.to_query %>"
              target="_blank"
              class="btn btn-sm btn-outline">
-            Share on Twitter
+            <%= t(".share_on_twitter") %>
           </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https://clusterheadachetracker.com"
              target="_blank"
              class="btn btn-sm btn-outline">
-            Share on Facebook
+            <%= t(".share_on_facebook") %>
           </a>
         </div>
       </div>
@@ -77,36 +77,36 @@
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
     <div class="card bg-base-100 shadow-md">
       <div class="card-body">
-        <h3 class="card-title text-lg">Brand New Mobile Apps!</h3>
-        <p class="text-sm text-base-content/70">Completely new native iOS and Android apps! The Android app needs to be downloaded manually again.</p>
-        <%= link_to "Download from homepage →", root_path, class: "link link-primary text-sm" %>
+        <h3 class="card-title text-lg"><%= t(".mobile_apps_title") %></h3>
+        <p class="text-sm text-base-content/70"><%= t(".mobile_apps_body") %></p>
+        <%= link_to t(".mobile_apps_link"), root_path, class: "link link-primary text-sm" %>
       </div>
     </div>
 
     <div class="card bg-base-100 shadow-md">
       <div class="card-body">
-        <h3 class="card-title text-lg">Support Development</h3>
-        <p class="text-sm text-base-content/70">This tool is free and will always be free. If it's helped you, consider supporting its development.</p>
-        <%= link_to "Sponsor →", "https://github.com/sponsors/crmne", class: "btn btn-sm btn-primary mt-2", target: "_blank", rel: "noopener noreferrer" %>
+        <h3 class="card-title text-lg"><%= t(".support_title") %></h3>
+        <p class="text-sm text-base-content/70"><%= t(".support_body") %></p>
+        <%= link_to t(".support_link"), "https://github.com/sponsors/crmne", class: "btn btn-sm btn-primary mt-2", target: "_blank", rel: "noopener noreferrer" %>
       </div>
     </div>
   </div>
 
   <div class="card bg-primary/10 border border-primary/20">
     <div class="card-body">
-      <h3 class="text-lg font-semibold mb-2">Also from the creator</h3>
-      <p class="text-sm text-base-content/70 mb-3">Stop searching through Slack and Drive. Chat With Work finds everything instantly. Your all-knowing workplace assistant that searches all your work tools at once.</p>
+      <h3 class="text-lg font-semibold mb-2"><%= t(".also_from_creator") %></h3>
+      <p class="text-sm text-base-content/70 mb-3"><%= t(".chat_with_work_body") %></p>
       <div class="flex items-center gap-3">
         <%= link_to "ChatWithWork.com", "https://chatwithwork.com", class: "btn btn-sm btn-primary", target: "_blank" %>
-        <span class="text-sm text-base-content/60">Built in Germany • GDPR-compliant</span>
+        <span class="text-sm text-base-content/60"><%= t(".chat_with_work_note") %></span>
       </div>
     </div>
   </div>
 
   <div class="text-center mt-8 pb-4">
-    <p class="text-sm text-base-content/50 mb-2">Changed your mind about something?</p>
-    <%= button_to "Submit new feedback", feedback_path, method: :delete,
-        data: { turbo_confirm: "This will replace your previous feedback. Continue?" },
+    <p class="text-sm text-base-content/50 mb-2"><%= t(".changed_mind") %></p>
+    <%= button_to t(".resubmit"), feedback_path, method: :delete,
+        data: { turbo_confirm: t(".resubmit_confirmation") },
         class: "link link-hover text-sm text-base-content/60" %>
   </div>
 </div>

@@ -5,11 +5,11 @@
     <div class="col-span-full text-center py-12">
       <div class="max-w-md mx-auto">
         <% if params[:start_time].present? || params[:end_time].present? || params[:triggers].present? || params[:medication].present? %>
-          <p class="text-xl text-base-content/60 mb-4">No headaches found matching your filters</p>
-          <%= link_to "Clear Filters", headache_logs_path, class: "btn btn-primary" %>
+          <p class="text-xl text-base-content/60 mb-4"><%= t(".no_matches") %></p>
+          <%= link_to t(".clear_filters"), headache_logs_path, class: "btn btn-primary" %>
         <% else %>
-          <p class="text-xl text-base-content/60 mb-8">No headaches logged yet</p>
-          <p class="text-base-content/60 mb-8">Tap the <span class="font-bold text-primary">New</span> button to log your first headache</p>
+          <p class="text-xl text-base-content/60 mb-8"><%= t(".empty") %></p>
+          <p class="text-base-content/60 mb-8"><%= t(".empty_hint_html", new: tag.span(t(".new"), class: "font-bold text-primary")) %></p>
           <div class="flex flex-col items-center" style="height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - <%= native_app_with_tabs? ? '30rem' : '35rem' %>);">
             <div class="w-1 flex-grow bg-primary/20"></div>
             <svg class="w-12 h-12 text-primary animate-bounce mb-16 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -76,4 +76,26 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     # The log should now show an end time
     assert_selector ".radial-progress", text: log.intensity.to_s
   end
+
+  test "the new log form shows times and descriptions in the user's language and clock" do
+    @user.update!(locale: "de", time_format: "24h")
+
+    visit new_headache_log_url
+    assert_selector "h3", text: "Beginn"
+
+    fill_in "headache_log[start_time]", with: Time.zone.parse("2026-03-14 19:05")
+    assert_selector "[data-time-target=readout]", text: /14\. März? · 19:05/
+    assert_no_selector "[data-time-target=readout]", text: /PM/
+
+    find("input[type=range]").set(9)
+    assert_text "als würde das Auge gleich platzen"
+  end
+
+  test "the new log form readout follows a 12-hour preference" do
+    @user.update!(time_format: "12h")
+
+    visit new_headache_log_url
+    fill_in "headache_log[start_time]", with: Time.zone.parse("2026-03-14 19:05")
+    assert_selector "[data-time-target=readout]", text: /7:05[[:space:]]PM/
+  end
 end

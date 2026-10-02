@@ -1,0 +1,11 @@
+de:
+  app:
+    description: Kostenloser Clusterkopfschmerz-Tracker und Kopfschmerztagebuch, entwickelt von einem Betroffenen. Attacken in Sekunden erfassen, Intensität (KIP-Skala), Medikamente, Auslöser und Uhrzeiten festhalten und daraus Berichte für die Ärztin oder den Arzt erstellen. Keine E-Mail-Adresse nötig.
+    short_description: Kostenlos, privat, mit Arztberichten
+    title: Cluster Headache Tracker – Clusterkopfschmerz-Tagebuch
+  languages:
+    de: Deutsch
+    en: English
+    es: Español
+    it: Italiano
+  open_graph_locale: de_DE

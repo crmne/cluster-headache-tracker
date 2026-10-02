@@ -2,8 +2,8 @@
   <dialog id="welcomeModal" class="modal" data-controller="welcome" data-welcome-target="modal">
     <div class="modal-box max-w-md">
       <div class="text-center mb-4">
-        <h3 class="text-xl font-bold mb-1">Track your headaches in 3 steps</h3>
-        <p class="text-sm text-base-content/70">Here's how it works:</p>
+        <h3 class="text-xl font-bold mb-1"><%= t("layout.welcome_modal.title") %></h3>
+        <p class="text-sm text-base-content/70"><%= t("layout.welcome_modal.subtitle") %></p>
       </div>
 
       <div class="space-y-3 mb-4">
@@ -12,8 +12,8 @@
             <span class="text-xs font-bold">1</span>
           </div>
           <div>
-            <h4 class="font-semibold">Hit the New button when it hits</h4>
-            <p class="text-xs text-base-content/70">One tap when the beast arrives.</p>
+            <h4 class="font-semibold"><%= t("layout.welcome_modal.step_1_title") %></h4>
+            <p class="text-xs text-base-content/70"><%= t("layout.welcome_modal.step_1_body") %></p>
           </div>
         </div>
 
@@ -22,8 +22,8 @@
             <span class="text-xs font-bold">2</span>
           </div>
           <div>
-            <h4 class="font-semibold">Edit details when you can breathe</h4>
-            <p class="text-xs text-base-content/70">After it passes, add what helped (or didn't)</p>
+            <h4 class="font-semibold"><%= t("layout.welcome_modal.step_2_title") %></h4>
+            <p class="text-xs text-base-content/70"><%= t("layout.welcome_modal.step_2_body") %></p>
           </div>
         </div>
 
@@ -32,8 +32,8 @@
             <span class="text-xs font-bold">3</span>
           </div>
           <div>
-            <h4 class="font-semibold">Share real data with your doctor</h4>
-            <p class="text-xs text-base-content/70">Charts and reports for treatment conversations</p>
+            <h4 class="font-semibold"><%= t("layout.welcome_modal.step_3_title") %></h4>
+            <p class="text-xs text-base-content/70"><%= t("layout.welcome_modal.step_3_body") %></p>
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@
       <div class="alert alert-warning">
         <%= heroicon "key", class: "w-5 h-5 shrink-0" %>
         <div>
-          <p class="text-xs"><strong>Write down your password.</strong> No email = real privacy, but also no password resets. That's the trade-off.</p>
+          <p class="text-xs"><%= t("layout.welcome_modal.password_warning_html") %></p>
         </div>
       </div>
 
@@ -51,15 +51,15 @@
 
       <div class="modal-action justify-center mt-4">
         <button class="btn btn-primary btn-wide" data-action="click->welcome#acknowledge" data-welcome-target="startButton" disabled>
-          <span data-welcome-target="buttonText">Start Tracking</span>
+          <span data-welcome-target="buttonText"><%= t("layout.welcome_modal.start") %></span>
           <span data-welcome-target="countdown" class="hidden"></span>
         </button>
-        <%= button_to "Start Tracking", settings_welcome_acknowledgement_path,
+        <%= button_to t("layout.welcome_modal.start"), settings_welcome_acknowledgement_path,
             form: { class: "hidden", data: { welcome_target: "dismissForm", turbo: false } } %>
       </div>
     </div>
     <form method="dialog" class="modal-backdrop">
-      <button>close</button>
+      <button><%= t("layout.modal.close") %></button>
     </form>
   </dialog>
 <% end %>

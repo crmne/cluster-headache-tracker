@@ -1,0 +1,11 @@
+it:
+  app:
+    description: Diario e tracker gratuito per la cefalea a grappolo, creato da chi ne soffre. Registra gli attacchi in pochi secondi, annota intensità (scala KIP), farmaci, fattori scatenanti e orari, e crea report pronti per il medico. Nessuna email richiesta.
+    short_description: Gratuito, privato, report per il medico
+    title: Cluster Headache Tracker – Diario della cefalea a grappolo
+  languages:
+    de: Deutsch
+    en: English
+    es: Español
+    it: Italiano
+  open_graph_locale: it_IT

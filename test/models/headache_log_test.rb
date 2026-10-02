@@ -61,7 +61,7 @@ class HeadacheLogTest < ActiveSupport::TestCase
 
     bucket = HeadacheLog.chart_data_for(logs)[:hourly_data][1]
 
-    assert_equal "2:00 - 3:59", bucket[:label]
+    assert_equal 2, bucket[:start_hour]
     assert_equal 2, bucket[:frequency]
     assert_equal 7.0, bucket[:avg_intensity]
   end

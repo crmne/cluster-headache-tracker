@@ -4,8 +4,8 @@
 <!-- Hero Section -->
 <section class="py-20">
   <div class="container mx-auto px-4 max-w-4xl text-center">
-    <h1 class="text-4xl font-bold mb-4">Frequently Asked Questions 🤔</h1>
-    <p class="text-xl text-base-content/70">Real answers from someone who gets it</p>
+    <h1 class="text-4xl font-bold mb-4"><%= t(".heading") %></h1>
+    <p class="text-xl text-base-content/70"><%= t(".subheading") %></p>
   </div>
 </section>
 
@@ -13,60 +13,60 @@
 <section class="py-20 bg-base-100">
   <div class="container mx-auto px-4 max-w-4xl">
     <div class="prose prose-lg mx-auto">
-      <h2>🧠 About Cluster Headaches</h2>
+      <h2><%= t(".about.heading") %></h2>
 
-      <p><strong>What are cluster headaches?</strong><br>
-      Imagine someone stabbing a hot poker through your eye socket for 15 minutes to 3 hours. They come in cycles, often at the exact same time each day. Some call them "suicide headaches" - once you've had one, you understand why.</p>
+      <p><strong><%= t(".about.what_are.question") %></strong><br>
+      <%= t(".about.what_are.answer") %></p>
 
-      <p><strong>How are they different from migraines?</strong><br>
-      Migraines make you want to lie in a dark room. Clusters make you want to bang your head against a wall. They're shorter but way more intense. You can't lie still - you pace, rock, sometimes scream.</p>
+      <p><strong><%= t(".about.migraines.question") %></strong><br>
+      <%= t(".about.migraines.answer") %></p>
 
-      <p><strong>What causes them?</strong><br>
-      Cluster headache is a neurological disorder, and the exact mechanisms are still not fully understood. What matters practically: attacks are not a character flaw or a willpower problem. A headache specialist can help confirm the diagnosis and discuss acute and preventive treatment options.</p>
+      <p><strong><%= t(".about.causes.question") %></strong><br>
+      <%= t(".about.causes.answer") %></p>
 
-      <h2>📱 About This Tracker</h2>
+      <h2><%= t(".tracker.heading") %></h2>
 
-      <p><strong>Why did you build this?</strong><br>
-      I tried everything - paper diaries, spreadsheets, other apps. Nothing worked when I was in pain. So I built what I needed: something fast, simple, and actually useful for getting treatment approved.</p>
+      <p><strong><%= t(".tracker.why_built.question") %></strong><br>
+      <%= t(".tracker.why_built.answer") %></p>
 
-      <p><strong>How do I start tracking?</strong><br>
-      Sign up with just a username (no email needed). Hit the big "Log Attack" button when one starts. That's it. Add details later when you're not dying.</p>
+      <p><strong><%= t(".tracker.how_to_start.question") %></strong><br>
+      <%= t(".tracker.how_to_start.answer") %></p>
 
-      <p><strong>What makes this different?</strong><br>
-      Built by a sufferer, for sufferers. One-tap logging during attacks. Charts that show real patterns. Reports you can print, export, or share with a clinician. No ads and no email requirement.</p>
+      <p><strong><%= t(".tracker.different.question") %></strong><br>
+      <%= t(".tracker.different.answer") %></p>
 
-      <h2>🔒 Privacy & Security</h2>
+      <h2><%= t(".privacy.heading") %></h2>
 
-      <p><strong>Is my data really private?</strong><br>
-      Yes. No email required, no ads, no selling data. Public pages use privacy-friendly aggregate analytics, but your headache logs stay private and stored in Germany. I built this for us, not to harvest data.</p>
+      <p><strong><%= t(".privacy.private.question") %></strong><br>
+      <%= t(".privacy.private.answer") %></p>
 
-      <p><strong>Why no email signup?</strong><br>
-      Because when you're desperate at 3 AM, you don't need another password reset. Pick a username, start tracking. Lost password? Sorry, that's the price of real privacy.</p>
+      <p><strong><%= t(".privacy.no_email.question") %></strong><br>
+      <%= t(".privacy.no_email.answer") %></p>
 
-      <p><strong>Can I export my data?</strong><br>
-      Yes. Download everything as CSV anytime. Your data is yours.</p>
+      <p><strong><%= t(".privacy.export.question") %></strong><br>
+      <%= t(".privacy.export.answer") %></p>
 
-      <h2>🎯 Using the Tracker</h2>
+      <h2><%= t(".using.heading") %></h2>
 
-      <p><strong>Can I track during an attack?</strong><br>
-      YES. Massive button. One tap. Done. Add details later when you're human. I designed this mid-cycle, so I know what's possible when you can't think.</p>
+      <p><strong><%= t(".using.during_attack.question") %></strong><br>
+      <%= t(".using.during_attack.answer") %></p>
 
-      <p><strong>How do I share with my doctor?</strong><br>
-      Generate a secure 30-day share link that gives your doctor a read-only report. They'll see tables of every attack, visual charts showing your patterns, and medication or oxygen notes. No login needed for them. You can also print the reports directly or save as PDF for your records.</p>
+      <p><strong><%= t(".using.share.question") %></strong><br>
+      <%= t(".using.share.answer") %></p>
 
-      <p><strong>Does it work on my phone?</strong><br>
-      Yes. iOS app, Android app, and web version. Everything syncs. Start on your phone during an attack, add notes on your computer later.</p>
+      <p><strong><%= t(".using.phone.question") %></strong><br>
+      <%= t(".using.phone.answer") %></p>
 
-      <h2>🛠️ Support & Development</h2>
+      <h2><%= t(".support.heading") %></h2>
 
-      <p><strong>Is it really free?</strong><br>
-      Yes. I pay for servers myself. Donations are optional. This is a tool I needed, now we all have it.</p>
+      <p><strong><%= t(".support.free.question") %></strong><br>
+      <%= t(".support.free.answer") %></p>
 
-      <p><strong>Found a bug?</strong><br>
-      Tell me on <a href="https://github.com/crmne/cluster-headache-tracker/issues" class="link">GitHub</a>. I fix things fast because I use this tool too.</p>
+      <p><strong><%= t(".support.bug.question") %></strong><br>
+      <%= t(".support.bug.answer_html", github_link: link_to("GitHub", "https://github.com/crmne/cluster-headache-tracker/issues", class: "link")) %></p>
 
-      <p><strong>Want a new feature?</strong><br>
-      Ask on GitHub. If it helps track clusters better, I'll probably build it. Best features come from users who actually understand the pain.</p>
+      <p><strong><%= t(".support.feature.question") %></strong><br>
+      <%= t(".support.feature.answer") %></p>
     </div>
 
     <div class="mt-12 space-y-6">
@@ -77,7 +77,7 @@
     <div class="text-center mt-12">
       <%= link_to user_signed_in? ? headache_logs_path : new_user_registration_path, class: "btn btn-lg btn-primary" do %>
         <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
-        <%= user_signed_in? ? "Back to My Logs" : "Start Free Tracking" %>
+        <%= user_signed_in? ? t(".back_to_logs") : t(".start_tracking") %>
       <% end %>
     </div>
   </div>
@@ -87,16 +87,16 @@
   {
     name: "World Health Organization - Migraine and other headache disorders",
     url: "https://www.who.int/news-room/fact-sheets/detail/headache-disorders",
-    description: "Overview of headache disorders, including cluster headache characteristics and prevalence."
+    description: t(".references.who")
   },
   {
     name: "Mayo Clinic - Cluster headache diagnosis and treatment",
     url: "https://www.mayoclinic.org/diseases-conditions/cluster-headache/diagnosis-treatment/drc-20352084",
-    description: "Clinical overview of diagnosis, symptoms, and treatment options."
+    description: t(".references.mayo_clinic")
   },
   {
     name: "National Headache Foundation - Tracking Diaries",
     url: "https://headaches.org/resources/headache-diary-keeping-a-diary-can-help-your-doctor-help-you/",
-    description: "Patient resource on why headache diaries can help care conversations."
+    description: t(".references.tracking_diaries")
   }
 ] %>

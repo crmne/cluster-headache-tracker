@@ -4,7 +4,7 @@ class Users::PasswordsController < ApplicationController
   def update
     if current_user.update_with_password(password_params)
       bypass_sign_in(current_user)
-      redirect_to settings_path, notice: "Password was successfully updated."
+      redirect_to settings_path, notice: t(".updated")
     else
       render "users/settings/show", status: :unprocessable_entity
     end

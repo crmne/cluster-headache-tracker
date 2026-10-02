@@ -23,8 +23,6 @@ Rails.application.routes.draw do
   # Redirect old APK download URL to GitHub releases
   get "cluster-headache-tracker.apk", to: redirect(AppConstants::ANDROID_APK_URL, status: 302)
 
-  # Defines the root path route ("/")
-  root "home#index"
 
   get "llms.txt", to: "ai_visible_content#llms"
   get "llms-full.txt", to: "ai_visible_content#llms_full"
@@ -39,17 +37,22 @@ Rails.application.routes.draw do
   # Hotwire Native navigation helpers
   get "/recede_historical_location", to: "recede_historical_locations#show"
 
-  get "faq", to: "home#faq", as: :faq
-  get "imprint", to: "home#imprint", as: :imprint
-  get "privacy-policy", to: "home#privacy_policy", as: :privacy_policy
-  get "neurologist", to: "home#neurologist", as: :neurologist
-  get "cluster-headache-diary", to: "home#cluster_headache_diary", as: :cluster_headache_diary
-  get "cluster-headache-diary-template", to: "home#cluster_headache_diary_template", as: :cluster_headache_diary_template
-  get "headache-diary-for-neurologist", to: "home#headache_diary_for_neurologist", as: :headache_diary_for_neurologist
-  get "cluster-headache-oxygen-documentation", to: "home#cluster_headache_oxygen_documentation", as: :cluster_headache_oxygen_documentation
-  get "sample-report", to: "home#sample_report", as: :sample_report
-  get "cluster-headache-app", to: "home#cluster_headache_app", as: :cluster_headache_app
-  get "open-source-headache-tracker", to: "home#open_source_headache_tracker", as: :open_source_headache_tracker
+  # Public pages: English at the unprefixed URLs, translations under /de, /it and /es
+  scope "(:locale)", locale: Regexp.union(AiVisibleContent::TRANSLATED_LOCALES) do
+    root "home#index"
+
+    get "faq", to: "home#faq", as: :faq
+    get "imprint", to: "home#imprint", as: :imprint
+    get "privacy-policy", to: "home#privacy_policy", as: :privacy_policy
+    get "neurologist", to: "home#neurologist", as: :neurologist
+    get "cluster-headache-diary", to: "home#cluster_headache_diary", as: :cluster_headache_diary
+    get "cluster-headache-diary-template", to: "home#cluster_headache_diary_template", as: :cluster_headache_diary_template
+    get "headache-diary-for-neurologist", to: "home#headache_diary_for_neurologist", as: :headache_diary_for_neurologist
+    get "cluster-headache-oxygen-documentation", to: "home#cluster_headache_oxygen_documentation", as: :cluster_headache_oxygen_documentation
+    get "sample-report", to: "home#sample_report", as: :sample_report
+    get "cluster-headache-app", to: "home#cluster_headache_app", as: :cluster_headache_app
+    get "open-source-headache-tracker", to: "home#open_source_headache_tracker", as: :open_source_headache_tracker
+  end
 
   # Shared Logs
   get "shared_logs/:token", to: "shared_logs#index", as: :shared_logs
@@ -73,6 +76,7 @@ Rails.application.routes.draw do
   namespace :settings, module: :users do
     resource :username, only: :update
     resource :password, only: :update
+    resource :preferences, only: :update
     resource :changelog_acknowledgement, only: :create
     resource :welcome_acknowledgement, only: :create
     resource :review_prompt, only: :create

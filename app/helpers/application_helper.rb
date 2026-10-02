@@ -8,21 +8,23 @@ module ApplicationHelper
   end
 
   def app_title
-    "Cluster Headache Tracker & Diary"
+    t("app.title")
   end
 
   def app_short_description
-    "Free, Private, Doctor-Ready Reports"
+    t("app.short_description")
   end
 
   def app_description
-    "Free cluster headache tracker and diary built by a fellow sufferer. Log attacks in seconds, track KIP-style intensity, medication, triggers, and timing, then create doctor-ready reports. No email required."
+    t("app.description")
   end
 
   def page_title
     if hotwire_native_app? && content_for(:title)
       # For native apps, only show the page title
       content_for(:title)
+    elsif translated_public_page?
+      translated_public_page_title
     elsif content_for(:title)
       [ content_for(:title), app_title ].compact.join(" | ")
     elsif current_ai_visible_page && current_ai_visible_page[:path] != "/"
@@ -33,7 +35,9 @@ module ApplicationHelper
   end
 
   def page_meta_description
-    if content_for?(:meta_description)
+    if translated_public_page?
+      translated_public_page_description
+    elsif content_for?(:meta_description)
       content_for(:meta_description)
     elsif current_ai_visible_page
       current_ai_visible_page[:description]
@@ -73,23 +77,15 @@ module ApplicationHelper
     graph = AiVisibleContent.json_ld_for(
       path: request.path,
       logo_url: image_url("logo.png"),
-      android_apk_url: android_apk_url
+      android_apk_url: android_apk_url,
+      translation: (translated_public_page_metadata if translated_public_page?)
     )
 
     content_tag(:script, json_escape(JSON.pretty_generate(graph)).html_safe, type: "application/ld+json")
   end
 
-  # New: Add specific meta descriptions for key pages
-  def home_meta_description
-    "Free cluster headache tracker and diary. Log attacks fast, track intensity, medication, triggers, and timing, then share doctor-ready reports. No email required."
-  end
-
   def faq_meta_description
     "Answers about using Cluster Headache Tracker, privacy, headache diary fields, doctor sharing, app access, and the limits of tracking versus medical advice."
-  end
-
-  def charts_meta_description
-    "See your cluster headache patterns like never before. Charts that show real cycles, trigger correlations, and treatment effectiveness. Data that helps you and your doctor make better decisions."
   end
 
   def native_app_with_tabs?

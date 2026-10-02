@@ -1,0 +1,19 @@
+es:
+  date:
+    formats:
+      long_date: "%-d de %B de %Y"
+      short_date: "%-d %b %Y"
+  time:
+    am: AM
+    formats:
+      date_and_time_12h: "%-d %b %Y · %-I:%M %p"
+      date_and_time_24h: "%-d %b %Y · %H:%M"
+      day_and_time_12h: "%-d de %B, %-I:%M %p"
+      day_and_time_24h: "%-d de %B, %H:%M"
+      long_date: "%-d de %B de %Y"
+      long_date_and_time_12h: "%-d de %B de %Y, %-I:%M %p"
+      long_date_and_time_24h: "%-d de %B de %Y, %H:%M"
+      short_date: "%-d %b %Y"
+      time_12h: "%-I:%M %p"
+      time_24h: "%H:%M"
+    pm: PM

@@ -8,50 +8,53 @@
         <ul tabindex="0"
             class="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52">
           <% if user_signed_in? %>
-            <li><%= link_to headache_logs_path do %><%= heroicon "calendar-days", variant: "micro" %> Logs<% end %></li>
-            <li><%= link_to charts_path do %><%= heroicon "chart-bar", variant: "micro" %> Charts<% end %></li>
-            <li><%= link_to new_headache_log_path do %><%= heroicon "plus-circle", variant: "micro" %> New Log<% end %></li>
-            <li><%= link_to settings_path do %><%= heroicon "user", variant: "micro" %> Account Settings<% end %></li>
-            <li><%= link_to feedback_path do %><%= heroicon "chat-bubble-left-ellipsis", variant: "micro" %> Feedback<% end %></li>
+            <li><%= link_to headache_logs_path do %><%= heroicon "calendar-days", variant: "micro" %> <%= t("layout.navbar.logs") %><% end %></li>
+            <li><%= link_to charts_path do %><%= heroicon "chart-bar", variant: "micro" %> <%= t("layout.navbar.charts") %><% end %></li>
+            <li><%= link_to new_headache_log_path do %><%= heroicon "plus-circle", variant: "micro" %> <%= t("layout.navbar.new_log") %><% end %></li>
+            <li><%= link_to settings_path do %><%= heroicon "user", variant: "micro" %> <%= t("layout.navbar.account_settings") %><% end %></li>
+            <li><%= link_to feedback_path do %><%= heroicon "chat-bubble-left-ellipsis", variant: "micro" %> <%= t("layout.navbar.feedback") %><% end %></li>
             <% if current_user.admin? %>
-              <li><%= link_to admin_root_path do %><%= heroicon "shield-check", variant: "micro" %> Admin<% end %></li>
+              <li><%= link_to admin_root_path do %><%= heroicon "shield-check", variant: "micro" %> <%= t("layout.navbar.admin") %><% end %></li>
             <% end %>
           <% end %>
 
-          <li class="menu-title">Resources</li>
-          <li><%= link_to cluster_headache_diary_path do %><%= heroicon "clipboard-document-list", variant: "micro" %> Diary<% end %></li>
-          <li><%= link_to cluster_headache_diary_template_path do %><%= heroicon "document-arrow-down", variant: "micro" %> Template<% end %></li>
-          <li><%= link_to sample_report_path do %><%= heroicon "document-chart-bar", variant: "micro" %> Sample Report<% end %></li>
-          <li><%= link_to cluster_headache_app_path do %><%= heroicon "device-phone-mobile", variant: "micro" %> App<% end %></li>
-          <li><%= link_to open_source_headache_tracker_path do %><%= heroicon "code-bracket", variant: "micro" %> Open Source<% end %></li>
-          <li><%= link_to faq_path do %><%= heroicon "question-mark-circle", variant: "micro" %> FAQ<% end %></li>
-          <li><%= link_to neurologist_path do %><%= heroicon "user-group", variant: "micro" %> For Neurologists<% end %></li>
+          <li class="menu-title"><%= t("layout.navbar.resources") %></li>
+          <li><%= link_to cluster_headache_diary_path do %><%= heroicon "clipboard-document-list", variant: "micro" %> <%= t("layout.navbar.diary") %><% end %></li>
+          <li><%= link_to cluster_headache_diary_template_path do %><%= heroicon "document-arrow-down", variant: "micro" %> <%= t("layout.navbar.template") %><% end %></li>
+          <li><%= link_to sample_report_path do %><%= heroicon "document-chart-bar", variant: "micro" %> <%= t("layout.navbar.sample_report") %><% end %></li>
+          <li><%= link_to cluster_headache_app_path do %><%= heroicon "device-phone-mobile", variant: "micro" %> <%= t("layout.navbar.app") %><% end %></li>
+          <li><%= link_to open_source_headache_tracker_path do %><%= heroicon "code-bracket", variant: "micro" %> <%= t("layout.navbar.open_source") %><% end %></li>
+          <li><%= link_to faq_path do %><%= heroicon "question-mark-circle", variant: "micro" %> <%= t("layout.navbar.faq") %><% end %></li>
+          <li><%= link_to neurologist_path do %><%= heroicon "user-group", variant: "micro" %> <%= t("layout.navbar.for_neurologists") %><% end %></li>
           <li>
             <%= link_to "https://github.com/crmne/cluster-headache-tracker", target: "_blank", rel: "noopener noreferrer" do %>
-              <%= heroicon "code-bracket", variant: "micro" %> Source Code
+              <%= heroicon "code-bracket", variant: "micro" %> <%= t("layout.navbar.source_code") %>
             <% end %>
           </li>
           <li>
             <%= link_to "https://github.com/sponsors/crmne", target: "_blank", rel: "noopener noreferrer" do %>
-              <%= heroicon "heart", variant: "micro" %> Sponsor
+              <%= heroicon "heart", variant: "micro" %> <%= t("layout.navbar.sponsor") %>
             <% end %>
           </li>
 
-          <li class="menu-title">Mobile Apps</li>
+          <li class="menu-title"><%= t("layout.navbar.mobile_apps") %></li>
           <li>
             <%= link_to "https://testflight.apple.com/join/GJsAQqz2", target: "_blank", rel: "noopener noreferrer" do %>
-              <%= heroicon "device-phone-mobile", variant: "micro" %> iOS Beta
+              <%= heroicon "device-phone-mobile", variant: "micro" %> <%= t("layout.navbar.ios_beta") %>
             <% end %>
           </li>
           <li>
             <%= link_to android_apk_url, target: "_blank", rel: "noopener noreferrer" do %>
-              <%= heroicon "device-phone-mobile", variant: "micro" %> Android Beta
+              <%= heroicon "device-phone-mobile", variant: "micro" %> <%= t("layout.navbar.android_beta") %>
             <% end %>
           </li>
 
-          <li class="menu-title">Legal</li>
-          <li><%= link_to privacy_policy_path do %><%= heroicon "shield-check", variant: "micro" %> Privacy Policy<% end %></li>
-          <li><%= link_to imprint_path do %><%= heroicon "document-text", variant: "micro" %> Imprint<% end %></li>
+          <li class="menu-title"><%= t("layout.navbar.legal") %></li>
+          <li><%= link_to privacy_policy_path do %><%= heroicon "shield-check", variant: "micro" %> <%= t("layout.navbar.privacy_policy") %><% end %></li>
+          <li><%= link_to imprint_path do %><%= heroicon "document-text", variant: "micro" %> <%= t("layout.navbar.imprint") %><% end %></li>
+
+          <li class="menu-title"><%= t("layout.language_switcher.title") %></li>
+          <%= render "language_switcher", item_tag: :li %>
         </ul>
       </div>
     <% end %>
@@ -65,12 +68,12 @@
       <% if !hotwire_native_app? && static_page? %>
         <div class="hidden lg:flex ml-1">
           <ul class="menu menu-horizontal px-0 text-sm">
-            <li><%= link_to "Diary", cluster_headache_diary_path %></li>
-            <li><%= link_to "Template", cluster_headache_diary_template_path %></li>
-            <li><%= link_to "Sample", sample_report_path %></li>
-            <li><%= link_to "For Neurologists", neurologist_path %></li>
-            <li><%= link_to "App", cluster_headache_app_path %></li>
-            <li><%= link_to "FAQ", faq_path %></li>
+            <li><%= link_to t("layout.navbar.diary"), cluster_headache_diary_path %></li>
+            <li><%= link_to t("layout.navbar.template"), cluster_headache_diary_template_path %></li>
+            <li><%= link_to t("layout.navbar.sample"), sample_report_path %></li>
+            <li><%= link_to t("layout.navbar.for_neurologists"), neurologist_path %></li>
+            <li><%= link_to t("layout.navbar.app"), cluster_headache_app_path %></li>
+            <li><%= link_to t("layout.navbar.faq"), faq_path %></li>
             <li><%= link_to "GitHub", "https://github.com/crmne/cluster-headache-tracker", target: "_blank", rel: "noopener noreferrer" %></li>
           </ul>
         </div>
@@ -98,17 +101,17 @@
             <span class="text-sm font-semibold"><%= current_user.username %></span>
           <% end %>
           <%= link_to new_headache_log_path, class: "btn btn-primary", aria: { keyshortcuts: "n" } do %>
-            New
+            <%= t("layout.navbar.new") %>
             <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
           <% end %>
         </div>
       <% end %>
     <% else %>
       <div class="flex items-center gap-3">
-        <%= link_to "Login", new_user_session_path, class: "hidden sm:inline-flex" %>
+        <%= link_to t("layout.navbar.login"), new_user_session_path, class: "hidden sm:inline-flex" %>
         <%= link_to new_user_registration_path, class: "btn btn-primary" do %>
-          <span class="sm:hidden">Start Free</span>
-          <span class="hidden sm:inline">Start Free Tracking</span>
+          <span class="sm:hidden"><%= t("layout.navbar.start_free") %></span>
+          <span class="hidden sm:inline"><%= t("layout.navbar.start_free_tracking") %></span>
         <% end %>
       </div>
     <% end %>

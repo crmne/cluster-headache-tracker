@@ -40,6 +40,34 @@ class FeedbackControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "the survey shows translated labels but submits the stored values" do
+    @user.update!(locale: "de")
+
+    get new_feedback_url
+
+    assert_select "h1", "Helfen Sie uns, besser zu werden"
+    assert_select "option[value='1-2 months']", "1–2 Monate"
+    assert_select "input[type=checkbox][value='Identifying triggers'] + span", "Auslöser erkennen"
+  end
+
+  test "an incomplete survey lists what is missing in the user's language" do
+    @user.update!(locale: "es")
+
+    post feedback_url, params: { feedback_survey: { usage_duration: "" } }
+
+    assert_response :unprocessable_entity
+    assert_select ".alert-error", /Cuánto tiempo llevas usando el registro/
+  end
+
+  test "the thank you page is translated" do
+    @user.update!(locale: "it")
+    post feedback_url, params: { feedback_survey: survey_params }
+
+    get thank_you_feedback_url
+
+    assert_select "h1", "Grazie!"
+  end
+
   private
     def survey_params
       {

@@ -1,0 +1,53 @@
+it:
+  users:
+    changelog_acknowledgements:
+      create:
+        failed: Impossibile chiudere le novità.
+    passwords:
+      update:
+        updated: La password è stata aggiornata.
+    preferences:
+      update:
+        updated: Le impostazioni di lingua e orario sono state salvate.
+    settings:
+      show:
+        account:
+          confirm_new_password: Conferma nuova password
+          current_password: Password attuale
+          minimum_password_length:
+            one: "(almeno %{count} carattere)"
+            other: "(almeno %{count} caratteri)"
+          new_password: Nuova password
+          new_username: Nuovo nome utente
+          required: "(obbligatoria)"
+          title: Gestione account
+          update_password: Aggiorna password
+          update_username: Aggiorna nome utente
+        data_management:
+          export: Esporta CSV
+          import: Importa CSV
+          title: Gestione dati
+        import:
+          cancel: Annulla
+          close: chiudi
+          exported_files_work: Funziona qualsiasi file CSV esportato da Cluster Headache Tracker.
+          format_description: 'Il file CSV deve avere il seguente formato:'
+          format_title: Formato CSV
+          select_file: Seleziona file
+          submit: Importa
+          title: Importa registrazioni
+        preferences:
+          automatic_language: Automatica (lingua del dispositivo)
+          automatic_language_hint: In automatico viene usata la lingua del tuo telefono o browser.
+          automatic_time_format: Automatico (in base alla lingua)
+          language: Lingua
+          save: Salva
+          time_format: Formato orario
+          title: Lingua e orario
+          twelve_hour: 12 ore (%{example})
+          twenty_four_hour: 24 ore (%{example})
+        sign_out: Esci
+        title: Impostazioni account
+    usernames:
+      update:
+        updated: Il nome utente è stato aggiornato.

@@ -1,15 +1,15 @@
-<% content_for :title, "Headache Logs for #{@user.username}" %>
-<% content_for :navbar, "Doctor's view" %>
+<% content_for :title, t(".title", username: @user.username) %>
+<% content_for :navbar, t(".doctors_view") %>
 <% content_for :web_button do %>
   <button onclick="window.print()" class="btn">
     <%= heroicon "printer", variant: "mini", class: "w-4 h-4" %>
-    Print
+    <%= t(".print") %>
   </button>
 <% end %>
 <% content_for :hotwire_button do %>
   <button onclick="window.print()" class="btn">
     <%= heroicon "printer", variant: "mini", class: "w-4 h-4" %>
-    Print
+    <%= t(".print") %>
   </button>
 <% end %>
 

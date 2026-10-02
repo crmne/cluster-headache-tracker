@@ -9,11 +9,11 @@
   <div class="px-4 py-2 <%= header_bg_class %> <%= header_text_class %> flex items-center justify-between">
     <div class="flex items-center gap-2">
       <%= link_to headache_log_path(headache_log), class: "text-sm font-semibold hover:underline", data: { turbo_frame: "_top" } do %>
-        <%= headache_log.start_time.strftime("%b %d, %Y · %I:%M %p") %>
+        <%= format_time(headache_log.start_time, :date_and_time) %>
       <% end %>
     </div>
     <% if is_ongoing %>
-      <span class="text-xs font-medium bg-white/20 px-2 py-0.5 rounded">ONGOING</span>
+      <span class="text-xs font-medium bg-white/20 px-2 py-0.5 rounded"><%= t(".ongoing") %></span>
     <% elsif headache_log.end_time %>
       <span class="text-xs opacity-75">
         <%= heroicon "clock", variant: "mini", class: "w-3 h-3 inline-block" %>
@@ -95,7 +95,7 @@
           <div class="absolute -inset-1 rounded-full opacity-30 blur-sm"
                style="background-color: <%= intensity_color(headache_log.intensity) %>;"></div>
         </div>
-        <p class="text-xs text-base-content/60 mt-1">Intensity</p>
+        <p class="text-xs text-base-content/60 mt-1"><%= t(".intensity") %></p>
       </div>
     </div>
 
@@ -106,7 +106,7 @@
             class: "btn btn-ghost btn-xs",
             data: { turbo_frame: "_top" } do %>
           <%= heroicon "pencil-square", variant: "mini", class: "w-3 h-3" %>
-          Edit
+          <%= t(".edit") %>
         <% end %>
 
         <%= button_to headache_log_path(headache_log),
@@ -115,10 +115,10 @@
             class: "btn btn-ghost btn-xs text-error",
             data: {
               turbo_frame: "_top",
-              turbo_confirm: "Are you sure you want to delete this headache log?"
+              turbo_confirm: t("headache_logs.delete_confirmation")
             } do %>
           <%= heroicon "trash", variant: "mini", class: "w-3 h-3" %>
-          Delete
+          <%= t(".delete") %>
         <% end %>
       <% end %>
     </div>

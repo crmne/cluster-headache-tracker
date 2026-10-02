@@ -1,0 +1,46 @@
+es:
+  headache_log_prints:
+    show:
+      print: Imprimir
+      title: Imprimir informe
+  shared:
+    back:
+      back: Volver
+    filter_form:
+      active:
+        one: "%{count} activo"
+        other: "%{count} activos"
+      apply: Aplicar filtros
+      clear: Quitar filtros
+      date_range: Periodo
+      end: Hasta
+      keywords: Buscar por palabras clave
+      medication: Medicación
+      medication_placeholder: p. ej., oxígeno, sumatriptán
+      start: Desde
+      title: Filtros
+      triggers: Desencadenantes
+      triggers_placeholder: p. ej., sueño, estrés
+    headache_report:
+      analysis: Análisis
+      entries: Registro detallado de crisis
+      generated_html: Generado con %{site} el %{date}
+      title: Informe de cefalea en racimos de %{username}
+    personal_note:
+      hope: Lo creé porque lo necesitaba. Espero que también te ayude a ti.
+      role: Creador
+      signature_alt: Firma de Carmine Paolino
+      why: Para registrar crisis cuando apenas puedes ver. Para las batallas con el seguro. Para mostrar a los médicos datos reales. Para descubrir patrones a las 3 de la madrugada.
+    print_instructions_modal:
+      close: Cerrar
+      print_now: Imprimir ahora
+      step_1: 1. Haz clic en el botón «Imprimir ahora» de abajo
+      step_2: 2. Elige «Guardar como PDF» o «Imprimir a archivo» como impresora
+      step_3: 3. Haz clic en «Imprimir» para guardar el PDF
+      title: Cómo guardar como PDF
+  shared_logs:
+    index:
+      doctors_view: Vista para el médico
+      invalid: Este enlace para compartir no es válido o ha caducado.
+      print: Imprimir
+      title: Registros de cefalea de %{username}

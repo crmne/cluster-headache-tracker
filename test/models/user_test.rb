@@ -119,4 +119,42 @@ class UserTest < ActiveSupport::TestCase
     assert_nil @user.current_attack
     assert_nil @user.end_current_attack
   end
+
+  test "locale must be an available language" do
+    @user.locale = "de"
+    assert @user.valid?
+
+    @user.locale = "fr"
+    assert_not @user.valid?
+  end
+
+  test "time format must be 12h or 24h" do
+    @user.time_format = "24h"
+    assert @user.valid?
+
+    @user.time_format = "25h"
+    assert_not @user.valid?
+  end
+
+  test "blank preferences mean automatic" do
+    @user.locale = ""
+    @user.time_format = ""
+
+    assert_nil @user.locale
+    assert_nil @user.time_format
+  end
+
+  test "the time format defaults to the convention of the language" do
+    assert_equal "12h", @user.time_format_or_default
+
+    @user.locale = "de"
+    assert_equal "24h", @user.time_format_or_default
+
+    @user.time_format = "12h"
+    assert_equal "12h", @user.time_format_or_default
+  end
+
+  test "without a saved language the time format follows the current language" do
+    I18n.with_locale(:it) { assert_equal "24h", @user.time_format_or_default }
+  end
 end

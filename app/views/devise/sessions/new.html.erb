@@ -1,11 +1,11 @@
-<% content_for :title, "Sign in to your account" %>
+<% content_for :title, t("auth.sessions.new.title") %>
 
 <div class="flex items-center justify-center min-h-[70vh]">
   <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 w-full max-w-md mx-4">
     <div class="card-body">
       <div class="text-center mb-6">
-        <h2 class="text-2xl font-bold">Welcome back</h2>
-        <p class="text-base-content/60">Sign in to continue tracking your headaches</p>
+        <h2 class="text-2xl font-bold"><%= t("auth.sessions.new.heading") %></h2>
+        <p class="text-base-content/60"><%= t("auth.sessions.new.subtitle") %></p>
       </div>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
@@ -14,7 +14,7 @@
             <%= f.label :username, class: "label" do %>
               <span class="label-text font-semibold flex items-center gap-2">
                 <%= heroicon "user", variant: "mini", class: "w-4 h-4" %>
-                Username
+                <%= t("auth.shared.username") %>
               </span>
             <% end %>
             <%= f.text_field :username, class: "input input-bordered w-full", required: true %>
@@ -24,7 +24,7 @@
             <%= f.label :password, class: "label" do %>
               <span class="label-text font-semibold flex items-center gap-2">
                 <%= heroicon "key", variant: "mini", class: "w-4 h-4" %>
-                Password
+                <%= t("auth.shared.password") %>
               </span>
             <% end %>
             <%= f.password_field :password, class: "input input-bordered w-full", required: true %>
@@ -34,19 +34,19 @@
             <% if devise_mapping.rememberable? %>
               <label class="label cursor-pointer gap-2">
                 <%= f.check_box :remember_me, class: "checkbox checkbox-primary", checked: true %>
-                <span class="label-text">Remember me</span>
+                <span class="label-text"><%= t("auth.sessions.new.remember_me") %></span>
               </label>
             <% end %>
           </div>
 
-          <%= f.submit "Sign in", class: "btn btn-primary w-full mt-4" %>
+          <%= f.submit t("auth.shared.sign_in"), class: "btn btn-primary w-full mt-4" %>
         </div>
       <% end %>
 
-      <div class="divider my-4">Don't have an account?</div>
+      <div class="divider my-4"><%= t("auth.sessions.new.no_account") %></div>
 
       <div class="text-center">
-        <%= link_to "Create new account", new_registration_path(resource_name), class: "btn btn-outline btn-wide" %>
+        <%= link_to t("auth.shared.create_account"), new_registration_path(resource_name), class: "btn btn-outline btn-wide" %>
       </div>
     </div>
   </div>

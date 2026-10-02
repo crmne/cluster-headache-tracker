@@ -21,6 +21,7 @@
   <meta property="og:url" content="<%= canonical_url %>">
   <meta property="og:type" content="<%= page_og_type %>">
   <meta property="og:site_name" content="Cluster Headache Tracker">
+  <meta property="og:locale" content="<%= open_graph_locale %>">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
@@ -29,6 +30,7 @@
   <meta name="twitter:image" content="<%= image_url('logo.png') %>">
 
   <%= tag :link, rel: 'canonical', href: canonical_url %>
+  <%= public_page_language_alternate_tags %>
   <%= ai_resource_link_tags %>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,7 +63,8 @@
   <% end %>
 </head>
 
-<body class="min-h-screen bg-base-200 flex flex-col print:min-h-0 print:h-auto print:overflow-visible print:bg-white" <%= bridge_body_attributes %>>
+<body class="min-h-screen bg-base-200 flex flex-col print:min-h-0 print:h-auto print:overflow-visible print:bg-white" data-locale="<%= I18n.locale %>" data-hour-cycle="<%= current_hour_cycle %>" <%= bridge_body_attributes %>>
+  <%= javascript_translations_tag %>
   <%= render 'navbar' %>
   <%= render bridge_component_supported?("toast") ? "bridge/flash_messages" : "flash_messages" %>
   <%
@@ -75,6 +78,7 @@
       end
   %>
   <main class="w-full <%= main_spacing_class %> flex-grow print:flex-none print:h-auto print:overflow-visible print:pt-0 print:pb-0">
+    <%= render "language_hint" %>
     <% if full_width_static_page? || current_page?(feedback_path) %>
     <%= yield %>
     <% else %>

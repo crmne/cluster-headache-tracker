@@ -1,8 +1,8 @@
-<% content_for :title, "Feedback" %>
-<% content_for :navbar, "Feedback" %>
+<% content_for :title, t(".title") %>
+<% content_for :navbar, t(".title") %>
 <% content_for :web_button do %>
   <%= link_to "https://github.com/sponsors/crmne", class: "btn btn-primary", target: "_blank", rel: "noopener noreferrer" do %>
-    Sponsor
+    <%= t(".sponsor") %>
     <%= heroicon "heart", variant: "mini", class: "w-4 h-4" %>
   <% end %>
 <% end %>
@@ -12,17 +12,17 @@
       rel: "noopener noreferrer",
       data: {
         controller: "bridge--button",
-        bridge_title: "Sponsor"
+        bridge_title: t(".sponsor")
       } do %>
-    Sponsor
+    <%= t(".sponsor") %>
     <%= heroicon "heart", variant: "mini", class: "w-4 h-4" %>
   <% end %>
 <% end %>
 
 <div class="container mx-auto px-3 sm:px-4 max-w-2xl py-4 sm:py-6">
   <div class="mb-4">
-    <h1 class="text-xl sm:text-2xl font-bold mb-2">Help us improve</h1>
-    <p class="text-sm sm:text-base text-base-content/70">Your feedback shapes the future of this tool.</p>
+    <h1 class="text-xl sm:text-2xl font-bold mb-2"><%= t(".heading") %></h1>
+    <p class="text-sm sm:text-base text-base-content/70"><%= t(".subtitle") %></p>
   </div>
 
   <div class="card bg-base-100 shadow-md">
@@ -33,25 +33,12 @@
             <div class="flex gap-2">
               <%= heroicon "exclamation-triangle", variant: "mini", class: "w-5 h-5 flex-shrink-0" %>
               <div class="flex-1">
-                <h3 class="font-semibold text-sm mb-1">Please complete the following:</h3>
+                <h3 class="font-semibold text-sm mb-1"><%= t(".errors_title") %></h3>
                 <ul class="text-sm space-y-1">
-                  <%
-                    # Group errors by field and create friendly messages
-                    error_messages = {
-                      usage_duration: "How long you've been using the tracker",
-                      ease_of_use: "Rate the ease of use (1-5 stars)",
-                      recommendation_likelihood: "Rate how likely you'd recommend (1-5 stars)",
-                      shared_with_doctor: "Whether you've shared with your doctor"
-                    }
-
-                    @feedback_survey.errors.attribute_names.uniq.each do |attr|
-                      if error_messages[attr]
-                  %>
-                    <li>• <%= error_messages[attr] %></li>
-                  <%
-                      end
-                    end
-                  %>
+                  <%# One friendly message per field with errors %>
+                  <% %i[ usage_duration ease_of_use recommendation_likelihood shared_with_doctor ].intersection(@feedback_survey.errors.attribute_names).each do |attribute| %>
+                    <li>• <%= t(".missing.#{attribute}") %></li>
+                  <% end %>
                 </ul>
               </div>
             </div>
@@ -59,10 +46,10 @@
         <% end %>
 
         <div class="bg-base-200/50 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-2">Usage Duration</h3>
+          <h3 class="text-sm font-semibold mb-2"><%= t(".usage_duration") %></h3>
           <%= form.select :usage_duration,
-              options_for_select(FeedbackSurvey::USAGE_DURATIONS),
-              { prompt: "Select duration" },
+              options_for_select(FeedbackSurvey::USAGE_DURATIONS.map { |key, value| [ t(".usage_durations.#{key}"), value ] }),
+              { prompt: t(".select_duration") },
               { class: "select select-bordered select-sm w-full #{'select-error' if @feedback_survey.errors[:usage_duration].any?}" } %>
           <% if @feedback_survey.errors[:usage_duration].any? %>
             <label class="label">
@@ -72,8 +59,8 @@
         </div>
 
         <div class="bg-primary/5 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-2 text-primary">Platform Usage</h3>
-          <p class="text-xs text-base-content/60 mb-2">Check all that apply</p>
+          <h3 class="text-sm font-semibold mb-2 text-primary"><%= t(".platform_usage") %></h3>
+          <p class="text-xs text-base-content/60 mb-2"><%= t(".check_all") %></p>
           <div class="grid grid-cols-2 gap-2">
             <% FeedbackSurvey::VERSIONS.each do |version| %>
               <label class="flex items-center gap-2 cursor-pointer">
@@ -85,35 +72,35 @@
         </div>
 
         <div class="bg-secondary/5 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-2 text-secondary">Useful Features</h3>
-          <p class="text-xs text-base-content/60 mb-2">Check all that apply</p>
+          <h3 class="text-sm font-semibold mb-2 text-secondary"><%= t(".useful_features") %></h3>
+          <p class="text-xs text-base-content/60 mb-2"><%= t(".check_all") %></p>
           <div class="space-y-2">
-            <% FeedbackSurvey::FEATURES.each do |feature| %>
+            <% FeedbackSurvey::FEATURES.each do |key, feature| %>
               <label class="flex items-start gap-2 cursor-pointer">
                 <%= form.check_box :most_useful_features, { multiple: true, class: "checkbox checkbox-sm checkbox-secondary mt-0.5", include_hidden: false }, feature, nil %>
-                <span class="text-sm"><%= feature %></span>
+                <span class="text-sm"><%= t(".features.#{key}") %></span>
               </label>
             <% end %>
           </div>
         </div>
 
         <div class="bg-base-200/50 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-2">Additional Features</h3>
+          <h3 class="text-sm font-semibold mb-2"><%= t(".additional_features") %></h3>
           <%= form.text_area :additional_features,
               class: "textarea textarea-bordered textarea-sm w-full",
               rows: 3,
-              placeholder: "What would make this tool better for you?" %>
+              placeholder: t(".additional_features_placeholder") %>
         </div>
 
         <div class="bg-accent/5 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-2 text-accent">Ease of Use</h3>
+          <h3 class="text-sm font-semibold mb-2 text-accent"><%= t(".ease_of_use") %></h3>
           <div class="flex items-center justify-between">
             <div class="rating rating-md">
               <% (1..5).each do |rating| %>
                 <%= form.radio_button :ease_of_use, rating, class: "mask mask-star-2 bg-accent #{'input-error' if @feedback_survey.errors[:ease_of_use].any?}" %>
               <% end %>
             </div>
-            <span class="text-xs text-base-content/60">1 = Difficult, 5 = Easy</span>
+            <span class="text-xs text-base-content/60"><%= t(".ease_of_use_scale") %></span>
           </div>
           <% if @feedback_survey.errors[:ease_of_use].any? %>
             <label class="label pt-0">
@@ -123,20 +110,20 @@
         </div>
 
         <div class="bg-info/5 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-2 text-info">Doctor Sharing</h3>
-          <p class="text-xs text-base-content/60 mb-2">Have you shared your data with your doctor?</p>
+          <h3 class="text-sm font-semibold mb-2 text-info"><%= t(".doctor_sharing") %></h3>
+          <p class="text-xs text-base-content/60 mb-2"><%= t(".doctor_sharing_question") %></p>
           <div class="flex flex-wrap gap-3">
             <label class="flex items-center gap-2 cursor-pointer">
               <%= form.radio_button :shared_with_doctor, true, class: "radio radio-sm radio-info #{'input-error' if @feedback_survey.errors[:shared_with_doctor].any?}" %>
-              <span class="text-sm">Yes</span>
+              <span class="text-sm"><%= t(".shared_yes") %></span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
               <%= form.radio_button :shared_with_doctor, false, class: "radio radio-sm radio-info #{'input-error' if @feedback_survey.errors[:shared_with_doctor].any?}" %>
-              <span class="text-sm">No</span>
+              <span class="text-sm"><%= t(".shared_no") %></span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
               <%= form.radio_button :shared_with_doctor, nil, class: "radio radio-sm radio-info #{'input-error' if @feedback_survey.errors[:shared_with_doctor].any?}" %>
-              <span class="text-sm">Wasn't aware</span>
+              <span class="text-sm"><%= t(".shared_unaware") %></span>
             </label>
           </div>
           <% if @feedback_survey.errors[:shared_with_doctor].any? %>
@@ -147,30 +134,30 @@
         </div>
 
         <div class="bg-base-200/50 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-2">Impact & Experience</h3>
+          <h3 class="text-sm font-semibold mb-2"><%= t(".impact") %></h3>
           <%= form.text_area :impact,
               class: "textarea textarea-bordered textarea-sm w-full",
               rows: 3,
-              placeholder: "How has the tracker helped with your headache management?" %>
+              placeholder: t(".impact_placeholder") %>
         </div>
 
         <div class="bg-warning/5 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-2 text-warning">One Change</h3>
+          <h3 class="text-sm font-semibold mb-2 text-warning"><%= t(".one_change") %></h3>
           <%= form.text_area :change_suggestion,
               class: "textarea textarea-bordered textarea-sm w-full",
               rows: 2,
-              placeholder: "If you could change one thing, what would it be?" %>
+              placeholder: t(".one_change_placeholder") %>
         </div>
 
         <div class="bg-secondary/5 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-2 text-secondary">Recommendation</h3>
+          <h3 class="text-sm font-semibold mb-2 text-secondary"><%= t(".recommendation") %></h3>
           <div class="flex items-center justify-between">
             <div class="rating rating-md">
               <% (1..5).each do |rating| %>
                 <%= form.radio_button :recommendation_likelihood, rating, class: "mask mask-star-2 bg-secondary #{'input-error' if @feedback_survey.errors[:recommendation_likelihood].any?}" %>
               <% end %>
             </div>
-            <span class="text-xs text-base-content/60">1 = Unlikely, 5 = Very likely</span>
+            <span class="text-xs text-base-content/60"><%= t(".recommendation_scale") %></span>
           </div>
           <% if @feedback_survey.errors[:recommendation_likelihood].any? %>
             <label class="label pt-0">
@@ -180,30 +167,24 @@
         </div>
 
         <div class="bg-base-200/50 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-2">Suggestions</h3>
+          <h3 class="text-sm font-semibold mb-2"><%= t(".suggestions") %></h3>
           <%= form.text_area :promotion_suggestions,
               class: "textarea textarea-bordered textarea-sm w-full",
               rows: 3,
-              placeholder: "How can we improve or reach more people who need this?" %>
+              placeholder: t(".suggestions_placeholder") %>
         </div>
 
         <div class="bg-primary/5 rounded-lg p-3">
-          <h3 class="text-sm font-semibold mb-2 text-primary">Mobile Apps</h3>
-          <p class="text-xs text-base-content/60 mb-2">Native apps are in development!</p>
+          <h3 class="text-sm font-semibold mb-2 text-primary"><%= t(".mobile_apps") %></h3>
+          <p class="text-xs text-base-content/60 mb-2"><%= t(".mobile_apps_hint") %></p>
           <%= form.select :mobile_interest,
-              options_for_select([
-                ["Yes, for iOS", "ios"],
-                ["Yes, for Android", "android"],
-                ["Yes, for both", "both"],
-                ["No, web version works great", "none"],
-                ["I use the PWA", "pwa"]
-              ]),
-              { prompt: "Select your preference" },
+              options_for_select(FeedbackSurvey::MOBILE_INTERESTS.map { |interest| [ t(".mobile_interests.#{interest}"), interest ] }),
+              { prompt: t(".select_preference") },
               { class: "select select-bordered select-sm w-full" } %>
         </div>
 
         <div class="form-control mt-4">
-          <%= form.submit "Submit Feedback", class: "btn btn-primary w-full" %>
+          <%= form.submit t(".submit"), class: "btn btn-primary w-full" %>
         </div>
       <% end %>
     </div>

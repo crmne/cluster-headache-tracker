@@ -1,11 +1,11 @@
-<% content_for :title, "Edit Account" %>
+<% content_for :title, t("auth.registrations.edit.title") %>
 
 <div class="flex items-center justify-center min-h-[70vh]">
   <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 w-full max-w-md mx-4">
     <div class="card-body">
       <div class="text-center mb-6">
-        <h2 class="text-2xl font-bold">Edit Account</h2>
-        <p class="text-base-content/60">Update your username or password</p>
+        <h2 class="text-2xl font-bold"><%= t("auth.registrations.edit.title") %></h2>
+        <p class="text-base-content/60"><%= t("auth.registrations.edit.subtitle") %></p>
       </div>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -16,7 +16,7 @@
             <%= f.label :username, class: "label" do %>
               <span class="label-text font-semibold flex items-center gap-2">
                 <%= heroicon "user", variant: "mini", class: "w-4 h-4" %>
-                Username
+                <%= t("auth.shared.username") %>
               </span>
             <% end %>
             <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "input input-bordered w-full" %>
@@ -26,9 +26,9 @@
             <%= f.label :password, class: "label" do %>
               <span class="label-text font-semibold flex items-center gap-2">
                 <%= heroicon "key", variant: "mini", class: "w-4 h-4" %>
-                Password
+                <%= t("auth.shared.password") %>
               </span>
-              <span class="label-text-alt opacity-70">leave blank to keep it</span>
+              <span class="label-text-alt opacity-70"><%= t("auth.registrations.edit.leave_blank") %></span>
             <% end %>
             <%= f.password_field :password, autocomplete: "new-password", class: "input input-bordered w-full" %>
           </div>
@@ -37,7 +37,7 @@
             <%= f.label :password_confirmation, class: "label" do %>
               <span class="label-text font-semibold flex items-center gap-2">
                 <%= heroicon "key", variant: "mini", class: "w-4 h-4" %>
-                Confirm Password
+                <%= t("auth.shared.password_confirmation") %>
               </span>
             <% end %>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input input-bordered w-full" %>
@@ -47,21 +47,21 @@
             <%= f.label :current_password, class: "label" do %>
               <span class="label-text font-semibold flex items-center gap-2">
                 <%= heroicon "lock-closed", variant: "mini", class: "w-4 h-4" %>
-                Current Password
+                <%= t("auth.registrations.edit.current_password") %>
               </span>
             <% end %>
             <%= f.password_field :current_password, autocomplete: "current-password", class: "input input-bordered w-full" %>
           </div>
 
-          <%= f.submit "Update", class: "btn btn-primary w-full mt-6" %>
+          <%= f.submit t("auth.registrations.edit.submit"), class: "btn btn-primary w-full mt-6" %>
         </div>
       <% end %>
 
-      <div class="divider mt-6">Unhappy?</div>
+      <div class="divider mt-6"><%= t("auth.registrations.edit.unhappy") %></div>
 
       <div class="text-center">
-        <%= button_to "Delete my account", registration_path(resource_name), method: :delete,
-              data: { turbo_confirm: "Are you sure?" }, class: "btn btn-outline btn-error btn-wide" %>
+        <%= button_to t("auth.registrations.edit.delete_account"), registration_path(resource_name), method: :delete,
+              data: { turbo_confirm: t("auth.registrations.edit.delete_confirmation") }, class: "btn btn-outline btn-error btn-wide" %>
       </div>
     </div>
   </div>

@@ -31,7 +31,7 @@ class HomeController < ApplicationController
   end
 
   def sample_report
-    @sample_user = Struct.new(:username).new("Demo Patient")
+    @sample_user = Struct.new(:username).new(t(".demo_patient"))
     @sample_headache_logs = HeadacheLog.sample_logs
     @sample_chart_data = HeadacheLog.chart_data_for(@sample_headache_logs)
   end
@@ -43,6 +43,12 @@ class HomeController < ApplicationController
   end
 
   private
+
+  # Public pages have one indexable URL per language (/faq, /de/faq, ...),
+  # so the URL alone decides the language, never the visitor's headers.
+  def requested_locale
+    params_locale || I18n.default_locale
+  end
 
   def fetch_github_stars
     Rails.cache.fetch("github_stars", expires_in: 1.hour) do

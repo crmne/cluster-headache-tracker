@@ -1,0 +1,39 @@
+es:
+  seo:
+    pages:
+      cluster-headache-app:
+        description: 'App gratuita para la cefalea en racimos en web, iOS y Android: registra crisis con un toque, gráficos, exportación CSV e informes para tu médico. Sin correo.'
+        title: App para la cefalea en racimos | Cluster Headache Tracker
+      cluster-headache-diary:
+        description: 'Diario gratuito de cefalea en racimos: anota en segundos la hora, duración, intensidad (KIP), medicación, oxígeno, desencadenantes y notas de cada crisis.'
+        title: Diario de cefalea en racimos gratis | Cluster Headache Tracker
+      cluster-headache-diary-template:
+        description: 'Plantilla imprimible de diario de cefalea en racimos: hora, duración, intensidad, medicación, respuesta al oxígeno, desencadenantes y notas de cada crisis.'
+        title: Plantilla de diario de cefalea en racimos | Cluster Headache Tracker
+      cluster-headache-oxygen-documentation:
+        description: Documenta la frecuencia y duración de las crisis, el uso de oxígeno y la respuesta al tratamiento para tus consultas médicas, sin promesas de curación.
+        title: Documentar la oxigenoterapia | Cluster Headache Tracker
+      faq:
+        description: 'Respuestas sobre la cefalea en racimos, el registro de crisis, la privacidad, cómo compartir datos con tu médico y por qué existe este registro gratuito.'
+        title: Preguntas frecuentes | Cluster Headache Tracker
+      headache-diary-for-neurologist:
+        description: 'Diario de cefalea para la consulta con el neurólogo: horarios, duración, intensidad, respuesta a la medicación, oxígeno y desencadenantes en un informe claro.'
+        title: Diario de cefalea para el neurólogo | Cluster Headache Tracker
+      home:
+        description: Diario gratuito de cefalea en racimos creado por alguien que la padece. Registra las crisis rápido, detecta patrones y crea informes para tu médico. Sin correo.
+        title: Cluster Headache Tracker – Diario y app de cefalea en racimos
+      imprint:
+        description: Aviso legal y datos de contacto de Cluster Headache Tracker, una herramienta sin fines comerciales mantenida por Carmine Paolino.
+        title: Aviso legal | Cluster Headache Tracker
+      neurologist:
+        description: 'Para neurólogos: un registro gratuito con el que los pacientes documentan sus crisis de cefalea en racimos, con patrones claros e informes listos para la consulta.'
+        title: Para neurólogos | Cluster Headache Tracker
+      open-source-headache-tracker:
+        description: 'Diario de cefalea de código abierto para la cefalea en racimos: código público, cuentas solo con nombre de usuario, exportación CSV e informes para tu médico.'
+        title: Diario de cefalea de código abierto | Cluster Headache Tracker
+      privacy-policy:
+        description: 'Política de privacidad de Cluster Headache Tracker: cuentas sin correo, datos almacenados en Alemania, opciones para compartir, exportación y tus derechos.'
+        title: Política de privacidad | Cluster Headache Tracker
+      sample-report:
+        description: 'Informe ficticio de ejemplo de cefalea en racimos: resumen de crisis, horarios, intensidad, respuesta al tratamiento, gráficos y registros detallados.'
+        title: Informe de ejemplo de cefalea en racimos | Cluster Headache Tracker

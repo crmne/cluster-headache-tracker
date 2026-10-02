@@ -4,30 +4,34 @@ class FeedbackSurvey < ApplicationRecord
   belongs_to :user
 
   validates :usage_duration, presence: true
-  validates :ease_of_use, :recommendation_likelihood, presence: true, inclusion: { in: 1..5, message: "must be between 1 and 5 stars" }
+  validates :ease_of_use, :recommendation_likelihood, presence: true, inclusion: { in: 1..5 }
 
   serialize :versions, coder: JSON, type: Array
   serialize :most_useful_features, coder: JSON, type: Array
 
-  USAGE_DURATIONS = [
-    "Never used!",
-    "Less than a week",
-    "1-2 weeks",
-    "2-4 weeks",
-    "1-2 months",
-    "Since launch (mid-August)"
-  ].freeze
+  # Stored values stay English (admin stats and Tally imports rely on them);
+  # the keys name their translated labels under feedback.new.*
+  USAGE_DURATIONS = {
+    never: "Never used!",
+    less_than_a_week: "Less than a week",
+    one_to_two_weeks: "1-2 weeks",
+    two_to_four_weeks: "2-4 weeks",
+    one_to_two_months: "1-2 months",
+    since_launch: "Since launch (mid-August)"
+  }.freeze
 
   VERSIONS = %w[Web iOS Android PWA].freeze
 
-  FEATURES = [
-    "Logging headache episodes",
-    "Tracking medication use",
-    "Identifying triggers",
-    "Visualizing headache patterns",
-    "Generating reports for doctors",
-    "Exporting data"
-  ].freeze
+  FEATURES = {
+    logging: "Logging headache episodes",
+    medication: "Tracking medication use",
+    triggers: "Identifying triggers",
+    patterns: "Visualizing headache patterns",
+    reports: "Generating reports for doctors",
+    export: "Exporting data"
+  }.freeze
+
+  MOBILE_INTERESTS = %i[ ios android both none pwa ].freeze
 
   class << self
     def stats

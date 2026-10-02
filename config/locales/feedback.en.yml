@@ -1,0 +1,110 @@
+en:
+  activerecord:
+    attributes:
+      feedback_survey:
+        additional_features: Additional features
+        change_suggestion: One change
+        ease_of_use: Ease of use
+        impact: Impact
+        mobile_interest: Mobile apps
+        most_useful_features: Useful features
+        promotion_suggestions: Suggestions
+        recommendation_likelihood: Recommendation
+        shared_with_doctor: Doctor sharing
+        usage_duration: Usage duration
+        versions: Platform usage
+    errors:
+      models:
+        feedback_survey:
+          attributes:
+            ease_of_use:
+              inclusion: must be between 1 and 5 stars
+            recommendation_likelihood:
+              inclusion: must be between 1 and 5 stars
+  feedback:
+    already_submitted: You've already submitted your feedback. Thank you!
+    destroy:
+      deleted: Previous feedback deleted. You can now submit new feedback.
+      failed: Unable to delete feedback.
+    new:
+      additional_features: Additional Features
+      additional_features_placeholder: What would make this tool better for you?
+      check_all: Check all that apply
+      doctor_sharing: Doctor Sharing
+      doctor_sharing_question: Have you shared your data with your doctor?
+      ease_of_use: Ease of Use
+      ease_of_use_scale: 1 = Difficult, 5 = Easy
+      errors_title: 'Please complete the following:'
+      features:
+        export: Exporting data
+        logging: Logging headache episodes
+        medication: Tracking medication use
+        patterns: Visualizing headache patterns
+        reports: Generating reports for doctors
+        triggers: Identifying triggers
+      heading: Help us improve
+      impact: Impact & Experience
+      impact_placeholder: How has the tracker helped with your headache management?
+      missing:
+        ease_of_use: Rate the ease of use (1-5 stars)
+        recommendation_likelihood: Rate how likely you'd recommend (1-5 stars)
+        shared_with_doctor: Whether you've shared with your doctor
+        usage_duration: How long you've been using the tracker
+      mobile_apps: Mobile Apps
+      mobile_apps_hint: Native apps are in development!
+      mobile_interests:
+        android: Yes, for Android
+        both: Yes, for both
+        ios: Yes, for iOS
+        none: No, web version works great
+        pwa: I use the PWA
+      one_change: One Change
+      one_change_placeholder: If you could change one thing, what would it be?
+      platform_usage: Platform Usage
+      recommendation: Recommendation
+      recommendation_scale: 1 = Unlikely, 5 = Very likely
+      select_duration: Select duration
+      select_preference: Select your preference
+      shared_no: 'No'
+      shared_unaware: Wasn't aware
+      shared_yes: 'Yes'
+      sponsor: Sponsor
+      submit: Submit Feedback
+      subtitle: Your feedback shapes the future of this tool.
+      suggestions: Suggestions
+      suggestions_placeholder: How can we improve or reach more people who need this?
+      title: Feedback
+      usage_duration: Usage Duration
+      usage_durations:
+        less_than_a_week: Less than a week
+        never: Never used!
+        one_to_two_months: 1-2 months
+        one_to_two_weeks: 1-2 weeks
+        since_launch: Since launch (mid-August)
+        two_to_four_weeks: 2-4 weeks
+      useful_features: Useful Features
+    thank_you:
+      also_from_creator: Also from the creator
+      changed_mind: Changed your mind about something?
+      chat_with_work_body: Stop searching through Slack and Drive. Chat With Work finds everything instantly. Your all-knowing workplace assistant that searches all your work tools at once.
+      chat_with_work_note: Built in Germany • GDPR-compliant
+      copied: Copied!
+      heading: Thank you!
+      mobile_apps_body: Completely new native iOS and Android apps! The Android app needs to be downloaded manually again.
+      mobile_apps_link: Download from homepage →
+      mobile_apps_title: Brand New Mobile Apps!
+      resubmit: Submit new feedback
+      resubmit_confirmation: This will replace your previous feedback. Continue?
+      share: Share with Friends
+      share_on_facebook: Share on Facebook
+      share_on_twitter: Share on Twitter
+      share_text: I'm using this free app to track my cluster headaches. It's built by someone who gets it.
+      sponsor: Sponsor
+      spread_body: Know someone else dealing with cluster headaches? They deserve a better way to track their pain too.
+      spread_title: Help spread the word
+      subtitle: Your feedback helps make this tool better for everyone in the cluster headache community.
+      support_body: This tool is free and will always be free. If it's helped you, consider supporting its development.
+      support_link: Sponsor →
+      support_title: Support Development
+      title: Thank You!
+      tweet_text: "I'm using Cluster Headache Tracker to manage my headaches. It's free, private, and built by someone who gets it. Check it out: %{url}"

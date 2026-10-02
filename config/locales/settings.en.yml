@@ -1,0 +1,53 @@
+en:
+  users:
+    changelog_acknowledgements:
+      create:
+        failed: Couldn't dismiss changelog.
+    passwords:
+      update:
+        updated: Password was successfully updated.
+    preferences:
+      update:
+        updated: Your language and time settings were saved.
+    settings:
+      show:
+        account:
+          confirm_new_password: Confirm New Password
+          current_password: Current Password
+          minimum_password_length:
+            one: "(%{count} character minimum)"
+            other: "(%{count} characters minimum)"
+          new_password: New Password
+          new_username: New Username
+          required: "(required)"
+          title: User Management
+          update_password: Update Password
+          update_username: Update Username
+        data_management:
+          export: Export CSV
+          import: Import CSV
+          title: Data Management
+        import:
+          cancel: Cancel
+          close: close
+          exported_files_work: Any CSV file exported from Cluster Headache Tracker will work.
+          format_description: 'The CSV file needs to have the following format:'
+          format_title: CSV Format
+          select_file: Select File
+          submit: Import
+          title: Import Headache Logs
+        preferences:
+          automatic_language: Automatic (device language)
+          automatic_language_hint: Automatic uses the language of your phone or browser.
+          automatic_time_format: Automatic (follows the language)
+          language: Language
+          save: Save
+          time_format: Time format
+          title: Language & Time
+          twelve_hour: 12-hour (%{example})
+          twenty_four_hour: 24-hour (%{example})
+        sign_out: Sign Out
+        title: Account Settings
+    usernames:
+      update:
+        updated: Username was successfully updated.

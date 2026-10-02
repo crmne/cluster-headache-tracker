@@ -1,0 +1,55 @@
+it:
+  charts:
+    index:
+      new: Nuovo
+      title: Grafici
+  js:
+    charts:
+      attacks_per_day:
+        label: Numero di attacchi
+        title: Attacchi al giorno
+      date: Data
+      duration:
+        axis: Durata (ore)
+        label: Durata dell'attacco
+        tooltip:
+          date: 'Data: %{date}'
+          duration: 'Durata: %{duration}'
+          intensity: 'Intensità: %{intensity}/10'
+      hourly:
+        average_intensity: Intensità media
+        average_intensity_short: Intensità media
+        frequency: Frequenza
+        time_of_day: Ora del giorno
+        title: Frequenza e intensità per ora del giorno
+      intensity:
+        label: Intensità del dolore
+      medications:
+        title: I 5 farmaci più usati
+      triggers:
+        title: I 5 fattori scatenanti più frequenti
+  shared:
+    charts:
+      attacks_per_day:
+        no_data: Nessun dato sugli attacchi
+        title: Attacchi al giorno
+      clear_filters: Azzera filtri
+      duration:
+        no_data: Nessun dato sulla durata
+        title: Durata degli attacchi nel tempo
+      first_log_hint_html: Tocca %{new} per registrare il tuo primo attacco
+      hourly:
+        no_data: Nessun dato orario
+        title: Frequenza e intensità per ora del giorno
+      intensity:
+        no_data: Nessun dato sull'intensità
+        title: Intensità del dolore nel tempo
+      medications:
+        no_data: Nessun dato sui farmaci
+        title: I 5 farmaci più usati
+      new: Nuovo
+      no_data: Ancora nessun dato per i grafici
+      no_matches: Nessun attacco corrisponde ai filtri
+      triggers:
+        no_data: Nessun dato sui fattori scatenanti
+        title: I 5 fattori scatenanti più frequenti

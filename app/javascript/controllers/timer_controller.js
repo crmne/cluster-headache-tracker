@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { t } from "i18n"
 
 export default class extends Controller {
   static values = {
@@ -39,16 +40,13 @@ export default class extends Controller {
     if (this.hasTimeAgoTarget) {
       let text
       if (diffInSeconds < 60) {
-        text = "just now"
+        text = t("timer.just_now")
       } else if (diffInSeconds < 3600) {
-        const mins = Math.floor(diffInSeconds / 60)
-        text = `${mins} min`
+        text = t("timer.minutes", { count: Math.floor(diffInSeconds / 60) })
       } else if (diffInSeconds < 86400) {
-        const hours = Math.floor(diffInSeconds / 3600)
-        text = `${hours} hours`
+        text = t("timer.hours", { count: Math.floor(diffInSeconds / 3600) })
       } else {
-        const days = Math.floor(diffInSeconds / 86400)
-        text = `${days} days`
+        text = t("timer.days", { count: Math.floor(diffInSeconds / 86400) })
       }
       this.timeAgoTarget.textContent = text
     }

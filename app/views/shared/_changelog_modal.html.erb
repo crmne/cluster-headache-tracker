@@ -39,7 +39,7 @@
           </template>
           <template data-share-link-target="copiedTemplate">
             <%= heroicon "check", variant: "mini", class: "w-4 h-4" %>
-            Copied!
+            <%= t("layout.changelog_modal.copied") %>
           </template>
 
           <%# Hidden input for URL copying %>
@@ -72,7 +72,7 @@
             data: { changelog_target: "dismissForm", turbo: false } do %>
           <%= hidden_field_tag :key, entry.key %>
           <button class="btn btn-ghost btn-sm" type="submit">
-            Continue to App
+            <%= t("layout.changelog_modal.continue") %>
           </button>
         <% end %>
       </div>
@@ -83,7 +83,7 @@
         class: "modal-backdrop",
         data: { turbo: false } do %>
       <%= hidden_field_tag :key, entry.key %>
-      <button>close</button>
+      <button><%= t("layout.modal.close") %></button>
     <% end %>
   </dialog>
 <% end %>

@@ -1,0 +1,66 @@
+en:
+  activerecord:
+    attributes:
+      user:
+        current_password: Current password
+        locale: Language
+        password: Password
+        password_confirmation: Password confirmation
+        time_format: Time format
+        username: Username
+  auth:
+    mailer:
+      reset_password_instructions:
+        action: Change my password
+        greeting: Hello %{username}!
+        ignore: If you didn't request this, please ignore this email.
+        requested: Someone has requested a link to change your password. You can do this through the link below.
+        unchanged: Your password won't change until you access the link above and create a new one.
+    passwords:
+      edit:
+        confirm_new_password: Confirm New Password
+        new_password: New Password
+        submit: Change My Password
+        title: Change Your Password
+      new:
+        heading: Forgot password?
+        notice_body: To protect your medical data privacy, we don't store email addresses. Please create a new account if you can't access your existing one.
+        notice_title: Important Privacy Notice
+        subtitle: We don't store your email address.
+        title: Forgot your password?
+    registrations:
+      edit:
+        current_password: Current Password
+        delete_account: Delete my account
+        delete_confirmation: Are you sure?
+        leave_blank: leave blank to keep it
+        submit: Update
+        subtitle: Update your username or password
+        title: Edit Account
+        unhappy: Unhappy?
+      new:
+        already_have_account: Already have an account?
+        no_email_html: "<strong>No email required</strong> - just choose a username to get started."
+        privacy_title: Privacy-First Design
+        remember_password_html: "<strong>Remember your password</strong> - if you lose it, it's gone forever. We can't recover it because we don't store your email."
+        submit: Start Free Tracking
+        subtitle: Create a private username-only account
+        title: Start Free Tracking
+    sessions:
+      new:
+        heading: Welcome back
+        no_account: Don't have an account?
+        remember_me: Remember me
+        subtitle: Sign in to continue tracking your headaches
+        title: Sign in to your account
+    shared:
+      create_account: Create new account
+      form_footer: "©%{year} Carmine Paolino. All rights reserved."
+      minimum_password_length:
+        one: "%{count} character minimum"
+        other: "%{count} characters minimum"
+      password: Password
+      password_confirmation: Confirm Password
+      sign_in: Sign in
+      sign_up: Sign up
+      username: Username

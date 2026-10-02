@@ -50,6 +50,10 @@ gem "image_processing", "~> 1.14"
 
 # Use Devise for authentication
 gem "devise"
+
+# Translations for Rails and Devise defaults (dates, validation errors, flashes)
+gem "rails-i18n"
+gem "devise-i18n"
 # gem "devise-tailwindcssed"
 
 # CSV will not be in the standard library from ruby 3.4.0
@@ -80,6 +84,9 @@ group :development, :test do
 
   # Flay
   gem "flay", require: false
+
+  # Find missing and unused translations
+  gem "i18n-tasks", require: false
 
   # Load dotenv
   gem "dotenv"

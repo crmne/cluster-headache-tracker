@@ -2,28 +2,25 @@
   <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
     <div class="grid md:grid-cols-2 gap-12">
       <div class="text-center">
-        <h3 class="text-2xl font-bold mb-4">It's open source.</h3>
+        <h3 class="text-2xl font-bold mb-4"><%= t(".open_source.title") %></h3>
         <p class="mb-6 opacity-70">
-          The code is public so the tracker can be audited, improved, and kept
-          alive by the community.
+          <%= t(".open_source.body") %>
         </p>
         <a href="https://github.com/crmne/cluster-headache-tracker" target="_blank" rel="noopener noreferrer"
            class="btn btn-outline">
           <%= icon "github", class: "w-5 h-5", fill: "currentColor" %>
-          View on GitHub <span class="opacity-60 font-normal"><%= @github_stars %></span>
+          <%= t(".open_source.github") %> <span class="opacity-60 font-normal"><%= @github_stars %></span>
         </a>
-        <%= link_to "Why open source?", open_source_headache_tracker_path, class: "link link-primary block mt-4 font-semibold" %>
+        <%= link_to t(".open_source.why"), open_source_headache_tracker_path, class: "link link-primary block mt-4 font-semibold" %>
       </div>
       <div class="text-center">
-        <h3 class="text-2xl font-bold mb-4">Help keep it running.</h3>
+        <h3 class="text-2xl font-bold mb-4"><%= t(".sponsor.title") %></h3>
         <p class="mb-6 opacity-70">
-          I pay for servers out of pocket. If this helped you, consider
-          chipping in for coffee. No pressure though - the tool stays free
-          either way.
+          <%= t(".sponsor.body") %>
         </p>
         <a href="https://github.com/sponsors/crmne" target="_blank" rel="noopener noreferrer"
            class="btn btn-primary">
-          Sponsor
+          <%= t(".sponsor.button") %>
           <%= heroicon "heart", variant: "mini", class: "w-5 h-5" %>
         </a>
       </div>

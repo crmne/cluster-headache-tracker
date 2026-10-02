@@ -1,0 +1,211 @@
+en:
+  headache_log_samples:
+    medications:
+      oxygen: oxygen %{minutes} min
+      sumatriptan: sumatriptan
+    notes:
+      after_alcohol: Late evening attack after alcohol exposure, relief after medication.
+      evening_within_hour: Evening attack, medication helped within the hour.
+      mild_shadow: Oxygen relief, mild shadow afterward.
+      pacing_tearing: Pacing and tearing, no medication side effects noted.
+      right_eye_pain: Right eye pain, paced during attack, relief after oxygen.
+      severe_slower_relief: Severe right-sided attack, oxygen helped but relief was slower.
+      shorter_daytime: Shorter daytime attack, returned to work after relief.
+      typical_overnight: Typical overnight pattern, attack ended after oxygen.
+      woke_nasal_congestion: Woke from sleep, nasal congestion, relief after oxygen.
+      woke_tearing_restless: Woke from sleep, tearing, restless, shadow remained after relief.
+    triggers:
+      alcohol: alcohol
+      none_noted: none noted
+      sleep_disruption: sleep disruption
+      weather_change: weather change
+  home:
+    cluster_headache_app:
+      android_beta: Android Beta
+      cta_headline: Use the app from the device nearest you
+      eyebrow: Web, PWA, iOS, and Android
+      features:
+        charts:
+          body: See attack timing, duration, intensity, triggers, and treatment notes.
+          heading: Charts and reports
+        one_tap:
+          body: Start with the attack timer first. Details can wait until you can think again.
+          heading: One-tap logging
+        private:
+          body: Username-only accounts, no ads, no email requirement, and no selling health data.
+          heading: Private by default
+      heading: Cluster headache app for fast attack logging
+      intro: Use Cluster Headache Tracker from the web, install it as a PWA, or use the iOS and Android beta apps. Start the timer during an attack and add details later.
+      ios_beta: iOS Beta
+      reports:
+        body: The sample report shows the same stats, charts, and detailed log table generated from private account data.
+        heading: Reports are part of the app
+        view_sample_report: View Sample Report
+      use_web_app: Use Web App
+      why:
+        body: Many headache apps are built around migraine workflows. Cluster attacks often need a faster start button, sharper timing data, and reports that make repeated short attacks visible.
+        heading: Why a cluster-specific app matters
+      works_with:
+        body: You can export CSV, print reports, use secure share links, and keep using the web version even if you switch phones.
+        heading: Works with the rest of your tracking
+    cluster_headache_oxygen_documentation:
+      cta_headline: Document attacks before the next oxygen conversation
+      examples:
+        attack: Attack
+        duration: Duration
+        first_response: Relief after oxygen, no return before morning.
+        heading: Example oxygen response entries
+        intensity: Intensity
+        logged_treatment: Logged treatment
+        minutes: "%{count} min"
+        oxygen_minutes: Oxygen %{count} min
+        response_note: Response note
+        second_response: Relief after 18 min, shadow remained.
+        sumatriptan: Sumatriptan
+        third_response: Relief after medication, no oxygen available.
+      eyebrow: Oxygen response tracking
+      heading: Cluster headache oxygen documentation
+      how_it_helps:
+        body: Each attack can include medication notes such as oxygen duration or triptan use, plus free-form notes for response. The report summarizes frequency, timing, intensity, duration, and treatment history in a form you can print or share.
+        heading: How Cluster Headache Tracker helps
+      intro: Track attack frequency, duration, oxygen use, and response so you can bring clearer documentation to clinician and insurance conversations.
+      references:
+        american_migraine_foundation: Overview of acute and preventive cluster headache treatments, including oxygen.
+        mayo_clinic: Mayo Clinic describes oxygen as one fast-acting treatment used for cluster headache under medical care.
+        medical_news_today: Summarizes oxygen therapy evidence, prescription requirements, and access barriers.
+      start_tracking: Start Tracking
+      view_sample_report: View Sample Report
+      what_to_document:
+        attack_length: How long attacks last with and without oxygen or medication
+        attacks_per_period: How many attacks happen per day, week, or cluster period
+        attacks_return: Whether attacks return after apparent relief
+        body: Oxygen treatment must be discussed with and prescribed by a clinician. A tracker cannot make treatment decisions, but it can help you bring a clearer record of your attack burden and response history.
+        clinician_notes: Any notes your clinician asked you to track
+        heading: What to document
+        oxygen_timing: When oxygen was used and how quickly relief was noticed
+    imprint:
+      about:
+        body: This website, Cluster Headache Tracker (clusterheadachetracker.com), is a non-commercial platform provided for informational purposes and as a tool for individuals managing cluster headaches. It is designed and maintained by Carmine Paolino, operating as a private individual.
+        heading: About This Website
+      contact:
+        email: 'Email:'
+        heading: Contact
+      disclaimer:
+        body: The information provided on this website is for general informational purposes only. While we strive to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose.
+        heading: Disclaimer
+      english_version: English version
+      heading: Imprint / Impressum
+      information:
+        country: Germany
+        heading: Information according to § 5 TMG
+      privacy:
+        body_html: For information about how we handle your personal data, please refer to our %{privacy_policy}.
+        heading: Privacy Policy
+        link: Privacy Policy
+      purpose:
+        heading: Purpose and Functionality
+        intro: 'Cluster Headache Tracker offers the following services:'
+        not_medical_advice: Users are advised that this tool is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of qualified health providers with any questions regarding medical conditions.
+        sharing: Optional sharing of logged data with healthcare providers or designated individuals
+        tracking: Personal tracking and logging of cluster headache episodes
+        visualization: Data visualization tools for personal health management
+      responsibility:
+        body: As a service provider, we are responsible for our own content on these pages in accordance with § 7 paragraph 1 TMG (German Telemedia Act). According to §§ 8 to 10 TMG, however, we are not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.
+        heading: Responsibility for Content
+      translation_notice_html: This is a translation. In case of discrepancies, the %{english_version} prevails.
+    open_source_headache_tracker:
+      community:
+        body: The app exists because paper diaries, spreadsheets, and generic apps were too slow during attacks. It stays focused on fast logging, useful reports, and practical privacy instead of broad wellness tracking.
+        heading: Built for the cluster headache community
+      cta_headline: Try the free open-source tracker
+      eyebrow: Open source health software
+      heading: Open-source headache tracker for cluster headaches
+      intro: Cluster Headache Tracker is a free Rails app with public source code, username-only accounts, CSV export, and privacy-focused reporting.
+      privacy:
+        csv_export: CSV export for user-owned records
+        excluded_from_seo: Private dashboards and shared reports excluded from public SEO files
+        heading: Privacy choices
+        no_ads: No ads and no sale of personal headache data
+        no_email: No email address required for accounts
+        share_links: Temporary read-only share links for reports
+      start_tracking: Start Tracking
+      view_source: View Source
+      why:
+        body: Health tracking software asks for trust. This project keeps the code public so people can inspect how the tracker works, report bugs, suggest improvements, or self-host if they have the technical skill.
+        heading: Why open source matters for a health diary
+    privacy_policy:
+      agreement: By using Cluster Headache Tracker, you agree to the collection and use of information in accordance with this Privacy Policy.
+      changes:
+        body: We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
+        heading: 8. Changes to This Privacy Policy
+      contact:
+        body: 'If you have any questions about this Privacy Policy, please contact us at:'
+        heading: 9. Contact Us
+      cookies:
+        body: We use essential cookies to ensure the proper functioning of our application. We do not use tracking or advertising cookies.
+        heading: 7. Cookies and Similar Technologies
+      english_version: English version
+      heading: Privacy Policy for Cluster Headache Tracker
+      how_we_use:
+        heading: 3. How We Use Your Information
+        improve: To improve and optimize our application
+        insights: To generate insights and visualizations about your headache patterns
+        intro: 'We use the collected information for the following purposes:'
+        provide_service: To provide and maintain the Cluster Headache Tracker service
+      information_we_collect:
+        automatic:
+          device: Device and browser information
+          heading: 2.2 Automatically Collected Information
+          usage: Usage data and analytics
+        heading: 2. Information We Collect
+        no_personal_information: We do not collect or store any personally identifiable information beyond your chosen username.
+        user_provided:
+          headache_logs: Headache log data (intensity, duration, triggers, medications, notes)
+          heading: 2.1 User-Provided Information
+          username: Username (no email address required)
+      introduction:
+        body: Welcome to Cluster Headache Tracker. We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you use our web application.
+        heading: 1. Introduction
+      last_updated: 'Last updated: %{date}'
+      open_source:
+        heading: 10. Open Source
+      rights:
+        access: Access, correct, or delete your data
+        export: Export your data in CSV format
+        heading: 6. Your Rights and Choices
+        intro: 'You have the right to:'
+        share_links: Generate and revoke sharing links for your headache logs
+      sharing:
+        full_control: You have full control over sharing your headache logs. You can generate shareable reports to provide to your healthcare providers.
+        heading: 5. Data Sharing and Disclosure
+        legal: We may disclose information if required by law or to protect our rights, property, or safety.
+        no_sale: We do not sell, trade, or rent your personal information to third parties.
+      storage:
+        encryption: Your health data is encrypted in transit and at rest.
+        germany: All data is stored on servers located in Germany, ensuring compliance with EU data protection regulations.
+        heading: 4. Data Storage and Security
+        security_measures: We implement industry-standard security measures to protect your data from unauthorized access, alteration, disclosure, or destruction.
+      translation_notice_html: This is a translation. In case of discrepancies, the %{english_version} prevails.
+    sample_report:
+      cta_headline: Turn your next cluster period into a clear report
+      demo_notice:
+        body: This page uses the same report components as private reports, but the patient and log entries are examples.
+        heading: Fictional demo data
+      demo_patient: Demo Patient
+      eyebrow: Public demo report
+      heading: Sample cluster headache report
+      intro: This fictional report shows the kind of summary, charts, treatment notes, and detailed entries a private account can generate for appointments.
+      print_sample: Print Sample
+      privacy:
+        body: Real reports are private. Public search engines only see this fictional sample, not personal logs or shared report URLs.
+        heading: Privacy boundary
+      report_contents:
+        attack_table: All logged attacks in a chronological table
+        csv_export: CSV export for your own records
+        frequency: Attack frequency by day and time of day
+        heading: What a real report can include
+        notes: Medication, oxygen, trigger, and response notes
+        share_links: Temporary read-only share links that expire after 30 days
+        trends: Intensity and duration trends
+      report_title: Sample Cluster Headache Report
+      start_my_report: Start My Report

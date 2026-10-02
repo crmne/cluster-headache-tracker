@@ -1,0 +1,39 @@
+it:
+  seo:
+    pages:
+      cluster-headache-app:
+        description: 'App gratuita per la cefalea a grappolo su web, iOS e Android: registra gli attacchi con un tocco, grafici, esportazione CSV e report per il medico. Senza email.'
+        title: App per la cefalea a grappolo | Cluster Headache Tracker
+      cluster-headache-diary:
+        description: 'Diario gratuito della cefalea a grappolo: annota in pochi secondi orario, durata, intensità (KIP), farmaci, ossigeno, fattori scatenanti e note di ogni attacco.'
+        title: Diario della cefalea a grappolo gratis | Cluster Headache Tracker
+      cluster-headache-diary-template:
+        description: 'Modello stampabile di diario della cefalea a grappolo: orario, durata, intensità, farmaci, risposta all''ossigeno, fattori scatenanti e note di ogni attacco.'
+        title: Diario cefalea a grappolo da stampare | Cluster Headache Tracker
+      cluster-headache-oxygen-documentation:
+        description: Documenta frequenza e durata degli attacchi, uso dell'ossigeno e risposta alla terapia per i colloqui con il medico, senza promesse di cura.
+        title: Documentare l'ossigenoterapia | Cluster Headache Tracker
+      faq:
+        description: 'Risposte sulla cefalea a grappolo, sul diario degli attacchi, sulla privacy, sulla condivisione con il medico e sul perché esiste questo tracker gratuito.'
+        title: Domande frequenti (FAQ) | Cluster Headache Tracker
+      headache-diary-for-neurologist:
+        description: 'Diario della cefalea per la visita dal neurologo: orari, durata, intensità, risposta ai farmaci, ossigeno e fattori scatenanti in un report chiaro.'
+        title: Diario della cefalea per il neurologo | Cluster Headache Tracker
+      home:
+        description: Diario gratuito della cefalea a grappolo creato da chi ne soffre. Registra gli attacchi in fretta, scopri gli schemi, crea report per il medico. Senza email.
+        title: Cluster Headache Tracker – Diario e app per la cefalea a grappolo
+      imprint:
+        description: Note legali e contatti di Cluster Headache Tracker, strumento senza scopo commerciale gestito da Carmine Paolino.
+        title: Note legali | Cluster Headache Tracker
+      neurologist:
+        description: 'Per neurologi: un tracker gratuito con cui i pazienti documentano gli attacchi di cefalea a grappolo, con schemi chiari e report pronti per la visita.'
+        title: Per i neurologi | Cluster Headache Tracker
+      open-source-headache-tracker:
+        description: 'Diario open source per la cefalea a grappolo: codice sorgente pubblico, account con solo nome utente, esportazione CSV e report per il medico.'
+        title: Diario della cefalea open source | Cluster Headache Tracker
+      privacy-policy:
+        description: 'Informativa sulla privacy di Cluster Headache Tracker: account senza email, dati conservati in Germania, condivisione, esportazione e i tuoi diritti.'
+        title: Informativa sulla privacy | Cluster Headache Tracker
+      sample-report:
+        description: 'Report di esempio fittizio sulla cefalea a grappolo: riepilogo degli attacchi, orari, intensità, risposta alle terapie, grafici e registrazioni dettagliate.'
+        title: Report di esempio cefalea a grappolo | Cluster Headache Tracker

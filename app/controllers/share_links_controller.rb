@@ -8,7 +8,7 @@ class ShareLinksController < ApplicationController
     respond_to do |format|
       format.html do
         flash[:generate_link] = true
-        redirect_to headache_logs_path, notice: "Share link generated successfully."
+        redirect_to headache_logs_path, notice: t(".generated")
       end
       format.turbo_stream
     end
@@ -18,7 +18,7 @@ class ShareLinksController < ApplicationController
     current_user.share_tokens.destroy_all
 
     respond_to do |format|
-      format.html { redirect_to headache_logs_path, notice: "Share link has been expired." }
+      format.html { redirect_to headache_logs_path, notice: t(".expired") }
       format.turbo_stream
     end
   end

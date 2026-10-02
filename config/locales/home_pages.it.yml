@@ -1,0 +1,211 @@
+it:
+  headache_log_samples:
+    medications:
+      oxygen: ossigeno %{minutes} min
+      sumatriptan: sumatriptan
+    notes:
+      after_alcohol: Attacco a tarda sera dopo aver bevuto alcol, sollievo dopo il farmaco.
+      evening_within_hour: Attacco serale, il farmaco ha fatto effetto entro un'ora.
+      mild_shadow: Sollievo con l'ossigeno, poi una lieve ombra.
+      pacing_tearing: Agitazione e lacrimazione, nessun effetto collaterale dei farmaci.
+      right_eye_pain: Dolore all'occhio destro, camminavo avanti e indietro durante l'attacco, sollievo con l'ossigeno.
+      severe_slower_relief: Attacco forte sul lato destro, l'ossigeno ha aiutato ma il sollievo è arrivato più lentamente.
+      shorter_daytime: Attacco diurno più breve, poi sono tornato al lavoro.
+      typical_overnight: Andamento notturno tipico, attacco finito dopo l'ossigeno.
+      woke_nasal_congestion: Svegliato dal dolore, naso chiuso, sollievo con l'ossigeno.
+      woke_tearing_restless: Svegliato dal dolore, lacrimazione, agitazione, dopo il sollievo è rimasta un'ombra.
+    triggers:
+      alcohol: alcol
+      none_noted: nessuno rilevato
+      sleep_disruption: sonno interrotto
+      weather_change: cambio di tempo
+  home:
+    cluster_headache_app:
+      android_beta: Beta Android
+      cta_headline: Usa l'app dal dispositivo che hai più a portata di mano
+      eyebrow: Web, PWA, iOS e Android
+      features:
+        charts:
+          body: Visualizza orari, durata, intensità, fattori scatenanti e note sulle terapie dei tuoi attacchi.
+          heading: Grafici e report
+        one_tap:
+          body: Prima avvia il timer dell'attacco. I dettagli possono aspettare finché non riesci di nuovo a pensare.
+          heading: Registrazione con un tocco
+        private:
+          body: Account con solo nome utente, niente pubblicità, nessuna email richiesta e nessuna vendita di dati sanitari.
+          heading: Privato per impostazione predefinita
+      heading: L'app per la cefalea a grappolo che registra gli attacchi in un attimo
+      intro: Usa Cluster Headache Tracker dal browser, installalo come PWA oppure usa le app beta per iOS e Android. Avvia il timer durante l'attacco e aggiungi i dettagli più tardi.
+      ios_beta: Beta iOS
+      reports:
+        body: Il report di esempio mostra le stesse statistiche, gli stessi grafici e la stessa tabella dettagliata generati dai dati di un account privato.
+        heading: I report fanno parte dell'app
+        view_sample_report: Vedi il report di esempio
+      use_web_app: Usa la web app
+      why:
+        body: Molte app per il mal di testa sono pensate per l'emicrania. Gli attacchi di cefalea a grappolo richiedono un pulsante di avvio più rapido, orari più precisi e report che rendano visibili gli attacchi brevi e ripetuti.
+        heading: Perché serve un'app dedicata alla cefalea a grappolo
+      works_with:
+        body: Puoi esportare in CSV, stampare i report, usare link di condivisione sicuri e continuare a usare la versione web anche se cambi telefono.
+        heading: Si integra con il resto del tuo monitoraggio
+    cluster_headache_oxygen_documentation:
+      cta_headline: Documenta gli attacchi prima del prossimo colloquio sull'ossigeno
+      examples:
+        attack: Attacco
+        duration: Durata
+        first_response: Sollievo con l'ossigeno, nessuna ripresa fino al mattino.
+        heading: Esempi di registrazioni sulla risposta all'ossigeno
+        intensity: Intensità
+        logged_treatment: Terapia registrata
+        minutes: "%{count} min"
+        oxygen_minutes: Ossigeno %{count} min
+        response_note: Nota sulla risposta
+        second_response: Sollievo dopo 18 min, è rimasta un'ombra.
+        sumatriptan: Sumatriptan
+        third_response: Sollievo dopo il farmaco, ossigeno non disponibile.
+      eyebrow: Monitoraggio della risposta all'ossigeno
+      heading: Documentare l'ossigenoterapia nella cefalea a grappolo
+      how_it_helps:
+        body: Per ogni attacco puoi annotare i farmaci, come la durata dell'ossigeno o l'uso di un triptano, oltre a note libere sulla risposta. Il report riassume frequenza, orari, intensità, durata e storico delle terapie in un formato che puoi stampare o condividere.
+        heading: Come ti aiuta Cluster Headache Tracker
+      intro: Registra frequenza e durata degli attacchi, uso dell'ossigeno e risposta, così da portare una documentazione più chiara ai colloqui con il medico e con chi gestisce la fornitura dell'ossigeno.
+      references:
+        american_migraine_foundation: Panoramica delle terapie sintomatiche e di profilassi della cefalea a grappolo, ossigeno compreso.
+        mayo_clinic: La Mayo Clinic descrive l'ossigeno come una delle terapie ad azione rapida per la cefalea a grappolo, sotto controllo medico.
+        medical_news_today: Riassume le evidenze sull'ossigenoterapia, i requisiti di prescrizione e le difficoltà di accesso.
+      start_tracking: Inizia a registrare
+      view_sample_report: Vedi il report di esempio
+      what_to_document:
+        attack_length: Quanto durano gli attacchi con e senza ossigeno o farmaci
+        attacks_per_period: Quanti attacchi si verificano al giorno, alla settimana o per periodo attivo
+        attacks_return: Se gli attacchi ritornano dopo un apparente sollievo
+        body: L'ossigenoterapia va discussa con il medico e da lui prescritta. Un tracker non può prendere decisioni terapeutiche, ma può aiutarti a presentare un quadro più chiaro del carico di attacchi e della risposta alle terapie.
+        clinician_notes: Qualsiasi annotazione che il tuo medico ti ha chiesto di tenere
+        heading: Cosa documentare
+        oxygen_timing: Quando hai usato l'ossigeno e dopo quanto hai sentito sollievo
+    imprint:
+      about:
+        body: Questo sito, Cluster Headache Tracker (clusterheadachetracker.com), è una piattaforma senza scopo commerciale offerta a fini informativi e come strumento per le persone che convivono con la cefalea a grappolo. È progettato e gestito da Carmine Paolino come privato cittadino.
+        heading: Informazioni su questo sito
+      contact:
+        email: 'Email:'
+        heading: Contatti
+      disclaimer:
+        body: Le informazioni presenti su questo sito hanno esclusivamente scopo informativo generale. Pur impegnandoci a mantenerle aggiornate e corrette, non forniamo alcuna dichiarazione o garanzia, espressa o implicita, sulla completezza, accuratezza, affidabilità, idoneità o disponibilità del sito o delle informazioni, dei prodotti, dei servizi o delle grafiche in esso contenuti, per qualsiasi scopo.
+        heading: Esclusione di responsabilità
+      english_version: versione inglese
+      heading: Note legali (Impressum)
+      information:
+        country: Germania
+        heading: Informazioni ai sensi del § 5 TMG (legge tedesca sui telemedia)
+      privacy:
+        body_html: Per sapere come trattiamo i tuoi dati personali, consulta la nostra %{privacy_policy}.
+        heading: Privacy
+        link: informativa sulla privacy
+      purpose:
+        heading: Scopo e funzionalità
+        intro: 'Cluster Headache Tracker offre i seguenti servizi:'
+        not_medical_advice: Questo strumento non sostituisce il parere, la diagnosi o la cura di un medico. Per qualsiasi domanda sul tuo stato di salute rivolgiti sempre a professionisti sanitari qualificati.
+        sharing: Condivisione facoltativa dei dati registrati con medici o persone di fiducia
+        tracking: Monitoraggio e registrazione personale degli attacchi di cefalea a grappolo
+        visualization: Strumenti di visualizzazione dei dati per gestire la propria salute
+      responsibility:
+        body: In qualità di fornitore del servizio siamo responsabili dei contenuti propri di queste pagine ai sensi del § 7 comma 1 TMG (legge tedesca sui telemedia). Ai sensi dei §§ da 8 a 10 TMG non siamo tuttavia tenuti a sorvegliare le informazioni di terzi trasmesse o memorizzate né a ricercare circostanze che indichino attività illecite.
+        heading: Responsabilità per i contenuti
+      translation_notice_html: Questa è una traduzione. In caso di discrepanze prevale la %{english_version}.
+    open_source_headache_tracker:
+      community:
+        body: L'app è nata perché diari cartacei, fogli di calcolo e app generiche erano troppo lenti durante un attacco. Resta concentrata su registrazione rapida, report utili e privacy concreta, invece che su un generico monitoraggio del benessere.
+        heading: Creato per la comunità della cefalea a grappolo
+      cta_headline: Prova il tracker open source gratuito
+      eyebrow: Software sanitario open source
+      heading: Diario open source per la cefalea a grappolo
+      intro: Cluster Headache Tracker è un'app Rails gratuita con codice sorgente pubblico, account con solo nome utente, esportazione CSV e report attenti alla privacy.
+      privacy:
+        csv_export: Esportazione CSV dei dati, che restano tuoi
+        excluded_from_seo: Dashboard private e report condivisi esclusi dai file SEO pubblici
+        heading: Scelte per la privacy
+        no_ads: Niente pubblicità e nessuna vendita dei dati personali sul mal di testa
+        no_email: Nessun indirizzo email richiesto per l'account
+        share_links: Link temporanei in sola lettura per condividere i report
+      start_tracking: Inizia a registrare
+      view_source: Vedi il codice
+      why:
+        body: Un software per i dati sanitari chiede fiducia. Per questo il codice è pubblico, così chiunque può verificare come funziona il tracker, segnalare bug, proporre miglioramenti o installarlo sul proprio server, se ha le competenze tecniche.
+        heading: Perché l'open source conta in un diario della salute
+    privacy_policy:
+      agreement: Usando Cluster Headache Tracker accetti la raccolta e l'uso delle informazioni secondo la presente informativa sulla privacy.
+      changes:
+        body: Potremmo aggiornare periodicamente la presente informativa. Comunicheremo eventuali modifiche pubblicando la nuova informativa su questa pagina e aggiornando la data di "Ultimo aggiornamento".
+        heading: 8. Modifiche alla presente informativa
+      contact:
+        body: 'Per qualsiasi domanda sulla presente informativa puoi scriverci a:'
+        heading: 9. Contatti
+      cookies:
+        body: Usiamo solo cookie tecnici necessari al corretto funzionamento dell'applicazione. Non usiamo cookie di tracciamento o pubblicitari.
+        heading: 7. Cookie e tecnologie simili
+      english_version: versione inglese
+      heading: Informativa sulla privacy di Cluster Headache Tracker
+      how_we_use:
+        heading: 3. Come usiamo i tuoi dati
+        improve: Per migliorare e ottimizzare la nostra applicazione
+        insights: Per generare analisi e grafici sull'andamento dei tuoi attacchi
+        intro: 'Usiamo i dati raccolti per le seguenti finalità:'
+        provide_service: Per fornire e mantenere il servizio Cluster Headache Tracker
+      information_we_collect:
+        automatic:
+          device: Informazioni sul dispositivo e sul browser
+          heading: 2.2 Dati raccolti automaticamente
+          usage: Dati di utilizzo e statistiche
+        heading: 2. Dati che raccogliamo
+        no_personal_information: Oltre al nome utente che scegli, non raccogliamo né conserviamo dati personali che possano identificarti.
+        user_provided:
+          headache_logs: Dati delle registrazioni (intensità, durata, fattori scatenanti, farmaci, note)
+          heading: 2.1 Dati forniti da te
+          username: Nome utente (nessun indirizzo email richiesto)
+      introduction:
+        body: Benvenuto su Cluster Headache Tracker. Ci impegniamo a proteggere la tua privacy e la sicurezza dei tuoi dati personali. La presente informativa spiega come raccogliamo, usiamo, comunichiamo e proteggiamo i tuoi dati quando usi la nostra applicazione web.
+        heading: 1. Introduzione
+      last_updated: 'Ultimo aggiornamento: %{date}'
+      open_source:
+        heading: 10. Open source
+      rights:
+        access: Accedere ai tuoi dati, correggerli o cancellarli
+        export: Esportare i tuoi dati in formato CSV
+        heading: 6. I tuoi diritti e le tue scelte
+        intro: 'Hai il diritto di:'
+        share_links: Creare e revocare link di condivisione delle tue registrazioni
+      sharing:
+        full_control: Hai il pieno controllo sulla condivisione delle tue registrazioni. Puoi creare report condivisibili da fornire ai tuoi medici.
+        heading: 5. Condivisione e comunicazione dei dati
+        legal: Potremmo comunicare informazioni se richiesto dalla legge o per tutelare i nostri diritti, beni o la nostra sicurezza.
+        no_sale: Non vendiamo, scambiamo né cediamo in affitto i tuoi dati personali a terzi.
+      storage:
+        encryption: I tuoi dati sanitari sono cifrati durante la trasmissione e l'archiviazione.
+        germany: Tutti i dati sono conservati su server situati in Germania, nel rispetto della normativa UE sulla protezione dei dati.
+        heading: 4. Conservazione e sicurezza dei dati
+        security_measures: Adottiamo misure di sicurezza conformi agli standard del settore per proteggere i tuoi dati da accessi non autorizzati, modifiche, divulgazione o distruzione.
+      translation_notice_html: Questa è una traduzione. In caso di discrepanze prevale la %{english_version}.
+    sample_report:
+      cta_headline: Trasforma il tuo prossimo periodo attivo in un report chiaro
+      demo_notice:
+        body: Questa pagina usa gli stessi componenti dei report privati, ma il paziente e le registrazioni sono di esempio.
+        heading: Dati di esempio fittizi
+      demo_patient: Paziente di esempio
+      eyebrow: Report dimostrativo pubblico
+      heading: Report di esempio sulla cefalea a grappolo
+      intro: Questo report fittizio mostra il tipo di riepilogo, grafici, note sulle terapie e registrazioni dettagliate che un account privato può generare per le visite.
+      print_sample: Stampa l'esempio
+      privacy:
+        body: I report reali sono privati. I motori di ricerca vedono solo questo esempio fittizio, mai registrazioni personali o link di report condivisi.
+        heading: Il confine della privacy
+      report_contents:
+        attack_table: Tutti gli attacchi registrati in una tabella cronologica
+        csv_export: Esportazione CSV per il tuo archivio personale
+        frequency: Frequenza degli attacchi per giorno e fascia oraria
+        heading: Cosa può contenere un report reale
+        notes: Note su farmaci, ossigeno, fattori scatenanti e risposta
+        share_links: Link temporanei in sola lettura che scadono dopo 30 giorni
+        trends: Andamento di intensità e durata
+      report_title: Report di esempio sulla cefalea a grappolo
+      start_my_report: Crea il mio report

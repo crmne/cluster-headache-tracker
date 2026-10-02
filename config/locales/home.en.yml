@@ -1,0 +1,163 @@
+en:
+  home:
+    author_box:
+      body: I am a cluster headache patient and the maintainer of Cluster Headache Tracker. The medical explanations on this site are informational and link to outside clinical resources where appropriate. Clinician review will be stated only when a real clinician has reviewed a page.
+      signature_alt: Carmine Paolino signature
+      title: Built by Carmine Paolino
+    cta:
+      body: Join %{users}+ people who finally have real data about their attacks. It takes 30 seconds to start.
+      go_to_logs: Go to My Logs
+      learn_more: Learn More
+      start_tracking: Start Free Tracking
+      title: Stop tracking on paper. Start getting answers.
+    devices:
+      android: Android App (Beta)
+      compare: Compare app options
+      everywhere: Attack at work? Track on your phone. In bed at 3am? Grab your tablet. At the doctor's office? Pull up the web version.
+      ios: iOS App (Beta)
+      sync: Everything syncs instantly, so you can log fast during an attack and fill in details later from whichever device is easiest.
+      title: Use it anywhere.
+      web: Web App
+    diary_template_table:
+      date: Date
+      duration: Duration
+      end: End
+      intensity: Intensity
+      medication: Medication or oxygen
+      notes: Notes
+      response: Response
+      start: Start
+      triggers: Triggers
+    faq_section:
+      during_attack:
+        answer: YES. Massive button. One tap. Done. Add details later when you're human. I designed this mid-cycle, so I know what's possible when you can't think.
+        question: Can I track during an attack when I can barely see?
+      free:
+        answer: Zero catch. I pay for servers myself. Donations are optional, and the tracker stays free either way.
+        question: Is it really free? What's the catch?
+      oxygen:
+        answer: It can help you bring clearer documentation of attack frequency, duration, and treatment response. It cannot promise a prescription or insurance decision.
+        question: Will this help with oxygen conversations?
+      privacy:
+        answer: No email needed. No ads. No selling data. Public pages use privacy-friendly aggregate analytics, but your headache logs stay private.
+        question: What about my privacy?
+      see_all: See All Questions
+      title: Common questions.
+    features:
+      devices:
+        body: iOS beta, Android beta, and web. Start on one device, add notes later from another.
+        title: Attack at work?
+      fast:
+        body: One massive button. Tap it. Done. Add details when you're human again.
+        title: Can't think. Need to log. Now.
+      patterns:
+        body: Visual charts that actually make sense. See cycles, triggers, everything at a glance.
+        title: Where's my pattern hiding?
+      privacy:
+        body: No email. No ads. No selling data. Your headache logs stay private on German-hosted infrastructure.
+        title: Who's watching?
+      reports:
+        body: Professional reports you can print, save as PDF, or share through a secure link with clear charts and tables.
+        title: Will doctors believe me?
+      subtitle: Fast logging, clear patterns, useful reports, and privacy by default.
+      title: What actually matters when you're in pain.
+      trust:
+        body: I'm not selling anything. I use this daily. Open source. Built by a sufferer who gets it.
+        title: Why trust you?
+    founder:
+      body: I've been dealing with clusters for over a decade. Built this in 2024 when I was desperate. I know the 2am scrambles, the oxygen fights, and the useless advice. Every feature has to be simple enough to use during a real attack.
+      title: This isn't a startup. It's a tool I needed.
+    hero:
+      attacks_logged: attacks logged
+      badges:
+        free_forever: Free forever
+        german_privacy: German privacy
+        no_email: No email needed
+        one_tap: One-tap logging
+      people_tracking: people tracking
+      start_tracking: Start Free Tracking
+      subtitle: Log an attack in one tap, add details later, and turn your history into charts and doctor-ready reports. No email required.
+      title: Wrestling with cluster headaches?
+      title_highlight: Tracking shouldn't add to the pain.
+      video_title: Cluster Headache Tracker Demo
+    medical_disclaimer:
+      body: Cluster Headache Tracker helps you record attacks and prepare reports for clinical conversations. It does not diagnose, treat, prescribe, or replace care from a qualified clinician.
+      title: Tracking tool, not medical advice
+    open_source:
+      open_source:
+        body: The code is public so the tracker can be audited, improved, and kept alive by the community.
+        github: View on GitHub
+        title: It's open source.
+        why: Why open source?
+      sponsor:
+        body: I pay for servers out of pocket. If this helped you, consider chipping in for coffee. No pressure though - the tool stays free either way.
+        button: Sponsor
+        title: Help keep it running.
+    providers:
+      info_for_providers: Info for Providers
+      memory: Cluster headaches are hard to explain from memory. The tracker turns attacks into timestamped logs with KIP ratings, duration, medication, triggers, and notes.
+      prepare_appointment: Prepare for an Appointment
+      sharing: Patients can share a secure 30-day report link with tables, charts, and treatment history. No account needed for the provider.
+      title: Clean data for appointments.
+    references:
+      title: References
+    seo_cta:
+      body: Log attacks fast, keep the details organized, and turn your history into reports you can review with a clinician.
+      go_to_logs: Go to My Logs
+      headline: Start a private cluster headache diary
+      start_tracking: Start Free Tracking
+      view_sample_report: View Sample Report
+    seo_resources:
+      app:
+        body: Web, PWA, iOS beta, and Android beta access for attack-time logging.
+        link: See App Options
+        title: Cluster Headache App
+      diary:
+        body: What to log, why timing matters, and how the tracker turns attacks into useful history.
+        link: Read Guide
+        title: Cluster Headache Diary
+      neurology_visits:
+        body: A patient-focused guide to bringing clear headache diary data to appointments.
+        link: Prepare Visit
+        title: For Neurology Visits
+      oxygen:
+        body: How a log can document attack frequency and treatment response for clinician discussions.
+        link: Track Response
+        title: Oxygen Documentation
+      sample_report:
+        body: A fictional public report using the real charts, tables, and appointment-ready summary.
+        link: View Report
+        title: Sample Report
+      subtitle: Guides, templates, and sample reports for turning painful attack history into something easier to review.
+      template:
+        body: Printable cluster headache diary fields for paper tracking.
+        link: Open Template
+        title: Diary Template
+      title: Cluster headache tracking resources
+    stats:
+      body: Most headache apps are built by people who've never had a cluster headache. I built this during a cycle. Every feature was tested mid-attack. If it wasn't simple enough at 3am with a KIP-10, it didn't make the cut.
+      one_tap:
+        body: to log during hell. Add details when you're human again.
+        title: 1 tap
+      patterns:
+        body: Charts that actually show your cycles, triggers, and treatment effectiveness.
+        title: Your patterns
+      real_data:
+        body: Clean reports for doctor and treatment conversations.
+        title: Real data
+      title: Built for sufferers, by a sufferer.
+    testimonials:
+      charts:
+        author: Tracker user
+        context: Found the charts useful
+        quote_html: "\"You definitely made a masterpiece. I had a great overview and <strong>the charts were my favourite feature</strong>. The video also helped me understand how the app works.\""
+      manual_tracker:
+        author: Former manual tracker
+        context: Needed a simpler way to keep records
+        quote_html: "\"BRAVO to you for developing the concept. This idea seems like it would have <strong>prevented many of the problems</strong> that led me to ultimately abandon my own tracking efforts.\""
+      oxygen:
+        author: Cluster headache patient
+        context: Used reports with their neurologist
+        quote_html: "\"I use your site for my headache tracking and it was <strong>incredibly helpful with my neuro to get oxygen</strong>. It's easy to use and it tracks the data I need it to track.\""
+      subtitle: "The tracker is built for the painful parts: logging fast, finding patterns, and showing clean data when treatment decisions matter."
+      title: Proof from people who needed it.

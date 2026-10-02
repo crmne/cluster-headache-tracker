@@ -6,7 +6,7 @@
       <div class="stat-figure text-info">
         <%= heroicon "clock", class: "inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current" %>
       </div>
-      <div class="stat-title text-xs sm:text-sm">Time Since Last</div>
+      <div class="stat-title text-xs sm:text-sm"><%= t(".time_since_last") %></div>
       <div class="stat-value text-info text-lg sm:text-2xl">
         <% if headache_logs.any? %>
           <div data-controller="timer"
@@ -15,7 +15,7 @@
             <span data-timer-target="timeAgo">...</span>
           </div>
         <% else %>
-          <span class="text-info">None yet</span>
+          <span class="text-info"><%= t(".none_yet") %></span>
         <% end %>
       </div>
       <div class="stat-desc"></div>
@@ -52,7 +52,7 @@
       <div class="stat-figure" style="color: <%= today_color %>;">
         <%= heroicon "sun", class: "inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current" %>
       </div>
-      <div class="stat-title text-xs sm:text-sm">Headaches Today</div>
+      <div class="stat-title text-xs sm:text-sm"><%= t(".today") %></div>
       <div class="stat-value text-lg sm:text-2xl" style="color: <%= today_color %>;">
         <%= headaches_today %>
       </div>
@@ -68,9 +68,9 @@
       <div class="stat-figure" style="<%= avg_color.start_with?('hsl') ? "color: #{avg_color};" : '' %>" class="<%= avg_color.start_with?('text-') ? avg_color : '' %>">
         <%= heroicon "chart-bar", class: "inline-block h-6 w-6 sm:h-8 sm:w-8 stroke-current" %>
       </div>
-      <div class="stat-title text-xs sm:text-sm">Average Intensity</div>
+      <div class="stat-title text-xs sm:text-sm"><%= t(".average_intensity") %></div>
       <div class="stat-value text-lg sm:text-2xl" style="<%= avg_color.start_with?('hsl') ? "color: #{avg_color};" : '' %>" class="<%= avg_color.start_with?('text-') ? avg_color : '' %>">
-        <%= avg_intensity %>
+        <%= number_with_precision(avg_intensity, precision: 1, strip_insignificant_zeros: true) %>
       </div>
       <div class="stat-desc"></div>
     </div>

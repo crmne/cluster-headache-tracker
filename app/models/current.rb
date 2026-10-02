@@ -1,5 +1,5 @@
 class Current < ActiveSupport::CurrentAttributes
-  attribute :time_zone
+  attribute :user, :time_zone
 
   # The patient's calendar day right now. Falls back to the app's zone until
   # the browser has reported its time zone.

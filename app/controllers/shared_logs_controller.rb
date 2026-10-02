@@ -13,7 +13,7 @@ class SharedLogsController < ApplicationController
         format.pdf { send_report @headache_logs }
       end
     else
-      render plain: "This share link is invalid or has expired.", status: :unauthorized
+      render plain: t(".invalid"), status: :unauthorized
     end
   end
 end

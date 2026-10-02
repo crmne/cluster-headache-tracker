@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { formatNumber } from "i18n"
 
 export default class extends Controller {
   static targets = ["modal", "startButton", "buttonText", "countdown", "dismissForm"]
@@ -20,7 +21,7 @@ export default class extends Controller {
 
     const updateCountdown = () => {
       if (seconds > 0) {
-        this.countdownTarget.textContent = `${seconds}s`
+        this.countdownTarget.textContent = formatNumber(seconds, { style: "unit", unit: "second", unitDisplay: "narrow" })
         seconds--
         setTimeout(updateCountdown, 1000)
       } else {

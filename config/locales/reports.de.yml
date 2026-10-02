@@ -1,0 +1,46 @@
+de:
+  headache_log_prints:
+    show:
+      print: Drucken
+      title: Bericht drucken
+  shared:
+    back:
+      back: Zurück
+    filter_form:
+      active:
+        one: "%{count} aktiv"
+        other: "%{count} aktiv"
+      apply: Filter anwenden
+      clear: Filter zurücksetzen
+      date_range: Zeitraum
+      end: Bis
+      keywords: Stichwortsuche
+      medication: Medikamente
+      medication_placeholder: z. B. Sauerstoff, Sumatriptan
+      start: Von
+      title: Filter
+      triggers: Auslöser
+      triggers_placeholder: z. B. Schlaf, Stress
+    headache_report:
+      analysis: Auswertung
+      entries: Alle Einträge im Detail
+      generated_html: Erstellt mit %{site} am %{date}
+      title: Clusterkopfschmerz-Bericht für %{username}
+    personal_note:
+      hope: Ich habe das gebaut, weil ich es selbst gebraucht habe. Ich hoffe, es hilft auch Ihnen.
+      role: Entwickler
+      signature_alt: Unterschrift von Carmine Paolino
+      why: Zum Festhalten, wenn man kaum noch etwas sieht. Für den Streit mit der Krankenkasse. Um Ärzten echte Daten zu zeigen. Um Muster zu erkennen – um drei Uhr nachts.
+    print_instructions_modal:
+      close: Schließen
+      print_now: Jetzt drucken
+      step_1: 1. Klicken Sie unten auf „Jetzt drucken“
+      step_2: 2. Wählen Sie „Als PDF speichern“ oder „In Datei drucken“ als Drucker
+      step_3: 3. Klicken Sie auf „Drucken“, um das PDF zu speichern
+      title: Als PDF speichern
+  shared_logs:
+    index:
+      doctors_view: Ansicht für Ärzte
+      invalid: Dieser Freigabelink ist ungültig oder abgelaufen.
+      print: Drucken
+      title: Kopfschmerz-Einträge von %{username}

@@ -2,13 +2,13 @@
   <%= link_to headache_logs_path,
       class: "transition-all duration-200 #{current_page?(headache_logs_path) ? 'dock-active text-primary' : 'hover:text-primary'}" do %>
     <%= heroicon "calendar-days", variant: current_page?(headache_logs_path) ? "solid" : "outline", class: "size-5 sm:size-6" %>
-    <span class="dock-label text-xs mt-1">Logs</span>
+    <span class="dock-label text-xs mt-1"><%= t("layout.bottom_navbar.logs") %></span>
   <% end %>
 
   <%= link_to charts_path,
       class: "transition-all duration-200 #{current_page?(charts_path) ? 'dock-active text-secondary' : 'hover:text-secondary'}" do %>
     <%= heroicon "chart-bar", variant: current_page?(charts_path) ? "solid" : "outline", class: "size-5 sm:size-6" %>
-    <span class="dock-label text-xs mt-1">Charts</span>
+    <span class="dock-label text-xs mt-1"><%= t("layout.bottom_navbar.charts") %></span>
   <% end %>
 
   <%= link_to new_headache_log_path,
@@ -17,18 +17,18 @@
       <div class="absolute w-12 h-12 sm:w-14 sm:h-14 bg-primary rounded-full opacity-40 blur-md"></div>
       <%= heroicon "plus-circle", variant: "solid", class: "size-7 sm:size-8 relative z-10" %>
     </div>
-    <span class="dock-label text-xs mt-1">New</span>
+    <span class="dock-label text-xs mt-1"><%= t("layout.bottom_navbar.new") %></span>
   <% end %>
 
   <%= link_to settings_path,
       class: "transition-all duration-200 #{current_page?(settings_path) ? 'dock-active text-accent' : 'hover:text-accent'}" do %>
     <%= heroicon "user", variant: current_page?(settings_path) ? "solid" : "outline", class: "size-5 sm:size-6" %>
-    <span class="dock-label text-xs mt-1">Account</span>
+    <span class="dock-label text-xs mt-1"><%= t("layout.bottom_navbar.account") %></span>
   <% end %>
 
   <%= link_to feedback_path,
       class: "transition-all duration-200 #{current_page?(feedback_path) || current_page?(new_feedback_path) || current_page?(thank_you_feedback_path) ? 'dock-active text-info' : 'hover:text-info'}" do %>
     <%= heroicon "chat-bubble-left-ellipsis", variant: current_page?(feedback_path) || current_page?(new_feedback_path) || current_page?(thank_you_feedback_path) ? "solid" : "outline", class: "size-5 sm:size-6" %>
-    <span class="dock-label text-xs mt-1">Feedback</span>
+    <span class="dock-label text-xs mt-1"><%= t("layout.bottom_navbar.feedback") %></span>
   <% end %>
 </div>

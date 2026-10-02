@@ -1,0 +1,150 @@
+de:
+  activerecord:
+    attributes:
+      headache_log:
+        end_time: Endzeit
+        intensity: Intensität
+        medication: Medikamente
+        notes: Notizen
+        start_time: Startzeit
+        triggers: Auslöser
+    models:
+      headache_log:
+        one: Eintrag
+        other: Einträge
+  headache_log_imports:
+    create:
+      failed: Beim Importieren der CSV-Datei ist ein Fehler aufgetreten.
+      imported:
+        one: "%{count} Eintrag wurde importiert."
+        other: "%{count} Einträge wurden importiert."
+      invalid_file: Ungültiges CSV-Dateiformat.
+      missing_file: Bitte wählen Sie eine CSV-Datei zum Importieren aus.
+  headache_logs:
+    create:
+      created: Der Eintrag wurde gespeichert.
+    delete_confirmation: Möchten Sie diesen Eintrag wirklich löschen?
+    destroy:
+      deleted: Der Eintrag wurde gelöscht.
+    edit:
+      title: Eintrag bearbeiten
+    form:
+      create: Speichern
+      delete: Löschen
+      end_time: Ende
+      intensity: Schmerzintensität
+      medication: Medikamente
+      medication_placeholder: z. B. Sauerstoff, Sumatriptan
+      medication_suggestions:
+        - Sauerstoff
+        - Zolmitriptan
+        - Ibuprofen
+        - Paracetamol
+        - Sumatriptan
+      notes: Notizen
+      notes_placeholder: Weitere Beobachtungen oder Details …
+      now: Jetzt
+      ongoing: LÄUFT NOCH
+      separate_with_commas: Mehrere durch Kommas trennen
+      start_time: Beginn
+      trigger_suggestions:
+        - Schlaf
+        - Unbekannt
+        - Müdigkeit
+        - Aufgewacht
+        - Hinlegen
+      triggers: Auslöser
+      triggers_placeholder: z. B. Schlaf, Müdigkeit
+      update: Speichern
+    headache_log:
+      delete: Löschen
+      edit: Bearbeiten
+      intensity: Intensität
+      ongoing: LÄUFT NOCH
+    index:
+      new: Neu
+      title: Kopfschmerz-Tagebuch
+    logs_grid:
+      clear_filters: Filter zurücksetzen
+      empty: Noch keine Attacken erfasst
+      empty_hint_html: Tippen Sie auf %{new}, um Ihre erste Attacke zu erfassen
+      new: Neu
+      no_matches: Keine Attacken passend zu Ihren Filtern gefunden
+    new:
+      title: Neue Attacke
+    ongoing_headaches:
+      days: Tage
+      edit: Bearbeiten
+      hours: Std.
+      minutes: Min.
+      multiple_description:
+        one: 'Sie haben %{count} nicht abgeschlossenen Eintrag. Bitte aktualisieren:'
+        other: 'Sie haben %{count} nicht abgeschlossene Einträge. Bitte aktualisieren:'
+      multiple_title: Mehrere laufende Attacken
+      seconds: Sek.
+      title: Laufende Attacke
+    share_link:
+      copied: Kopiert!
+      expire: Freigabelink deaktivieren
+      expires_in: Läuft ab in %{time}
+      generate: Freigabelink erstellen
+      print: Drucken
+      share: Teilen
+      share_text: Mein Kopfschmerz-Tagebuch ansehen
+      share_title: Mein Kopfschmerz-Tagebuch
+      title: Mit Ärztin oder Arzt teilen
+    show:
+      title: Eintrag
+    stats:
+      average_intensity: Durchschnittliche Intensität
+      none_yet: Noch keine
+      time_since_last: Seit der letzten
+      today: Attacken heute
+    table:
+      actions: Aktionen
+      calculating: wird berechnet …
+      date_time: Datum/Uhrzeit
+      delete: Löschen
+      duration: Dauer
+      edit: Bearbeiten
+      intensity: Intensität
+      medication: Medikamente
+      no_notes: Keine Notizen
+      none_recorded: Nichts erfasst
+      notes: Notizen
+      ongoing: Läuft noch
+      started_at: Begonnen um %{time}
+      triggers: Auslöser
+    update:
+      updated: Der Eintrag wurde aktualisiert.
+  js:
+    intensity:
+      level_1: Leichter Druck am Auge, kaum spürbar.
+      level_10: Unerträgliche, folterähnliche Schmerzen, völlig handlungsunfähig.
+      level_2: Leichtes Pochen auf einer Seite, leichtes Unbehagen am Auge.
+      level_3: Anhaltender Druck mit gelegentlichen stechenden Schmerzen.
+      level_4: Stechender Augenschmerz mit Pochen, leichter Tränenfluss.
+      level_5: Starkes Brennen, druckempfindliche Schläfe, beeinträchtigt die Konzentration.
+      level_6: Heftige, bohrende Schmerzwellen, tränendes Auge, verstopfte Nase.
+      level_7: Intensives Brennen oder Stechen, hängendes Augenlid, stört jede Tätigkeit.
+      level_8: Wie ein glühender Schürhaken im Auge, zwingt zum Umhergehen.
+      level_9: Extremer Druck oder Stechen, als würde das Auge gleich platzen.
+    share:
+      text: Mein Kopfschmerz-Tagebuch ansehen
+      title: Mein Kopfschmerz-Tagebuch
+    timer:
+      days:
+        one: "%{count} Tag"
+        other: "%{count} Tage"
+      hours:
+        one: "%{count} Stunde"
+        other: "%{count} Stunden"
+      just_now: gerade eben
+      minutes:
+        one: "%{count} Min."
+        other: "%{count} Min."
+  share_links:
+    create:
+      generated: Der Freigabelink wurde erstellt.
+    destroy:
+      expired: Der Freigabelink wurde deaktiviert.

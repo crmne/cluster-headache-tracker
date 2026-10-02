@@ -1,0 +1,110 @@
+de:
+  activerecord:
+    attributes:
+      feedback_survey:
+        additional_features: Weitere Funktionen
+        change_suggestion: Eine Änderung
+        ease_of_use: Bedienbarkeit
+        impact: Wirkung
+        mobile_interest: Mobile Apps
+        most_useful_features: Nützliche Funktionen
+        promotion_suggestions: Vorschläge
+        recommendation_likelihood: Weiterempfehlung
+        shared_with_doctor: Mit Arzt geteilt
+        usage_duration: Nutzungsdauer
+        versions: Genutzte Plattformen
+    errors:
+      models:
+        feedback_survey:
+          attributes:
+            ease_of_use:
+              inclusion: muss zwischen 1 und 5 Sternen liegen
+            recommendation_likelihood:
+              inclusion: muss zwischen 1 und 5 Sternen liegen
+  feedback:
+    already_submitted: Sie haben Ihr Feedback bereits abgeschickt. Vielen Dank!
+    destroy:
+      deleted: Ihr bisheriges Feedback wurde gelöscht. Sie können jetzt neues Feedback abgeben.
+      failed: Das Feedback konnte nicht gelöscht werden.
+    new:
+      additional_features: Weitere Funktionen
+      additional_features_placeholder: Was würde das Tool für Sie besser machen?
+      check_all: Alles Zutreffende auswählen
+      doctor_sharing: Mit dem Arzt teilen
+      doctor_sharing_question: Haben Sie Ihre Daten mit Ihrer Ärztin oder Ihrem Arzt geteilt?
+      ease_of_use: Bedienbarkeit
+      ease_of_use_scale: 1 = schwierig, 5 = einfach
+      errors_title: 'Bitte ergänzen Sie noch:'
+      features:
+        export: Daten exportieren
+        logging: Kopfschmerzattacken erfassen
+        medication: Medikamenteneinnahme festhalten
+        patterns: Kopfschmerzmuster visualisieren
+        reports: Berichte für Ärzte erstellen
+        triggers: Auslöser erkennen
+      heading: Helfen Sie uns, besser zu werden
+      impact: Wirkung & Erfahrungen
+      impact_placeholder: Wie hat Ihnen der Tracker beim Umgang mit Ihren Kopfschmerzen geholfen?
+      missing:
+        ease_of_use: Bewerten Sie die Bedienbarkeit (1–5 Sterne)
+        recommendation_likelihood: Bewerten Sie, wie wahrscheinlich Sie den Tracker weiterempfehlen (1–5 Sterne)
+        shared_with_doctor: Ob Sie Ihre Daten mit Ihrem Arzt geteilt haben
+        usage_duration: Wie lange Sie den Tracker schon nutzen
+      mobile_apps: Mobile Apps
+      mobile_apps_hint: Native Apps sind in Entwicklung!
+      mobile_interests:
+        android: Ja, für Android
+        both: Ja, für beide
+        ios: Ja, für iOS
+        none: Nein, die Web-Version reicht mir
+        pwa: Ich nutze die PWA
+      one_change: Eine Änderung
+      one_change_placeholder: Wenn Sie eine Sache ändern könnten – welche wäre es?
+      platform_usage: Genutzte Plattformen
+      recommendation: Weiterempfehlung
+      recommendation_scale: 1 = unwahrscheinlich, 5 = sehr wahrscheinlich
+      select_duration: Dauer auswählen
+      select_preference: Bitte auswählen
+      shared_no: Nein
+      shared_unaware: Wusste ich nicht
+      shared_yes: Ja
+      sponsor: Unterstützen
+      submit: Feedback senden
+      subtitle: Ihr Feedback bestimmt, wie sich dieses Tool weiterentwickelt.
+      suggestions: Vorschläge
+      suggestions_placeholder: Was können wir verbessern, und wie erreichen wir mehr Menschen, die das brauchen?
+      title: Feedback
+      usage_duration: Nutzungsdauer
+      usage_durations:
+        less_than_a_week: Weniger als eine Woche
+        never: Noch nie genutzt!
+        one_to_two_months: 1–2 Monate
+        one_to_two_weeks: 1–2 Wochen
+        since_launch: Seit dem Start (Mitte August)
+        two_to_four_weeks: 2–4 Wochen
+      useful_features: Nützliche Funktionen
+    thank_you:
+      also_from_creator: Ebenfalls vom Entwickler
+      changed_mind: Möchten Sie etwas ändern?
+      chat_with_work_body: Schluss mit der Suche in Slack und Drive. Chat With Work findet alles sofort – Ihr allwissender Assistent, der alle Ihre Arbeitstools auf einmal durchsucht.
+      chat_with_work_note: Entwickelt in Deutschland • DSGVO-konform
+      copied: Kopiert!
+      heading: Vielen Dank!
+      mobile_apps_body: Komplett neue native Apps für iOS und Android! Die Android-App muss einmalig neu heruntergeladen werden.
+      mobile_apps_link: Auf der Startseite herunterladen →
+      mobile_apps_title: Brandneue mobile Apps!
+      resubmit: Neues Feedback abgeben
+      resubmit_confirmation: Dadurch wird Ihr bisheriges Feedback ersetzt. Fortfahren?
+      share: Mit Freunden teilen
+      share_on_facebook: Auf Facebook teilen
+      share_on_twitter: Auf Twitter teilen
+      share_text: Ich erfasse meine Clusterkopfschmerzen mit dieser kostenlosen App. Entwickelt von jemandem, der weiß, wie es ist.
+      sponsor: Unterstützen
+      spread_body: Kennen Sie jemanden mit Clusterkopfschmerzen? Auch diese Person verdient eine bessere Möglichkeit, ihre Schmerzen festzuhalten.
+      spread_title: Erzählen Sie es weiter
+      subtitle: Ihr Feedback hilft, dieses Tool für alle Menschen mit Clusterkopfschmerzen besser zu machen.
+      support_body: Dieses Tool ist kostenlos und wird es immer bleiben. Wenn es Ihnen geholfen hat, unterstützen Sie gern die Weiterentwicklung.
+      support_link: Unterstützen →
+      support_title: Entwicklung unterstützen
+      title: Vielen Dank!
+      tweet_text: "Ich nutze Cluster Headache Tracker für meine Clusterkopfschmerzen. Kostenlos, privat und von jemandem entwickelt, der weiß, wie es ist: %{url}"

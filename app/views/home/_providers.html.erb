@@ -2,30 +2,27 @@
   <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
     <div class="text-center mb-12">
       <h2 class="text-3xl font-bold sm:text-4xl xl:text-5xl">
-        Clean data for appointments.
+        <%= t(".title") %>
       </h2>
     </div>
 
     <div class="prose prose-lg mx-auto">
       <p>
-        Cluster headaches are hard to explain from memory. The tracker turns
-        attacks into timestamped logs with KIP ratings, duration, medication,
-        triggers, and notes.
+        <%= t(".memory") %>
       </p>
 
       <p>
-        Patients can share a secure 30-day report link with tables, charts, and
-        treatment history. No account needed for the provider.
+        <%= t(".sharing") %>
       </p>
     </div>
 
     <div class="text-center mt-10">
       <%= link_to headache_diary_for_neurologist_path, class: "btn btn-primary" do %>
-        Prepare for an Appointment
+        <%= t(".prepare_appointment") %>
         <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
       <% end %>
       <%= link_to neurologist_path, class: "btn btn-outline ml-0 mt-3 sm:ml-3 sm:mt-0" do %>
-        Info for Providers
+        <%= t(".info_for_providers") %>
         <%= heroicon "arrow-right", variant: "mini", class: "w-5 h-5" %>
       <% end %>
     </div>

@@ -1,20 +1,20 @@
-<% content_for :title, "Print Report" %>
-<% content_for :navbar, "Print Report" %>
+<% content_for :title, t(".title") %>
+<% content_for :navbar, t(".title") %>
 <% content_for :web_button do %>
   <button onclick="window.print()" class="btn">
     <%= heroicon "printer", variant: "mini", class: "w-4 h-4" %>
-    Print
+    <%= t(".print") %>
   </button>
 <% end %>
 <% content_for :hotwire_button do %>
   <%# The app prints natively when its "Print" button is tapped. %>
   <button type="button" class="btn"
           data-controller="bridge--button"
-          data-bridge-title="Print"
+          data-bridge-title="<%= t(".print") %>"
           data-bridge-ios-image="printer"
           data-bridge-android-image="print">
     <%= heroicon "printer", variant: "mini", class: "w-4 h-4" %>
-    Print
+    <%= t(".print") %>
   </button>
 <% end %>
 
