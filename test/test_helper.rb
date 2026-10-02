@@ -12,5 +12,9 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
     include Devise::Test::IntegrationHelpers
+
+    def pdf_text(pdf)
+      PDF::Reader.new(StringIO.new(pdf)).pages.map(&:text).join("\n").squish
+    end
   end
 end

@@ -203,3 +203,12 @@
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
+
+/* Native shells show download buttons only once they handle the "download" bridge component */
+.native-download {
+  display: none;
+}
+
+[data-bridge-components~="download"] .native-download {
+  display: inline-flex;
+}

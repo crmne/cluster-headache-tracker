@@ -1,0 +1,75 @@
+it:
+  date:
+    formats:
+      pdf_report: "%d/%m/%Y"
+      pdf_report_short: "%d/%m"
+  time:
+    formats:
+      pdf_report_time: "%H:%M"
+      pdf_report_generated: "%d/%m/%Y, %H:%M"
+
+  pdf_reports:
+    filename: "report-cefalea-a-grappolo"
+    title: "Report sulla cefalea a grappolo"
+    patient: "Paziente"
+    prepared_for: "Preparato per"
+    period: "Periodo"
+    period_range: "%{from} – %{to}"
+    generated: "Generato il"
+    disclaimer: "Diario delle cefalee compilato dal paziente con Cluster Headache Tracker (clusterheadachetracker.com). I dati sono riferiti dal paziente e non sono stati verificati da un medico."
+    not_available: "–"
+    page_number: "Pagina <page> di <total>"
+    filters:
+      label: "Filtrato per"
+      triggers: "fattori scatenanti contenenti «%{value}»"
+      medication: "farmaci contenenti «%{value}»"
+    summary:
+      heading: "Riepilogo"
+      attacks: "Attacchi"
+      attack_days: "Giorni con attacchi"
+      average_intensity: "Intensità media"
+      max_intensity: "Intensità massima"
+      average_duration: "Durata media"
+      out_of_ten: "%{value}/10"
+    charts:
+      heading: "Andamento"
+      attacks_per_day: "Attacchi al giorno"
+      time_of_day: "Attacchi per fascia oraria (ora di inizio)"
+      intensity_over_time: "Intensità di ogni attacco (1–10)"
+    medication:
+      heading: "Farmaci e trattamenti"
+      name: "Farmaco o trattamento"
+      attacks: "Attacchi"
+      share: "Quota degli attacchi"
+      average_duration: "Durata media dell'attacco"
+      none: "Nessun farmaco o trattamento registrato in questo periodo."
+    triggers:
+      heading: "Fattori scatenanti segnalati"
+      name: "Fattore scatenante"
+      attacks: "Attacchi"
+      none: "Nessun fattore scatenante registrato in questo periodo."
+    attacks:
+      heading: "Registro degli attacchi"
+      date: "Data"
+      time: "Orario"
+      duration: "Durata"
+      intensity: "Intensità"
+      medication: "Farmaci"
+      triggers: "Fattori scatenanti"
+      notes: "Note"
+      ongoing: "in corso"
+      none: "Nessun attacco registrato in questo periodo."
+    duration:
+      hours_minutes: "%{hours} h %{minutes} min"
+      minutes: "%{minutes} min"
+    download:
+      short: "PDF"
+      button: "Scarica PDF"
+      heading: "Scarica il report in PDF"
+      description: "Il report usa i filtri attuali. Entrambi i campi sono facoltativi: compaiono solo in questo PDF e non vengono mai salvati."
+      patient_name: "Nome riportato sul report"
+      patient_name_placeholder: "es. Maria Rossi"
+      prepared_for: "Preparato per"
+      prepared_for_placeholder: "es. Dott. Bianchi"
+      submit: "Scarica PDF"
+      cancel: "Annulla"

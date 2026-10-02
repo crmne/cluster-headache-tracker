@@ -1,0 +1,75 @@
+de:
+  date:
+    formats:
+      pdf_report: "%d.%m.%Y"
+      pdf_report_short: "%d.%m."
+  time:
+    formats:
+      pdf_report_time: "%H:%M"
+      pdf_report_generated: "%d.%m.%Y, %H:%M"
+
+  pdf_reports:
+    filename: "clusterkopfschmerz-bericht"
+    title: "Clusterkopfschmerz-Bericht"
+    patient: "Patient/in"
+    prepared_for: "Erstellt für"
+    period: "Zeitraum"
+    period_range: "%{from} – %{to}"
+    generated: "Erstellt am"
+    disclaimer: "Kopfschmerztagebuch, vom Patienten bzw. von der Patientin im Cluster Headache Tracker (clusterheadachetracker.com) geführt. Die Einträge beruhen auf Selbstauskunft und wurden nicht ärztlich geprüft."
+    not_available: "–"
+    page_number: "Seite <page> von <total>"
+    filters:
+      label: "Gefiltert nach"
+      triggers: "Auslöser mit „%{value}“"
+      medication: "Medikation mit „%{value}“"
+    summary:
+      heading: "Zusammenfassung"
+      attacks: "Attacken"
+      attack_days: "Tage mit Attacken"
+      average_intensity: "Durchschnittliche Intensität"
+      max_intensity: "Höchste Intensität"
+      average_duration: "Durchschnittliche Dauer"
+      out_of_ten: "%{value}/10"
+    charts:
+      heading: "Muster"
+      attacks_per_day: "Attacken pro Tag"
+      time_of_day: "Attacken nach Tageszeit (Beginn, Uhrzeit)"
+      intensity_over_time: "Intensität jeder Attacke (1–10)"
+    medication:
+      heading: "Medikation und Behandlung"
+      name: "Medikament oder Behandlung"
+      attacks: "Attacken"
+      share: "Anteil der Attacken"
+      average_duration: "Durchschnittliche Attackendauer"
+      none: "In diesem Zeitraum wurde keine Medikation oder Behandlung erfasst."
+    triggers:
+      heading: "Angegebene Auslöser"
+      name: "Auslöser"
+      attacks: "Attacken"
+      none: "In diesem Zeitraum wurden keine Auslöser erfasst."
+    attacks:
+      heading: "Attackenprotokoll"
+      date: "Datum"
+      time: "Uhrzeit"
+      duration: "Dauer"
+      intensity: "Intensität"
+      medication: "Medikation"
+      triggers: "Auslöser"
+      notes: "Notizen"
+      ongoing: "andauernd"
+      none: "In diesem Zeitraum wurden keine Attacken erfasst."
+    duration:
+      hours_minutes: "%{hours} Std. %{minutes} Min."
+      minutes: "%{minutes} Min."
+    download:
+      short: "PDF"
+      button: "PDF herunterladen"
+      heading: "PDF-Bericht herunterladen"
+      description: "Der Bericht verwendet die aktuellen Filter. Beide Felder sind optional: Sie erscheinen nur in diesem PDF und werden nie gespeichert."
+      patient_name: "Name im Bericht"
+      patient_name_placeholder: "z. B. Alex Müller"
+      prepared_for: "Erstellt für"
+      prepared_for_placeholder: "z. B. Dr. Schmidt"
+      submit: "PDF herunterladen"
+      cancel: "Abbrechen"

@@ -1,0 +1,75 @@
+es:
+  date:
+    formats:
+      pdf_report: "%d/%m/%Y"
+      pdf_report_short: "%d/%m"
+  time:
+    formats:
+      pdf_report_time: "%H:%M"
+      pdf_report_generated: "%d/%m/%Y, %H:%M"
+
+  pdf_reports:
+    filename: "informe-cefalea-en-racimos"
+    title: "Informe de cefalea en racimos"
+    patient: "Paciente"
+    prepared_for: "Preparado para"
+    period: "Periodo"
+    period_range: "%{from} – %{to}"
+    generated: "Generado el"
+    disclaimer: "Diario de cefaleas registrado por el paciente en Cluster Headache Tracker (clusterheadachetracker.com). Los datos los aporta el propio paciente y no han sido revisados por un médico."
+    not_available: "–"
+    page_number: "Página <page> de <total>"
+    filters:
+      label: "Filtrado por"
+      triggers: "desencadenantes que contienen «%{value}»"
+      medication: "medicación que contiene «%{value}»"
+    summary:
+      heading: "Resumen"
+      attacks: "Crisis"
+      attack_days: "Días con crisis"
+      average_intensity: "Intensidad media"
+      max_intensity: "Intensidad máxima"
+      average_duration: "Duración media"
+      out_of_ten: "%{value}/10"
+    charts:
+      heading: "Patrones"
+      attacks_per_day: "Crisis por día"
+      time_of_day: "Crisis según la hora del día (hora de inicio)"
+      intensity_over_time: "Intensidad de cada crisis (1–10)"
+    medication:
+      heading: "Medicación y tratamiento"
+      name: "Medicamento o tratamiento"
+      attacks: "Crisis"
+      share: "Porcentaje de crisis"
+      average_duration: "Duración media de la crisis"
+      none: "No se registró medicación ni tratamiento en este periodo."
+    triggers:
+      heading: "Desencadenantes registrados"
+      name: "Desencadenante"
+      attacks: "Crisis"
+      none: "No se registraron desencadenantes en este periodo."
+    attacks:
+      heading: "Registro de crisis"
+      date: "Fecha"
+      time: "Hora"
+      duration: "Duración"
+      intensity: "Intensidad"
+      medication: "Medicación"
+      triggers: "Desencadenantes"
+      notes: "Notas"
+      ongoing: "en curso"
+      none: "No se registraron crisis en este periodo."
+    duration:
+      hours_minutes: "%{hours} h %{minutes} min"
+      minutes: "%{minutes} min"
+    download:
+      short: "PDF"
+      button: "Descargar PDF"
+      heading: "Descargar informe en PDF"
+      description: "El informe usa los filtros actuales. Ambos campos son opcionales: solo aparecen en este PDF y nunca se guardan."
+      patient_name: "Nombre que aparece en el informe"
+      patient_name_placeholder: "p. ej., Lucía García"
+      prepared_for: "Preparado para"
+      prepared_for_placeholder: "p. ej., Dra. Martínez"
+      submit: "Descargar PDF"
+      cancel: "Cancelar"

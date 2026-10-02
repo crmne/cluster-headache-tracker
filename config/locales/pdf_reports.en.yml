@@ -1,0 +1,75 @@
+en:
+  date:
+    formats:
+      pdf_report: "%b %-d, %Y"
+      pdf_report_short: "%b %-d"
+  time:
+    formats:
+      pdf_report_time: "%-I:%M %p"
+      pdf_report_generated: "%b %-d, %Y, %-I:%M %p"
+
+  pdf_reports:
+    filename: "cluster-headache-report"
+    title: "Cluster Headache Report"
+    patient: "Patient"
+    prepared_for: "Prepared for"
+    period: "Period"
+    period_range: "%{from} – %{to}"
+    generated: "Generated"
+    disclaimer: "Headache diary recorded by the patient in Cluster Headache Tracker (clusterheadachetracker.com). Entries are self-reported and have not been reviewed by a clinician."
+    not_available: "–"
+    page_number: "Page <page> of <total>"
+    filters:
+      label: "Filtered by"
+      triggers: "triggers containing “%{value}”"
+      medication: "medication containing “%{value}”"
+    summary:
+      heading: "Summary"
+      attacks: "Attacks"
+      attack_days: "Days with attacks"
+      average_intensity: "Average intensity"
+      max_intensity: "Highest intensity"
+      average_duration: "Average duration"
+      out_of_ten: "%{value}/10"
+    charts:
+      heading: "Patterns"
+      attacks_per_day: "Attacks per day"
+      time_of_day: "Attacks by time of day (start hour)"
+      intensity_over_time: "Intensity of each attack (1–10)"
+    medication:
+      heading: "Medication and treatment"
+      name: "Medication or treatment"
+      attacks: "Attacks"
+      share: "Share of attacks"
+      average_duration: "Average attack duration"
+      none: "No medication or treatment recorded in this period."
+    triggers:
+      heading: "Reported triggers"
+      name: "Trigger"
+      attacks: "Attacks"
+      none: "No triggers recorded in this period."
+    attacks:
+      heading: "Attack log"
+      date: "Date"
+      time: "Time"
+      duration: "Duration"
+      intensity: "Intensity"
+      medication: "Medication"
+      triggers: "Triggers"
+      notes: "Notes"
+      ongoing: "ongoing"
+      none: "No attacks recorded in this period."
+    duration:
+      hours_minutes: "%{hours} h %{minutes} min"
+      minutes: "%{minutes} min"
+    download:
+      short: "PDF"
+      button: "Download PDF"
+      heading: "Download PDF report"
+      description: "The report uses the current filters. Both fields are optional: they are printed on this PDF only and never saved."
+      patient_name: "Name shown on the report"
+      patient_name_placeholder: "e.g. Alex Smith"
+      prepared_for: "Prepared for"
+      prepared_for_placeholder: "e.g. Dr. Jones"
+      submit: "Download PDF"
+      cancel: "Cancel"

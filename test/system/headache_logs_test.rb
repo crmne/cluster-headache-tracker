@@ -32,6 +32,20 @@ class HeadacheLogsTest < ApplicationSystemTestCase
     assert_text "1004.6 hPa"
   end
 
+  test "opening the pdf report download" do
+    visit headache_logs_url
+
+    within("#share_link") { click_button "Download PDF" }
+
+    within("dialog#pdf_report_modal[open]") do
+      fill_in "Name shown on the report", with: "Alex Smith"
+      fill_in "Prepared for", with: "Dr. Jones"
+      find(".modal-action button", text: "Cancel").click
+    end
+
+    assert_no_selector "dialog#pdf_report_modal[open]"
+  end
+
   test "marking ongoing headache as complete" do
     # Create an ongoing headache log
     log = headache_logs(:one)
