@@ -19,6 +19,12 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     assert_response :not_found
   end
 
+  test "edit keeps the end time of a finished headache" do
+    get edit_headache_log_url(@headache_log)
+
+    assert_select "input[name='headache_log[end_time]'][value=?]", @headache_log.end_time.strftime("%Y-%m-%dT%H:%M:%S")
+  end
+
   test "should show ongoing headaches alert" do
     @headache_log.update(end_time: nil)
     get headache_logs_url
