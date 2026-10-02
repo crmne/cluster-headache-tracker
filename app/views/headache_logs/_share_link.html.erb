@@ -26,13 +26,13 @@
     </div>
 
     <% if share_token %>
-      <div class="flex gap-2 mt-3">
+      <div class="flex flex-wrap gap-2 mt-3">
         <input type="text"
                readonly
                data-share-link-target="input"
                autocomplete="off"
                value="<%= share_link %>"
-               class="input input-bordered input-sm flex-1 text-xs">
+               class="input input-bordered input-sm flex-1 basis-full sm:basis-0 min-w-0 text-xs">
         <button data-share-link-target="shareButton"
                 data-bridge--share-target="shareButton"
                 data-action="click->bridge--share#shareViaBridge click->share-link#share"
@@ -47,6 +47,7 @@
           <%= heroicon "printer", variant: "mini", class: "w-4 h-4" %>
           <span>Print</span>
         <% end %>
+        <%= render "shared/pdf_report_download", url: headache_log_print_path(format: :pdf) %>
         <%= button_to share_link_path, method: :delete, class: "btn btn-ghost btn-sm text-error" do %>
           <%= heroicon "x-mark", variant: "mini", class: "h-4 w-4" %>
         <% end %>
@@ -61,6 +62,7 @@
           <%= heroicon "printer", variant: "mini", class: "w-4 h-4" %>
           <span>Print</span>
         <% end %>
+        <%= render "shared/pdf_report_download", url: headache_log_print_path(format: :pdf) %>
       </div>
     <% end %>
   </div>

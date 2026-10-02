@@ -16,6 +16,10 @@
   </button>
 <% end %>
 
+<div class="flex justify-end mb-4 print:hidden">
+  <%= render "shared/pdf_report_download", url: headache_log_print_path(format: :pdf) %>
+</div>
+
 <%= render "shared/headache_report",
     user: current_user,
     headache_logs: @headache_logs,

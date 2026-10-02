@@ -61,6 +61,10 @@ class HeadacheLog < ApplicationRecord
       }
     end
 
+    def report(**options)
+      Report.new(all, **options)
+    end
+
     def to_csv
       CSV.generate(headers: true) do |csv|
         csv << CSV_HEADERS
@@ -215,6 +219,12 @@ class HeadacheLog < ApplicationRecord
 
         trigger_counts.sort_by { |_, count| -count }.first(5).to_h
       end
+  end
+
+  def duration
+    if end_time
+      end_time - start_time
+    end
   end
 
   def medication_list = medication.to_s.split(",").map(&:strip)

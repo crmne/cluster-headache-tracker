@@ -58,6 +58,10 @@ gem "csv"
 # Heroicons
 gem "rails_heroicon"
 
+# Server-side PDF reports in pure Ruby, no headless browser needed in production
+gem "prawn", "~> 2.5"
+gem "prawn-table", "~> 0.2.2"
+
 # Honeybadger error tracking
 gem "honeybadger"
 
@@ -92,6 +96,9 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+
+  # Read generated PDF reports back in tests
+  gem "pdf-reader", "~> 2.16"
 end
 
 gem "sitemap_generator", "~> 6.3"
