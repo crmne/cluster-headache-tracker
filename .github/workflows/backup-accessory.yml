@@ -27,6 +27,7 @@ jobs:
       HONEYBADGER_API_KEY: ${{ secrets.HONEYBADGER_API_KEY }}
       RESTIC_REPOSITORY: ${{ secrets.RESTIC_REPOSITORY }}
       RESTIC_PASSWORD: ${{ secrets.RESTIC_PASSWORD }}
+      RESTIC_REST_PASSWORD: ${{ secrets.RESTIC_REST_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v4

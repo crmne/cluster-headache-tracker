@@ -4,6 +4,11 @@ set -euo pipefail
 repo_root="$(git rev-parse --show-toplevel)"
 cd "$repo_root"
 
+# Git exports GIT_DIR (and friends) to hooks. Clear them so tools that run git
+# in other repositories, like bundler-audit updating its advisory database,
+# don't act on this repository instead. Matters most inside worktrees.
+unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE GIT_PREFIX
+
 if ! command -v bundle >/dev/null 2>&1; then
   echo "bundle not found; skipping bin/ci pre-push hook" >&2
   exit 0
