@@ -63,6 +63,15 @@
               </div>
             </div>
           <% end %>
+
+          <% if headache_log.photos.attached? %>
+            <%= link_to headache_log_path(headache_log),
+                  class: "badge badge-ghost gap-1 h-auto min-h-[1.5rem]",
+                  data: { turbo_frame: "_top" } do %>
+              <%= heroicon "camera", variant: "mini", class: "w-3 h-3" %>
+              <%= t("photos.count", count: headache_log.photos.size) %>
+            <% end %>
+          <% end %>
         </div>
       </div>
 

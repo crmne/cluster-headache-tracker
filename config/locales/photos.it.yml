@@ -1,0 +1,38 @@
+it:
+  photos:
+    title: "Foto"
+    count:
+      one: "%{count} foto"
+      other: "%{count} foto"
+    removed: "Foto rimossa."
+    thumbnail_alt: "Foto %{number} dell'attacco del %{date}"
+    form:
+      take_photo: "Scatta una foto"
+      choose: "Scegli foto"
+      remove: "Rimuovi foto"
+      remove_confirm: "Rimuovere questa foto?"
+      limits: "Fino a %{limit} foto per attacco, massimo %{size} MB ciascuna (JPEG, PNG, HEIC o WebP)."
+      full: "Questo attacco ha già %{limit} foto. Rimuovine una per aggiungerne un'altra."
+      privacy: "Le foto sono cifrate e visibili solo a te. Non vengono mai incluse nei link condivisi."
+    show:
+      title: "Foto"
+      alt: "Foto dell'attacco del %{date}"
+      remove: "Rimuovi foto"
+    report:
+      title: "Foto"
+    privacy_policy:
+      collected: "Le foto che scegli di allegare a una registrazione"
+      storage: "Le foto sono conservate cifrate, mostrate solo a te senza posizione e altri metadati, e mai incluse nei link condivisi. Vengono eliminate insieme alla registrazione o al tuo account."
+
+  activerecord:
+    attributes:
+      headache_log:
+        photos: "Foto"
+    errors:
+      models:
+        headache_log:
+          attributes:
+            photos:
+              too_many: "non possono essere più di %{count} per attacco"
+              invalid_content_type: "devono essere immagini JPEG, PNG, HEIC o WebP (%{filename} non lo è)"
+              too_large: "devono pesare al massimo %{size} MB ciascuna (%{filename} è troppo grande)"

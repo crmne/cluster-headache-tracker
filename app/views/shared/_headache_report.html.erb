@@ -1,6 +1,8 @@
 <% show_filters = local_assigns.fetch(:show_filters, true) %>
 <% show_print_instructions = local_assigns.fetch(:show_print_instructions, true) %>
 <% live_updates = local_assigns.fetch(:live_updates, true) %>
+<%# Photos are for the owner's own report only: share links never include them. %>
+<% show_photos = local_assigns.fetch(:show_photos, false) %>
 <% report_title = local_assigns.fetch(:report_title, "Cluster Headache Report for #{user.username}") %>
 <% generated_on = local_assigns.fetch(:generated_on, Date.today) %>
 
@@ -25,3 +27,4 @@
 <h2 class="text-2xl font-bold mb-4 mt-8">Detailed Log Entries</h2>
 <%= turbo_stream_from user, "headache_logs" if live_updates %>
 <%= render "headache_logs/table", headache_logs: headache_logs, hide_actions: true %>
+<%= render "shared/report_photos", headache_logs: headache_logs if show_photos %>

@@ -25,4 +25,13 @@ class SharedLogsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unauthorized
     assert_match /invalid or has expired/, response.body
   end
+
+  test "never includes photos" do
+    headache_logs(:one).photos.attach(io: file_fixture("photo.jpg").open, filename: "photo.jpg")
+
+    get shared_logs_url(token: @share_token.token)
+
+    assert_response :success
+    assert_select "img[src*='/photos/']", count: 0
+  end
 end

@@ -117,4 +117,56 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     get headache_logs_url, params: { medication: "Sumatriptan" }
     assert_response :success
   end
+
+  test "should create a log with photos" do
+    assert_difference -> { ActiveStorage::Attachment.count }, 2 do
+      post headache_logs_url, params: { headache_log: {
+        start_time: Time.current, intensity: 6,
+        photos: [ fixture_file_upload("photo.jpg", "image/jpeg"), fixture_file_upload("photo.heic", "image/heic") ]
+      } }
+    end
+
+    assert_redirected_to headache_logs_url
+    assert_equal 2, @user.headache_logs.order(:created_at).last.photos.count
+  end
+
+  test "should keep stored photos when adding more" do
+    @headache_log.photos.attach(io: file_fixture("photo.jpg").open, filename: "kept.jpg")
+
+    patch headache_log_url(@headache_log), params: { headache_log: {
+      photos: [ @headache_log.photos.first.signed_id, fixture_file_upload("photo.heic", "image/heic") ]
+    } }
+
+    assert_redirected_to headache_logs_url
+    assert_equal %w[ kept.jpg photo.heic ], @headache_log.photos.reload.map { |photo| photo.filename.to_s }.sort
+  end
+
+  test "should reject a sixth photo" do
+    5.times { @headache_log.photos.attach(io: file_fixture("photo.jpg").open, filename: "photo.jpg") }
+
+    patch headache_log_url(@headache_log), params: { headache_log: {
+      photos: @headache_log.photos.map(&:signed_id) + [ fixture_file_upload("photo.jpg", "image/jpeg") ]
+    } }
+
+    assert_response :unprocessable_entity
+    assert_select ".alert-error", /Photos can't be more than 5 per attack/
+    assert_equal 5, @headache_log.photos.reload.count
+  end
+
+  test "should show the log's photos" do
+    @headache_log.photos.attach(io: file_fixture("photo.jpg").open, filename: "photo.jpg")
+
+    get headache_log_url(@headache_log)
+
+    assert_select "img[src=?]", headache_log_photo_variant_path(@headache_log, @headache_log.photos.first, :thumb)
+  end
+
+  test "should include photos in the print report" do
+    @headache_log.photos.attach(io: file_fixture("photo.jpg").open, filename: "photo.jpg")
+
+    get headache_log_print_url
+
+    assert_response :success
+    assert_select "img[src=?]", headache_log_photo_variant_path(@headache_log, @headache_log.photos.first, :large)
+  end
 end

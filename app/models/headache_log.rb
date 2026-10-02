@@ -1,6 +1,8 @@
 require "csv"
 
 class HeadacheLog < ApplicationRecord
+  include Photographed
+
   CSV_HEADERS = %w[ start_time end_time intensity medication triggers notes ].freeze
 
   belongs_to :user, counter_cache: true

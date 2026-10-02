@@ -1,0 +1,38 @@
+de:
+  photos:
+    title: "Fotos"
+    count:
+      one: "%{count} Foto"
+      other: "%{count} Fotos"
+    removed: "Foto entfernt."
+    thumbnail_alt: "Foto %{number} der Attacke vom %{date}"
+    form:
+      take_photo: "Foto aufnehmen"
+      choose: "Fotos auswählen"
+      remove: "Foto entfernen"
+      remove_confirm: "Dieses Foto entfernen?"
+      limits: "Bis zu %{limit} Fotos pro Attacke, je höchstens %{size} MB (JPEG, PNG, HEIC oder WebP)."
+      full: "Diese Attacke hat bereits %{limit} Fotos. Entferne eines, um ein neues hinzuzufügen."
+      privacy: "Fotos werden verschlüsselt gespeichert und sind nur für dich sichtbar. Sie sind nie in geteilten Links enthalten."
+    show:
+      title: "Foto"
+      alt: "Foto der Attacke vom %{date}"
+      remove: "Foto entfernen"
+    report:
+      title: "Fotos"
+    privacy_policy:
+      collected: "Fotos, die du freiwillig an einen Kopfschmerz-Eintrag anhängst"
+      storage: "Fotos werden verschlüsselt gespeichert, nur dir angezeigt – ohne Standort- und andere Metadaten – und nie in geteilte Links aufgenommen. Sie werden zusammen mit dem zugehörigen Eintrag oder deinem Konto gelöscht."
+
+  activerecord:
+    attributes:
+      headache_log:
+        photos: "Fotos"
+    errors:
+      models:
+        headache_log:
+          attributes:
+            photos:
+              too_many: "dürfen nicht mehr als %{count} pro Attacke sein"
+              invalid_content_type: "müssen JPEG-, PNG-, HEIC- oder WebP-Bilder sein (%{filename} ist keines)"
+              too_large: "dürfen jeweils höchstens %{size} MB groß sein (%{filename} ist zu groß)"

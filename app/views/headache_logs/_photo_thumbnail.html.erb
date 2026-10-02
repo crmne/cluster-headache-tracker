@@ -1,0 +1,6 @@
+<%# locals: (headache_log:, photo:, number:) %>
+<%= link_to headache_log_photo_path(headache_log, photo), data: { turbo_frame: "_top" } do %>
+  <%= image_tag headache_log_photo_variant_path(headache_log, photo, :thumb),
+        alt: t("photos.thumbnail_alt", number: number, date: l(headache_log.start_time, format: :long)),
+        class: "aspect-square w-full object-cover rounded-lg bg-base-300" %>
+<% end %>

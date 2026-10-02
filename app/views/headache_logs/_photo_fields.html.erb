@@ -1,0 +1,60 @@
+<%# locals: (form:, headache_log:) %>
+<div class="bg-base-200/50 rounded-lg p-3" data-controller="photo-picker">
+  <h3 class="text-sm font-semibold mb-2 flex items-center gap-2">
+    <%= heroicon "camera", variant: "mini", class: "w-4 h-4" %>
+    <%= t("photos.title") %>
+  </h3>
+
+  <% if headache_log.stored_photos.any? %>
+    <div class="grid grid-cols-3 sm:grid-cols-5 gap-3 mb-3">
+      <% headache_log.stored_photos.each.with_index(1) do |photo, number| %>
+        <%# Keeps the stored photos: assigning photos replaces the whole set. %>
+        <%= form.hidden_field :photos, multiple: true, value: photo.signed_id, id: nil %>
+
+        <div class="relative">
+          <%= render "headache_logs/photo_thumbnail", headache_log: headache_log, photo: photo, number: number %>
+
+          <%= link_to headache_log_photo_path(headache_log, photo),
+                class: "btn btn-circle btn-sm btn-error absolute -top-2 -right-2 shadow",
+                aria: { label: t("photos.form.remove") },
+                data: { turbo_method: :delete, turbo_confirm: t("photos.form.remove_confirm") } do %>
+            <%= heroicon "x-mark", variant: "mini", class: "w-4 h-4" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if headache_log.remaining_photo_slots.positive? %>
+    <div class="flex flex-wrap gap-2">
+      <%# Opens the camera directly on phones; desktops only get the picker below. %>
+      <label class="btn btn-outline flex-1 hidden pointer-coarse:inline-flex">
+        <%= heroicon "camera", variant: "mini", class: "w-5 h-5" %>
+        <%= t("photos.form.take_photo") %>
+        <%= form.file_field :photos, multiple: true, accept: "image/*", capture: "environment",
+              id: "headache_log_photos_camera", class: "sr-only", include_hidden: false,
+              data: { photo_picker_target: "input", action: "photo-picker#preview" } %>
+      </label>
+
+      <label class="btn btn-outline flex-1">
+        <%= heroicon "photo", variant: "mini", class: "w-5 h-5" %>
+        <%= t("photos.form.choose") %>
+        <%= form.file_field :photos, multiple: true, accept: "image/*", class: "sr-only",
+              data: { photo_picker_target: "input", action: "photo-picker#preview" } %>
+      </label>
+    </div>
+
+    <div class="flex flex-wrap gap-2 empty:hidden mt-3" data-photo-picker-target="previews"></div>
+
+    <p class="text-xs text-base-content/60 mt-2">
+      <%= t("photos.form.limits", limit: HeadacheLog::PHOTO_LIMIT, size: HeadacheLog::PHOTO_MAX_SIZE / 1.megabyte) %>
+    </p>
+  <% else %>
+    <p class="text-xs text-base-content/60"><%= t("photos.form.full", limit: HeadacheLog::PHOTO_LIMIT) %></p>
+  <% end %>
+
+  <p class="text-xs text-base-content/60 mt-1 flex items-center gap-1">
+    <%= heroicon "lock-closed", variant: "mini", class: "w-3 h-3 flex-shrink-0" %>
+    <%= t("photos.form.privacy") %>
+  </p>
+</div>

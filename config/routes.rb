@@ -62,7 +62,11 @@ Rails.application.routes.draw do
   resource :headache_log_import, only: :create
   resource :headache_log_print, only: :show
 
-  resources :headache_logs
+  resources :headache_logs do
+    resources :photos, only: %i[ show destroy ], module: :headache_logs do
+      resources :variants, only: :show, module: :photos, constraints: { id: /thumb|large/ }
+    end
+  end
 
   resource :settings, only: :show, controller: "users/settings"
   namespace :settings, module: :users do
