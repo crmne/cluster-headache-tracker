@@ -179,27 +179,37 @@ export default class extends Controller {
   initializeIntensityChart() {
     if (!this.hasIntensityCanvasTarget || this.intensityValue.length === 0) return
 
+    // One dot per attack. A line would join attacks across remission and imply
+    // pain levels for weeks with no attacks at all.
     this.drawChart('intensity', this.intensityCanvasTarget, {
-      type: 'line',
+      type: 'scatter',
       data: {
         datasets: [{
           label: t('charts.intensity.label'),
           data: this.intensityValue,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1
+          borderColor: 'rgb(13, 148, 136)',
+          backgroundColor: 'rgba(13, 148, 136, 0.5)',
+          pointRadius: 5,
+          pointHoverRadius: 8
         }]
       },
       options: {
         scales: {
           x: timeAxis,
           y: {
-            beginAtZero: true,
-            max: 10
+            // Half a step of room above 10 and below 1 so dots at the extremes aren't clipped.
+            min: 0.5,
+            max: 10.5,
+            afterBuildTicks: axis => { axis.ticks = Array.from({ length: 10 }, (_, index) => ({ value: index + 1 })) }
           }
         },
         plugins: {
+          legend: { display: false },
           tooltip: {
-            callbacks: { title: dayTooltipTitle }
+            callbacks: {
+              title: dayTooltipTitle,
+              label: context => t('charts.duration.tooltip.intensity', { intensity: context.parsed.y })
+            }
           }
         }
       }
