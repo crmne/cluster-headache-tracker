@@ -1,18 +1,22 @@
 {
-  "settings": {
-      "enable_feature_x": true
-  },
+  "settings": {},
   "rules": [
     {
       "patterns": [
-        "/headache_logs$",
-        "/charts$",
-        "/settings$",
-        "/feedback$",
-        "/feedback/thank_you$"
+        ".*"
       ],
       "properties": {
-          "context": "default"
+        "context": "default",
+        "pull_to_refresh_enabled": true
+      }
+    },
+    {
+      "patterns": [
+        "/current_attack$"
+      ],
+      "properties": {
+        "context": "default",
+        "pull_to_refresh_enabled": true
       }
     },
     {
@@ -22,9 +26,8 @@
       ],
       "properties": {
         "context": "modal",
-        "pull_to_refresh_enabled": true,
-        "presentation": "default",
-        "modal_style": "pageSheet",
+        "pull_to_refresh_enabled": false,
+        "modal_style": "page_sheet",
         "modal_dismiss_gesture_enabled": true
       }
     },
@@ -33,6 +36,7 @@
         "/users/sign_in$",
         "/users/sign_up$",
         "/users/password/new$",
+        "/users/password/edit$",
         "/users/password$",
         "/login$",
         "/signup$",
@@ -40,7 +44,27 @@
       ],
       "properties": {
         "context": "modal",
-        "pull_to_refresh_enabled": false
+        "pull_to_refresh_enabled": false,
+        "modal_style": "large",
+        "modal_dismiss_gesture_enabled": true
+      }
+    },
+    {
+      "patterns": [
+        "/refresh_historical_location$"
+      ],
+      "properties": {
+        "presentation": "refresh",
+        "historical_location": true
+      }
+    },
+    {
+      "patterns": [
+        "/resume_historical_location$"
+      ],
+      "properties": {
+        "presentation": "none",
+        "historical_location": true
       }
     }
   ]
