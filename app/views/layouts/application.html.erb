@@ -81,6 +81,8 @@
       <% if current_user %>
         <%= turbo_stream_from current_user, "application" %>
         <%= render "headache_logs/ongoing_headaches" unless content_for?(:hide_ongoing_headaches) %>
+        <%# Every page lands the app's widgets on the latest status, including right after an attack starts or ends. %>
+        <%= render "bridge/widget_status", status: current_user.widget_status if hotwire_native_app? %>
       <% end %>
       <%= yield %>
     </div>

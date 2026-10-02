@@ -12,7 +12,7 @@
   <div role="timer" aria-label="<%= t(".elapsed") %>"
        class="grid auto-cols-max grid-flow-col gap-3 sm:gap-5 justify-center"
        data-controller="timer"
-       data-timer-start-value="<%= attack.start_time.iso8601 %>">
+       data-timer-start-value="<%= attack.start_time.strftime("%Y-%m-%dT%H:%M:%S") %>">
     <% { days: t(".days"), hours: t(".hours"), minutes: t(".minutes"), seconds: t(".seconds") }.each do |unit, label| %>
       <div class="flex flex-col items-center" data-timer-target="<%= unit %>Container">
         <span class="countdown font-mono text-5xl sm:text-6xl font-bold">

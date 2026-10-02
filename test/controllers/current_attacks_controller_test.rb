@@ -51,6 +51,47 @@ class CurrentAttacksControllerTest < ActionDispatch::IntegrationTest
     }, response.parsed_body)
   end
 
+  test "show sends wall-clock times as instants in the patient's time zone" do
+    headache_logs(:one).update!(start_time: Time.utc(2026, 10, 2, 11, 44), end_time: nil)
+    cookies[:time_zone] = "Europe/Berlin"
+
+    travel_to Time.utc(2026, 10, 2, 10, 0) do
+      get current_attack_url(format: :json)
+    end
+
+    assert_equal "2026-10-02T11:44:00+02:00", response.parsed_body["startedAt"]
+    assert_equal "2026-10-02T11:44:00+02:00", response.parsed_body["lastAttackAt"]
+  end
+
+  test "show hands the widget status to the native app" do
+    get current_attack_url, headers: { "User-Agent" => "Hotwire Native Android; ClusterHeadacheTracker/1.0.9;" }
+
+    assert_select "[data-controller='bridge--widget-status']" do |elements|
+      status = JSON.parse(elements.first["data-bridge--widget-status-payload-value"])
+      assert_equal false, status["ongoing"]
+    end
+  end
+
+  test "the page shown after ending an attack hands the new status to the native app" do
+    attack = headache_logs(:one)
+    attack.update!(end_time: nil)
+    native = { "User-Agent" => "Hotwire Native Android; ClusterHeadacheTracker/1.0.9;" }
+
+    delete current_attack_url, headers: native.merge("Referer" => headache_log_url(attack))
+    follow_redirect! headers: native
+
+    assert_select "[data-controller='bridge--widget-status']", count: 1 do |elements|
+      status = JSON.parse(elements.first["data-bridge--widget-status-payload-value"])
+      assert_equal false, status["ongoing"]
+    end
+  end
+
+  test "the web has no widget status" do
+    get current_attack_url
+
+    assert_select "[data-controller='bridge--widget-status']", count: 0
+  end
+
   test "show requires a signed in user" do
     sign_out @user
 
@@ -71,6 +112,28 @@ class CurrentAttacksControllerTest < ActionDispatch::IntegrationTest
       assert_nil attack.end_time
       assert_equal 8, attack.intensity
     end
+  end
+
+  test "create starts the attack at the patient's wall-clock time" do
+    cookies[:time_zone] = "Europe/Berlin"
+
+    travel_to Time.utc(2026, 10, 2, 9, 44) do
+      post current_attack_url, params: { intensity: 8 }
+    end
+
+    assert_equal Time.utc(2026, 10, 2, 11, 44), @user.headache_logs.ongoing.sole.start_time
+  end
+
+  test "destroy ends the attack at the patient's wall-clock time" do
+    attack = headache_logs(:one)
+    attack.update!(start_time: Time.utc(2026, 10, 2, 11, 0), end_time: nil)
+    cookies[:time_zone] = "Europe/Berlin"
+
+    travel_to Time.utc(2026, 10, 2, 9, 44) do
+      delete current_attack_url
+    end
+
+    assert_equal Time.utc(2026, 10, 2, 11, 44), attack.reload.end_time
   end
 
   test "create keeps the ongoing attack instead of starting another" do

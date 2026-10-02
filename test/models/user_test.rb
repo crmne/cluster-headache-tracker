@@ -78,6 +78,30 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 1, status[:attacksToday]
   end
 
+  test "widget status reinterprets stored wall-clock times in the patient's time zone" do
+    @user.save!
+    @user.headache_logs.create!(start_time: Time.utc(2026, 10, 3, 1, 0), intensity: 8)
+    berlin = ActiveSupport::TimeZone["Europe/Berlin"]
+
+    travel_to Time.utc(2026, 10, 2, 23, 30) do
+      status = @user.widget_status(time_zone: berlin)
+
+      assert_equal "2026-10-03T01:00:00+02:00", status[:startedAt]
+      assert_equal "2026-10-03T01:00:00+02:00", status[:lastAttackAt]
+      assert_equal 1, status[:attacksToday]
+    end
+  end
+
+  test "widget status falls back to the app time zone until the browser reports one" do
+    @user.save!
+    @user.headache_logs.create!(start_time: Time.utc(2026, 10, 2, 11, 44), intensity: 8)
+
+    assert_equal "2026-10-02T11:44:00Z", @user.widget_status[:startedAt]
+
+    Current.time_zone = ActiveSupport::TimeZone["America/New_York"]
+    assert_equal "2026-10-02T11:44:00-04:00", @user.widget_status[:startedAt]
+  end
+
   test "widget status uses the current locale" do
     @user.save!
 
