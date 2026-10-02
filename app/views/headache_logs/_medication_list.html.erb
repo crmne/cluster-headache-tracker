@@ -1,0 +1,18 @@
+<%# locals: (headache_log:, show_times: false) %>
+<div class="flex flex-wrap gap-1 items-center">
+  <% if headache_log.medication_doses.any? %>
+    <% headache_log.medication_doses.each do |dose| %>
+      <span class="inline-flex items-center gap-1">
+        <%= dose_tag dose %>
+        <% if show_times %>
+          <span class="text-xs text-base-content/60"><%= l(dose.taken_at, format: :medication_dose_time) %></span>
+        <% end %>
+        <%= effectiveness_badge dose %>
+      </span>
+    <% end %>
+  <% else %>
+    <% headache_log.medication_list.each do |medication| %>
+      <span class="badge badge-primary badge-sm h-auto min-h-[1.5rem] whitespace-normal"><%= medication %></span>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,18 @@
+<%# locals: (medication:) %>
+<%= tag.div id: dom_id(medication), class: "card bg-base-100 shadow-md" do %>
+  <div class="card-body p-3 sm:p-4 gap-2">
+    <%= render "medication_doses/quick_button", medication: medication, large: true %>
+
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-base-content/70">
+      <span class="inline-flex items-center gap-1">
+        <%= medication_kind_icon medication, class: "w-3 h-3" %>
+        <%= t("medications.kinds.#{medication.kind}") %>
+      </span>
+      <span><%= medication_schedule_label(medication) %></span>
+      <% if last_taken_at = medication.last_taken_at %>
+        <span><%= t("medications.last_taken", time: dose_time(last_taken_at)) %></span>
+      <% end %>
+      <%= link_to t("medications.index.details"), medication_path(medication), class: "link link-hover ml-auto" %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,225 @@
+it:
+  time:
+    formats:
+      medication_dose: "%d/%m/%Y · %H:%M"
+      medication_dose_time: "%H:%M"
+  date:
+    formats:
+      timeline_day: "%d/%m/%Y"
+      medication_date: "%d/%m"
+
+  activerecord:
+    models:
+      medication:
+        one: "Farmaco"
+        other: "Farmaci"
+      medication_dose:
+        one: "Assunzione"
+        other: "Assunzioni"
+    attributes:
+      medication:
+        name: "Nome"
+        kind: "Tipo"
+        default_dose: "Dose abituale"
+        unit: "Unità"
+        frequency: "Frequenza"
+        schedule_note: "Nota sullo schema"
+        color: "Colore"
+      medication_dose:
+        medication: "Farmaco"
+        taken_at: "Assunto alle"
+        amount: "Dose"
+        unit: "Unità"
+        duration_minutes: "Durata"
+        effectiveness: "Effetto"
+        minutes_to_relief: "Tempo al sollievo"
+        headache_log: "Attacco"
+
+  medications:
+    archived: "Sospeso"
+    last_taken: "Ultima assunzione: %{time}"
+    actions:
+      edit: "Modifica"
+    kinds:
+      abortive: "Terapia acuta"
+      oxygen: "Ossigeno"
+      preventive: "Profilassi"
+      other: "Altro"
+    kind_hints:
+      abortive: "Interrompe un attacco, es. sumatriptan"
+      oxygen: "Ossigeno ad alto flusso, registrato con flusso e durata"
+      preventive: "Assunto secondo uno schema, es. verapamil, litio, Emgality"
+      other: "Tutto il resto"
+    frequencies:
+      as_needed: "Al bisogno"
+      once_daily: "Una volta al giorno"
+      twice_daily: "Due volte al giorno"
+      three_times_daily: "Tre volte al giorno"
+      weekly: "Una volta a settimana"
+      monthly: "Una volta al mese"
+      quarterly: "Ogni tre mesi"
+    status:
+      taken_today: "%{taken} di %{expected} oggi"
+      due_in:
+        zero: "Da assumere oggi"
+        one: "Da assumere domani"
+        other: "Da assumere tra %{count} giorni"
+      overdue:
+        one: "In ritardo di 1 giorno"
+        other: "In ritardo di %{count} giorni"
+    due:
+      title: "Profilassi da assumere"
+    navigation:
+      label: "Farmaci"
+      log_dose: "Registra assunzione"
+      medications: "Farmaci"
+      timeline: "Cronologia"
+    index:
+      title: "Farmaci"
+      new: "Nuovo"
+      took_it_hint: "Tocca un farmaco per registrare un'assunzione adesso."
+      empty: "Ancora nessun farmaco. Aggiungi quelli che prendi, oppure sceglili mentre registri un attacco."
+      details: "Dettagli"
+      archived:
+        one: "1 farmaco sospeso"
+        other: "%{count} farmaci sospesi"
+    show:
+      status: "Prossima assunzione"
+      history: "Assunzioni"
+      no_doses: "Nessuna assunzione registrata."
+      during_attack: "Durante un attacco · %{intensity}/10"
+    new:
+      title: "Nuovo farmaco"
+    edit:
+      title: "Modifica %{name}"
+    form:
+      name: "Nome"
+      name_placeholder: "es. Ossigeno, Sumatriptan, Verapamil"
+      kind: "Tipo"
+      default_dose: "Dose abituale"
+      default_dose_hint: "Viene precompilata quando registri un'assunzione, così basta un tocco. Per l'ossigeno inserisci il flusso."
+      unit: "Unità"
+      unit_placeholder: "mg, L/min, …"
+      frequency: "Frequenza"
+      frequency_hint: "La profilassi programmata compare nella tua panoramica quando è il momento di assumerla, e nel grafico dell'aderenza."
+      schedule_note: "Nota sullo schema"
+      schedule_note_placeholder: "es. mattina e sera, durante i pasti"
+      color: "Colore dell'etichetta"
+      archived: "Non lo prendo più"
+      archived_hint: "Lo nasconde dalla selezione. Le assunzioni restano nella cronologia e nei report."
+      save: "Salva"
+    merge:
+      title: "Unisci i duplicati"
+      hint: "Hai inserito lo stesso farmaco due volte? Sposta tutte le assunzioni di %{name} in un altro farmaco ed elimina %{name}."
+      target: "Unisci a"
+      submit: "Unisci"
+      confirm: "Spostare tutte le assunzioni di %{name} ed eliminarlo?"
+    destroy:
+      button: "Elimina farmaco"
+      confirm: "Eliminare %{name} e tutte le sue assunzioni? Per conservarne la cronologia, contrassegnalo invece come sospeso."
+    notices:
+      created: "%{name} è stato aggiunto."
+      updated: "%{name} è stato aggiornato."
+      destroyed: "%{name} è stato eliminato."
+      merged: "%{name} è stato unito a %{target}."
+    insights:
+      title: "Farmaci"
+      effectiveness_title: "Quanto ha funzionato ogni trattamento"
+      effectiveness_hint: "In base alle tue valutazioni delle assunzioni durante questi attacchi."
+      success_rate: "Ha aiutato"
+      average_relief: "Tempo medio al sollievo"
+      adherence: "Assunto come previsto"
+      percentage: "%{value}%"
+      not_rated: "Non ancora valutato"
+      breakdown: "Ha aiutato %{helped}%, nessun effetto %{no_effect}%, ha peggiorato %{made_worse}%"
+      rated:
+        one: "1 valutazione"
+        other: "%{count} valutazioni"
+      columns:
+        medication: "Farmaco"
+        doses: "Assunzioni"
+        effectiveness: "Effetto"
+        severe: "Ha aiutato a 8+/10"
+        relief: "Sollievo medio"
+        adherence: "Assunto come previsto"
+      adherence_chart:
+        title: "Profilassi assunta e attacchi per settimana"
+        hint: "La quota di giorni in cui ogni profilassi programmata è stata assunta come previsto, accanto al numero di attacchi di quella settimana."
+        attacks: "Attacchi"
+        adherence: "Profilassi assunta come previsto"
+        week: "Settimana"
+
+  medication_doses:
+    effectiveness:
+      helped: "Ha aiutato"
+      no_effect: "Nessun effetto"
+      made_worse: "Ha peggiorato"
+      unrated: "Non valutato"
+    units:
+      minutes: "min"
+    picker:
+      title: "Farmaci"
+      hint: "Tocca per aggiungere un'assunzione adesso"
+      new_medication: "Nuovo"
+      add_new: "Aggiungi"
+      remove: "Rimuovi %{name}"
+      previously_recorded: "Registrato in precedenza: %{medication}"
+    fields:
+      medication: "Farmaco"
+      taken_at: "Assunto alle"
+      now: "Adesso"
+      amount: "Dose"
+      flow_rate: "Flusso (L/min)"
+      amount_or_flow_rate: "Dose o flusso"
+      duration_minutes: "Durata (minuti)"
+      oxygen_hint: "Per l'ossigeno inserisci il flusso in L/min e per quanto tempo l'hai respirato."
+      effectiveness: "Come ha funzionato?"
+      minutes_to_relief: "Minuti al sollievo"
+      relief_placeholder: "Sollievo dopo"
+      save: "Salva"
+    quick:
+      took_it: "Preso"
+      took_it_aria: "Registra un'assunzione di %{name} adesso"
+    review:
+      title: "Come ha funzionato?"
+      attack: "Attacco del %{time} · %{intensity}/10"
+      question: "Come ha funzionato %{name}?"
+      how_did_it_work_html: "Come ha funzionato %{medication}?"
+      how_long_html: "Dopo quanto tempo %{medication} ti ha dato sollievo?"
+      minutes:
+        one: "1 min"
+        other: "%{count} min"
+      thanks: "Grazie, salvato."
+      later: "Più tardi"
+    new:
+      title: "Registra assunzione"
+      one_tap: "Tocca ciò che hai preso. Viene registrato con l'ora attuale."
+      details: "Orario o dose diversi?"
+    edit:
+      title: "Modifica assunzione di %{name}"
+    destroy:
+      button: "Elimina assunzione"
+      confirm: "Eliminare questa assunzione?"
+    export:
+      button: "Esporta le assunzioni"
+      import_hint: "Per ripristinare le assunzioni con le valutazioni, importa prima i registri del mal di testa e poi il file delle assunzioni."
+    notices:
+      created: "Assunzione di %{name} registrata."
+      updated: "Assunzione di %{name} aggiornata."
+      destroyed: "Assunzione di %{name} eliminata."
+      imported:
+        one: "1 assunzione importata correttamente."
+        other: "%{count} assunzioni importate correttamente."
+
+  timelines:
+    show:
+      title: "Cronologia"
+      empty: "Ancora niente di registrato. Qui compariranno attacchi e assunzioni."
+      earlier: "Precedenti"
+    attack:
+      title: "Attacco · %{intensity}/10"
+      range: "%{from} – %{to}"
+      ongoing_since: "In corso dalle %{from}"
+      doses_during:
+        one: "1 assunzione durante questo attacco"
+        other: "%{count} assunzioni durante questo attacco"

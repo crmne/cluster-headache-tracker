@@ -1,0 +1,225 @@
+es:
+  time:
+    formats:
+      medication_dose: "%d/%m/%Y · %H:%M"
+      medication_dose_time: "%H:%M"
+  date:
+    formats:
+      timeline_day: "%d/%m/%Y"
+      medication_date: "%d/%m"
+
+  activerecord:
+    models:
+      medication:
+        one: "Medicamento"
+        other: "Medicamentos"
+      medication_dose:
+        one: "Toma"
+        other: "Tomas"
+    attributes:
+      medication:
+        name: "Nombre"
+        kind: "Tipo"
+        default_dose: "Dosis habitual"
+        unit: "Unidad"
+        frequency: "Frecuencia"
+        schedule_note: "Nota sobre la pauta"
+        color: "Color"
+      medication_dose:
+        medication: "Medicamento"
+        taken_at: "Tomado a las"
+        amount: "Dosis"
+        unit: "Unidad"
+        duration_minutes: "Duración"
+        effectiveness: "Efecto"
+        minutes_to_relief: "Tiempo hasta el alivio"
+        headache_log: "Crisis"
+
+  medications:
+    archived: "Suspendido"
+    last_taken: "Última toma: %{time}"
+    actions:
+      edit: "Editar"
+    kinds:
+      abortive: "Abortivo"
+      oxygen: "Oxígeno"
+      preventive: "Preventivo"
+      other: "Otro"
+    kind_hints:
+      abortive: "Corta una crisis, p. ej. sumatriptán"
+      oxygen: "Oxígeno a alto flujo, registrado con flujo y duración"
+      preventive: "Se toma según una pauta, p. ej. verapamilo, litio, Emgality"
+      other: "Cualquier otra cosa"
+    frequencies:
+      as_needed: "A demanda"
+      once_daily: "Una vez al día"
+      twice_daily: "Dos veces al día"
+      three_times_daily: "Tres veces al día"
+      weekly: "Una vez a la semana"
+      monthly: "Una vez al mes"
+      quarterly: "Cada tres meses"
+    status:
+      taken_today: "%{taken} de %{expected} hoy"
+      due_in:
+        zero: "Toca hoy"
+        one: "Toca mañana"
+        other: "Toca dentro de %{count} días"
+      overdue:
+        one: "Con 1 día de retraso"
+        other: "Con %{count} días de retraso"
+    due:
+      title: "Preventivos pendientes"
+    navigation:
+      label: "Medicación"
+      log_dose: "Registrar toma"
+      medications: "Medicamentos"
+      timeline: "Cronología"
+    index:
+      title: "Medicamentos"
+      new: "Nuevo"
+      took_it_hint: "Toca un medicamento para registrar una toma ahora."
+      empty: "Aún no hay medicamentos. Añade los que tomas o elígelos al registrar una crisis."
+      details: "Detalles"
+      archived:
+        one: "1 medicamento suspendido"
+        other: "%{count} medicamentos suspendidos"
+    show:
+      status: "Próxima toma"
+      history: "Tomas"
+      no_doses: "Aún no hay tomas registradas."
+      during_attack: "Durante una crisis · %{intensity}/10"
+    new:
+      title: "Nuevo medicamento"
+    edit:
+      title: "Editar %{name}"
+    form:
+      name: "Nombre"
+      name_placeholder: "p. ej. Oxígeno, Sumatriptán, Verapamilo"
+      kind: "Tipo"
+      default_dose: "Dosis habitual"
+      default_dose_hint: "Se rellena al registrar una toma, así basta con un toque. Para el oxígeno, indica el flujo."
+      unit: "Unidad"
+      unit_placeholder: "mg, L/min, …"
+      frequency: "Frecuencia"
+      frequency_hint: "Los preventivos con pauta aparecen en tu panel cuando toca una toma, y en el gráfico de adherencia."
+      schedule_note: "Nota sobre la pauta"
+      schedule_note_placeholder: "p. ej. mañana y noche, con comida"
+      color: "Color de la etiqueta"
+      archived: "Ya no lo tomo"
+      archived_hint: "Lo oculta del selector. Sus tomas se mantienen en tu historial y tus informes."
+      save: "Guardar"
+    merge:
+      title: "Unir duplicados"
+      hint: "¿Has añadido el mismo medicamento dos veces? Mueve todas las tomas de %{name} a otro medicamento y elimina %{name}."
+      target: "Unir con"
+      submit: "Unir"
+      confirm: "¿Mover todas las tomas de %{name} y eliminarlo?"
+    destroy:
+      button: "Eliminar medicamento"
+      confirm: "¿Eliminar %{name} y todas sus tomas? Para conservar su historial, márcalo como suspendido."
+    notices:
+      created: "Se ha añadido %{name}."
+      updated: "Se ha actualizado %{name}."
+      destroyed: "Se ha eliminado %{name}."
+      merged: "%{name} se ha unido a %{target}."
+    insights:
+      title: "Medicación"
+      effectiveness_title: "Qué tal funcionó cada tratamiento"
+      effectiveness_hint: "Según tus valoraciones de las tomas durante estas crisis."
+      success_rate: "Ayudó"
+      average_relief: "Tiempo medio hasta el alivio"
+      adherence: "Tomado según la pauta"
+      percentage: "%{value} %"
+      not_rated: "Sin valorar"
+      breakdown: "Ayudó %{helped} %, sin efecto %{no_effect} %, empeoró %{made_worse} %"
+      rated:
+        one: "1 valoración"
+        other: "%{count} valoraciones"
+      columns:
+        medication: "Medicamento"
+        doses: "Tomas"
+        effectiveness: "Efecto"
+        severe: "Ayudó con 8+/10"
+        relief: "Alivio medio"
+        adherence: "Tomado según la pauta"
+      adherence_chart:
+        title: "Preventivos tomados frente a crisis por semana"
+        hint: "El porcentaje de días en que cada preventivo con pauta se tomó según lo previsto, junto al número de crisis de esa semana."
+        attacks: "Crisis"
+        adherence: "Preventivos tomados según la pauta"
+        week: "Semana"
+
+  medication_doses:
+    effectiveness:
+      helped: "Ayudó"
+      no_effect: "Sin efecto"
+      made_worse: "Empeoró"
+      unrated: "Sin valorar"
+    units:
+      minutes: "min"
+    picker:
+      title: "Medicación"
+      hint: "Toca para añadir una toma de ahora"
+      new_medication: "Nuevo"
+      add_new: "Añadir"
+      remove: "Quitar %{name}"
+      previously_recorded: "Registrado antes: %{medication}"
+    fields:
+      medication: "Medicamento"
+      taken_at: "Tomado a las"
+      now: "Ahora"
+      amount: "Dosis"
+      flow_rate: "Flujo (L/min)"
+      amount_or_flow_rate: "Dosis o flujo"
+      duration_minutes: "Duración (minutos)"
+      oxygen_hint: "Para el oxígeno, indica el flujo en L/min y durante cuánto tiempo lo respiraste."
+      effectiveness: "¿Qué tal funcionó?"
+      minutes_to_relief: "Minutos hasta el alivio"
+      relief_placeholder: "Alivio tras"
+      save: "Guardar"
+    quick:
+      took_it: "Tomado"
+      took_it_aria: "Registrar una toma de %{name} ahora"
+    review:
+      title: "¿Qué tal funcionó?"
+      attack: "Crisis del %{time} · %{intensity}/10"
+      question: "¿Qué tal funcionó %{name}?"
+      how_did_it_work_html: "¿Qué tal funcionó %{medication}?"
+      how_long_html: "¿Cuánto tardó %{medication} en aliviarte?"
+      minutes:
+        one: "1 min"
+        other: "%{count} min"
+      thanks: "Gracias, guardado."
+      later: "Más tarde"
+    new:
+      title: "Registrar toma"
+      one_tap: "Toca lo que has tomado. Se registra con la hora actual."
+      details: "¿Otra hora u otra dosis?"
+    edit:
+      title: "Editar toma de %{name}"
+    destroy:
+      button: "Eliminar toma"
+      confirm: "¿Eliminar esta toma?"
+    export:
+      button: "Exportar tomas de medicación"
+      import_hint: "Para restaurar las tomas con sus valoraciones, importa primero los registros de cefalea y después el archivo de tomas."
+    notices:
+      created: "Toma de %{name} registrada."
+      updated: "Toma de %{name} actualizada."
+      destroyed: "Toma de %{name} eliminada."
+      imported:
+        one: "Se ha importado 1 toma de medicación."
+        other: "Se han importado %{count} tomas de medicación."
+
+  timelines:
+    show:
+      title: "Cronología"
+      empty: "Aún no hay nada registrado. Aquí aparecerán las crisis y las tomas."
+      earlier: "Anteriores"
+    attack:
+      title: "Crisis · %{intensity}/10"
+      range: "%{from} – %{to}"
+      ongoing_since: "En curso desde las %{from}"
+      doses_during:
+        one: "1 toma durante esta crisis"
+        other: "%{count} tomas durante esta crisis"

@@ -23,6 +23,18 @@
         "context": "modal",
         "pull_to_refresh_enabled": false
       }
+    },
+    {
+      "patterns": [
+        "/medications/new$",
+        "/medications/.*/edit$",
+        "/medication_doses/new$",
+        "/medication_doses/.*/edit$"
+      ],
+      "properties": {
+        "context": "modal",
+        "pull_to_refresh_enabled": false
+      }
     }
   ]
 }

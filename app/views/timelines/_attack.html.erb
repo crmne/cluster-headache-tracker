@@ -1,0 +1,30 @@
+<%# locals: (headache_log:) %>
+<span class="absolute -left-[9px] top-2 w-4 h-4 rounded-full ring-4 ring-base-200" style="background-color: <%= intensity_color(headache_log.intensity) %>;" aria-hidden="true"></span>
+<%= link_to edit_headache_log_path(headache_log), class: "card bg-base-100 shadow-sm hover:shadow-md transition-shadow block", id: dom_id(headache_log, :timeline) do %>
+  <div class="card-body p-3 gap-2">
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="font-semibold"><%= t("timelines.attack.title", intensity: headache_log.intensity) %></span>
+      <span class="text-sm text-base-content/70">
+        <% if headache_log.end_time %>
+          <%= t("timelines.attack.range", from: l(headache_log.start_time, format: :medication_dose_time), to: l(headache_log.end_time, format: :medication_dose_time)) %>
+        <% else %>
+          <%= t("timelines.attack.ongoing_since", from: l(headache_log.start_time, format: :medication_dose_time)) %>
+        <% end %>
+      </span>
+    </div>
+
+    <% if headache_log.medication_doses.any? %>
+      <% markers = timeline_dose_markers(headache_log) %>
+      <div class="relative h-2 mt-3 mb-1" role="img" aria-label="<%= t("timelines.attack.doses_during", count: headache_log.medication_doses.size) %>">
+        <span class="absolute inset-0 rounded-full opacity-30" style="background-color: <%= intensity_color(headache_log.intensity) %>;"></span>
+        <% markers.each do |dose, position| %>
+          <span class="absolute -top-1.5 w-1.5 h-5 rounded-full -translate-x-1/2"
+                style="left: <%= position %>%; background-color: <%= dose.medication.display_color %>;"
+                title="<%= dose.label %>"></span>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= render "headache_logs/medication_list", headache_log: headache_log, show_times: true %>
+  </div>
+<% end %>

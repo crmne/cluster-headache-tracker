@@ -28,7 +28,11 @@
         "/current_attack$",
         "/headache_logs/.*/edit$",
         "/settings/devices/new$",
-        "/settings/devices/.*/edit$"
+        "/settings/devices/.*/edit$",
+        "/medications/new$",
+        "/medications/.*/edit$",
+        "/medication_doses/new$",
+        "/medication_doses/.*/edit$"
       ],
       "properties": {
         "context": "modal",

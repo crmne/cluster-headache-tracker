@@ -1,0 +1,18 @@
+<%# locals: (medications:) %>
+<div class="card bg-base-100 shadow-md mb-4 print:hidden" id="due_medications">
+  <div class="card-body p-3 sm:p-4 gap-2">
+    <h3 class="text-sm font-semibold flex items-center gap-2">
+      <%= heroicon "shield-check", variant: "mini", class: "w-4 h-4 text-primary" %>
+      <%= t("medications.due.title") %>
+    </h3>
+    <% medications.each do |medication| %>
+      <div class="flex flex-wrap items-center gap-2">
+        <%= link_to medication_path(medication) do %>
+          <%= medication_tag medication %>
+        <% end %>
+        <span class="text-xs text-base-content/70"><%= medication_status(medication) %></span>
+        <%= render "medication_doses/quick_button", medication: medication, form_class: "ml-auto" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<% content_for :title, t("medications.edit.title", name: @medication.name_in_database) %>
+<% content_for :navbar, t("medications.edit.title", name: @medication.name_in_database) %>
+
+<% unless hotwire_native_app? %>
+  <%= render "shared/back", back_path: medication_path(@medication) %>
+<% end %>
+
+<%= render "form", medication: @medication %>
+
+<% merge_targets = current_user.medications.where.not(id: @medication.id).alphabetically %>
+<% if merge_targets.any? %>
+  <div class="card bg-base-100 shadow-md mt-4">
+    <div class="card-body p-3 sm:p-4 gap-2">
+      <h2 class="text-sm font-semibold"><%= t("medications.merge.title") %></h2>
+      <p class="text-xs text-base-content/60"><%= t("medications.merge.hint", name: @medication.name_in_database) %></p>
+      <%= form_with url: medication_merge_path(@medication), method: :post, class: "flex gap-2",
+            data: { turbo_confirm: t("medications.merge.confirm", name: @medication.name_in_database) } do |form| %>
+        <%= form.select :target_id, merge_targets.map { |medication| [ medication.name, medication.id ] }, {},
+              class: "select select-bordered select-sm flex-1", aria: { label: t("medications.merge.target") } %>
+        <%= form.submit t("medications.merge.submit"), class: "btn btn-sm" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%= button_to medication_path(@medication), method: :delete,
+      class: "btn btn-outline btn-error w-full mt-4",
+      data: { turbo_confirm: t("medications.destroy.confirm", name: @medication.name_in_database) } do %>
+  <%= heroicon "trash", variant: "mini", class: "w-4 h-4" %>
+  <%= t("medications.destroy.button") %>
+<% end %>

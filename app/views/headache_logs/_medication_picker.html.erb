@@ -1,0 +1,78 @@
+<%# locals: (form:, headache_log:) %>
+<% options = medication_picker_options(current_user) %>
+<div class="bg-primary/5 rounded-lg p-3"
+     data-controller="medication-picker"
+     data-medication-picker-start-time-field-value="<%= form.field_id(:start_time) %>">
+  <div class="flex items-center justify-between gap-2 mb-2">
+    <h3 class="text-sm font-semibold flex items-center gap-2">
+      <%= heroicon "beaker", variant: "mini", class: "w-4 h-4 text-primary" %>
+      <%= t("medication_doses.picker.title") %>
+    </h3>
+    <span class="text-xs text-base-content/60"><%= t("medication_doses.picker.hint") %></span>
+  </div>
+
+  <div class="flex flex-wrap gap-2" role="group" aria-label="<%= t("medication_doses.picker.title") %>">
+    <% options.each do |dose| %>
+      <button type="button"
+              class="medication-option min-h-11 inline-flex items-center gap-1 rounded-full px-3 text-sm font-semibold shadow-sm active:scale-95 transition-transform"
+              style="background-color: <%= dose.medication.display_color %>; color: <%= readable_text_color(dose.medication.display_color) %>;"
+              data-action="medication-picker#add"
+              data-medication-picker-template-param="<%= medication_picker_template_id(dose) %>">
+        <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
+        <%= dose.medication.name %>
+      </button>
+    <% end %>
+
+    <button type="button" class="btn btn-sm min-h-11 btn-outline border-dashed rounded-full"
+            data-action="medication-picker#toggleNew"
+            aria-expanded="false"
+            data-medication-picker-target="newToggle">
+      <%= heroicon "plus-circle", variant: "mini", class: "w-4 h-4" %>
+      <%= t("medication_doses.picker.new_medication") %>
+    </button>
+  </div>
+
+  <div class="mt-3 bg-base-100 rounded-lg p-3 space-y-2" hidden data-medication-picker-target="newForm">
+    <label class="text-xs text-base-content/60 block" for="new_medication_name"><%= t("medications.form.name") %></label>
+    <input type="text" id="new_medication_name" class="input input-bordered input-sm w-full" autocomplete="off"
+           placeholder="<%= t("medications.form.name_placeholder") %>"
+           data-medication-picker-target="newName"
+           data-action="keydown.enter->medication-picker#addNew:prevent">
+    <div class="join flex-wrap" role="radiogroup" aria-label="<%= t("medications.form.kind") %>">
+      <% Medication::KINDS.each do |kind| %>
+        <input type="radio" name="new_medication_kind" value="<%= kind %>" class="join-item btn btn-xs"
+               aria-label="<%= t("medications.kinds.#{kind}") %>" <%= "checked" if kind == "abortive" %>
+               data-medication-picker-target="newKind">
+      <% end %>
+    </div>
+    <button type="button" class="btn btn-primary btn-sm w-full" data-action="medication-picker#addNew">
+      <%= t("medication_doses.picker.add_new") %>
+    </button>
+  </div>
+
+  <% if headache_log.medication.present? && headache_log.medication_doses.none? %>
+    <p class="mt-2 text-xs text-base-content/60">
+      <%= t("medication_doses.picker.previously_recorded", medication: headache_log.medication) %>
+    </p>
+  <% end %>
+
+  <div class="mt-3 space-y-2" data-medication-picker-target="doses">
+    <%= form.fields_for :medication_doses do |dose_form| %>
+      <%= render "headache_logs/medication_dose_fields", form: dose_form, dose: dose_form.object %>
+    <% end %>
+  </div>
+
+  <% options.each do |dose| %>
+    <template id="<%= medication_picker_template_id(dose) %>">
+      <%= form.fields_for :medication_doses, dose, child_index: "NEW_DOSE" do |dose_form| %>
+        <%= render "headache_logs/medication_dose_fields", form: dose_form, dose: dose %>
+      <% end %>
+    </template>
+  <% end %>
+
+  <template data-medication-picker-target="newTemplate">
+    <%= form.fields_for :medication_doses, MedicationDose.new(medication: Medication.new(name: "", color: "#64748b"), medication_name: "", medication_kind: "abortive"), child_index: "NEW_DOSE" do |dose_form| %>
+      <%= render "headache_logs/medication_dose_fields", form: dose_form, dose: dose_form.object %>
+    <% end %>
+  </template>
+</div>

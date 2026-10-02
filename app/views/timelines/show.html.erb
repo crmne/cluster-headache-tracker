@@ -1,0 +1,53 @@
+<% content_for :title, t("timelines.show.title") %>
+<% content_for :navbar, t("timelines.show.title") %>
+<% content_for :web_button do %>
+  <%= link_to new_medication_dose_path, class: "btn btn-primary" do %>
+    <%= t("medications.navigation.log_dose") %>
+    <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
+  <% end %>
+<% end %>
+<% content_for :hotwire_button do %>
+  <%= link_to new_medication_dose_path, class: "btn btn-primary",
+      data: { controller: "bridge--button", bridge_title: t("medications.navigation.log_dose") } do %>
+    <%= t("medications.navigation.log_dose") %>
+  <% end %>
+<% end %>
+
+<% unless hotwire_native_app? %>
+  <%= render "shared/back", back_path: headache_logs_path %>
+<% end %>
+
+<% if @timeline.entries.any? %>
+  <ol class="space-y-6" id="timeline">
+    <% @timeline.days.each do |day| %>
+      <li>
+        <h2 class="text-sm font-semibold text-base-content/70 mb-2 sticky top-16 z-10 bg-base-200/90 backdrop-blur py-1">
+          <%= l(day.date, format: :timeline_day) %>
+        </h2>
+        <ol class="border-l-2 border-base-300 ml-2 space-y-3">
+          <% day.entries.each do |entry| %>
+            <li class="relative pl-5">
+              <% if entry.is_a?(HeadacheLog) %>
+                <%= render "timelines/attack", headache_log: entry %>
+              <% else %>
+                <%= render "timelines/dose", dose: entry %>
+              <% end %>
+            </li>
+          <% end %>
+        </ol>
+      </li>
+    <% end %>
+  </ol>
+
+  <% if @timeline.next_before %>
+    <div class="text-center mt-6">
+      <%= link_to t("timelines.show.earlier"), timeline_path(before: @timeline.next_before), class: "btn btn-outline" %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="card bg-base-100 shadow-md">
+    <div class="card-body items-center text-center">
+      <p class="text-base-content/70"><%= t("timelines.show.empty") %></p>
+    </div>
+  </div>
+<% end %>

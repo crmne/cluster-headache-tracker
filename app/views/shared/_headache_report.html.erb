@@ -8,7 +8,7 @@
 
 <% if show_filters %>
   <div class="print:hidden join join-vertical w-full mb-4">
-    <%= render "shared/filter_form" %>
+    <%= render "shared/filter_form", user: user %>
   </div>
 <% end %>
 
@@ -22,7 +22,7 @@
 <%= render "headache_logs/stats", headache_logs: headache_logs %>
 
 <h2 class="text-2xl font-bold mb-4"><%= t(".analysis") %></h2>
-<%= render partial: 'shared/charts', locals: { headache_logs: headache_logs, chart_data: chart_data } %>
+<%= render partial: 'shared/charts', locals: { headache_logs: headache_logs, chart_data: chart_data, medication_insights: local_assigns[:medication_insights] } %>
 
 <h2 class="text-2xl font-bold mb-4 mt-8"><%= t(".entries") %></h2>
 <%= turbo_stream_from user, "headache_logs" if live_updates %>

@@ -1,0 +1,63 @@
+<%# locals: (form:, dose:) %>
+<% medication = dose.medication %>
+<div class="bg-base-100 rounded-lg p-2 shadow-sm space-y-2" data-medication-picker-target="dose" data-persisted="<%= dose.persisted? %>">
+  <div class="flex flex-wrap items-center gap-2">
+    <% if medication.new_record? %>
+      <%= form.hidden_field :medication_name, value: dose.medication_name, data: { medication_picker_field: "name" } %>
+      <%= form.hidden_field :medication_kind, value: dose.medication_kind, data: { medication_picker_field: "kind" } %>
+    <% else %>
+      <%= form.hidden_field :medication_id %>
+    <% end %>
+    <%= form.hidden_field :unit %>
+    <%= form.hidden_field :_destroy, data: { medication_picker_field: "destroy" } %>
+
+    <%= medication_tag medication, size: :lg, data: { medication_picker_field: "label" } %>
+
+    <%= form.datetime_local_field :taken_at,
+          value: dose.taken_at&.strftime("%Y-%m-%dT%H:%M"),
+          class: "input input-bordered input-sm w-auto",
+          aria: { label: t("medication_doses.fields.taken_at") },
+          data: { medication_picker_field: "taken_at" } %>
+
+    <% unless medication.new_record? && medication.name.blank? %>
+      <label class="input input-bordered input-sm w-28">
+        <%= form.number_field :amount, min: 0, step: "any", inputmode: "decimal", class: "w-full",
+              value: dose.amount && MedicationDose.format_amount(dose.amount),
+              aria: { label: medication.oxygen? ? t("medication_doses.fields.flow_rate") : t("medication_doses.fields.amount") } %>
+        <span class="text-xs text-base-content/60"><%= dose.unit %></span>
+      </label>
+    <% end %>
+
+    <% if medication.oxygen? %>
+      <label class="input input-bordered input-sm w-24">
+        <%= form.number_field :duration_minutes, min: 1, step: 1, inputmode: "numeric", class: "w-full",
+              aria: { label: t("medication_doses.fields.duration_minutes") } %>
+        <span class="text-xs text-base-content/60"><%= t("medication_doses.units.minutes") %></span>
+      </label>
+    <% end %>
+
+    <button type="button" class="btn btn-ghost btn-sm btn-square ml-auto"
+            data-action="medication-picker#remove"
+            aria-label="<%= t("medication_doses.picker.remove", name: medication.name) %>">
+      <%= heroicon "x-mark", variant: "mini", class: "w-4 h-4" %>
+    </button>
+  </div>
+
+  <% if dose.persisted? && !medication.preventive? %>
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="text-xs text-base-content/60"><%= t("medication_doses.review.question", name: medication.name) %></span>
+      <div class="join w-full" role="radiogroup" aria-label="<%= t("medication_doses.review.question", name: medication.name) %>">
+        <% MedicationDose::EFFECTIVENESS.each do |effectiveness| %>
+          <%= form.radio_button :effectiveness, effectiveness, class: "join-item btn btn-sm flex-1 px-1",
+                aria: { label: "#{effectiveness_emoji(effectiveness)} #{t("medication_doses.effectiveness.#{effectiveness}")}" } %>
+        <% end %>
+      </div>
+      <label class="input input-bordered input-sm w-36">
+        <%= form.number_field :minutes_to_relief, min: 0, step: 1, inputmode: "numeric", class: "w-full",
+              aria: { label: t("medication_doses.fields.minutes_to_relief") },
+              placeholder: t("medication_doses.fields.relief_placeholder") %>
+        <span class="text-xs text-base-content/60"><%= t("medication_doses.units.minutes") %></span>
+      </label>
+    </div>
+  <% end %>
+</div>

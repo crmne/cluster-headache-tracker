@@ -1,0 +1,22 @@
+<%# locals: (headache_log:) %>
+<%= tag.div id: dom_id(headache_log, :dose_review),
+      class: "card bg-base-100 shadow-md mb-4 print:hidden",
+      data: { controller: "dismissible", dismissible_key_value: dom_id(headache_log, :dose_review) } do %>
+  <div class="card-body p-3 sm:p-4 gap-3">
+    <div class="flex items-start justify-between gap-2">
+      <div>
+        <h3 class="font-semibold"><%= t("medication_doses.review.title") %></h3>
+        <p class="text-xs text-base-content/60">
+          <%= t("medication_doses.review.attack", time: dose_time(headache_log.start_time), intensity: headache_log.intensity) %>
+        </p>
+      </div>
+      <button type="button" class="btn btn-ghost btn-sm" data-action="dismissible#dismiss">
+        <%= t("medication_doses.review.later") %>
+      </button>
+    </div>
+
+    <% headache_log.doses_awaiting_review.each do |dose| %>
+      <%= render "medication_doses/review", dose: dose %>
+    <% end %>
+  </div>
+<% end %>

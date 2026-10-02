@@ -1,0 +1,92 @@
+<% content_for :title, @medication.name %>
+<% content_for :navbar, @medication.name %>
+<% content_for :web_button do %>
+  <%= link_to edit_medication_path(@medication), class: "btn" do %>
+    <%= heroicon "pencil-square", variant: "mini", class: "w-4 h-4" %>
+    <%= t("medications.actions.edit") %>
+  <% end %>
+<% end %>
+<% content_for :hotwire_button do %>
+  <%= link_to edit_medication_path(@medication), class: "btn",
+      data: { controller: "bridge--button", bridge_title: t("medications.actions.edit") } do %>
+    <%= t("medications.actions.edit") %>
+  <% end %>
+<% end %>
+
+<% unless hotwire_native_app? %>
+  <%= render "shared/back", back_path: medications_path %>
+<% end %>
+
+<div class="card bg-base-100 shadow-md mb-4">
+  <div class="card-body p-3 sm:p-4 gap-3">
+    <div class="flex flex-wrap items-center gap-2">
+      <%= medication_tag @medication, size: :lg %>
+      <span class="badge badge-ghost gap-1">
+        <%= medication_kind_icon @medication, class: "w-3 h-3" %>
+        <%= t("medications.kinds.#{@medication.kind}") %>
+      </span>
+      <% if @medication.archived? %>
+        <span class="badge badge-outline"><%= t("medications.archived") %></span>
+      <% end %>
+    </div>
+
+    <dl class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
+      <div>
+        <dt class="text-xs text-base-content/60"><%= t("medications.form.frequency") %></dt>
+        <dd><%= medication_schedule_label(@medication) %></dd>
+      </div>
+      <div>
+        <dt class="text-xs text-base-content/60"><%= t("medications.form.default_dose") %></dt>
+        <dd><%= @medication.default_dose_label || "–" %></dd>
+      </div>
+      <% if status = medication_status(@medication) %>
+        <div>
+          <dt class="text-xs text-base-content/60"><%= t("medications.show.status") %></dt>
+          <dd><%= status %></dd>
+        </div>
+      <% end %>
+      <% if @summary&.success_rate %>
+        <div>
+          <dt class="text-xs text-base-content/60"><%= t("medications.insights.success_rate") %></dt>
+          <dd><%= t("medications.insights.percentage", value: @summary.success_rate) %>
+            <span class="text-xs text-base-content/60">(<%= t("medications.insights.rated", count: @summary.rated_count) %>)</span></dd>
+        </div>
+      <% end %>
+      <% if @summary&.average_minutes_to_relief %>
+        <div>
+          <dt class="text-xs text-base-content/60"><%= t("medications.insights.average_relief") %></dt>
+          <dd><%= t("medication_doses.review.minutes", count: @summary.average_minutes_to_relief) %></dd>
+        </div>
+      <% end %>
+      <% if @summary&.adherence %>
+        <div>
+          <dt class="text-xs text-base-content/60"><%= t("medications.insights.adherence") %></dt>
+          <dd><%= t("medications.insights.percentage", value: @summary.adherence) %></dd>
+        </div>
+      <% end %>
+    </dl>
+
+    <% unless @medication.archived? %>
+      <%= render "medication_doses/quick_button", medication: @medication, large: true %>
+    <% end %>
+  </div>
+</div>
+
+<h2 class="text-lg font-bold mb-2"><%= t("medications.show.history") %></h2>
+<% if @doses.any? %>
+  <ul class="card bg-base-100 shadow-md divide-y divide-base-200">
+    <% @doses.each do |dose| %>
+      <li class="flex flex-wrap items-center gap-2 px-4 py-2">
+        <span class="text-sm font-medium"><%= dose_time(dose.taken_at) %></span>
+        <span class="text-sm text-base-content/70"><%= [ dose.amount_label, dose.duration_label ].compact.join(" · ") %></span>
+        <%= effectiveness_badge dose %>
+        <% if dose.headache_log %>
+          <span class="badge badge-warning badge-sm"><%= t("medications.show.during_attack", intensity: dose.headache_log.intensity) %></span>
+        <% end %>
+        <%= link_to t("medications.actions.edit"), edit_medication_dose_path(dose), class: "btn btn-ghost btn-xs ml-auto" %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="text-sm text-base-content/70"><%= t("medications.show.no_doses") %></p>
+<% end %>

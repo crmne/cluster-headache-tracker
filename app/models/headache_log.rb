@@ -1,6 +1,7 @@
 require "csv"
 
 class HeadacheLog < ApplicationRecord
+  include Medicated
   include Photographed
 
   CSV_HEADERS = %w[ start_time end_time intensity medication triggers notes barometric_pressure ].freeze
@@ -28,7 +29,6 @@ class HeadacheLog < ApplicationRecord
   scope :started_after, ->(start_time) { where("start_time >= ?", Date.parse(start_time).beginning_of_day) }
   scope :ended_before, ->(end_time) { where("end_time <= ? OR end_time IS NULL", Date.parse(end_time).end_of_day) }
   scope :with_triggers, ->(triggers) { where("triggers ILIKE ?", "%#{sanitize_sql_like(triggers)}%") }
-  scope :with_medication, ->(medication) { where("medication ILIKE ?", "%#{sanitize_sql_like(medication)}%") }
 
   class << self
     def filtered_by(params)
@@ -54,7 +54,7 @@ class HeadacheLog < ApplicationRecord
     end
 
     def chart_data
-      chart_data_for(chronological)
+      chart_data_for(chronological.includes(medication_doses: :medication))
     end
 
     def chart_data_for(headache_logs)
@@ -62,6 +62,7 @@ class HeadacheLog < ApplicationRecord
         intensity_data: intensity_data_for(headache_logs),
         trigger_data: trigger_data_for(headache_logs),
         medication_data: medication_data_for(headache_logs),
+        medication_colors: medication_colors_for(headache_logs),
         hourly_data: hourly_data_for(headache_logs),
         attacks_per_day_data: attacks_per_day_data_for(headache_logs),
         duration_data: duration_data_for(headache_logs),
@@ -82,12 +83,12 @@ class HeadacheLog < ApplicationRecord
       CSV.generate(headers: true) do |csv|
         csv << CSV_HEADERS
 
-        recent_first.each do |log|
+        recent_first.includes(medication_doses: :medication).each do |log|
           csv << [
             log.start_time.strftime("%Y-%m-%d %H:%M:%S"),
             log.end_time&.strftime("%Y-%m-%d %H:%M:%S"),
             log.intensity.to_s,
-            log.medication.to_s,
+            log.medication_text,
             log.triggers.to_s,
             log.notes.to_s,
             log.barometric_pressure&.to_s("F")
@@ -185,11 +186,16 @@ class HeadacheLog < ApplicationRecord
           :invalid
         elsif user.headache_logs.exists?(start_time: attributes[:start_time])
           :duplicate
-        elsif user.headache_logs.create(attributes).persisted?
+        elsif import_with_medication_doses(attributes, user)
           :imported
         else
           :invalid
         end
+      end
+
+      # Imported medication text becomes MedicationDose records, like logs logged in the app.
+      def import_with_medication_doses(attributes, user)
+        user.headache_logs.new(attributes).tap { |log| log.take_medication_from(attributes[:medication]) }.save
       end
 
       def import_attributes_from(row)
@@ -208,13 +214,15 @@ class HeadacheLog < ApplicationRecord
         logs.map { |log| { x: log.start_time.iso8601, y: log.intensity } }
       end
 
+      def medication_colors_for(logs)
+        logs.flat_map(&:medication_doses).to_h { |dose| [ dose.medication.name, dose.medication.color ] }
+      end
+
       def medication_data_for(logs)
         medication_counts = Hash.new(0)
 
         logs.each do |log|
-          medications = log.medication_list.map(&:downcase)
-
-          medications.each do |medication|
+          log.medication_names.each do |medication|
             medication_counts[medication] += 1 unless medication.blank?
           end
         end
@@ -363,7 +371,8 @@ class HeadacheLog < ApplicationRecord
       broadcast_replace_to [ user, "charts" ],
                            target: "charts",
                            partial: "charts/charts_frame",
-                           locals: { headache_logs: headache_logs, chart_data: headache_logs.chart_data }
+                           locals: { headache_logs: headache_logs, chart_data: headache_logs.chart_data,
+                                     medication_insights: user.medication_insights_for(headache_logs) }
     end
 
     def broadcast_update_ongoing_headaches

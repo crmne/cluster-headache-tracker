@@ -1,0 +1,8 @@
+<% content_for :title, t("medications.new.title") %>
+<% content_for :navbar, t("medications.new.title") %>
+
+<% unless hotwire_native_app? %>
+  <%= render "shared/back", back_path: medications_path %>
+<% end %>
+
+<%= render "form", medication: @medication %>

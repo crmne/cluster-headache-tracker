@@ -3,8 +3,17 @@ class HeadacheLogsController < ApplicationController
   before_action :set_headache_log, only: %i[ show edit update destroy ]
 
   def index
-    @headache_logs = filtered_headache_logs.preloading_photos.recent_first
+    @headache_logs = filtered_headache_logs.preloading_photos.recent_first.includes(medication_doses: :medication)
+    @headache_logs_awaiting_review = current_user.headache_logs.awaiting_dose_review.recent_first.includes(medication_doses: :medication).limit(3)
+    @due_medications = current_user.medications.active.scheduled.alphabetically.select(&:due?)
     set_share_link
+
+    # Form submissions redirect here and accept Turbo Streams, but they must
+    # land on the full page (with its notice), not update the form in place.
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def new
@@ -48,7 +57,9 @@ class HeadacheLogsController < ApplicationController
     end
 
     def headache_log_params
-      params.expect(headache_log: [ :start_time, :end_time, :intensity, :notes, :medication, :triggers, :barometric_pressure, photos: [] ])
+      params.expect(headache_log: [ :start_time, :end_time, :intensity, :notes, :triggers, :barometric_pressure, photos: [],
+        medication_doses_attributes: [ [ :id, :medication_id, :medication_name, :medication_kind, :taken_at, :amount, :unit,
+          :duration_minutes, :effectiveness, :minutes_to_relief, :_destroy ] ] ])
     end
 
     def set_headache_log

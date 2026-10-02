@@ -1,0 +1,87 @@
+<%# locals: (medication_dose:, medications:) %>
+<%= form_with model: medication_dose, class: "space-y-4", id: "medication_dose_form" do |form| %>
+  <% if medication_dose.errors.any? %>
+    <div class="alert alert-error">
+      <%= heroicon "x-circle", variant: "mini", class: "w-5 h-5" %>
+      <ul class="list-disc list-inside">
+        <% medication_dose.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <div class="bg-base-200/50 rounded-lg p-3">
+      <% if medications.any? %>
+        <%= form.label :medication_id, t("medication_doses.fields.medication"), class: "text-sm font-semibold block mb-1" %>
+        <%= form.select :medication_id, medications.map { |medication| [ medication.name, medication.id ] },
+              { include_blank: medication_dose.medication_id.nil? }, class: "select select-bordered w-full" %>
+      <% else %>
+        <%= form.label :medication_name, t("medications.form.name"), class: "text-sm font-semibold block mb-1" %>
+        <%= form.text_field :medication_name, class: "input input-bordered w-full", required: true,
+              placeholder: t("medications.form.name_placeholder") %>
+      <% end %>
+    </div>
+
+    <div class="bg-base-200/50 rounded-lg p-3" data-controller="time"
+         data-time-set-now-on-connect-value="<%= medication_dose.new_record? && medication_dose.errors.none? %>">
+      <%= form.label :taken_at, t("medication_doses.fields.taken_at"), class: "text-sm font-semibold block mb-1" %>
+      <div class="join w-full">
+        <%= form.datetime_local_field :taken_at, class: "input input-bordered join-item flex-1", required: true,
+              value: (medication_dose.new_record? && medication_dose.errors.none?) ? nil : medication_dose.taken_at&.strftime("%Y-%m-%dT%H:%M"),
+              data: { time_target: "field" } %>
+        <button type="button" class="btn join-item" data-action="time#setNow"><%= t("medication_doses.fields.now") %></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-base-200/50 rounded-lg p-3 grid grid-cols-2 sm:grid-cols-3 gap-3">
+    <div>
+      <%= form.label :amount, t("medication_doses.fields.amount_or_flow_rate"), class: "text-sm font-semibold block mb-1" %>
+      <%= form.number_field :amount, min: 0, step: "any", inputmode: "decimal", class: "input input-bordered w-full",
+            value: medication_dose.amount && MedicationDose.format_amount(medication_dose.amount) %>
+    </div>
+    <div>
+      <%= form.label :unit, t("medications.form.unit"), class: "text-sm font-semibold block mb-1" %>
+      <%= form.text_field :unit, class: "input input-bordered w-full", list: "dose_units", maxlength: 20 %>
+      <datalist id="dose_units">
+        <% Medication::UNITS.each do |unit| %>
+          <option value="<%= unit %>">
+        <% end %>
+      </datalist>
+    </div>
+    <div>
+      <%= form.label :duration_minutes, t("medication_doses.fields.duration_minutes"), class: "text-sm font-semibold block mb-1" %>
+      <%= form.number_field :duration_minutes, min: 1, step: 1, inputmode: "numeric", class: "input input-bordered w-full" %>
+    </div>
+    <p class="col-span-2 sm:col-span-3 text-xs text-base-content/60"><%= t("medication_doses.fields.oxygen_hint") %></p>
+  </div>
+
+  <fieldset class="bg-base-200/50 rounded-lg p-3">
+    <legend class="text-sm font-semibold mb-2 float-left w-full"><%= t("medication_doses.fields.effectiveness") %></legend>
+    <div class="flex flex-wrap items-center gap-3 clear-both">
+      <div class="join" role="radiogroup" aria-label="<%= t("medication_doses.fields.effectiveness") %>">
+        <%= form.radio_button :effectiveness, "", class: "join-item btn btn-sm", aria: { label: t("medication_doses.effectiveness.unrated") } %>
+        <% MedicationDose::EFFECTIVENESS.each do |effectiveness| %>
+          <%= form.radio_button :effectiveness, effectiveness, class: "join-item btn btn-sm",
+                aria: { label: "#{effectiveness_emoji(effectiveness)} #{t("medication_doses.effectiveness.#{effectiveness}")}" } %>
+        <% end %>
+      </div>
+      <label class="input input-bordered input-sm w-44">
+        <%= form.number_field :minutes_to_relief, min: 0, step: 1, inputmode: "numeric", class: "w-full",
+              aria: { label: t("medication_doses.fields.minutes_to_relief") },
+              placeholder: t("medication_doses.fields.relief_placeholder") %>
+        <span class="text-xs text-base-content/60"><%= t("medication_doses.units.minutes") %></span>
+      </label>
+    </div>
+  </fieldset>
+
+  <%= form.submit t("medication_doses.fields.save"), class: "btn btn-primary w-full" %>
+
+  <% content_for :hotwire_button do %>
+    <div data-controller="bridge--button" data-bridge-title="<%= t("medication_doses.fields.save") %>">
+      <%= form.submit t("medication_doses.fields.save"), class: "btn", form: "medication_dose_form" %>
+    </div>
+  <% end %>
+<% end %>

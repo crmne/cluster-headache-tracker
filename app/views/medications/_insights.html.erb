@@ -1,0 +1,86 @@
+<%# locals: (insights:) %>
+<section class="mb-8" id="medication_insights" aria-labelledby="medication_insights_title">
+  <h2 id="medication_insights_title" class="text-2xl font-bold mb-4"><%= t("medications.insights.title") %></h2>
+
+  <div class="card bg-base-100 shadow-md mb-4 print:shadow-none print:break-inside-avoid">
+    <div class="card-body p-3 sm:p-4">
+      <h3 class="text-sm sm:text-base font-semibold flex items-center gap-2">
+        <%= heroicon "hand-thumb-up", variant: "mini", class: "w-4 h-4 text-success" %>
+        <%= t("medications.insights.effectiveness_title") %>
+      </h3>
+      <p class="text-xs text-base-content/60"><%= t("medications.insights.effectiveness_hint") %></p>
+
+      <div class="overflow-x-auto print:overflow-visible">
+        <table class="table table-sm print:text-xs">
+          <thead>
+            <tr>
+              <th><%= t("medications.insights.columns.medication") %></th>
+              <th><%= t("medications.insights.columns.doses") %></th>
+              <th class="min-w-48"><%= t("medications.insights.columns.effectiveness") %></th>
+              <th><%= t("medications.insights.columns.severe") %></th>
+              <th><%= t("medications.insights.columns.relief") %></th>
+              <th><%= t("medications.insights.columns.adherence") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% insights.summaries.each do |summary| %>
+              <tr>
+                <td>
+                  <div class="flex flex-col gap-1 items-start">
+                    <%= medication_tag summary.medication %>
+                    <span class="text-xs text-base-content/60"><%= t("medications.kinds.#{summary.medication.kind}") %> · <%= medication_schedule_label(summary.medication) %></span>
+                    <% if summary.dates %>
+                      <span class="text-xs text-base-content/60"><%= summary.dates.map { |date| l(date, format: :medication_date) }.join(", ") %></span>
+                    <% end %>
+                  </div>
+                </td>
+                <td class="tabular-nums"><%= summary.doses_count %></td>
+                <td>
+                  <% if summary.rated_count.positive? %>
+                    <div class="flex h-3 w-full overflow-hidden rounded-full bg-base-200 print:border print:border-base-300"
+                         role="img"
+                         aria-label="<%= t("medications.insights.breakdown", helped: summary.share_of(summary.helped_count), no_effect: summary.share_of(summary.no_effect_count), made_worse: summary.share_of(summary.made_worse_count)) %>">
+                      <span class="bg-success" style="width: <%= summary.share_of(summary.helped_count) %>%"></span>
+                      <span class="bg-base-content/30" style="width: <%= summary.share_of(summary.no_effect_count) %>%"></span>
+                      <span class="bg-error" style="width: <%= summary.share_of(summary.made_worse_count) %>%"></span>
+                    </div>
+                    <span class="text-xs">
+                      <%= effectiveness_emoji("helped") %> <%= t("medications.insights.percentage", value: summary.success_rate) %>
+                      · <%= t("medications.insights.rated", count: summary.rated_count) %>
+                    </span>
+                  <% else %>
+                    <span class="text-xs text-base-content/50"><%= t("medications.insights.not_rated") %></span>
+                  <% end %>
+                </td>
+                <td class="tabular-nums">
+                  <%= summary.severe_success_rate ? t("medications.insights.percentage", value: summary.severe_success_rate) : "–" %>
+                </td>
+                <td class="tabular-nums">
+                  <%= summary.average_minutes_to_relief ? t("medication_doses.review.minutes", count: summary.average_minutes_to_relief) : "–" %>
+                </td>
+                <td class="tabular-nums">
+                  <%= summary.adherence ? t("medications.insights.percentage", value: summary.adherence) : "–" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <% if insights.adherence_by_week? %>
+    <div class="card bg-base-100 shadow-md print:shadow-none print:break-inside-avoid">
+      <div class="card-body p-3 sm:p-4">
+        <h3 class="text-sm sm:text-base font-semibold flex items-center gap-2">
+          <%= heroicon "shield-check", variant: "mini", class: "w-4 h-4 text-primary" %>
+          <%= t("medications.insights.adherence_chart.title") %>
+        </h3>
+        <p class="text-xs text-base-content/60"><%= t("medications.insights.adherence_chart.hint") %></p>
+        <div class="h-[300px] print:h-[200px] print:max-w-full" data-charts-target="container">
+          <canvas id="adherenceChart" data-charts-target="adherenceCanvas"></canvas>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>

@@ -52,4 +52,14 @@ class ChartsControllerTest < ActionDispatch::IntegrationTest
     assert_select "h2", "Schmerzintensität im Verlauf"
     assert_select "script#translations", text: /Attacken pro Tag/
   end
+
+  test "shows how well each medication worked and preventive adherence" do
+    get charts_url
+
+    assert_select "#medication_insights" do
+      assert_select "tr", text: /Oxygen.*100%/m
+      assert_select "canvas#adherenceChart"
+    end
+    assert_select "[data-charts-medication-colors-value*=?]", "#0ea5e9"
+  end
 end
