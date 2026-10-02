@@ -122,6 +122,37 @@ class NativeAppTest < ActionDispatch::IntegrationTest
     assert_response :no_content
   end
 
+  test "signed-out apps get a 401 so they can present their sign-in flow" do
+    sign_out @user
+
+    [ "Hotwire Native iOS; bridge-components: []", "Turbo Native Android" ].each do |user_agent|
+      get headache_logs_url, headers: { "User-Agent" => user_agent }
+      assert_response :unauthorized, user_agent
+    end
+
+    get headache_logs_url
+    assert_redirected_to new_user_session_url
+  end
+
+  test "our recede route wins over turbo-rails' so the apps can intercept it after sign-in" do
+    assert_recognizes({ controller: "recede_historical_locations", action: "show" }, "/recede_historical_location")
+
+    sign_out @user
+    post user_session_url, params: { user: { username: @user.username, password: "password123" } }, headers: native_headers
+    assert_redirected_to "/recede_historical_location"
+
+    follow_redirect! headers: native_headers
+    assert_response :success
+    assert_match %(window.location.href = "#{headache_logs_path}"), response.body
+    assert_no_match "Going back", response.body
+  end
+
+  test "browsers visiting the recede route land on the logs" do
+    get "/recede_historical_location"
+
+    assert_redirected_to headache_logs_path
+  end
+
   private
     def native_headers(components: ALL_COMPONENTS)
       { "User-Agent" => "ClusterHeadacheTracker; platform=ios; version=1.2.0; build=12; Hotwire Native iOS; Turbo Native iOS; bridge-components: [#{components.join(" ")}]" }
