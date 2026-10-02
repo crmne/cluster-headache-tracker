@@ -38,7 +38,7 @@ class Medication::Insights
   end
 
   def adherence_by_week?
-    scheduled_medications.any?
+    scheduled_medications.any? { |medication| taken_dates_for(medication).any? }
   end
 
   def adherence_by_week

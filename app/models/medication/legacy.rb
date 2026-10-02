@@ -58,18 +58,16 @@ module Medication::Legacy
   private
     def parse_mention(mention)
       text = mention.squish
-      return if text.blank?
 
       duration_minutes = extract(text, DURATION) { |match| match[:minutes].to_i }
       amount, unit = extract(text, AMOUNT_WITH_UNIT) { |match| [ match[:amount].to_d, match[:unit].downcase ] } ||
         extract(text, BARE_AMOUNT) { |match| [ match[:amount].to_d, nil ] }
-
       name = text.gsub(/[()\[\]{}:]/, " ").squish.delete_prefix("-").delete_suffix("-").squish
-      return if name.match?(NOTHING)
 
-      name = canonical_name(name) if name.present?
-
-      Entry.new(name: name, amount: amount, unit: unit_for(unit, name), duration_minutes: duration_minutes&.positive? ? duration_minutes : nil)
+      if (name.present? || amount || duration_minutes) && !name.match?(NOTHING)
+        name = canonical_name(name) if name.present?
+        Entry.new(name: name, amount: amount, unit: unit_for(unit, name), duration_minutes: duration_minutes&.positive? ? duration_minutes : nil)
+      end
     end
 
     def extract(text, pattern)

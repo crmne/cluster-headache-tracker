@@ -84,11 +84,12 @@ class Medication::InsightsTest < ActiveSupport::TestCase
     assert_equal 100, insights(from: @today - 30.days, to: @today).summaries.find { |summary| summary.medication == lithium }.adherence
   end
 
-  test "without scheduled preventives there is no adherence chart" do
-    medications(:lithium).update!(frequency: "as_needed")
-    medications(:emgality).update!(frequency: "as_needed")
-
+  test "no adherence chart until a scheduled preventive has been taken" do
     assert_not insights.adherence_by_week?
+
+    take medications(:emgality), @today
+
+    assert insights.adherence_by_week?
   end
 
   private
