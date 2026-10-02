@@ -5,6 +5,15 @@
   "rules": [
     {
       "patterns": [
+        ".*"
+      ],
+      "properties": {
+        "uri": "hotwire://fragment/web",
+        "pull_to_refresh_enabled": true
+      }
+    },
+    {
+      "patterns": [
         "/users/sign_in$",
         "/users/sign_up$",
         "/users/password/new$",
@@ -24,10 +33,23 @@
     },
     {
       "patterns": [
-        "/headache_logs/new$",
-        "/headache_logs/.*/edit$",
-        "/settings/devices/new$",
-        "/settings/devices/.*/edit$"
+        "/headache_logs/new(\\?.*)?$",
+        "/current_attack$",
+        "/headache_logs/.*/edit$"
+      ],
+      "properties": {
+        "context": "modal",
+        "uri": "hotwire://fragment/web/modal",
+        "presentation": "modal",
+        "pull_to_refresh_enabled": false
+      }
+    },
+    {
+      "patterns": [
+        "/medications/new$",
+        "/medications/.*/edit$",
+        "/medication_doses/new$",
+        "/medication_doses/.*/edit$"
       ],
       "properties": {
         "context": "modal",
@@ -57,29 +79,6 @@
       "properties": {
         "uri": "hotwire://fragment/web",
         "presentation": "none"
-      }
-    },
-    {
-      "patterns": [
-        ".*"
-      ],
-      "properties": {
-        "uri": "hotwire://fragment/web",
-        "pull_to_refresh_enabled": true
-      }
-    },
-    {
-      "patterns": [
-        "/medications/new$",
-        "/medications/.*/edit$",
-        "/medication_doses/new$",
-        "/medication_doses/.*/edit$"
-      ],
-      "properties": {
-        "context": "modal",
-        "uri": "hotwire://fragment/web/modal",
-        "presentation": "modal",
-        "pull_to_refresh_enabled": false
       }
     }
   ]

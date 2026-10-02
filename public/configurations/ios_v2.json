@@ -1,31 +1,17 @@
 {
   "settings": {
-      "enable_feature_x": true
+    "navigation": {
+      "version": 3
+    }
   },
   "rules": [
     {
       "patterns": [
-        "/headache_logs$",
-        "/charts$",
-        "/settings$",
-        "/feedback$",
-        "/feedback/thank_you$"
+        ".*"
       ],
       "properties": {
-          "context": "default"
-      }
-    },
-    {
-      "patterns": [
-        "/headache_logs/new$",
-        "/headache_logs/.*/edit$"
-      ],
-      "properties": {
-        "context": "modal",
-        "pull_to_refresh_enabled": true,
-        "presentation": "default",
-        "modal_style": "pageSheet",
-        "modal_dismiss_gesture_enabled": true
+        "context": "default",
+        "pull_to_refresh_enabled": true
       }
     },
     {
@@ -33,6 +19,7 @@
         "/users/sign_in$",
         "/users/sign_up$",
         "/users/password/new$",
+        "/users/password/edit$",
         "/users/password$",
         "/login$",
         "/signup$",
@@ -40,7 +27,23 @@
       ],
       "properties": {
         "context": "modal",
-        "pull_to_refresh_enabled": false
+        "pull_to_refresh_enabled": false,
+        "modal_style": "large",
+        "modal_dismiss_gesture_enabled": true
+      }
+    },
+    {
+      "patterns": [
+        "/headache_logs/new(\\?.*)?$",
+        "/headache_logs/.*/edit$",
+        "/feedback/new$",
+        "/current_attack$"
+      ],
+      "properties": {
+        "context": "modal",
+        "pull_to_refresh_enabled": false,
+        "modal_style": "page_sheet",
+        "modal_dismiss_gesture_enabled": true
       }
     },
     {
@@ -52,10 +55,21 @@
       ],
       "properties": {
         "context": "modal",
-        "pull_to_refresh_enabled": true,
-        "presentation": "default",
-        "modal_style": "pageSheet",
+        "pull_to_refresh_enabled": false,
+        "modal_style": "page_sheet",
         "modal_dismiss_gesture_enabled": true
+      }
+    },
+    {
+      "patterns": [
+        "/headache_logs$",
+        "/charts$",
+        "/settings$",
+        "/feedback$",
+        "/feedback/thank_you$"
+      ],
+      "properties": {
+        "context": "default"
       }
     }
   ]
