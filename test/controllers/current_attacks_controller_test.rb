@@ -52,6 +52,8 @@ class CurrentAttacksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show sends wall-clock times as instants in the patient's time zone" do
+    # The other fixtures start relative to today, so after travelling back they'd be in the future.
+    users(:one).headache_logs.where.not(id: headache_logs(:one).id).destroy_all
     headache_logs(:one).update!(start_time: Time.utc(2026, 10, 2, 11, 44), end_time: nil)
     cookies[:time_zone] = "Europe/Berlin"
 
