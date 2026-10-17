@@ -117,7 +117,7 @@ The iOS ([crmne/cluster-headache-tracker-ios](https://github.com/crmne/cluster-h
 - Store builds (every iOS build, and Android with `store=play`) update through their store: `mobile_app_from_store?` keeps them from hearing about GitHub releases (Google Play forbids pointing at other downloads) and sends required updates to `AppConstants::IOS_APP_STORE_URL` or `PLAY_STORE_URL`. Only GitHub APK installs are offered the APK.
 - `widget-status`: signed-in pages send `connect` with `{ ongoing, startedAt, lastAttackAt, attackFreeDays, attacksToday, locale }`; signed-out pages send `clear`, so widgets, shortcuts and the Live Activity forget the last account after signing out elsewhere, an expired session or a deleted account.
 - Account deletion is in Settings for the apps too (`Users::AccountsController`, password required, native destructive alert), as both stores require; `/delete-account` explains it publicly for Google Play's deletion URL.
-- Store review uses a synthetic account: `DEMO_PASSWORD=... bin/rails demo:reset` (`DemoAccount`, username `appreview` by default) replaces its history with a made-up cluster period ending today. It refuses any account holding logs it didn't write. Reset it before each submission; reviewers may delete it.
+- Store review uses a synthetic account: `bin/kamal app exec -i --reuse "bin/rails demo:reset"` (asks for the password; or set `DEMO_PASSWORD`) (`DemoAccount`, username `appreview` by default) replaces its history with a made-up cluster period ending today. It refuses any account holding logs it didn't write. Reset it before each submission; reviewers may delete it.
 
 ### Sharing, Import, and Export
 
