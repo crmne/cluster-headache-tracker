@@ -2,7 +2,7 @@
 <article class="prose">
   <h1><%= t(".heading") %></h1>
 
-  <p><%= t(".last_updated", date: l(Date.new(2024, 8, 25), format: :long_date)) %></p>
+  <p><%= t(".last_updated", date: l(Date.new(2026, 10, 17), format: :long_date)) %></p>
 
   <% if I18n.locale != I18n.default_locale %>
     <p><em><%= t(".translation_notice_html", english_version: link_to(t(".english_version"), privacy_policy_path(locale: nil))) %></em></p>
@@ -11,64 +11,104 @@
   <h2><%= t(".introduction.heading") %></h2>
   <p><%= t(".introduction.body") %></p>
 
-  <h2><%= t(".information_we_collect.heading") %></h2>
-  <h3><%= t(".information_we_collect.user_provided.heading") %></h3>
+  <h2><%= t(".controller.heading") %></h2>
+  <p><%= t(".controller.body") %></p>
+
+  <h2><%= t(".collect.heading") %></h2>
+  <h3><%= t(".collect.provided.heading") %></h3>
   <ul>
-    <li><%= t(".information_we_collect.user_provided.username") %></li>
-    <li><%= t(".information_we_collect.user_provided.headache_logs") %></li>
-    <li><%= t("photos.privacy_policy.collected") %></li>
+    <li><%= t(".collect.provided.account") %></li>
+    <li><%= t(".collect.provided.logs") %></li>
+    <li><%= t(".collect.provided.medications") %></li>
+    <li><%= t(".collect.provided.photos") %></li>
+    <li><%= t(".collect.provided.feedback") %></li>
+    <li><%= t(".collect.provided.preferences") %></li>
   </ul>
 
-  <h3><%= t(".information_we_collect.automatic.heading") %></h3>
+  <h3><%= t(".collect.automatic.heading") %></h3>
   <ul>
-    <li><%= t(".information_we_collect.automatic.usage") %></li>
-    <li><%= t(".information_we_collect.automatic.device") %></li>
-  </ul>
-  <p><%= t(".information_we_collect.no_personal_information") %></p>
-
-  <h2><%= t(".how_we_use.heading") %></h2>
-  <p><%= t(".how_we_use.intro") %></p>
-  <ul>
-    <li><%= t(".how_we_use.provide_service") %></li>
-    <li><%= t(".how_we_use.insights") %></li>
-    <li><%= t(".how_we_use.improve") %></li>
+    <li><%= t(".collect.automatic.technical") %></li>
+    <li><%= t(".collect.automatic.analytics") %></li>
+    <li><%= t(".collect.automatic.errors") %></li>
   </ul>
 
-  <h2><%= t(".storage.heading") %></h2>
+  <h2><%= t(".apps.heading") %></h2>
   <ul>
-    <li><%= t(".storage.germany") %></li>
-    <li><%= t(".storage.security_measures") %></li>
-    <li><%= t(".storage.encryption") %></li>
-    <li><%= t("photos.privacy_policy.storage") %></li>
+    <li><%= t(".apps.on_device") %></li>
+    <li><%= t(".apps.camera") %></li>
+    <li><%= t(".apps.nothing_else") %></li>
+    <li><%= t(".apps.crash_reports") %></li>
+  </ul>
+
+  <h2><%= t(".use.heading") %></h2>
+  <p><%= t(".use.intro") %></p>
+  <ul>
+    <li><%= t(".use.provide") %></li>
+    <li><%= t(".use.insights") %></li>
+    <li><%= t(".use.improve") %></li>
+    <li><%= t(".use.security") %></li>
+  </ul>
+  <p><%= t(".use.no_ads") %></p>
+
+  <h2><%= t(".legal_basis.heading") %></h2>
+  <ul>
+    <li><%= t(".legal_basis.health") %></li>
+    <li><%= t(".legal_basis.account") %></li>
+    <li><%= t(".legal_basis.technical") %></li>
   </ul>
 
   <h2><%= t(".sharing.heading") %></h2>
   <ul>
     <li><%= t(".sharing.no_sale") %></li>
-    <li><%= t(".sharing.full_control") %></li>
+    <li><%= t(".sharing.share_links") %></li>
+    <li><%= t(".sharing.email") %></li>
     <li><%= t(".sharing.legal") %></li>
   </ul>
+
+  <h2><%= t(".storage.heading") %></h2>
+  <ul>
+    <li><%= t(".storage.location") %></li>
+    <li><%= t(".storage.transit") %></li>
+    <li><%= t(".storage.photos") %></li>
+    <li><%= t(".storage.backups") %></li>
+    <li><%= t(".storage.access") %></li>
+  </ul>
+
+  <h2 id="deletion"><%= t(".retention.heading") %></h2>
+  <p><%= t(".retention.until_deleted") %></p>
+  <p><%= t(".retention.account_deletion_html", instructions: link_to(t(".retention.instructions"), delete_account_path)) %></p>
+  <p><%= t(".retention.what_is_deleted") %> <%= t(".retention.backups") %></p>
+  <p><%= t(".retention.cant_sign_in") %></p>
 
   <h2><%= t(".rights.heading") %></h2>
   <p><%= t(".rights.intro") %></p>
   <ul>
     <li><%= t(".rights.access") %></li>
-    <li><%= t(".rights.export") %></li>
-    <li><%= t(".rights.share_links") %></li>
+    <li><%= t(".rights.correct") %></li>
+    <li><%= t(".rights.delete") %></li>
+    <li><%= t(".rights.withdraw") %></li>
+    <li><%= t(".rights.object") %></li>
+    <li><%= t(".rights.complaint") %></li>
   </ul>
 
   <h2><%= t(".cookies.heading") %></h2>
   <p><%= t(".cookies.body") %></p>
+
+  <h2><%= t(".children.heading") %></h2>
+  <p><%= t(".children.body") %></p>
 
   <h2><%= t(".changes.heading") %></h2>
   <p><%= t(".changes.body") %></p>
 
   <h2><%= t(".contact.heading") %></h2>
   <p><%= t(".contact.body") %></p>
-  <p><a href="mailto:hello@clusterheadachetracker.com">hello@clusterheadachetracker.com</a></p>
+  <p><%= mail_to AiVisibleContent::CONTACT_EMAIL %></p>
 
   <h2><%= t(".open_source.heading") %></h2>
-  <p><a href="https://github.com/crmne/cluster-headache-tracker">https://github.com/crmne/cluster-headache-tracker</a></p>
-
-  <p><%= t(".agreement") %></p>
+  <p><%= t(".open_source.body") %></p>
+  <ul>
+    <li><%= link_to AiVisibleContent::SOURCE_REPOSITORY_URL, AiVisibleContent::SOURCE_REPOSITORY_URL %></li>
+    <li><%= link_to AiVisibleContent::IOS_REPOSITORY_URL, AiVisibleContent::IOS_REPOSITORY_URL %></li>
+    <li><%= link_to AiVisibleContent::ANDROID_REPOSITORY_URL, AiVisibleContent::ANDROID_REPOSITORY_URL %></li>
+  </ul>
 </article>

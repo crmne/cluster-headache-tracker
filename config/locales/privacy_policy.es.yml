@@ -1,0 +1,92 @@
+es:
+  home:
+    privacy_policy:
+      heading: Política de privacidad de Cluster Headache Tracker
+      last_updated: 'Última actualización: %{date}'
+      translation_notice_html: Esta es una traducción. En caso de discrepancia, prevalece la %{english_version}.
+      english_version: versión en inglés
+      introduction:
+        heading: 1. Introducción
+        body: Cluster Headache Tracker es un diario gratuito para personas con cefalea en racimos. Esta política explica qué datos recogemos, para qué, dónde se guardan y cómo puedes exportarlos o borrarlos, tanto si usas la web, la web app instalada o las apps para iOS y Android. Las apps muestran el mismo servicio que la web, así que todo lo que se explica aquí también se aplica a ellas.
+      controller:
+        heading: 2. Responsable
+        body: 'El responsable de tus datos según el RGPD es Carmine Paolino, Brunnenstr. 169, 10119 Berlín, Alemania. Puedes contactarle en la dirección indicada más abajo.'
+      collect:
+        heading: 3. Qué datos recogemos
+        provided:
+          heading: 3.1 Lo que nos das
+          account: Un nombre de usuario y una contraseña. No pedimos correo electrónico, nombre, teléfono ni ubicación. Tu contraseña solo se guarda como hash irreversible.
+          logs: 'Tus registros: cuándo empiezan y terminan las crisis, su intensidad, los medicamentos y dosis que tomas, desencadenantes, notas y, si la introduces, la presión atmosférica. Son datos de salud.'
+          medications: Los medicamentos que añades, con sus dosis, unidades y pautas.
+          photos: Las fotos que decides adjuntar a un registro. La ubicación y otros metadatos se eliminan antes de mostrarlas.
+          feedback: Tus respuestas si rellenas la encuesta de opinión, junto con la versión de tu navegador o app.
+          preferences: Tu idioma y formato de hora, y qué avisos ya has visto.
+        automatic:
+          heading: 3.2 Lo que se recoge automáticamente
+          technical: Los datos técnicos que todo dispositivo envía con una solicitud, como tu dirección IP y la versión de tu navegador o app. Los usamos para mostrar las páginas y bloquear abusos (por ejemplo, inicios de sesión fallidos repetidos).
+          analytics: Las visitas a páginas, contadas por Plausible Analytics en nuestro propio servidor, sin cookies y sin guardar tu dirección IP. Nos dicen qué páginas se usan, no quién las usa.
+          errors: Informes de error cuando el servidor tiene un problema, enviados a nuestro propio sistema de seguimiento de errores. Identifican tu cuenta solo por su número, nunca por tu nombre de usuario, y no contienen registros, notas, cookies ni direcciones IP.
+      apps:
+        heading: 4. Las apps para iOS y Android
+        on_device: Las apps guardan en tu teléfono un breve resumen del estado de tus crisis (si hay una en curso, cuándo empezó, los días sin crisis y las crisis de hoy) para mostrar widgets, accesos directos y, en iPhone, la actividad en directo. Nunca sale de tu teléfono y se borra al cerrar sesión o eliminar tu cuenta. En Android queda fuera de las copias de seguridad del dispositivo.
+        camera: Las apps usan la cámara solo cuando decides hacer una foto para un registro.
+        nothing_else: Las apps no contienen publicidad, ni herramientas de análisis o seguimiento de terceros, ni notificaciones push.
+        crash_reports: Si lo permites en los ajustes de tu teléfono, Apple o Google pueden compartir con nosotros informes anónimos de fallos.
+      use:
+        heading: 5. Cómo usamos tus datos
+        intro: 'Usamos tus datos solo para:'
+        provide: prestar el servicio, incluidos tus registros, gráficos, informes y enlaces para compartir
+        insights: mostrarte patrones en tus crisis
+        improve: entender qué funciones se usan y corregir problemas
+        security: mantener el servicio seguro
+        no_ads: Nunca usamos tus datos para publicidad, nunca los vendemos y nunca los usamos para entrenar modelos de inteligencia artificial.
+      legal_basis:
+        heading: 6. Base jurídica
+        health: Tratamos tus datos de salud con tu consentimiento explícito (art. 9.2.a RGPD), que das al introducirlos. Puedes retirarlo en cualquier momento borrando los datos o tu cuenta.
+        account: Tratamos tu cuenta para prestarte el servicio en el que te has registrado (art. 6.1.b RGPD).
+        technical: Tratamos los datos técnicos, los recuentos de páginas y los informes de error por nuestro interés legítimo en mantener un servicio seguro y que funcione (art. 6.1.f RGPD).
+      sharing:
+        heading: 7. Compartir
+        no_sale: No vendemos, intercambiamos ni alquilamos tus datos a nadie.
+        share_links: Tú decides qué compartir. Un enlace para compartir que crees permite a cualquiera que lo tenga ver tus registros y gráficos, solo lectura y sin fotos, hasta que lo revoques o caduque a los 30 días.
+        email: Cuando alguien se registra o envía su opinión, recibimos un aviso por correo a través de nuestro proveedor de correo, Forward Email. Los avisos de registro contienen el nombre de usuario; los de opinión, también las respuestas de la encuesta.
+        legal: Podemos revelar información si lo exige la ley o para proteger nuestros derechos, bienes o seguridad.
+      storage:
+        heading: 8. Dónde y cómo se guardan
+        location: Tu cuenta, tus registros y tus fotos se guardan en servidores en Alemania.
+        transit: Todo viaja cifrado (HTTPS) entre tu dispositivo y nuestros servidores.
+        photos: Las fotos se guardan cifradas en disco.
+        backups: Las copias de seguridad están cifradas.
+        access: Solo el responsable del servicio tiene acceso a los servidores.
+      retention:
+        heading: 9. Cuánto tiempo los guardamos y cómo borrarlos
+        until_deleted: Tus datos se conservan hasta que los borras. Puedes editar o borrar cualquier registro en cualquier momento; al borrar un registro también se borran sus fotos.
+        account_deletion_html: Para eliminar tu cuenta y todos sus datos, abre Cuenta en la app o Configuración de la cuenta en la web, elige Eliminar cuenta y confirma con tu contraseña. %{instructions}
+        instructions: Cómo eliminar tu cuenta
+        what_is_deleted: Así se borran de inmediato de nuestra base de datos tu cuenta, registros, fotos, medicamentos, tomas, enlaces para compartir y opiniones.
+        backups: Las copias de seguridad cifradas hechas antes pueden seguir conteniendo tus datos hasta que esas copias se borren.
+        cant_sign_in: Si no puedes iniciar sesión, escríbenos con tu nombre de usuario y eliminaremos la cuenta en cuanto podamos confirmar que es tuya.
+      rights:
+        heading: 10. Tus derechos
+        intro: 'Según el RGPD tienes derecho a:'
+        access: acceder a tus datos y exportarlos como archivo CSV desde Configuración de la cuenta en la web
+        correct: corregirlos, editando tus registros y ajustes
+        delete: borrarlos, uno a uno o con toda tu cuenta
+        withdraw: retirar tu consentimiento en cualquier momento, borrando los datos
+        object: oponerte al tratamiento basado en nuestros intereses legítimos
+        complaint: presentar una reclamación ante una autoridad de protección de datos, como la Agencia Española de Protección de Datos o la autoridad de protección de datos de Berlín
+      cookies:
+        heading: 11. Cookies
+        body: Solo usamos las cookies que el servicio necesita, para mantener tu sesión y proteger los formularios. No usamos cookies de seguimiento ni de publicidad.
+      children:
+        heading: 12. Menores
+        body: Cluster Headache Tracker no está pensado para menores de 16 años y no recogemos sus datos a sabiendas.
+      changes:
+        heading: 13. Cambios en esta política
+        body: Podemos actualizar esta política de vez en cuando. Publicaremos la nueva versión en esta página y actualizaremos la fecha de "Última actualización".
+      contact:
+        heading: 14. Contacto
+        body: 'Si tienes preguntas sobre esta política o sobre tus datos, escríbenos a:'
+      open_source:
+        heading: 15. Código abierto
+        body: 'El código de la web y de las apps es público, así que cualquiera puede comprobar qué hace con tus datos:'

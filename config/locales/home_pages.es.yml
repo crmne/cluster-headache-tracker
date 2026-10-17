@@ -133,59 +133,6 @@ es:
       why:
         body: El software de salud exige confianza. Por eso el código es público, así cualquiera puede revisar cómo funciona, informar de errores, sugerir mejoras o alojarlo por su cuenta si tiene los conocimientos técnicos.
         heading: Por qué el código abierto importa en un diario de salud
-    privacy_policy:
-      agreement: Al usar Cluster Headache Tracker, aceptas la recogida y el uso de la información conforme a esta política de privacidad.
-      changes:
-        body: Podemos actualizar esta política de privacidad de vez en cuando. Te informaremos de cualquier cambio publicando la nueva política en esta página y actualizando la fecha de "Última actualización".
-        heading: 8. Cambios en esta política de privacidad
-      contact:
-        body: 'Si tienes cualquier pregunta sobre esta política de privacidad, escríbenos a:'
-        heading: 9. Contacto
-      cookies:
-        body: Solo usamos cookies esenciales para el correcto funcionamiento de la aplicación. No usamos cookies de seguimiento ni publicitarias.
-        heading: 7. Cookies y tecnologías similares
-      english_version: versión en inglés
-      heading: Política de privacidad de Cluster Headache Tracker
-      how_we_use:
-        heading: 3. Cómo usamos tu información
-        improve: Para mejorar y optimizar nuestra aplicación
-        insights: Para generar análisis y gráficos sobre los patrones de tus cefaleas
-        intro: 'Usamos la información recogida para los siguientes fines:'
-        provide_service: Para prestar y mantener el servicio Cluster Headache Tracker
-      information_we_collect:
-        automatic:
-          device: Información del dispositivo y del navegador
-          heading: 2.2 Información recogida automáticamente
-          usage: Datos de uso y estadísticas
-        heading: 2. Información que recogemos
-        no_personal_information: No recogemos ni almacenamos datos personales identificativos más allá del nombre de usuario que elijas.
-        user_provided:
-          headache_logs: Datos de tus registros (intensidad, duración, desencadenantes, medicación, notas)
-          heading: 2.1 Información que nos proporcionas
-          username: Nombre de usuario (no se necesita correo electrónico)
-      introduction:
-        body: Te damos la bienvenida a Cluster Headache Tracker. Nos comprometemos a proteger tu privacidad y la seguridad de tus datos personales. Esta política de privacidad explica cómo recogemos, usamos, comunicamos y protegemos tus datos cuando usas nuestra aplicación web.
-        heading: 1. Introducción
-      last_updated: 'Última actualización: %{date}'
-      open_source:
-        heading: 10. Código abierto
-      rights:
-        access: Acceder a tus datos, corregirlos o eliminarlos
-        export: Exportar tus datos en formato CSV
-        heading: 6. Tus derechos y opciones
-        intro: 'Tienes derecho a:'
-        share_links: Crear y revocar enlaces para compartir tus registros
-      sharing:
-        full_control: Tienes control total sobre si compartes tus registros. Puedes generar informes para compartir con tus profesionales sanitarios.
-        heading: 5. Compartición y comunicación de datos
-        legal: Podemos comunicar información si la ley lo exige o para proteger nuestros derechos, bienes o seguridad.
-        no_sale: No vendemos, intercambiamos ni alquilamos tus datos personales a terceros.
-      storage:
-        encryption: Tus datos de salud se cifran durante la transmisión y en el almacenamiento.
-        germany: Todos los datos se almacenan en servidores ubicados en Alemania, conforme a la normativa de protección de datos de la UE.
-        heading: 4. Almacenamiento y seguridad de los datos
-        security_measures: Aplicamos medidas de seguridad estándar del sector para proteger tus datos frente a accesos no autorizados, alteración, divulgación o destrucción.
-      translation_notice_html: Esta es una traducción. En caso de discrepancia, prevalece la %{english_version}.
     sample_report:
       cta_headline: Convierte tu próximo periodo activo en un informe claro
       demo_notice:

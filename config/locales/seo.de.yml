@@ -13,6 +13,9 @@ de:
       cluster-headache-oxygen-documentation:
         description: Häufigkeit, Dauer, Sauerstoffgabe und Wirkung bei Clusterkopfschmerz dokumentieren – für Gespräche mit Arzt und Krankenkasse, ohne Heilversprechen.
         title: Sauerstofftherapie dokumentieren | Cluster Headache Tracker
+      delete-account:
+        description: "So löschen Sie Ihr Konto bei Cluster Headache Tracker mit allen Daten selbst, in der App für iOS oder Android oder auf der Website, und was dabei gelöscht wird."
+        title: "Konto löschen | Cluster Headache Tracker"
       faq:
         description: 'Antworten auf häufige Fragen zu Clusterkopfschmerz, Attacken-Tagebuch, Datenschutz, Berichten für den Arzt und warum es diesen kostenlosen Tracker gibt.'
         title: Häufige Fragen (FAQ) | Cluster Headache Tracker

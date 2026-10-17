@@ -133,59 +133,6 @@ en:
       why:
         body: Health tracking software asks for trust. This project keeps the code public so people can inspect how the tracker works, report bugs, suggest improvements, or self-host if they have the technical skill.
         heading: Why open source matters for a health diary
-    privacy_policy:
-      agreement: By using Cluster Headache Tracker, you agree to the collection and use of information in accordance with this Privacy Policy.
-      changes:
-        body: We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
-        heading: 8. Changes to This Privacy Policy
-      contact:
-        body: 'If you have any questions about this Privacy Policy, please contact us at:'
-        heading: 9. Contact Us
-      cookies:
-        body: We use essential cookies to ensure the proper functioning of our application. We do not use tracking or advertising cookies.
-        heading: 7. Cookies and Similar Technologies
-      english_version: English version
-      heading: Privacy Policy for Cluster Headache Tracker
-      how_we_use:
-        heading: 3. How We Use Your Information
-        improve: To improve and optimize our application
-        insights: To generate insights and visualizations about your headache patterns
-        intro: 'We use the collected information for the following purposes:'
-        provide_service: To provide and maintain the Cluster Headache Tracker service
-      information_we_collect:
-        automatic:
-          device: Device and browser information
-          heading: 2.2 Automatically Collected Information
-          usage: Usage data and analytics
-        heading: 2. Information We Collect
-        no_personal_information: We do not collect or store any personally identifiable information beyond your chosen username.
-        user_provided:
-          headache_logs: Headache log data (intensity, duration, triggers, medications, notes)
-          heading: 2.1 User-Provided Information
-          username: Username (no email address required)
-      introduction:
-        body: Welcome to Cluster Headache Tracker. We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you use our web application.
-        heading: 1. Introduction
-      last_updated: 'Last updated: %{date}'
-      open_source:
-        heading: 10. Open Source
-      rights:
-        access: Access, correct, or delete your data
-        export: Export your data in CSV format
-        heading: 6. Your Rights and Choices
-        intro: 'You have the right to:'
-        share_links: Generate and revoke sharing links for your headache logs
-      sharing:
-        full_control: You have full control over sharing your headache logs. You can generate shareable reports to provide to your healthcare providers.
-        heading: 5. Data Sharing and Disclosure
-        legal: We may disclose information if required by law or to protect our rights, property, or safety.
-        no_sale: We do not sell, trade, or rent your personal information to third parties.
-      storage:
-        encryption: Your health data is encrypted in transit and at rest.
-        germany: All data is stored on servers located in Germany, ensuring compliance with EU data protection regulations.
-        heading: 4. Data Storage and Security
-        security_measures: We implement industry-standard security measures to protect your data from unauthorized access, alteration, disclosure, or destruction.
-      translation_notice_html: This is a translation. In case of discrepancies, the %{english_version} prevails.
     sample_report:
       cta_headline: Turn your next cluster period into a clear report
       demo_notice:

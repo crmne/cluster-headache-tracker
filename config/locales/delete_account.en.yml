@@ -1,0 +1,21 @@
+en:
+  home:
+    delete_account:
+      heading: Delete your Cluster Headache Tracker account
+      intro: You can delete your account and everything in it yourself, at any time, in the app or on the website. There's no need to contact us.
+      app:
+        heading: In the iOS or Android app
+        open_account: Open the Account tab and scroll to Delete account.
+        enter_password: Enter your password and tap Delete account.
+        confirm: Confirm. You're signed out and the account is gone.
+      web:
+        heading: On the website
+        sign_in_html: Sign in at %{site}.
+        open_settings: Open Account Settings and scroll to Delete account.
+        enter_password: Enter your password, choose Delete account and confirm.
+      keep_a_copy: Want to keep your history? Export it as a CSV file from Account Settings on the website first. Deleting can't be undone.
+      deleted:
+        heading: What gets deleted
+      cant_sign_in:
+        heading: Can't sign in?
+        subject: Delete my account

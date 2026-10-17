@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     get "sample-report", to: "home#sample_report", as: :sample_report
     get "cluster-headache-app", to: "home#cluster_headache_app", as: :cluster_headache_app
     get "open-source-headache-tracker", to: "home#open_source_headache_tracker", as: :open_source_headache_tracker
+    get "delete-account", to: "home#delete_account", as: :delete_account
   end
 
   # Shared Logs

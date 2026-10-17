@@ -1,0 +1,21 @@
+it:
+  home:
+    delete_account:
+      heading: Cancella il tuo account di Cluster Headache Tracker
+      intro: Puoi cancellare da solo il tuo account e tutti i suoi dati in qualsiasi momento, nell'app o sul sito. Non serve contattarci.
+      app:
+        heading: Nell'app per iOS o Android
+        open_account: Apri la scheda Account e scorri fino a Elimina account.
+        enter_password: Inserisci la password e tocca Elimina account.
+        confirm: Conferma. Verrai disconnesso e l'account sarà cancellato.
+      web:
+        heading: Sul sito
+        sign_in_html: Accedi su %{site}.
+        open_settings: Apri Impostazioni account e scorri fino a Elimina account.
+        enter_password: Inserisci la password, scegli Elimina account e conferma.
+      keep_a_copy: Vuoi conservare il tuo storico? Prima esportalo come file CSV da Impostazioni account sul sito. La cancellazione non si può annullare.
+      deleted:
+        heading: Cosa viene cancellato
+      cant_sign_in:
+        heading: Non riesci ad accedere?
+        subject: Cancellare il mio account

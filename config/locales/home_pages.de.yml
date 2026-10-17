@@ -133,59 +133,6 @@ de:
       why:
         body: Software für Gesundheitsdaten verlangt Vertrauen. Deshalb ist der Code öffentlich – so kann jeder nachvollziehen, wie der Tracker funktioniert, Fehler melden, Verbesserungen vorschlagen oder ihn mit dem nötigen technischen Wissen selbst betreiben.
         heading: Warum Open Source bei einem Gesundheitstagebuch wichtig ist
-    privacy_policy:
-      agreement: Mit der Nutzung von Cluster Headache Tracker stimmen Sie der Erhebung und Verwendung von Informationen gemäß dieser Datenschutzerklärung zu.
-      changes:
-        body: Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Über Änderungen informieren wir, indem wir die neue Datenschutzerklärung auf dieser Seite veröffentlichen und das Datum „Zuletzt aktualisiert“ anpassen.
-        heading: 8. Änderungen dieser Datenschutzerklärung
-      contact:
-        body: 'Wenn Sie Fragen zu dieser Datenschutzerklärung haben, erreichen Sie uns unter:'
-        heading: 9. Kontakt
-      cookies:
-        body: Wir verwenden nur technisch notwendige Cookies, damit die Anwendung richtig funktioniert. Tracking- oder Werbe-Cookies setzen wir nicht ein.
-        heading: 7. Cookies und ähnliche Technologien
-      english_version: englische Fassung
-      heading: Datenschutzerklärung für Cluster Headache Tracker
-      how_we_use:
-        heading: 3. Wie wir Ihre Daten verwenden
-        improve: Um unsere Anwendung zu verbessern und zu optimieren
-        insights: Um Auswertungen und Visualisierungen Ihrer Kopfschmerzmuster zu erstellen
-        intro: 'Wir verwenden die erhobenen Daten für folgende Zwecke:'
-        provide_service: Um den Dienst Cluster Headache Tracker bereitzustellen und zu betreiben
-      information_we_collect:
-        automatic:
-          device: Informationen zu Gerät und Browser
-          heading: 2.2 Automatisch erhobene Daten
-          usage: Nutzungsdaten und Statistiken
-        heading: 2. Welche Daten wir erheben
-        no_personal_information: Über den von Ihnen gewählten Benutzernamen hinaus erheben oder speichern wir keine personenbezogenen Daten, die Sie identifizieren.
-        user_provided:
-          headache_logs: Kopfschmerzeinträge (Intensität, Dauer, Auslöser, Medikamente, Notizen)
-          heading: 2.1 Von Ihnen angegebene Daten
-          username: Benutzername (keine E-Mail-Adresse erforderlich)
-      introduction:
-        body: Willkommen bei Cluster Headache Tracker. Der Schutz Ihrer Privatsphäre und die Sicherheit Ihrer persönlichen Daten sind uns wichtig. Diese Datenschutzerklärung erläutert, wie wir Ihre Daten bei der Nutzung unserer Webanwendung erheben, verwenden, weitergeben und schützen.
-        heading: 1. Einleitung
-      last_updated: 'Zuletzt aktualisiert: %{date}'
-      open_source:
-        heading: 10. Open Source
-      rights:
-        access: Ihre Daten einzusehen, zu berichtigen oder zu löschen
-        export: Ihre Daten im CSV-Format zu exportieren
-        heading: 6. Ihre Rechte und Wahlmöglichkeiten
-        intro: 'Sie haben das Recht:'
-        share_links: Freigabelinks für Ihre Kopfschmerzeinträge zu erstellen und zu widerrufen
-      sharing:
-        full_control: Sie behalten die volle Kontrolle darüber, ob Sie Ihre Einträge teilen. Sie können Berichte zum Teilen erstellen und an Ihre Ärztinnen und Ärzte weitergeben.
-        heading: 5. Weitergabe und Offenlegung von Daten
-        legal: Wir können Daten offenlegen, wenn dies gesetzlich vorgeschrieben ist oder zum Schutz unserer Rechte, unseres Eigentums oder unserer Sicherheit erforderlich ist.
-        no_sale: Wir verkaufen, tauschen oder vermieten Ihre persönlichen Daten nicht an Dritte.
-      storage:
-        encryption: Ihre Gesundheitsdaten werden bei der Übertragung und bei der Speicherung verschlüsselt.
-        germany: Alle Daten werden auf Servern in Deutschland gespeichert und unterliegen damit den Datenschutzvorschriften der EU.
-        heading: 4. Datenspeicherung und Sicherheit
-        security_measures: Wir setzen branchenübliche Sicherheitsmaßnahmen ein, um Ihre Daten vor unbefugtem Zugriff, Veränderung, Offenlegung oder Vernichtung zu schützen.
-      translation_notice_html: Dies ist eine Übersetzung. Bei Abweichungen gilt die %{english_version}.
     sample_report:
       cta_headline: Machen Sie aus Ihrer nächsten Episode einen klaren Bericht
       demo_notice:

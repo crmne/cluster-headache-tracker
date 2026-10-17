@@ -63,6 +63,10 @@
         </div>
       <% end %>
 
+      <p class="text-xs text-base-content/60 text-center mt-4">
+        <%= t("auth.registrations.new.disclaimer_html", privacy_policy: link_to(t("auth.registrations.new.privacy_policy"), privacy_policy_path, class: "link")) %>
+      </p>
+
       <div class="divider mt-6"><%= t("auth.registrations.new.already_have_account") %></div>
 
       <div class="text-center">

@@ -39,6 +39,8 @@ it:
         title: Modifica account
         unhappy: Non sei soddisfatto?
       new:
+        disclaimer_html: "Cluster Headache Tracker è uno strumento per registrare, non un consiglio medico. Leggi come trattiamo i tuoi dati nella nostra %{privacy_policy}."
+        privacy_policy: "Informativa sulla privacy"
         already_have_account: Hai già un account?
         no_email_html: "<strong>Nessuna email richiesta</strong>: scegli un nome utente e inizia."
         privacy_title: La privacy prima di tutto

@@ -42,6 +42,9 @@ class HomeController < ApplicationController
   def open_source_headache_tracker
   end
 
+  def delete_account
+  end
+
   private
 
   # Public pages have one indexable URL per language (/faq, /de/faq, ...),

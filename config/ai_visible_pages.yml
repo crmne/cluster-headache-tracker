@@ -330,6 +330,16 @@ pages:
       body:
       - Data is used to provide headache tracking, charts, reports, and product improvements.
       - Personal logs are not sold and are not included in AI-visible content files.
+  "/delete-account":
+    title: Delete your Cluster Headache Tracker account
+    description: How to delete your Cluster Headache Tracker account and all of its data yourself, in the iOS or Android app or on the website, and what gets deleted.
+    topics:
+    - Privacy-focused health tracking
+    sections:
+    - heading: Deleting an account
+      body:
+      - Users delete their own account in the app's Account tab or in Account Settings on the website, confirming with their password.
+      - Deleting removes the account, logs, photos, medications, doses, share links and feedback from the database right away.
   "/imprint":
     title: Cluster Headache Tracker Imprint
     description: Legal imprint and contact details for Cluster Headache Tracker, a non-commercial tool maintained by Carmine Paolino.

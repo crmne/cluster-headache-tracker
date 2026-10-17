@@ -16,7 +16,8 @@ SitemapGenerator::Sitemap.create do
     "/neurologist" => { priority: 0.8, changefreq: "monthly" },
     "/faq" => { priority: 0.7, changefreq: "monthly" },
     "/imprint" => { priority: 0.7, changefreq: "monthly" },
-    "/privacy-policy" => { priority: 0.7, changefreq: "monthly" }
+    "/privacy-policy" => { priority: 0.7, changefreq: "monthly" },
+    "/delete-account" => { priority: 0.3, changefreq: "yearly" }
   }
 
   # Every language version lists all of its translations (hreflang), English being the x-default

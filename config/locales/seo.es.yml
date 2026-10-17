@@ -13,6 +13,9 @@ es:
       cluster-headache-oxygen-documentation:
         description: Documenta la frecuencia y duración de las crisis, el uso de oxígeno y la respuesta al tratamiento para tus consultas médicas, sin promesas de curación.
         title: Documentar la oxigenoterapia | Cluster Headache Tracker
+      delete-account:
+        description: "Cómo eliminar tú mismo tu cuenta de Cluster Headache Tracker y todos sus datos, en la app para iOS o Android o en la web, y qué se elimina."
+        title: "Eliminar la cuenta | Cluster Headache Tracker"
       faq:
         description: 'Respuestas sobre la cefalea en racimos, el registro de crisis, la privacidad, cómo compartir datos con tu médico y por qué existe este registro gratuito.'
         title: Preguntas frecuentes | Cluster Headache Tracker

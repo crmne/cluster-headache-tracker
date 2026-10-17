@@ -1,0 +1,21 @@
+es:
+  home:
+    delete_account:
+      heading: Eliminar tu cuenta de Cluster Headache Tracker
+      intro: Puedes eliminar tu cuenta y todos sus datos tú mismo, en cualquier momento, en la app o en la web. No hace falta que nos escribas.
+      app:
+        heading: En la app para iOS o Android
+        open_account: Abre la pestaña Cuenta y desplázate hasta Eliminar cuenta.
+        enter_password: Introduce tu contraseña y toca Eliminar cuenta.
+        confirm: Confirma. Se cerrará tu sesión y la cuenta quedará eliminada.
+      web:
+        heading: En la web
+        sign_in_html: Inicia sesión en %{site}.
+        open_settings: Abre Configuración de la cuenta y desplázate hasta Eliminar cuenta.
+        enter_password: Introduce tu contraseña, elige Eliminar cuenta y confirma.
+      keep_a_copy: ¿Quieres conservar tu historial? Antes, expórtalo como archivo CSV desde Configuración de la cuenta en la web. La eliminación no se puede deshacer.
+      deleted:
+        heading: Qué se elimina
+      cant_sign_in:
+        heading: ¿No puedes iniciar sesión?
+        subject: Eliminar mi cuenta

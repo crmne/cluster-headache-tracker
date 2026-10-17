@@ -13,6 +13,9 @@ it:
       cluster-headache-oxygen-documentation:
         description: Documenta frequenza e durata degli attacchi, uso dell'ossigeno e risposta alla terapia per i colloqui con il medico, senza promesse di cura.
         title: Documentare l'ossigenoterapia | Cluster Headache Tracker
+      delete-account:
+        description: "Come cancellare da solo il tuo account di Cluster Headache Tracker e tutti i suoi dati, nell'app per iOS o Android o sul sito, e cosa viene cancellato."
+        title: "Cancellare l'account | Cluster Headache Tracker"
       faq:
         description: 'Risposte sulla cefalea a grappolo, sul diario degli attacchi, sulla privacy, sulla condivisione con il medico e sul perché esiste questo tracker gratuito.'
         title: Domande frequenti (FAQ) | Cluster Headache Tracker

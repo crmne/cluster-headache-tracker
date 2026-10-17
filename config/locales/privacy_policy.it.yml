@@ -1,0 +1,92 @@
+it:
+  home:
+    privacy_policy:
+      heading: Informativa sulla privacy di Cluster Headache Tracker
+      last_updated: 'Ultimo aggiornamento: %{date}'
+      translation_notice_html: Questa è una traduzione. In caso di discrepanze prevale la %{english_version}.
+      english_version: versione inglese
+      introduction:
+        heading: 1. Introduzione
+        body: Cluster Headache Tracker è un diario gratuito per chi soffre di cefalea a grappolo. Questa informativa spiega quali dati raccogliamo, perché, dove sono conservati e come puoi esportarli o cancellarli, sia che tu usi il sito, la web app installata o le app per iOS e Android. Le app mostrano lo stesso servizio del sito, quindi tutto ciò che leggi qui vale anche per loro.
+      controller:
+        heading: 2. Titolare del trattamento
+        body: 'Il titolare del trattamento dei tuoi dati ai sensi del GDPR è Carmine Paolino, Brunnenstr. 169, 10119 Berlino, Germania. Puoi contattarlo all''indirizzo indicato più sotto.'
+      collect:
+        heading: 3. Quali dati raccogliamo
+        provided:
+          heading: 3.1 Dati che ci fornisci
+          account: Un nome utente e una password. Non chiediamo email, nome, numero di telefono né posizione. La tua password viene conservata solo come hash non reversibile.
+          logs: 'Le tue registrazioni: inizio e fine degli attacchi, intensità, farmaci e dosi assunti, fattori scatenanti, note e, se la inserisci, la pressione atmosferica. Sono dati sanitari.'
+          medications: I farmaci che aggiungi, con dosi, unità e schemi di assunzione.
+          photos: Le foto che scegli di allegare a una registrazione. La posizione e gli altri metadati vengono rimossi prima della visualizzazione.
+          feedback: Le tue risposte se compili il questionario di feedback, insieme alla versione del tuo browser o della tua app.
+          preferences: La lingua e il formato dell'ora, e quali avvisi hai già visto.
+        automatic:
+          heading: 3.2 Dati raccolti automaticamente
+          technical: I dati tecnici che ogni dispositivo invia con una richiesta, come l'indirizzo IP e la versione del browser o dell'app. Li usiamo per mostrare le pagine e bloccare gli abusi (per esempio accessi falliti ripetuti).
+          analytics: Le visualizzazioni delle pagine, contate da Plausible Analytics sul nostro server, senza cookie e senza conservare il tuo indirizzo IP. Ci dicono quali pagine vengono usate, non chi le usa.
+          errors: Segnalazioni di errore quando il server incontra un problema, inviate al nostro sistema di monitoraggio degli errori. Identificano il tuo account solo con il suo numero, mai con il nome utente, e non contengono registrazioni, note, cookie o indirizzi IP.
+      apps:
+        heading: 4. Le app per iOS e Android
+        on_device: Le app conservano sul telefono un breve riepilogo dello stato dei tuoi attacchi (se è in corso un attacco, quando è iniziato, i giorni senza attacchi e gli attacchi di oggi) per mostrare widget, scorciatoie e, su iPhone, l'attività in tempo reale. Non lascia mai il telefono e viene rimosso quando esci o cancelli l'account. Su Android è escluso dai backup del dispositivo.
+        camera: Le app usano la fotocamera solo quando scegli di scattare una foto per una registrazione.
+        nothing_else: Le app non contengono pubblicità, strumenti di analisi o tracciamento di terzi né notifiche push.
+        crash_reports: Se lo consenti nelle impostazioni del telefono, Apple o Google possono condividere con noi rapporti anonimi sugli arresti anomali.
+      use:
+        heading: 5. Come usiamo i tuoi dati
+        intro: 'Usiamo i tuoi dati solo per:'
+        provide: fornire il servizio, comprese le registrazioni, i grafici, i report e i link di condivisione
+        insights: mostrarti gli andamenti dei tuoi attacchi
+        improve: capire quali funzioni vengono usate e correggere i problemi
+        security: mantenere sicuro il servizio
+        no_ads: Non usiamo mai i tuoi dati per la pubblicità, non li vendiamo e non li usiamo per addestrare modelli di intelligenza artificiale.
+      legal_basis:
+        heading: 6. Base giuridica
+        health: Trattiamo i tuoi dati sanitari con il tuo consenso esplicito (art. 9, par. 2, lett. a GDPR), che dai inserendoli. Puoi revocarlo in qualsiasi momento cancellando i dati o l'account.
+        account: Trattiamo il tuo account per fornirti il servizio a cui ti sei iscritto (art. 6, par. 1, lett. b GDPR).
+        technical: Trattiamo i dati tecnici, i conteggi delle pagine e le segnalazioni di errore per il nostro legittimo interesse a gestire un servizio sicuro e funzionante (art. 6, par. 1, lett. f GDPR).
+      sharing:
+        heading: 7. Condivisione
+        no_sale: Non vendiamo, scambiamo né affittiamo i tuoi dati a nessuno.
+        share_links: Decidi tu cosa condividere. Un link di condivisione che crei permette a chiunque lo abbia di vedere le tue registrazioni e i grafici, in sola lettura e senza foto, finché non lo revochi o scade dopo 30 giorni.
+        email: Quando qualcuno si iscrive o invia un feedback, riceviamo una notifica via email tramite il nostro fornitore di posta, Forward Email. Le notifiche di iscrizione contengono il nome utente; quelle di feedback anche le risposte al questionario.
+        legal: Potremmo divulgare informazioni se richiesto dalla legge o per proteggere i nostri diritti, beni o la nostra sicurezza.
+      storage:
+        heading: 8. Dove e come vengono conservati
+        location: Il tuo account, le registrazioni e le foto sono conservati su server in Germania.
+        transit: Tutto viaggia cifrato (HTTPS) tra il tuo dispositivo e i nostri server.
+        photos: Le foto sono cifrate sul disco.
+        backups: I backup sono cifrati.
+        access: Solo il gestore ha accesso ai server.
+      retention:
+        heading: 9. Per quanto tempo li conserviamo e come cancellarli
+        until_deleted: I tuoi dati restano finché non li cancelli. Puoi modificare o cancellare qualsiasi registrazione in ogni momento; cancellando una registrazione cancelli anche le sue foto.
+        account_deletion_html: Per cancellare l'account e tutti i suoi dati, apri Account nell'app o Impostazioni account sul sito, scegli Elimina account e conferma con la password. %{instructions}
+        instructions: Come cancellare l'account
+        what_is_deleted: In questo modo account, registrazioni, foto, farmaci, assunzioni, link di condivisione e feedback vengono cancellati subito dal nostro database.
+        backups: I backup cifrati creati prima possono contenere ancora i tuoi dati finché quei backup non vengono cancellati.
+        cant_sign_in: Se non riesci ad accedere, scrivici con il tuo nome utente e cancelleremo l'account non appena potremo confermare che è tuo.
+      rights:
+        heading: 10. I tuoi diritti
+        intro: 'In base al GDPR hai il diritto di:'
+        access: accedere ai tuoi dati ed esportarli come file CSV da Impostazioni account sul sito
+        correct: correggerli, modificando registrazioni e impostazioni
+        delete: cancellarli, singolarmente o con l'intero account
+        withdraw: revocare il consenso in qualsiasi momento, cancellando i dati
+        object: opporti al trattamento basato sui nostri legittimi interessi
+        complaint: presentare reclamo a un'autorità di controllo, come il Garante per la protezione dei dati personali o l'autorità di Berlino per la protezione dei dati
+      cookies:
+        heading: 11. Cookie
+        body: Usiamo solo i cookie necessari al servizio, per mantenerti connesso e proteggere i moduli. Non usiamo cookie di tracciamento o pubblicitari.
+      children:
+        heading: 12. Minori
+        body: Cluster Headache Tracker non è destinato ai minori di 16 anni e non raccogliamo consapevolmente i loro dati.
+      changes:
+        heading: 13. Modifiche a questa informativa
+        body: Potremmo aggiornare questa informativa di tanto in tanto. Pubblicheremo la nuova versione su questa pagina e aggiorneremo la data di "Ultimo aggiornamento".
+      contact:
+        heading: 14. Contatti
+        body: 'Per domande su questa informativa o sui tuoi dati, scrivici a:'
+      open_source:
+        heading: 15. Open source
+        body: 'Il codice del sito e delle app è pubblico, quindi chiunque può verificare cosa fa con i tuoi dati:'

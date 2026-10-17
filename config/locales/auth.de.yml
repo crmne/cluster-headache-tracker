@@ -39,6 +39,8 @@ de:
         title: Konto bearbeiten
         unhappy: Nicht zufrieden?
       new:
+        disclaimer_html: "Cluster Headache Tracker ist ein Werkzeug zum Dokumentieren, keine ärztliche Beratung. Wie wir mit Ihren Daten umgehen, lesen Sie in unserer %{privacy_policy}."
+        privacy_policy: "Datenschutzerklärung"
         already_have_account: Sie haben bereits ein Konto?
         no_email_html: "<strong>Keine E-Mail-Adresse nötig</strong> – wählen Sie einfach einen Benutzernamen."
         privacy_title: Datenschutz von Anfang an

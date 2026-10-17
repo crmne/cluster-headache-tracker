@@ -28,4 +28,11 @@ class Users::RegistrationsControllerTest < ActionDispatch::IntegrationTest
 
     assert_select "h2", "Empieza gratis"
   end
+
+  test "sign up page says the app is no substitute for medical advice and links the privacy policy" do
+    get new_user_registration_url
+
+    assert_select "p", /tracking tool, not medical advice/
+    assert_select "a[href='#{privacy_policy_path}']", "Privacy Policy"
+  end
 end

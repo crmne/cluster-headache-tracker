@@ -22,7 +22,8 @@ module LayoutHelper
     def static_page_paths
       full_width_static_page_paths + [
         imprint_path,
-        privacy_policy_path
+        privacy_policy_path,
+        delete_account_path
       ]
     end
 

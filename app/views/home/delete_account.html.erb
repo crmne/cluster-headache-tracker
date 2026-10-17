@@ -1,0 +1,29 @@
+<% content_for :title, t(".heading") %>
+<article class="prose">
+  <h1><%= t(".heading") %></h1>
+  <p><%= t(".intro") %></p>
+
+  <h2><%= t(".app.heading") %></h2>
+  <ol>
+    <li><%= t(".app.open_account") %></li>
+    <li><%= t(".app.enter_password") %></li>
+    <li><%= t(".app.confirm") %></li>
+  </ol>
+
+  <h2><%= t(".web.heading") %></h2>
+  <ol>
+    <li><%= t(".web.sign_in_html", site: link_to("clusterheadachetracker.com", new_user_session_path)) %></li>
+    <li><%= t(".web.open_settings") %></li>
+    <li><%= t(".web.enter_password") %></li>
+  </ol>
+  <p><%= t(".keep_a_copy") %></p>
+
+  <h2><%= t(".deleted.heading") %></h2>
+  <p><%= t("home.privacy_policy.retention.what_is_deleted") %> <%= t("home.privacy_policy.retention.backups") %></p>
+
+  <h2><%= t(".cant_sign_in.heading") %></h2>
+  <p><%= t("home.privacy_policy.retention.cant_sign_in") %></p>
+  <p><%= mail_to AiVisibleContent::CONTACT_EMAIL, AiVisibleContent::CONTACT_EMAIL, subject: t(".cant_sign_in.subject") %></p>
+
+  <p><%= link_to t("home.privacy_policy.heading"), privacy_policy_path %></p>
+</article>

@@ -20,10 +20,6 @@ en:
       remove: "Remove photo"
     report:
       title: "Photos"
-    privacy_policy:
-      collected: "Photos you choose to attach to a headache log"
-      storage: "Photos are stored encrypted, shown only to you with location and other metadata removed, and never included in share links. They are deleted together with their headache log or your account."
-
   activerecord:
     attributes:
       headache_log:

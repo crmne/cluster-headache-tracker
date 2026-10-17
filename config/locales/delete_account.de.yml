@@ -1,0 +1,21 @@
+de:
+  home:
+    delete_account:
+      heading: Ihr Konto bei Cluster Headache Tracker löschen
+      intro: Sie können Ihr Konto mit allen Daten jederzeit selbst löschen, in der App oder auf der Website. Sie müssen uns dafür nicht kontaktieren.
+      app:
+        heading: In der App für iOS oder Android
+        open_account: Öffnen Sie den Tab „Konto“ und scrollen Sie zu „Konto löschen“.
+        enter_password: Geben Sie Ihr Passwort ein und tippen Sie auf „Konto löschen“.
+        confirm: Bestätigen Sie. Sie werden abgemeldet und das Konto ist gelöscht.
+      web:
+        heading: Auf der Website
+        sign_in_html: Melden Sie sich auf %{site} an.
+        open_settings: Öffnen Sie die Kontoeinstellungen und scrollen Sie zu „Konto löschen“.
+        enter_password: Geben Sie Ihr Passwort ein, wählen Sie „Konto löschen“ und bestätigen Sie.
+      keep_a_copy: Möchten Sie Ihre Einträge behalten? Exportieren Sie sie vorher auf der Website in den Kontoeinstellungen als CSV-Datei. Das Löschen lässt sich nicht rückgängig machen.
+      deleted:
+        heading: Was gelöscht wird
+      cant_sign_in:
+        heading: Sie können sich nicht anmelden?
+        subject: Mein Konto löschen

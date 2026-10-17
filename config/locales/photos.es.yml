@@ -20,10 +20,6 @@ es:
       remove: "Eliminar foto"
     report:
       title: "Fotos"
-    privacy_policy:
-      collected: "Las fotos que decides adjuntar a un registro de cefalea"
-      storage: "Las fotos se guardan cifradas, solo se te muestran a ti sin ubicación ni otros metadatos y nunca se incluyen en los enlaces compartidos. Se eliminan junto con su registro o con tu cuenta."
-
   activerecord:
     attributes:
       headache_log:

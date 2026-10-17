@@ -1,0 +1,92 @@
+de:
+  home:
+    privacy_policy:
+      heading: Datenschutzerklärung für Cluster Headache Tracker
+      last_updated: 'Zuletzt aktualisiert: %{date}'
+      translation_notice_html: Dies ist eine Übersetzung. Bei Abweichungen gilt die %{english_version}.
+      english_version: englische Fassung
+      introduction:
+        heading: 1. Einleitung
+        body: Cluster Headache Tracker ist ein kostenloses Tagebuch für Menschen mit Clusterkopfschmerz. Diese Erklärung beschreibt, welche Daten wir erheben, wofür, wo sie gespeichert werden und wie Sie sie exportieren oder löschen können, ob Sie die Website, die installierte Web-App oder die Apps für iOS und Android nutzen. Die Apps zeigen denselben Dienst wie die Website, daher gilt alles hier auch für sie.
+      controller:
+        heading: 2. Verantwortlicher
+        body: 'Verantwortlich für Ihre Daten im Sinne der DSGVO ist Carmine Paolino, Brunnenstr. 169, 10119 Berlin, Deutschland. Sie erreichen ihn unter der unten genannten Adresse.'
+      collect:
+        heading: 3. Welche Daten wir erheben
+        provided:
+          heading: 3.1 Daten, die Sie uns geben
+          account: Einen Benutzernamen und ein Passwort. Wir fragen nicht nach E-Mail-Adresse, Namen, Telefonnummer oder Standort. Ihr Passwort wird nur als Einweg-Hash gespeichert.
+          logs: 'Ihre Kopfschmerzeinträge: Beginn und Ende von Attacken, ihre Intensität, eingenommene Medikamente und Dosen, Auslöser, Notizen und, falls Sie ihn eintragen, den Luftdruck. Das sind Gesundheitsdaten.'
+          medications: Die Medikamente, die Sie anlegen, mit Dosen, Einheiten und Einnahmeplänen.
+          photos: Fotos, die Sie freiwillig an einen Eintrag anhängen. Standort- und andere Metadaten werden vor der Anzeige entfernt.
+          feedback: Ihre Antworten, wenn Sie die Feedback-Umfrage ausfüllen, zusammen mit der Version Ihres Browsers oder Ihrer App.
+          preferences: Ihre Sprache und Ihr Zeitformat sowie welche Hinweise Sie bereits gesehen haben.
+        automatic:
+          heading: 3.2 Automatisch erhobene Daten
+          technical: Technische Daten, die jedes Gerät mit einer Anfrage sendet, etwa Ihre IP-Adresse und die Version Ihres Browsers oder Ihrer App. Wir nutzen sie, um Seiten auszuliefern und Missbrauch zu verhindern (zum Beispiel wiederholt fehlgeschlagene Anmeldungen).
+          analytics: Seitenaufrufe, gezählt von Plausible Analytics auf unserem eigenen Server, ohne Cookies und ohne Ihre IP-Adresse zu speichern. Daraus erfahren wir, welche Seiten genutzt werden, nicht wer sie nutzt.
+          errors: Fehlerberichte, wenn auf dem Server ein Problem auftritt, gesendet an unser eigenes Fehlerprotokoll. Sie nennen Ihr Konto nur über seine Nummer, nie über den Benutzernamen, und enthalten keine Einträge, Notizen, Cookies oder IP-Adressen.
+      apps:
+        heading: 4. Die Apps für iOS und Android
+        on_device: Die Apps speichern eine kurze Zusammenfassung Ihres Attackenstatus auf Ihrem Telefon (ob gerade eine Attacke läuft, wann sie begann, Tage ohne Attacke und Attacken heute), um Widgets, Kurzbefehle und auf dem iPhone die Live-Aktivität anzuzeigen. Sie verlässt Ihr Telefon nie und wird gelöscht, wenn Sie sich abmelden oder Ihr Konto löschen. Unter Android ist sie von Gerätesicherungen ausgenommen.
+        camera: Die Apps nutzen die Kamera nur, wenn Sie selbst ein Foto für einen Eintrag aufnehmen.
+        nothing_else: Die Apps enthalten keine Werbung, kein Tracking oder Analysewerkzeug von Dritten und keine Push-Benachrichtigungen.
+        crash_reports: Wenn Sie es in den Einstellungen Ihres Telefons erlauben, können Apple oder Google uns anonyme Absturzberichte übermitteln.
+      use:
+        heading: 5. Wofür wir Ihre Daten verwenden
+        intro: 'Wir verwenden Ihre Daten nur, um:'
+        provide: den Dienst bereitzustellen, einschließlich Ihrer Einträge, Diagramme, Berichte und Freigabelinks
+        insights: Ihnen Muster in Ihren Attacken zu zeigen
+        improve: zu verstehen, welche Funktionen genutzt werden, und Fehler zu beheben
+        security: den Dienst sicher zu halten
+        no_ads: Wir verwenden Ihre Daten nie für Werbung, verkaufen sie nie und trainieren damit keine KI-Modelle.
+      legal_basis:
+        heading: 6. Rechtsgrundlagen
+        health: Ihre Gesundheitsdaten verarbeiten wir mit Ihrer ausdrücklichen Einwilligung (Art. 9 Abs. 2 lit. a DSGVO), die Sie mit der Eingabe erteilen. Sie können sie jederzeit widerrufen, indem Sie die Daten oder Ihr Konto löschen.
+        account: Ihr Konto verarbeiten wir, um den Dienst bereitzustellen, für den Sie sich angemeldet haben (Art. 6 Abs. 1 lit. b DSGVO).
+        technical: Technische Daten, Seitenzählungen und Fehlerberichte verarbeiten wir aufgrund unseres berechtigten Interesses an einem sicheren, funktionierenden Dienst (Art. 6 Abs. 1 lit. f DSGVO).
+      sharing:
+        heading: 7. Weitergabe
+        no_sale: Wir verkaufen, tauschen oder vermieten Ihre Daten an niemanden.
+        share_links: Sie entscheiden, was Sie teilen. Ein von Ihnen erstellter Freigabelink zeigt allen, die ihn haben, Ihre Einträge und Diagramme, nur zum Lesen und ohne Fotos, bis Sie ihn widerrufen oder er nach 30 Tagen abläuft.
+        email: Wenn sich jemand registriert oder Feedback sendet, werden wir per E-Mail über unseren E-Mail-Anbieter Forward Email benachrichtigt. Registrierungshinweise enthalten den Benutzernamen, Feedback-Hinweise zusätzlich die Antworten der Umfrage.
+        legal: Wir können Daten offenlegen, wenn dies gesetzlich vorgeschrieben ist oder zum Schutz unserer Rechte, unseres Eigentums oder unserer Sicherheit erforderlich ist.
+      storage:
+        heading: 8. Wo und wie die Daten gespeichert werden
+        location: Ihr Konto, Ihre Einträge und Fotos werden auf Servern in Deutschland gespeichert.
+        transit: Alle Daten werden zwischen Ihrem Gerät und unseren Servern verschlüsselt übertragen (HTTPS).
+        photos: Fotos werden verschlüsselt gespeichert.
+        backups: Sicherungen sind verschlüsselt.
+        access: Nur der Betreiber hat Zugriff auf die Server.
+      retention:
+        heading: 9. Wie lange wir Daten speichern und wie Sie sie löschen
+        until_deleted: Ihre Daten bleiben gespeichert, bis Sie sie löschen. Sie können jeden Eintrag jederzeit bearbeiten oder löschen; mit einem Eintrag werden auch seine Fotos gelöscht.
+        account_deletion_html: Um Ihr Konto mit allen Daten zu löschen, öffnen Sie in der App „Konto“ oder auf der Website die „Kontoeinstellungen“, wählen Sie „Konto löschen“ und bestätigen Sie mit Ihrem Passwort. %{instructions}
+        instructions: So löschen Sie Ihr Konto
+        what_is_deleted: Dadurch werden Ihr Konto, Ihre Einträge, Fotos, Medikamente, Einnahmen, Freigabelinks und Ihr Feedback sofort aus unserer Datenbank gelöscht.
+        backups: Verschlüsselte Sicherungen, die vorher erstellt wurden, können Ihre Daten noch enthalten, bis diese Sicherungen gelöscht werden.
+        cant_sign_in: Wenn Sie sich nicht mehr anmelden können, schreiben Sie uns mit Ihrem Benutzernamen; wir löschen das Konto, sobald wir bestätigen können, dass es Ihnen gehört.
+      rights:
+        heading: 10. Ihre Rechte
+        intro: 'Nach der DSGVO haben Sie das Recht:'
+        access: auf Auskunft über Ihre Daten und sie auf der Website in den Kontoeinstellungen als CSV-Datei zu exportieren
+        correct: sie zu berichtigen, indem Sie Einträge und Einstellungen bearbeiten
+        delete: sie zu löschen, einzeln oder mit Ihrem ganzen Konto
+        withdraw: Ihre Einwilligung jederzeit zu widerrufen, indem Sie die Daten löschen
+        object: der Verarbeitung aufgrund unserer berechtigten Interessen zu widersprechen
+        complaint: sich bei einer Datenschutzaufsichtsbehörde zu beschweren, etwa bei der Berliner Beauftragten für Datenschutz und Informationsfreiheit
+      cookies:
+        heading: 11. Cookies
+        body: Wir verwenden nur Cookies, die der Dienst braucht, damit Sie angemeldet bleiben und Formulare geschützt sind. Tracking- oder Werbe-Cookies setzen wir nicht ein.
+      children:
+        heading: 12. Kinder
+        body: Cluster Headache Tracker richtet sich nicht an Kinder unter 16 Jahren, und wir erheben wissentlich keine Daten von ihnen.
+      changes:
+        heading: 13. Änderungen dieser Erklärung
+        body: Wir können diese Erklärung von Zeit zu Zeit aktualisieren. Die neue Fassung veröffentlichen wir auf dieser Seite und passen das Datum „Zuletzt aktualisiert“ an.
+      contact:
+        heading: 14. Kontakt
+        body: 'Wenn Sie Fragen zu dieser Erklärung oder zu Ihren Daten haben, erreichen Sie uns unter:'
+      open_source:
+        heading: 15. Open Source
+        body: 'Der Quellcode der Website und der Apps ist öffentlich, sodass jeder prüfen kann, was mit Ihren Daten geschieht:'

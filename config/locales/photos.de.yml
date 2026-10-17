@@ -20,10 +20,6 @@ de:
       remove: "Foto entfernen"
     report:
       title: "Fotos"
-    privacy_policy:
-      collected: "Fotos, die du freiwillig an einen Kopfschmerz-Eintrag anhängst"
-      storage: "Fotos werden verschlüsselt gespeichert, nur dir angezeigt – ohne Standort- und andere Metadaten – und nie in geteilte Links aufgenommen. Sie werden zusammen mit dem zugehörigen Eintrag oder deinem Konto gelöscht."
-
   activerecord:
     attributes:
       headache_log:

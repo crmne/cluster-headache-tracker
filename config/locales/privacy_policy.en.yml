@@ -1,0 +1,92 @@
+en:
+  home:
+    privacy_policy:
+      heading: Privacy Policy for Cluster Headache Tracker
+      last_updated: 'Last updated: %{date}'
+      translation_notice_html: This is a translation. In case of discrepancies, the %{english_version} prevails.
+      english_version: English version
+      introduction:
+        heading: 1. Introduction
+        body: Cluster Headache Tracker is a free diary for people with cluster headaches. This policy explains what data we collect, why, where it's kept, and how you can export or delete it, whether you use the website, the installed web app, or the iOS and Android apps. The apps show the same service as the website, so everything here applies to them too.
+      controller:
+        heading: 2. Who is responsible
+        body: 'Carmine Paolino, Brunnenstr. 169, 10119 Berlin, Germany, is responsible for your data (the "controller" under the GDPR). You can reach him at the address below.'
+      collect:
+        heading: 3. What we collect
+        provided:
+          heading: 3.1 What you give us
+          account: A username and a password. We don't ask for an email address, your name, a phone number or your location. Your password is only stored as a one-way hash.
+          logs: 'Your headache logs: when attacks start and end, their intensity, medications and doses you take, triggers, notes, and barometric pressure if you enter it. This is health data.'
+          medications: The medications you add, with their doses, units and schedules.
+          photos: Photos you choose to attach to a log. Location and other metadata are removed before they're shown.
+          feedback: Your answers if you fill in the feedback survey, together with your browser or app version.
+          preferences: Your language and time format, and which notices you've already seen.
+        automatic:
+          heading: 3.2 What is collected automatically
+          technical: Technical data every device sends with a request, such as your IP address and browser or app version. We use it to deliver pages and to block abuse (for example repeated failed sign-ins).
+          analytics: Page views, counted by Plausible Analytics on our own server, without cookies and without storing your IP address. It tells us which pages are used, not who uses them.
+          errors: Error reports when the server hits a problem, sent to our own error tracker. They name your account by its number only, never by username, and contain no logs, notes, cookies or IP addresses.
+      apps:
+        heading: 4. The iOS and Android apps
+        on_device: The apps keep a short summary of your attack status on your phone (whether an attack is ongoing, when it started, days attack-free and attacks today) to show widgets, shortcuts and, on iPhone, the Live Activity. It never leaves your phone and is removed when you sign out or delete your account. On Android it's left out of device backups.
+        camera: The apps use the camera only when you choose to take a photo for a log.
+        nothing_else: The apps contain no advertising, no third-party analytics or tracking, and no push notifications.
+        crash_reports: If you allow it in your phone's settings, Apple or Google may share anonymous crash reports with us.
+      use:
+        heading: 5. How we use your data
+        intro: 'We use your data only to:'
+        provide: Provide the service, including your logs, charts, reports and share links
+        insights: Show you patterns in your attacks
+        improve: Understand which features are used and fix problems
+        security: Keep the service secure
+        no_ads: We never use your data for advertising, never sell it, and never use it to train AI models.
+      legal_basis:
+        heading: 6. Legal basis
+        health: We process your health data with your explicit consent (Art. 9(2)(a) GDPR), which you give by entering it. You can withdraw it at any time by deleting the data or your account.
+        account: We process your account to provide the service you signed up for (Art. 6(1)(b) GDPR).
+        technical: We process technical data, page counts and error reports for our legitimate interest in running a secure, working service (Art. 6(1)(f) GDPR).
+      sharing:
+        heading: 7. Sharing
+        no_sale: We do not sell, trade, or rent your data to anyone.
+        share_links: You decide what to share. A share link you create lets anyone who has it see your logs and charts, read-only and without photos, until you revoke it or it expires after 30 days.
+        email: When someone signs up or sends feedback, we're notified by email through our email provider, Forward Email. Sign-up notices contain the username; feedback notices also contain the survey answers.
+        legal: We may disclose information if required by law or to protect our rights, property, or safety.
+      storage:
+        heading: 8. Where and how it's stored
+        location: Your account, logs and photos are stored on servers in Germany.
+        transit: Everything travels encrypted (HTTPS) between your device and our servers.
+        photos: Photos are encrypted on disk.
+        backups: Backups are encrypted.
+        access: Only the maintainer can access the servers.
+      retention:
+        heading: 9. How long we keep it, and how to delete it
+        until_deleted: Your data stays until you delete it. You can edit or delete any log at any time; deleting a log deletes its photos too.
+        account_deletion_html: To delete your account and all of its data, open Account in the app or Account Settings on the website, choose Delete account and confirm with your password. %{instructions}
+        instructions: How to delete your account
+        what_is_deleted: This immediately deletes your account, logs, photos, medications, doses, share links and feedback from our database.
+        backups: Encrypted backups made before then may still contain your data until those backups are deleted.
+        cant_sign_in: If you can't sign in, email us with your username and we'll delete the account once we can confirm it's yours.
+      rights:
+        heading: 10. Your rights
+        intro: 'Under the GDPR you have the right to:'
+        access: Access your data, and export it as a CSV file from Account Settings on the website
+        correct: Correct it, by editing your logs and settings
+        delete: Delete it, by deleting logs or your whole account
+        withdraw: Withdraw your consent at any time, by deleting the data
+        object: Object to processing based on our legitimate interests
+        complaint: Complain to a data protection authority, such as the Berlin Commissioner for Data Protection and Freedom of Information
+      cookies:
+        heading: 11. Cookies
+        body: We only use cookies the service needs, to keep you signed in and to protect forms. We don't use tracking or advertising cookies.
+      children:
+        heading: 12. Children
+        body: Cluster Headache Tracker is not meant for children under 16, and we don't knowingly collect their data.
+      changes:
+        heading: 13. Changes to this policy
+        body: We may update this policy from time to time. We will post the new policy on this page and update the "Last updated" date.
+      contact:
+        heading: 14. Contact
+        body: 'If you have any questions about this policy or your data, please contact us at:'
+      open_source:
+        heading: 15. Open source
+        body: 'The code of the website and the apps is public, so anyone can check what it does with your data:'

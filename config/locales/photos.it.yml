@@ -20,10 +20,6 @@ it:
       remove: "Rimuovi foto"
     report:
       title: "Foto"
-    privacy_policy:
-      collected: "Le foto che scegli di allegare a una registrazione"
-      storage: "Le foto sono conservate cifrate, mostrate solo a te senza posizione e altri metadati, e mai incluse nei link condivisi. Vengono eliminate insieme alla registrazione o al tuo account."
-
   activerecord:
     attributes:
       headache_log:
