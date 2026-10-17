@@ -55,6 +55,7 @@
     <li><%= t(".legal_basis.health") %></li>
     <li><%= t(".legal_basis.account") %></li>
     <li><%= t(".legal_basis.technical") %></li>
+    <li><%= t(".legal_basis.error_reports") %></li>
   </ul>
 
   <h2><%= t(".sharing.heading") %></h2>
@@ -78,7 +79,7 @@
   <h2 id="deletion"><%= t(".retention.heading") %></h2>
   <p><%= t(".retention.until_deleted") %></p>
   <p><%= t(".retention.account_deletion_html", instructions: link_to(t(".retention.instructions"), delete_account_path)) %></p>
-  <p><%= t(".retention.what_is_deleted") %> <%= t(".retention.backups") %></p>
+  <p><%= t(".retention.what_is_deleted") %> <%= t(".retention.backups") %> <%= t(".retention.error_reports") %></p>
   <p><%= t(".retention.cant_sign_in") %></p>
 
   <h2><%= t(".rights.heading") %></h2>

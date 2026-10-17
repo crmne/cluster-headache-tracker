@@ -25,7 +25,7 @@ en:
           heading: 3.2 What is collected automatically
           technical: Technical data every device sends with a request, such as your IP address and browser or app version. We use it to deliver pages and to block abuse (for example repeated failed sign-ins).
           analytics: Page views, counted by Plausible Analytics on our own server, without cookies and without storing your IP address. It tells us which pages are used, not who uses them.
-          errors: Error reports when the server hits a problem, sent to our own error tracker. They name your account by its number only, never by username, and contain no logs, notes, cookies or IP addresses.
+          errors: "Error reports when the server hits a problem, sent to our own error tracker on our server in Germany. A report contains the request that failed: the page address, what was sent with it, your browser or app version, the steps the server took just before, and your account's number and username. If you were saving a log, it can include health data such as the attack's times, intensity and doses. What you write (medications, triggers and notes), passwords, cookies and IP addresses are left out. Only the maintainer can read error reports."
       apps:
         heading: 4. The iOS and Android apps
         on_device: The apps keep a short summary of your attack status on your phone (whether an attack is ongoing, when it started, days attack-free and attacks today) to show widgets, shortcuts and, on iPhone, the Live Activity. It never leaves your phone and is removed when you sign out or delete your account. On Android it's left out of device backups.
@@ -45,6 +45,7 @@ en:
         health: "We process your health data only with your explicit consent (Art. 9(2)(a) GDPR), which you give by ticking a box when you create your account. Accounts created before October 2026 are asked once, the next time they're used. You can withdraw your consent at any time by deleting the data or your account."
         account: We process your account to provide the service you signed up for (Art. 6(1)(b) GDPR).
         technical: We process technical data, page counts and error reports for our legitimate interest in running a secure, working service (Art. 6(1)(f) GDPR).
+        error_reports: "When an error report contains health data, we process it under the same explicit consent, only to find and fix the problem."
       sharing:
         heading: 7. Sharing
         no_sale: We do not sell, trade, or rent your data to anyone.
@@ -66,6 +67,7 @@ en:
         instructions: How to delete your account
         what_is_deleted: This immediately deletes your account, logs, photos, medications, doses, share links and feedback from our database.
         backups: Encrypted backups made before then may still contain your data until those backups are deleted.
+        error_reports: "Error reports stay in our error tracker and aren't deleted with your account; email us with your username and we'll delete them."
         cant_sign_in: If you can't sign in, email us with your username and we'll delete the account once we can confirm it's yours.
       rights:
         heading: 10. Your rights

@@ -25,7 +25,7 @@ it:
           heading: 3.2 Dati raccolti automaticamente
           technical: I dati tecnici che ogni dispositivo invia con una richiesta, come l'indirizzo IP e la versione del browser o dell'app. Li usiamo per mostrare le pagine e bloccare gli abusi (per esempio accessi falliti ripetuti).
           analytics: Le visualizzazioni delle pagine, contate da Plausible Analytics sul nostro server, senza cookie e senza conservare il tuo indirizzo IP. Ci dicono quali pagine vengono usate, non chi le usa.
-          errors: Segnalazioni di errore quando il server incontra un problema, inviate al nostro sistema di monitoraggio degli errori. Identificano il tuo account solo con il suo numero, mai con il nome utente, e non contengono registrazioni, note, cookie o indirizzi IP.
+          errors: "Segnalazioni di errore quando il server incontra un problema, inviate al nostro sistema di monitoraggio degli errori sul nostro server in Germania. Una segnalazione contiene la richiesta non riuscita: l'indirizzo della pagina, ciò che è stato inviato con essa, la versione del browser o dell'app, i passi compiuti dal server subito prima, e il numero e il nome utente del tuo account. Se stavi salvando una registrazione, può includere dati sanitari come orari, intensità e dosi dell'attacco. Ciò che scrivi tu (farmaci, fattori scatenanti e note), le password, i cookie e gli indirizzi IP vengono esclusi. Solo il gestore può leggere le segnalazioni di errore."
       apps:
         heading: 4. Le app per iOS e Android
         on_device: Le app conservano sul telefono un breve riepilogo dello stato dei tuoi attacchi (se è in corso un attacco, quando è iniziato, i giorni senza attacchi e gli attacchi di oggi) per mostrare widget, scorciatoie e, su iPhone, l'attività in tempo reale. Non lascia mai il telefono e viene rimosso quando esci o cancelli l'account. Su Android è escluso dai backup del dispositivo.
@@ -45,6 +45,7 @@ it:
         health: "Trattiamo i tuoi dati sanitari solo con il tuo consenso esplicito (art. 9, par. 2, lett. a GDPR), che dai spuntando una casella quando crei l'account. Agli account creati prima di ottobre 2026 lo chiediamo una volta, al loro prossimo utilizzo. Puoi revocare il consenso in qualsiasi momento cancellando i dati o l'account."
         account: Trattiamo il tuo account per fornirti il servizio a cui ti sei iscritto (art. 6, par. 1, lett. b GDPR).
         technical: Trattiamo i dati tecnici, i conteggi delle pagine e le segnalazioni di errore per il nostro legittimo interesse a gestire un servizio sicuro e funzionante (art. 6, par. 1, lett. f GDPR).
+        error_reports: "Quando una segnalazione di errore contiene dati sanitari, li trattiamo sulla base dello stesso consenso esplicito, solo per trovare e risolvere il problema."
       sharing:
         heading: 7. Condivisione
         no_sale: Non vendiamo, scambiamo né affittiamo i tuoi dati a nessuno.
@@ -66,6 +67,7 @@ it:
         instructions: Come cancellare l'account
         what_is_deleted: In questo modo account, registrazioni, foto, farmaci, assunzioni, link di condivisione e feedback vengono cancellati subito dal nostro database.
         backups: I backup cifrati creati prima possono contenere ancora i tuoi dati finché quei backup non vengono cancellati.
+        error_reports: "Le segnalazioni di errore restano nel nostro sistema di monitoraggio e non vengono cancellate con l'account; scrivici con il tuo nome utente e le cancelleremo."
         cant_sign_in: Se non riesci ad accedere, scrivici con il tuo nome utente e cancelleremo l'account non appena potremo confermare che è tuo.
       rights:
         heading: 10. I tuoi diritti

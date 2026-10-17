@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   before_action :redirect_canonical_host
   before_action :set_ongoing_headaches, if: :user_signed_in?
-  before_action :set_error_report_user, if: :user_signed_in?
+  before_action :set_error_report_context
   before_action :set_robots_tag_header
   helper_method :hotwire_native_app?
 
@@ -33,9 +33,11 @@ class ApplicationController < ActionController::Base
     @ongoing_headaches = current_user.headache_logs.where(end_time: nil).order(start_time: :desc)
   end
 
-  # Error reports name the user by id only, never by username.
-  def set_error_report_user
-    Sentry.set_user(id: current_user.id)
+  # Error reports name the user by id and username (accounts have no email),
+  # and say which client and language the request came from.
+  def set_error_report_context
+    Sentry.set_user(id: current_user.id, username: current_user.username) if user_signed_in?
+    Sentry.set_tags(client: hotwire_native_app? ? "app" : "web", locale: I18n.locale)
   end
 
   def set_robots_tag_header

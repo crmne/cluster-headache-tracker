@@ -25,7 +25,7 @@ es:
           heading: 3.2 Lo que se recoge automáticamente
           technical: Los datos técnicos que todo dispositivo envía con una solicitud, como tu dirección IP y la versión de tu navegador o app. Los usamos para mostrar las páginas y bloquear abusos (por ejemplo, inicios de sesión fallidos repetidos).
           analytics: Las visitas a páginas, contadas por Plausible Analytics en nuestro propio servidor, sin cookies y sin guardar tu dirección IP. Nos dicen qué páginas se usan, no quién las usa.
-          errors: Informes de error cuando el servidor tiene un problema, enviados a nuestro propio sistema de seguimiento de errores. Identifican tu cuenta solo por su número, nunca por tu nombre de usuario, y no contienen registros, notas, cookies ni direcciones IP.
+          errors: "Informes de error cuando el servidor tiene un problema, enviados a nuestro propio sistema de seguimiento de errores en nuestro servidor en Alemania. Un informe contiene la petición que falló: la dirección de la página, lo que se envió con ella, la versión de tu navegador o de la app, los pasos que dio el servidor justo antes, y el número y el nombre de usuario de tu cuenta. Si estabas guardando un registro, puede incluir datos de salud como las horas, la intensidad y las dosis del ataque. Lo que escribes tú (medicamentos, desencadenantes y notas), las contraseñas, las cookies y las direcciones IP se dejan fuera. Solo el responsable del servicio puede leer los informes de error."
       apps:
         heading: 4. Las apps para iOS y Android
         on_device: Las apps guardan en tu teléfono un breve resumen del estado de tus crisis (si hay una en curso, cuándo empezó, los días sin crisis y las crisis de hoy) para mostrar widgets, accesos directos y, en iPhone, la actividad en directo. Nunca sale de tu teléfono y se borra al cerrar sesión o eliminar tu cuenta. En Android queda fuera de las copias de seguridad del dispositivo.
@@ -45,6 +45,7 @@ es:
         health: "Tratamos tus datos de salud solo con tu consentimiento explícito (art. 9.2.a RGPD), que das marcando una casilla al crear tu cuenta. A las cuentas creadas antes de octubre de 2026 se lo pedimos una vez, la próxima vez que se usen. Puedes retirar tu consentimiento en cualquier momento borrando los datos o tu cuenta."
         account: Tratamos tu cuenta para prestarte el servicio en el que te has registrado (art. 6.1.b RGPD).
         technical: Tratamos los datos técnicos, los recuentos de páginas y los informes de error por nuestro interés legítimo en mantener un servicio seguro y que funcione (art. 6.1.f RGPD).
+        error_reports: "Cuando un informe de error contiene datos de salud, los tratamos con el mismo consentimiento explícito, solo para encontrar y corregir el problema."
       sharing:
         heading: 7. Compartir
         no_sale: No vendemos, intercambiamos ni alquilamos tus datos a nadie.
@@ -66,6 +67,7 @@ es:
         instructions: Cómo eliminar tu cuenta
         what_is_deleted: Así se borran de inmediato de nuestra base de datos tu cuenta, registros, fotos, medicamentos, tomas, enlaces para compartir y opiniones.
         backups: Las copias de seguridad cifradas hechas antes pueden seguir conteniendo tus datos hasta que esas copias se borren.
+        error_reports: "Los informes de error se quedan en nuestro sistema de seguimiento y no se borran con tu cuenta; escríbenos con tu nombre de usuario y los borraremos."
         cant_sign_in: Si no puedes iniciar sesión, escríbenos con tu nombre de usuario y eliminaremos la cuenta en cuanto podamos confirmar que es tuya.
       rights:
         heading: 10. Tus derechos
