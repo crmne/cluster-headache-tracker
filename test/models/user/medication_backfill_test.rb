@@ -59,8 +59,8 @@ class User::MedicationBackfillTest < ActiveSupport::TestCase
 
     @user.backfill_medications
 
-    assert_equal 1, Medication.where(name: "Oxygen").count
-    assert_empty users(:two).medications.where(name: "Oxygen")
+    assert_equal 1, Medication.all.count { |medication| medication.name == "Oxygen" }
+    assert_nil users(:two).medications.named("Oxygen")
   end
 
   test "verification lists logs whose doses don't match their text" do

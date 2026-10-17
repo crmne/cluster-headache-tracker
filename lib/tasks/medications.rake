@@ -14,7 +14,7 @@ namespace :medications do
   task backfill: :environment do
     failures = []
 
-    User.where(id: HeadacheLog.where.not(medication: [ nil, "" ]).select(:user_id)).find_each do |user|
+    User.where(id: HeadacheLog.select(:user_id)).find_each do |user|
       backfilled = user.backfill_medications
       puts "User #{user.id}: backfilled #{backfilled} headache logs" if backfilled.positive?
     rescue ActiveRecord::ActiveRecordError => error
@@ -31,7 +31,7 @@ namespace :medications do
 
   desc "Check that every backfilled headache log has doses for each medication its text names"
   task verify: :environment do
-    unmatched = User.where(id: HeadacheLog.where.not(medication: [ nil, "" ]).select(:user_id)).flat_map do |user|
+    unmatched = User.where(id: HeadacheLog.select(:user_id)).flat_map do |user|
       user.logs_with_unmatched_medication_backfill
     end
 

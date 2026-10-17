@@ -174,7 +174,7 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to headache_logs_url
     assert_equal "Detected a Cluster Headache Tracker CSV. Imported 3 headache logs.", flash[:notice]
 
-    log = @user.headache_logs.find_by!(notes: "Morning attack")
+    log = @user.headache_logs.detect { |log| log.notes == "Morning attack" }
     assert_equal Time.zone.parse("2024-03-01 08:00:00"), log.start_time
     assert_equal Time.zone.parse("2024-03-01 10:30:00"), log.end_time
     assert_equal 7, log.intensity
@@ -192,8 +192,8 @@ class HeadacheLogsControllerTest < ActionDispatch::IntegrationTest
       CSV
     end
 
-    assert_equal BigDecimal("998.3"), @user.headache_logs.find_by!(notes: "Low pressure").barometric_pressure
-    assert_nil @user.headache_logs.find_by!(notes: "No reading").barometric_pressure
+    assert_equal BigDecimal("998.3"), @user.headache_logs.detect { |log| log.notes == "Low pressure" }.barometric_pressure
+    assert_nil @user.headache_logs.detect { |log| log.notes == "No reading" }.barometric_pressure
   end
 
   test "should round-trip logs through export and import unchanged" do

@@ -8,6 +8,12 @@ Rails.application.configure do
   config.credentials.content_path = Rails.root.join("config/credentials/test.yml.enc")
   config.credentials.key_path = Rails.root.join("config/credentials/test.key")
 
+  # Test-only keys: the test credentials hold no secrets.
+  config.active_record.encryption.primary_key = "test-primary-key-for-cluster-headache-tracker"
+  config.active_record.encryption.deterministic_key = "test-deterministic-key-for-cluster-headache-tracker"
+  config.active_record.encryption.key_derivation_salt = "test-key-derivation-salt-for-cluster-headache-tracker"
+  config.active_record.encryption.encrypt_fixtures = true
+
   # While tests run files are not watched, reloading is not necessary.
   config.enable_reloading = false
 

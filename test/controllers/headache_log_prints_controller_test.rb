@@ -28,7 +28,7 @@ class HeadacheLogPrintsControllerTest < ActionDispatch::IntegrationTest
     text = pdf_text(response.body)
     assert_includes text, "Alex Smith"
     assert_includes text, "Dr. Jones"
-    assert_includes text, "Zolmitriptan"
+    assert_match(/zolmitriptan/i, text)
   end
 
   test "includes only the current user's attacks" do
@@ -44,8 +44,8 @@ class HeadacheLogPrintsControllerTest < ActionDispatch::IntegrationTest
 
     text = pdf_text(response.body)
     assert_includes text, "medication containing “zolmi”"
-    assert_includes text, "Zolmitriptan"
-    assert_not_includes text, "Sumatriptan + Oxygen"
+    assert_match(/zolmitriptan/i, text)
+    assert_no_match(/sumatriptan \+ oxygen/i, text)
   end
 
   test "respects the date range" do

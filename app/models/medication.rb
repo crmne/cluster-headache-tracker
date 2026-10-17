@@ -12,26 +12,51 @@ class Medication < ApplicationRecord
 
   enum :kind, KINDS.index_by(&:itself), validate: true
 
+  # Names and schedule notes are health data, encrypted at rest, so the
+  # database never compares or sorts them: name_digest stands in for the
+  # name in lookups and the unique index, and ordering happens in Ruby.
+  encrypts :name, :schedule_note
+
   normalizes :name, with: ->(name) { name.squish }
   normalizes :unit, :schedule_note, with: ->(value) { value.squish.presence }
   normalizes :color, with: ->(color) { color.strip.downcase }
 
-  validates :name, presence: true, length: { maximum: 60 }, uniqueness: { scope: :user_id, case_sensitive: false }
+  validates :name, presence: true, length: { maximum: 60 }
   validates :color, format: { with: /\A#\h{6}\z/ }
   validates :default_dose, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
 
+  validate :name_unique_for_user
+
   before_validation :assign_defaults, on: :create
+  before_validation :digest_name
 
   scope :active, -> { where(archived_at: nil) }
   scope :archived, -> { where.not(archived_at: nil) }
-  scope :alphabetically, -> { order(Arel.sql("lower(medications.name)")) }
-  scope :by_recent_use, -> {
-    left_joins(:doses).group(:id).order(Arel.sql("MAX(medication_doses.taken_at) DESC NULLS LAST"), Arel.sql("lower(medications.name)"))
-  }
 
   class << self
+    def alphabetically
+      all.sort_by(&:name_sort_key)
+    end
+
+    # Most recently taken first; never-taken ones last, alphabetically.
+    def by_recent_use
+      medications = all.to_a
+      last_taken = MedicationDose.where(medication_id: medications.map(&:id)).group(:medication_id).maximum(:taken_at)
+
+      medications.sort_by do |medication|
+        taken_at = last_taken[medication.id]
+        [ taken_at ? 0 : 1, -taken_at.to_f, medication.name_sort_key ]
+      end
+    end
+
     def named(name)
-      find_by("lower(medications.name) = ?", name.to_s.squish.downcase)
+      find_by(name_digest: digest_name(name))
+    end
+
+    # A keyed digest of the name, ignoring case and spacing, so names can
+    # be matched without storing them in the clear.
+    def digest_name(name)
+      OpenSSL::HMAC.hexdigest("SHA256", name_digest_key, name.to_s.squish.downcase)
     end
 
     # Finds the medication by name, ignoring case, or creates it. Used by
@@ -50,6 +75,11 @@ class Medication < ApplicationRecord
       else "other"
       end
     end
+
+    private
+      def name_digest_key
+        @name_digest_key ||= ActiveRecord::Encryption.key_generator.derive_key_from("medications.name_digest")
+      end
   end
 
   def archived?
@@ -70,6 +100,10 @@ class Medication < ApplicationRecord
     end
   end
 
+  def name_sort_key
+    name.to_s.downcase
+  end
+
   def merge_into(medication)
     transaction do
       doses.update_all(medication_id: medication.id, updated_at: Time.current)
@@ -79,6 +113,16 @@ class Medication < ApplicationRecord
   end
 
   private
+    def digest_name
+      self.name_digest = self.class.digest_name(name)
+    end
+
+    def name_unique_for_user
+      if user && name.present? && user.medications.where.not(id: id).exists?(name_digest: name_digest)
+        errors.add :name, :taken
+      end
+    end
+
     def assign_defaults
       self.color = display_color
       self.unit = OXYGEN_UNIT if oxygen? && unit.blank?

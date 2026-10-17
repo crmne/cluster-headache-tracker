@@ -4,7 +4,7 @@ class MedicationDosesController < ApplicationController
 
   def new
     @medications = current_user.medications.active.by_recent_use
-    @medication_dose = current_user.medication_doses.new(medication: @medications.find_by(id: params[:medication_id]))
+    @medication_dose = current_user.medication_doses.new(medication: current_user.medications.active.find_by(id: params[:medication_id]))
   end
 
   def edit

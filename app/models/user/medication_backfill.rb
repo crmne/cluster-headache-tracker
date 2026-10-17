@@ -27,16 +27,19 @@ module User::MedicationBackfill
 
   # Logs whose doses don't name the medications their text mentions.
   def logs_with_unmatched_medication_backfill
-    headache_logs.where.not(medication: [ nil, "" ]).includes(medication_doses: :medication).select do |headache_log|
-      mentioned = Medication::Legacy.parse(headache_log.medication).map { |entry| entry.name.downcase }
-      recorded = headache_log.medication_doses.map { |dose| dose.medication.name.downcase }
+    headache_logs.includes(medication_doses: :medication).select do |headache_log|
+      if headache_log.medication.present?
+        mentioned = Medication::Legacy.parse(headache_log.medication).map { |entry| entry.name.downcase }
+        recorded = headache_log.medication_doses.map { |dose| dose.medication.name.downcase }
 
-      mentioned.tally != recorded.tally
+        mentioned.tally != recorded.tally
+      end
     end
   end
 
   private
     def logs_awaiting_medication_backfill
-      headache_logs.where.not(medication: [ nil, "" ]).where.missing(:medication_doses)
+      # The medication text is encrypted, so whether it's blank is checked in Ruby.
+      headache_logs.where.missing(:medication_doses).matching { |headache_log| headache_log.medication.present? }
     end
 end

@@ -3,6 +3,9 @@ require "csv"
 class FeedbackSurvey < ApplicationRecord
   belongs_to :user
 
+  # Free-text answers can describe someone's health, so they're encrypted at rest.
+  encrypts :additional_features, :change_suggestion, :impact, :promotion_suggestions
+
   validates :usage_duration, presence: true
   validates :ease_of_use, :recommendation_likelihood, presence: true, inclusion: { in: 1..5 }
 

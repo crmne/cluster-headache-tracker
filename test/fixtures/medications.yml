@@ -1,6 +1,7 @@
 oxygen:
   user: one
   name: Oxygen
+  name_digest: <%= Medication.digest_name("Oxygen") %>
   kind: oxygen
   default_dose: 15
   unit: L/min
@@ -10,6 +11,7 @@ oxygen:
 sumatriptan:
   user: one
   name: Sumatriptan
+  name_digest: <%= Medication.digest_name("Sumatriptan") %>
   kind: abortive
   default_dose: 6
   unit: mg
@@ -19,6 +21,7 @@ sumatriptan:
 zolmitriptan:
   user: one
   name: Zolmitriptan
+  name_digest: <%= Medication.digest_name("Zolmitriptan") %>
   kind: abortive
   frequency: as_needed
   color: "#f59e0b"
@@ -26,6 +29,7 @@ zolmitriptan:
 lithium:
   user: one
   name: Lithium
+  name_digest: <%= Medication.digest_name("Lithium") %>
   kind: preventive
   default_dose: 300
   unit: mg
@@ -36,6 +40,7 @@ lithium:
 emgality:
   user: one
   name: Emgality
+  name_digest: <%= Medication.digest_name("Emgality") %>
   kind: preventive
   default_dose: 120
   unit: mg
@@ -45,6 +50,7 @@ emgality:
 sumatriptan_two:
   user: two
   name: Sumatriptan
+  name_digest: <%= Medication.digest_name("Sumatriptan") %>
   kind: abortive
   frequency: as_needed
   color: "#8b5cf6"

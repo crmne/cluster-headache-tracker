@@ -15,6 +15,10 @@ class HeadacheLog < ApplicationRecord
   validates :intensity, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 10 }
   validates :barometric_pressure, numericality: { in: BAROMETRIC_PRESSURE_RANGE }, allow_nil: true
 
+  # What people write about an attack is health data, encrypted at rest, so
+  # the database never filters or sorts by it: filters match in Ruby.
+  encrypts :medication, :triggers, :notes
+
   normalizes :medication, with: ->(value) { value.downcase.split(",").map(&:strip).reject(&:blank?).join(", ") }
   normalizes :triggers, with: ->(value) { value.split(",").map(&:strip).reject(&:blank?).join(", ") }
 
@@ -28,7 +32,7 @@ class HeadacheLog < ApplicationRecord
   scope :today, -> { where(start_time: Time.current.all_day) }
   scope :started_after, ->(start_time) { where("start_time >= ?", Date.parse(start_time).beginning_of_day) }
   scope :ended_before, ->(end_time) { where("end_time <= ? OR end_time IS NULL", Date.parse(end_time).end_of_day) }
-  scope :with_triggers, ->(triggers) { where("triggers ILIKE ?", "%#{sanitize_sql_like(triggers)}%") }
+  scope :with_triggers, ->(text) { matching { |log| log.triggers.to_s.downcase.include?(text.downcase) } }
 
   class << self
     def filtered_by(params)
@@ -69,6 +73,12 @@ class HeadacheLog < ApplicationRecord
         pressure_data: pressure_data_for(headache_logs),
         pressure_change_data: pressure_change_data_for(headache_logs)
       }
+    end
+
+    # Narrows to the logs the block picks, checked in Ruby since the columns
+    # they're picked by are encrypted. Stays a relation, so it chains.
+    def matching(&block)
+      where(id: select(&block).map(&:id))
     end
 
     def cycles(today: Current.today)

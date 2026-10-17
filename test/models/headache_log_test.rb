@@ -350,7 +350,7 @@ class HeadacheLogTest < ActiveSupport::TestCase
 
     HeadacheLog.import_csv(file: File.open(file_fixture("sample_logs.csv")), user: @user)
 
-    log = @user.headache_logs.find_by!(notes: "Afternoon attack")
+    log = @user.headache_logs.detect { |log| log.notes == "Afternoon attack" }
     assert_equal %w[ Sumatriptan Oxygen ], log.medication_doses.map { |dose| dose.medication.name }
     assert_equal [ log.start_time ] * 2, log.medication_doses.map(&:taken_at)
     assert_equal "sumatriptan, oxygen", log.medication

@@ -14,10 +14,7 @@ module HeadacheLog::Medicated
     before_save :mirror_doses_into_legacy_medication, if: :medication_doses_changed?
 
     scope :with_medication, ->(name) {
-      pattern = "%#{sanitize_sql_like(name)}%"
-
-      where(id: MedicationDose.joins(:medication).where("medications.name ILIKE ?", pattern).select(:headache_log_id))
-        .or(where("headache_logs.medication ILIKE ?", pattern))
+      includes(medication_doses: :medication).matching { |log| log.medication_mentioned?(name) }
     }
 
     scope :in_progress_at, ->(time, window:) {
@@ -40,6 +37,12 @@ module HeadacheLog::Medicated
     else
       medication_list
     end
+  end
+
+  def medication_mentioned?(name)
+    name = name.downcase
+
+    medication.to_s.downcase.include?(name) || medication_doses.any? { |dose| dose.medication.name.downcase.include?(name) }
   end
 
   def medication_text

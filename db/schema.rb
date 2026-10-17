@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_17_180026) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_17_180028) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -105,11 +105,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_17_180026) do
     t.string "frequency", default: "as_needed", null: false
     t.string "kind", default: "abortive", null: false
     t.string "name", null: false
+    t.string "name_digest", null: false
     t.string "schedule_note"
     t.string "unit"
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.index "user_id, lower((name)::text)", name: "index_medications_on_user_id_and_lower_name", unique: true
+    t.index ["user_id", "name_digest"], name: "index_medications_on_user_id_and_name_digest", unique: true
     t.check_constraint "default_dose >= 0::numeric", name: "medications_default_dose_non_negative"
   end
 
