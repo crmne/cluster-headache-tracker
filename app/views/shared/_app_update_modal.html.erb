@@ -58,8 +58,8 @@
       </div>
 
       <div class="modal-action flex-col gap-2">
-        <% if snapshot.release_url.present? %>
-          <%= link_to snapshot.release_url, class: "btn btn-primary w-full" do %>
+        <% if update_url = mobile_app_update_url %>
+          <%= link_to update_url, class: "btn btn-primary w-full" do %>
             <%= heroicon "arrow-down-tray", variant: "mini", class: "w-4 h-4" %>
             <% if required_update %>
               <%= t("layout.app_update_modal.update_now") %>
@@ -69,7 +69,7 @@
           <% end %>
         <% end %>
 
-        <% if snapshot.release_notes_url.present? %>
+        <% if snapshot.release_notes_url.present? && !mobile_app_from_store? %>
           <%= link_to snapshot.release_notes_url, class: "btn btn-secondary btn-sm w-full", target: "_blank", rel: "noopener noreferrer" do %>
             <%= heroicon "newspaper", variant: "mini", class: "w-4 h-4" %>
             <%= t("layout.app_update_modal.release_notes") %>

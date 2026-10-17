@@ -159,11 +159,32 @@ module ApplicationHelper
   end
 
   def show_mobile_app_update_modal?
-    if snapshot = current_mobile_release_snapshot
-      snapshot.release_url.present? && (mobile_app_update_required? || mobile_app_update_available?)
+    if current_mobile_release_snapshot
+      mobile_app_update_url.present? && (mobile_app_update_required? || (mobile_app_update_available? && !mobile_app_from_store?))
     else
       false
     end
+  end
+
+  # The iOS app only comes from the App Store (or TestFlight) and the Android app says when Google
+  # Play installed it (`store=play`). Stores update their apps themselves and forbid pointing at
+  # downloads elsewhere, so these builds only hear about updates they must install, from their store.
+  def mobile_app_from_store?
+    ios_native_app? || native_app_store == "play"
+  end
+
+  def mobile_app_update_url
+    if ios_native_app?
+      AppConstants::IOS_APP_STORE_URL.presence
+    elsif mobile_app_from_store?
+      AppConstants::PLAY_STORE_URL
+    else
+      current_mobile_release_snapshot&.release_url
+    end
+  end
+
+  def native_app_store
+    request.user_agent.to_s[/ClusterHeadacheTracker;[^\[]*?\bstore=([\w-]+)/, 1] if hotwire_native_app?
   end
 
   private
