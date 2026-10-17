@@ -137,6 +137,7 @@ The iOS ([crmne/cluster-headache-tracker-ios](https://github.com/crmne/cluster-h
 - Shared links are token-based and expire
 - `rack-attack` is enabled
 - Data is scoped per user, with no multi-account tenancy layer
+- Health data is processed only with explicit consent (GDPR Art. 9(2)(a), `User::HealthDataConsent`): a required, unticked checkbox at sign-up stores `users.consented_at`. Accounts without it are sent to `/consent` (`HealthDataConsentRequired`) before any signed-in page, except Settings, account deletion, the exports and public pages (`allow_without_health_data_consent`); other requests get 403. In the apps, consenting redirects to `/recede_historical_location` to rebuild the tabs, like signing in. `DemoAccount` consents for the review account.
 - Production errors go to our self-hosted Bugsink at https://errors.paolino.me (Hetzner, Germany), project `cluster-headache-tracker-production`, through the Sentry SDK (`config/initializers/sentry.rb`). The DSN is `sentry_dsn` in Rails credentials (`SENTRY_DSN` overrides it). Reports name the user by id only, collect no request bodies, query strings, cookies, or IP addresses, go through `filter_parameters`, and send no traces. Never set `send_default_pii`.
 
 ### Primary Keys

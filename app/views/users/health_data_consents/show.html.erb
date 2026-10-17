@@ -1,0 +1,32 @@
+<% content_for :title, t(".title") %>
+
+<div class="flex items-center justify-center min-h-[60vh]">
+  <div class="card bg-base-100 shadow-md w-full max-w-md mx-4">
+    <div class="card-body">
+      <div class="mb-4">
+        <h2 class="text-2xl font-bold mb-2"><%= t(".heading") %></h2>
+        <p class="text-base-content/70"><%= t(".explanation") %></p>
+      </div>
+
+      <% if @consent_missing %>
+        <div class="alert alert-error mb-4" role="alert">
+          <%= heroicon "x-circle", variant: "mini", class: "w-5 h-5" %>
+          <span><%= t(".missing") %></span>
+        </div>
+      <% end %>
+
+      <%#- Like sign-in, a full page submission, which the apps follow to /recede_historical_location %>
+      <%= form_with url: health_data_consent_path, data: { turbo: false }, class: "space-y-6" do |form| %>
+        <%= render "users/health_data_consents/agreement", form: form %>
+        <%= form.submit t(".submit"), class: "btn btn-primary w-full" %>
+      <% end %>
+
+      <div class="divider mt-6"><%= t(".decline.heading") %></div>
+
+      <p class="text-sm text-base-content/70">
+        <%= t(".decline.body") %>
+      </p>
+      <%= link_to t(".decline.delete_account"), settings_path(anchor: "delete_account"), class: "btn btn-outline btn-sm mt-3" %>
+    </div>
+  </div>
+</div>

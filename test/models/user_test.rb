@@ -158,4 +158,26 @@ class UserTest < ActiveSupport::TestCase
   test "without a saved language the time format follows the current language" do
     I18n.with_locale(:it) { assert_equal "24h", @user.time_format_or_default }
   end
+
+  test "users created outside sign-up haven't consented yet, and are asked later" do
+    user = User.create!(username: "imported", password: "password123")
+
+    assert_nil user.consented_at
+    assert_not user.consented?
+  end
+
+  test "ticking the consent box at sign-up records when" do
+    freeze_time do
+      user = User.create!(username: "consenting", password: "password123", health_data_consent: true)
+
+      assert_equal Time.current, user.consented_at
+    end
+  end
+
+  test "an unticked consent box stops the sign-up" do
+    user = User.new(username: "unsure", password: "password123", health_data_consent: false)
+
+    assert_not user.save
+    assert_includes user.errors[:base], "Please consent to the processing of your health data to create an account."
+  end
 end

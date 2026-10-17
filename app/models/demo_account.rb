@@ -54,6 +54,7 @@ class DemoAccount
       user.password = user.password_confirmation = @password
       user.locale = "en"
       user.welcome_seen_at ||= Time.current
+      user.consented_at ||= Time.current
       user.last_seen_changelog = ChangelogEntry.current.key
       user.review_prompted_at ||= Time.current
       user.save!

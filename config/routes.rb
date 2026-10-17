@@ -82,6 +82,8 @@ Rails.application.routes.draw do
   resource :medication_dose_export, only: :show
   resource :timeline, only: :show
 
+  resource :health_data_consent, only: %i[ show create ], path: "consent", controller: "users/health_data_consents"
+
   resource :settings, only: :show, controller: "users/settings"
   namespace :settings, module: :users do
     resource :username, only: :update

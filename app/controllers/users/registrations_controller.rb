@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :permit_health_data_consent, only: :create
+
   def create
     super do |resource|
       if resource.persisted? && helpers.native_app_with_tabs?
@@ -14,10 +16,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
 
+  def permit_health_data_consent
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :health_data_consent ])
+  end
+
   # Someone signing up from a translated page (/de, /it, /es) chose that language explicitly
   def build_resource(hash = {})
     super
     resource.locale ||= params_locale
+    # Signing up requires the consent checkbox, even when a form leaves it out
+    resource.health_data_consent ||= false if action_name == "create"
   end
 
   def after_sign_up_path_for(resource)

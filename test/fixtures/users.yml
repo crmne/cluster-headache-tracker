@@ -1,11 +1,19 @@
 one:
   username: testuser1
   encrypted_password: <%= User.new.send(:password_digest, 'password123') %>
+  consented_at: <%= 1.month.ago %>
 
 two:
   username: testuser2
   encrypted_password: <%= User.new.send(:password_digest, 'password123') %>
+  consented_at: <%= 1.month.ago %>
 
 carmine:
   username: carmine
+  encrypted_password: <%= User.new.send(:password_digest, 'password123') %>
+  consented_at: <%= 1.month.ago %>
+
+# Signed up before the consent checkbox, and hasn't been asked yet
+unconsented:
+  username: testuser3
   encrypted_password: <%= User.new.send(:password_digest, 'password123') %>

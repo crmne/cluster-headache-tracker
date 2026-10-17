@@ -1,6 +1,8 @@
 class SharedLogsController < ApplicationController
   include ReportDownload
 
+  allow_without_health_data_consent
+
   def index
     @share_token = ShareToken.active.find_by(token: params[:token])
 

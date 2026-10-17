@@ -1,0 +1,21 @@
+de:
+  activerecord:
+    errors:
+      models:
+        user:
+          health_data_consent_required: "Bitte willigen Sie in die Verarbeitung Ihrer Gesundheitsdaten ein, um ein Konto zu erstellen."
+  health_data_consent:
+    agreement_html: "Ich willige ein, dass Cluster Headache Tracker die Gesundheitsdaten verarbeitet, die ich eingebe (meine Attacken, Medikamente, Auslöser, Notizen und Fotos), um mein Tagebuch zu führen. Ich kann diese Einwilligung jederzeit widerrufen, indem ich meine Daten oder mein Konto lösche. Mehr dazu in der %{privacy_policy}."
+    privacy_policy: "Datenschutzerklärung"
+  users:
+    health_data_consents:
+      show:
+        decline:
+          body: "Dann endet es hier, und Sie können stattdessen Ihr Konto löschen. Auf der Website können Sie Ihre Einträge vorher als CSV-Datei exportieren."
+          delete_account: "Mein Konto löschen"
+          heading: "Sie möchten nicht einwilligen?"
+        explanation: "Ihr Tagebuch enthält Gesundheitsdaten, die das europäische Recht besonders schützt. Damit wir sie weiter für Sie verwalten können, brauchen wir Ihre ausdrückliche Einwilligung. Wir fragen nur einmal."
+        heading: "Bevor es weitergeht"
+        missing: "Setzen Sie das Häkchen, um fortzufahren, oder löschen Sie unten Ihr Konto."
+        submit: "Weiter"
+        title: "Ihre Einwilligung"

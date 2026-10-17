@@ -1,4 +1,5 @@
 class AiVisibleContentController < ApplicationController
+  allow_without_health_data_consent
   before_action :set_public_cache_headers
 
   def llms

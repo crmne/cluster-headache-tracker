@@ -1,0 +1,21 @@
+en:
+  activerecord:
+    errors:
+      models:
+        user:
+          health_data_consent_required: "Please consent to the processing of your health data to create an account."
+  health_data_consent:
+    agreement_html: "I consent to Cluster Headache Tracker processing the health data I enter (my attacks, medications, triggers, notes and photos) to keep my diary. I can withdraw this consent at any time by deleting my data or my account. See the %{privacy_policy}."
+    privacy_policy: "Privacy Policy"
+  users:
+    health_data_consents:
+      show:
+        decline:
+          body: "Then we'll stop here, and you can delete your account instead. On the website you can export your logs as a CSV file first."
+          delete_account: "Delete my account"
+          heading: "Don't want to consent?"
+        explanation: "Your diary holds health data, which European law protects specially. To keep looking after it, we need your explicit consent. We only ask once."
+        heading: "Before you continue"
+        missing: "Tick the box to continue, or delete your account below."
+        submit: "Continue"
+        title: "Your consent"

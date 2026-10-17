@@ -1,0 +1,21 @@
+es:
+  activerecord:
+    errors:
+      models:
+        user:
+          health_data_consent_required: "Para crear una cuenta, da tu consentimiento al tratamiento de tus datos de salud."
+  health_data_consent:
+    agreement_html: "Doy mi consentimiento para que Cluster Headache Tracker trate los datos de salud que introduzco (mis ataques, medicamentos, desencadenantes, notas y fotos) para llevar mi diario. Puedo retirarlo en cualquier momento borrando mis datos o mi cuenta. Consulta la %{privacy_policy}."
+    privacy_policy: "Política de privacidad"
+  users:
+    health_data_consents:
+      show:
+        decline:
+          body: "Entonces paramos aquí, y puedes borrar tu cuenta. En el sitio web puedes exportar antes tus registros a un archivo CSV."
+          delete_account: "Borrar mi cuenta"
+          heading: "¿No quieres dar tu consentimiento?"
+        explanation: "Tu diario contiene datos de salud, que la ley europea protege de forma especial. Para seguir guardándolos necesitamos tu consentimiento explícito. Solo te lo preguntamos una vez."
+        heading: "Antes de continuar"
+        missing: "Marca la casilla para continuar, o borra tu cuenta más abajo."
+        submit: "Continuar"
+        title: "Tu consentimiento"

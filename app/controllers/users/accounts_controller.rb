@@ -1,5 +1,6 @@
 class Users::AccountsController < ApplicationController
   before_action :authenticate_user!
+  allow_without_health_data_consent
 
   # Deletes the account and everything in it: logs, photos, medications, doses,
   # share links and feedback. Asking for the password again keeps someone else

@@ -2,6 +2,7 @@ class User < ApplicationRecord
   include ReviewPrompting
   include Attacks
   include MedicationBackfill
+  include HealthDataConsent
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

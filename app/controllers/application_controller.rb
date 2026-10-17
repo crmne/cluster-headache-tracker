@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include CurrentTimeZone
   include Localization
+  include HealthDataConsentRequired
 
   # Prepended so the CSRF check runs before any callback that touches current_user:
   # signing in rotates the token, which would otherwise fail the check and drop the new session.

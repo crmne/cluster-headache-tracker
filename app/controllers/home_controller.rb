@@ -1,5 +1,7 @@
 # app/controllers/home_controller.rb
 class HomeController < ApplicationController
+  allow_without_health_data_consent
+
   def index
     @users_count = User.count
     @logs_count = HeadacheLog.count

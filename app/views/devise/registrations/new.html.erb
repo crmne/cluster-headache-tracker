@@ -59,6 +59,10 @@
             <%= f.password_field :password_confirmation, class: "input input-bordered w-full", required: true %>
           </div>
 
+          <div class="pt-2">
+            <%= render "users/health_data_consents/agreement", form: f %>
+          </div>
+
           <%= f.submit t("auth.registrations.new.submit"), class: "btn btn-primary w-full mt-6" %>
         </div>
       <% end %>

@@ -1,0 +1,10 @@
+<%# locals: (form:) %>
+<label class="flex items-start gap-3 cursor-pointer" for="health_data_consent">
+  <%= form.check_box :health_data_consent, { class: "checkbox checkbox-primary checkbox-sm mt-0.5", required: true, id: "health_data_consent" }, "1", "0" %>
+  <span class="text-sm leading-snug">
+    <%= t("health_data_consent.agreement_html",
+          privacy_policy: link_to(t("health_data_consent.privacy_policy"),
+            privacy_policy_path(locale: I18n.locale.to_s.presence_in(AiVisibleContent::TRANSLATED_LOCALES)),
+            class: "link", target: ("_blank" unless hotwire_native_app?))) %>
+  </span>
+</label>
