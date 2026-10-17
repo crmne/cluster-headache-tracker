@@ -1,5 +1,8 @@
 de:
   users:
+    accounts:
+      destroy:
+        deleted: "Ihr Konto und alle zugehörigen Daten wurden gelöscht."
     changelog_acknowledgements:
       create:
         failed: Die Neuigkeiten konnten nicht ausgeblendet werden.
@@ -11,6 +14,18 @@ de:
         updated: Ihre Sprach- und Zeiteinstellungen wurden gespeichert.
     settings:
       show:
+        about:
+          contact: "Kontakt"
+          help: "Hilfe und FAQ"
+          imprint: "Impressum"
+          privacy_policy: "Datenschutzerklärung"
+          title: "Über die App"
+        delete_account:
+          confirmation: "Ihr Konto und alle Ihre Daten löschen? Das lässt sich nicht rückgängig machen."
+          explanation: "Löscht Ihr Konto mit allen Daten sofort: Einträge, Fotos, Medikamente, Einnahmen, Freigabelinks und Feedback. Das lässt sich nicht rückgängig machen. Exportieren Sie Ihre Einträge vorher auf der Website, wenn Sie sie behalten möchten."
+          submit: "Konto löschen"
+          title: "Konto löschen"
+          wrong_password: "Das Passwort stimmt nicht, daher wurde nichts gelöscht."
         account:
           confirm_new_password: Neues Passwort bestätigen
           current_password: Aktuelles Passwort

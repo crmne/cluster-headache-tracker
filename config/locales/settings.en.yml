@@ -1,5 +1,8 @@
 en:
   users:
+    accounts:
+      destroy:
+        deleted: "Your account and all of its data have been deleted."
     changelog_acknowledgements:
       create:
         failed: Couldn't dismiss changelog.
@@ -11,6 +14,18 @@ en:
         updated: Your language and time settings were saved.
     settings:
       show:
+        about:
+          contact: "Contact us"
+          help: "Help and FAQ"
+          imprint: "Imprint"
+          privacy_policy: "Privacy Policy"
+          title: "About"
+        delete_account:
+          confirmation: "Delete your account and all of your data? This can't be undone."
+          explanation: "Deletes your account and everything in it right away: logs, photos, medications, doses, share links and feedback. This can't be undone, so export your logs on the website first if you want to keep them."
+          submit: "Delete account"
+          title: "Delete account"
+          wrong_password: "That password isn't right, so nothing was deleted."
         account:
           confirm_new_password: Confirm New Password
           current_password: Current Password

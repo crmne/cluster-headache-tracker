@@ -81,7 +81,44 @@ class NativeBridgeTest < ApplicationSystemTestCase
     assert_current_path headache_log_path(@headache_log)
   end
 
+  test "deleting the account asks natively, then clears the app's widgets" do
+    visit settings_url
+    connect_native_adapter
+
+    within("#delete_account") do
+      fill_in "delete_account_current_password", with: "password123"
+      click_on "Delete account"
+    end
+    wait_for_message "alert"
+
+    alert = message_for("alert")
+    assert_equal({ "destructive" => true, "confirm" => "Delete account" }, alert["data"].slice("destructive", "confirm"))
+    assert User.exists?(@user.id), "Deleted before the native alert was confirmed"
+
+    reply_to alert
+    assert_current_path new_user_session_path
+    wait_for_message_event "widget-status", "clear"
+
+    assert_not User.exists?(@user.id)
+  end
+
+  test "signed-out pages tell the app to clear its widgets" do
+    sign_out @user
+
+    visit new_user_session_url
+    connect_native_adapter
+    wait_for_message "widget-status"
+
+    assert_equal "clear", message_for("widget-status")["event"]
+  end
+
   private
+    def wait_for_message_event(component, event)
+      Timeout.timeout(Capybara.default_max_wait_time) do
+        sleep 0.05 until message_for(component)&.dig("event") == event
+      end
+    end
+
     def connect_native_adapter
       execute_script <<~JS
         window.bridgeMessages = []

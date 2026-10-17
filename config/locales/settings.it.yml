@@ -1,5 +1,8 @@
 it:
   users:
+    accounts:
+      destroy:
+        deleted: "Il tuo account e tutti i suoi dati sono stati cancellati."
     changelog_acknowledgements:
       create:
         failed: Impossibile chiudere le novità.
@@ -11,6 +14,18 @@ it:
         updated: Le impostazioni di lingua e orario sono state salvate.
     settings:
       show:
+        about:
+          contact: "Contattaci"
+          help: "Aiuto e FAQ"
+          imprint: "Note legali"
+          privacy_policy: "Informativa sulla privacy"
+          title: "Informazioni"
+        delete_account:
+          confirmation: "Eliminare l'account e tutti i tuoi dati? Non si può annullare."
+          explanation: "Cancella subito il tuo account e tutto ciò che contiene: registrazioni, foto, farmaci, assunzioni, link di condivisione e feedback. Non si può annullare, quindi se vuoi conservare le registrazioni esportale prima dal sito."
+          submit: "Elimina account"
+          title: "Elimina account"
+          wrong_password: "La password non è corretta, quindi non è stato cancellato nulla."
         account:
           confirm_new_password: Conferma nuova password
           current_password: Password attuale

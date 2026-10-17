@@ -167,6 +167,52 @@
   </div>
 </div>
 
+<!-- About Section -->
+<div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 mb-4" id="about">
+  <div class="card-body p-3 sm:p-4">
+    <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2 mb-3">
+      <%= heroicon "information-circle", variant: "mini", class: "w-4 h-4 text-info" %>
+      <%= t(".about.title") %>
+    </h2>
+    <div class="bg-base-200/50 rounded-lg p-3 mb-3">
+      <h3 class="text-sm font-semibold mb-1"><%= t("home.medical_disclaimer.title") %></h3>
+      <p class="text-xs text-base-content/70"><%= t("home.medical_disclaimer.body") %></p>
+    </div>
+    <ul class="text-sm space-y-1">
+      <li><%= link_to t(".about.privacy_policy"), privacy_policy_path(locale: nil), class: "link" %></li>
+      <li><%= link_to t(".about.help"), faq_path(locale: nil), class: "link" %></li>
+      <li><%= link_to t(".about.imprint"), imprint_path(locale: nil), class: "link" %></li>
+      <li><%= mail_to AiVisibleContent::CONTACT_EMAIL, t(".about.contact"), class: "link" %></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Delete Account Section -->
+<div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-200 mb-4" id="delete_account">
+  <div class="card-body p-3 sm:p-4">
+    <h2 class="text-sm sm:text-base font-semibold flex items-center gap-2 mb-3">
+      <%= heroicon "trash", variant: "mini", class: "w-4 h-4 text-error" %>
+      <%= t(".delete_account.title") %>
+    </h2>
+    <p class="text-xs text-base-content/70 mb-3"><%= t(".delete_account.explanation") %></p>
+    <% if @account_deletion_failed %>
+      <div class="alert alert-error mb-3" role="alert">
+        <%= heroicon "x-circle", variant: "mini", class: "w-5 h-5" %>
+        <span><%= t(".delete_account.wrong_password") %></span>
+      </div>
+    <% end %>
+    <%= form_with url: settings_account_path, method: :delete, scope: :user,
+          data: { turbo_confirm: t(".delete_account.confirmation"), bridge_confirm: t(".delete_account.submit") }, class: "space-y-3 sm:max-w-sm" do |form| %>
+      <div>
+        <%= form.label :current_password, t(".account.current_password"), class: "text-xs text-base-content/60 mb-1 block", for: "delete_account_current_password" %>
+        <%= form.password_field :current_password, id: "delete_account_current_password", autocomplete: "current-password", required: true,
+              class: "input input-bordered input-sm w-full", aria: { invalid: @account_deletion_failed.present? } %>
+      </div>
+      <%= form.submit t(".delete_account.submit"), class: "btn btn-outline btn-error btn-sm w-full sm:w-auto" %>
+    <% end %>
+  </div>
+</div>
+
 <!-- Import Modal -->
 <dialog id="import_modal" class="modal">
   <div class="modal-box">

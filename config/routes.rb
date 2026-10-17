@@ -89,6 +89,7 @@ Rails.application.routes.draw do
     resource :changelog_acknowledgement, only: :create
     resource :welcome_acknowledgement, only: :create
     resource :review_prompt, only: :create
+    resource :account, only: :destroy
   end
 
   resource :feedback, only: [ :show, :new, :create, :destroy ], controller: "feedback" do

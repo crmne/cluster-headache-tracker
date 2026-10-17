@@ -1,5 +1,8 @@
 es:
   users:
+    accounts:
+      destroy:
+        deleted: "Tu cuenta y todos sus datos se han eliminado."
     changelog_acknowledgements:
       create:
         failed: No se pudieron ocultar las novedades.
@@ -11,6 +14,18 @@ es:
         updated: Se guardaron tus ajustes de idioma y hora.
     settings:
       show:
+        about:
+          contact: "Contacto"
+          help: "Ayuda y preguntas frecuentes"
+          imprint: "Aviso legal"
+          privacy_policy: "Política de privacidad"
+          title: "Acerca de"
+        delete_account:
+          confirmation: "¿Eliminar tu cuenta y todos tus datos? No se puede deshacer."
+          explanation: "Elimina al momento tu cuenta y todo lo que contiene: registros, fotos, medicamentos, tomas, enlaces para compartir y opiniones. No se puede deshacer, así que si quieres conservar tus registros, expórtalos antes desde la web."
+          submit: "Eliminar cuenta"
+          title: "Eliminar cuenta"
+          wrong_password: "La contraseña no es correcta, así que no se ha eliminado nada."
         account:
           confirm_new_password: Confirmar nueva contraseña
           current_password: Contraseña actual
