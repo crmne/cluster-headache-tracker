@@ -1,7 +1,0 @@
-#!/bin/sh
-
-curl https://api.honeybadger.io/v1/deploys \
-  -H "X-API-Key: $HONEYBADGER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -H "Accept: application/json" \
-  -d "{\"deploy\": {\"environment\": \"production\", \"local_username\": \"$KAMAL_PERFORMER\", \"revision\": \"$KAMAL_VERSION\"}}"

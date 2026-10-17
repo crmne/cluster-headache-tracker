@@ -1,6 +1,4 @@
 extends: crmne/github-automation:triage/account.yml
-report_bots:
-  - honeybadger[bot]
 
 labels:
   bug: A reproducible defect in this project.

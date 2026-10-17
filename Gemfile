@@ -66,8 +66,9 @@ gem "rails_heroicon"
 gem "prawn", "~> 2.5"
 gem "prawn-table", "~> 0.2.2"
 
-# Honeybadger error tracking
-gem "honeybadger"
+# Error tracking: our self-hosted Bugsink takes the Sentry SDK's events
+gem "sentry-ruby"
+gem "sentry-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

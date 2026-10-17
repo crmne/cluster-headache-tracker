@@ -157,9 +157,6 @@ GEM
     hashery (2.1.2)
     highline (3.1.2)
       reline
-    honeybadger (6.9.1)
-      logger
-      ostruct
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     i18n-tasks (1.1.2)
@@ -403,6 +400,13 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
+    sentry-rails (7.1.0)
+      railties (>= 5.2.0)
+      sentry-ruby (~> 7.1.0)
+    sentry-ruby (7.1.0)
+      bigdecimal
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      logger
     sexp_processor (4.17.5)
     sitemap_generator (6.3.0)
       builder (~> 3.0)
@@ -496,7 +500,6 @@ DEPENDENCIES
   devise-i18n
   dotenv
   flay
-  honeybadger
   i18n-tasks
   image_processing (~> 1.14)
   importmap-rails
@@ -516,6 +519,8 @@ DEPENDENCIES
   rails_heroicon
   rubocop-rails-omakase
   selenium-webdriver
+  sentry-rails
+  sentry-ruby
   sitemap_generator (~> 6.3)
   solid_cable
   solid_cache

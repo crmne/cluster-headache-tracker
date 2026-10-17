@@ -127,6 +127,7 @@ This app is user-scoped and intentionally simple:
 - Shared links are token-based and expire
 - `rack-attack` is enabled
 - Data is scoped per user, with no multi-account tenancy layer
+- Production errors go to our self-hosted Bugsink at https://errors.paolino.me (Hetzner, Germany), project `cluster-headache-tracker-production`, through the Sentry SDK (`config/initializers/sentry.rb`). The DSN is `sentry_dsn` in Rails credentials (`SENTRY_DSN` overrides it). Reports name the user by id only, collect no request bodies, query strings, cookies, or IP addresses, go through `filter_parameters`, and send no traces. Never set `send_default_pii`.
 
 ### Primary Keys
 
