@@ -250,3 +250,13 @@
 [data-bridge-components~="download"] .native-download {
   display: inline-flex;
 }
+
+/* The attack timer rolls each digit for most of every second. With Reduce Motion
+   on, the numbers just change. */
+@media (prefers-reduced-motion: reduce) {
+  .countdown > *,
+  .countdown > *::before,
+  .countdown > *::after {
+    transition: none;
+  }
+}
