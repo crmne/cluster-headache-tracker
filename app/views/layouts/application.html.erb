@@ -89,6 +89,7 @@
     </div>
     <% end %>
   </main>
+  <%= render "bridge/widget_status", status: nil if hotwire_native_app? && !current_user %>
   <% unless hotwire_native_app? %>
     <% if user_signed_in? && !static_page? && !native_app_form_page? && !native_app_with_tabs? %>
       <%= render 'bottom_navbar' %>

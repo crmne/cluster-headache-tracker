@@ -1,4 +1,9 @@
-<%# locals: (status: current_user.widget_status) %>
+<%# locals: (status:) %>
+<%# Without a status (nobody signed in) the apps clear their widgets, quick actions and Live Activity. %>
 <% if hotwire_native_app? %>
-  <%= tag.div id: "bridge_widget_status", hidden: true, data: { controller: "bridge--widget-status", bridge__widget_status_payload_value: status.to_json } %>
+  <%= tag.div id: "bridge_widget_status", hidden: true, data: {
+        controller: "bridge--widget-status",
+        bridge__widget_status_payload_value: status&.to_json,
+        bridge__widget_status_signed_out_value: status.nil?
+      } %>
 <% end %>
