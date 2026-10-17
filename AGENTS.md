@@ -109,6 +109,16 @@ This app is user-scoped and intentionally simple:
 - PWA assets live under `app/views/pwa`
 - Native app behavior is detected via user agent helpers and version parsing in `ApplicationHelper`
 
+### Native Apps
+
+The iOS ([crmne/cluster-headache-tracker-ios](https://github.com/crmne/cluster-headache-tracker-ios)) and Android ([crmne/cluster-headache-tracker-android](https://github.com/crmne/cluster-headache-tracker-android)) apps are Hotwire Native shells around these pages. What they rely on is a contract: change a bridge component's name, events or payload keys, a path in `public/configurations/*_v2.json`, or the user agent on both sides together, and keep the apps' bundled path configurations identical to the server's.
+
+- User agent: `ClusterHeadacheTracker; platform=ios|android; version=X.Y.Z; build=N;`, plus `store=play` from Android builds Google Play installed. `ios_native_app?`, `android_native_app?`, `native_app_version`, `native_app_store`.
+- Store builds (every iOS build, and Android with `store=play`) update through their store: `mobile_app_from_store?` keeps them from hearing about GitHub releases (Google Play forbids pointing at other downloads) and sends required updates to `AppConstants::IOS_APP_STORE_URL` or `PLAY_STORE_URL`. Only GitHub APK installs are offered the APK.
+- `widget-status`: signed-in pages send `connect` with `{ ongoing, startedAt, lastAttackAt, attackFreeDays, attacksToday, locale }`; signed-out pages send `clear`, so widgets, shortcuts and the Live Activity forget the last account after signing out elsewhere, an expired session or a deleted account.
+- Account deletion is in Settings for the apps too (`Users::AccountsController`, password required, native destructive alert), as both stores require; `/delete-account` explains it publicly for Google Play's deletion URL.
+- Store review uses a synthetic account: `DEMO_PASSWORD=... bin/rails demo:reset` (`DemoAccount`, username `appreview` by default) replaces its history with a made-up cluster period ending today. It refuses any account holding logs it didn't write. Reset it before each submission; reviewers may delete it.
+
 ### Sharing, Import, and Export
 
 - CSV export is handled by `HeadacheLog.to_csv` and `HeadacheLogExportsController`
