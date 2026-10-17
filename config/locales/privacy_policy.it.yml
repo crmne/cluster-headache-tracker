@@ -42,7 +42,7 @@ it:
         no_ads: Non usiamo mai i tuoi dati per la pubblicità, non li vendiamo e non li usiamo per addestrare modelli di intelligenza artificiale.
       legal_basis:
         heading: 6. Base giuridica
-        health: Trattiamo i tuoi dati sanitari con il tuo consenso esplicito (art. 9, par. 2, lett. a GDPR), che dai inserendoli. Puoi revocarlo in qualsiasi momento cancellando i dati o l'account.
+        health: "Trattiamo i tuoi dati sanitari solo con il tuo consenso esplicito (art. 9, par. 2, lett. a GDPR), che dai spuntando una casella quando crei l'account. Agli account creati prima di ottobre 2026 lo chiediamo una volta, al loro prossimo utilizzo. Puoi revocare il consenso in qualsiasi momento cancellando i dati o l'account."
         account: Trattiamo il tuo account per fornirti il servizio a cui ti sei iscritto (art. 6, par. 1, lett. b GDPR).
         technical: Trattiamo i dati tecnici, i conteggi delle pagine e le segnalazioni di errore per il nostro legittimo interesse a gestire un servizio sicuro e funzionante (art. 6, par. 1, lett. f GDPR).
       sharing:
@@ -56,7 +56,8 @@ it:
         location: Il tuo account, le registrazioni e le foto sono conservati su server in Germania.
         transit: Tutto viaggia cifrato (HTTPS) tra il tuo dispositivo e i nostri server.
         photos: Le foto sono cifrate sul disco.
-        backups: I backup sono cifrati.
+        encryption: "Quello che scrivi sui tuoi attacchi (farmaci, fattori scatenanti e note), i nomi e le note di assunzione dei tuoi farmaci e le tue risposte al questionario di feedback sono anche cifrati nel database, ogni valore separatamente. Questo li protegge se una copia del database dovesse mai finire all'esterno, ma non da chi controlla il server, perché anche le chiavi sono conservate lì. Orari, intensità, dosi, valutazioni e pressione atmosferica degli attacchi non sono cifrati in questo modo, così l'app può ordinarli e mostrarli nei grafici."
+        backups: "I backup sono cifrati, e i valori cifrati nel database restano cifrati al loro interno."
         access: Solo il gestore ha accesso ai server.
       retention:
         heading: 9. Per quanto tempo li conserviamo e come cancellarli

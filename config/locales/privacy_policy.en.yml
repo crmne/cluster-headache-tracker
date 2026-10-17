@@ -42,7 +42,7 @@ en:
         no_ads: We never use your data for advertising, never sell it, and never use it to train AI models.
       legal_basis:
         heading: 6. Legal basis
-        health: We process your health data with your explicit consent (Art. 9(2)(a) GDPR), which you give by entering it. You can withdraw it at any time by deleting the data or your account.
+        health: "We process your health data only with your explicit consent (Art. 9(2)(a) GDPR), which you give by ticking a box when you create your account. Accounts created before October 2026 are asked once, the next time they're used. You can withdraw your consent at any time by deleting the data or your account."
         account: We process your account to provide the service you signed up for (Art. 6(1)(b) GDPR).
         technical: We process technical data, page counts and error reports for our legitimate interest in running a secure, working service (Art. 6(1)(f) GDPR).
       sharing:
@@ -56,7 +56,8 @@ en:
         location: Your account, logs and photos are stored on servers in Germany.
         transit: Everything travels encrypted (HTTPS) between your device and our servers.
         photos: Photos are encrypted on disk.
-        backups: Backups are encrypted.
+        encryption: "What you write about your attacks (medications, triggers and notes), the names and schedule notes of your medications, and your feedback answers are also encrypted in the database, each value separately. This protects them if a copy of the database ever gets out, but not from someone who controls the server, because the keys are kept there too. Attack times, intensities, doses, ratings and pressure readings aren't encrypted this way, so the app can sort and chart them."
+        backups: "Backups are encrypted, and the values encrypted in the database stay encrypted inside them."
         access: Only the maintainer can access the servers.
       retention:
         heading: 9. How long we keep it, and how to delete it

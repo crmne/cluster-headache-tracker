@@ -42,7 +42,7 @@ es:
         no_ads: Nunca usamos tus datos para publicidad, nunca los vendemos y nunca los usamos para entrenar modelos de inteligencia artificial.
       legal_basis:
         heading: 6. Base jurídica
-        health: Tratamos tus datos de salud con tu consentimiento explícito (art. 9.2.a RGPD), que das al introducirlos. Puedes retirarlo en cualquier momento borrando los datos o tu cuenta.
+        health: "Tratamos tus datos de salud solo con tu consentimiento explícito (art. 9.2.a RGPD), que das marcando una casilla al crear tu cuenta. A las cuentas creadas antes de octubre de 2026 se lo pedimos una vez, la próxima vez que se usen. Puedes retirar tu consentimiento en cualquier momento borrando los datos o tu cuenta."
         account: Tratamos tu cuenta para prestarte el servicio en el que te has registrado (art. 6.1.b RGPD).
         technical: Tratamos los datos técnicos, los recuentos de páginas y los informes de error por nuestro interés legítimo en mantener un servicio seguro y que funcione (art. 6.1.f RGPD).
       sharing:
@@ -56,7 +56,8 @@ es:
         location: Tu cuenta, tus registros y tus fotos se guardan en servidores en Alemania.
         transit: Todo viaja cifrado (HTTPS) entre tu dispositivo y nuestros servidores.
         photos: Las fotos se guardan cifradas en disco.
-        backups: Las copias de seguridad están cifradas.
+        encryption: "Lo que escribes sobre tus ataques (medicamentos, desencadenantes y notas), los nombres y las notas de toma de tus medicamentos y tus respuestas a la encuesta también se cifran en la base de datos, cada valor por separado. Esto los protege si alguna vez sale una copia de la base de datos, pero no frente a quien controle el servidor, porque las claves también se guardan allí. Las horas, intensidades, dosis, valoraciones y presiones de los ataques no se cifran así, para que la app pueda ordenarlas y mostrarlas en gráficos."
+        backups: "Las copias de seguridad están cifradas, y los valores cifrados en la base de datos siguen cifrados dentro de ellas."
         access: Solo el responsable del servicio tiene acceso a los servidores.
       retention:
         heading: 9. Cuánto tiempo los guardamos y cómo borrarlos

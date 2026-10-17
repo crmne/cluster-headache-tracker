@@ -42,7 +42,7 @@ de:
         no_ads: Wir verwenden Ihre Daten nie für Werbung, verkaufen sie nie und trainieren damit keine KI-Modelle.
       legal_basis:
         heading: 6. Rechtsgrundlagen
-        health: Ihre Gesundheitsdaten verarbeiten wir mit Ihrer ausdrücklichen Einwilligung (Art. 9 Abs. 2 lit. a DSGVO), die Sie mit der Eingabe erteilen. Sie können sie jederzeit widerrufen, indem Sie die Daten oder Ihr Konto löschen.
+        health: "Ihre Gesundheitsdaten verarbeiten wir nur mit Ihrer ausdrücklichen Einwilligung (Art. 9 Abs. 2 lit. a DSGVO), die Sie beim Anlegen Ihres Kontos mit einem Häkchen erteilen. Konten, die vor Oktober 2026 angelegt wurden, fragen wir einmal, wenn sie das nächste Mal genutzt werden. Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie die Daten oder Ihr Konto löschen."
         account: Ihr Konto verarbeiten wir, um den Dienst bereitzustellen, für den Sie sich angemeldet haben (Art. 6 Abs. 1 lit. b DSGVO).
         technical: Technische Daten, Seitenzählungen und Fehlerberichte verarbeiten wir aufgrund unseres berechtigten Interesses an einem sicheren, funktionierenden Dienst (Art. 6 Abs. 1 lit. f DSGVO).
       sharing:
@@ -56,7 +56,8 @@ de:
         location: Ihr Konto, Ihre Einträge und Fotos werden auf Servern in Deutschland gespeichert.
         transit: Alle Daten werden zwischen Ihrem Gerät und unseren Servern verschlüsselt übertragen (HTTPS).
         photos: Fotos werden verschlüsselt gespeichert.
-        backups: Sicherungen sind verschlüsselt.
+        encryption: "Was Sie zu Ihren Attacken schreiben (Medikamente, Auslöser und Notizen), die Namen und Einnahmehinweise Ihrer Medikamente und Ihre Antworten auf die Feedback-Umfrage werden zusätzlich in der Datenbank verschlüsselt, jeder Wert einzeln. Das schützt sie, falls jemals eine Kopie der Datenbank nach außen gelangt, aber nicht vor jemandem, der den Server kontrolliert, denn die Schlüssel liegen ebenfalls dort. Zeitpunkte, Intensitäten, Dosen, Bewertungen und Luftdruckwerte von Attacken werden nicht so verschlüsselt, damit die App sie sortieren und in Diagrammen zeigen kann."
+        backups: "Sicherungen sind verschlüsselt, und die in der Datenbank verschlüsselten Werte bleiben darin verschlüsselt."
         access: Nur der Betreiber hat Zugriff auf die Server.
       retention:
         heading: 9. Wie lange wir Daten speichern und wie Sie sie löschen
