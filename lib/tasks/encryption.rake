@@ -1,6 +1,7 @@
 # Encrypting health data that was stored before encryption (ContentEncryption):
 #
-# 1. Deploy with support_unencrypted_data on (config/application.rb).
+# 1. Deploy with support_unencrypted_data on (config/application.rb), so
+#    rows from before stay readable.
 # 2. bin/rails encryption:encrypt: encrypts what's still plain text. Safe to
 #    stop and run again.
 # 3. bin/rails encryption:verify: exits non-zero while any row is left.

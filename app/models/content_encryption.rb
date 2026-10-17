@@ -15,6 +15,10 @@ module ContentEncryption
     "FeedbackSurvey" => %i[ additional_features change_suggestion impact promotion_suggestions ]
   }.freeze
 
+  class UnencryptedDataUnsupported < StandardError
+    def message = "Plain text can only be read with support_unencrypted_data on (config/application.rb)"
+  end
+
   extend self
 
   # Encrypts the rows still in plain text and yields each model's count.
@@ -22,6 +26,8 @@ module ContentEncryption
     models.to_h do |model|
       encrypted = model.find_each(batch_size: batch_size).count do |record|
         if unencrypted?(record)
+          raise UnencryptedDataUnsupported unless ActiveRecord::Encryption.config.support_unencrypted_data
+
           record.encrypt
           true
         end

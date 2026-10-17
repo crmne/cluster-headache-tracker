@@ -30,9 +30,9 @@ module ClusterHeadacheTracker
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Health data is encrypted at rest (ContentEncryption); the keys are
-    # active_record_encryption in the credentials. Rows written before then
-    # stay readable until `bin/rails encryption:encrypt` has run.
-    config.active_record.encryption.support_unencrypted_data = true
+    # active_record_encryption in the credentials. Every row is encrypted, so
+    # reading plain text from those columns raises.
+    config.active_record.encryption.support_unencrypted_data = false
 
     config.i18n.available_locales = %i[ en de it es ]
     config.i18n.default_locale = :en

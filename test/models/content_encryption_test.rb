@@ -5,6 +5,10 @@ class ContentEncryptionTest < ActiveSupport::TestCase
     @user = users(:one)
   end
 
+  teardown do
+    ActiveRecord::Encryption.config.support_unencrypted_data = false
+  end
+
   test "every column holding what people log is encrypted" do
     ContentEncryption::RECORDS.each do |class_name, attributes|
       assert_equal attributes.sort, class_name.constantize.encrypted_attributes.to_a.sort, class_name
@@ -42,6 +46,7 @@ class ContentEncryptionTest < ActiveSupport::TestCase
   end
 
   test "encrypting existing rows encrypts only what's still plain text, and can run again" do
+    supporting_unencrypted_data
     log = headache_logs(:one)
     store_plain_text HeadacheLog, log, notes: "Written before encryption"
     store_plain_text Medication, medications(:oxygen), schedule_note: "Before encryption"
@@ -62,6 +67,7 @@ class ContentEncryptionTest < ActiveSupport::TestCase
   end
 
   test "encrypting doesn't touch the rows' timestamps" do
+    supporting_unencrypted_data
     log = headache_logs(:one)
     store_plain_text HeadacheLog, log, notes: "Written before encryption"
 
@@ -70,7 +76,19 @@ class ContentEncryptionTest < ActiveSupport::TestCase
     end
   end
 
+  test "plain text is refused once every row is encrypted" do
+    store_plain_text HeadacheLog, headache_logs(:one), notes: "Written before encryption"
+
+    assert_raises(ActiveRecord::Encryption::Errors::Decryption) { headache_logs(:one).reload.notes }
+    assert_raises(ContentEncryption::UnencryptedDataUnsupported) { ContentEncryption.encrypt_pending }
+  end
+
   private
+    # As during a rollout, when rows from before encryption are still plain text
+    def supporting_unencrypted_data
+      ActiveRecord::Encryption.config.support_unencrypted_data = true
+    end
+
     def stored_value(model, record, column)
       model.connection.select_value(model.where(id: record.id).select(column).to_sql)
     end
