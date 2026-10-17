@@ -55,6 +55,7 @@
             <%= heroicon "share", variant: "mini", class: "w-4 h-4" %>
             <%= entry.share_label %>
           </button>
+          <% if sponsor_links? %>
           <a href="<%= entry.support_url %>"
              target="_blank"
              rel="noopener noreferrer"
@@ -62,6 +63,7 @@
             <%= entry.support_label %>
             <%= heroicon "heart", variant: "mini", class: "w-4 h-4" %>
           </a>
+          <% end %>
         </div>
       </div>
 

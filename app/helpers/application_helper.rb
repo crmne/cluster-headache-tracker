@@ -183,6 +183,12 @@ module ApplicationHelper
     end
   end
 
+  # The App Store and Google Play only let an app take donations through their own
+  # in-app purchases, so their builds don't show the link to GitHub Sponsors.
+  def sponsor_links?
+    !mobile_app_from_store?
+  end
+
   def native_app_store
     request.user_agent.to_s[/ClusterHeadacheTracker;[^\[]*?\bstore=([\w-]+)/, 1] if hotwire_native_app?
   end
