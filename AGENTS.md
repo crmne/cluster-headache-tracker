@@ -57,6 +57,8 @@ bundle exec kamal deploy   # Manual deploy
 
 Production deploys are tag-driven. Pushing to `main` runs CI, but production release happens from `v*` tags through GitHub Actions.
 
+Each release's notes are written by hand and committed as `packaging/release-notes/vX.Y.Z.md` before tagging: a plain-language summary, then New and Fixed items led by what changed for people, Thanks, and a full changelog link. `script/release` refuses to tag without the file, and `release.yml` stops before deploying when it's missing, then publishes it as the GitHub release's description.
+
 ### Migrations
 
 - Always create migrations with Rails generators so timestamps, naming, and boilerplate stay consistent.

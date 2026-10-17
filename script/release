@@ -6,6 +6,7 @@ usage() {
 Usage: script/release VERSION
 
 Create and push an annotated production release tag from origin/main.
+The release notes must already be committed as packaging/release-notes/VERSION.md.
 
 Examples:
   script/release 1.0.11
@@ -49,6 +50,13 @@ remote_main_sha="$(git rev-parse origin/main)"
 
 if [ "${head_sha}" != "${remote_main_sha}" ]; then
   echo "HEAD does not match origin/main. Pull or push main before releasing."
+  exit 1
+fi
+
+notes="packaging/release-notes/${tag}.md"
+
+if ! git cat-file -e "HEAD:${notes}" 2>/dev/null || [ -z "$(git show "HEAD:${notes}")" ]; then
+  echo "Commit the release notes to ${notes} before releasing."
   exit 1
 fi
 

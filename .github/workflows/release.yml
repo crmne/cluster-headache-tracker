@@ -51,37 +51,19 @@ jobs:
             exit 1
           fi
 
-          previous_tag="$(
-            git tag --list "v*" --sort=-version:refname |
-              grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' |
-              grep -Fxv "${GITHUB_REF_NAME}" |
-              head -n 1 || true
-          )"
-
           echo "tag_commit=${tag_commit}" >> "$GITHUB_OUTPUT"
-          echo "previous_tag=${previous_tag}" >> "$GITHUB_OUTPUT"
 
-      - name: Build release notes preamble
+      - name: Check release notes
         shell: bash
-        env:
-          PREVIOUS_TAG: ${{ steps.release_range.outputs.previous_tag }}
         run: |
           set -euo pipefail
 
-          {
-            echo "## Commits"
-            echo
+          notes="packaging/release-notes/${GITHUB_REF_NAME}.md"
 
-            if [ -n "${PREVIOUS_TAG}" ]; then
-              echo "Changes since \`${PREVIOUS_TAG}\`:"
-              echo
-              git log --reverse --pretty=format:'- %h %s' "${PREVIOUS_TAG}..${GITHUB_REF_NAME}"
-            else
-              echo "Initial release in the GitHub Releases flow."
-              echo
-              git log -1 --pretty=format:'- %h %s' "${GITHUB_REF_NAME}"
-            fi
-          } > release-notes-preamble.md
+          if [ ! -s "${notes}" ]; then
+            echo "Missing ${notes}. Commit the release notes before tagging."
+            exit 1
+          fi
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -112,14 +94,11 @@ jobs:
         run: |
           set -euo pipefail
 
-          notes="$(cat release-notes-preamble.md)"
-
           if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
             echo "GitHub Release already exists for ${GITHUB_REF_NAME}; skipping create."
           else
             gh release create "${GITHUB_REF_NAME}" \
               --verify-tag \
               --title "${GITHUB_REF_NAME}" \
-              --generate-notes \
-              --notes "${notes}"
+              --notes-file "packaging/release-notes/${GITHUB_REF_NAME}.md"
           fi
