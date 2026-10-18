@@ -1,4 +1,4 @@
-# Errors go to our own Bugsink (errors.paolino.me, on our Hetzner server in
+# Errors go to our own Bugsink (errors.plenty.is, on our Hetzner server in
 # Germany), which takes the Sentry SDK's events. It takes no traces, so
 # nothing turns tracing on.
 #
