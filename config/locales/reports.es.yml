@@ -42,5 +42,6 @@ es:
     index:
       doctors_view: Vista para el médico
       invalid: Este enlace para compartir no es válido o ha caducado.
+      paused: Este enlace para compartir está en pausa. Quien lo creó tiene que abrir Cluster Headache Tracker para seguir compartiendo.
       print: Imprimir
       title: Registros de cefalea de %{username}

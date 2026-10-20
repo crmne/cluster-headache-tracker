@@ -42,5 +42,6 @@ en:
     index:
       doctors_view: Doctor's view
       invalid: This share link is invalid or has expired.
+      paused: This share link is paused. Its owner needs to open Cluster Headache Tracker to continue sharing.
       print: Print
       title: Headache Logs for %{username}

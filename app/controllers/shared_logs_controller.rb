@@ -6,7 +6,17 @@ class SharedLogsController < ApplicationController
   def index
     @share_token = ShareToken.active.find_by(token: params[:token])
 
-    if @share_token
+    if @share_token.nil?
+      render plain: t(".invalid"), status: :unauthorized
+    elsif @share_token.paused?
+      render plain: t(".paused"), status: :forbidden
+    else
+      show_shared_logs
+    end
+  end
+
+  private
+    def show_shared_logs
       @user = @share_token.user
       @headache_logs = @user.headache_logs.filtered_by(params).recent_first
       @headache_logs = @headache_logs.includes(medication_doses: :medication)
@@ -18,8 +28,5 @@ class SharedLogsController < ApplicationController
         end
         format.pdf { send_report @headache_logs }
       end
-    else
-      render plain: t(".invalid"), status: :unauthorized
     end
-  end
 end

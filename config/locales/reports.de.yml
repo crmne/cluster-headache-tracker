@@ -42,5 +42,6 @@ de:
     index:
       doctors_view: Ansicht für Ärzte
       invalid: Dieser Freigabelink ist ungültig oder abgelaufen.
+      paused: Dieser Freigabelink ist pausiert. Die Person, die ihn erstellt hat, muss Cluster Headache Tracker öffnen, um ihn weiter zu teilen.
       print: Drucken
       title: Kopfschmerz-Einträge von %{username}

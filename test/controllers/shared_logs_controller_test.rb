@@ -97,4 +97,59 @@ class SharedLogsControllerTest < ActionDispatch::IntegrationTest
     assert_select "#medication_insights tr", text: /Sumatriptan/
     assert_select "#headache_log_entries .medication-tag", text: /Oxygen/
   end
+
+  test "pauses the link while its owner hasn't consented to health data processing" do
+    @user.update!(consented_at: nil)
+
+    get shared_logs_url(token: @share_token.token)
+
+    assert_response :forbidden
+    assert_equal "This share link is paused. Its owner needs to open Cluster Headache Tracker to continue sharing.", response.body
+    assert_no_match /Sumatriptan/, response.body
+  end
+
+  test "does not download a pdf while the link is paused" do
+    @user.update!(consented_at: nil)
+
+    get shared_logs_url(token: @share_token.token, format: :pdf)
+
+    assert_response :forbidden
+    assert_not_equal "application/pdf", response.media_type
+    assert_match /paused/, response.body
+  end
+
+  test "a paused link works again once its owner consents" do
+    @user.update!(consented_at: nil)
+    get shared_logs_url(token: @share_token.token)
+    assert_response :forbidden
+
+    @user.consent_to_health_data
+
+    get shared_logs_url(token: @share_token.token)
+    assert_response :success
+    assert_select ".navbar-center", text: "Doctor's view"
+
+    get shared_logs_url(token: @share_token.token, format: :pdf)
+    assert_response :success
+    assert_equal "application/pdf", response.media_type
+  end
+
+  test "paused link message follows the doctor's language" do
+    @user.update!(consented_at: nil)
+
+    get shared_logs_url(token: @share_token.token), headers: { "Accept-Language" => "de" }
+
+    assert_response :forbidden
+    assert_match /pausiert/, response.body
+  end
+
+  test "an expired link of an unconsented owner is still invalid" do
+    @user.update!(consented_at: nil)
+    @share_token.update!(expires_at: 1.day.ago)
+
+    get shared_logs_url(token: @share_token.token)
+
+    assert_response :unauthorized
+    assert_match /invalid or has expired/, response.body
+  end
 end

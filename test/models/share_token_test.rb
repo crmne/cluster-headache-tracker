@@ -26,4 +26,11 @@ class ShareTokenTest < ActiveSupport::TestCase
     assert_not_nil @share_token.expires_at
     assert_equal 30.days.from_now.to_date, @share_token.expires_at.to_date
   end
+
+  test "is paused while its owner hasn't consented to health data processing" do
+    assert_not share_tokens(:one).paused?
+
+    users(:one).update!(consented_at: nil)
+    assert share_tokens(:one).reload.paused?
+  end
 end
