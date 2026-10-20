@@ -2,7 +2,7 @@
 <article class="prose">
   <h1><%= t(".heading") %></h1>
 
-  <p><%= t(".last_updated", date: l(Date.new(2026, 10, 17), format: :long_date)) %></p>
+  <p><%= t(".last_updated", date: l(Date.new(2026, 10, 20), format: :long_date)) %></p>
 
   <% if I18n.locale != I18n.default_locale %>
     <p><em><%= t(".translation_notice_html", english_version: link_to(t(".english_version"), privacy_policy_path(locale: nil))) %></em></p>

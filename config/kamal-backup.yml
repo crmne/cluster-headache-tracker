@@ -33,7 +33,16 @@ restic:
     password:
       secret: RESTIC_REST_PASSWORD
   init_if_missing: true
-  forget_after_backup: false
+  # Keep one snapshot a day for 30 days, so deleted data leaves the backups
+  # within 30 days. Every other keep_* is 0, since an unset one falls back
+  # to kamal-backup's default and would keep snapshots for years.
+  forget_after_backup: true
+  retention:
+    keep_last: 0
+    keep_daily: 30
+    keep_weekly: 0
+    keep_monthly: 0
+    keep_yearly: 0
   check_after_backup: true
   check_read_data_subset: 5%
 backup:

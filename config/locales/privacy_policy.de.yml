@@ -58,7 +58,7 @@ de:
         transit: Alle Daten werden zwischen Ihrem Gerät und unseren Servern verschlüsselt übertragen (HTTPS).
         photos: Fotos werden verschlüsselt gespeichert.
         encryption: "Was Sie zu Ihren Attacken schreiben (Medikamente, Auslöser und Notizen), die Namen und Einnahmehinweise Ihrer Medikamente und Ihre Antworten auf die Feedback-Umfrage werden zusätzlich in der Datenbank verschlüsselt, jeder Wert einzeln. Das schützt sie, falls jemals eine Kopie der Datenbank nach außen gelangt, aber nicht vor jemandem, der den Server kontrolliert, denn die Schlüssel liegen ebenfalls dort. Zeitpunkte, Intensitäten, Dosen, Bewertungen und Luftdruckwerte von Attacken werden nicht so verschlüsselt, damit die App sie sortieren und in Diagrammen zeigen kann."
-        backups: "Sicherungen sind verschlüsselt, und die in der Datenbank verschlüsselten Werte bleiben darin verschlüsselt."
+        backups: "Sicherungen sind verschlüsselt, und die in der Datenbank verschlüsselten Werte bleiben darin verschlüsselt. Wir bewahren Sicherungen 30 Tage lang auf."
         access: Nur der Betreiber hat Zugriff auf die Server.
       retention:
         heading: 9. Wie lange wir Daten speichern und wie Sie sie löschen
@@ -66,7 +66,7 @@ de:
         account_deletion_html: Um Ihr Konto mit allen Daten zu löschen, öffnen Sie in der App „Konto“ oder auf der Website die „Kontoeinstellungen“, wählen Sie „Konto löschen“ und bestätigen Sie mit Ihrem Passwort. %{instructions}
         instructions: So löschen Sie Ihr Konto
         what_is_deleted: Dadurch werden Ihr Konto, Ihre Einträge, Fotos, Medikamente, Einnahmen, Freigabelinks und Ihr Feedback sofort aus unserer Datenbank gelöscht.
-        backups: Verschlüsselte Sicherungen, die vorher erstellt wurden, können Ihre Daten noch enthalten, bis diese Sicherungen gelöscht werden.
+        backups: Verschlüsselte Sicherungen, die vorher erstellt wurden, enthalten Ihre Daten noch, bis sie innerhalb von 30 Tagen gelöscht werden. Das gilt auch für alles andere, was Sie löschen.
         error_reports: "Fehlerberichte bleiben in unserem Fehlerprotokoll und werden nicht mit Ihrem Konto gelöscht; schreiben Sie uns mit Ihrem Benutzernamen, dann löschen wir sie."
         cant_sign_in: Wenn Sie sich nicht mehr anmelden können, schreiben Sie uns mit Ihrem Benutzernamen; wir löschen das Konto, sobald wir bestätigen können, dass es Ihnen gehört.
       rights:

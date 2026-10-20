@@ -58,7 +58,7 @@ it:
         transit: Tutto viaggia cifrato (HTTPS) tra il tuo dispositivo e i nostri server.
         photos: Le foto sono cifrate sul disco.
         encryption: "Quello che scrivi sui tuoi attacchi (farmaci, fattori scatenanti e note), i nomi e le note di assunzione dei tuoi farmaci e le tue risposte al questionario di feedback sono anche cifrati nel database, ogni valore separatamente. Questo li protegge se una copia del database dovesse mai finire all'esterno, ma non da chi controlla il server, perché anche le chiavi sono conservate lì. Orari, intensità, dosi, valutazioni e pressione atmosferica degli attacchi non sono cifrati in questo modo, così l'app può ordinarli e mostrarli nei grafici."
-        backups: "I backup sono cifrati, e i valori cifrati nel database restano cifrati al loro interno."
+        backups: "I backup sono cifrati, e i valori cifrati nel database restano cifrati al loro interno. Conserviamo i backup per 30 giorni."
         access: Solo il gestore ha accesso ai server.
       retention:
         heading: 9. Per quanto tempo li conserviamo e come cancellarli
@@ -66,7 +66,7 @@ it:
         account_deletion_html: Per cancellare l'account e tutti i suoi dati, apri Account nell'app o Impostazioni account sul sito, scegli Elimina account e conferma con la password. %{instructions}
         instructions: Come cancellare l'account
         what_is_deleted: In questo modo account, registrazioni, foto, farmaci, assunzioni, link di condivisione e feedback vengono cancellati subito dal nostro database.
-        backups: I backup cifrati creati prima possono contenere ancora i tuoi dati finché quei backup non vengono cancellati.
+        backups: I backup cifrati creati prima contengono ancora i tuoi dati finché non vengono cancellati, entro 30 giorni. Lo stesso vale per qualsiasi altra cosa che cancelli.
         error_reports: "Le segnalazioni di errore restano nel nostro sistema di monitoraggio e non vengono cancellate con l'account; scrivici con il tuo nome utente e le cancelleremo."
         cant_sign_in: Se non riesci ad accedere, scrivici con il tuo nome utente e cancelleremo l'account non appena potremo confermare che è tuo.
       rights:

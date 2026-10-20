@@ -58,7 +58,7 @@ es:
         transit: Todo viaja cifrado (HTTPS) entre tu dispositivo y nuestros servidores.
         photos: Las fotos se guardan cifradas en disco.
         encryption: "Lo que escribes sobre tus ataques (medicamentos, desencadenantes y notas), los nombres y las notas de toma de tus medicamentos y tus respuestas a la encuesta también se cifran en la base de datos, cada valor por separado. Esto los protege si alguna vez sale una copia de la base de datos, pero no frente a quien controle el servidor, porque las claves también se guardan allí. Las horas, intensidades, dosis, valoraciones y presiones de los ataques no se cifran así, para que la app pueda ordenarlas y mostrarlas en gráficos."
-        backups: "Las copias de seguridad están cifradas, y los valores cifrados en la base de datos siguen cifrados dentro de ellas."
+        backups: "Las copias de seguridad están cifradas, y los valores cifrados en la base de datos siguen cifrados dentro de ellas. Guardamos las copias de seguridad durante 30 días."
         access: Solo el responsable del servicio tiene acceso a los servidores.
       retention:
         heading: 9. Cuánto tiempo los guardamos y cómo borrarlos
@@ -66,7 +66,7 @@ es:
         account_deletion_html: Para eliminar tu cuenta y todos sus datos, abre Cuenta en la app o Configuración de la cuenta en la web, elige Eliminar cuenta y confirma con tu contraseña. %{instructions}
         instructions: Cómo eliminar tu cuenta
         what_is_deleted: Así se borran de inmediato de nuestra base de datos tu cuenta, registros, fotos, medicamentos, tomas, enlaces para compartir y opiniones.
-        backups: Las copias de seguridad cifradas hechas antes pueden seguir conteniendo tus datos hasta que esas copias se borren.
+        backups: Las copias de seguridad cifradas hechas antes siguen conteniendo tus datos hasta que se borran, en un plazo de 30 días. Lo mismo vale para cualquier otra cosa que borres.
         error_reports: "Los informes de error se quedan en nuestro sistema de seguimiento y no se borran con tu cuenta; escríbenos con tu nombre de usuario y los borraremos."
         cant_sign_in: Si no puedes iniciar sesión, escríbenos con tu nombre de usuario y eliminaremos la cuenta en cuanto podamos confirmar que es tuya.
       rights:

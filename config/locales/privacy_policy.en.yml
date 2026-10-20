@@ -58,7 +58,7 @@ en:
         transit: Everything travels encrypted (HTTPS) between your device and our servers.
         photos: Photos are encrypted on disk.
         encryption: "What you write about your attacks (medications, triggers and notes), the names and schedule notes of your medications, and your feedback answers are also encrypted in the database, each value separately. This protects them if a copy of the database ever gets out, but not from someone who controls the server, because the keys are kept there too. Attack times, intensities, doses, ratings and pressure readings aren't encrypted this way, so the app can sort and chart them."
-        backups: "Backups are encrypted, and the values encrypted in the database stay encrypted inside them."
+        backups: "Backups are encrypted, and the values encrypted in the database stay encrypted inside them. We keep backups for 30 days."
         access: Only the maintainer can access the servers.
       retention:
         heading: 9. How long we keep it, and how to delete it
@@ -66,7 +66,7 @@ en:
         account_deletion_html: To delete your account and all of its data, open Account in the app or Account Settings on the website, choose Delete account and confirm with your password. %{instructions}
         instructions: How to delete your account
         what_is_deleted: This immediately deletes your account, logs, photos, medications, doses, share links and feedback from our database.
-        backups: Encrypted backups made before then may still contain your data until those backups are deleted.
+        backups: Encrypted backups made before then still contain your data until they're deleted, within 30 days. The same goes for anything else you delete.
         error_reports: "Error reports stay in our error tracker and aren't deleted with your account; email us with your username and we'll delete them."
         cant_sign_in: If you can't sign in, email us with your username and we'll delete the account once we can confirm it's yours.
       rights:
