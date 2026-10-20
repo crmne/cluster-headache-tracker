@@ -31,7 +31,7 @@ jobs:
 
     steps:
       - name: Install system packages
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips postgresql-client
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips libheif-plugin-libde265 postgresql-client
 
       - uses: actions/checkout@v4
 
