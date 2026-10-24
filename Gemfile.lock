@@ -112,7 +112,7 @@ GEM
       fiber-annotation
       fiber-local (~> 1.1)
       json
-    crass (1.0.7)
+    crass (1.0.8)
     csv (3.3.6)
     date (3.5.1)
     debug (1.11.1)
