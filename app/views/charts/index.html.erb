@@ -6,16 +6,19 @@
     <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
   <% end %>
 <% end %>
+<%# On Android, New log is the floating button beside the tabs. %>
 <% content_for :hotwire_button do %>
-  <%= link_to new_headache_log_path, class: "btn btn-primary",
-      data: {
-        controller: "bridge--button",
-        bridge_title: t(".new"),
-        bridge_ios_image: "plus",
-        bridge_android_image: "add"
-      } do %>
-    <%= t(".new") %>
-    <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
+  <% unless android_native_app? %>
+    <%= link_to new_headache_log_path, class: "btn btn-primary",
+        data: {
+          controller: "bridge--button",
+          bridge_title: t(".new"),
+          bridge_ios_image: "plus",
+          bridge_android_image: "add"
+        } do %>
+      <%= t(".new") %>
+      <%= heroicon "plus", variant: "mini", class: "w-4 h-4" %>
+    <% end %>
   <% end %>
 <% end %>
 

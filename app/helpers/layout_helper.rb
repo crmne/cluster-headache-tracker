@@ -18,6 +18,19 @@ module LayoutHelper
     hotwire_native_app? && form_page?
   end
 
+  # A tab's first page in the Android app, which floats its tabs and New log
+  # over the page: the page leaves room for them under its last row.
+  def native_tab_page?
+    android_native_app? && native_app_with_tabs? && NATIVE_TAB_PAGES[controller_path]&.include?(action_name)
+  end
+
+  NATIVE_TAB_PAGES = {
+    "headache_logs" => %w[ index ],
+    "charts" => %w[ index ],
+    "users/settings" => %w[ show ],
+    "feedback" => %w[ new show thank_you ]
+  }.freeze
+
   private
     def static_page_paths
       full_width_static_page_paths + [

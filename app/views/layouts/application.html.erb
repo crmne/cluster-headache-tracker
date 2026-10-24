@@ -66,7 +66,10 @@
   <%
     main_spacing_class =
       if native_app_with_tabs?
-        android_native_app? ? "pb-2" : "pt-safe pb-2"
+        if native_tab_page? then "pb-28"
+        elsif android_native_app? then "pb-2"
+        else "pt-safe pb-2"
+        end
       elsif static_page?
         "pt-safe-offset-16"
       else
