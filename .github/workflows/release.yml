@@ -77,6 +77,9 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
 
+      - name: Record the live sitemap for IndexNow
+        run: ruby .github/scripts/indexnow.rb snapshot clusterheadachetracker.com 11ae7243683c23d16185de134c7bddca "$RUNNER_TEMP/indexnow.json"
+
       - name: Deploy with Kamal
         env:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
@@ -86,6 +89,10 @@ jobs:
           RESTIC_PASSWORD: ${{ secrets.RESTIC_PASSWORD }}
           RESTIC_REST_PASSWORD: ${{ secrets.RESTIC_REST_PASSWORD }}
         run: bundle exec kamal deploy
+
+      - name: Submit changed URLs to IndexNow
+        continue-on-error: true
+        run: ruby .github/scripts/indexnow.rb submit "$RUNNER_TEMP/indexnow.json"
 
       - name: Create GitHub release
         shell: bash
