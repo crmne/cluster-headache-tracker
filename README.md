@@ -54,7 +54,7 @@ If you want to see the product before running it locally, start there.
 
 Prerequisites:
 
-- Ruby 3.4.2
+- Ruby 4.0.9
 - PostgreSQL
 - Node.js
 
