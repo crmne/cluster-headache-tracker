@@ -30,7 +30,7 @@ topics:
 pages:
   "/":
     title: Cluster Headache Tracker & Diary
-    description: Free, privacy-focused cluster headache tracker and diary built by a fellow sufferer. Log attacks quickly, spot patterns, create doctor-ready reports, and keep health data private.
+    description: Free, privacy-focused cluster headache tracker and diary built by a fellow sufferer. Log attacks quickly, spot patterns, and create doctor-ready reports.
     medical: true
     topics:
     - Cluster headaches

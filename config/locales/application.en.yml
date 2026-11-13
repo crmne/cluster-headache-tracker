@@ -1,7 +1,7 @@
 en:
   app:
     description: Free cluster headache tracker and diary built by a fellow sufferer. Log attacks in seconds, track KIP-style intensity, medication, triggers, and timing, then create doctor-ready reports. No email required.
-    short_description: Free, Private, Doctor-Ready Reports
+    short_description: Free, Doctor-Ready Reports
     title: Cluster Headache Tracker & Diary
   languages:
     de: Deutsch

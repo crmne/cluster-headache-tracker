@@ -50,7 +50,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get root_url
 
     assert_response :success
-    assert_select "title", text: "Cluster Headache Tracker & Diary | Free, Private, Doctor-Ready Reports"
+    assert_select "title", text: "Cluster Headache Tracker & Diary | Free, Doctor-Ready Reports"
     assert_select "h1", text: /Wrestling with cluster headaches\?/
     assert_select "a[href='#{cluster_headache_diary_path}']", text: /Cluster Headache Diary|Diary/
   end
@@ -94,7 +94,9 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get sample_report_url
 
     assert_response :success
-    assert_select "h1", text: "Sample Cluster Headache Report"
+    assert_select "h1", count: 1
+    assert_select "h1", text: "Sample cluster headache report"
+    assert_select "h2", text: "Sample Cluster Headache Report"
     assert_select "h2", text: "Analysis"
     assert_select "h2", text: "Detailed Log Entries"
     assert_select "canvas#intensityChart"

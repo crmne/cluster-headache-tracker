@@ -26,7 +26,7 @@ module ApplicationHelper
     elsif translated_public_page?
       translated_public_page_title
     elsif content_for(:title)
-      [ content_for(:title), app_title ].compact.join(" | ")
+      [ content_for(:title), "Cluster Headache Tracker" ].uniq.join(" | ")
     elsif current_ai_visible_page && current_ai_visible_page[:path] != "/"
       [ current_ai_visible_page[:title], "Cluster Headache Tracker" ].uniq.join(" | ")
     else

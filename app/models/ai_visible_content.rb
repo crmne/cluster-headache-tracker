@@ -2,7 +2,7 @@ class AiVisibleContent
   SITE_URL = "https://clusterheadachetracker.com"
   SITE_NAME = "Cluster Headache Tracker"
   SITE_TITLE = "Cluster Headache Tracker & Diary"
-  SITE_DESCRIPTION = "Free, privacy-focused cluster headache tracker and diary built by a fellow sufferer. Log attacks quickly, spot patterns, create doctor-ready reports, and keep health data private."
+  SITE_DESCRIPTION = "Free, privacy-focused cluster headache tracker and diary built by a fellow sufferer. Log attacks quickly, spot patterns, and create doctor-ready reports."
   ENTITY_ID = "#{SITE_URL}/#cluster-headache-tracker"
   FOUNDER_ID = "#{SITE_URL}/#carmine-paolino"
   WEBSITE_ID = "#{SITE_URL}/#website"
