@@ -13,7 +13,7 @@
 <% end %>
 
 <div class="mb-8">
-  <h1 class="text-3xl font-bold mb-2 print:text-2xl"><%= report_title %></h1>
+  <%= content_tag local_assigns.fetch(:heading_tag, :h1), report_title, class: "text-3xl font-bold mb-2 print:text-2xl" %>
   <p class="text-base-content/70 print:text-black"><%= t(".generated_html", site: link_to("clusterheadachetracker.com", "https://clusterheadachetracker.com", class: "link link-hover print:no-underline print:text-black"), date: l(generated_on, format: :long_date)) %></p>
 </div>
 
