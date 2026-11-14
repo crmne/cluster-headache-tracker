@@ -77,6 +77,13 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
 
+      # IndexNow (Bing and the other engines that share it) hears of every page
+      # whose sitemap <lastmod> the deploy changed. The key is the one served
+      # at public/21af1cc30d799c2065965884eba5cc3f.txt.
+      - name: Record the live sitemap for IndexNow
+        continue-on-error: true
+        run: ruby .github/scripts/indexnow.rb snapshot clusterheadachetracker.com 21af1cc30d799c2065965884eba5cc3f "$RUNNER_TEMP/indexnow.json"
+
       - name: Deploy with Kamal
         env:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
@@ -102,3 +109,7 @@ jobs:
               --title "${GITHUB_REF_NAME}" \
               --notes-file "packaging/release-notes/${GITHUB_REF_NAME}.md"
           fi
+
+      - name: Tell IndexNow about changed pages
+        continue-on-error: true
+        run: ruby .github/scripts/indexnow.rb submit "$RUNNER_TEMP/indexnow.json"
