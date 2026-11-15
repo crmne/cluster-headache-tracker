@@ -95,7 +95,7 @@ jobs:
 
       - name: Attest image provenance
         if: false
-        uses: actions/attest-build-provenance@v3.0.0
+        uses: actions/attest-build-provenance@v4.2.2
         with:
           subject-name: ${{ steps.vars.outputs.canonical }}
           subject-digest: ${{ steps.build.outputs.digest }}
